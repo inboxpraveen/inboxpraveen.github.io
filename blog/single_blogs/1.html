@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Blog - Praveen Kumar</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,700" rel="stylesheet">
+
+    <link rel="stylesheet" href="../../about/css/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="../../about/css/animate.css">
+    
+    <link rel="stylesheet" href="../../about/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="../../about/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="../../about/css/magnific-popup.css">
+
+    <link rel="stylesheet" href="../../about/css/aos.css">
+
+    <link rel="stylesheet" href="../../about/css/ionicons.min.css">
+
+    <link rel="stylesheet" href="../../about/css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="../../about/css/jquery.timepicker.css">
+
+    
+    <link rel="stylesheet" href="../../about/css/flaticon.css">
+    <link rel="stylesheet" href="../../about/css/icomoon.css">
+      <style>
+          p{
+              color: white;
+          }
+          ol{
+              color: wheat;
+          }
+      </style>
+    <link rel="stylesheet" href="../../about/css/style.css">
+  </head>
+  <body>
+
+    <div class="KW_progressContainer">
+      <div class="KW_progressBar">
+
+      </div>
+    </div>
+    <div class="page">
+    <nav id="colorlib-main-nav" role="navigation">
+      <a href="#" class="js-colorlib-nav-toggle colorlib-nav-toggle active"><i></i></a>
+      <div class="js-fullheight colorlib-table">
+      	<div class="img" style="background-image: url(../images/main_pic.jpeg);"></div>
+        <div class="colorlib-table-cell js-fullheight">
+          <div class="row no-gutters">
+            <div class="col-md-12 text-center">
+              <ul>
+                <li><a href="../../index.html"><span>Home</span></a></li>
+                <li><a href=""><span>Work</span></a></li>
+                <li><a href=""><span>Services</span></a></li>
+                <li class="active"><a href="../blog.html"><span>Blog</span></a></li>
+                <li><a href="../../about/about.html"><span>About</span></a></li>
+                <li><a href="../../contact/contact.html"><span>Contact</span></a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+    
+    <div id="colorlib-page">
+      <header>
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="colorlib-navbar-brand">
+                <a class="colorlib-logo" href="../../index.html"><span class="logo-img" style="background-image: url(../images/main_pic2.jpeg);"></span>PK.</a>
+              </div>
+              <a href="#" class="js-colorlib-nav-toggle colorlib-nav-toggle"><i></i></a>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <section class="ftco-section">
+        <div class="container mt-12">
+        	<div class="row justify-content-center mb-5 pb-5">
+            <div class="col-md-10 text-center heading-section ftco-animate">
+              <span>Blog</span>
+              <h2>1. Introduction to Computer Vision with Deep Learning: Filters and Kernels</h2>
+            </div>
+          </div>
+          <div class="row d-flex justify-content-center">
+            <div class="col-md-8">
+              <h5 class="mb-9">Written by <a href="../../about/about.html">Praveen Kumar</a></h5>
+              <p>This is how we want you to feel after all the hard work.</p>
+              <p>
+                <img src="../images/FUNNY2.gif" alt="" class="img-fluid">
+              </p>
+                <h3>What is this fuss about deep learning?</h3>
+              <p>Well, if we were to be strictly technical, then I’d say that deep learning is a field of study where we design, develop and deploy Artificial Neural Networks(ANNs) to perform various tasks including but not limited to object classification, semantic segmentation, Image captioning, Signal processing and object localization. <br><br> Phew, sounds heavy right? Trust me it’s not (at least not as much as the hype around it). We’ll come back to the definition later but first, let’s try to visualize what we are dealing with here. <br><br>Okay so think about this, you are walking down the street and your friend is walking from the opposite direction, you both see each other, say hi and move on, pretty much trivial, isn’t it? You wouldn’t give the process a second thought, but there’s actually a lot of biological and electrical stuff that is happening to make it possible:</p>
+                <ol><li>Light from your friend’s face is falling on the retina of your eyes.</li>
+                <li>The cells in the back of your eyes are getting activated based on intensity and wavelength of light.</li>
+                    <li>That information is then being sent back to your brain.</li>
+                    <li> The brain is filtering it out and extracting relevant information, analyzing it, and trying to find a match for it in from memory, as soon as the match is found your brain tells you that you’re looking at your friend.</li>
+                </ol>
+            <p>
+                <img src="../images/eye.jpg" alt="" class="img-fluid">
+              </p>
+              <p>Ah, tiring to think about it, right? Now imagine if a computer were to do all this. One can never program it to do so, think of it, so many faces, so much variance, so many permutations to deal with. So what do we do? Shall we embark on our brave journey of writing an “if” condition for every possible permutation?<br><br> That would be a little unpleasing, wouldn’t it? So instead we design neural networks (brain in this case), then train it to remember your friend’s face (like your memory) and then use it to recognize the person whenever the computer is shown the same face again. <br><br> This is the intuition behind Deep Learning, Neural Networks, and computer vision. You might be thinking about the definition now, please don’t; that’s the mantra of it, leave all the definitions behind and carry the intuition forward.<br><br> Now we look at how we approach that first part of getting visual information and extracting relevant parts.</p>
+                <h3><br>Kernels</h3>
+              <p>Sounds like a small conceptual word? It indeed does but fret not, for let me break it down to you. I’ll try to be as intuitive as possible so that you can remember it for a long time (otherwise you know where to look for it).<br><br>Let’s consider this picture of a magnificent juicy red apple:<br></p>
+            <p>
+                <img src="../images/apple.jpg" alt="" class="img-fluid">
+              </p>
+              <p>What do you see? I mean obviously apple, but then again what makes an apple look like an apple? <br><br>For starters, you could say – </p>
+             <ol><li> Its red color body</li>
+                <li> Top nob</li>
+                    <li> Green leaf</li>
+                    <li> Round in shape</li>
+                </ol>
+                
+              <p>These features define an apple. So whenever someone describes these features, you’ll make a mental picture of it and immediately know that the person is describing an apple. But how does a computer vision system (CSV) know? For a CSV to know all this, it needs something to extract these different set of features and then, later on, combine them and produce a result. So what could it be? Some wizardry? Voodoo magic? Or maybe just a simple boring matrix with some numbers?</p><br>
+              <p>In computer vision terms, we call these features extractors (the matrix) as kernels. People often use these words interchangeably (with a ton of others which we’ll see later).</p><br>
+                
+                <p>Now putting back our technical hats, Kernel is generally represented using matrix. The matrix consists of some values inside it. These values decide what type of feature(s) we decide to extract from an image. We then do some basic arithmetic operations with these matrices and pixel values in the image to magically get our features. Kernels can be of different dimensions like 3x3, 5x5, 7x7, etc. We tend to choose odd dimension kernel because odd dimension kernels have a symmetric axis. Symmetric axis is an axis which equally divides the matrix into two equal halves (don’t worry if this seems a bit difficult to comprehend, we’ll come back to it in later chapters). 3x3 is the most famous kernel size after the breakthrough in computer vision in the year 2012. The 3x3 kernel is famous for 2 reasons-</p><br>
+                <ol><li> It is the smallest odd dimension kernel after 1x1 (will be covered later because we need to cover more concepts to understand 1x1)</li>
+                    <li>The number of computations is very less. (3x3 = 9 compared to other 5x5 = 25, 7x7 = 49 and goes on…)</li></ol>
+                
+                <p>To summarize it, we establish that everything we see is made of up of a set of features which uniquely identifies the object. These features need to be extracted from the image if a computer were to comprehend it. This is achieved via the use of some really boring and dull number matrices (called kernels) and some basic arithmetic operations.<br><br>We’ll have more insights on it in the later chapters of this series.</p>
+              <div class="tag-widget post-tag-container mb-5 mt-5">
+                <div class="tagcloud">
+<!--
+                  <a href="#" class="tag-cloud-link">Life</a>
+                  <a href="#" class="tag-cloud-link">Sport</a>
+                  <a href="#" class="tag-cloud-link">Tech</a>
+                  <a href="#" class="tag-cloud-link">Travel</a>
+-->
+                </div>
+              </div>
+                <p>Join Us on Telegram for Q&amp;A : <a href="tg:https://t.me/joinchat/Kxmt-hWgGSFHAOI_jyxVSw">Link to Telegram Group</a></p>
+            
+<!--
+              <div class="pt-5 mt-5">
+                <h3 class="mb-5">1 Comment(s)</h3>
+                <ul class="comment-list">
+                  <li class="comment">
+                    <div class="vcard bio">
+                      <img src="images/person_1.jpg" alt="Image placeholder">
+                    </div>
+                    <div class="comment-body">
+                      <h3>Jean Doe</h3>
+                      <div class="meta">July 27, 2018 at 2:21pm</div>
+                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem laborum necessitatibus, ipsam impedit vitae autem, eum officia, fugiat saepe enim sapiente iste iure! Quam voluptas earum impedit necessitatibus, nihil?</p>
+                      <p><a href="#" class="reply">Reply</a></p>
+                    </div>
+                  </li>
+                
+                <div class="comment-form-wrap pt-5">
+                  <h3 class="mb-5">Leave a comment</h3>
+                  <form action="#">
+                    <div class="form-group">
+                      <label for="name">Name *</label>
+                      <input type="text" class="form-control" id="name">
+                    </div>
+                    <div class="form-group">
+                      <label for="email">Email *</label>
+                      <input type="email" class="form-control" id="email">
+                    </div>
+                    <div class="form-group">
+                      <label for="website">Website</label>
+                      <input type="url" class="form-control" id="website">
+                    </div>
+
+                    <div class="form-group">
+                      <label for="message">Message</label>
+                      <textarea name="" id="message" cols="30" rows="10" class="form-control"></textarea>
+                    </div>
+                    <div class="form-group">
+                      <input type="submit" value="Post Comment" class="btn py-3 px-4 btn-primary">
+                    </div>
+
+                  </form>
+                </div>
+              </div>
+-->
+
+            </div> <!-- .col-md-8 -->
+
+          </div>
+        </div>
+      </section>
+      
+           <footer class="ftco-footer ftco-bg-dark ftco-section">
+        <div class="container">
+          <div class="row mb-5 justify-content-center">
+            <div class="row">
+            <div class="col-md-12 text-center">
+                    <div>
+                        <h2>Kick start here!</h2>
+                        <h5><strong>Are you interested in Web/Android development (or) MachineLearning/DeepLearning/Autonomous (or) BlockChain (or) Designing? Fill up the respective forms to contribute/learn in open source projects.</strong></h5>
+                        <br>
+                        <h5><strong>No prior experience? No problem. Learn with us by doing.</strong></h5>
+                        <h5>We are here to bring interesting projects to life. No matter if they start as a scribble on a napkin or a grandiose strategy rollout, we nurture them to grow into all they could possibly become.</h5>
+                        <h5>Let's contribute, work, and learn together: </h5><a href="" class="btn btn-lg" style="border: 2px solid">Google Forms</a>
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-5 text-center">
+              <h2 style="margin-top: 80px">Follow me on</h2>
+              <div class="ftco-footer-widget mb-5">
+                <ul class="ftco-footer-social list-unstyled">
+                  <li class="ftco-animate"><a href="https://www.linkedin.com/in/praveen-kumar-inbox/" target="_blank"><span class="icon-linkedin"></span></a></li>
+                  <li class="ftco-animate"><a href="https://github.com/pkpk1717" target="_blank"><span class="icon-github"></span></a></li>                   
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
+      <!-- loader -->
+      <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+
+      </div>
+
+    </div>
+
+
+    <script src="../../about/js/jquery.min.js"></script>
+    <script src="../../about/js/jquery-migrate-3.0.1.min.js"></script>
+    <script src="../../about/js/popper.min.js"></script>
+    <script src="../../about/js/bootstrap.min.js"></script>
+    <script src="../../about/js/jquery.easing.1.3.js"></script>
+    <script src="../../about/js/jquery.waypoints.min.js"></script>
+    <script src="../../about/js/jquery.stellar.min.js"></script>
+    <script src="../../about/js/owl.carousel.min.js"></script>
+    <script src="../../about/js/jquery.magnific-popup.min.js"></script>
+    <script src="../../about/js/aos.js"></script>
+    <script src="../../about/js/jquery.animateNumber.min.js"></script>
+    <script src="../../about/js/scrollax.min.js"></script>
+    <script src="../../about/js/bootstrap-datepicker.js"></script>
+    <script src="../../about/js/jquery.timepicker.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+    <script src="../../about/js/google-map.js"></script>
+    <script src="../../about/js/main.js"></script>
+    
+  </body>
+</html>
