@@ -72,7 +72,7 @@ figure {
   float: left;
   width: 300px;
   position: fixed;
-  overflow-y: hidden;
+  overflow-y: scroll;
   z-index: 1001;
   background: #f2f3f7;
   -webkit-transition: 0.5s;
@@ -80,32 +80,32 @@ figure {
   transition: 0.5s; }
   @media screen and (max-width: 768px) {
     #colorlib-aside {
-      width: 200px;
+      width: 300px;
       -moz-transform: translateX(-300px);
       -webkit-transform: translateX(-300px);
       -ms-transform: translateX(-300px);
       -o-transform: translateX(-300px);
       transform: translateX(-300px);
-      padding-top: 2em; } }
+      padding-top: 4em; } }
   #colorlib-aside .author-img {
-    width: 130px;
-    height: 130px;
+    width: 150px;
+    height: 150px;
     margin: 0 auto;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
     -webkit-border-radius: 50%;
     -moz-border-radius: 50%;
     -ms-border-radius: 50%;
-    border-radius: 20%; }
+    border-radius: 50%; }
   #colorlib-aside .position {
-    display:contents;
+    display: block;
     margin-bottom: 2em;
     font-size: 12px;
     text-transform: uppercase; }
   #colorlib-aside #colorlib-logo {
     text-align: right;
-    font-weight: 800;
+    font-weight: 700;
     font-size: 22px;
-    margin-bottom: .2em;
+    margin-bottom: .5em;
     display: block;
     width: 100%; }
     #colorlib-aside #colorlib-logo a {
@@ -114,7 +114,7 @@ figure {
       color: #000;
       padding-right: .3em; }
   #colorlib-aside #colorlib-main-menu {
-    display:contents;
+    display: block;
     width: 100%; }
     #colorlib-aside #colorlib-main-menu .collapse {
       display: block !important; }
@@ -180,6 +180,34 @@ figure {
             -ms-transform: scaleX(1);
             -o-transform: scaleX(1);
             transform: scaleX(1); }
+  #colorlib-aside .colorlib-footer {
+    font-size: 15px;
+    text-align: center;
+    font-weight: 400;
+    color: rgba(0, 0, 0, 0.5);
+    padding: 0 20px;
+    width: 100%; }
+    @media screen and (max-width: 768px) {
+      #colorlib-aside .colorlib-footer {
+        position: relative;
+        bottom: 0; } }
+    #colorlib-aside .colorlib-footer span {
+      display: block; }
+    #colorlib-aside .colorlib-footer ul {
+      padding: 0;
+      margin: 0; }
+      #colorlib-aside .colorlib-footer ul li {
+        padding: 0;
+        margin: 0;
+        display: inline;
+        list-style: none; }
+        #colorlib-aside .colorlib-footer ul li a {
+          color: rgba(0, 0, 0, 1);
+          padding: 4px; }
+          #colorlib-aside .colorlib-footer ul li a:hover, #colorlib-aside .colorlib-footer ul li a:active, #colorlib-aside .colorlib-footer ul li a:focus {
+            text-decoration: none;
+            outline: none;
+            color: #2c98f0; }
 
 .container-wrap {
   max-width: 1170px;
@@ -188,9 +216,9 @@ figure {
 #colorlib-main {
   width: calc(100% - 300px);
   float: right;
-  -webkit-transition: 0.2s;
-  -o-transition: 0.2s;
-  transition: 0.2s; }
+  -webkit-transition: 0.5s;
+  -o-transition: 0.5s;
+  transition: 0.5s; }
   @media screen and (max-width: 768px) {
     #colorlib-main {
       width: 100%;
