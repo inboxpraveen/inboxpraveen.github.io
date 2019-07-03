@@ -67,7 +67,7 @@ figure {
   position: relative; }
 
 #colorlib-aside {
-  padding-top: 3em;
+  padding-top: 2em;
   padding-bottom: 40px;
   float: left;
   width: 300px;
@@ -75,9 +75,9 @@ figure {
   overflow-y: scroll;
   z-index: 1001;
   background: #f2f3f7;
-  -webkit-transition: 0.5s;
-  -o-transition: 0.5s;
-  transition: 0.5s; }
+  -webkit-transition: 0.2s;
+  -o-transition: 0.2s;
+  transition: 0.2s; }
   @media screen and (max-width: 768px) {
     #colorlib-aside {
       width: 300px;
@@ -88,14 +88,14 @@ figure {
       transform: translateX(-300px);
       padding-top: 4em; } }
   #colorlib-aside .author-img {
-    width: 150px;
-    height: 150px;
+    width: 130px;
+    height: 130px;
     margin: 0 auto;
     margin-bottom: 30px;
     -webkit-border-radius: 50%;
     -moz-border-radius: 50%;
     -ms-border-radius: 50%;
-    border-radius: 50%; }
+    border-radius: 20%; }
   #colorlib-aside .position {
     display: block;
     margin-bottom: 2em;
