@@ -80,13 +80,13 @@ figure {
   transition: 0.5s; }
   @media screen and (max-width: 768px) {
     #colorlib-aside {
-      width: 300px;
+      width: 200px;
       -moz-transform: translateX(-300px);
       -webkit-transform: translateX(-300px);
       -ms-transform: translateX(-300px);
       -o-transform: translateX(-300px);
       transform: translateX(-300px);
-      padding-top: 4em; } }
+      padding-top: 2em; } }
   #colorlib-aside .author-img {
     width: 130px;
     height: 130px;
@@ -103,7 +103,7 @@ figure {
     text-transform: uppercase; }
   #colorlib-aside #colorlib-logo {
     text-align: right;
-    font-weight: 700;
+    font-weight: 800;
     font-size: 22px;
     margin-bottom: .5em;
     display: block;
