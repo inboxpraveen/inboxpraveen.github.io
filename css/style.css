@@ -188,9 +188,9 @@ figure {
 #colorlib-main {
   width: calc(100% - 300px);
   float: right;
-  -webkit-transition: 0.5s;
-  -o-transition: 0.5s;
-  transition: 0.5s; }
+  -webkit-transition: 0.2s;
+  -o-transition: 0.2s;
+  transition: 0.2s; }
   @media screen and (max-width: 768px) {
     #colorlib-main {
       width: 100%;
