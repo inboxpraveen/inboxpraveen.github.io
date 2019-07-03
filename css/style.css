@@ -97,7 +97,7 @@ figure {
     -ms-border-radius: 50%;
     border-radius: 20%; }
   #colorlib-aside .position {
-    display: block;
+    display:contents;
     margin-bottom: 2em;
     font-size: 12px;
     text-transform: uppercase; }
