@@ -17,9 +17,9 @@ body {
 
 a {
   color: #2c98f0;
-  -webkit-transition: 0.5s;
-  -o-transition: 0.5s;
-  transition: 0.5s; }
+  -webkit-transition: 0.1s;
+  -o-transition: 0.1s;
+  transition: 0.1s; }
   a:hover, a:active, a:focus {
     color: #2c98f0;
     outline: none;
@@ -1386,9 +1386,9 @@ body.offcanvas {
   opacity: 1;
   visibility: hidden;
   padding: 20px;
-  -webkit-transition: 0.5s;
-  -o-transition: 0.5s;
-  transition: 0.5s; }
+  -webkit-transition: 0.1s;
+  -o-transition: 0.1s;
+  transition: 0.1s; }
   @media screen and (max-width: 768px) {
     .colorlib-nav-toggle {
       opacity: 1;
