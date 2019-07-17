@@ -1,0 +1,283 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+    <head>
+        <title>Blog : 1. FILTERS AND KERNELS</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="description" content="" />
+        <meta name="keywords" content="" />
+        <meta name="author" content="" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+        <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700%7CPT+Serif:400,700' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" type="text/css"  href='css/clear.css' />
+        <link rel="stylesheet" type="text/css"  href='css/common.css' />
+        <link rel="stylesheet" type="text/css"  href='css/font-awesome.min.css' />
+        <link rel="stylesheet" type="text/css"  href='css/carouFredSel.css' />
+        <link rel="stylesheet" type="text/css"  href='css/prettyPhoto.css' />
+        <link rel="stylesheet" type="text/css"  href='css/sm-clean.css' />
+        <link rel="stylesheet" type="text/css"  href='style.css' />
+
+        <!--[if lt IE 9]>
+                <script src="js/html5shiv.js"></script>
+                <script src="js/respond.min.js"></script>
+        <![endif]-->
+
+    </head>
+    <body class="post single-post" style="background: black;">
+
+        <table class="doc-loader">
+            <tbody>
+                <tr>
+                    <td>
+                        <img src="images/ajax-document-loader.gif" alt="Loading...">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+
+        <nav id="header-main-menu">
+            <ul class="main-menu sm sm-clean">
+                <li>
+                    <a href="../../index.html">Home</a>
+                </li>
+                <li>
+                    <a href="../blog.html">Blog</a>
+                </li>
+                <li>
+                    <a href="../../services/services.html">Services</a>
+                </li>
+                <li>
+                    <a href="#">Work</a>
+                </li>
+            </ul>
+            <form role="search" class="search-form">
+                <label>
+                    <input type="search" class="search-field" placeholder="Search …" value="" name="s" title="Search for:">
+                </label>
+            </form>
+        </nav>
+
+        <div id="content" class="site-content center-relative">
+
+            <div class="header-holder">
+                <div class="toggle-holder relative right">
+                    <div id="toggle">
+                        <div class="first-menu-line"></div>
+                        <div class="second-menu-line"></div>
+                        <div class="third-menu-line"></div>
+                    </div>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="background-image-holder">
+                <img src="../images/What-is-Computer-Vision.jpg" alt="">
+            </div>
+
+            <div class="single-post-wrapper content-1170 center-relative">
+                <article>
+                    <h1 class="entry-title">1. Introduction to Computer Vision with Deep Learning: Filters and Kernels</h1>
+                    <div class="post-info center-text">
+                        <div class="post-date">May 17, 2019</div>
+                        <div class="cat-links">
+                            <ul>
+                                <li>
+                                    <style>
+                                    
+.button {
+  font-size: 1em;
+  padding: 10px;
+  color: #fff;
+  border: 2px solid #06D85F;
+  border-radius: 20px/50px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s ease-out;
+}
+.button:hover {
+  background: #06D85F;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.7);
+  transition: opacity 500ms;
+  visibility: hidden;
+  opacity: 0;
+}
+.overlay:target {
+  visibility: visible;
+  opacity: 1;
+}
+
+.popup {
+  margin: 70px auto;
+    margin-top: 15%;
+  padding: 20px;
+  background: #fff;
+  border-radius: 5px;
+  width: 50%;
+  position: relative;
+  transition: all 5s ease-in-out;
+}
+
+.popup h2 {
+  margin-top: 0;
+  color: #333;
+  font-family: Tahoma, Arial, sans-serif;
+}
+.popup .close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  transition: all 200ms;
+  font-size: 30px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #333;
+}
+.popup .close:hover {
+  color: #06D85F;
+}
+.popup .content {
+  max-height: 50%;
+  overflow: auto;
+}
+                                    </style>
+                                  
+                                    <a href="#popup1">Computer Vision</a>
+                                    
+                                    <div id="popup1" class="overlay">
+                                        <div class="popup">
+                                            <h2>Computer Vision</h2>
+                                            <a class="close" href="#">&times;</a>
+                                            <div class="content">
+                                                Computer Vision, often abbreviated as CV, is defined as a field of study that seeks to develop techniques to help computers “see” and understand the content of digital images such as photographs and videos.
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="entry-content">
+                        <div class="content-wrap">
+                            <p><strong>What is this fuss about deep learning?</strong><br>
+Well, if we were to be strictly technical, then I’d say that deep learning is a field of study where we design, develop and deploy Artificial Neural Networks(ANNs) to perform various tasks including but not limited to object classification, semantic segmentation, Image captioning, Signal processing and object localization.</p>
+                            <p>&nbsp;</p>
+                            <p>Phew, sounds heavy right? Trust me it’s not (at least not as much as the hype around it). We’ll come back to the definition later but first, let’s try to visualize what we are dealing with here.
+     <p>&nbsp;</p>Okay so think about this, you are walking down the street and your friend is walking from the opposite direction, you both see each other, say hi and move on, pretty much trivial, isn’t it? You wouldn’t give the process a second thought, but there’s actually a lot of biological and electrical stuff that is happening to make it possible:</p>
+                            <p>&nbsp;</p>
+                            <p>1. Light from your friend’s face is falling on the retina of your eyes.           <p>&nbsp;</p>
+2. The cells in the back of your eyes are getting activated based on intensity and wavelength of light.           <p>&nbsp;</p>
+3. That information is then being sent back to your brain.           <p>&nbsp;</p>
+4. The brain is filtering it out and extracting relevant information, analyzing it, and trying to find a match for it in from memory, as soon as the match is found your brain tells you that you’re looking at your friend.</p>           <p>&nbsp;</p>
+                            <blockquote class="inline-blockquote">
+                                <p><img src="../images/eye.jpg"></p>
+                                <p class="wp-caption-text" style="text-align: center">Human Eye</p>
+                            </blockquote>
+                    <p>&nbsp;</p>
+                            <p>Ah, tiring to think about it, right? Now imagine if a computer were to do all this. One can never program it to do so, think of it, so many faces, so much variance, so many permutations to deal with. So what do we do? Shall we embark on our brave journey of writing an “if” condition for every possible permutation?           <p>&nbsp;</p>
+That would be a little unpleasing, wouldn’t it? So instead we design neural networks (brain in this case), then train it to remember your friend’s face (like your memory) and then use it to recognize the person whenever the computer is shown the same face again.          <p>&nbsp;</p>
+This is the intuition behind Deep Learning, Neural Networks, and computer vision. You might be thinking about the definition now, please don’t; that’s the mantra of it, leave all the definitions behind and carry the intuition forward.</p>
+                            <p>&nbsp;</p>
+                <p>
+                Now we look at how we approach that first part of getting visual information and extracting relevant parts.<p>&nbsp;</p>
+                <p style="font-weight: 900; font-size: 35px">Kernels</p><p>&nbsp;</p>
+Sounds like a small conceptual word? It indeed does but fret not, for let me break it down to you. I’ll try to be as intuitive as possible so that you can remember it for a long time (otherwise you know where to look for it).
+Let’s consider this picture of a magnificent juicy red apple:
+                </p>
+                            <p>&nbsp;</p>
+                            <div class="wp-caption alignnone">
+                                <img src="../images/apple.jpg"/>
+                                <p class="wp-caption-text">Juicy Apple</p>
+                            </div>
+                            <p>What do you see? I mean obviously apple, but then again what makes an apple look like an apple?
+For starters, you could say –
+                                  <p>&nbsp;</p>
+1. Its red color body  <p>&nbsp;</p>
+2. Top nob  <p>&nbsp;</p>
+3. Green leaf  <p>&nbsp;</p>
+4. Round in shape  <p>&nbsp;</p>
+These features define an apple. So whenever someone describes these features, you’ll make a mental picture of it and immediately know that the person is describing an apple. But how does a computer vision system (CSV) know? For a CSV to know all this, it needs something to extract these different set of features and then, later on, combine them and produce a result. So what could it be? Some wizardry? Voodoo magic? Or maybe just a simple boring matrix with some numbers?   <p>&nbsp;</p>
+In computer vision terms, we call these features extractors (the matrix) as kernels. People often use these words interchangeably (with a ton of others which we’ll see later).</p>
+                            <p>&nbsp;</p>
+                            <p>Now putting back our technical hats, Kernel is generally represented using matrix. The matrix consists of some values inside it. These values decide what type of feature(s) we decide to extract from an image. We then do some basic arithmetic operations with these matrices and pixel values in the image to magically get our features. Kernels can be of different dimensions like 3x3, 5x5, 7x7, etc. We tend to choose odd dimension kernel because odd dimension kernels have a symmetric axis. Symmetric axis is an axis which equally divides the matrix into two equal halves (don’t worry if this seems a bit difficult to comprehend, we’ll come back to it in later chapters). 3x3 is the most famous kernel size after the breakthrough in computer vision in the year 2012. The 3x3 kernel is famous for 2 reasons-<p>&nbsp;</p>
+1. It is the smallest odd dimension kernel after 1x1 (will be covered later because we need to cover more concepts to understand 1x1)<p>&nbsp;</p>
+2. The number of computations is very less. (3x3 = 9 compared to other 5x5 = 25, 7x7 = 49 and goes on…)<p>&nbsp;</p>
+        To summarize it, we establish that everything we see is made of up of a set of features which uniquely identifies the object. These features need to be extracted from the image if a computer were to comprehend it. This is achieved via the use of some really boring and dull number matrices (called kernels) and some basic arithmetic operations.<p>&nbsp;</p>
+We’ll have more insights on it in the later chapters of this series.
+        </p>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                </article>
+
+
+                <div class="about-author-holder center-relative center-text">
+                    <div class="author-nickname block">PUBLISHED BY <a href="../../index.html" style="font-weight: 800">Praveen Kumar</a></div>
+                    <div class="author-bio block"></div>
+                    <div class="author-all-posts block">
+                        <a class="button" href="../blog.html">View all posts</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="nav-links relative">
+
+                <div class="nav-previous has-thumb" style="background-image:url(../images/tony_start_arc.jpg); ">
+                    <div class="nav-previous-content">
+                        <p class="nav-previous-text" style="color: wheat">PREVIOUS STORY</p>
+                        <a href="#" rel="prev">Trust in dreams for in them is hidden the gate to eternity</a>
+                    </div>
+                </div>
+
+                <div class="nav-next has-thumb" style="background-image:url(../images/3%20channels%20over%20lay.png); ">
+                    <div class="nav-next-content" style="color: wheat">
+                        <p class="nav-next-text">NEXT STORY</p>
+                        <a href="#" rel="next">Start by doing what’s necessary then do what’s possible</a>
+                    </div>
+                </div>
+                <div class="clear"></div>
+            </div>
+
+        </div>
+
+        <footer class="footer">
+            <div class="content-1170 center-relative">
+                <ul><p style="color: white; text-align: center">Follow me on</p>
+                    <li class="left-right-footer-contnet" style="text-align: center">
+                        <a href="https://linkedin.com/in/praveen-kumar-inbox/" style="color: white">Linkedin</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                        <a href="https://github.com/pkpk1717" style="color: white">Github</a>
+                    </li>
+                </ul>
+                <div class="clear"></div>
+            </div>
+        </footer>
+
+        <div class="fixed scroll-top">
+            <img src="images/back_to_top.png" alt="Go Top">
+        </div>
+
+        <!--Load JavaScript-->
+        <script src="js/jquery.js"></script>
+        <script src='js/jquery.fitvids.js'></script>
+        <script src='js/jquery.smartmenus.min.js'></script>
+        <script src='js/isotope.pkgd.js'></script>
+        <script src='js/imagesloaded.pkgd.js'></script>
+        <script src='js/isotope.pkgd.js'></script>
+        <script src='js/jquery.carouFredSel-6.0.0-packed.js'></script>
+        <script src='js/jquery.mousewheel.min.js'></script>
+        <script src='js/jquery.touchSwipe.min.js'></script>
+        <script src='js/jquery.easing.1.3.js'></script>
+        <script src='js/imagesloaded.pkgd.js'></script>
+        <script src='js/jquery.prettyPhoto.js'></script>
+        <script src='js/jquery.nicescroll.min.js'></script>
+        <script src='js/main.js'></script>
+    </body>
+</html>
