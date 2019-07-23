@@ -88,11 +88,11 @@
 
             <div class="entry__media col-full">
                 <div class="entry__post-thumb">
-                    <img src="images/nuclei.jpg" 
-                         srcset=" 2000w, 
-                                 images/thumbs/single/standard/standard-1000.jpg 1000w, 
-                                 images/thumbs/single/standard/standard-500.jpg 500w" 
-                         sizes="(max-width: 2000px) 100vw, 2000px" alt="">
+                    <img src="images/main_work_image6.gif" 
+                         srcset="images/main_work_image6.gif 2000w, 
+                                 images/main_work_image6.gif 1000w, 
+                                 images/main_work_image6.gif 500w" 
+                         sizes="(max-width: 2000px) 500vw, 2000px" alt="">
                 </div>
             </div>
 
@@ -111,26 +111,32 @@
 
             <div class="col-full entry__main">
 
-                <p class="lead drop-cap">Duis ex ad cupidatat tempor Excepteur cillum cupidatat fugiat nostrud cupidatat dolor sunt sint sit nisi est eu exercitation incididunt adipisicing veniam velit id fugiat enim mollit amet anim veniam dolor dolor irure velit commodo cillum sit nulla ullamco magna amet magna cupidatat qui labore cillum sit in tempor veniam consequat non laborum adipisicing aliqua ea nisi sint.</p>
+                <p class="lead drop-cap">Image segmentation is the process of partitioning a digital image into multiple segments (sets of pixels, also known as super-pixels). The goal of segmentation is to simplify and/or change the representation of an image into something that is more meaningful and easier to analyze. Image segmentation is typically used to locate objects and boundaries (lines, curves, etc ) in images. More precisely, image segmentation is the process of assigning a label to every pixel in an image such that pixels with the same label share certain characteristics.</p>
                 
-                <p>Duis ex ad cupidatat tempor Excepteur cillum cupidatat fugiat nostrud cupidatat dolor sunt sint sit nisi est eu exercitation incididunt adipisicing veniam velit id fugiat enim mollit amet anim veniam dolor dolor irure velit commodo cillum sit nulla ullamco magna amet magna cupidatat qui labore cillum sit in tempor veniam consequat non laborum adipisicing aliqua ea nisi sint ut quis proident ullamco ut dolore culpa occaecat ut laboris in sit minim cupidatat ut dolor voluptate enim veniam consequat occaecat fugiat in adipisicing in amet Ut nulla nisi non ut enim aliqua laborum mollit quis nostrud sed sed.
-                </p>
+                <p>The typical use of convolutional networks is on classification tasks, where the output to an image is a single class label. However, in many visual tasks, especially in biomedical image processing, the desired output should include localization, i.e., a class label is supposed to be assigned to each pixel.</p>
 
                 <p>
-                <img src="images/wheel-1000.jpg" srcset="images/wheel-2000.jpg 2000w, images/wheel-1000.jpg 1000w, images/wheel-500.jpg 500w" sizes="(max-width: 2000px) 100vw, 2000px" alt="">
+                <img src="images/segmentation.jpg" srcset="images/segmentation.jpg 2000w, images/segmentation.jpg 1000w, images/segmentation.jpg 500w" sizes="(max-width: 2000px) 500vw, 2000px" alt="Segmentation Image">
                 </p>
 
-                <h2>Large Heading</h2>
+                <h2>About dataset</h2>
 
-                <p>Harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus <a href="http://#">omnis voluptas assumenda est</a> id quod maxime placeat facere possimus, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et.</p>
+                <p>We are given <a href="https://www.kaggle.com/c/data-science-bowl-2018">Nuclei Segmentation dataset</a> which consists of training and test zip files for training images and test images respectively. Inside training images, we have 2 folders for different types of nuclei classes. One folder is for the original training image, and second is the masks images of the training image. Inside test folder, we simply have the image and our target is to mask or segment all the nuclei using Average mean prediction matrices.</p>
 
-                <blockquote><p>This is a simple example of a styled blockquote. A blockquote tag typically specifies a section that is quoted from another source of some sort, or highlighting text in your post.</p></blockquote>
+<!--                <blockquote><p>This is a simple example of a styled blockquote. A blockquote tag typically specifies a section that is quoted from another source of some sort, or highlighting text in your post.</p></blockquote>-->
 
-                <p>Odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Nulla vitae elit libero, a pharetra augue laboris in sit minim cupidatat ut dolor voluptate enim veniam consequat occaecat fugiat in adipisicing in amet Ut nulla nisi non ut enim aliqua laborum mollit quis nostrud sed sed.</p>
+                <p>Sample Training Images</p>
+                <p>
+                <img src="images/train_images_samples.jpg" srcset="images/train_images_samples.jpg 2000w, images/train_images_samples.jpg 1000w, images/train_images_samples.jpg 500w" sizes="(max-width: 2000px) 500vw, 2000px" alt="Training Image">
+                </p>
+                <p>Sample Test Images</p>
+                <p>
+                <img src="images/test_images_samples.jpg" srcset="images/test_images_samples.jpg 2000w, images/test_images_samples.jpg 1000w, images/test_images_samples.jpg 500w" sizes="(max-width: 2000px) 500vw, 2000px" alt="Segmentation Image">
+                </p>
 
-                <h3>Smaller Heading</h3>
+                <h2>Approch</h2>
 
-                <p>Dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Nulla vitae elit libero, a pharetra augue laboris in sit minim cupidatat ut dolor voluptate enim veniam consequat occaecat fugiat in adipisicing in amet Ut nulla nisi non ut enim aliqua laborum mollit quis nostrud sed sed.
+                <p>Such biomedical images require very precise training since nuclei size in an image might even vary from 100x100 pixel to 1x1 pixel. Detection and segmenting such low resolution nuclei is very important and also difficult. One very famous architecture used of segmenting nuclei is <a href="https://arxiv.org/pdf/1505.04597.pdf">U-Net: Convolutional Networks for Biomedical Image Segmentation presented by Olaf Ronneberger, Philipp Fischer, and Thomas Brox</a>.
 
 <pre><code>
     code {
