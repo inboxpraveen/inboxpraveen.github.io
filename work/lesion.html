@@ -126,19 +126,23 @@
 
                 <p>Training of neural networks for automated diagnosis of pigmented skin lesions is hampered by the small size and lack of diversity of available dataset of dermatoscopic images. We tackle this problem by releasing the HAM10000 ("Human Against Machine with 10000 training images") dataset. We collected dermatoscopic images from different populations, acquired and stored by different modalities. The final dataset consists of 10015 dermatoscopic images which can serve as a training set for academic machine learning purposes. Cases include a representative collection of all important diagnostic categories in the realm of pigmented lesions: Actinic keratoses and intraepithelial carcinoma / Bowen's disease (akiec), basal cell carcinoma (bcc), benign keratosis-like lesions (solar lentigines / seborrheic keratoses and lichen-planus like keratoses, bkl), dermatofibroma (df), melanoma (mel), melanocytic nevi (nv) and vascular lesions (angiomas, angiokeratomas, pyogenic granulomas and hemorrhage, vasc).</p>
 
+                <p>It has 7 different classes of skin cancer which are listed below :<br>
+1. Melanocytic nevi <br>
+2. Melanoma <br>
+3. Benign keratosis-like lesions <br>
+4. Basal cell carcinoma <br>
+5. Actinic keratoses <br>
+6. Vascular lesions <br>
+7. Dermatofibroma</p>
 
-                <p>Sample Training Images</p>
+                <p>Sample Image For Each Class</p>
                 <p>
-                <img src="images/train_images_samples.jpg" srcset="images/train_images_samples.jpg 2000w, images/train_images_samples.jpg 1000w, images/train_images_samples.jpg 500w" sizes="(max-width: 2000px) 500vw, 2000px" alt="Training Image">
-                </p>
-                <p>Sample Test Images</p>
-                <p>
-                <img src="images/test_images_samples.jpg" srcset="images/test_images_samples.jpg 2000w, images/test_images_samples.jpg 1000w, images/test_images_samples.jpg 500w" sizes="(max-width: 2000px) 500vw, 2000px" alt="Segmentation Image">
+                <img src="images/lesion_type.png" srcset="images/lesion_type.png 2000w, images/lesion_type.png 1000w, images/lesion_type.png 500w" sizes="(max-width: 2000px) 500vw, 2000px" alt="Training Image">
                 </p>
 
                 <h2>Approch</h2>
 
-                <p>Such biomedical images require very precise training since nuclei size in an image might even vary from 100x100 pixel to 1x1 pixel. Detection and segmenting such low resolution nuclei is very important and also difficult. One very famous architecture used of segmenting nuclei is <a href="https://arxiv.org/pdf/1505.04597.pdf" target="_blank">U-Net: Convolutional Networks for Biomedical Image Segmentation presented by Olaf Ronneberger, Philipp Fischer, and Thomas Brox</a>.
+                <p>Such biomedical images require very precise training since nuclei size in an image might even vary from 100x100 pixel to 1x1 pixel. Detection and segmenting such low resolution nuclei is very important and also difficult. One very famous architecture used of segmenting nuclei is <a href="https://arxiv.org/pdf/1902.03368.pdf" target="_blank">U-Net: Convolutional Networks for Biomedical Image Segmentation presented by Olaf Ronneberger, Philipp Fischer, and Thomas Brox</a>.
 
 <!--
 <pre><code>
@@ -154,7 +158,7 @@
 </code></pre>
 -->
 
-                <img src="images/unet.png" srcset="images/unet.png 2000w, images/unet.png 1000w, images/unet.png 500w" sizes="(max-width: 2000px) 500vw, 2000px" alt="Unet Image">
+                <img src="images/approch.png" srcset="images/approch.png 2000w, images/approch.png 1000w, images/approch.png 500w" sizes="(max-width: 2000px) 500vw, 2000px" alt="Unet Image">
                 </p>
                 
                 <p>It consists of a contracting path (left side) and an expansive path (right side). The contracting path follows the typical architecture of a convolutional network. It consists of the repeated application of two 3x3 convolutions (unpadded convolutions), each followed by a rectified linear unit (ReLU) and a 2x2 max pooling operation with stride 2 for downsampling. At each downsampling step we double the number of feature channels. Every step in the expansive path consists of an upsampling of the feature map followed by a 2x2 convolution (“up-convolution”) that halves the number of feature channels, a concatenation with the correspondingly cropped feature map from the contracting path, and two 3x3 convolutions, each followed by a ReLU. The cropping is necessary due to the loss of border pixels in every convolution. At the final layer a 1x1 convolution is used to map each 64 component feature vector to the desired number of classes. In total the network has 23 convolutional layers.<a href="https://arxiv.org/pdf/1505.04597.pdf" target="_blank">Reference paper</a>.<br><br>The initial approach was made using the default architecture, which had 31,032,837 trainable parameters. <br><br>When trained for 15 epochs, the network resulted in constant IOU. Hence, we were not able to apply the UNet default architecture directly for our problem statement. During prediction, we keep a threshold value of prediction, over which all the images are segmented based on their mean IOU. The threshold value is 0.5. When predictions were made from the default architecture, it resulted in a dark image without any segmentation since mean IOU was not greater than 0.5, can also seen in the following prediction image</p>
