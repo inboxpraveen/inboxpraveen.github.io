@@ -115,7 +115,7 @@
                 
                 <p>The typical use of convolutional networks is on classification tasks, where the output to an image is a single class label. However, in many visual tasks, especially in biomedical image processing, the desired output should include localization, i.e., a class label is supposed to be assigned to each pixel.</p>
 
-                <blockquote><p>Reference to implementation: <a href="https://github.com/pkpk1717/Nuclei-Segmentation-using-Mask-RCNN">Check on GitHub</a></p></blockquote>
+                <blockquote><p>Reference to implementation: <a href="https://github.com/pkpk1717/Nuclei-Segmentation-using-Mask-RCNN" target="_blank">Check on GitHub</a></p></blockquote>
                 
                 <p>
                 <img src="images/segmentation.jpg" srcset="images/segmentation.jpg 2000w, images/segmentation.jpg 1000w, images/segmentation.jpg 500w" sizes="(max-width: 2000px) 500vw, 2000px" alt="Segmentation Image">
@@ -124,7 +124,7 @@
 
                 <h2>About dataset</h2>
 
-                <p>We are given <a href="https://www.kaggle.com/c/data-science-bowl-2018">Nuclei Segmentation dataset</a> which consists of training and test zip files for training images and test images respectively. Inside training images, we have 2 folders for different types of nuclei classes. One folder is for the original training image, and second is the masks images of the training image. Inside test folder, we simply have the image and our target is to mask or segment all the nuclei using Average mean prediction matrices.</p>
+                <p>We are given <a href="https://www.kaggle.com/c/data-science-bowl-2018" target="_blank">Nuclei Segmentation dataset</a> which consists of training and test zip files for training images and test images respectively. Inside training images, we have 2 folders for different types of nuclei classes. One folder is for the original training image, and second is the masks images of the training image. Inside test folder, we simply have the image and our target is to mask or segment all the nuclei using Average mean prediction matrices.</p>
 
 
                 <p>Sample Training Images</p>
@@ -138,7 +138,7 @@
 
                 <h2>Approch</h2>
 
-                <p>Such biomedical images require very precise training since nuclei size in an image might even vary from 100x100 pixel to 1x1 pixel. Detection and segmenting such low resolution nuclei is very important and also difficult. One very famous architecture used of segmenting nuclei is <a href="https://arxiv.org/pdf/1505.04597.pdf">U-Net: Convolutional Networks for Biomedical Image Segmentation presented by Olaf Ronneberger, Philipp Fischer, and Thomas Brox</a>.
+                <p>Such biomedical images require very precise training since nuclei size in an image might even vary from 100x100 pixel to 1x1 pixel. Detection and segmenting such low resolution nuclei is very important and also difficult. One very famous architecture used of segmenting nuclei is <a href="https://arxiv.org/pdf/1505.04597.pdf" target="_blank">U-Net: Convolutional Networks for Biomedical Image Segmentation presented by Olaf Ronneberger, Philipp Fischer, and Thomas Brox</a>.
 
 <!--
 <pre><code>
@@ -157,7 +157,7 @@
                 <img src="images/unet.png" srcset="images/unet.png 2000w, images/unet.png 1000w, images/unet.png 500w" sizes="(max-width: 2000px) 500vw, 2000px" alt="Unet Image">
                 </p>
                 
-                <p>It consists of a contracting path (left side) and an expansive path (right side). The contracting path follows the typical architecture of a convolutional network. It consists of the repeated application of two 3x3 convolutions (unpadded convolutions), each followed by a rectified linear unit (ReLU) and a 2x2 max pooling operation with stride 2 for downsampling. At each downsampling step we double the number of feature channels. Every step in the expansive path consists of an upsampling of the feature map followed by a 2x2 convolution (“up-convolution”) that halves the number of feature channels, a concatenation with the correspondingly cropped feature map from the contracting path, and two 3x3 convolutions, each followed by a ReLU. The cropping is necessary due to the loss of border pixels in every convolution. At the final layer a 1x1 convolution is used to map each 64 component feature vector to the desired number of classes. In total the network has 23 convolutional layers.<a href="https://arxiv.org/pdf/1505.04597.pdf">Reference paper</a>.<br><br>The initial approach was made using the default architecture, which had 31,032,837 trainable parameters. <br><br>When trained for 15 epochs, the network resulted in constant IOU. Hence, we were not able to apply the UNet default architecture directly for our problem statement. During prediction, we keep a threshold value of prediction, over which all the images are segmented based on their mean IOU. The threshold value is 0.5. When predictions were made from the default architecture, it resulted in a dark image without any segmentation since mean IOU was not greater than 0.5, can also seen in the following prediction image</p>
+                <p>It consists of a contracting path (left side) and an expansive path (right side). The contracting path follows the typical architecture of a convolutional network. It consists of the repeated application of two 3x3 convolutions (unpadded convolutions), each followed by a rectified linear unit (ReLU) and a 2x2 max pooling operation with stride 2 for downsampling. At each downsampling step we double the number of feature channels. Every step in the expansive path consists of an upsampling of the feature map followed by a 2x2 convolution (“up-convolution”) that halves the number of feature channels, a concatenation with the correspondingly cropped feature map from the contracting path, and two 3x3 convolutions, each followed by a ReLU. The cropping is necessary due to the loss of border pixels in every convolution. At the final layer a 1x1 convolution is used to map each 64 component feature vector to the desired number of classes. In total the network has 23 convolutional layers.<a href="https://arxiv.org/pdf/1505.04597.pdf" target="_blank">Reference paper</a>.<br><br>The initial approach was made using the default architecture, which had 31,032,837 trainable parameters. <br><br>When trained for 15 epochs, the network resulted in constant IOU. Hence, we were not able to apply the UNet default architecture directly for our problem statement. During prediction, we keep a threshold value of prediction, over which all the images are segmented based on their mean IOU. The threshold value is 0.5. When predictions were made from the default architecture, it resulted in a dark image without any segmentation since mean IOU was not greater than 0.5, can also seen in the following prediction image</p>
                 <img src="images/prediction_mapping_model1.jpg" srcset="images/prediction_mapping_model1.jpg 2000w, images/prediction_mapping_model1.jpg 1000w, images/prediction_mapping_model1.jpg 500w" sizes="(max-width: 2000px) 500vw, 2000px" alt="Unet Image">
                 </p>
 
@@ -193,7 +193,7 @@
                 <img src="images/Predicting_on_random_Test_image.jpg" srcset="images/Predicting_on_random_Test_image.jpg 2000w, images/Predicting_on_random_Test_image.jpg 1000w, images/Predicting_on_random_Test_image.jpg 500w" sizes="(max-width: 2000px) 500vw, 2000px" alt="Unet Image">
                 <img src="images/Prediction_result_on_random_Test_image.jpg" srcset="images/Prediction_result_on_random_Test_image.jpg 2000w, images/Prediction_result_on_random_Test_image.jpg 1000w, images/Prediction_result_on_random_Test_image.jpg 500w" sizes="(max-width: 2000px) 500vw, 2000px" alt="Unet Image">
             
-                <blockquote><p>Reference to implementation: <a href="https://github.com/pkpk1717/Nuclei-Segmentation-using-Mask-RCNN">Check on GitHub</a></p></blockquote>
+                <blockquote><p>Reference to implementation: <a href="https://github.com/pkpk1717/Nuclei-Segmentation-using-Mask-RCNN" target="_blank">Check on GitHub</a></p></blockquote>
                 <div class="entry__author">
                     <img src="../images/main_pic2.jpeg" alt="">
 
@@ -205,7 +205,7 @@
 
                         <div class="entry__author-desc">
                             <p>
-                            Machine Learning Engineer &amp; Developer. Follow him on <a href="https://linkedin.com/in/praveen-kumar-inbox">LINKEDIN</a> Or <a href="https://github.com/pkpk1717">GITHUB</a>
+                            Machine Learning Engineer &amp; Developer. Follow him on <a href="https://linkedin.com/in/praveen-kumar-inbox" target="_blank">LINKEDIN</a> Or <a href="https://github.com/pkpk1717" target="_blank">GITHUB</a>
                             </p>
                         </div>
                     </div>
