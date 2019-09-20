@@ -171,13 +171,13 @@ a, a:hover {
    border-radius: 100%;
     position: absolute;
     margin-top: 1em;
-   width: 60px;
-   height: 60px;
+   width: 40px;
+   height: 40px;
    margin-left: -40px;
    color: #FFFFFF;
    text-align: center;
     align-content: center;
-   line-height: 60px;
+   line-height: 40px;
    -webkit-transform: translate3d(0, 0, 0);
    transform: translate3d(0, 0, 0);
    -webkit-transition: -webkit-transform ease-out 200ms;
@@ -191,7 +191,7 @@ a, a:hover {
 }
 
 .lines {
-   width: 20px;
+   width: 24px;
    height: 3px;
    background: #596778;
    display: block;
@@ -243,11 +243,11 @@ a, a:hover {
    bottom: 0;
    left: 0;
    right: 0;
-   width: 60px;
-   height: 60px;
+   width: 40px;
+   height: 40px;
    text-align: center;
    box-sizing: border-box;
-   font-size: 20px;
+   font-size: 12px;
 }
 
 
