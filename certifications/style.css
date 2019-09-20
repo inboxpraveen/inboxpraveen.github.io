@@ -169,15 +169,15 @@ a, a:hover {
 .menu-open-button {
    background: #EEEEEE;
    border-radius: 100%;
-    position: relative;
+    position: absolute;
     margin-top: 1em;
-   width: 80px;
-   height: 80px;
+   width: 60px;
+   height: 60px;
    margin-left: -40px;
-   position: absolute;
    color: #FFFFFF;
    text-align: center;
-   line-height: 80px;
+    align-content: center;
+   line-height: 60px;
    -webkit-transform: translate3d(0, 0, 0);
    transform: translate3d(0, 0, 0);
    -webkit-transition: -webkit-transform ease-out 200ms;
@@ -191,7 +191,7 @@ a, a:hover {
 }
 
 .lines {
-   width: 25px;
+   width: 20px;
    height: 3px;
    background: #596778;
    display: block;
@@ -243,11 +243,11 @@ a, a:hover {
    bottom: 0;
    left: 0;
    right: 0;
-   width: 80px;
-   height: 80px;
+   width: 60px;
+   height: 60px;
    text-align: center;
    box-sizing: border-box;
-   font-size: 26px;
+   font-size: 20px;
 }
 
 
