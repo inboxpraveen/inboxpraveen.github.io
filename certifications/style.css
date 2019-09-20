@@ -169,15 +169,15 @@ a, a:hover {
 .menu-open-button {
    background: #EEEEEE;
    border-radius: 100%;
-    position: absolute;
+    position: relative;
     margin-top: 1em;
-   width: 70px;
-   height: 70px;
+   width: 80px;
+   height: 80px;
    margin-left: -40px;
+   position: absolute;
    color: #FFFFFF;
    text-align: center;
-    clear: both;
-   line-height: 70px;
+   line-height: 80px;
    -webkit-transform: translate3d(0, 0, 0);
    transform: translate3d(0, 0, 0);
    -webkit-transition: -webkit-transform ease-out 200ms;
@@ -243,11 +243,11 @@ a, a:hover {
    bottom: 0;
    left: 0;
    right: 0;
-   width: 40px;
-   height: 40px;
+   width: 80px;
+   height: 80px;
    text-align: center;
    box-sizing: border-box;
-   font-size: 25px;
+   font-size: 26px;
 }
 
 
