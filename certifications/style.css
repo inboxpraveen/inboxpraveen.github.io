@@ -176,6 +176,7 @@ a, a:hover {
    margin-left: -40px;
    color: #FFFFFF;
    text-align: center;
+    clear: both;
    line-height: 70px;
    -webkit-transform: translate3d(0, 0, 0);
    transform: translate3d(0, 0, 0);
@@ -246,7 +247,7 @@ a, a:hover {
    height: 40px;
    text-align: center;
    box-sizing: border-box;
-   font-size: 20px;
+   font-size: 25px;
 }
 
 
