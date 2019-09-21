@@ -180,10 +180,10 @@ a, a:hover {
    line-height: 70px;
    -webkit-transform: translate3d(0, 0, 0);
    transform: translate3d(0, 0, 0);
-   -webkit-transition: -webkit-transform ease-out 200ms;
-   transition: -webkit-transform ease-out 200ms;
-   transition: transform ease-out 200ms;
-   transition: transform ease-out 200ms, -webkit-transform ease-out 200ms;
+   -webkit-transition: -webkit-transform ease-out 500ms;
+   transition: -webkit-transform ease-out 500ms;
+   transition: transform ease-out 500ms;
+   transition: transform ease-out 500ms, -webkit-transform ease-out 500ms;
 }
 
 .menu-open {
@@ -200,10 +200,10 @@ a, a:hover {
    left: 50%;
    margin-left: -12.5px;
    margin-top: -1.5px;
-   -webkit-transition: -webkit-transform 200ms;
-   transition: -webkit-transform 200ms;
-   transition: transform 200ms;
-   transition: transform 200ms, -webkit-transform 200ms;
+   -webkit-transition: -webkit-transform 500ms;
+   transition: -webkit-transform 500ms;
+   transition: transform 500ms;
+   transition: transform 500ms, -webkit-transform 500ms;
 }
 
 .line-1 {
@@ -251,9 +251,9 @@ a, a:hover {
 }
 
 
-/* .menu-item {
+ .menu-item {
    transition: all 0.1s ease 0s;
-} */
+} 
 
 .menu-item:hover {
    background: #EEEEEE;
