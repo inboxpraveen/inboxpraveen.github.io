@@ -69,8 +69,8 @@ figure {
 
 .hamburger {
   position: fixed;
-  top: 1em;
-  right: 1em;
+  top: 0.5em;
+  right: 0.5em;
   z-index: 999;
   display: flex;
   align-items: center;
@@ -78,7 +78,7 @@ figure {
   height: 3.5em;
   width: 3.5em;
   background-color: transparent;
-  border: 1px solid #231f20;
+  border: 1px solid #000;
   border-radius: 100%;
   cursor: pointer;
   transition: border-color 300ms ease-in-out;
@@ -102,12 +102,12 @@ figure {
   left: 3px;
   height: calc(3.5em - 8px);
   width: calc(3.5em - 8px);
-  border: 1px solid #231f20;
+  border: 1px solid #000;
   border-radius: 100%;
   transition: border-color 300ms ease-in-out;
 }
 .js-menu-open .hamburger {
-  border-color: #231f20;
+  border-color: #000;
   transition-delay: 300ms;
 }
 @media (min-width: 54rem) {
@@ -116,7 +116,7 @@ figure {
   }
 }
 .js-menu-open .hamburger:before {
-  border-color: #231f20;
+  border-color: #000;
   transition-delay: 300ms;
 }
 @media (min-width: 54rem) {
@@ -141,10 +141,10 @@ figure {
   display: block;
   height: 1px;
   width: 1.85em;
-  background-color: #231f20;
+  background-color: #000;
 }
 .js-menu-open .hamburger__top, .js-menu-open .hamburger__middle, .js-menu-open .hamburger__bottom {
-  background-color: #231f20;
+  background-color: #000;
 }
 @media (min-width: 54rem) {
   .js-menu-open .hamburger__top, .js-menu-open .hamburger__middle, .js-menu-open .hamburger__bottom {
@@ -419,4 +419,20 @@ figure {
 }
 
 
+/*
+ <===========================Introduction section start=======================>
+*/
 
+#introduction{
+    width: 100%;
+    height: 100%;
+}
+#introduction_div{
+    width: 80%;
+    height: 80vh;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
+    border-radius: 10px;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 10vh;
+}
