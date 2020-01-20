@@ -383,6 +383,7 @@ figure {
 }
 .menu__external {
   font-weight: 500;
+    font-size: 11px;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   color: #000;
@@ -417,18 +418,5 @@ figure {
   background-size: cover;
 }
 
-.demo {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-  background-color: #d8d8d8;
-}
-.demo__text {
-  margin-top: 0;
-  margin-bottom: 0;
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  text-align: center;
-}
+
+
