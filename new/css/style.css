@@ -56,12 +56,6 @@ a {
   text-decoration: none;
 }
 
-ul {
-  margin: 0;
-  padding: 0;
-  list-style-type: none;
-}
-
 figure {
   max-width: 100%;
   height: auto;
@@ -455,4 +449,30 @@ figure {
 }
 #introduction a:hover{
     border: 1px solid #025397;
+}
+
+/*
+ <===========================About section start=======================>
+*/
+
+
+#about{
+    display: inline-block;
+    width: 90%;
+    height: auto;
+    margin: 5%;
+    padding: 2em;
+    line-height: 2.5em;
+}
+
+#image_div{
+    background-image: url('../images/logo.png');
+    height: 40vh;
+    width: 30%;
+    margin-left: 35%;
+    margin-right: 35%;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size:contain;
 }
