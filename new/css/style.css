@@ -425,44 +425,34 @@ figure {
 */
 
 #introduction{
-    width: 100%;
-    height: auto;
-}
-#introduction_div{
-    padding: 2em;
     width: 90%;
-    min-height: 60vh;
-    box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
-    border-radius: 15px;
-    margin-left: 5%;
-    margin-right: 5%;
-    margin-top: 5vh;
+    height: auto;
+    margin: 5%;
+    padding: 2em;
     line-height: 2.5em;
-    text-align: center;
 }
-#introduction_div .name_intro{
+#introduction .name_intro{
     color: #008BFF;
     font-size: 22px;
 }
-
-#introduction_div .name{
+#introduction .name{
     font-size: 3em;
     color: #505050;
 }
-#introduction_div .tag_line{
+#introduction .tag_line{
     color: #797979;
     font-size: 2.5em;
 }
-#introduction_div .short_desp{
+#introduction .short_desp{
     font-size: 20px;
 }
-#introduction_div a{
+#introduction a{
     border: 1px solid #008BFF;
-    padding: 1em;
-    font-size: 20px;
+    padding: 0.8em;
+    font-size: 18px;
     color: black;
     border-radius: 10px;
 }
-#introduction_div a:hover{
+#introduction a:hover{
     border: 1px solid #025397;
 }
