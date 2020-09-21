@@ -803,6 +803,14 @@ section {
   }
 }
 
+.custom_class_for_submit_button{
+  border-radius: 5%;
+}
+
+.custom_class_for_submit_button:hover{
+  transform: translate(5px,0px);
+}
+
 /*--------------------------------------------------------------
 # Portfolio Details
 --------------------------------------------------------------*/
