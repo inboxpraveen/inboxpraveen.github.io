@@ -151,3 +151,30 @@
   });
 
 })(jQuery);
+
+
+function nextMsg() {
+  let multiplier = messages.length-1;
+  let r = Math.floor((Math.random()*multiplier));
+  document.getElementById("message_changing").innerHTML = "<span class='vov fade-in slower'>"+messages[r]+"</span>";
+};
+
+var messages = [
+  "Reading is essential for those who seek to rise above the ordinary – Jim Rohn",
+  "Think before you speak. Read before you think - Fran Lebowitz",
+  "There is more treasure in books than in all the pirate's loot on Treasure Island - Walt Disney",
+  "Sleep is good, he said, and books are better - George R.R. Martin",
+  "A reader lives a thousand lives before he dies - George R.R. Martin​",
+  "I do believe something very magical can happen when you read - J.K. Rowling",
+  "Books are a uniquely portable magic - Stephen King",
+  "Reading gives us someplace to go when we have to stay where we are - Mason Cooley",
+  "An hour spent reading is one stolen from paradise - Thomas Wharton",
+  "Keep reading. It's one of the most marvelous adventures anyone can have - Lloyd Alexander",
+  "A capacity, and taste, for reading gives access to whatever has already been discovered by others - Abraham Lincoln",
+  "People say that life is the thing, but I prefer reading - Logan Pearsall Smith",
+  "The more that you read, the more things you will know. The more that you learn, the more places you'll go - Dr. Seuss"
+];
+
+window.setInterval(nextMsg,7000);
+nextMsg();
+

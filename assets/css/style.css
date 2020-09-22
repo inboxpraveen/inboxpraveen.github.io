@@ -895,3 +895,7 @@ section {
   font-weight: 700;
   text-shadow: rgba(0, 0, 0, 0.7) 0 10px 10px;
 }
+
+#message_changing{
+  transition: transform 1s all;
+}
