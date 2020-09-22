@@ -57,6 +57,7 @@
         <li><a href="#about"><i class="bx bx-user"></i> <span>About</span></a></li>
         <li><a href="#resume"><i class="bx bx-file-blank"></i> <span>Resume</span></a></li>
         <li><a href="#portfolio"><i class="bx bx-book-content"></i> <span>Portfolio</span></a></li>
+        <li><a href="#blog"><i class="bx bx-book-content"></i> <span>Blogs</span></a></li>
       </ul>
     </nav>
   </header>
@@ -279,12 +280,28 @@
       </div>
     </section>
 
+    <section id="blog">
+      <div class="section-title">
+        <h2>Blogs <i class="icofont-pen-alt-1"></i></h2>
+      </div>
+      <div id="app" class="container-card" >
+        <a href="https://medium.com/hitchhikers-guide-to-deep-learning" target="_blank"><card data-image="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://coursera-course-photos.s3.amazonaws.com/de/8a87108f2211e7b04e29ba33dce228/Deep-learning-for-computer-vision2.png?auto=format%2Ccompress&dpr=1">
+          <h1 slot="header">Hitchhiker’s Guide To Deep Learning</h1>
+          <p slot="content">End-to-end Computer Vision on Keras & Tensorflow</p>
+        </card></a>
+        <a href="https://medium.com/me/stories/public" target="_blank"><card data-image="https://www.factorresearch.com/wp-content/uploads/2018/12/Brain-Image.jpg">
+          <h1 slot="header">Machine Learning, Web Apps & More...</h1>
+          <p slot="content">Read separate blogs on various domains such as AI, ML, & Web Apps</p>
+        </card></a>
+      </div>
+    </section>
+
   </main>
 
   <footer id="footer">
     <div class="container">
       <h3>Praveen Kumar</h3>
-      <p>Let's connect. My inbox is always open. Whether you have a question or just want to say hi, I'll try my best to get back to you!</p>
+      <p>Let's connect. My inbox is always open. Whether you have a question or just want to say hi, I'll always get back to you!</p>
       
       <div class="social-links">
         <a href="mailto:inbox.praveen.kumar17@gmail.com"><i class="icofont-email"></i></a>
@@ -293,9 +310,6 @@
         <a href="https://github.com/inboxpraveen" target="_blank" class="github"><i class="bx bxl-github"></i></a>
         <a href="https://medium.com/@pklappy21" target="_blank" class="medium"><i class="bx bxl-medium"></i></a>
         <a href="https://twitter.com/inboxpraveen" target="_blank" class="twitter"><i class="bx bxl-twitter"></i></a>
-      </div>
-      <div id="credits">
-        Designed with the help of bootstrap!
       </div>
     </div>
   </footer>
@@ -315,6 +329,8 @@
   <script src="assets/vendor/typed.js/typed.min.js"></script>
   <script src="assets/vendor/aos/aos.js"></script>
 
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.0.1/vue.min.js'></script>
+  <script src="assets/js/cards.js"></script>
   <script src="assets/js/main.js"></script>
 
 </body>
