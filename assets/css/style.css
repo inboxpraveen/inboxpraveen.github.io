@@ -825,7 +825,7 @@ section {
   -webkit-box-flex: 0;
           flex: 0 0 240px;
   width: calc( 200px + 10vh );
-  height: 320px;
+  height: calc( 250px + 10vh );
   background-color: #333;
   overflow: hidden;
   border-radius: 15px;
