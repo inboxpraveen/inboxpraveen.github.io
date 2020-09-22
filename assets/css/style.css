@@ -897,5 +897,6 @@ section {
 }
 
 #message_changing{
+  padding: 0px 5px;
   transition: transform 1s all;
 }
