@@ -157,6 +157,7 @@ function nextMsg() {
   let multiplier = messages.length-1;
   let r = Math.floor((Math.random()*multiplier));
   document.getElementById("message_changing").innerHTML = "<span class='vov fade-in slower'>"+messages[r]+"</span>";
+  document.getElementById("message_changing2").innerHTML = "<span class='vov fade-in slower'>"+messages[r]+"</span>";
 };
 
 var messages = [
