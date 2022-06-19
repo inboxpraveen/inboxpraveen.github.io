@@ -1,6 +1,8 @@
-Thanks for downloading this template!
+# [Praveen Kumar](https://inboxpraveen.github.io) portfolio website
 
-Template Name: Folio
-Template URL: https://bootstrapmade.com/folio-bootstrap-portfolio-template/
-Author: BootstrapMade.com
-License: https://bootstrapmade.com/license/
+This is a static portfolio website hosted on GitHub pages. 
+
+Link to website: [https://inboxpraveen.github.io/](https://inboxpraveen.github.io)
+
+For queries send mail to: [PRAVEEN KUMAR](mailto:inbox.praveen.kumar17@gmail.com)
+
