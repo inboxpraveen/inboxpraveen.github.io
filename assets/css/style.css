@@ -566,7 +566,7 @@ p {
 
 #about .about-descr .p-heading {
   font-family: "Playfair Display", serif;
-  font-size: 28px;
+  font-size: 24px;
   text-align: left;
 }
 
@@ -875,7 +875,7 @@ p {
 /*  /* Single page */
 /*-----------------------------------------------------------------------------------*/
 #journal-blog {
-  padding-top: 140px;
+  padding-top: 100px;
 }
 
 /* main content */
