@@ -60,7 +60,7 @@
               <li><a href="#">Drop Down 4</a></li>
             </ul>
           </li> -->
-          <li><a class="nav-link scrollto" href="#footer">Contact</a></li>
+          <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
@@ -173,21 +173,9 @@
           <h2>My Portfolio</h2>
         </div>
       </div>
-
       <div class="container">
-
-        <div class="row">
-          <div class="col-lg-12 d-flex justify-content-center">
-            <ul id="portfolio-flters">
-              <li data-filter="*" class="filter-active">All</li>
-              <li data-filter=".filter-app">App</li>
-              <li data-filter=".filter-card">Card</li>
-              <li data-filter=".filter-web">Web</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="row portfolio-container">
+        <p>Updating soon...</p>
+        <!-- <div class="row portfolio-container">
 
           <div class="col-lg-4 col-md-6 portfolio-item filter-app">
             <img src="assets/img/portfolio/portfolio-1.jpg" class="img-fluid" alt="">
@@ -249,7 +237,7 @@
             </div>
           </div>
 
-        </div>
+        </div> -->
 
       </div>
 
@@ -265,7 +253,8 @@
       </div>
 
       <div class="container">
-        <div class="journal-block">
+        <p>Updating soon...</p>
+        <!-- <div class="journal-block">
           <div class="row">
 
             <div class="col-lg-4 col-md-6">
@@ -317,7 +306,7 @@
             </div>
 
           </div>
-        </div>
+        </div> -->
       </div>
 
     </div><!-- End Journal Section -->
@@ -332,7 +321,8 @@
       </div>
 
       <div class="container">
-        <div class="journal-block">
+        <p>Updating soon...</p>
+        <!-- <div class="journal-block">
           <div class="row">
 
             <div class="col-lg-4 col-md-6">
@@ -384,13 +374,13 @@
             </div>
 
           </div>
-        </div>
+        </div> -->
       </div>
 
     </div><!-- End Journal Section -->
 
 
-    <div id="portfolio" class="paddsection">
+    <div id="contact" class="paddsection">
 
       <div class="container">
         <div class="section-title text-center">
@@ -399,30 +389,29 @@
       </div>
 
       <div class="container">
-        <p>Let's connect. My inbox is always open. Whether you have a question or just want to say <i>HI</i>, I'll always get back to you!</p>
         <div id="footer" class="text-center">
           <div class="container">
+            <p>Let's connect. My inbox is always open. Whether you have a question or just want to say <i>HI</i>, I'll always get back to you!</p>
+            <p>Write me at: <u><a href="mailto:inboxpraveen.17@gmail.com"><i class="bi bi-envelope"></i> inboxpraveen.17@gmail.com</u></a></p>
+            <p>Follow me on these to stay updated with my latest works</p>
             <div class="socials-media text-center">
-      
               <ul class="list-unstyled">
                 <li><a href="https://twitter.com/inboxpraveen"><i class="bi bi-twitter"></i></a></li>
                 <li><a href="https://www.instagram.com/_inside_ai_/"><i class="bi bi-instagram"></i></a></li>
                 <li><a href="https://www.linkedin.com/in/praveen-kumar-inbox/"><i class="bi bi-linkedin"></i></a></li>
                 <li><a href="https://medium.com/@inboxpraveen"><i class="bi bi-medium"></i></a></li>
               </ul>
-      
             </div>
-      
-            <div class="credits">
-            </div>
+            <hr>
+            <p>Full Resume:</p>
+            <a href="assets/Resume_Praveen_Kumar_28May2022.pdf">Download Here</a>
+            <p class="lastUpdated" id="lastUpdated"></p>
       
           </div>
         </div><!-- End Footer -->
       </div>
 
     </div><!-- End Portfolio Section -->
-
-
 
   </main><!-- End #main -->
 
@@ -435,13 +424,12 @@
   <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
   <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
   <script src="assets/vendor/typed.js/typed.min.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
   <script>
     const desiredRepo = "inboxpraveen.github.io";
-    const dateTagClass = ".credits"; // The HTML element you want to update
+    const dateTagClass = ".lastUpdated"; // The HTML element you want to update
 
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function()
@@ -457,7 +445,7 @@
             var day = lastUpdated.getUTCDate();
             var month = lastUpdated.getUTCMonth();
             var year = lastUpdated.getUTCFullYear();
-            $(dateTagClass).text(`Last updated: ${year}-${month}-${day}`);
+            $(dateTagClass).text(`Website Last updated on: ${year}-${month}-${day}`);
           }
         });
       }

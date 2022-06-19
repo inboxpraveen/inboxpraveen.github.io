@@ -344,8 +344,8 @@ p {
   transition: 0.3s;
 }
 .navbar-mobile a, .navbar-mobile a:focus {
-  padding: 10px 20px;
-  font-size: 15px;
+  padding: 20px 20px;
+  font-size: 25px;
   color: #4b4a4a;
 }
 .navbar-mobile a:hover, .navbar-mobile .active, .navbar-mobile li:hover > a {
@@ -385,7 +385,7 @@ p {
 # Hero
 --------------------------------------------------------------*/
 #hero {
-  background: url("../img/E1.png") repeat scroll center center/cover;
+  background: url("../img/E7.png") repeat scroll center center/cover;
   height: 100vh;
   width: 100%;
 }
@@ -781,47 +781,6 @@ p {
   min-height: 160px;
 }
 
-.php-email-form .error-message {
-  display: none;
-  color: #fff;
-  background: #ed3c0d;
-  text-align: left;
-  padding: 15px;
-  margin-bottom: 15px;
-  font-weight: 600;
-}
-.php-email-form .error-message br + br {
-  margin-top: 25px;
-}
-.php-email-form .sent-message {
-  display: none;
-  color: #fff;
-  background: #18d26e;
-  text-align: center;
-  padding: 15px;
-  font-weight: 600;
-  margin-bottom: 15px;
-}
-.php-email-form .loading {
-  display: none;
-  background: #fff;
-  text-align: center;
-  padding: 15px;
-  margin-bottom: 15px;
-}
-.php-email-form .loading:before {
-  content: "";
-  display: inline-block;
-  border-radius: 50%;
-  width: 24px;
-  height: 24px;
-  margin: 0 10px -6px 0;
-  border: 3px solid #18d26e;
-  border-top-color: #eee;
-  -webkit-animation: animate-loading 1s linear infinite;
-  animation: animate-loading 1s linear infinite;
-}
-
 @-webkit-keyframes animate-loading {
   0% {
     transform: rotate(0deg);
@@ -979,7 +938,7 @@ blockquote {
 #footer {
   background: #f7f7f7;
   padding-top: 50px;
-  padding-bottom: 50px;
+  padding-bottom: 10px;
 }
 
 #footer .socials-media {
@@ -1000,17 +959,17 @@ blockquote {
 
 #footer .socials-media ul li a {
   font-size: 24px;
-  color: #999;
-  letter-spacing: 0.1em;
+  color: rgb(29, 29, 29);
+  letter-spacing: 0.2em;
   font-weight: 500;
   background: transparent;
   text-transform: uppercase;
-  transition: all 0.5s ease-in-out 0s;
+  transition: all 0.25s ease-in-out 0s;
 }
 
 #footer .socials-media ul li a:hover {
   color: #b8a07e;
-  transition: all 0.5s ease-in-out 0s;
+  transition: all 0.25s ease-in-out 0s;
 }
 
 #footer p {
