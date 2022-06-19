@@ -109,8 +109,8 @@ p {
 }
 
 .paddsection {
-  padding-top: 90px;
-  padding-bottom: 90px;
+  padding-top: 50px;
+  padding-bottom: 50px;
 }
 
 .paddsections {
@@ -726,6 +726,14 @@ p {
 
 .journal-block .journal-info img {
   max-width: 100%;
+  padding: 0.5em;
+  border-radius: 1rem;
+}
+
+.journal-block .journal-info img:hover {
+  padding: 0.25em;
+  border-radius: 1.25rem;
+  opacity: 0.9;
 }
 
 .journal-block .journal-info .journal-txt {
@@ -1055,12 +1063,12 @@ blockquote {
 
   /* journal */
   #journal .journal-block .journal-info {
-    margin-bottom: 30px;
+    margin-bottom: 20px;
   }
 
   /* Contact */
   .contact-contact {
-    margin-bottom: 30px;
+    margin-bottom: 20px;
   }
 
   /* Footer */
