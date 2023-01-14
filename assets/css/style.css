@@ -1438,7 +1438,7 @@ blockquote {
   position:absolute;
   width:0;
   top:50%;
-  transition: 1.5s;
+  transition: 0.5s;
 }
 
 #progstat{
