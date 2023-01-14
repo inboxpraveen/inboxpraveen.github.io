@@ -187,7 +187,7 @@
         <div class="row portfolio-container">
 
           <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-            <img src="assets/img/portfolio/p1/1.png" class="img-fluid" alt="Project 1 Image">
+            <img src="assets/img/portfolio/p1/cover.png" class="img-fluid" alt="Project 1 Image">
             <div class="portfolio-info">
               <a href="https://github.com/inboxpraveen/recommendation-system">
                 <h4>Movie Recommendation System</h4>
@@ -198,7 +198,7 @@
           </div>
 
           <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-            <img src="assets/img/portfolio/p2/spaceship.png" class="img-fluid" alt="Project 1 Image">
+            <img src="assets/img/portfolio/p2/cover.png" class="img-fluid" alt="Project 1 Image">
             <div class="portfolio-info">
               <a href="https://github.com/inboxpraveen/Spaceship-Titanic-Challenge">
                 <h4>SpaceShip Titanic Challenge</h4>
@@ -394,8 +394,49 @@
 
   </main><!-- End #main -->
 
-  <div id="preloader"></div>
+  <!-- <div id="preloader"></div> -->
+  <div id="overlay">
+    <div id="progstat"></div>
+    <div id="progress"></div>
+  </div>
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <script>
+    ;(function(){
+      function id(v){ return document.getElementById(v); }
+      function loadbar() {
+        var ovrl = id("overlay"),
+            prog = id("progress"),
+            stat = id("progstat"),
+            img = document.images,
+            c = 0,
+            tot = img.length;
+        if(tot == 0) return doneLoading();
+
+        function imgLoaded(){
+          c += 1;
+          var perc = ((100/tot*c) << 0) +"%";
+          prog.style.width = perc;
+          stat.innerHTML = "Loading "+ perc;
+          if(c===tot) return doneLoading();
+        }
+        function doneLoading(){
+          ovrl.style.opacity = 0;
+          setTimeout(function(){ 
+            ovrl.style.display = "none";
+          }, 1200);
+        }
+        for(var i=0; i<tot; i++) {
+          var tImg     = new Image();
+          tImg.onload  = imgLoaded;
+          tImg.onerror = imgLoaded;
+          tImg.src     = img[i].src;
+        }    
+      }
+      document.addEventListener('DOMContentLoaded', loadbar, false);
+    }());
+</script>
+
 
   <!-- Vendor JS Files -->
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
