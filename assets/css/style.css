@@ -1433,12 +1433,12 @@ blockquote {
 }
 
 #progress{
-  height:1px;
+  height:3px;
   background:#fff;
   position:absolute;
   width:0;
   top:50%;
-  transition: 1s;
+  transition: 1.5s;
 }
 
 #progstat{
