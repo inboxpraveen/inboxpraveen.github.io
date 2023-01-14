@@ -1,49 +1,4 @@
-/*--------------------------------------------------------------
-# Preloader
---------------------------------------------------------------*/
-#preloader {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 9999;
-  overflow: hidden;
-  background: #fff;
-}
 
-#preloader:before {
-  content: "";
-  position: fixed;
-  top: calc(50% - 30px);
-  left: calc(50% - 30px);
-  border: 6px solid #0563bb;
-  border-top-color: #fff;
-  border-bottom-color: #fff;
-  border-radius: 50%;
-  width: 60px;
-  height: 60px;
-  -webkit-animation: animate-preloader 2s linear infinite;
-  animation: animate-preloader 2s linear infinite;
-}
-
-@-webkit-keyframes animate-preloader {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
-@keyframes animate-preloader {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
 /*--------------------------------------------------------------
 # Disable aos animation delay on mobile devices
 --------------------------------------------------------------*/
@@ -1466,7 +1421,6 @@ blockquote {
 }
 
 
-
 #overlay{
   position:fixed;
   z-index:99999;
@@ -1474,9 +1428,10 @@ blockquote {
   left:0;
   bottom:0;
   right:0;
-  background:rgba(0,0,0,0.9);
+  background:rgba(0,0,0);
   transition: 1s 0.4s;
 }
+
 #progress{
   height:1px;
   background:#fff;
@@ -1485,8 +1440,9 @@ blockquote {
   top:50%;
   transition: 1s;
 }
+
 #progstat{
-  font-size:0.7em;
+  font-size:1.5em;
   letter-spacing: 3px;
   position:absolute;
   top:50%;
