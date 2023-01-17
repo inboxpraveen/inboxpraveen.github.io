@@ -480,11 +480,17 @@
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
   <script>
+    var my_date = "";
     fetch('https://api.github.com/repos/inboxpraveen/inboxpraveen.github.io/commits?per_page=1')
     .then(res => res.json())
     .then(res => {
-      document.getElementById('lastUpdated').innerHTML = "Last Updated on: " + res[0].commit.author.date
+       my_date = res[0].commit.author.date
     })
+    const date = new Date(my_date)
+    const offset = 330; // IST offset is 5.5 hours ahead of UTC
+    // Create a new Date object with the IST time
+    const ISTtime = new Date(date.getTime() + (offset * 60 * 60 * 1000));
+    document.getElementById('lastUpdated').innerHTML = "Last Updated on: "+ ISTtime +" IST";
   </script>
 </body>
 
