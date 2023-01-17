@@ -43,11 +43,7 @@
 
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
-  <script type="application/javascript" src="https://unpkg.com/react@16.0.0/umd/react.production.min.js"></script>
-  <script type="application/javascript"
-    src="https://unpkg.com/react-dom@16.0.0/umd/react-dom.production.min.js"></script>
-  <script type="application/javascript" src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-  <script type="application/javascript" src="https://unpkg.com/whatwg-fetch@3.0.0/dist/fetch.umd.js"></script>
+
 </head>
 
 <body>
@@ -472,7 +468,7 @@
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
       class="bi bi-arrow-up-short"></i></a>
 
-  <p class="container text-center lastUpdated"></p>
+  <p class="container text-center lastUpdated" id="lastUpdated"></p>
 
   <!-- Vendor JS Files -->
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -484,80 +480,11 @@
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
   <script>
-
-    class LatestCommitComponent extends React.Component {
-      constructor(props) {
-        super(props);
-        this.state = {
-          author: "",
-          branch: "",
-          date: "",
-          sha: "",
-          link: ""
-        };
-      }
-
-      componentDidMount() {
-        // Replace this with your own repo
-        // https://api.github.com/repos/:owner/:repo/branches/master
-        fetch(
-          "https://api.github.com/repos/inboxpraveen/inboxpraveen.github.io/branches/master"
-        )
-          .then(response => {
-            response.json().then(json => {
-              console.log(json);
-              this.setState({
-                author: json.commit.author.login,
-                branch: json.name,
-                date: json.commit.commit.author.date,
-                sha: json.commit.sha,
-                link: json._links.html
-              });
-            });
-          })
-          .catch(error => {
-            console.log(error);
-          });
-      }
-
-      render() {
-        return (
-          "<div>\
-            <p>{this.state.author}</p>\
-            <p>{this.state.branch}</p>\
-            <p>{this.state.date}</p>\
-            <p>{this.state.sha}</p>\
-            <p>{this.state.link}</p>\
-          </div>"
-        );
-      }
-    }
-
-    ReactDOM.render(<LatestCommitComponent />, document.getElementById("lastUpdated"));
-
-    // const desiredRepo = "inboxpraveen.github.io";
-    // const dateTagClass = ".lastUpdated"; // The HTML element you want to update
-
-    // var xhttp = new XMLHttpRequest();
-    // xhttp.onreadystatechange = function () {
-    //   $(dateTagClass).text("hereeeeeeee0");
-    //   if (this.readyState == 4 && this.status == 200) {
-    //     $(dateTagClass).text("hereeeeeeee1");
-    //     let repos = JSON.parse(this.responseText);
-    //     $(dateTagClass).text("hereeeeeeee2");
-    //     repos.forEach((repo) => {
-    //       if (repo.name == desiredRepo) {
-    //         var lastUpdated = new Date(repo.updated_at);
-    //         var day = lastUpdated.getUTCDate();
-    //         var month = lastUpdated.getUTCMonth();
-    //         var year = lastUpdated.getUTCFullYear();
-    //         $(dateTagClass).text(`Website Last updated on: ${year}-${month}-${day}`);
-    //       }
-    //     });
-    //   }
-    // };
-    // xhttp.open("GET", "https://api.github.com/users/inboxpraveen/repos", true);
-    // xhttp.send();
+    fetch('https://api.github.com/repos/inboxpraveen/inboxpraveen.github.io/commits?per_page=1')
+    .then(res => res.json())
+    .then(res => {
+      document.getElementById('lastUpdated').innerHTML = "Last Updated on: " + res[0].commit.author.date
+    })
   </script>
 </body>
 
