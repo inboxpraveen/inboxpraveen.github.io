@@ -88,27 +88,9 @@ p {
   transition: .5s;
 }
 
-.all_project_id{
-  background: #333;
-  border: medium none;
-  border-radius: 1px;
-  color: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  align-self: center;
-  text-align: center;
-  font-size: 1.5em;
-  text-decoration: none;
-  padding: 0.8em;
-  width: fit-content;
-  text-transform: uppercase;
-}
 
-.btn:hover, .btn:focus {
-  color: rgb(0, 0, 0);
-  background: rgb(224, 224, 224);
-  transition: .5s;
+#all_project_id:hover, #all_project_id:focus {
+  padding-left: 3px;
   text-decoration: none;
 }
 
