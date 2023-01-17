@@ -480,14 +480,14 @@
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
   <script>
-    var my_date = new Date();
     fetch('https://api.github.com/repos/inboxpraveen/inboxpraveen.github.io/commits?per_page=1')
     .then(res => res.json())
     .then(res => {
-       my_date = res[0].commit.author.date
+      output = res[0].commit.committer.date
+      const date = new Date(output);
+      document.getElementById('lastUpdated').innerHTML = "Last Updated on: "+ date
     })
-    const date = new Date(my_date);
-    document.getElementById('lastUpdated').innerHTML = "Last Updated on: "+ date
+
   </script>
 </body>
 
