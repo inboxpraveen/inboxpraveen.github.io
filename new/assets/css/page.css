@@ -10,9 +10,10 @@ body {
     max-width: 100%;
     margin: 0;
     padding: 0;
+    opacity: 1;
     overflow: hidden;
-
-    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)), url("../images/hero-background.png");
+    z-index: 100;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.11), rgba(0, 0, 0, 0.26)), url("../images/hero-background.png");
     background-repeat: no-repeat;
     background-size: cover;
     background-position:center;
@@ -26,6 +27,7 @@ a {
 .main-container {
     width: 100%;
     height: 100%;
+    z-index: 10;
 
     display: flex;
     flex-direction: column;
@@ -57,7 +59,7 @@ a {
     font-weight: bolder;
     font-size: 1em;
     padding: 1px 5px;
-    background-color: #dd4e0c;
+    background-color: #311d52af;
 }
 
 .two .blinker {
@@ -185,4 +187,15 @@ a {
         font-size: 2.75rem;
         margin: 0rem 1rem;
     }
+}
+
+#myVideo {
+    position: fixed;
+    right: 0;
+    opacity: 0.1;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+    z-index: -100;
+    transform: translateX(calc((100% - 100vw) / 2));
 }
