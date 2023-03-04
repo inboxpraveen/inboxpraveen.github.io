@@ -12,7 +12,7 @@ body {
     padding: 0;
     overflow: hidden;
 
-    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.45)), url("../images/hero-background.png");
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)), url("../images/hero-background.png");
     background-repeat: no-repeat;
     background-size: cover;
     background-position:center;
@@ -26,7 +26,6 @@ a {
 .main-container {
     width: 100%;
     height: 100%;
-    font-size: 1.25rem; 
 
     display: flex;
     flex-direction: column;
@@ -38,7 +37,7 @@ a {
 
 .two{
     flex: 2 1 auto;
-    max-height: 90%;
+    max-height: 90vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -47,15 +46,21 @@ a {
 
 .two h1 {
     margin: 0.1rem 0.5rem;
-    font-size: 4rem;
-    font-weight: 800;
     text-shadow: 4px 4px 4px rgba(0, 0, 0, 0.5);
 }
 
 .two p {
-    font-size: 2.5rem;
-    font-weight: 600;
     text-shadow: 4px 4px 4px rgba(0, 0, 0, 0.5);
+}
+
+.two .typed-text {
+    font-weight: bolder;
+    text-decoration: underline;
+    font-size: 1em;
+}
+
+.two .blinker {
+    font-size: 1em;
 }
 
 .three{
@@ -67,11 +72,8 @@ a {
 }
 
 .main-container .social-links-span {
-    background-color: #311d52b9;
     border-radius: 1rem;
     width: 100%;
-    font-size: 2.5rem;
-    padding: 0.25rem 0.35rem;
     text-align: center;
     justify-content: center;
 }
@@ -89,5 +91,107 @@ a {
     .main-container i{
         font-size: 2.75rem;
         margin: 0rem 0.5rem;
+    }
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media screen and (max-width: 600px) {
+    .two h1 {
+        font-size: 3rem;
+        font-weight: 650;
+    }
+
+    .two p {
+        font-size: 1.5rem;
+    }
+
+    .main-container .social-links-span {
+        font-size: 1.75rem;
+        padding: 0.25rem 0.35rem;
+    }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media screen and (min-width: 600px) {
+    .two h1 {
+        font-size: 3.25rem;
+        font-weight: 700;
+    }
+
+    .two p {
+        font-size: 1.75rem;
+    }
+
+    .main-container .social-links-span {
+        font-size: 1.5rem;
+        padding: 0rem 0.75rem;
+    }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media screen and (min-width: 768px) {
+    .two h1 {
+        font-size: 3.5rem;
+        font-weight: 750;
+    }
+    
+    .two p {
+        font-size: 2rem;
+    }
+
+    .main-container .social-links-span {
+        font-size: 1.75rem;
+        padding: 0rem 0.75rem;
+    }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media screen and (min-width: 992px) {
+    .two h1 {
+        font-size: 3.75rem;
+        font-weight: 775;
+    }
+
+    .two p {
+        font-size: 2.25rem;
+    }
+
+    .main-container .social-links-span {
+        font-size: 2rem;
+        padding: 0rem 1rem;
+    }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media screen and (min-width: 1200px) {
+    .two h1 {
+        font-size: 4rem;
+        font-weight: 800;
+    }
+
+    .two p {
+        font-size: 2.5rem;
+    }
+
+    .main-container .social-links-span {
+        font-size: 2.25rem;
+        padding: 0rem 1rem;
+    }
+}
+
+/* Extra large devices (ultra wide desktops, 1800px and up) */
+@media screen and (min-width: 1800px) {
+    .two h1 {
+        font-size: 4.5rem;
+        font-weight: 900;
+    }
+
+    .two p {
+        font-size: 2.75rem;
+    }
+
+    .main-container .social-links-span {
+        font-size: 2.5rem;
+        padding: 0rem 1rem;
     }
 }
