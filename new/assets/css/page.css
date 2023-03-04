@@ -13,7 +13,7 @@ body {
     opacity: 1;
     overflow: hidden;
     z-index: 100;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.11), rgba(0, 0, 0, 0.26)), url("../images/hero-background.png");
+    background-image: linear-gradient(rgba(0, 0, 0, 0.22), rgba(0, 0, 0, 0.5)), url("../images/hero-background.png");
     background-repeat: no-repeat;
     background-size: cover;
     background-position:center;
@@ -59,7 +59,7 @@ a {
     font-weight: bolder;
     font-size: 1em;
     padding: 1px 5px;
-    background-color: #311d52af;
+    color: #c341ff;
 }
 
 .two .blinker {
@@ -83,6 +83,10 @@ a {
 
 .main-container i{
     margin: 0rem 0.75rem;
+}
+
+.add-text-background {
+    color: #c341ff;
 }
 
 
@@ -192,7 +196,7 @@ a {
 #myVideo {
     position: fixed;
     right: 0;
-    opacity: 0.1;
+    opacity: 0.05;
     bottom: 0;
     min-width: 100%;
     min-height: 100%;
