@@ -37,11 +37,16 @@
 </head>
 
 <body>
+    <!--Creates cursor dot elements for cursor animation-->
     <div class="cursor-dot-outline"></div>
     <div class="cursor-dot"></div>
 
+    <!--Creates an input checkbox element for the menu icon-->
     <input class="menu-icon" type="checkbox" id="menu-icon" name="menu-icon" />
+    <!--Creates a label element for the menu icon-->
     <label for="menu-icon"></label>
+
+    <!--Implements the navigation bar-->
     <nav class="nav">
         <ul class="pt-5">
             <li><a href="https://inboxpraveen.github.io/" target="_blank">About</a></li>
@@ -55,13 +60,18 @@
         <source src="./assets/videos/background.mp4" type="video/mp4">
     </video>
 
+    <!--Creates the main container for the webpage-->
     <div class="main-container">
+        <!--Creates a div element for the name and title-->
         <div class="two">
+            <!--Creates a span element with classname add-text-background for a background effect-->
             <h1><span class="add-text-background">Praveen</span> Kumar</h1>
             <p>I'm <span class="typed-text"></span><span class="blinker">&nbsp;</span></p>
         </div>
+        <!--Creates a div element for the social links-->
         <div clas="three">
             <span class="social-links-span">
+                <!--Creates social media icons that link to their respective profiles-->
                 <a target="_blank" href="#"><i class="ti ti-user-circle"></i></a>
                 <a target="_blank" href="https://github.com/inboxpraveen"><i class="ti ti-brand-github"></i></a>
                 <a target="_blank" href="https://www.linkedin.com/in/praveen-kumar-inbox/"><i
@@ -72,6 +82,7 @@
         </div>
     </div>
 
+    <!--Imports external JavaScript files-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.3/TweenMax.min.js"></script>
     <script src="./assets/js/cursor.js"></script>
     <script src="./assets/js/typing.js"></script>
