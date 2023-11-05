@@ -1,494 +1,230 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <head>
 
-  <title>Praveen Kumar | AI Engineer | Inbox Praveen | Content Creator</title>
-  <meta
-    content="Hi, I'm Praveen Kumar, a Bachelor of Engineering in Computer Science. I am a Artificial Intelligence Engineer at TrellisSoft and a research enthusiast working into Deep Learning fields of Classification, Speech Recognition, Attention Networks, and Question-Answering."
-    name="description">
-  <meta
-    content="Portfolio, Hitchhikers Guide to Deep Learning, Computer Vision Engineer, Trellissoft, Research, Praveen-kumar,Praveen Kumar linkedin, Praveen Kumar github, Inbox praveen, inbox praveen kumar, praveen kumar twitter, inbox praveen twitter, praveen kumar medium, inbox praveen medium"
-    name="keywords">
-  <meta name="author" content="Praveen Kumar" />
+        <meta charset="utf-8" />
 
-  <!-- Twitter Card data -->
-  <meta name="twitter:card" content="Inbox Praveen Kumar">
-  <meta name="twitter:site" content="@inboxpraveen">
-  <meta name="twitter:title" content="Praveen Kumar">
-  <meta name="twitter:creator" content="@inboxpraveen">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Praveen Kumar</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
 
-  <meta property="og:title" content="Praveen Kumar">
-  <meta property="og:description" content="AI Engineer & Software Developer based in Bangalore">
-  <meta property="og:image"
-    content="https://github.com/inboxpraveen/inboxpraveen.github.io/blob/master/assets/img/hero_3.png">
-  <meta property="og:url" content="https://inboxpraveen.github.io/">
+        <!-- Custom Google font-->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@100;200;300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet" />
 
-  <!-- Favicons -->
-  <link href="assets/img/favicon.png" rel="icon">
+        <!-- Bootstrap icons-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css" rel="stylesheet" />
 
-  <!-- Google Fonts -->
-  <link
-    href="https://fonts.googleapis.com/css?family=Poppins:300,300i,400,400i,500,500i,600,600i,700,700i|Playfair+Display:400,400i,500,500i,600,600i,700,700i,900,900i"
-    rel="stylesheet">
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="css/styles.css" rel="stylesheet" />
 
-  <!-- Vendor CSS Files -->
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+    </head>
 
-  <!-- Template Main CSS File -->
-  <link href="assets/css/style.css" rel="stylesheet">
+    <body class="d-flex flex-column h-100">
 
-</head>
-
-<body>
-
-  <div id="overlay">
-    <div id="progstat"></div>
-    <div id="progress"></div>
-  </div>
-
-  <script>
-    ; (function () {
-      function id(v) { return document.getElementById(v); }
-      function loadbar() {
-        var ovrl = id("overlay"),
-          prog = id("progress"),
-          stat = id("progstat"),
-          img = document.images,
-          c = 0,
-          tot = img.length;
-        if (tot == 0) return doneLoading();
-
-        function imgLoaded() {
-          c += 1;
-          var perc = ((100 / tot * c) << 0) + "%";
-          prog.style.width = perc;
-          stat.innerHTML = "Loading " + perc;
-          if (c === tot) return doneLoading();
-        }
-        function doneLoading() {
-          ovrl.style.opacity = 0;
-          setTimeout(function () {
-            ovrl.style.display = "none";
-          }, 1200);
-        }
-        for (var i = 0; i < tot; i++) {
-          var tImg = new Image();
-          tImg.onload = imgLoaded;
-          tImg.onerror = imgLoaded;
-          tImg.src = img[i].src;
-        }
-      }
-      document.addEventListener('DOMContentLoaded', loadbar, false);
-    }());
-  </script>
-
-  <!-- ======= Header ======= -->
-  <header id="header" class="fixed-top ">
-    <div class="container d-flex align-items-center justify-content-between">
-
-      <a href="index.html" class="logo"><img src="assets/img/logo.png" alt="logo" class="img-fluid"></a>
-      <!-- Uncomment below if you prefer to use an text logo -->
-
-      <nav id="navbar" class="navbar">
-        <ul>
-          <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
-          <li><a class="nav-link scrollto" href="#about">About</a></li>
-          <li><a class="nav-link  scrollto" href="#portfolio">Portfolio</a></li>
-          <li><a class="nav-link  scrollto" href="#journal">Blogs</a></li>
-          <li><a class="nav-link  scrollto" href="#social_content">Social Posts</a></li>
-          <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
-        </ul>
-        <i class="bi bi-list mobile-nav-toggle"></i>
-      </nav><!-- .navbar -->
-
-    </div>
-  </header><!-- End Header -->
-
-  <!-- ======= Hero Section ======= -->
-  <div id="hero" class="home">
-
-    <div class="container">
-      <div class="hero-content">
-        <h1>I'm <span class="typed"
-            data-typed-items="Praveen Kumar, AI Engineer, Research Philomath, Content Creator, Web Developer"></span>
-        </h1>
-
-        <ul class="list-unstyled list-social">
-          <li><a href="https://twitter.com/inboxpraveen"><i class="bi bi-twitter"></i></a></li>
-          <li><a href="https://www.instagram.com/_inside_ai_/"><i class="bi bi-instagram"></i></a></li>
-          <li><a href="https://github.com/inboxpraveen"><i class="bi bi-github"></i></a></li>
-          <li><a href="https://www.linkedin.com/in/praveen-kumar-inbox/"><i class="bi bi-linkedin"></i></a></li>
-          <li><a href="https://medium.com/@inboxpraveen"><i class="bi bi-medium"></i></a></li>
-        </ul>
-      </div>
-    </div>
-  </div><!-- End Hero -->
-
-  <main id="main">
-
-    <!-- ======= About Section ======= -->
-    <div id="about" class="paddsection">
-      <div class="container">
-        <div class="row justify-content-between">
-
-          <div class="col-lg-4 ">
-            <div class="div-img-bg">
-              <div class="about-img">
-                <img src="assets/img/hero_3.png" class="img-responsive" alt="me">
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-7">
-            <div class="about-descr">
-              <h1>About Me</h1>
-              <p class="p-heading">"AI Engineer: Building ML Pipelines like a Pro, One Algorithm at a Time!"</p>
-              <p>As an AI Engineer with 3 years of experience, I specialize in building efficient and effective ML
-                pipelines that power cutting-edge AI solutions. From data preprocessing to model deployment, I have the
-                skills and expertise to take your project from idea to reality. With a keen eye for detail and a passion
-                for staying up-to-date with the latest trends and technologies in the field, I am dedicated to
-                delivering high-quality results that exceed expectations. I also love connecting with professionals in a
-                fun and unique way, and I am also a content creator. So, if you're ready to take your AI game to the
-                next level, let's build something great together!</p>
-              <p class="separator">
-                "AI is not only about creating intelligent machines, but also creating unique and meaningful content.""
-              </p>
-              <p class="separator">
-                "Why don't AI engineers ever get mad? Because they're always deep learning!"
-              </p>
-            </div>
-
-          </div>
-        </div>
-      </div>
-    </div><!-- End About Section -->
-
-    <!-- ======= Services Section ======= -->
-    <div id="services" class="paddsection">
-
-      <div class="container">
-        <div class="section-title text-center">
-          <h1>AI-nspiring Skill Sets</h1>
-        </div>
-      </div>
-
-      <div class="container">
-        <div class="services-slider swiper" data-aos="fade-up" data-aos-delay="100">
-          <div class="swiper-wrapper">
-
-            <div class="swiper-slide">
-              <div class="services-block">
-                <i class="bi bi-briefcase"></i>
-                <span>Natural Language Processing</span>
-                <p class="separator">Right from basic word embeddings to building transformers from scratch</p>
-              </div>
-            </div><!-- End testimonial item -->
-
-            <div class="swiper-slide">
-              <div class="services-block">
-                <i class="bi bi-card-checklist"></i>
-                <span>Speech Recognition</span>
-                <p class="separator">Building speech Recognition from scratch to extracting features into vector
-                  representations</p>
-              </div>
-            </div><!-- End testimonial item -->
-
-            <div class="swiper-slide">
-              <div class="services-block">
-                <i class="bi bi-card-checklist"></i>
-                <span>Computer Vision</span>
-                <p class="separator">Building CNN & Transformer based models from scratch to finding right ways to
-                  implement on low-level devices</p>
-              </div>
-            </div><!-- End testimonial item -->
-
-            <div class="swiper-slide">
-              <div class="services-block">
-                <i class="bi bi-card-checklist"></i>
-                <span>Technical Content Writing</span>
-                <p class="separator">I love to keep learning, keep sharing &amp; keep growing.</p>
-              </div>
-            </div><!-- End testimonial item -->
-
-            <div class="swiper-slide">
-              <div class="services-block">
-                <i class="bi bi-card-checklist"></i>
-                <span>Project Management & Delivery</span>
-                <p class="separator">Expert at building communication to deliver projects timely.</p>
-              </div>
-            </div><!-- End testimonial item -->
-
-          </div>
-          <div class="swiper-pagination"></div>
-        </div>
-
-      </div>
-
-    </div><!-- End Services Section -->
-
-    <!-- ======= Portfolio Section ======= -->
-    <div id="portfolio" class="paddsection">
-
-      <div class="container">
-        <div class="section-title text-center">
-          <h1>AI-mpactful Project Bites</h1>
-          <p class="text-center" id="all_project_id"><a href="./projects/all-projects.html">View All Projects <i class="bi bi-arrow-bar-right"></i></p>
-        </div>
-      </div>
-      <div class="container">
-        <div class="row portfolio-container">
-          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-            <img src="assets/img/portfolio/p4/cover.png" class="img-fluid" alt="">
-            <div class="portfolio-info">
-              <a href="https://github.com/inboxpraveen/inboxpraveen.github.io" target="_blank">
-                <h4>Portfolio Website</h4>
-                <p>Check out full project details on Github</p>
-              </a>
-              <a href="https://github.com/inboxpraveen/inboxpraveen.github.io" target="_blank"
-                data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="View Github"></a>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-            <img src="assets/img/portfolio/p1/cover.png" class="img-fluid" alt="Project 1 Image">
-            <div class="portfolio-info">
-              <a href="https://github.com/inboxpraveen/recommendation-system" target="_blank">
-                <h4>Movie Recommendation System</h4>
-                <p>Check out full project details on Github</p>
-              </a>
-              <a href="https://github.com/inboxpraveen/recommendation-system" target="_blank"
-                data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="View Github"></a>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-            <img src="assets/img/portfolio/p3/cover.png" class="img-fluid" alt="Project 1 Image">
-            <div class="portfolio-info">
-              <a href="https://github.com/inboxpraveen/url-detector" target="_blank">
-                <h4>URL Detector</h4>
-                <p>Check out full project details on Github</p>
-              </a>
-              <a href="https://github.com/inboxpraveen/url-detector" data-gallery="portfolioGallery"
-                class="portfolio-lightbox preview-link" title="View Github" target="_blank"></a>
-            </div>
-          </div>
-
-          <!-- <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-            <img src="assets/img/portfolio/p3/cover.png" class="img-fluid" alt="">
-            <div class="portfolio-info">
-              <h4>Card 2</h4>
-              <p>Card</p>
-              <a href="assets/img/portfolio/p3/cover.png" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Card 2"><i class="bx bx-plus"></i></a>
-              <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-            <img src="assets/img/portfolio/p3/cover.png" class="img-fluid" alt="">
-            <div class="portfolio-info">
-              <h4>Web 2</h4>
-              <p>Web</p>
-              <a href="assets/img/portfolio/p3/cover.png" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Web 2"><i class="bx bx-plus"></i></a>
-              <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-            <img src="assets/img/portfolio/p3/cover.png" class="img-fluid" alt="">
-            <div class="portfolio-info">
-              <h4>App 3</h4>
-              <p>App</p>
-              <a href="assets/img/portfolio/p3/cover.png" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="App 3"><i class="bx bx-plus"></i></a>
-              <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
-            </div>
-          </div> -->
-
-        </div>
-      </div>
-    </div><!-- End Portfolio Section -->
-
-    <!-- ======= Journal Section ======= -->
-    <div id="journal" class="text-left paddsection">
-
-      <div class="container">
-        <div class="section-title text-center">
-          <h1>AI-ncredible Blog Bites</h1>
-        </div>
-      </div>
-
-      <div class="container">
-        <div class="journal-block">
-          <div class="row">
-
-            <div class="col-lg-4 col-md-6">
-              <div class="journal-info">
-
-                <a
-                  href="https://medium.com/analytics-vidhya/movie-recommendation-system-python-flask-web-application-heroku-deployment-7e39492b640c"><img
-                    src="assets/img/posts/articles/1.png" class="img-responsive" alt="blog post image 1"></a>
-                <div class="journal-txt">
-
-                  <h4><a
-                      href="https://medium.com/analytics-vidhya/movie-recommendation-system-python-flask-web-application-heroku-deployment-7e39492b640c">Movie
-                      Recommender System</a></h4>
-                  <p class="separator">Learn about building your model and deploying it to Heroku (Backend as a Service)
-                  </p>
-
+        <main class="flex-shrink-0">
+            <!-- Navigation-->
+            <nav class="navbar navbar-expand-lg navbar-light bg-white py-3">
+                <div class="container px-5">
+                    <a class="navbar-brand" href="index.html"><span class="fw-bolder text-primary">Praveen</span></a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav ms-auto mb-2 mb-lg-0 small fw-bolder">
+                            <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                            <li class="nav-item"><a class="nav-link" href="resume.html">Resume</a></li>
+                            <li class="nav-item"><a class="nav-link" href="projects.html">Projects</a></li>
+                            <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                        </ul>
+                    </div>
                 </div>
-
-              </div>
-            </div>
-
-            <!-- <div class="col-lg-4 col-md-6">
-              <div class="journal-info">
-
-                <a href="blog-single.html"><img src="assets/img/blog-post-2.jpg" class="img-responsive" alt="img"></a>
-
-                <div class="journal-txt">
-
-                  <h4><a href="blog-single.html">WE'RE GONA MAKE DREAMS COMES</a></h4>
-                  <p class="separator">To an English person, it will seem like simplified English
-                  </p>
-
+            </nav>
+            <!-- Header-->
+            <header class="py-5">
+                <div class="container px-5 pb-5">
+                    <div class="row gx-5 align-items-center">
+                        <div class="col-xxl-5">
+                            <!-- Header text content-->
+                            <div class="text-center text-xxl-start">
+                                <div class="badge bg-gradient-primary-to-secondary text-white mb-4"><div class="text-uppercase">AI Engineer &middot; MLOps &middot; Architect</div></div>
+                                <div class="fs-3 fw-light text-muted">I can help your business to</div>
+                                <h1 class="display-3 fw-bolder mb-5"><span class="text-gradient d-inline">Grow with AI Faster</span></h1>
+                                <div class="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-xxl-start mb-3">
+                                    <a class="btn btn-primary btn-lg px-5 py-3 me-sm-3 fs-6 fw-bolder" href="resume.html">Resume</a>
+                                    <a class="btn btn-outline-dark btn-lg px-5 py-3 fs-6 fw-bolder" href="projects.html">Projects</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xxl-7">
+                            <!-- Header profile picture-->
+                            <div class="d-flex justify-content-center mt-5 mt-xxl-0">
+                                <div class="profile bg-gradient-primary-to-secondary">
+                                    <!-- TIP: For best results, use a photo with a transparent background like the demo example below-->
+                                    <!-- Watch a tutorial on how to do this on YouTube (link)-->
+                                    <img class="profile-img" src="assets/hero_3.png" alt="..." />
+                                    <div class="dots-1">
+                                        <!-- SVG Dots-->
+                                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 191.6 1215.4" style="enable-background: new 0 0 191.6 1215.4" xml:space="preserve">
+                                            <g transform="translate(0.000000,1280.000000) scale(0.100000,-0.100000)">
+                                                <path d="M227.7,12788.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,12801.6,289.7,12808.6,227.7,12788.6z"></path>
+                                                <path d="M1507.7,12788.6c-151-50-253-216-222-362c25-119,136-230,254-255c194-41,395,142,375,339c-11,105-90,213-190,262        C1663.7,12801.6,1569.7,12808.6,1507.7,12788.6z"></path>
+                                                <path d="M227.7,11508.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,11521.6,289.7,11528.6,227.7,11508.6z"></path>
+                                                <path d="M1507.7,11508.6c-151-50-253-216-222-362c25-119,136-230,254-255c194-41,395,142,375,339c-11,105-90,213-190,262        C1663.7,11521.6,1569.7,11528.6,1507.7,11508.6z"></path>
+                                                <path d="M227.7,10228.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,10241.6,289.7,10248.6,227.7,10228.6z"></path>
+                                                <path d="M1507.7,10228.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,10241.6,1569.7,10248.6,1507.7,10228.6z"></path>
+                                                <path d="M227.7,8948.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,8961.6,289.7,8968.6,227.7,8948.6z"></path>
+                                                <path d="M1507.7,8948.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,8961.6,1569.7,8968.6,1507.7,8948.6z"></path>
+                                                <path d="M227.7,7668.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,7681.6,289.7,7688.6,227.7,7668.6z"></path>
+                                                <path d="M1507.7,7668.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,7681.6,1569.7,7688.6,1507.7,7668.6z"></path>
+                                                <path d="M227.7,6388.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,6401.6,289.7,6408.6,227.7,6388.6z"></path>
+                                                <path d="M1507.7,6388.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,6401.6,1569.7,6408.6,1507.7,6388.6z"></path>
+                                                <path d="M227.7,5108.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,5121.6,289.7,5128.6,227.7,5108.6z"></path>
+                                                <path d="M1507.7,5108.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,5121.6,1569.7,5128.6,1507.7,5108.6z"></path>
+                                                <path d="M227.7,3828.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,3841.6,289.7,3848.6,227.7,3828.6z"></path>
+                                                <path d="M1507.7,3828.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,3841.6,1569.7,3848.6,1507.7,3828.6z"></path>
+                                                <path d="M227.7,2548.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,2561.6,289.7,2568.6,227.7,2548.6z"></path>
+                                                <path d="M1507.7,2548.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,2561.6,1569.7,2568.6,1507.7,2548.6z"></path>
+                                                <path d="M227.7,1268.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,1281.6,289.7,1288.6,227.7,1268.6z"></path>
+                                                <path d="M1507.7,1268.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,1281.6,1569.7,1288.6,1507.7,1268.6z"></path>
+                                            </g>
+                                        </svg>
+                                        <!-- END of SVG dots-->
+                                    </div>
+                                    <div class="dots-2">
+                                        <!-- SVG Dots-->
+                                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 191.6 1215.4" style="enable-background: new 0 0 191.6 1215.4" xml:space="preserve">
+                                            <g transform="translate(0.000000,1280.000000) scale(0.100000,-0.100000)">
+                                                <path d="M227.7,12788.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,12801.6,289.7,12808.6,227.7,12788.6z"></path>
+                                                <path d="M1507.7,12788.6c-151-50-253-216-222-362c25-119,136-230,254-255c194-41,395,142,375,339c-11,105-90,213-190,262        C1663.7,12801.6,1569.7,12808.6,1507.7,12788.6z"></path>
+                                                <path d="M227.7,11508.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,11521.6,289.7,11528.6,227.7,11508.6z"></path>
+                                                <path d="M1507.7,11508.6c-151-50-253-216-222-362c25-119,136-230,254-255c194-41,395,142,375,339c-11,105-90,213-190,262        C1663.7,11521.6,1569.7,11528.6,1507.7,11508.6z"></path>
+                                                <path d="M227.7,10228.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,10241.6,289.7,10248.6,227.7,10228.6z"></path>
+                                                <path d="M1507.7,10228.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,10241.6,1569.7,10248.6,1507.7,10228.6z"></path>
+                                                <path d="M227.7,8948.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,8961.6,289.7,8968.6,227.7,8948.6z"></path>
+                                                <path d="M1507.7,8948.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,8961.6,1569.7,8968.6,1507.7,8948.6z"></path>
+                                                <path d="M227.7,7668.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,7681.6,289.7,7688.6,227.7,7668.6z"></path>
+                                                <path d="M1507.7,7668.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,7681.6,1569.7,7688.6,1507.7,7668.6z"></path>
+                                                <path d="M227.7,6388.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,6401.6,289.7,6408.6,227.7,6388.6z"></path>
+                                                <path d="M1507.7,6388.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,6401.6,1569.7,6408.6,1507.7,6388.6z"></path>
+                                                <path d="M227.7,5108.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,5121.6,289.7,5128.6,227.7,5108.6z"></path>
+                                                <path d="M1507.7,5108.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,5121.6,1569.7,5128.6,1507.7,5108.6z"></path>
+                                                <path d="M227.7,3828.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,3841.6,289.7,3848.6,227.7,3828.6z"></path>
+                                                <path d="M1507.7,3828.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,3841.6,1569.7,3848.6,1507.7,3828.6z"></path>
+                                                <path d="M227.7,2548.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,2561.6,289.7,2568.6,227.7,2548.6z"></path>
+                                                <path d="M1507.7,2548.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,2561.6,1569.7,2568.6,1507.7,2548.6z"></path>
+                                                <path d="M227.7,1268.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,1281.6,289.7,1288.6,227.7,1268.6z"></path>
+                                                <path d="M1507.7,1268.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,1281.6,1569.7,1288.6,1507.7,1268.6z"></path>
+                                            </g>
+                                        </svg>
+                                        <!-- END of SVG dots-->
+                                    </div>
+                                    <div class="dots-3">
+                                        <!-- SVG Dots-->
+                                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 191.6 1215.4" style="enable-background: new 0 0 191.6 1215.4" xml:space="preserve">
+                                            <g transform="translate(0.000000,1280.000000) scale(0.100000,-0.100000)">
+                                                <path d="M227.7,12788.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,12801.6,289.7,12808.6,227.7,12788.6z"></path>
+                                                <path d="M1507.7,12788.6c-151-50-253-216-222-362c25-119,136-230,254-255c194-41,395,142,375,339c-11,105-90,213-190,262        C1663.7,12801.6,1569.7,12808.6,1507.7,12788.6z"></path>
+                                                <path d="M227.7,11508.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,11521.6,289.7,11528.6,227.7,11508.6z"></path>
+                                                <path d="M1507.7,11508.6c-151-50-253-216-222-362c25-119,136-230,254-255c194-41,395,142,375,339c-11,105-90,213-190,262        C1663.7,11521.6,1569.7,11528.6,1507.7,11508.6z"></path>
+                                                <path d="M227.7,10228.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,10241.6,289.7,10248.6,227.7,10228.6z"></path>
+                                                <path d="M1507.7,10228.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,10241.6,1569.7,10248.6,1507.7,10228.6z"></path>
+                                                <path d="M227.7,8948.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,8961.6,289.7,8968.6,227.7,8948.6z"></path>
+                                                <path d="M1507.7,8948.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,8961.6,1569.7,8968.6,1507.7,8948.6z"></path>
+                                                <path d="M227.7,7668.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,7681.6,289.7,7688.6,227.7,7668.6z"></path>
+                                                <path d="M1507.7,7668.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,7681.6,1569.7,7688.6,1507.7,7668.6z"></path>
+                                                <path d="M227.7,6388.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,6401.6,289.7,6408.6,227.7,6388.6z"></path>
+                                                <path d="M1507.7,6388.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,6401.6,1569.7,6408.6,1507.7,6388.6z"></path>
+                                                <path d="M227.7,5108.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,5121.6,289.7,5128.6,227.7,5108.6z"></path>
+                                                <path d="M1507.7,5108.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,5121.6,1569.7,5128.6,1507.7,5108.6z"></path>
+                                                <path d="M227.7,3828.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,3841.6,289.7,3848.6,227.7,3828.6z"></path>
+                                                <path d="M1507.7,3828.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,3841.6,1569.7,3848.6,1507.7,3828.6z"></path>
+                                                <path d="M227.7,2548.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,2561.6,289.7,2568.6,227.7,2548.6z"></path>
+                                                <path d="M1507.7,2548.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,2561.6,1569.7,2568.6,1507.7,2548.6z"></path>
+                                                <path d="M227.7,1268.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,1281.6,289.7,1288.6,227.7,1268.6z"></path>
+                                                <path d="M1507.7,1268.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,1281.6,1569.7,1288.6,1507.7,1268.6z"></path>
+                                            </g>
+                                        </svg>
+                                        <!-- END of SVG dots-->
+                                    </div>
+                                    <div class="dots-4">
+                                        <!-- SVG Dots-->
+                                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 191.6 1215.4" style="enable-background: new 0 0 191.6 1215.4" xml:space="preserve">
+                                            <g transform="translate(0.000000,1280.000000) scale(0.100000,-0.100000)">
+                                                <path d="M227.7,12788.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,12801.6,289.7,12808.6,227.7,12788.6z"></path>
+                                                <path d="M1507.7,12788.6c-151-50-253-216-222-362c25-119,136-230,254-255c194-41,395,142,375,339c-11,105-90,213-190,262        C1663.7,12801.6,1569.7,12808.6,1507.7,12788.6z"></path>
+                                                <path d="M227.7,11508.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,11521.6,289.7,11528.6,227.7,11508.6z"></path>
+                                                <path d="M1507.7,11508.6c-151-50-253-216-222-362c25-119,136-230,254-255c194-41,395,142,375,339c-11,105-90,213-190,262        C1663.7,11521.6,1569.7,11528.6,1507.7,11508.6z"></path>
+                                                <path d="M227.7,10228.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,10241.6,289.7,10248.6,227.7,10228.6z"></path>
+                                                <path d="M1507.7,10228.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,10241.6,1569.7,10248.6,1507.7,10228.6z"></path>
+                                                <path d="M227.7,8948.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,8961.6,289.7,8968.6,227.7,8948.6z"></path>
+                                                <path d="M1507.7,8948.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,8961.6,1569.7,8968.6,1507.7,8948.6z"></path>
+                                                <path d="M227.7,7668.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,7681.6,289.7,7688.6,227.7,7668.6z"></path>
+                                                <path d="M1507.7,7668.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,7681.6,1569.7,7688.6,1507.7,7668.6z"></path>
+                                                <path d="M227.7,6388.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,6401.6,289.7,6408.6,227.7,6388.6z"></path>
+                                                <path d="M1507.7,6388.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,6401.6,1569.7,6408.6,1507.7,6388.6z"></path>
+                                                <path d="M227.7,5108.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,5121.6,289.7,5128.6,227.7,5108.6z"></path>
+                                                <path d="M1507.7,5108.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,5121.6,1569.7,5128.6,1507.7,5108.6z"></path>
+                                                <path d="M227.7,3828.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,3841.6,289.7,3848.6,227.7,3828.6z"></path>
+                                                <path d="M1507.7,3828.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,3841.6,1569.7,3848.6,1507.7,3828.6z"></path>
+                                                <path d="M227.7,2548.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,2561.6,289.7,2568.6,227.7,2548.6z"></path>
+                                                <path d="M1507.7,2548.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,2561.6,1569.7,2568.6,1507.7,2548.6z"></path>
+                                                <path d="M227.7,1268.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,1281.6,289.7,1288.6,227.7,1268.6z"></path>
+                                                <path d="M1507.7,1268.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,1281.6,1569.7,1288.6,1507.7,1268.6z"></path>
+                                            </g>
+                                        </svg>
+                                        <!-- END of SVG dots-->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-
-              </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6">
-              <div class="journal-info">
-
-                <a href="blog-single.html"><img src="assets/img/blog-post-3.jpg" class="img-responsive" alt="img"></a>
-
-                <div class="journal-txt">
-
-                  <h4><a href="blog-single.html">NEW LIFE CIVILIZATIONS TO BOLDLY</a></h4>
-                  <p class="separator">To an English person, it will seem like simplified English
-                  </p>
-
+            </header>
+            <!-- About Section-->
+            <section class="bg-light py-5">
+                <div class="container px-5">
+                    <div class="row gx-5 justify-content-center">
+                        <div class="col-xxl-8">
+                            <div class="text-center my-5">
+                                <h2 class="display-5 fw-bolder"><span class="text-gradient d-inline">About Me</span></h2>
+                                <p class="lead fw-light mb-4">My name is Praveen Kumar. I find problem statements, build solutions, and deploy them using AI.</p>
+                                <p class="text-muted">Senior Artificial Intelligence Engineer <a href="https://trellissoft.ai/">@Trellissoft</a> with 3.5+ years of experience, I specialize in building efficient and effective ML pipelines that power cutting-edge AI solutions. From data preprocessing to model deployment, I have the skills and expertise to take your project from idea to reality. With a keen eye for detail and a passion for staying up-to-date with the latest trends and technologies in the field, I am dedicated to delivering high-quality results that exceed expectations. I also love connecting with professionals in a fun and unique way, and I am also a content creator. So, if you're ready to take your AI game to the next level, let's build something great together!</p>
+                                <div class="d-flex justify-content-center fs-2 gap-5">
+                                    <a class="text-gradient" href="https://twitter.com/InboxPraveen" target="_blank"><i class="bi bi-twitter"></i></a>
+                                    <a class="text-gradient" href="https://www.linkedin.com/in/praveen-kumar-inbox/" target="_blank"><i class="bi bi-linkedin"></i></a>
+                                    <a class="text-gradient" href="https://github.com/inboxpraveen" target="_blank"><i class="bi bi-github"></i></a>
+                                    <a class="text-gradient" href="mailto:inbox.praveen.kumar17@gmail.com" target="_blank"><i class="bi bi-envelope"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+            </section>
+        </main>
 
-              </div>
-            </div> -->
-
-          </div>
-        </div>
-      </div>
-
-    </div><!-- End Journal Section -->
-
-    <!-- ======= Journal Section ======= -->
-    <div id="social_content" class="text-left paddsection">
-
-      <div class="container">
-        <div class="section-title text-center">
-          <h1>AI-ntriguing Social Bites</h1>
-        </div>
-      </div>
-
-      <div class="container">
-
-        <div class="journal-block">
-
-          <div class="row">
-            <div class="col-lg-4 col-md-6">
-              <div class="journal-info">
-                <a href="https://www.instagram.com/p/Cet2Gm1BZQr/?igshid=MDJmNzVkMjY="><img
-                    src="assets/img/posts/social_media/p4.png" class="img-responsive" alt="social media post 1"></a>
-              </div>
+        <!-- Footer
+        <footer class="bg-white py-4 mt-auto">
+            <div class="container px-5">
+                <div class="row align-items-center justify-content-between flex-column flex-sm-row">
+                    <div class="col-auto"><div class="small m-0">Copyright &copy; Your Website 2023</div></div>
+                    <div class="col-auto">
+                        <a class="small" href="#!">Privacy</a>
+                        <span class="mx-1">&middot;</span>
+                        <a class="small" href="#!">Terms</a>
+                        <span class="mx-1">&middot;</span>
+                        <a class="small" href="#!">Contact</a>
+                    </div>
+                </div>
             </div>
+        </footer> -->
 
-            <div class="col-lg-4 col-md-6">
-              <div class="journal-info">
-                <a href="https://www.instagram.com/p/Ce3lRfMpbwy/?igshid=MDJmNzVkMjY="><img
-                    src="assets/img/posts/social_media/p6.png" class="img-responsive" alt="social media post 2"></a>
-              </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6">
-              <div class="journal-info">
-                <a href="https://www.instagram.com/p/Ce_pXXzJbj3/?igshid=MDJmNzVkMjY="><img
-                    src="assets/img/posts/social_media/p7.png" class="img-responsive" alt="social media post 3"></a>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-
-    </div><!-- End Journal Section -->
-
-    <div id="contact" class="paddsection">
-
-      <div class="container">
-        <div class="section-title text-center">
-          <h1>AI-mazing results await, let's make it happen - Contact me now</h1>
-        </div>
-      </div>
-
-      <div class="container">
-        <div id="footer" class="text-center">
-          <div class="container">
-            <p>AI-ntrigued by my skills? Let's make AI-mazing things happen. Let's make it happen in a fun and
-              professional way. Let's brainstorm and bring your AI ideas to reality, Contact me for an efficient
-              collaboration</p>
-            <p>Write me at: <u><a href="mailto:inboxpraveen.17@gmail.com"><i class="bi bi-envelope"></i>
-                  inboxpraveen.17@gmail.com</u></a></p>
-            <p>Also, don't forget to follow me for more AI insights, updates and to keep track of my latest AI projects.
-            </p>
-            <div class="socials-media text-center">
-              <ul class="list-unstyled">
-                <li><a href="https://twitter.com/inboxpraveen" target="_blank"><i class="bi bi-twitter"></i></a></li>
-                <li><a href="https://www.instagram.com/_inside_ai_/" target="_blank"><i class="bi bi-instagram"></i></a>
-                </li>
-                <li><a href="https://www.github.com/inboxpraveen" target="_blank"><i class="bi bi-github"></i></a></li>
-                <li><a href="https://www.linkedin.com/in/praveen-kumar-inbox/" target="_blank"><i
-                      class="bi bi-linkedin"></i></a></li>
-                <li><a href="https://medium.com/@inboxpraveen" target="_blank"><i class="bi bi-medium"></i></a></li>
-              </ul>
-            </div>
-            <hr>
-            <p>Full Resume</p>
-            <a class="btn" href="assets/Resume_Praveen_Kumar_28May2022.pdf">Download Here</a>
-          </div>
-        </div><!-- End Footer -->
-      </div>
-
-    </div><!-- End Portfolio Section -->
-
-  </main><!-- End #main -->
-
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
-      class="bi bi-arrow-up-short"></i></a>
-
-  <p class="container text-center lastUpdated" id="lastUpdated"></p>
-
-  <!-- Vendor JS Files -->
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="assets/vendor/typed.js/typed.min.js"></script>
-
-  <!-- Template Main JS File -->
-  <script src="assets/js/main.js"></script>
-  <script>
-    fetch('https://api.github.com/repos/inboxpraveen/inboxpraveen.github.io/commits?per_page=1')
-    .then(res => res.json())
-    .then(res => {
-      output = res[0].commit.committer.date
-      const date = new Date(output);
-      document.getElementById('lastUpdated').innerHTML = "Last Updated on: "+ date
-    })
-
-  </script>
-</body>
-
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+    </body>
 </html>
