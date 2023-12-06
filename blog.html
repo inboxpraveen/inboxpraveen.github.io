@@ -49,13 +49,13 @@
             </nav>
 
             <section>
-                <div class="container my-4">
-                    <div class="row mb-3">
+                <div class="container my-6">
+                    <div class="row mb-3 d-flex align-items-stretch">
                         <div class="col">
                             <input type="text" id="searchInput" onkeyup="searchBlog()" placeholder="Search for blog titles..." class="form-control">
                         </div>
                     </div>
-                    <div class="row" id="blogContainer">
+                    <div class="row d-flex align-items-stretch" id="blogContainer">
                         <!-- Blog tiles will be inserted here dynamically -->
                     </div>
                 </div>
@@ -77,21 +77,27 @@
             ];
         
             function createBlogTiles(blogs) {
-                const container = document.getElementById('blogContainer');
-                container.innerHTML = ''; // Clear the container
-                blogs.forEach(blog => {
-                    const colDiv = document.createElement('div');
-                    colDiv.classList.add('col-md-4', 'mb-3');
-                    colDiv.innerHTML = `
-                        <div class="card" onclick="location.href='${blog.link}'">
-                            <img src="${blog.image}" class="card-img-top" alt="${blog.title}">
-                            <div class="card-body">
-                                <h5 class="card-title">${blog.title}</h5>
+                if (blogs.length) {
+                    const container = document.getElementById('blogContainer');
+                    container.innerHTML = ''; // Clear the container
+                    blogs.forEach(blog => {
+                        const colDiv = document.createElement('div');
+                        colDiv.classList.add('col-md-4', 'mb-3');
+                        colDiv.innerHTML = `
+                            <div class="card" onclick="location.href='${blog.link}'">
+                                <img src="${blog.image}" class="img-fluid rounded mx-auto d-block" alt="${blog.title}">
+                                <div class="card-body">
+                                    <h5 class="card-title">${blog.title}</h5>
+                                </div>
                             </div>
-                        </div>
-                    `;
-                    container.appendChild(colDiv);
-                });
+                        `;
+                        container.appendChild(colDiv);
+                    });
+                }
+                else {
+                    const container = document.getElementById('blogContainer');
+                    container.innerHTML = 'Looks like the search did not match any title.';
+                }
             }
         
             function searchBlog() {
