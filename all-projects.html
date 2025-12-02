@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Projects - Praveen Kumar</title>
+    <link rel="icon" type="image/x-icon" href="assests/favicon.ico">
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo" onclick="window.location.href='index.html'" style="cursor: pointer;">PK</div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="index.html#blog">Blog</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+                <li><a href="inboxpraveen.github.io/resume/Praveen-Resume-October-2023.pdf" target="_blank" title="Updated Nov 2025">Resume</a></li>
+            </ul>
+            <button class="mobile-menu" id="mobileMenu">☰</button>
+        </div>
+    </nav>
+
+    <!-- Projects Page Header -->
+    <section class="hero" style="min-height: 60vh;">
+        <div class="container">
+            <div class="hero-content" style="text-align: center;">
+                <h1 style="font-size: clamp(2.5rem, 6vw, 4rem);">All Projects</h1>
+                <p class="hero-subtitle">Explore my complete portfolio of AI and machine learning projects</p>
+                <p class="hero-description">
+                    From cutting-edge research implementations to production-ready applications, 
+                    discover the full range of projects showcasing expertise in AI, deep learning, 
+                    computer vision, NLP, and scalable system design.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- All Projects Section -->
+    <section id="projects">
+        <div class="container">
+            <div class="projects-grid fade-in">
+                <!-- Featured Projects (from main page) -->
+                <div class="project-card">
+                    <div style="width: 100%; height: 180px; overflow: hidden; border-radius: 10px; margin-bottom: 1rem;">
+                        <img src="projects/resources/project-1/Project-Overview.png" alt="Context Search Engine" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                    </div>
+                    <h3 class="project-title">Context Search Engine</h3>
+                    <p class="project-description">
+                        AI-powered semantic document search platform using transformer embeddings and FAISS. 
+                        Goes beyond keywords to understand meaning and context in your documents.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Transformers</span>
+                        <span class="tech-tag">FAISS</span>
+                        <span class="tech-tag">NLP</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="projects/project-1.html" class="project-link">View Project</a>
+                        <a href="https://github.com/inboxpraveen/context-search-engine" class="project-link" target="_blank">Source Code</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-icon">📊</div>
+                    <h3 class="project-title">Docuvera - Loss360</h3>
+                    <p class="project-description">
+                        Enterprise multi-tenant SaaS platform for automated insurance loss run processing. 
+                        Combines OCR and domain-specific LLMs to extract structured data from unstructured documents.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">OCR</span>
+                        <span class="tech-tag">LLM</span>
+                        <span class="tech-tag">Multi-Tenant</span>
+                        <span class="tech-tag">InsurTech</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="projects/project-2.html" class="project-link">View Project</a>
+                        <a href="#" class="project-link">Case Study</a>
+                    </div>
+                </div>
+
+                <!-- Additional Projects -->
+
+                <div class="project-card">
+                    <div class="project-icon">🚗</div>
+                    <h3 class="project-title">Autonomous Vehicle Perception</h3>
+                    <p class="project-description">
+                        Computer vision pipeline for object detection and tracking in autonomous 
+                        vehicles using YOLO and Kalman filters for real-time processing.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">YOLO</span>
+                        <span class="tech-tag">OpenCV</span>
+                        <span class="tech-tag">Kalman Filter</span>
+                        <span class="tech-tag">Real-time</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="under-dev.html" class="project-link">View Project</a>
+                        <a href="under-dev.html" class="project-link">Demo Video</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-icon">📝</div>
+                    <h3 class="project-title">Document Understanding AI</h3>
+                    <p class="project-description">
+                        OCR and NLP system that extracts structured information from unstructured 
+                        documents with support for multiple languages and formats.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Tesseract</span>
+                        <span class="tech-tag">spaCy</span>
+                        <span class="tech-tag">OCR</span>
+                        <span class="tech-tag">Information Extraction</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="under-dev.html" class="project-link">View Project</a>
+                        <a href="under-dev.html" class="project-link">API Docs</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-icon">🌐</div>
+                    <h3 class="project-title">Sentiment Analysis Dashboard</h3>
+                    <p class="project-description">
+                        Real-time social media sentiment analysis platform with interactive 
+                        dashboards and trend visualization for brand monitoring.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">BERT</span>
+                        <span class="tech-tag">Streamlit</span>
+                        <span class="tech-tag">Twitter API</span>
+                        <span class="tech-tag">Plotly</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="under-dev.html" class="project-link">View Project</a>
+                        <a href="under-dev.html" class="project-link">Live Dashboard</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-icon">🔊</div>
+                    <h3 class="project-title">Speech Recognition System</h3>
+                    <p class="project-description">
+                        Custom speech-to-text system optimized for noisy environments with 
+                        speaker diarization and real-time transcription capabilities.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Whisper</span>
+                        <span class="tech-tag">PyAudio</span>
+                        <span class="tech-tag">Signal Processing</span>
+                        <span class="tech-tag">ASR</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="under-dev.html" class="project-link">View Project</a>
+                        <a href="under-dev.html" class="project-link">Try Demo</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-icon">🎯</div>
+                    <h3 class="project-title">Recommendation Engine</h3>
+                    <p class="project-description">
+                        Hybrid recommendation system combining collaborative filtering and 
+                        content-based approaches for personalized user experiences.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Surprise</span>
+                        <span class="tech-tag">Matrix Factorization</span>
+                        <span class="tech-tag">Apache Spark</span>
+                        <span class="tech-tag">Redis</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="under-dev.html" class="project-link">View Project</a>
+                        <a href="under-dev.html" class="project-link">Architecture</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-icon">⚡</div>
+                    <h3 class="project-title">Edge AI Deployment</h3>
+                    <p class="project-description">
+                        Optimized AI model deployment for edge devices using TensorRT and 
+                        quantization techniques for real-time inference on mobile hardware.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">TensorRT</span>
+                        <span class="tech-tag">ONNX</span>
+                        <span class="tech-tag">Quantization</span>
+                        <span class="tech-tag">Mobile AI</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="under-dev.html" class="project-link">View Project</a>
+                        <a href="under-dev.html" class="project-link">Benchmarks</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-title fade-in">Let's Collaborate</h2>
+            <div class="contact-content fade-in">
+                <p class="contact-text">
+                    Interested in any of these projects or want to collaborate on new AI initiatives? 
+                    I'm always excited to work on challenging problems and innovative solutions.
+                </p>
+                <div class="contact-links">
+                    <a href="mailto:inboxpraveen.17@gmail.com" class="contact-link">
+                        <span>✉️</span> Email
+                    </a>
+                    <a href="#" class="contact-link">
+                        <span>💼</span> LinkedIn
+                    </a>
+                    <a href="#" class="contact-link">
+                        <span>🐙</span> GitHub
+                    </a>
+                    <a href="#" class="contact-link">
+                        <span>🐦</span> Twitter
+                    </a>
+                    <a href="inboxpraveen.github.io/resume/Praveen-Resume-October-2023.pdf" class="contact-link" target="_blank" download>
+                        <span>📄</span> Resume <span style="font-size: 0.75em; color: var(--text-secondary);">(Updated Nov 2025)</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; <span id="copyright-year"></span> Praveen Kumar. Built with passion for AI & open source community.</p>
+        </div>
+    </footer>
+
+    <script>
+        const mobileMenu = document.getElementById('mobileMenu');
+        const navLinks = document.getElementById('navLinks');
+
+        mobileMenu.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+                // Close mobile menu if open
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all fade-in elements
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Navbar background on scroll
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.style.background = 'rgba(10, 10, 10, 0.98)';
+            } else {
+                nav.style.background = 'rgba(10, 10, 10, 0.95)';
+            }
+        });
+
+        // Add parallax effect to hero section
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('.hero');
+            const rate = scrolled * -0.5;
+            hero.style.transform = `translateY(${rate}px)`;
+        });
+
+        // Add glitch effect to logo on hover
+        const logo = document.querySelector('.logo');
+        logo.addEventListener('mouseenter', () => {
+            logo.style.animation = 'glitch 0.3s ease-in-out';
+        });
+
+        logo.addEventListener('animationend', () => {
+            logo.style.animation = '';
+        });
+
+        // Update copyright year dynamically
+        window.addEventListener('load', function() {
+            const yearElement = document.getElementById('copyright-year');
+            if (yearElement) {
+                yearElement.textContent = new Date().getFullYear();
+            }
+        });
+    </script>
+</body>
+</html>

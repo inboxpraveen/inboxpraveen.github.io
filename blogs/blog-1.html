@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Building a Hands-On Semantic Search Engine - Praveen Kumar</title>
+    <link rel="icon" type="image/x-icon" href="../assests/favicon.ico">
+    <link rel="stylesheet" href="../index.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo" onclick="window.location.href='../index.html'" style="cursor: pointer;">PK</div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../index.html#about">About</a></li>
+                <li><a href="../index.html#projects">Projects</a></li>
+                <li><a href="../index.html#blog">Blog</a></li>
+                <li><a href="../index.html#contact">Contact</a></li>
+                <li><a href="../inboxpraveen.github.io/resume/Praveen-Resume-October-2023.pdf" target="_blank" title="Updated Nov 2025">Resume</a></li>
+            </ul>
+            <button class="mobile-menu" id="mobileMenu">☰</button>
+        </div>
+    </nav>
+
+    <!-- Blog Post Page - Semantic Search Engine -->
+    <div class="page-container active">
+        <div class="page-header">
+            <div class="container">
+                <a href="../index.html#blog" class="back-button">← Back to Blog</a>
+                <h1 class="page-title">Building a Hands-On Semantic Search Engine</h1>
+                <div class="page-meta">
+                    <div class="meta-item">
+                        <span>📅</span>
+                        <span>Published: December 2, 2025</span>
+                    </div>
+                    <div class="meta-item">
+                        <span>⏱️</span>
+                        <span>12 min read</span>
+                    </div>
+                    <div class="meta-item">
+                        <span>🏷️</span>
+                        <span>NLP & Vector Search</span>
+                    </div>
+                    <div class="meta-item">
+                        <span>👁️</span>
+                        <span>892 views</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="blog-content-area">
+            <div class="content-image">🔍</div>
+            
+            <p>
+                If you've ever tried to find something in a long PDF or a folder full of documents, you know how painful 
+                keyword search can be. You type a word, and you get dozens of hits that <em>contain</em> the word but 
+                don't really understand what you mean.
+            </p>
+
+            <p>
+                The <strong>Context Search Engine</strong> project was built to solve exactly that problem—<em>and</em> 
+                to serve as a <strong>learning lab</strong> for modern semantic search. In this post, we'll walk through 
+                what the project does, how it's built, and how you can use it to understand and experiment with semantic 
+                search end to end.
+            </p>
+
+            <h2>Why I Built This Project</h2>
+            <p>
+                I didn't want just another search demo. I wanted:
+            </p>
+
+            <ul>
+                <li>A <strong>complete pipeline</strong>: upload documents → extract text → chunk → embed → index → search → explain.</li>
+                <li>A <strong>Google-style interface</strong> that feels familiar, but powered by embeddings instead of keywords.</li>
+                <li>A <strong>playground for students, researchers, and developers</strong> to learn, tweak, and break things safely.</li>
+            </ul>
+
+            <p>
+                So the <strong>objective</strong> of Context Search Engine is two-fold:
+            </p>
+
+            <ol>
+                <li><strong>Practical</strong>: Provide a local, privacy-friendly semantic search engine for PDFs, Word docs, and text files.</li>
+                <li><strong>Educational</strong>: Expose the <em>entire</em> semantic search pipeline so you can understand, debug, and experiment.</li>
+            </ol>
+
+            <h2>Who This Project Is For</h2>
+            <ul>
+                <li><strong>Students & College Grads</strong><br>
+                Learn what embeddings, FAISS, and semantic search actually <em>do</em> by playing with real documents and queries.</li>
+                <li><strong>Researchers</strong><br>
+                Test different chunking strategies, overlap sizes, and models on your own domain-specific corpora.</li>
+                <li><strong>Developers & Data Scientists</strong><br>
+                Use it as a microservice, a prototype, or a reference implementation for document search in your own apps.</li>
+            </ul>
+
+            <h2>The User Experience: A Google-Style Search Lab</h2>
+            <p>
+                When you run the app and open it in your browser (<code>http://localhost:5000</code>), you get a 
+                <strong>clean, centered search box</strong>—very similar to Google.
+            </p>
+
+            <p>From there, you can:</p>
+
+            <ul>
+                <li><strong>Upload Documents</strong>: Drag-and-drop PDFs, DOCX, or TXT files.</li>
+                <li><strong>Configure the Engine</strong>: Choose your embedding model, chunk size, overlap, and search parameters.</li>
+                <li><strong>Manage Documents</strong>: View and delete existing documents through a simple dashboard.</li>
+                <li><strong>Search Semantically</strong>: Type at least 3 characters and see results update with a slight delay (500ms debounce).</li>
+            </ul>
+
+            <p>Each search result includes:</p>
+            <ul>
+                <li>Rank (#1, #2, …)</li>
+                <li>Document name</li>
+                <li>Page number (for PDFs)</li>
+                <li>Chunk number</li>
+                <li>Matched text snippet</li>
+                <li>Relevance score</li>
+                <li>A "View Source" button to jump back to context</li>
+            </ul>
+
+            <h2>High-Level Architecture</h2>
+            <p>
+                At a high level, the Context Search Engine works like this:
+            </p>
+
+            <div class="diagram-container">
+                <div class="diagram">Document Processing Pipeline</div>
+                <p style="margin-top: 1rem; color: var(--text-secondary);">
+                    Upload → Extract → Chunk → Embed → Index → Search → Results
+                </p>
+            </div>
+
+            <h3>The Seven-Step Pipeline</h3>
+            <div class="table-container">
+                <table class="content-table">
+                    <thead>
+                        <tr>
+                            <th>Step</th>
+                            <th>What Happens</th>
+                            <th>Technology</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1. Upload</td>
+                            <td>User uploads files via web UI</td>
+                            <td>Flask file handling</td>
+                        </tr>
+                        <tr>
+                            <td>2. Extract</td>
+                            <td>Text extraction from documents</td>
+                            <td>PyPDF2, python-docx</td>
+                        </tr>
+                        <tr>
+                            <td>3. Chunk</td>
+                            <td>Split text with configurable overlap</td>
+                            <td>Custom chunking logic</td>
+                        </tr>
+                        <tr>
+                            <td>4. Embed</td>
+                            <td>Convert chunks to vectors</td>
+                            <td>HuggingFace Transformers</td>
+                        </tr>
+                        <tr>
+                            <td>5. Index</td>
+                            <td>Store vectors for fast search</td>
+                            <td>FAISS</td>
+                        </tr>
+                        <tr>
+                            <td>6. Search</td>
+                            <td>Find similar chunks for query</td>
+                            <td>FAISS similarity search</td>
+                        </tr>
+                        <tr>
+                            <td>7. Results</td>
+                            <td>Display with metadata</td>
+                            <td>Web UI with ranking</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h2>A Look at the Core Logic</h2>
+            <p>
+                At its heart, the engine is doing three things:
+            </p>
+
+            <ol>
+                <li><strong>Chunk the text</strong> into overlapping windows.</li>
+                <li><strong>Embed each chunk</strong> with a transformer model.</li>
+                <li><strong>Search with FAISS</strong> using the query embedding.</li>
+            </ol>
+
+            <p>
+                Here's a simplified, self-contained version of the core logic:
+            </p>
+
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-language">Python - Semantic Search Engine Core</span>
+                    <button class="copy-button">Copy</button>
+                </div>
+                <pre><code><span class="keyword">from</span> typing <span class="keyword">import</span> List, Dict, Any
+<span class="keyword">import</span> numpy <span class="keyword">as</span> np
+<span class="keyword">import</span> faiss
+<span class="keyword">import</span> torch
+<span class="keyword">from</span> transformers <span class="keyword">import</span> AutoTokenizer, AutoModel
+
+<span class="keyword">class</span> <span class="function">SemanticSearchEngine</span>:
+    <span class="keyword">def</span> <span class="function">__init__</span>(self, model_name: str = <span class="string">"distilbert-base-uncased"</span>, dimension: int = <span class="number">768</span>):
+        self.model_name = model_name
+        self.dimension = dimension
+        <span class="comment"># 1. Load model & tokenizer</span>
+        self.tokenizer = AutoTokenizer.from_pretrained(model_name)
+        self.model = AutoModel.from_pretrained(model_name)
+        <span class="comment"># 2. Initialize FAISS index (L2 distance)</span>
+        self.index = faiss.IndexFlatL2(dimension)
+        <span class="comment"># 3. Keep metadata for each vector</span>
+        self.metadata: Dict[int, Dict[str, Any]] = {}
+        self._next_id = <span class="number">0</span></code></pre>
+            </div>
+
+            <h3>Chunking Logic</h3>
+            <p>
+                Documents are split into overlapping chunks to preserve context at boundaries:
+            </p>
+
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-language">Python - Chunking with Overlap</span>
+                    <button class="copy-button">Copy</button>
+                </div>
+                <pre><code>    <span class="keyword">def</span> <span class="function">_chunk_text</span>(self, text: str, chunk_size: int = <span class="number">500</span>, overlap: int = <span class="number">50</span>) -> List[str]:
+        words = text.split()
+        chunks = []
+        start = <span class="number">0</span>
+        <span class="keyword">while</span> start < len(words):
+            end = start + chunk_size
+            chunk_words = words[start:end]
+            chunks.append(<span class="string">" "</span>.join(chunk_words))
+            <span class="comment"># Step forward by chunk_size - overlap</span>
+            start += max(chunk_size - overlap, <span class="number">1</span>)
+        <span class="keyword">return</span> chunks</code></pre>
+            </div>
+
+            <h3>Embedding and Search</h3>
+            <p>
+                Each chunk is converted to a vector, and queries are matched using cosine similarity:
+            </p>
+
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-language">Python - Embedding & Search</span>
+                    <button class="copy-button">Copy</button>
+                </div>
+                <pre><code>    @torch.no_grad()
+    <span class="keyword">def</span> <span class="function">_embed_batch</span>(self, texts: List[str]) -> np.ndarray:
+        inputs = self.tokenizer(texts, padding=True, truncation=True, return_tensors=<span class="string">"pt"</span>)
+        outputs = self.model(**inputs)
+        <span class="comment"># Mean pooling over tokens</span>
+        embeddings = outputs.last_hidden_state.mean(dim=<span class="number">1</span>)
+        embeddings = embeddings / embeddings.norm(dim=<span class="number">1</span>, keepdim=True)
+        <span class="keyword">return</span> embeddings.cpu().numpy().astype(<span class="string">"float32"</span>)
+
+    <span class="keyword">def</span> <span class="function">search</span>(self, query: str, top_k: int = <span class="number">5</span>) -> List[Dict[str, Any]]:
+        query_vec = self._embed_batch([query])
+        distances, indices = self.index.search(query_vec, top_k)
+        results = []
+        <span class="keyword">for</span> score, idx <span class="keyword">in</span> zip(distances[<span class="number">0</span>], indices[<span class="number">0</span>]):
+            <span class="keyword">if</span> idx == -<span class="number">1</span> <span class="keyword">or</span> idx <span class="keyword">not in</span> self.metadata:
+                <span class="keyword">continue</span>
+            meta = self.metadata[idx]
+            results.append({
+                <span class="string">"score"</span>: float(score),
+                <span class="string">"document_id"</span>: meta[<span class="string">"document_id"</span>],
+                <span class="string">"page"</span>: meta[<span class="string">"page"</span>],
+                <span class="string">"text"</span>: meta[<span class="string">"text"</span>],
+            })
+        <span class="keyword">return</span> results</code></pre>
+            </div>
+
+            <h2>Configuration as a First-Class Citizen</h2>
+            <p>
+                Instead of hard-coding choices, the app uses a JSON configuration file: <code>app_config.json</code>.
+            </p>
+
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-language">JSON - Configuration</span>
+                    <button class="copy-button">Copy</button>
+                </div>
+                <pre><code>{
+  <span class="string">"model_repo_id"</span>: <span class="string">"distilbert-base-uncased"</span>,
+  <span class="string">"chunk_size"</span>: <span class="number">500</span>,
+  <span class="string">"chunk_overlap"</span>: <span class="number">50</span>,
+  <span class="string">"num_search_results"</span>: <span class="number">5</span>,
+  <span class="string">"top_k"</span>: <span class="number">10</span>,
+  <span class="string">"dimension"</span>: <span class="number">768</span>
+}</code></pre>
+            </div>
+
+            <p>
+                When you change key parameters like <strong>model_repo_id</strong>, <strong>dimension</strong>, 
+                or <strong>chunking</strong>, the app prompts you to <strong>rebuild the index</strong>, ensuring 
+                the FAISS index and embeddings always stay in sync.
+            </p>
+
+            <div class="content-image">🧪</div>
+
+            <h2>Experiment Ideas</h2>
+            <p>
+                Here are some concrete experiments you can run with the Context Search Engine:
+            </p>
+
+            <h3>1. Compare Chunk Sizes</h3>
+            <ul>
+                <li>Try <code>chunk_size = 300</code>, <code>500</code>, and <code>1000</code></li>
+                <li>Keep overlap constant (e.g., <code>50</code>)</li>
+                <li>Upload the same documents, rebuild index each time</li>
+                <li>Do smaller chunks give more precise but fragmented answers?</li>
+                <li>Do larger chunks give more context but sometimes irrelevant text?</li>
+            </ul>
+
+            <h3>2. Test Different Models</h3>
+            <p>Switch between:</p>
+            <ul>
+                <li><code>distilbert-base-uncased</code> (fast, good starter)</li>
+                <li><code>sentence-transformers/all-MiniLM-L6-v2</code> (384-dim, lightweight)</li>
+                <li><code>sentence-transformers/all-mpnet-base-v2</code> (768-dim, high quality)</li>
+            </ul>
+            <p>Observe query latency and relevance of results.</p>
+
+            <h3>3. Domain-Specific Documents</h3>
+            <p>
+                Upload documents from a particular domain (medical, legal, technical, finance) and ask 
+                domain-specific questions. See how well a general-purpose model performs. This can guide 
+                you toward whether you need fine-tuning or a domain-specific model.
+            </p>
+
+            <h2>Challenges & Lessons Learned</h2>
+            
+            <h3>Handling Context at Chunk Boundaries</h3>
+            <p>
+                <strong>Problem:</strong> Splitting text into chunks risks cutting important sentences in half.
+            </p>
+            <p>
+                <strong>Approach:</strong> Use overlapping chunks. The <code>chunk_overlap</code> parameter ensures 
+                that adjacent chunks share some words, so relevant information near boundaries appears in more than one chunk.
+            </p>
+
+            <h3>Matching Models and FAISS</h3>
+            <p>
+                <strong>Problem:</strong> Different models have different output dimensions. FAISS index dimensions must match exactly.
+            </p>
+            <p>
+                <strong>Approach:</strong> Make <code>dimension</code> a required configuration parameter and validate it 
+                against the selected model. When either changes, force a full index rebuild so the vectors and FAISS structure 
+                remain consistent.
+            </p>
+
+            <h3>Balancing Speed and Quality</h3>
+            <p>
+                <strong>Problem:</strong> Bigger models and large <code>top_k</code> values improve result quality but increase latency.
+            </p>
+            <p>
+                <strong>Approach:</strong> Make <code>top_k</code>, <code>num_search_results</code>, and model choice configurable 
+                so users can find their own speed/accuracy trade-off. On a laptop, <code>top_k = 10</code> is a good starting point.
+            </p>
+
+            <h2>Running the Project Locally</h2>
+            <p>
+                You only need Python and pip to get started:
+            </p>
+
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-language">Bash - Setup Commands</span>
+                    <button class="copy-button">Copy</button>
+                </div>
+                <pre><code><span class="comment"># 1. Clone the repo</span>
+git clone https://github.com/inboxpraveen/context-search-engine.git
+cd context-search-engine
+
+<span class="comment"># 2. Install dependencies</span>
+pip install -r requirements.txt
+
+<span class="comment"># 3. Run the app</span>
+python app.py
+
+<span class="comment"># 4. Open in browser</span>
+<span class="comment"># Navigate to http://localhost:5000</span></code></pre>
+            </div>
+
+            <p>
+                On first run, the model will be downloaded (around ~250 MB). After that, everything runs locally.
+            </p>
+
+            <h2>Closing Thoughts</h2>
+            <p>
+                The <strong>Context Search Engine</strong> is not just a tool—it's a <strong>sandbox</strong> for 
+                learning how modern semantic search systems really work. You can peek under the hood, change parameters, 
+                swap models, and see in real time how those decisions affect retrieval quality.
+            </p>
+
+            <p>
+                If you're interested in information retrieval, NLP, or building intelligent document systems, cloning 
+                the repo and playing with your own documents is one of the most practical ways to get started.
+            </p>
+
+            <blockquote>
+                "The best way to understand semantic search is to build one yourself. This project gives you all 
+                the pieces—now it's your turn to experiment."
+            </blockquote>
+
+            <div style="margin-top: 3rem; padding: 2rem; background: var(--secondary-bg); border-radius: 15px; border: 1px solid var(--border-color);">
+                <h3 style="margin-top: 0;">Resources & Links</h3>
+                <ul style="margin-bottom: 2rem;">
+                    <li><a href="https://github.com/inboxpraveen/context-search-engine" style="color: var(--accent-color);" target="_blank">GitHub Repository</a></li>
+                    <li><a href="https://github.com/inboxpraveen/context-search-engine#readme" style="color: var(--accent-color);" target="_blank">Full Documentation</a></li>
+                    <li><a href="https://www.sbert.net/" style="color: var(--accent-color);" target="_blank">Sentence Transformers Documentation</a></li>
+                    <li><a href="https://faiss.ai/" style="color: var(--accent-color);" target="_blank">FAISS Documentation</a></li>
+                    <li><a href="https://huggingface.co/docs/transformers/" style="color: var(--accent-color);" target="_blank">HuggingFace Transformers</a></li>
+                </ul>
+                
+                <h4>Tags:</h4>
+                <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 1rem;">
+                    <span class="tech-tag">#SemanticSearch</span>
+                    <span class="tech-tag">#VectorSearch</span>
+                    <span class="tech-tag">#FAISS</span>
+                    <span class="tech-tag">#NLP</span>
+                    <span class="tech-tag">#Embeddings</span>
+                    <span class="tech-tag">#InformationRetrieval</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer style="margin-top: 4rem;">
+        <div class="container">
+            <p>&copy; <span id="copyright-year"></span> Praveen Kumar. Built with passion for AI & open source community.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu functionality
+        const mobileMenu = document.getElementById('mobileMenu');
+        const navLinks = document.getElementById('navLinks');
+
+        mobileMenu.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Copy button functionality
+        document.addEventListener('click', function(e) {
+            if (e.target.classList.contains('copy-button')) {
+                const codeBlock = e.target.closest('.code-block');
+                const code = codeBlock.querySelector('pre').textContent;
+                
+                navigator.clipboard.writeText(code).then(() => {
+                    e.target.textContent = 'Copied!';
+                    setTimeout(() => {
+                        e.target.textContent = 'Copy';
+                    }, 2000);
+                });
+            }
+        });
+
+        // Navbar background on scroll
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.style.background = 'rgba(10, 10, 10, 0.98)';
+            } else {
+                nav.style.background = 'rgba(10, 10, 10, 0.95)';
+            }
+        });
+
+        // Update copyright year dynamically
+        window.addEventListener('load', function() {
+            const yearElement = document.getElementById('copyright-year');
+            if (yearElement) {
+                yearElement.textContent = new Date().getFullYear();
+            }
+        });
+    </script>
+</body>
+</html>

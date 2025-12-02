@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Context Search Engine - Praveen Kumar</title>
+    <link rel="icon" type="image/x-icon" href="../assests/favicon.ico">
+    <link rel="stylesheet" href="../index.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo" onclick="window.location.href='../index.html'" style="cursor: pointer;">PK</div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../index.html#about">About</a></li>
+                <li><a href="../index.html#projects">Projects</a></li>
+                <li><a href="../index.html#blog">Blog</a></li>
+                <li><a href="../index.html#contact">Contact</a></li>
+                <li><a href="../inboxpraveen.github.io/resume/Praveen-Resume-October-2023.pdf" target="_blank" title="Updated Nov 2025">Resume</a></li>
+            </ul>
+            <button class="mobile-menu" id="mobileMenu">☰</button>
+        </div>
+    </nav>
+
+    <!-- Project Page - Context Search Engine -->
+    <div class="page-container active">
+        <div class="page-header">
+            <div class="container">
+                <a href="../index.html#projects" class="back-button">← Back to Projects</a>
+                <h1 class="page-title">Context Search Engine</h1>
+                <div class="page-meta">
+                    <div class="meta-item">
+                        <span>📅</span>
+                        <span>Completed: December 2025</span>
+                    </div>
+                    <div class="meta-item">
+                        <span>⏱️</span>
+                        <span>Version: 2.0.0</span>
+                    </div>
+                    <div class="meta-item">
+                        <span>👥</span>
+                        <span>Team Size: Solo</span>
+                    </div>
+                    <div class="meta-item">
+                        <span>🏷️</span>
+                        <span>NLP & Vector Search</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2>Project Overview</h2>
+            <p>
+                The <strong>Context Search Engine</strong> is an AI-powered semantic document search platform that demonstrates 
+                the full pipeline from document ingestion to context-aware query results using modern vector search. It is designed 
+                as a <strong>learning and experimentation lab</strong> for students, researchers, and developers who want to 
+                understand how semantic search works beyond simple keyword matching.
+            </p>
+            
+            <div style="text-align: center; margin: 2rem 0;">
+                <img src="resources/project-1/Project-Overview.png" alt="Context Search Engine Overview" style="max-width: 100%; height: auto; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);">
+            </div>
+            
+            <p>
+                The system processes documents (PDF, DOCX, TXT), chunks them intelligently, converts text to embeddings using 
+                transformer models, and performs similarity search using FAISS. Unlike traditional keyword search, this semantic 
+                approach understands meaning and context, returning conceptually related results even when exact words don't match.
+            </p>
+
+            <h2>Technical Architecture</h2>
+            <div style="text-align: center; margin: 2rem 0;">
+                <img src="resources/project-1/Project-Architecture.png" alt="Context Search Engine Architecture" style="max-width: 100%; height: auto; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);">
+            </div>
+            <div class="diagram-container">
+                <p style="margin-top: 1rem; color: var(--text-secondary); text-align: center;">
+                    Document Upload → Text Extraction → Chunking → Embeddings → FAISS Index → Semantic Search
+                </p>
+            </div>
+
+            <h3>Key Components</h3>
+            <div class="tech-stack">
+                <div class="tech-category">
+                    <h4>NLP & Embeddings</h4>
+                    <div class="tech-list">
+                        <span class="tech-item">Transformers</span>
+                        <span class="tech-item">PyTorch</span>
+                        <span class="tech-item">HuggingFace</span>
+                        <span class="tech-item">DistilBERT</span>
+                    </div>
+                </div>
+                <div class="tech-category">
+                    <h4>Vector Search</h4>
+                    <div class="tech-list">
+                        <span class="tech-item">FAISS</span>
+                        <span class="tech-item">NumPy</span>
+                        <span class="tech-item">Similarity Search</span>
+                        <span class="tech-item">Indexing</span>
+                    </div>
+                </div>
+                <div class="tech-category">
+                    <h4>Document Processing</h4>
+                    <div class="tech-list">
+                        <span class="tech-item">PyPDF2</span>
+                        <span class="tech-item">python-docx</span>
+                        <span class="tech-item">Flask</span>
+                        <span class="tech-item">HTML/CSS/JS</span>
+                    </div>
+                </div>
+            </div>
+
+            <h2>Implementation Details</h2>
+            <p>
+                The core logic of the system can be summarized as: <strong>configurable chunking → embedding with a 
+                transformer model → FAISS similarity search over chunk vectors</strong>. Below is a simplified implementation:
+            </p>
+
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-language">Python - Core Search Engine</span>
+                    <button class="copy-button">Copy</button>
+                </div>
+                <pre><code><span class="keyword">from</span> pathlib <span class="keyword">import</span> Path
+<span class="keyword">from</span> typing <span class="keyword">import</span> List, Dict, Any
+<span class="keyword">import</span> faiss
+<span class="keyword">import</span> numpy <span class="keyword">as</span> np
+<span class="keyword">from</span> transformers <span class="keyword">import</span> AutoTokenizer, AutoModel
+<span class="keyword">import</span> torch
+
+<span class="keyword">class</span> <span class="function">SemanticSearchEngine</span>:
+    <span class="keyword">def</span> <span class="function">__init__</span>(self, model_name: str = <span class="string">"distilbert-base-uncased"</span>, dimension: int = <span class="number">768</span>):
+        self.model_name = model_name
+        self.dimension = dimension
+        <span class="comment"># Load embedding model</span>
+        self.tokenizer = AutoTokenizer.from_pretrained(model_name)
+        self.model = AutoModel.from_pretrained(model_name)
+        <span class="comment"># Initialize FAISS index</span>
+        self.index = faiss.IndexFlatL2(dimension)
+        self.metadata: Dict[int, Dict[str, Any]] = {}
+        self._next_id = <span class="number">0</span></code></pre>
+            </div>
+
+            <h3>Chunking & Embedding Process</h3>
+            <p>
+                Documents are split into overlapping chunks to preserve context, then converted to embeddings using 
+                mean pooling over transformer outputs:
+            </p>
+
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-language">Python - Chunking & Embeddings</span>
+                    <button class="copy-button">Copy</button>
+                </div>
+                <pre><code>    <span class="keyword">def</span> <span class="function">_simple_chunk</span>(self, text: str, chunk_size: int = <span class="number">500</span>, overlap: int = <span class="number">50</span>) -> List[str]:
+        words = text.split()
+        chunks = []
+        start = <span class="number">0</span>
+        <span class="keyword">while</span> start < len(words):
+            end = start + chunk_size
+            chunk_words = words[start:end]
+            chunks.append(<span class="string">" "</span>.join(chunk_words))
+            start += max(chunk_size - overlap, <span class="number">1</span>)
+        <span class="keyword">return</span> chunks
+
+    @torch.no_grad()
+    <span class="keyword">def</span> <span class="function">_embed_texts</span>(self, texts: List[str]) -> np.ndarray:
+        inputs = self.tokenizer(texts, padding=True, truncation=True, return_tensors=<span class="string">"pt"</span>)
+        outputs = self.model(**inputs)
+        <span class="comment"># Mean pooling over token embeddings</span>
+        embeddings = outputs.last_hidden_state.mean(dim=<span class="number">1</span>)
+        embeddings = embeddings / embeddings.norm(dim=<span class="number">1</span>, keepdim=True)
+        <span class="keyword">return</span> embeddings.cpu().numpy().astype(<span class="string">"float32"</span>)</code></pre>
+            </div>
+
+            <h2>Project Results</h2>
+            <div class="project-stats">
+                <div class="stat-box">
+                    <div class="stat-value">768</div>
+                    <div class="stat-label">Embedding Dimensions</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-value">&lt;200ms</div>
+                    <div class="stat-label">Query Latency</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-value">3</div>
+                    <div class="stat-label">File Formats</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-value">Local</div>
+                    <div class="stat-label">Privacy-First</div>
+                </div>
+            </div>
+
+            <h3>System Capabilities</h3>
+            <div class="table-container">
+                <table class="content-table">
+                    <thead>
+                        <tr>
+                            <th>Feature</th>
+                            <th>Description</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Semantic Search</td>
+                            <td>Context-aware query results beyond keywords</td>
+                            <td>✅ Live</td>
+                        </tr>
+                        <tr>
+                            <td>Document Processing</td>
+                            <td>PDF, DOCX, TXT with metadata extraction</td>
+                            <td>✅ Live</td>
+                        </tr>
+                        <tr>
+                            <td>Configurable Pipeline</td>
+                            <td>Adjustable models, chunk size, overlap</td>
+                            <td>✅ Live</td>
+                        </tr>
+                        <tr>
+                            <td>Index Management</td>
+                            <td>FAISS-based vector storage & search</td>
+                            <td>✅ Live</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h2>Live Demo</h2>
+            <div class="demo-section">
+                <h3>Try Context Search Engine</h3>
+                <p>Upload your documents and experience semantic search that understands meaning, not just keywords!</p>
+                <div style="display: flex; justify-content: center; align-items: center; gap: 1rem; flex-wrap: wrap; margin-bottom: 1.5rem;">
+                    <a href="https://github.com/inboxpraveen/context-search-engine" class="demo-button" target="_blank">Clone & Run Locally</a>
+                    <a href="https://github.com/inboxpraveen/context-search-engine#readme" class="demo-button" target="_blank" style="background: var(--secondary-bg); color: var(--accent-color); border: 1px solid var(--accent-color);">View Documentation</a>
+                </div>
+                <div style="text-align: center; margin: 2rem 0;">
+                    <img src="resources/project-1/Dashboard-With-Documents.png" alt="Context Search Engine Dashboard" style="max-width: 100%; height: auto; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);">
+                </div>
+            </div>
+
+            <h2>Challenges & Solutions</h2>
+            <p>
+                <strong>Document Boundary & Context Loss:</strong> Splitting long text into chunks can cut important context. 
+                Solved by implementing configurable chunk size and overlap, ensuring that information near boundaries is 
+                present in multiple chunks, preserving semantic continuity across splits.
+            </p>
+            
+            <p>
+                <strong>Model Compatibility & Dimensions:</strong> Different models output different embedding dimensions; 
+                FAISS index must match. Solved with explicit dimension parameter in configuration, validated when building 
+                the index. UI prompts users to rebuild when changing model or dimension.
+            </p>
+
+            <p>
+                <strong>Balancing Speed vs Quality:</strong> Larger models and higher top_k values improve quality but cost time. 
+                Solved with configurable model, top_k, and num_search_results, allowing users to empirically find optimal 
+                trade-offs for their specific use case and corpus size.
+            </p>
+
+            <h2>Future Enhancements</h2>
+            <ul>
+                <li><strong>Version 2.1:</strong> Multi-user support with authentication, document folders, search history, and export results</li>
+                <li><strong>Version 2.2:</strong> Batch upload, advanced filters (date, type, tags), text highlighting, and query suggestions</li>
+                <li><strong>Version 3.0:</strong> Full RESTful API, Docker support, cloud deployment templates (AWS/GCP/Azure), analytics dashboard</li>
+                <li><strong>Long-term:</strong> GPU-accelerated FAISS, incremental indexing, hybrid search (keyword + semantic), and OCR integration</li>
+                <li>Multilingual support for both UI and search capabilities</li>
+            </ul>
+
+            <div style="margin-top: 3rem; padding: 2rem; background: var(--secondary-bg); border-radius: 15px; border: 1px solid var(--border-color);">
+                <h3 style="margin-top: 0;">Project Links</h3>
+                <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1rem;">
+                    <a href="https://github.com/inboxpraveen/context-search-engine" class="demo-button" style="margin: 0;" target="_blank">GitHub Repository</a>
+                    <a href="https://github.com/inboxpraveen/context-search-engine#readme" class="demo-button" style="margin: 0; background: var(--secondary-bg); color: var(--accent-color); border: 1px solid var(--accent-color);" target="_blank">Documentation</a>
+                    <a href="mailto:inboxpraveen.17@gmail.com" class="demo-button" style="margin: 0; background: var(--secondary-bg); color: var(--accent-color); border: 1px solid var(--accent-color);">Contact Author</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer style="margin-top: 4rem;">
+        <div class="container">
+            <p>&copy; <span id="copyright-year"></span> Praveen Kumar. Built with passion for AI & open source community.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu functionality
+        const mobileMenu = document.getElementById('mobileMenu');
+        const navLinks = document.getElementById('navLinks');
+
+        mobileMenu.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Copy button functionality
+        document.addEventListener('click', function(e) {
+            if (e.target.classList.contains('copy-button')) {
+                const codeBlock = e.target.closest('.code-block');
+                const code = codeBlock.querySelector('pre').textContent;
+                
+                navigator.clipboard.writeText(code).then(() => {
+                    e.target.textContent = 'Copied!';
+                    setTimeout(() => {
+                        e.target.textContent = 'Copy';
+                    }, 2000);
+                });
+            }
+        });
+
+        // Navbar background on scroll
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.style.background = 'rgba(10, 10, 10, 0.98)';
+            } else {
+                nav.style.background = 'rgba(10, 10, 10, 0.95)';
+            }
+        });
+
+        // Update copyright year dynamically
+        window.addEventListener('load', function() {
+            const yearElement = document.getElementById('copyright-year');
+            if (yearElement) {
+                yearElement.textContent = new Date().getFullYear();
+            }
+        });
+    </script>
+</body>
+</html>

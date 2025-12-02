@@ -1,0 +1,1150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Under Development | Praveen Kumar</title>
+    <link rel="icon" type="image/x-icon" href="assests/favicon.ico">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-bg: #0a0a0a;
+            --secondary-bg: #1a1a1a;
+            --accent-bg: #2a2a2a;
+            --text-primary: #ffffff;
+            --text-secondary: #b0b0b0;
+            --accent-color: #00d4ff;
+            --accent-gradient: linear-gradient(135deg, #00d4ff, #0099cc);
+            --border-color: #333333;
+            --success-color: #4ade80;
+            --warning-color: #fbbf24;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        body {
+            font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--primary-bg);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-decoration: none;
+            cursor: pointer;
+            transition: var(--transition);
+            display: inline-block;
+        }
+
+        .logo:hover {
+            animation: glitch 0.3s ease-in-out;
+        }
+
+        @keyframes glitch {
+            0% { transform: translate(0); }
+            20% { transform: translate(-2px, 2px); }
+            40% { transform: translate(-2px, -2px); }
+            60% { transform: translate(2px, 2px); }
+            80% { transform: translate(2px, -2px); }
+            100% { transform: translate(0); }
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-color);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-gradient);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Main Development Section */
+        .development-container {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 100px 20px 20px;
+            position: relative;
+        }
+
+        /* Animated Background Grid */
+        .bg-grid {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(0, 212, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 212, 255, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: gridMove 20s linear infinite;
+            z-index: -1;
+        }
+
+        @keyframes gridMove {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+
+        /* Floating Code Elements */
+        .code-float {
+            position: absolute;
+            font-family: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace;
+            font-size: 0.8rem;
+            color: var(--accent-color);
+            opacity: 0.2;
+            animation: codeFloat 15s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        .code-float:nth-child(1) {
+            top: 15%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .code-float:nth-child(2) {
+            top: 25%;
+            right: 15%;
+            animation-delay: 3s;
+        }
+
+        .code-float:nth-child(3) {
+            bottom: 30%;
+            left: 20%;
+            animation-delay: 6s;
+        }
+
+        .code-float:nth-child(4) {
+            bottom: 20%;
+            right: 10%;
+            animation-delay: 9s;
+        }
+
+        .code-float:nth-child(5) {
+            top: 50%;
+            left: 5%;
+            animation-delay: 12s;
+        }
+
+        @keyframes codeFloat {
+            0%, 100% { 
+                transform: translateY(0px) rotate(0deg);
+                opacity: 0.1;
+            }
+            50% { 
+                transform: translateY(-30px) rotate(5deg);
+                opacity: 0.3;
+            }
+        }
+
+        .development-content {
+            text-align: center;
+            max-width: 700px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Animated Icon */
+        .dev-icon {
+            font-size: 6rem;
+            margin-bottom: 2rem;
+            display: inline-block;
+            animation: pulse 2s ease-in-out infinite;
+            filter: drop-shadow(0 0 20px rgba(0, 212, 255, 0.3));
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .dev-title {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            opacity: 0;
+            animation: fadeInUp 1s ease-out 0.3s forwards;
+        }
+
+        .dev-subtitle {
+            font-size: 1.3rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            opacity: 0;
+            animation: fadeInUp 1s ease-out 0.5s forwards;
+        }
+
+        .dev-message {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 3rem;
+            line-height: 1.7;
+            opacity: 0;
+            animation: fadeInUp 1s ease-out 0.7s forwards;
+        }
+
+        /* Progress Section */
+        .progress-section {
+            margin: 3rem 0;
+            opacity: 0;
+            animation: fadeInUp 1s ease-out 0.9s forwards;
+        }
+
+        .progress-title {
+            font-size: 1.2rem;
+            color: var(--accent-color);
+            margin-bottom: 2rem;
+            font-weight: 600;
+        }
+
+        .progress-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .progress-item {
+            background: var(--secondary-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 15px;
+            padding: 1.5rem;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .progress-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.05), transparent);
+            transition: var(--transition);
+        }
+
+        .progress-item:hover::before {
+            left: 100%;
+        }
+
+        .progress-item:hover {
+            border-color: var(--accent-color);
+            transform: translateY(-2px);
+        }
+
+        .progress-item-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .progress-icon {
+            font-size: 1.5rem;
+        }
+
+        .progress-item h3 {
+            color: var(--text-primary);
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        .progress-status {
+            font-size: 0.8rem;
+            padding: 0.25rem 0.75rem;
+            border-radius: 15px;
+            font-weight: 500;
+            margin-left: auto;
+        }
+
+        .status-completed {
+            background: rgba(74, 222, 128, 0.2);
+            color: var(--success-color);
+            border: 1px solid rgba(74, 222, 128, 0.3);
+        }
+
+        .status-in-progress {
+            background: rgba(251, 191, 36, 0.2);
+            color: var(--warning-color);
+            border: 1px solid rgba(251, 191, 36, 0.3);
+        }
+
+        .status-planned {
+            background: rgba(0, 212, 255, 0.2);
+            color: var(--accent-color);
+            border: 1px solid rgba(0, 212, 255, 0.3);
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: var(--accent-bg);
+            border-radius: 4px;
+            overflow: hidden;
+            margin: 1rem 0;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--accent-gradient);
+            border-radius: 4px;
+            transition: width 2s ease-out;
+            animation: progressAnimation 2s ease-out;
+        }
+
+        @keyframes progressAnimation {
+            from { width: 0%; }
+        }
+
+        .progress-description {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        /* Overall Progress */
+        .overall-progress {
+            background: var(--secondary-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .overall-progress h3 {
+            color: var(--accent-color);
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .overall-bar {
+            width: 100%;
+            height: 12px;
+            background: var(--accent-bg);
+            border-radius: 6px;
+            overflow: hidden;
+            margin: 1rem 0;
+            position: relative;
+        }
+
+        .overall-fill {
+            height: 100%;
+            background: var(--accent-gradient);
+            border-radius: 6px;
+            width: 72%;
+            transition: width 3s ease-out;
+            animation: overallProgress 3s ease-out;
+            position: relative;
+        }
+
+        .overall-fill::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            animation: shimmer 2s infinite;
+        }
+
+        @keyframes overallProgress {
+            from { width: 0%; }
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        .overall-stats {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .overall-percentage {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent-color);
+            text-align: center;
+            margin: 1rem 0;
+        }
+
+        /* Timeline Section */
+        .timeline-section {
+            margin: 3rem 0;
+            opacity: 0;
+            animation: fadeInUp 1s ease-out 1.1s forwards;
+        }
+
+        .timeline-title {
+            font-size: 1.2rem;
+            color: var(--accent-color);
+            margin-bottom: 2rem;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 100%;
+            background: var(--border-color);
+            top: 0;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin: 2rem 0;
+            opacity: 0;
+            animation: fadeInTimeline 1s ease-out forwards;
+        }
+
+        .timeline-item:nth-child(1) { animation-delay: 1.3s; }
+        .timeline-item:nth-child(2) { animation-delay: 1.5s; }
+        .timeline-item:nth-child(3) { animation-delay: 1.7s; }
+        .timeline-item:nth-child(4) { animation-delay: 1.9s; }
+
+        @keyframes fadeInTimeline {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .timeline-content {
+            background: var(--secondary-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 1rem 1.5rem;
+            position: relative;
+            width: calc(50% - 20px);
+            transition: var(--transition);
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content {
+            left: 0;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content {
+            left: calc(50% + 20px);
+        }
+
+        .timeline-content:hover {
+            border-color: var(--accent-color);
+            transform: translateY(-2px);
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 12px;
+            height: 12px;
+            background: var(--accent-color);
+            border-radius: 50%;
+            top: 1.5rem;
+            box-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
+            animation: dotPulse 2s infinite;
+        }
+
+        @keyframes dotPulse {
+            0%, 100% { box-shadow: 0 0 10px rgba(0, 212, 255, 0.5); }
+            50% { box-shadow: 0 0 20px rgba(0, 212, 255, 0.8); }
+        }
+
+        .timeline-date {
+            color: var(--accent-color);
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-title-text {
+            color: var(--text-primary);
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-desc {
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+            line-height: 1.4;
+        }
+
+        /* Action Buttons */
+        .action-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            opacity: 0;
+            animation: fadeInUp 1s ease-out 1.3s forwards;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary {
+            background: var(--accent-gradient);
+            color: white;
+            box-shadow: 0 4px 15px rgba(0, 212, 255, 0.3);
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: var(--transition);
+        }
+
+        .btn-primary:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 212, 255, 0.4);
+        }
+
+        .btn-secondary {
+            background: var(--secondary-bg);
+            color: var(--text-primary);
+            border: 1px solid var(--border-color);
+        }
+
+        .btn-secondary:hover {
+            background: var(--accent-bg);
+            border-color: var(--accent-color);
+            color: var(--accent-color);
+            transform: translateY(-2px);
+        }
+
+        /* Newsletter Signup */
+        .newsletter-section {
+            background: var(--secondary-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 3rem 0;
+            text-align: center;
+            opacity: 0;
+            animation: fadeInUp 1s ease-out 1.5s forwards;
+        }
+
+        .newsletter-title {
+            color: var(--accent-color);
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .newsletter-desc {
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 1rem;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .newsletter-input {
+            flex: 1;
+            padding: 0.75rem 1rem;
+            background: var(--accent-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 25px;
+            color: var(--text-primary);
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+
+        .newsletter-input:focus {
+            outline: none;
+            border-color: var(--accent-color);
+            box-shadow: 0 0 0 3px rgba(0, 212, 255, 0.1);
+        }
+
+        .newsletter-input::placeholder {
+            color: var(--text-secondary);
+        }
+
+        .newsletter-btn {
+            padding: 0.75rem 1.5rem;
+            background: var(--accent-gradient);
+            border: none;
+            border-radius: 25px;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .newsletter-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 5px 15px rgba(0, 212, 255, 0.3);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Footer */
+        footer {
+            background: var(--secondary-bg);
+            padding: 2rem 0;
+            text-align: center;
+            border-top: 1px solid var(--border-color);
+            margin-top: auto;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: fixed;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background: var(--secondary-bg);
+                flex-direction: column;
+                padding: 2rem;
+                border-top: 1px solid var(--border-color);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .mobile-menu {
+                display: block;
+            }
+
+            .nav-container {
+                padding: 1rem;
+            }
+
+            .development-container {
+                padding: 120px 20px 20px;
+            }
+
+            .progress-items {
+                grid-template-columns: 1fr;
+            }
+
+            .timeline::before {
+                left: 20px;
+            }
+
+            .timeline-content {
+                width: calc(100% - 50px);
+                left: 50px !important;
+            }
+
+            .timeline-dot {
+                left: 20px;
+                transform: none;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+            }
+
+            .action-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 250px;
+                justify-content: center;
+            }
+
+            .code-float {
+                display: none;
+            }
+        }
+
+        /* Loading states */
+        .loading {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .loading::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.1), transparent);
+            animation: loading 1.5s infinite;
+        }
+
+        @keyframes loading {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">PK</a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html#home">Home</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#projects">Projects</a></li>
+                <li><a href="index.html#blog">Blog</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+                <li><a href="inboxpraveen.github.io/resume/Praveen-Resume-October-2023.pdf" target="_blank" title="Updated Nov 2025">Resume</a></li>
+            </ul>
+            <button class="mobile-menu" id="mobileMenu">☰</button>
+        </div>
+    </nav>
+
+    <!-- Main Development Container -->
+    <div class="development-container">
+        <!-- Animated Background -->
+        <div class="bg-grid"></div>
+        
+        <!-- Floating Code Elements -->
+        <div class="code-float">function buildAwesome() {</div>
+        <div class="code-float">import tensorflow as tf</div>
+        <div class="code-float">const magic = await AI.create()</div>
+        <div class="code-float">model.train(amazing_data)</div>
+        <div class="code-float">return innovation;</div>
+
+        <div class="development-content">
+            <div class="dev-icon">🚧</div>
+            <h1 class="dev-title">Under Development</h1>
+            <p class="dev-subtitle">Building Something Amazing</p>
+            <p class="dev-message">
+                This page is currently being crafted with the same attention to detail and innovation 
+                that goes into every AI project. Great things take time, and this will be worth the wait!
+            </p>
+
+            <!-- Progress Section -->
+            <div class="progress-section">
+                <h2 class="progress-title">Development Progress</h2>
+                
+                <div class="progress-items">
+                    <div class="progress-item">
+                        <div class="progress-item-header">
+                            <span class="progress-icon">📐</span>
+                            <h3>Architecture Design</h3>
+                            <span class="progress-status status-completed">Completed</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 100%;"></div>
+                        </div>
+                        <p class="progress-description">
+                            System architecture and technical specifications finalized
+                        </p>
+                    </div>
+
+                    <div class="progress-item">
+                        <div class="progress-item-header">
+                            <span class="progress-icon">🔧</span>
+                            <h3>Backend Development</h3>
+                            <span class="progress-status status-in-progress">In Progress</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 65%;"></div>
+                        </div>
+                        <p class="progress-description">
+                            API endpoints, database schema, and business logic implementation
+                        </p>
+                    </div>
+
+                    <div class="progress-item">
+                        <div class="progress-item-header">
+                            <span class="progress-icon">🤖</span>
+                            <h3>ML Model Training</h3>
+                            <span class="progress-status status-in-progress">In Progress</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 55%;"></div>
+                        </div>
+                        <p class="progress-description">
+                            Training and fine-tuning machine learning models for core features
+                        </p>
+                    </div>
+
+                    <div class="progress-item">
+                        <div class="progress-item-header">
+                            <span class="progress-icon">🧪</span>
+                            <h3>Testing & Deployment</h3>
+                            <span class="progress-status status-planned">Planned</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 30%;"></div>
+                        </div>
+                        <p class="progress-description">
+                            Unit tests, integration tests, and production deployment setup
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Overall Progress -->
+                <div class="overall-progress">
+                    <h3>Overall Progress</h3>
+                    <div class="overall-percentage">62%</div>
+                    <div class="overall-bar">
+                        <div class="overall-fill" style="width: 62%;"></div>
+                    </div>
+                    <div class="overall-stats">
+                        <span>Started: December 2025</span>
+                        <span>ETA: January 2026</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Timeline Section -->
+            <div class="timeline-section">
+                <h2 class="timeline-title">Development Timeline</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <div class="timeline-date">Early December 2025</div>
+                            <div class="timeline-title-text">System Architecture</div>
+                            <div class="timeline-desc">Design system architecture, database schema, and API specifications</div>
+                        </div>
+                        <div class="timeline-dot"></div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <div class="timeline-date">Mid December 2025</div>
+                            <div class="timeline-title-text">Backend & ML Pipeline</div>
+                            <div class="timeline-desc">Implement core APIs, database models, and ML training pipeline</div>
+                        </div>
+                        <div class="timeline-dot"></div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <div class="timeline-date">Late December 2025</div>
+                            <div class="timeline-title-text">Model Training & Integration</div>
+                            <div class="timeline-desc">Train and fine-tune models, integrate with backend services</div>
+                        </div>
+                        <div class="timeline-dot"></div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <div class="timeline-date">January 2026</div>
+                            <div class="timeline-title-text">Testing & Deployment</div>
+                            <div class="timeline-desc">Comprehensive testing, optimization, and production deployment</div>
+                        </div>
+                        <div class="timeline-dot"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="action-buttons">
+                <a href="index.html" class="btn btn-primary">
+                    <span>🏠</span> Back to Portfolio
+                </a>
+                <a href="index.html#contact" class="btn btn-secondary">
+                    <span>📧</span> Contact Me
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; <span id="copyright-year"></span> Praveen Kumar. Building the future with AI.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenu = document.getElementById('mobileMenu');
+        const navLinks = document.getElementById('navLinks');
+
+        mobileMenu.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Animate progress bars on load
+        document.addEventListener('DOMContentLoaded', () => {
+            // Trigger progress animations
+            const progressFills = document.querySelectorAll('.progress-fill');
+            progressFills.forEach((fill, index) => {
+                setTimeout(() => {
+                    fill.style.animation = `progressAnimation 2s ease-out`;
+                }, index * 200);
+            });
+
+            // Animate overall progress
+            setTimeout(() => {
+                const overallFill = document.querySelector('.overall-fill');
+                overallFill.style.animation = `overallProgress 3s ease-out`;
+            }, 1000);
+
+            // Dynamic percentage counter
+            const percentage = document.querySelector('.overall-percentage');
+            let count = 0;
+            const target = 62;
+            const increment = target / 100;
+
+            const countUp = () => {
+                if (count < target) {
+                    count += increment;
+                    percentage.textContent = Math.round(count) + '%';
+                    requestAnimationFrame(countUp);
+                }
+            };
+
+            setTimeout(countUp, 1500);
+
+            // Update copyright year
+            const yearElement = document.getElementById('copyright-year');
+            if (yearElement) {
+                yearElement.textContent = new Date().getFullYear();
+            }
+        });
+
+        // Add interactive hover effects
+        document.querySelectorAll('.progress-item').forEach(item => {
+            item.addEventListener('mouseenter', () => {
+                const fill = item.querySelector('.progress-fill');
+                fill.style.animationDuration = '0.5s';
+                fill.style.animationIterationCount = '1';
+                fill.style.animationName = 'progressAnimation';
+            });
+        });
+
+        // Dynamic code floating animation
+        const codeElements = document.querySelectorAll('.code-float');
+        codeElements.forEach((el, index) => {
+            el.addEventListener('mouseenter', () => {
+                el.style.animation = 'none';
+                el.style.transform = `translateY(-10px) rotate(10deg) scale(1.1)`;
+                el.style.opacity = '0.6';
+                el.style.color = 'var(--accent-color)';
+            });
+
+            el.addEventListener('mouseleave', () => {
+                el.style.animation = `codeFloat 15s ease-in-out infinite`;
+                el.style.animationDelay = `${index * 3}s`;
+                el.style.transform = '';
+                el.style.opacity = '0.2';
+                el.style.color = '';
+            });
+        });
+
+        // Console message
+        console.log(`
+        🚧 UNDER DEVELOPMENT 🚧
+        
+        Current Progress: 62%
+        
+        Technical Milestones:
+        ✅ Architecture Design
+        🔄 Backend Development
+        🔄 ML Model Training  
+        📋 Testing & Deployment
+        
+        Timeline: December 2025 - January 2026
+        `);
+
+        // Add loading effect to buttons
+        document.querySelectorAll('.btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                if (!this.href || this.href.includes('#')) {
+                    e.preventDefault();
+                    this.classList.add('loading');
+                    
+                    setTimeout(() => {
+                        this.classList.remove('loading');
+                        if (this.href && this.href.includes('#')) {
+                            window.location.href = this.href;
+                        }
+                    }, 1000);
+                }
+            });
+        });
+
+        // Easter egg: Click on the dev icon multiple times
+        let clickCount = 0;
+        const devIcon = document.querySelector('.dev-icon');
+        
+        devIcon.addEventListener('click', () => {
+            clickCount++;
+            
+            if (clickCount === 5) {
+                devIcon.style.transform = 'scale(1.2) rotate(360deg)';
+                devIcon.textContent = '🎉';
+                
+                // Show confetti effect
+                const colors = ['#00d4ff', '#0099cc', '#4ade80', '#fbbf24'];
+                for (let i = 0; i < 20; i++) {
+                    const confetti = document.createElement('div');
+                    confetti.style.position = 'absolute';
+                    confetti.style.width = '10px';
+                    confetti.style.height = '10px';
+                    confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
+                    confetti.style.left = Math.random() * window.innerWidth + 'px';
+                    confetti.style.animation = `confetti 2s ease-out forwards`;
+                    confetti.style.zIndex = '9999';
+                    document.body.appendChild(confetti);
+                    
+                    setTimeout(() => confetti.remove(), 2000);
+                }
+                
+                setTimeout(() => {
+                    devIcon.style.transform = '';
+                    devIcon.textContent = '🚧';
+                    clickCount = 0;
+                }, 3000);
+            }
+        });
+
+        // Add confetti animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes confetti {
+                0% { 
+                    transform: translateY(0) rotate(0deg);
+                    opacity: 1;
+                }
+                100% { 
+                    transform: translateY(500px) rotate(720deg);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>

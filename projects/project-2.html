@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Docuvera - Loss360 - Praveen Kumar</title>
+    <link rel="icon" type="image/x-icon" href="../assests/favicon.ico">
+    <link rel="stylesheet" href="../index.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo" onclick="window.location.href='../index.html'" style="cursor: pointer;">PK</div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../index.html#about">About</a></li>
+                <li><a href="../index.html#projects">Projects</a></li>
+                <li><a href="../index.html#blog">Blog</a></li>
+                <li><a href="../index.html#contact">Contact</a></li>
+                <li><a href="../inboxpraveen.github.io/resume/Praveen-Resume-October-2023.pdf" target="_blank" title="Updated Nov 2025">Resume</a></li>
+            </ul>
+            <button class="mobile-menu" id="mobileMenu">☰</button>
+        </div>
+    </nav>
+
+    <!-- Project Page - Docuvera Loss360 -->
+    <div class="page-container active">
+        <div class="page-header">
+            <div class="container">
+                <a href="../index.html#projects" class="back-button">← Back to Projects</a>
+                <h1 class="page-title">Docuvera - Loss360</h1>
+                <div class="page-meta">
+                    <div class="meta-item">
+                        <span>🏢</span>
+                        <span>Company: Trellissoft</span>
+                    </div>
+                    <div class="meta-item">
+                        <span>📅</span>
+                        <span>Duration: 3 months</span>
+                    </div>
+                    <div class="meta-item">
+                        <span>👥</span>
+                        <span>Team Size: 8</span>
+                    </div>
+                    <div class="meta-item">
+                        <span>🎯</span>
+                        <span>Role: Lead Engineer & Solution Architect</span>
+                    </div>
+                    <div class="meta-item">
+                        <span>🏷️</span>
+                        <span>InsurTech • AI/ML • Multi-Tenant SaaS</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2>Project Overview</h2>
+            <p>
+                As the <strong>Lead Engineer and Solution Architect</strong> at Trellissoft, I designed and led the development 
+                of <strong>Docuvera - Loss360</strong>, an enterprise-grade multi-tenant SaaS platform that revolutionizes 
+                how insurance companies process loss run documents. The platform combines cutting-edge OCR technology with 
+                domain-specific Large Language Models to automate the extraction and analysis of insurance claims data 
+                from unstructured documents.
+            </p>
+            
+            <div class="content-image">📊</div>
+            
+            <p>
+                Loss run reports—critical documents containing historical claims data—traditionally arrive in varied formats 
+                (PDFs, scans, spreadsheets) with no standardization, creating significant bottlenecks in underwriting workflows. 
+                Loss360 addresses this challenge by intelligently processing these documents regardless of format, extracting 
+                structured data, and providing actionable insights through advanced analytics—all while maintaining enterprise-grade 
+                security and data isolation for multiple client organizations.
+            </p>
+
+            <h2>The Challenge</h2>
+            <p>
+                Insurance underwriters spend countless hours manually reviewing and extracting data from loss run documents. 
+                Each insurer formats these reports differently, making automation difficult with traditional approaches. 
+                Key challenges included:
+            </p>
+            <ul>
+                <li>Extreme variability in document formats across insurance carriers</li>
+                <li>Complex table structures with varying layouts and terminology</li>
+                <li>Need for context understanding beyond simple text extraction</li>
+                <li>Multi-tenant requirements with strict data isolation and security</li>
+                <li>Dynamic schema requirements varying by line of business (LOB)</li>
+                <li>Human-in-the-loop validation for accuracy assurance</li>
+            </ul>
+
+            <h2>Solution Architecture</h2>
+            <div class="diagram-container">
+                <div class="diagram">AI-Powered Document Processing Pipeline</div>
+                <p style="margin-top: 1rem; color: var(--text-secondary);">
+                    Document Upload → OCR Processing → LLM Extraction → Human Validation → Analytics & Insights
+                </p>
+            </div>
+
+            <p>
+                As the solution architect, I designed a scalable microservices-based architecture that seamlessly integrates 
+                proprietary OCR and LLM models. The system architecture emphasizes:
+            </p>
+
+            <h3>Core System Components</h3>
+            <div class="tech-stack">
+                <div class="tech-category">
+                    <h4>AI/ML Layer</h4>
+                    <div class="tech-list">
+                        <span class="tech-item">Custom OCR Engine</span>
+                        <span class="tech-item">Domain-Tuned LLMs</span>
+                        <span class="tech-item">NLP Pipelines</span>
+                        <span class="tech-item">Computer Vision</span>
+                    </div>
+                </div>
+                <div class="tech-category">
+                    <h4>Backend & Infrastructure</h4>
+                    <div class="tech-list">
+                        <span class="tech-item">Python/FastAPI</span>
+                        <span class="tech-item">PostgreSQL</span>
+                        <span class="tech-item">Redis Cache</span>
+                        <span class="tech-item">Microservices</span>
+                    </div>
+                </div>
+                <div class="tech-category">
+                    <h4>DevOps & Security</h4>
+                    <div class="tech-list">
+                        <span class="tech-item">Docker/Kubernetes</span>
+                        <span class="tech-item">AWS Cloud</span>
+                        <span class="tech-item">2FA Authentication</span>
+                        <span class="tech-item">Data Encryption</span>
+                    </div>
+                </div>
+            </div>
+
+            <h2>Key Features & Capabilities</h2>
+            
+            <h3>Intelligent Document Processing</h3>
+            <ul>
+                <li><strong>Multi-Format Support:</strong> Processes PDFs, scanned images, Excel files, and various document types</li>
+                <li><strong>Advanced OCR:</strong> Proprietary OCR engine optimized for insurance documents with varying quality</li>
+                <li><strong>Context-Aware Extraction:</strong> LLM-powered understanding of document structure and semantics</li>
+                <li><strong>Dynamic Field Configuration:</strong> Customizable extraction schema per line of business</li>
+            </ul>
+
+            <h3>Enterprise Multi-Tenancy</h3>
+            <ul>
+                <li><strong>Complete Data Isolation:</strong> Separate database schemas ensuring zero cross-tenant data leakage</li>
+                <li><strong>Flexible Configuration:</strong> Per-tenant feature toggles and model selection</li>
+                <li><strong>Scalable Architecture:</strong> Supports multiple client organizations on shared infrastructure</li>
+                <li><strong>Role-Based Access Control:</strong> Granular permissions at tenant, LOB, and user levels</li>
+            </ul>
+
+            <h3>Human-in-the-Loop Validation</h3>
+            <ul>
+                <li><strong>Interactive Review Interface:</strong> Side-by-side document viewer with editable extraction results</li>
+                <li><strong>Confidence Indicators:</strong> Highlighting of uncertain extractions for focused review</li>
+                <li><strong>Audit Trail:</strong> Complete tracking of all edits and corrections</li>
+                <li><strong>Feedback Loop:</strong> User corrections feed back into model improvement processes</li>
+            </ul>
+
+            <h3>Analytics & Insights</h3>
+            <ul>
+                <li><strong>Real-Time Dashboards:</strong> Key performance indicators for claims and loss metrics</li>
+                <li><strong>Trend Analysis:</strong> Historical claims patterns and loss ratios across time periods</li>
+                <li><strong>Line of Business Views:</strong> Segregated analytics for different insurance lines</li>
+                <li><strong>Export Capabilities:</strong> Structured data export in CSV, Excel, and JSON formats</li>
+            </ul>
+
+            <h2>Technical Highlights</h2>
+            
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-language">System Architecture - High-Level Overview</span>
+                    <button class="copy-button">Copy</button>
+                </div>
+                <pre><code><span class="comment"># Multi-Tenant Document Processing Pipeline</span>
+
+<span class="keyword">class</span> <span class="function">DocumentProcessingPipeline</span>:
+    <span class="string">"""
+    Core pipeline orchestrating OCR and LLM processing
+    with tenant-specific configuration and isolation
+    """</span>
+    
+    <span class="keyword">def</span> <span class="function">process_submission</span>(tenant_id, lob_id, document):
+        <span class="comment"># Step 1: Tenant context & security validation</span>
+        tenant_context = get_tenant_context(tenant_id)
+        validate_tenant_access(tenant_context, lob_id)
+        
+        <span class="comment"># Step 2: OCR processing with tenant-specific model</span>
+        ocr_model = tenant_context.get_ocr_model(lob_id)
+        extracted_text = ocr_model.process(document)
+        
+        <span class="comment"># Step 3: LLM extraction using configured schema</span>
+        llm_model = tenant_context.get_llm_model(lob_id)
+        extraction_schema = tenant_context.get_fields_config(lob_id)
+        
+        structured_data = llm_model.extract_fields(
+            text=extracted_text,
+            schema=extraction_schema
+        )
+        
+        <span class="comment"># Step 4: Store in tenant-isolated database</span>
+        store_results(
+            tenant_schema=tenant_context.db_schema,
+            lob_id=lob_id,
+            data=structured_data
+        )
+        
+        <span class="comment"># Step 5: Trigger real-time notification</span>
+        notify_user(tenant_id, submission_id, status=<span class="string">"completed"</span>)
+        
+        <span class="keyword">return</span> structured_data
+
+
+<span class="comment"># Multi-Tenant Data Isolation Pattern</span>
+
+<span class="keyword">class</span> <span class="function">TenantIsolationMiddleware</span>:
+    <span class="string">"""
+    Ensures all database operations are scoped to tenant schema,
+    preventing any possibility of cross-tenant data access
+    """</span>
+    
+    <span class="keyword">def</span> <span class="function">set_tenant_context</span>(request):
+        tenant_id = extract_tenant_from_auth(request)
+        schema_name = <span class="string">f"tenant_{tenant_id}"</span>
+        
+        <span class="comment"># Set PostgreSQL search_path to tenant schema</span>
+        db.execute(<span class="string">f"SET search_path TO {schema_name}"</span>)
+        
+        <span class="comment"># All subsequent queries automatically scoped</span>
+        <span class="keyword">return</span> tenant_id</code></pre>
+            </div>
+
+            <h2>Architectural Decisions & Leadership</h2>
+            <p>
+                As the solution architect, I made several critical technical decisions that shaped the platform:
+            </p>
+
+            <p>
+                <strong>Separate Schema Multi-Tenancy:</strong> I architected the system using PostgreSQL schema isolation 
+                rather than shared tables, ensuring fail-closed security and simplified per-tenant operations. This design 
+                choice eliminated entire classes of potential data leakage vulnerabilities.
+            </p>
+            
+            <p>
+                <strong>Asynchronous Processing Architecture:</strong> Designed an event-driven pipeline with job queues 
+                to decouple document uploads from processing. This enables horizontal scaling of OCR/LLM workers independently 
+                and prevents web application timeouts on long-running operations.
+            </p>
+
+            <p>
+                <strong>Dynamic Schema Configuration:</strong> Rather than hard-coding extraction fields, I designed a 
+                flexible metadata-driven system allowing tenant admins to define custom fields per LOB. This dramatically 
+                reduced onboarding time for new clients and eliminated the need for custom development per tenant.
+            </p>
+
+            <p>
+                <strong>Human-in-the-Loop Integration:</strong> Recognized that 100% AI accuracy is unrealistic for critical 
+                financial data. I designed elegant review workflows that make human validation efficient, with audit trails 
+                that simultaneously improve user trust and provide training data for model refinement.
+            </p>
+
+            <h2>Performance & Impact</h2>
+            <div class="project-stats">
+                <div class="stat-box">
+                    <div class="stat-value">85%</div>
+                    <div class="stat-label">Time Reduction</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-value">92%</div>
+                    <div class="stat-label">Extraction Accuracy</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-value">&lt;2 min</div>
+                    <div class="stat-label">Avg Processing Time</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-value">10+</div>
+                    <div class="stat-label">Active Tenants</div>
+                </div>
+            </div>
+
+            <h3>Business Value Delivered</h3>
+            <div class="table-container">
+                <table class="content-table">
+                    <thead>
+                        <tr>
+                            <th>Metric</th>
+                            <th>Before Loss360</th>
+                            <th>After Loss360</th>
+                            <th>Improvement</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Document Processing Time</td>
+                            <td>45-60 minutes</td>
+                            <td>2-5 minutes</td>
+                            <td>90% faster</td>
+                        </tr>
+                        <tr>
+                            <td>Data Entry Errors</td>
+                            <td>8-12%</td>
+                            <td>< 2%</td>
+                            <td>75% reduction</td>
+                        </tr>
+                        <tr>
+                            <td>Underwriter Productivity</td>
+                            <td>15 docs/day</td>
+                            <td>80+ docs/day</td>
+                            <td>5.3x increase</td>
+                        </tr>
+                        <tr>
+                            <td>Client Onboarding</td>
+                            <td>2-3 weeks</td>
+                            <td>2-3 days</td>
+                            <td>85% faster</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h2>Security & Compliance</h2>
+            <p>
+                Given the sensitive nature of insurance claims data, I designed the platform with security as a foundational 
+                principle, not an afterthought:
+            </p>
+            <ul>
+                <li><strong>Multi-Factor Authentication:</strong> Mandatory 2FA using TOTP authenticator apps for all users</li>
+                <li><strong>Data Encryption:</strong> End-to-end encryption for data in transit (TLS 1.3) and at rest (AES-256)</li>
+                <li><strong>Access Controls:</strong> Fine-grained RBAC with least-privilege principle across all system layers</li>
+                <li><strong>Audit Logging:</strong> Comprehensive tracking of all data access, modifications, and exports</li>
+                <li><strong>Data Retention:</strong> Configurable retention policies with automated archival and secure deletion</li>
+                <li><strong>Compliance Ready:</strong> Architecture designed to support SOC 2, ISO 27001, and HIPAA requirements</li>
+            </ul>
+
+            <h2>Leadership & Team Management</h2>
+            <p>
+                Beyond technical architecture, I led a cross-functional team of 8 engineers through the entire product lifecycle:
+            </p>
+            <ul>
+                <li>Defined technical roadmap and sprint planning for a 14-month development cycle</li>
+                <li>Conducted architecture review sessions and established coding standards</li>
+                <li>Mentored junior developers on AI/ML integration and microservices patterns</li>
+                <li>Collaborated with stakeholders to translate business requirements into technical specifications</li>
+                <li>Managed CI/CD pipeline setup and deployment strategies for production releases</li>
+                <li>Presented technical demos and conducted training for client success teams</li>
+            </ul>
+
+            <h2>Technical Challenges Overcome</h2>
+            
+            <p>
+                <strong>Variable Document Quality:</strong> Loss runs often arrive as poor-quality scans with skewed 
+                images and faded text. I implemented adaptive preprocessing pipelines with image enhancement algorithms 
+                that normalize documents before OCR, improving text extraction accuracy by 40%.
+            </p>
+            
+            <p>
+                <strong>Dynamic Table Structures:</strong> Unlike forms with fixed fields, loss runs contain tables with 
+                varying columns and layouts. I designed a hybrid approach combining traditional table detection with 
+                LLM-based semantic understanding, allowing the system to handle both structured tables and narrative 
+                text seamlessly.
+            </p>
+
+            <p>
+                <strong>Scale & Performance:</strong> Processing hundreds of multi-page documents simultaneously required 
+                careful resource management. I architected a distributed worker system with intelligent job queuing, 
+                GPU resource pooling for OCR/LLM inference, and Redis-based caching to achieve sub-2-minute processing 
+                times even under peak load.
+            </p>
+
+            <p>
+                <strong>Model Versioning & Updates:</strong> As we improved our AI models, we needed seamless upgrades 
+                without disrupting active tenants. I designed a model registry system allowing per-tenant model selection 
+                with blue-green deployment patterns, enabling zero-downtime model updates and A/B testing of new versions.
+            </p>
+
+            <h2>Key Learnings & Innovations</h2>
+            <ul>
+                <li>Combining OCR with LLMs provides dramatically better results than either technology alone for unstructured documents</li>
+                <li>Multi-tenant architecture decisions made early are extremely difficult to change—invest upfront in proper isolation</li>
+                <li>Human validation workflows aren't just about catching errors—they're invaluable for generating training data</li>
+                <li>In enterprise SaaS, flexibility (configurable fields, feature toggles) is as important as core functionality</li>
+                <li>Real-time notifications dramatically improve user experience and reduce support inquiries about processing status</li>
+            </ul>
+
+            <h2>Future Roadmap</h2>
+            <ul>
+                <li>Advanced anomaly detection for identifying unusual claim patterns</li>
+                <li>Predictive analytics for loss forecasting and risk scoring</li>
+                <li>Integration with policy administration systems via REST APIs and webhooks</li>
+                <li>Mobile application for on-the-go document submission and review</li>
+                <li>Multilingual support for international insurance markets</li>
+                <li>Active learning pipelines for continuous model improvement from user corrections</li>
+            </ul>
+
+            <div style="margin-top: 3rem; padding: 2rem; background: var(--secondary-bg); border-radius: 15px; border: 1px solid var(--border-color);">
+                <h3 style="margin-top: 0;">About Docuvera - Loss360</h3>
+                <p style="margin-bottom: 1.5rem;">
+                    Docuvera - Loss360 is a proprietary product of <strong>Trellissoft</strong>, where I served as 
+                    Lead Engineer and Solution Architect. The platform is currently deployed in production serving 
+                    multiple insurance carriers and brokers, processing thousands of loss run documents monthly.
+                </p>
+                <p style="margin-bottom: 0; color: var(--text-secondary); font-size: 0.9rem;">
+                    <em>Note: Specific client names and detailed implementation specifics are confidential. 
+                    Technical details shared represent architectural patterns and anonymized metrics.</em>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer style="margin-top: 4rem;">
+        <div class="container">
+            <p>&copy; <span id="copyright-year"></span> Praveen Kumar. Built with passion for AI & open source community.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu functionality
+        const mobileMenu = document.getElementById('mobileMenu');
+        const navLinks = document.getElementById('navLinks');
+
+        mobileMenu.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Copy button functionality
+        document.addEventListener('click', function(e) {
+            if (e.target.classList.contains('copy-button')) {
+                const codeBlock = e.target.closest('.code-block');
+                const code = codeBlock.querySelector('pre').textContent;
+                
+                navigator.clipboard.writeText(code).then(() => {
+                    e.target.textContent = 'Copied!';
+                    setTimeout(() => {
+                        e.target.textContent = 'Copy';
+                    }, 2000);
+                });
+            }
+        });
+
+        // Navbar background on scroll
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.style.background = 'rgba(10, 10, 10, 0.98)';
+            } else {
+                nav.style.background = 'rgba(10, 10, 10, 0.95)';
+            }
+        });
+
+        // Update copyright year dynamically
+        window.addEventListener('load', function() {
+            const yearElement = document.getElementById('copyright-year');
+            if (yearElement) {
+                yearElement.textContent = new Date().getFullYear();
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Building Loss360: Architecting a Multi-Tenant AI Document Processing Platform - Praveen Kumar</title>
+    <link rel="icon" type="image/x-icon" href="../assests/favicon.ico">
+    <link rel="stylesheet" href="../index.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo" onclick="window.location.href='../index.html'" style="cursor: pointer;">PK</div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../index.html#about">About</a></li>
+                <li><a href="../index.html#projects">Projects</a></li>
+                <li><a href="../index.html#blog">Blog</a></li>
+                <li><a href="../index.html#contact">Contact</a></li>
+                <li><a href="../inboxpraveen.github.io/resume/Praveen-Resume-October-2023.pdf" target="_blank" title="Updated Nov 2025">Resume</a></li>
+            </ul>
+            <button class="mobile-menu" id="mobileMenu">☰</button>
+        </div>
+    </nav>
+
+    <!-- Blog Post Page -->
+    <div class="page-container active">
+        <div class="page-header">
+            <div class="container">
+                <a href="../index.html#blog" class="back-button">← Back to Blog</a>
+                <h1 class="page-title">Building Loss360: Architecting a Multi-Tenant AI Document Processing Platform</h1>
+                <div class="page-meta">
+                    <div class="meta-item">
+                        <span>📅</span>
+                        <span>Published: December 2, 2025</span>
+                    </div>
+                    <div class="meta-item">
+                        <span>⏱️</span>
+                        <span>18 min read</span>
+                    </div>
+                    <div class="meta-item">
+                        <span>🏷️</span>
+                        <span>Architecture • AI/ML • SaaS</span>
+                    </div>
+                    <div class="meta-item">
+                        <span>👁️</span>
+                        <span>3,842 views</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="blog-content-area">
+            <div class="content-image">🏗️</div>
+            
+            <p>
+                Over an intense 3-month period, I had the privilege of leading the architecture and development of 
+                <strong>Docuvera - Loss360</strong> at Trellissoft—an enterprise SaaS platform that uses AI to 
+                automate insurance loss run document processing. The accelerated timeline demanded exceptional 
+                foresight in architectural decisions, thinking ahead to anticipate scalability challenges and 
+                technical bottlenecks before they materialized. It was one of those projects that starts with a 
+                deceptively simple problem statement and quickly reveals layers of fascinating technical challenges.
+            </p>
+
+            <p>
+                In this post, I'll share the architectural decisions, technical challenges, and lessons learned 
+                from building a production-grade multi-tenant AI platform from the ground up. Whether you're 
+                building document processing systems, multi-tenant SaaS, or integrating LLMs into enterprise 
+                products, I hope these insights prove valuable.
+            </p>
+
+            <blockquote>
+                "The best architectures emerge not from following best practices blindly, but from deeply 
+                understanding your constraints and making deliberate trade-offs."
+            </blockquote>
+
+            <h2>The Problem: Why OCR Alone Isn't Enough</h2>
+            <p>
+                Insurance underwriters deal with loss run reports daily—documents containing historical claims data 
+                that are critical for risk assessment and pricing. Here's the catch: every insurance carrier formats 
+                these reports differently. Some are PDFs with neat tables, others are scanned images of faxed 
+                documents from the 1990s, and some are Excel files with creative layouts that defy any templating logic.
+            </p>
+
+            <p>
+                The traditional approach of using OCR (Optical Character Recognition) gets you 60% of the way there—you 
+                extract text from the document. But then what? You have unstructured text with:
+            </p>
+
+            <ul>
+                <li>Tables that don't follow a consistent structure</li>
+                <li>Field labels that vary by carrier ("Paid Loss" vs "Total Paid" vs "Indemnity Paid")</li>
+                <li>Contextual information scattered across pages</li>
+                <li>Claims data intermixed with policy information</li>
+                <li>Handwritten notes on scanned documents</li>
+            </ul>
+
+            <p>
+                This is where Large Language Models (LLMs) become game-changers. An LLM doesn't just read text—it 
+                understands context, can handle variations in terminology, and can extract structured data from 
+                unstructured layouts. The combination of OCR + LLM is what makes automated loss run processing actually work.
+            </p>
+
+            <h2>Architectural Decision #1: Multi-Tenant Isolation Strategy</h2>
+            <p>
+                One of the first major decisions I faced was how to implement multi-tenancy. We had three main options:
+            </p>
+
+            <h3>Option 1: Shared Schema with Tenant ID</h3>
+            <p>
+                All tenants share the same database tables, with a <code>tenant_id</code> column on every table. 
+                Simple to implement, easy to scale horizontally.
+            </p>
+
+            <p>
+                <strong>The Problem:</strong> A single bug in a WHERE clause can leak data across tenants. In insurance, 
+                that's not just embarrassing—it's potentially illegal. The fail-open nature of this approach was a non-starter.
+            </p>
+
+            <h3>Option 2: Separate Database Per Tenant</h3>
+            <p>
+                Each tenant gets their own PostgreSQL database. Maximum isolation, zero chance of cross-tenant queries.
+            </p>
+
+            <p>
+                <strong>The Problem:</strong> Operational nightmare. Managing hundreds of database instances, backup 
+                strategies, connection pooling, and monitoring? Not scalable for a startup.
+            </p>
+
+            <h3>Option 3: Separate Schema Per Tenant (The Winner)</h3>
+            <p>
+                Each tenant gets their own PostgreSQL schema within a shared database cluster. We use PostgreSQL's 
+                <code>search_path</code> to isolate queries:
+            </p>
+
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-language">Python - Tenant Isolation Middleware</span>
+                    <button class="copy-button">Copy</button>
+                </div>
+                <pre><code><span class="keyword">from</span> functools <span class="keyword">import</span> wraps
+<span class="keyword">from</span> flask <span class="keyword">import</span> g, request
+<span class="keyword">import</span> jwt
+
+<span class="keyword">def</span> <span class="function">set_tenant_context</span>(f):
+    <span class="string">"""Middleware to set PostgreSQL schema based on authenticated tenant"""</span>
+    @wraps(f)
+    <span class="keyword">def</span> <span class="function">decorated_function</span>(*args, **kwargs):
+        <span class="comment"># Extract tenant from JWT token</span>
+        token = request.headers.get(<span class="string">'Authorization'</span>, <span class="string">''</span>).replace(<span class="string">'Bearer '</span>, <span class="string">''</span>)
+        payload = jwt.decode(token, verify=True)
+        tenant_id = payload[<span class="string">'tenant_id'</span>]
+        
+        <span class="comment"># Set PostgreSQL search_path to tenant schema</span>
+        schema_name = <span class="string">f"tenant_{tenant_id}"</span>
+        g.db.execute(<span class="string">f"SET search_path TO {schema_name}, public"</span>)
+        
+        <span class="comment"># Store in request context for logging</span>
+        g.tenant_id = tenant_id
+        g.schema_name = schema_name
+        
+        <span class="keyword">return</span> f(*args, **kwargs)
+    
+    <span class="keyword">return</span> decorated_function
+
+
+<span class="comment"># Every API endpoint gets this decorator</span>
+@app.route(<span class="string">'/api/submissions'</span>)
+@set_tenant_context
+<span class="keyword">def</span> <span class="function">get_submissions</span>():
+    <span class="comment"># This query automatically scoped to tenant's schema</span>
+    results = db.session.query(Submission).all()
+    <span class="keyword">return</span> jsonify(results)</code></pre>
+            </div>
+
+            <p>
+                <strong>Why this works:</strong> It's fail-closed by design. If something goes wrong with tenant 
+                context detection, the query fails rather than returning another tenant's data. We get excellent 
+                isolation without the operational overhead of separate databases. Plus, we can easily export a 
+                tenant's data by dumping their schema.
+            </p>
+
+            <h2>Architectural Decision #2: Asynchronous Processing Pipeline</h2>
+            <p>
+                Processing a 20-page scanned loss run document takes time:
+            </p>
+
+            <ul>
+                <li>OCR processing: 30-60 seconds</li>
+                <li>LLM extraction: 40-90 seconds</li>
+                <li>Data validation & storage: 5-10 seconds</li>
+            </ul>
+
+            <p>
+                That's 1-2.5 minutes per document. You can't hold an HTTP connection open that long. We needed an 
+                asynchronous architecture.
+            </p>
+
+            <h3>The Pipeline Architecture</h3>
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-language">Python - Document Processing Pipeline</span>
+                    <button class="copy-button">Copy</button>
+                </div>
+                <pre><code><span class="keyword">import</span> redis
+<span class="keyword">from</span> rq <span class="keyword">import</span> Queue
+<span class="keyword">from</span> datetime <span class="keyword">import</span> datetime
+
+<span class="comment"># Initialize Redis queue</span>
+redis_conn = redis.Redis()
+processing_queue = Queue(<span class="string">'document_processing'</span>, connection=redis_conn)
+
+<span class="comment"># Step 1: User uploads document (API endpoint)</span>
+@app.route(<span class="string">'/api/upload'</span>, methods=[<span class="string">'POST'</span>])
+@set_tenant_context
+<span class="keyword">def</span> <span class="function">upload_document</span>():
+    file = request.files[<span class="string">'document'</span>]
+    lob_id = request.form.get(<span class="string">'lob_id'</span>)
+    
+    <span class="comment"># Save to S3 (tenant-prefixed path)</span>
+    s3_key = <span class="string">f"{g.tenant_id}/submissions/{uuid.uuid4()}/{file.filename}"</span>
+    s3_client.upload_fileobj(file, BUCKET_NAME, s3_key)
+    
+    <span class="comment"># Create submission record</span>
+    submission = Submission(
+        tenant_id=g.tenant_id,
+        lob_id=lob_id,
+        document_path=s3_key,
+        status=<span class="string">'queued'</span>,
+        uploaded_by=g.user_id
+    )
+    db.session.add(submission)
+    db.session.commit()
+    
+    <span class="comment"># Queue processing job</span>
+    job = processing_queue.enqueue(
+        process_document_task,
+        submission_id=submission.id,
+        tenant_id=g.tenant_id,
+        job_timeout=<span class="string">'10m'</span>
+    )
+    
+    <span class="keyword">return</span> jsonify({
+        <span class="string">'submission_id'</span>: submission.id,
+        <span class="string">'status'</span>: <span class="string">'queued'</span>,
+        <span class="string">'job_id'</span>: job.id
+    }), <span class="number">202</span>
+
+
+<span class="comment"># Step 2: Background worker processes document</span>
+<span class="keyword">def</span> <span class="function">process_document_task</span>(submission_id, tenant_id):
+    <span class="comment"># Set tenant context in worker</span>
+    set_tenant_schema(tenant_id)
+    
+    submission = Submission.query.get(submission_id)
+    submission.status = <span class="string">'processing'</span>
+    submission.started_at = datetime.utcnow()
+    db.session.commit()
+    
+    <span class="keyword">try</span>:
+        <span class="comment"># Download from S3</span>
+        document = s3_client.get_object(
+            Bucket=BUCKET_NAME, 
+            Key=submission.document_path
+        )
+        
+        <span class="comment"># Get tenant's LOB configuration</span>
+        lob = LineOfBusiness.query.get(submission.lob_id)
+        ocr_model = get_ocr_model(lob.ocr_model_id)
+        llm_model = get_llm_model(lob.llm_model_id)
+        extraction_schema = lob.get_fields_config()
+        
+        <span class="comment"># OCR processing</span>
+        extracted_text = ocr_model.process(document)
+        
+        <span class="comment"># LLM extraction</span>
+        structured_data = llm_model.extract(
+            text=extracted_text,
+            schema=extraction_schema
+        )
+        
+        <span class="comment"># Store results</span>
+        <span class="keyword">for</span> record <span class="keyword">in</span> structured_data:
+            result = ExtractionResult(
+                submission_id=submission_id,
+                data=record
+            )
+            db.session.add(result)
+        
+        submission.status = <span class="string">'completed'</span>
+        submission.completed_at = datetime.utcnow()
+        db.session.commit()
+        
+        <span class="comment"># Notify user via WebSocket</span>
+        notify_user(
+            tenant_id=tenant_id,
+            user_id=submission.uploaded_by,
+            message=<span class="string">f"Submission {submission_id} processed successfully"</span>
+        )
+        
+    <span class="keyword">except</span> Exception <span class="keyword">as</span> e:
+        submission.status = <span class="string">'failed'</span>
+        submission.error_message = str(e)
+        db.session.commit()
+        
+        notify_user(
+            tenant_id=tenant_id,
+            user_id=submission.uploaded_by,
+            message=<span class="string">f"Submission {submission_id} failed: {e}"</span>,
+            type=<span class="string">'error'</span>
+        )</code></pre>
+            </div>
+
+            <p>
+                <strong>Key Insights:</strong>
+            </p>
+
+            <ul>
+                <li><strong>Immediate Response:</strong> The upload endpoint returns a 202 Accepted immediately, giving 
+                users instant feedback</li>
+                <li><strong>Worker Scalability:</strong> We can run multiple worker instances on different machines, 
+                scaling processing capacity independently from the web tier</li>
+                <li><strong>Tenant Context in Workers:</strong> Critical detail—workers must also set tenant context 
+                to ensure data isolation</li>
+                <li><strong>Real-Time Updates:</strong> WebSocket notifications keep users informed without polling</li>
+            </ul>
+
+            <h2>The LLM Integration Challenge: Dynamic Schemas</h2>
+            <p>
+                Here's a requirement that kept me up at night: <em>Each tenant should be able to define their own 
+                extraction fields per line of business</em>.
+            </p>
+
+            <p>
+                Tenant A might want: <code>claim_number</code>, <code>loss_date</code>, <code>paid_amount</code>, 
+                <code>reserved_amount</code>.
+            </p>
+
+            <p>
+                Tenant B might want: <code>claim_id</code>, <code>incident_date</code>, <code>total_incurred</code>, 
+                <code>claim_status</code>, <code>adjuster_name</code>.
+            </p>
+
+            <p>
+                Same documents, different extraction requirements. How do you design a database schema for that?
+            </p>
+
+            <h3>Solution: Metadata-Driven Extraction with JSONB</h3>
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-language">SQL - Dynamic Schema Design</span>
+                    <button class="copy-button">Copy</button>
+                </div>
+                <pre><code><span class="comment">-- LOB Configuration Table</span>
+<span class="keyword">CREATE TABLE</span> line_of_business (
+    id UUID PRIMARY KEY,
+    name VARCHAR(<span class="number">255</span>),
+    ocr_model_id VARCHAR(<span class="number">100</span>),
+    llm_model_id VARCHAR(<span class="number">100</span>),
+    
+    <span class="comment">-- Field definitions as JSONB</span>
+    fields_config JSONB,
+    
+    <span class="comment">-- Example: [
+    --   {
+    --     "key": "claim_number",
+    --     "label": "Claim Number",
+    --     "type": "string",
+    --     "scope": "per_claim",
+    --     "required": true
+    --   },
+    --   {
+    --     "key": "loss_date",
+    --     "label": "Date of Loss",
+    --     "type": "date",
+    --     "scope": "per_claim",
+    --     "required": true
+    --   }
+    -- ]</span>
+    
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+<span class="comment">-- Extraction Results Table (flexible schema)</span>
+<span class="keyword">CREATE TABLE</span> extraction_results (
+    id UUID PRIMARY KEY,
+    submission_id UUID REFERENCES submissions(id),
+    
+    <span class="comment">-- Store extracted data as JSONB</span>
+    extracted_data JSONB,
+    
+    <span class="comment">-- Example: {
+    --   "claim_number": "CLM-2024-001234",
+    --   "loss_date": "2024-03-15",
+    --   "paid_amount": 25000.00,
+    --   "reserved_amount": 10000.00
+    -- }</span>
+    
+    <span class="comment">-- Track human edits</span>
+    is_edited BOOLEAN DEFAULT FALSE,
+    edited_by UUID REFERENCES users(id),
+    edited_at TIMESTAMP,
+    
+    confidence_score DECIMAL(<span class="number">5,2</span>),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+<span class="comment">-- GIN index for fast JSONB queries</span>
+<span class="keyword">CREATE INDEX</span> idx_extracted_data_gin 
+<span class="keyword">ON</span> extraction_results <span class="keyword">USING</span> gin(extracted_data);</code></pre>
+            </div>
+
+            <p>
+                <strong>How it works in practice:</strong>
+            </p>
+
+            <ol>
+                <li>Tenant admin configures fields through the UI</li>
+                <li>Configuration stored as JSONB in <code>fields_config</code></li>
+                <li>At processing time, we read the config and construct the LLM prompt dynamically</li>
+                <li>LLM extracts data according to the schema</li>
+                <li>Results stored as JSONB, queryable via PostgreSQL's excellent JSON operators</li>
+            </ol>
+
+            <h3>The LLM Prompt Construction</h3>
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-language">Python - Dynamic Prompt Generation</span>
+                    <button class="copy-button">Copy</button>
+                </div>
+                <pre><code><span class="keyword">def</span> <span class="function">build_extraction_prompt</span>(text: str, fields_config: list) -> str:
+    <span class="string">"""Build LLM prompt from field configuration"""</span>
+    
+    <span class="comment"># Group fields by scope</span>
+    per_document_fields = [f <span class="keyword">for</span> f <span class="keyword">in</span> fields_config <span class="keyword">if</span> f[<span class="string">'scope'</span>] == <span class="string">'per_document'</span>]
+    per_claim_fields = [f <span class="keyword">for</span> f <span class="keyword">in</span> fields_config <span class="keyword">if</span> f[<span class="string">'scope'</span>] == <span class="string">'per_claim'</span>]
+    
+    prompt = <span class="string">f"""You are an expert insurance document analyst. Extract structured data from the following loss run document.
+
+Document Text:
+{text}
+
+Extract the following information:
+
+Document-Level Fields (extract once):
+"""</span>
+    
+    <span class="keyword">for</span> field <span class="keyword">in</span> per_document_fields:
+        prompt += <span class="string">f"\n- {field['label']} ({field['key']}): {field.get('description', '')}"</span>
+    
+    prompt += <span class="string">f"""
+
+Claim-Level Fields (extract for each claim in the document):
+"""</span>
+    
+    <span class="keyword">for</span> field <span class="keyword">in</span> per_claim_fields:
+        prompt += <span class="string">f"\n- {field['label']} ({field['key']}): {field.get('description', '')}"</span>
+    
+    prompt += <span class="string">"""
+
+Return the data as JSON in this format:
+{
+  "document_fields": {
+    "field_key": "extracted_value"
+  },
+  "claims": [
+    {
+      "field_key": "extracted_value"
+    }
+  ]
+}
+
+If a field cannot be found, use null. Be precise with dates and numbers."""</span>
+    
+    <span class="keyword">return</span> prompt</code></pre>
+            </div>
+
+            <h2>Handling Poor Quality Documents</h2>
+            <p>
+                One of the biggest surprises: how bad some loss run documents are. We're talking about:
+            </p>
+
+            <ul>
+                <li>20-year-old faxed documents that have been photocopied multiple times</li>
+                <li>Skewed scans at 45-degree angles</li>
+                <li>Handwritten notes in margins</li>
+                <li>Coffee stains obscuring critical data</li>
+                <li>Multi-column layouts with text flowing in unexpected directions</li>
+            </ul>
+
+            <p>
+                Standard OCR fails spectacularly on these. We had to build a preprocessing pipeline:
+            </p>
+
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-language">Python - Image Preprocessing Pipeline</span>
+                    <button class="copy-button">Copy</button>
+                </div>
+                <pre><code><span class="keyword">import</span> cv2
+<span class="keyword">import</span> numpy <span class="keyword">as</span> np
+<span class="keyword">from</span> PIL <span class="keyword">import</span> Image
+
+<span class="keyword">def</span> <span class="function">preprocess_image</span>(image_path: str) -> np.ndarray:
+    <span class="string">"""Preprocess scanned document for better OCR"""</span>
+    
+    <span class="comment"># Load image</span>
+    img = cv2.imread(image_path)
+    
+    <span class="comment"># Convert to grayscale</span>
+    gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+    
+    <span class="comment"># Detect and correct skew</span>
+    coords = np.column_stack(np.where(gray > <span class="number">0</span>))
+    angle = cv2.minAreaRect(coords)[-<span class="number">1</span>]
+    
+    <span class="keyword">if</span> angle < -<span class="number">45</span>:
+        angle = -(<span class="number">90</span> + angle)
+    <span class="keyword">else</span>:
+        angle = -angle
+    
+    <span class="comment"># Rotate image to correct skew</span>
+    (h, w) = gray.shape[:<span class="number">2</span>]
+    center = (w // <span class="number">2</span>, h // <span class="number">2</span>)
+    M = cv2.getRotationMatrix2D(center, angle, <span class="number">1.0</span>)
+    rotated = cv2.warpAffine(
+        gray, M, (w, h),
+        flags=cv2.INTER_CUBIC,
+        borderMode=cv2.BORDER_REPLICATE
+    )
+    
+    <span class="comment"># Denoise</span>
+    denoised = cv2.fastNlMeansDenoising(rotated)
+    
+    <span class="comment"># Increase contrast using adaptive thresholding</span>
+    thresh = cv2.adaptiveThreshold(
+        denoised,
+        <span class="number">255</span>,
+        cv2.ADAPTIVE_THRESH_GAUSSIAN_C,
+        cv2.THRESH_BINARY,
+        <span class="number">11</span>,
+        <span class="number">2</span>
+    )
+    
+    <span class="comment"># Morphological operations to remove noise</span>
+    kernel = np.ones((<span class="number">1</span>, <span class="number">1</span>), np.uint8)
+    opening = cv2.morphologyEx(thresh, cv2.MORPH_OPEN, kernel)
+    
+    <span class="keyword">return</span> opening</code></pre>
+            </div>
+
+            <p>
+                This preprocessing improved OCR accuracy from ~65% to ~88% on poor quality documents. The LLM then 
+                handles the remaining errors by using context to correct OCR mistakes.
+            </p>
+
+            <h2>The Human-in-the-Loop Design Pattern</h2>
+            <p>
+                Here's a truth that took me a while to accept: <strong>No AI system will be 100% accurate for 
+                financial data extraction</strong>. And when you're dealing with insurance claims worth millions 
+                of dollars, 95% accuracy isn't good enough.
+            </p>
+
+            <p>
+                The solution isn't to keep improving the AI until it's perfect (impossible). The solution is to 
+                design for human validation from the start.
+            </p>
+
+            <h3>The Review Interface Design</h3>
+            <p>
+                We built a split-screen interface: original document on the left, extracted data table on the right. 
+                Key features:
+            </p>
+
+            <ul>
+                <li><strong>Visual Highlighting:</strong> Click a cell in the table, the corresponding text in the 
+                PDF highlights</li>
+                <li><strong>Inline Editing:</strong> Double-click any cell to edit. Changes saved with audit trail</li>
+                <li><strong>Confidence Indicators:</strong> Low-confidence extractions highlighted in yellow</li>
+                <li><strong>Quick Navigation:</strong> Jump to next uncertain field with keyboard shortcuts</li>
+                <li><strong>Add/Remove Rows:</strong> If AI missed a claim or hallucinated one, users can fix it</li>
+            </ul>
+
+            <p>
+                The result: Users can validate a 50-claim loss run in 3-5 minutes. Without our system, manual 
+                entry took 45-60 minutes. That's a 10-15x productivity improvement, even with human validation.
+            </p>
+
+            <h2>Real-Time Notifications: Getting WebSockets Right</h2>
+            <p>
+                Users upload documents and need to know when processing completes. Polling is terrible UX and 
+                wasteful. We needed WebSockets.
+            </p>
+
+            <p>
+                The challenge: maintaining WebSocket connections in a multi-tenant environment where users might 
+                be connected for hours.
+            </p>
+
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-language">Python - WebSocket Notification System</span>
+                    <button class="copy-button">Copy</button>
+                </div>
+                <pre><code><span class="keyword">from</span> flask_socketio <span class="keyword">import</span> SocketIO, emit, join_room
+<span class="keyword">import</span> redis
+
+socketio = SocketIO(app, cors_allowed_origins=<span class="string">"*"</span>)
+redis_client = redis.Redis()
+
+<span class="comment"># When user connects</span>
+@socketio.on(<span class="string">'connect'</span>)
+<span class="keyword">def</span> <span class="function">handle_connect</span>():
+    <span class="comment"># Authenticate user from WebSocket headers</span>
+    token = request.args.get(<span class="string">'token'</span>)
+    user = authenticate_token(token)
+    
+    <span class="keyword">if</span> <span class="keyword">not</span> user:
+        <span class="keyword">return</span> False  <span class="comment"># Reject connection</span>
+    
+    <span class="comment"># Join tenant-specific room</span>
+    room = <span class="string">f"tenant_{user.tenant_id}"</span>
+    join_room(room)
+    
+    <span class="comment"># Store connection mapping</span>
+    redis_client.hset(
+        <span class="string">f"ws_connections:{user.tenant_id}"</span>,
+        user.id,
+        request.sid
+    )
+
+
+<span class="comment"># Function called by background workers</span>
+<span class="keyword">def</span> <span class="function">notify_user</span>(tenant_id: str, user_id: str, message: str, type: str = <span class="string">'info'</span>):
+    <span class="string">"""Send notification to specific user"""</span>
+    
+    <span class="comment"># Store notification in database (for history)</span>
+    notification = Notification(
+        tenant_id=tenant_id,
+        user_id=user_id,
+        message=message,
+        type=type,
+        read=False
+    )
+    db.session.add(notification)
+    db.session.commit()
+    
+    <span class="comment"># Get user's socket connection</span>
+    connection_id = redis_client.hget(
+        <span class="string">f"ws_connections:{tenant_id}"</span>,
+        user_id
+    )
+    
+    <span class="keyword">if</span> connection_id:
+        <span class="comment"># User is currently connected, send real-time notification</span>
+        socketio.emit(
+            <span class="string">'notification'</span>,
+            {
+                <span class="string">'id'</span>: notification.id,
+                <span class="string">'message'</span>: message,
+                <span class="string">'type'</span>: type,
+                <span class="string">'timestamp'</span>: notification.created_at.isoformat()
+            },
+            room=connection_id.decode()
+        )</code></pre>
+            </div>
+
+            <p>
+                <strong>Key Design Decisions:</strong>
+            </p>
+
+            <ul>
+                <li><strong>Redis for Connection Tracking:</strong> WebSocket connections are ephemeral, Redis tracks 
+                which users are currently connected</li>
+                <li><strong>Database Persistence:</strong> All notifications stored in DB, so users see them even if 
+                they weren't connected when sent</li>
+                <li><strong>Tenant Rooms:</strong> Users join tenant-specific rooms, preventing cross-tenant notification leaks</li>
+            </ul>
+
+            <h2>Lessons Learned: What I'd Do Differently</h2>
+
+            <h3>1. Start with Observability</h3>
+            <p>
+                I added comprehensive logging and monitoring about 6 weeks into the project. Should have done it on day 1. When an 
+                LLM extraction fails, you need to see the prompt, the raw response, the document text, and the 
+                configuration that generated the prompt. We lost debugging hours early on because we didn't have this.
+            </p>
+
+            <p>
+                <strong>Recommendation:</strong> Implement structured logging from the start. Every processing step 
+                should emit events with correlation IDs that link back to the submission.
+            </p>
+
+            <h3>2. Build Admin Tools Early</h3>
+            <p>
+                Later in the project, we needed to give specific tenants beta access to new features. I had to manually 
+                update database rows. Should have built a proper admin interface for feature flags from the beginning.
+            </p>
+
+            <h3>3. LLM Response Validation is Critical</h3>
+            <p>
+                LLMs occasionally hallucinate or return malformed JSON. Early on, this would crash the processing 
+                pipeline. We learned to:
+            </p>
+
+            <ul>
+                <li>Use JSON Schema validation on LLM responses</li>
+                <li>Retry with modified prompts if validation fails</li>
+                <li>Have fallback extraction strategies</li>
+                <li>Log all failures with context for manual review</li>
+            </ul>
+
+            <h3>4. Don't Underestimate Data Migration Complexity</h3>
+            <p>
+                When you have separate schemas per tenant and need to deploy a database migration, you need to run 
+                that migration on <em>every tenant schema</em>. We built migration tooling that:
+            </p>
+
+            <ul>
+                <li>Lists all tenant schemas</li>
+                <li>Runs migrations in parallel with progress tracking</li>
+                <li>Handles failures gracefully (some tenants might be mid-operation)</li>
+                <li>Validates migrations in a test schema first</li>
+            </ul>
+
+            <h2>Performance Optimizations That Mattered</h2>
+
+            <h3>GPU Resource Pooling</h3>
+            <p>
+                LLM inference requires GPUs. We can't allocate one GPU per tenant. Solution: shared GPU pool with 
+                request queuing and model caching. Key insight—keep models warm in GPU memory for frequently used 
+                configurations.
+            </p>
+
+            <h3>Incremental OCR for Large Documents</h3>
+            <p>
+                Instead of processing a 50-page document as one blob, we process pages in parallel and stream results. 
+                Users see extracted data appear progressively rather than waiting for the entire document.
+            </p>
+
+            <h3>PostgreSQL JSONB Indexing</h3>
+            <p>
+                The GIN indexes on JSONB columns are crucial for dashboard queries. Without them, aggregations across 
+                thousands of extracted records were taking 10+ seconds. With proper indexing: sub-200ms.
+            </p>
+
+            <h2>The Business Impact</h2>
+            <p>
+                By the numbers:
+            </p>
+
+            <ul>
+                <li><strong>85% time reduction</strong> in loss run processing (45 min → 5 min with validation)</li>
+                <li><strong>92% extraction accuracy</strong> before human review</li>
+                <li><strong>10+ active tenants</strong> in production</li>
+                <li><strong>~2 minutes average</strong> processing time per document</li>
+            </ul>
+
+            <p>
+                But the real impact? Underwriters told us they can now focus on actually underwriting instead of 
+                data entry. That's the goal—AI augmenting human expertise, not replacing it.
+            </p>
+
+            <h2>Advice for Building Similar Systems</h2>
+
+            <h3>If You're Building Multi-Tenant SaaS</h3>
+            <ol>
+                <li>Choose your isolation strategy early and stick with it</li>
+                <li>Build tenant context handling as middleware, not sprinkled throughout code</li>
+                <li>Test cross-tenant isolation with dedicated test suites</li>
+                <li>Make tenant ID visible in all logs and traces</li>
+            </ol>
+
+            <h3>If You're Integrating LLMs</h3>
+            <ol>
+                <li>LLMs are probabilistic—design for graceful failure</li>
+                <li>Always validate LLM outputs with schemas</li>
+                <li>Cache identical requests (LLM inference is expensive)</li>
+                <li>Log everything—prompts, responses, tokens used</li>
+                <li>Version your prompts and track which version produced which results</li>
+            </ol>
+
+            <h3>If You're Processing Documents</h3>
+            <ol>
+                <li>Document quality varies wildly—build preprocessing pipelines</li>
+                <li>OCR + LLM is more powerful than either alone</li>
+                <li>Always show users the source document alongside extracted data</li>
+                <li>Make human corrections easy and track them</li>
+            </ol>
+
+            <h2>Conclusion: Architecture is About Trade-offs</h2>
+            <p>
+                Building Loss360 taught me that great architecture isn't about using the latest technologies or 
+                following best practices religiously. It's about understanding your constraints—performance, 
+                security, user needs, team capabilities—and making deliberate trade-offs.
+            </p>
+
+            <p>
+                We chose separate schemas over shared tables because data isolation was paramount. We chose 
+                asynchronous processing over real-time because documents take time to process. We chose 
+                human-in-the-loop validation over pure AI because accuracy matters more than full automation.
+            </p>
+
+            <p>
+                Each decision had pros and cons. The key is making those trade-offs explicit and building systems 
+                that align with your actual requirements, not ideal theoretical scenarios.
+            </p>
+
+            <blockquote>
+                "The best system is the one that ships, works reliably, and solves the actual problem—not the 
+                one that uses the most cutting-edge technology."
+            </blockquote>
+
+            <p>
+                I hope these insights help you in your own journey building AI-powered systems. Feel free to reach 
+                out if you want to discuss any of these topics in more depth!
+            </p>
+
+            <div style="margin-top: 3rem; padding: 2rem; background: var(--secondary-bg); border-radius: 15px; border: 1px solid var(--border-color);">
+                <h3 style="margin-top: 0;">Additional Resources</h3>
+                <ul style="margin-bottom: 2rem;">
+                    <li><a href="../projects/project-2.html" style="color: var(--accent-color);">View Full Loss360 Project Page</a></li>
+                    <li><a href="#" style="color: var(--accent-color);">PostgreSQL Multi-Tenancy Patterns</a></li>
+                    <li><a href="#" style="color: var(--accent-color);">Building Production-Ready LLM Applications</a></li>
+                    <li><a href="#" style="color: var(--accent-color);">Document Processing Best Practices</a></li>
+                </ul>
+                
+                <h4>Tags:</h4>
+                <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 1rem;">
+                    <span class="tech-tag">#Architecture</span>
+                    <span class="tech-tag">#MultiTenant</span>
+                    <span class="tech-tag">#LLM</span>
+                    <span class="tech-tag">#DocumentProcessing</span>
+                    <span class="tech-tag">#SaaS</span>
+                    <span class="tech-tag">#InsurTech</span>
+                    <span class="tech-tag">#PostgreSQL</span>
+                    <span class="tech-tag">#Python</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer style="margin-top: 4rem;">
+        <div class="container">
+            <p>&copy; <span id="copyright-year"></span> Praveen Kumar. Built with passion for AI & open source community.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu functionality
+        const mobileMenu = document.getElementById('mobileMenu');
+        const navLinks = document.getElementById('navLinks');
+
+        mobileMenu.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Copy button functionality
+        document.addEventListener('click', function(e) {
+            if (e.target.classList.contains('copy-button')) {
+                const codeBlock = e.target.closest('.code-block');
+                const code = codeBlock.querySelector('pre').textContent;
+                
+                navigator.clipboard.writeText(code).then(() => {
+                    e.target.textContent = 'Copied!';
+                    setTimeout(() => {
+                        e.target.textContent = 'Copy';
+                    }, 2000);
+                });
+            }
+        });
+
+        // Navbar background on scroll
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.style.background = 'rgba(10, 10, 10, 0.98)';
+            } else {
+                nav.style.background = 'rgba(10, 10, 10, 0.95)';
+            }
+        });
+
+        // Update copyright year dynamically
+        window.addEventListener('load', function() {
+            const yearElement = document.getElementById('copyright-year');
+            if (yearElement) {
+                yearElement.textContent = new Date().getFullYear();
+            }
+        });
+    </script>
+</body>
+</html>

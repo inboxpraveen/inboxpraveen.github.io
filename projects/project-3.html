@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Predictive Analytics Platform - Praveen Kumar</title>
+    <link rel="stylesheet" href="../index.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo" onclick="window.location.href='../index.html'" style="cursor: pointer;">PK</div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../index.html#about">About</a></li>
+                <li><a href="../index.html#projects">Projects</a></li>
+                <li><a href="../index.html#blog">Blog</a></li>
+                <li><a href="../index.html#contact">Contact</a></li>
+            </ul>
+            <button class="mobile-menu" id="mobileMenu">☰</button>
+        </div>
+    </nav>
+
+    <!-- Project Page - Predictive Analytics Platform -->
+    <div class="page-container active">
+        <div class="page-header">
+            <div class="container">
+                <a href="../index.html#projects" class="back-button">← Back to Projects</a>
+                <h1 class="page-title">Predictive Analytics Platform</h1>
+                <div class="page-meta">
+                    <div class="meta-item">
+                        <span>📅</span>
+                        <span>Completed: February 2024</span>
+                    </div>
+                    <div class="meta-item">
+                        <span>⏱️</span>
+                        <span>Duration: 8 months</span>
+                    </div>
+                    <div class="meta-item">
+                        <span>👥</span>
+                        <span>Team Size: 4</span>
+                    </div>
+                    <div class="meta-item">
+                        <span>🏷️</span>
+                        <span>Machine Learning</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2>Project Overview</h2>
+            <p>
+                Developed a comprehensive end-to-end machine learning platform for time series forecasting and 
+                predictive analytics. The platform automates the entire ML pipeline from data ingestion to 
+                model deployment, featuring automated model selection, hyperparameter tuning, and real-time 
+                prediction serving.
+            </p>
+            
+            <div class="content-image">📊</div>
+            
+            <p>
+                The system serves multiple business units with different forecasting needs, from sales prediction 
+                to inventory optimization. Built with scalability in mind, it can handle millions of time series 
+                and provides sub-second predictions with 99.9% uptime.
+            </p>
+
+            <h2>Technical Architecture</h2>
+            <div class="diagram-container">
+                <div class="diagram">ML Pipeline Architecture</div>
+                <p style="margin-top: 1rem; color: var(--text-secondary);">
+                    Data Ingestion → Feature Engineering → Model Training → Validation → Deployment → Monitoring
+                </p>
+            </div>
+
+            <h3>Technology Stack</h3>
+            <div class="tech-stack">
+                <div class="tech-category">
+                    <h4>Machine Learning</h4>
+                    <div class="tech-list">
+                        <span class="tech-item">Scikit-learn</span>
+                        <span class="tech-item">XGBoost</span>
+                        <span class="tech-item">LightGBM</span>
+                        <span class="tech-item">Prophet</span>
+                    </div>
+                </div>
+                <div class="tech-category">
+                    <h4>Data Processing</h4>
+                    <div class="tech-list">
+                        <span class="tech-item">Pandas</span>
+                        <span class="tech-item">NumPy</span>
+                        <span class="tech-item">Apache Spark</span>
+                        <span class="tech-item">Dask</span>
+                    </div>
+                </div>
+                <div class="tech-category">
+                    <h4>MLOps & Infrastructure</h4>
+                    <div class="tech-list">
+                        <span class="tech-item">MLflow</span>
+                        <span class="tech-item">Kubernetes</span>
+                        <span class="tech-item">AWS</span>
+                        <span class="tech-item">Airflow</span>
+                    </div>
+                </div>
+            </div>
+
+            <h2>Key Features</h2>
+            <ul>
+                <li><strong>Automated Model Selection:</strong> Intelligent algorithm selection based on data characteristics</li>
+                <li><strong>Hyperparameter Optimization:</strong> Bayesian optimization for efficient parameter tuning</li>
+                <li><strong>Feature Engineering:</strong> Automated feature extraction and selection for time series</li>
+                <li><strong>Real-time Predictions:</strong> Low-latency serving infrastructure for live predictions</li>
+                <li><strong>Model Monitoring:</strong> Continuous performance tracking and drift detection</li>
+                <li><strong>A/B Testing:</strong> Built-in experimentation framework for model comparison</li>
+            </ul>
+
+            <h2>Core Implementation</h2>
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-language">Python - Automated ML Pipeline</span>
+                    <button class="copy-button">Copy</button>
+                </div>
+                <pre><code><span class="keyword">import</span> pandas <span class="keyword">as</span> pd
+<span class="keyword">import</span> numpy <span class="keyword">as</span> np
+<span class="keyword">from</span> sklearn.ensemble <span class="keyword">import</span> RandomForestRegressor
+<span class="keyword">from</span> xgboost <span class="keyword">import</span> XGBRegressor
+<span class="keyword">from</span> lightgbm <span class="keyword">import</span> LGBMRegressor
+<span class="keyword">from</span> optuna <span class="keyword">import</span> create_study
+<span class="keyword">import</span> mlflow
+
+<span class="keyword">class</span> <span class="function">AutoMLPipeline</span>:
+    <span class="keyword">def</span> <span class="function">__init__</span>(self, target_metric=<span class="string">'rmse'</span>):
+        self.target_metric = target_metric
+        self.models = {
+            <span class="string">'xgboost'</span>: XGBRegressor(),
+            <span class="string">'lightgbm'</span>: LGBMRegressor(),
+            <span class="string">'random_forest'</span>: RandomForestRegressor()
+        }
+        self.best_model = None
+        self.best_params = None
+        self.feature_importance = None
+    
+    <span class="keyword">def</span> <span class="function">feature_engineering</span>(self, df, date_col, target_col):
+        <span class="string">"""Automated feature engineering for time series"""</span>
+        
+        <span class="comment"># Convert date column</span>
+        df[date_col] = pd.to_datetime(df[date_col])
+        df = df.sort_values(date_col)
+        
+        <span class="comment"># Time-based features</span>
+        df[<span class="string">'year'</span>] = df[date_col].dt.year
+        df[<span class="string">'month'</span>] = df[date_col].dt.month
+        df[<span class="string">'day'</span>] = df[date_col].dt.day
+        df[<span class="string">'dayofweek'</span>] = df[date_col].dt.dayofweek
+        df[<span class="string">'quarter'</span>] = df[date_col].dt.quarter
+        
+        <span class="comment"># Lag features</span>
+        <span class="keyword">for</span> lag <span class="keyword">in</span> [<span class="number">1</span>, <span class="number">7</span>, <span class="number">30</span>, <span class="number">365</span>]:
+            df[<span class="string">f'{target_col}_lag_{lag}'</span>] = df[target_col].shift(lag)
+        
+        <span class="comment"># Rolling statistics</span>
+        <span class="keyword">for</span> window <span class="keyword">in</span> [<span class="number">7</span>, <span class="number">30</span>, <span class="number">90</span>]:
+            df[<span class="string">f'{target_col}_rolling_mean_{window}'</span>] = df[target_col].rolling(window).mean()
+            df[<span class="string">f'{target_col}_rolling_std_{window}'</span>] = df[target_col].rolling(window).std()
+        
+        <span class="comment"># Trend and seasonality</span>
+        df[<span class="string">f'{target_col}_pct_change'</span>] = df[target_col].pct_change()
+        df[<span class="string">f'{target_col}_diff'</span>] = df[target_col].diff()
+        
+        <span class="keyword">return</span> df.dropna()
+    
+    <span class="keyword">def</span> <span class="function">optimize_hyperparameters</span>(self, X_train, y_train, X_val, y_val, model_name):
+        <span class="string">"""Bayesian hyperparameter optimization"""</span>
+        
+        <span class="keyword">def</span> <span class="function">objective</span>(trial):
+            <span class="keyword">if</span> model_name == <span class="string">'xgboost'</span>:
+                params = {
+                    <span class="string">'n_estimators'</span>: trial.suggest_int(<span class="string">'n_estimators'</span>, <span class="number">100</span>, <span class="number">1000</span>),
+                    <span class="string">'max_depth'</span>: trial.suggest_int(<span class="string">'max_depth'</span>, <span class="number">3</span>, <span class="number">10</span>),
+                    <span class="string">'learning_rate'</span>: trial.suggest_float(<span class="string">'learning_rate'</span>, <span class="number">0.01</span>, <span class="number">0.3</span>),
+                    <span class="string">'subsample'</span>: trial.suggest_float(<span class="string">'subsample'</span>, <span class="number">0.8</span>, <span class="number">1.0</span>)
+                }
+                model = XGBRegressor(**params, random_state=<span class="number">42</span>)
+            
+            <span class="keyword">elif</span> model_name == <span class="string">'lightgbm'</span>:
+                params = {
+                    <span class="string">'n_estimators'</span>: trial.suggest_int(<span class="string">'n_estimators'</span>, <span class="number">100</span>, <span class="number">1000</span>),
+                    <span class="string">'max_depth'</span>: trial.suggest_int(<span class="string">'max_depth'</span>, <span class="number">3</span>, <span class="number">10</span>),
+                    <span class="string">'learning_rate'</span>: trial.suggest_float(<span class="string">'learning_rate'</span>, <span class="number">0.01</span>, <span class="number">0.3</span>),
+                    <span class="string">'feature_fraction'</span>: trial.suggest_float(<span class="string">'feature_fraction'</span>, <span class="number">0.8</span>, <span class="number">1.0</span>)
+                }
+                model = LGBMRegressor(**params, random_state=<span class="number">42</span>)
+            
+            <span class="keyword">else</span>:  <span class="comment"># random_forest</span>
+                params = {
+                    <span class="string">'n_estimators'</span>: trial.suggest_int(<span class="string">'n_estimators'</span>, <span class="number">100</span>, <span class="number">500</span>),
+                    <span class="string">'max_depth'</span>: trial.suggest_int(<span class="string">'max_depth'</span>, <span class="number">3</span>, <span class="number">20</span>),
+                    <span class="string">'min_samples_split'</span>: trial.suggest_int(<span class="string">'min_samples_split'</span>, <span class="number">2</span>, <span class="number">10</span>)
+                }
+                model = RandomForestRegressor(**params, random_state=<span class="number">42</span>)
+            
+            model.fit(X_train, y_train)
+            predictions = model.predict(X_val)
+            rmse = np.sqrt(np.mean((y_val - predictions) ** <span class="number">2</span>))
+            
+            <span class="keyword">return</span> rmse
+        
+        study = create_study(direction=<span class="string">'minimize'</span>)
+        study.optimize(objective, n_trials=<span class="number">100</span>)
+        
+        <span class="keyword">return</span> study.best_params, study.best_value</code></pre>
+            </div>
+
+            <h2>Performance Results</h2>
+            <div class="project-stats">
+                <div class="stat-box">
+                    <div class="stat-value">94.3%</div>
+                    <div class="stat-label">Prediction Accuracy</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-value">150ms</div>
+                    <div class="stat-label">Avg Response Time</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-value">1M+</div>
+                    <div class="stat-label">Time Series Handled</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-value">99.9%</div>
+                    <div class="stat-label">System Uptime</div>
+                </div>
+            </div>
+
+            <h3>Model Performance Comparison</h3>
+            <div class="table-container">
+                <table class="content-table">
+                    <thead>
+                        <tr>
+                            <th>Model</th>
+                            <th>RMSE</th>
+                            <th>MAE</th>
+                            <th>Training Time</th>
+                            <th>Inference Time</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>XGBoost</td>
+                            <td>0.085</td>
+                            <td>0.063</td>
+                            <td>2.3 min</td>
+                            <td>12ms</td>
+                        </tr>
+                        <tr>
+                            <td>LightGBM</td>
+                            <td>0.087</td>
+                            <td>0.065</td>
+                            <td>1.8 min</td>
+                            <td>8ms</td>
+                        </tr>
+                        <tr>
+                            <td>Random Forest</td>
+                            <td>0.092</td>
+                            <td>0.071</td>
+                            <td>3.1 min</td>
+                            <td>15ms</td>
+                        </tr>
+                        <tr>
+                            <td>Prophet</td>
+                            <td>0.098</td>
+                            <td>0.074</td>
+                            <td>4.2 min</td>
+                            <td>25ms</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h2>MLOps Implementation</h2>
+            <p>
+                The platform includes comprehensive MLOps capabilities for production deployment and monitoring:
+            </p>
+
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-language">Python - Model Serving & Monitoring</span>
+                    <button class="copy-button">Copy</button>
+                </div>
+                <pre><code><span class="keyword">from</span> fastapi <span class="keyword">import</span> FastAPI, HTTPException
+<span class="keyword">from</span> pydantic <span class="keyword">import</span> BaseModel
+<span class="keyword">import</span> mlflow.pyfunc
+<span class="keyword">import</span> pandas <span class="keyword">as</span> pd
+<span class="keyword">import</span> logging
+<span class="keyword">from</span> datetime <span class="keyword">import</span> datetime
+
+app = FastAPI(title=<span class="string">"Predictive Analytics API"</span>)
+
+<span class="comment"># Load model</span>
+model = mlflow.pyfunc.load_model(<span class="string">"models:/sales_forecasting/production"</span>)
+
+<span class="keyword">class</span> <span class="function">PredictionRequest</span>(BaseModel):
+    features: dict
+    series_id: str
+
+<span class="keyword">class</span> <span class="function">ModelMonitor</span>:
+    <span class="keyword">def</span> <span class="function">__init__</span>(self):
+        self.prediction_counts = {}
+        self.error_counts = {}
+        self.response_times = []
+    
+    <span class="keyword">def</span> <span class="function">log_prediction</span>(self, series_id: str, prediction: float, 
+                      actual: float = None, response_time: float = None):
+        <span class="string">"""Log prediction for monitoring"""</span>
+        timestamp = datetime.now()
+        
+        <span class="comment"># Update counters</span>
+        self.prediction_counts[series_id] = self.prediction_counts.get(series_id, <span class="number">0</span>) + <span class="number">1</span>
+        
+        <span class="keyword">if</span> response_time:
+            self.response_times.append(response_time)
+        
+        <span class="comment"># Log to MLflow</span>
+        <span class="keyword">with</span> mlflow.start_run(run_name=<span class="string">f"prediction_{timestamp}"</span>):
+            mlflow.log_metric(<span class="string">"prediction_value"</span>, prediction)
+            <span class="keyword">if</span> actual:
+                error = abs(prediction - actual)
+                mlflow.log_metric(<span class="string">"prediction_error"</span>, error)
+            <span class="keyword">if</span> response_time:
+                mlflow.log_metric(<span class="string">"response_time_ms"</span>, response_time)
+    
+    <span class="keyword">def</span> <span class="function">detect_drift</span>(self, recent_errors: list, historical_mean: float):
+        <span class="string">"""Simple drift detection"""</span>
+        <span class="keyword">if</span> len(recent_errors) < <span class="number">10</span>:
+            <span class="keyword">return</span> False
+        
+        recent_mean = np.mean(recent_errors)
+        <span class="keyword">return</span> recent_mean > historical_mean * <span class="number">1.5</span>  <span class="comment"># 50% increase threshold</span>
+
+monitor = ModelMonitor()
+
+<span class="keyword">@app.post</span>(<span class="string">"/predict"</span>)
+<span class="keyword">async</span> <span class="keyword">def</span> <span class="function">predict</span>(request: PredictionRequest):
+    <span class="string">"""Generate prediction"""</span>
+    start_time = datetime.now()
+    
+    <span class="keyword">try</span>:
+        <span class="comment"># Prepare input</span>
+        input_df = pd.DataFrame([request.features])
+        
+        <span class="comment"># Generate prediction</span>
+        prediction = model.predict(input_df)[<span class="number">0</span>]
+        
+        <span class="comment"># Calculate response time</span>
+        response_time = (datetime.now() - start_time).total_seconds() * <span class="number">1000</span>
+        
+        <span class="comment"># Log for monitoring</span>
+        monitor.log_prediction(
+            series_id=request.series_id,
+            prediction=prediction,
+            response_time=response_time
+        )
+        
+        <span class="keyword">return</span> {
+            <span class="string">"prediction"</span>: float(prediction),
+            <span class="string">"series_id"</span>: request.series_id,
+            <span class="string">"timestamp"</span>: datetime.now().isoformat(),
+            <span class="string">"response_time_ms"</span>: response_time
+        }
+    
+    <span class="keyword">except</span> Exception <span class="keyword">as</span> e:
+        monitor.error_counts[<span class="string">"prediction_errors"</span>] = monitor.error_counts.get(<span class="string">"prediction_errors"</span>, <span class="number">0</span>) + <span class="number">1</span>
+        <span class="keyword">raise</span> HTTPException(status_code=<span class="number">500</span>, detail=str(e))</code></pre>
+            </div>
+
+            <h2>Business Impact</h2>
+            <p>
+                The platform has delivered significant business value across multiple departments:
+            </p>
+
+            <ul>
+                <li><strong>Sales Forecasting:</strong> 25% improvement in forecast accuracy, reducing inventory costs by $2M annually</li>
+                <li><strong>Demand Planning:</strong> Optimized supply chain operations with 15% reduction in stockouts</li>
+                <li><strong>Financial Planning:</strong> Enhanced budget accuracy with 30% better revenue predictions</li>
+                <li><strong>Marketing ROI:</strong> Improved campaign effectiveness through predictive customer analytics</li>
+            </ul>
+
+            <h2>Challenges & Solutions</h2>
+            <p>
+                <strong>Data Quality:</strong> Inconsistent data formats and missing values across different sources. 
+                Implemented robust data validation pipelines and automated data quality checks with alerts 
+                for anomalies.
+            </p>
+            
+            <p>
+                <strong>Model Drift:</strong> Performance degradation over time due to changing patterns. 
+                Built automated retraining pipelines with drift detection algorithms that trigger model 
+                updates when performance drops below thresholds.
+            </p>
+
+            <p>
+                <strong>Scalability:</strong> Handling millions of time series efficiently. Implemented 
+                distributed computing with Apache Spark and optimized feature engineering pipelines 
+                to process large datasets in parallel.
+            </p>
+
+            <h2>Future Enhancements</h2>
+            <ul>
+                <li>Deep learning models for complex patterns (LSTM, Transformer)</li>
+                <li>Multi-variate forecasting with external data sources</li>
+                <li>Automated feature selection using genetic algorithms</li>
+                <li>Real-time model updates with online learning</li>
+                <li>Causal inference for better decision making</li>
+                <li>Integration with business intelligence tools</li>
+            </ul>
+
+            <div style="margin-top: 3rem; padding: 2rem; background: var(--secondary-bg); border-radius: 15px; border: 1px solid var(--border-color);">
+                <h3 style="margin-top: 0;">Project Resources</h3>
+                <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1rem;">
+                    <a href="#" class="demo-button" style="margin: 0;">Platform Demo</a>
+                    <a href="#" class="demo-button" style="margin: 0; background: var(--secondary-bg); color: var(--accent-color); border: 1px solid var(--accent-color);">Case Study</a>
+                    <a href="#" class="demo-button" style="margin: 0; background: var(--secondary-bg); color: var(--accent-color); border: 1px solid var(--accent-color);">Technical Documentation</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; <span id="copyright-year"></span> Praveen Kumar. Built with passion for AI & open source community.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu functionality
+        const mobileMenu = document.getElementById('mobileMenu');
+        const navLinks = document.getElementById('navLinks');
+
+        mobileMenu.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Copy button functionality
+        document.addEventListener('click', function(e) {
+            if (e.target.classList.contains('copy-button')) {
+                const codeBlock = e.target.closest('.code-block');
+                const code = codeBlock.querySelector('pre').textContent;
+                
+                navigator.clipboard.writeText(code).then(() => {
+                    e.target.textContent = 'Copied!';
+                    setTimeout(() => {
+                        e.target.textContent = 'Copy';
+                    }, 2000);
+                });
+            }
+        });
+
+        // Navbar background on scroll
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.style.background = 'rgba(10, 10, 10, 0.98)';
+            } else {
+                nav.style.background = 'rgba(10, 10, 10, 0.95)';
+            }
+        });
+
+        // Update copyright year dynamically
+        window.addEventListener('load', function() {
+            const yearElement = document.getElementById('copyright-year');
+            if (yearElement) {
+                yearElement.textContent = new Date().getFullYear();
+            }
+        });
+    </script>
+</body>
+</html>

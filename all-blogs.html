@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Blog Posts - Praveen Kumar</title>
+    <link rel="icon" type="image/x-icon" href="assests/favicon.ico">
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo" onclick="window.location.href='index.html'" style="cursor: pointer;">PK</div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#projects">Projects</a></li>
+                <li><a href="#blog">Blog</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+                <li><a href="inboxpraveen.github.io/resume/Praveen-Resume-October-2023.pdf" target="_blank" title="Updated Nov 2025">Resume</a></li>
+            </ul>
+            <button class="mobile-menu" id="mobileMenu">☰</button>
+        </div>
+    </nav>
+
+    <!-- Blog Page Header -->
+    <section class="hero" style="min-height: 60vh;">
+        <div class="container">
+            <div class="hero-content" style="text-align: center;">
+                <h1 style="font-size: clamp(2.5rem, 6vw, 4rem);">All Blog Posts</h1>
+                <p class="hero-subtitle">Insights, tutorials, and thoughts on AI, machine learning, and technology</p>
+                <p class="hero-description">
+                    Dive deep into the world of artificial intelligence, machine learning best practices, 
+                    cutting-edge research, and practical tutorials. From theoretical foundations to 
+                    real-world implementations, explore the latest trends shaping the future of AI.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- All Blog Posts Section -->
+    <section id="blog">
+        <div class="container">
+            <div class="blog-grid fade-in">
+                <!-- Featured Blog Posts (from main page) -->
+                <article class="blog-card">
+                    <div class="blog-image">🔍</div>
+                    <div class="blog-content">
+                        <div class="blog-date">December 2, 2025</div>
+                        <h3 class="blog-title">Building a Hands-On Semantic Search Engine</h3>
+                        <p class="blog-excerpt">
+                            From scratch to search: A complete walkthrough of building a semantic document 
+                            search engine with embeddings, FAISS, and transformers...
+                        </p>
+                        <a href="blogs/blog-1.html" class="read-more">Read More →</a>
+                    </div>
+                </article>
+
+                <article class="blog-card">
+                    <div class="blog-image">🏗️</div>
+                    <div class="blog-content">
+                        <div class="blog-date">December 2, 2025</div>
+                        <h3 class="blog-title">Building Loss360: Architecting a Multi-Tenant AI Platform</h3>
+                        <p class="blog-excerpt">
+                            Deep dive into architectural decisions, technical challenges, and lessons learned 
+                            from building an enterprise AI document processing platform...
+                        </p>
+                        <a href="blogs/blog-2.html" class="read-more">Read More →</a>
+                    </div>
+                </article>
+
+                <article class="blog-card">
+                    <div class="blog-image">⚡</div>
+                    <div class="blog-content">
+                        <div class="blog-date">February 10, 2024</div>
+                        <h3 class="blog-title">Building Scalable AI Pipelines</h3>
+                        <p class="blog-excerpt">
+                            A comprehensive guide to designing and implementing robust 
+                            machine learning pipelines at scale...
+                        </p>
+                        <a href="under-dev.html" class="read-more">Read More →</a>
+                    </div>
+                </article>
+
+                <!-- Additional Blog Posts -->
+                <article class="blog-card">
+                    <div class="blog-image">🧠</div>
+                    <div class="blog-content">
+                        <div class="blog-date">January 22, 2024</div>
+                        <h3 class="blog-title">Understanding Neural Network Interpretability</h3>
+                        <p class="blog-excerpt">
+                            Deep dive into explainable AI techniques, SHAP values, LIME, 
+                            and methods to understand what your models are learning...
+                        </p>
+                        <a href="under-dev.html" class="read-more">Read More →</a>
+                    </div>
+                </article>
+
+                <article class="blog-card">
+                    <div class="blog-image">🚀</div>
+                    <div class="blog-content">
+                        <div class="blog-date">January 8, 2024</div>
+                        <h3 class="blog-title">MLOps Best Practices for 2024</h3>
+                        <p class="blog-excerpt">
+                            Essential practices for deploying and maintaining ML models in production, 
+                            covering CI/CD, monitoring, and model versioning...
+                        </p>
+                        <a href="under-dev.html" class="read-more">Read More →</a>
+                    </div>
+                </article>
+
+                <article class="blog-card">
+                    <div class="blog-image">🔊</div>
+                    <div class="blog-content">
+                        <div class="blog-date">December 5, 2023</div>
+                        <h3 class="blog-title">Speech Recognition with Deep Learning</h3>
+                        <p class="blog-excerpt">
+                            Building robust speech-to-text systems using modern deep learning 
+                            approaches, including Whisper, Wav2Vec, and custom architectures...
+                        </p>
+                        <a href="under-dev.html" class="read-more">Read More →</a>
+                    </div>
+                </article>
+
+                <article class="blog-card">
+                    <div class="blog-image">🌐</div>
+                    <div class="blog-content">
+                        <div class="blog-date">October 25, 2023</div>
+                        <h3 class="blog-title">Distributed Training for Large Models</h3>
+                        <p class="blog-excerpt">
+                            Strategies for training large-scale models across multiple GPUs and nodes, 
+                            covering data parallelism, model parallelism, and mixed precision...
+                        </p>
+                        <a href="under-dev.html" class="read-more">Read More →</a>
+                    </div>
+                </article>
+
+                <article class="blog-card">
+                    <div class="blog-image">📱</div>
+                    <div class="blog-content">
+                        <div class="blog-date">September 15, 2023</div>
+                        <h3 class="blog-title">Edge AI: Deploying Models on Mobile Devices</h3>
+                        <p class="blog-excerpt">
+                            Optimizing and deploying machine learning models for mobile and edge devices 
+                            using TensorFlow Lite, ONNX, and quantization techniques...
+                        </p>
+                        <a href="under-dev.html" class="read-more">Read More →</a>
+                    </div>
+                </article>
+
+                <article class="blog-card">
+                    <div class="blog-image">🤝</div>
+                    <div class="blog-content">
+                        <div class="blog-date">September 2, 2023</div>
+                        <h3 class="blog-title">Human-AI Collaboration in Decision Making</h3>
+                        <p class="blog-excerpt">
+                            Exploring how AI systems can augment human decision-making processes 
+                            while maintaining transparency and trust...
+                        </p>
+                        <a href="under-dev.html" class="read-more">Read More →</a>
+                    </div>
+                </article>
+
+                <article class="blog-card">
+                    <div class="blog-image">⚖️</div>
+                    <div class="blog-content">
+                        <div class="blog-date">August 5, 2023</div>
+                        <h3 class="blog-title">Ethical AI: Bias Detection and Mitigation</h3>
+                        <p class="blog-excerpt">
+                            Identifying and addressing bias in machine learning models, 
+                            fairness metrics, and building more equitable AI systems...
+                        </p>
+                        <a href="under-dev.html" class="read-more">Read More →</a>
+                    </div>
+                </article>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-title fade-in">Let's Discuss</h2>
+            <div class="contact-content fade-in">
+                <p class="contact-text">
+                    Have questions about any of these topics or want to suggest a blog post idea? 
+                    I'd love to hear from you and engage in meaningful discussions about AI and technology.
+                </p>
+                <div class="contact-links">
+                    <a href="mailto:inboxpraveen.17@gmail.com" class="contact-link">
+                        <span>✉️</span> Email
+                    </a>
+                    <a href="#" class="contact-link">
+                        <span>💼</span> LinkedIn
+                    </a>
+                    <a href="#" class="contact-link">
+                        <span>🐙</span> GitHub
+                    </a>
+                    <a href="#" class="contact-link">
+                        <span>🐦</span> Twitter
+                    </a>
+                    <a href="inboxpraveen.github.io/resume/Praveen-Resume-October-2023.pdf" class="contact-link" target="_blank" download>
+                        <span>📄</span> Resume <span style="font-size: 0.75em; color: var(--text-secondary);">(Updated Nov 2025)</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; <span id="copyright-year"></span> Praveen Kumar. Built with passion for AI & open source community.</p>
+        </div>
+    </footer>
+
+    <script>
+        const mobileMenu = document.getElementById('mobileMenu');
+        const navLinks = document.getElementById('navLinks');
+
+        mobileMenu.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+                // Close mobile menu if open
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all fade-in elements
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Navbar background on scroll
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.style.background = 'rgba(10, 10, 10, 0.98)';
+            } else {
+                nav.style.background = 'rgba(10, 10, 10, 0.95)';
+            }
+        });
+
+        // Add parallax effect to hero section
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('.hero');
+            const rate = scrolled * -0.5;
+            hero.style.transform = `translateY(${rate}px)`;
+        });
+
+        // Add glitch effect to logo on hover
+        const logo = document.querySelector('.logo');
+        logo.addEventListener('mouseenter', () => {
+            logo.style.animation = 'glitch 0.3s ease-in-out';
+        });
+
+        logo.addEventListener('animationend', () => {
+            logo.style.animation = '';
+        });
+
+        // Update copyright year dynamically
+        window.addEventListener('load', function() {
+            const yearElement = document.getElementById('copyright-year');
+            if (yearElement) {
+                yearElement.textContent = new Date().getFullYear();
+            }
+        });
+    </script>
+</body>
+</html>
