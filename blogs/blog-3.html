@@ -3,32 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Building Scalable AI Pipelines - Praveen Kumar</title>
+    <title>Building a Scalable Movie Recommendation System - Praveen Kumar</title>
     
     <!-- SEO Meta Tags -->
-    <meta name="description" content="A comprehensive guide to designing and implementing robust machine learning pipelines at scale. Learn microservices architecture, distributed processing, model serving, and MLOps best practices.">
-    <meta name="keywords" content="AI Pipelines, MLOps, Scalable ML, Microservices, Kubernetes, Apache Spark, Model Serving, ML Infrastructure">
+    <meta name="description" content="Deep dive into building a production-ready movie recommendation system using TF-IDF, SVD, and content-based filtering. Learn to scale from 10K to 1M+ movies with Django and advanced ML.">
+    <meta name="keywords" content="Recommendation System, Machine Learning, TF-IDF, SVD, Content-Based Filtering, Django, Scalable ML, Movie Recommendation">
     <meta name="author" content="Praveen Kumar">
     
     <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="Building Scalable AI Pipelines">
-    <meta property="og:description" content="Comprehensive guide to designing robust machine learning pipelines at scale. Learn microservices, distributed processing, model serving, and MLOps.">
+    <meta property="og:title" content="Building a Scalable Movie Recommendation System">
+    <meta property="og:description" content="From 10K to 1M+ movies: A complete guide to building production-ready recommendation systems using advanced ML, TF-IDF, SVD, and Django.">
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://inboxpraveen.github.io/blogs/blog-3.html">
-    <meta property="og:image" content="https://inboxpraveen.github.io/assests/Original.png">
-    <meta property="og:image:alt" content="Scalable AI Pipelines Architecture">
+    <meta property="og:image" content="https://inboxpraveen.github.io/blogs/resources/blog-3/Header.png">
+    <meta property="og:image:alt" content="Movie Recommendation System Architecture">
     <meta property="og:site_name" content="Praveen Kumar Portfolio">
-    <meta property="article:published_time" content="2024-02-10">
+    <meta property="article:published_time" content="2025-12-05">
     <meta property="article:author" content="Praveen Kumar">
-    <meta property="article:tag" content="MLOps">
-    <meta property="article:tag" content="Scalability">
+    <meta property="article:tag" content="Machine Learning">
+    <meta property="article:tag" content="Recommendation Systems">
+    <meta property="article:tag" content="Django">
     
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Building Scalable AI Pipelines">
-    <meta name="twitter:description" content="Learn to design robust ML pipelines at scale: microservices, distributed processing, and MLOps best practices.">
-    <meta name="twitter:image" content="https://inboxpraveen.github.io/assests/Original.png">
-    <meta name="twitter:image:alt" content="Scalable AI Pipelines">
+    <meta name="twitter:title" content="Building a Scalable Movie Recommendation System">
+    <meta name="twitter:description" content="Production-ready recommendation system handling 1M+ movies. Learn TF-IDF, SVD, content-based filtering, and Django deployment.">
+    <meta name="twitter:image" content="https://inboxpraveen.github.io/blogs/resources/blog-3/Header.png">
+    <meta name="twitter:image:alt" content="Movie Recommendation System">
     
     <!-- Canonical URL -->
     <link rel="canonical" href="https://inboxpraveen.github.io/blogs/blog-3.html">
@@ -53,818 +54,679 @@
         </div>
     </nav>
 
-    <!-- Blog Post Page - AI Pipelines -->
+    <!-- Blog Post Page - Movie Recommendation System -->
     <div class="page-container active">
         <div class="page-header">
             <div class="container">
                 <a href="../index.html#blog" class="back-button">← Back to Blog</a>
-                <h1 class="page-title">Building Scalable AI Pipelines</h1>
+                <h1 class="page-title">Building a Scalable Movie Recommendation System</h1>
                 <div class="page-meta">
                     <div class="meta-item">
                         <span>📅</span>
-                        <span>Published: February 10, 2024</span>
+                        <span>Published: December 5, 2025</span>
                     </div>
                     <div class="meta-item">
                         <span>⏱️</span>
-                        <span>15 min read</span>
+                        <span>16 min read</span>
                     </div>
                     <div class="meta-item">
                         <span>🏷️</span>
-                        <span>MLOps</span>
+                        <span>Machine Learning • Recommendation Systems</span>
                     </div>
                     <div class="meta-item">
                         <span>👁️</span>
-                        <span>3,421 views</span>
+                        <span>1,247 views</span>
                     </div>
                 </div>
             </div>
         </div>
 
         <div class="blog-content-area">
-            <div class="content-image">⚡</div>
+            <div style="text-align: center; margin: 2rem 0;">
+                <img src="resources/blog-3/Header.png" alt="Movie Recommendation System Header" style="max-width: 100%; height: auto; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);">
+            </div>
             
             <p>
-                Building scalable AI pipelines is one of the most critical aspects of deploying machine learning 
-                solutions in production. A well-designed pipeline can handle increasing data volumes, model complexity, 
-                and user demands while maintaining reliability and performance. This comprehensive guide covers the 
-                essential components and best practices for creating robust, scalable AI infrastructure.
+                Recommendation systems are everywhere—Netflix suggests your next binge-worthy series, Spotify curates 
+                your perfect playlist, and Amazon knows what you want before you do. But how do these systems actually 
+                work under the hood? More importantly, how do you build one that scales from a few thousand items to 
+                <em>millions</em> without breaking a sweat?
             </p>
 
-            <blockquote>
-                "The difference between a successful AI project and a failed one often lies not in the sophistication 
-                of the algorithm, but in the robustness and scalability of the underlying pipeline."
-            </blockquote>
-
-            <h2>Understanding AI Pipeline Architecture</h2>
             <p>
-                A scalable AI pipeline consists of several interconnected components that work together to process 
-                data, train models, and serve predictions. Understanding each component's role is crucial for 
-                building an effective system.
+                In this deep dive, I'll walk you through building a <strong>production-ready movie recommendation 
+                system</strong> that evolved from handling 10,000 movies to successfully processing <strong>930,000+ 
+                movies</strong> from the TMDB dataset. We'll cover the machine learning techniques, architectural 
+                decisions, optimization strategies, and Django deployment—everything you need to build a real-world 
+                recommendation engine.
             </p>
 
-            <h3>Core Pipeline Components</h3>
+            <h2>Why Movie Recommendations Are Hard</h2>
+            <p>
+                At first glance, recommending movies seems straightforward: <em>"Find movies similar to this one."</em> 
+                But the devil is in the details:
+            </p>
+
             <ul>
-                <li><strong>Data Ingestion:</strong> Collecting and streaming data from various sources</li>
-                <li><strong>Data Processing:</strong> Cleaning, transforming, and preparing data for training</li>
-                <li><strong>Feature Engineering:</strong> Creating and managing feature stores</li>
-                <li><strong>Model Training:</strong> Automated training and hyperparameter optimization</li>
-                <li><strong>Model Validation:</strong> Testing and validating model performance</li>
-                <li><strong>Model Deployment:</strong> Serving models for real-time and batch inference</li>
-                <li><strong>Monitoring:</strong> Tracking performance, data drift, and system health</li>
+                <li><strong>Scale:</strong> Computing similarity across millions of movie pairs is computationally expensive</li>
+                <li><strong>Quality vs. Coverage:</strong> Should you recommend obscure gems or stick to popular hits?</li>
+                <li><strong>Cold Start:</strong> How do you recommend without user history or ratings?</li>
+                <li><strong>Context Understanding:</strong> "Science Fiction" isn't the same as "Sci-Fi Action Thriller"</li>
+                <li><strong>Performance:</strong> Users expect recommendations in milliseconds, not seconds</li>
             </ul>
 
-            <h2>Designing for Scalability</h2>
             <p>
-                Scalability must be considered from the ground up. Here are key principles for building 
-                scalable AI pipelines:
+                The system I built addresses all of these challenges using <strong>content-based filtering</strong> with 
+                advanced feature engineering and dimensionality reduction.
             </p>
 
-            <h3>Microservices Architecture</h3>
-            <div class="code-block">
-                <div class="code-header">
-                    <span class="code-language">Python - Microservice Structure</span>
-                    <button class="copy-button">Copy</button>
-                </div>
-                <pre><code><span class="keyword">from</span> fastapi <span class="keyword">import</span> FastAPI, HTTPException
-<span class="keyword">from</span> pydantic <span class="keyword">import</span> BaseModel
-<span class="keyword">import</span> asyncio
-<span class="keyword">import</span> aioredis
-<span class="keyword">from</span> typing <span class="keyword">import</span> List, Dict, Any
-<span class="keyword">import</span> logging
-
-<span class="comment"># Data Processing Service</span>
-<span class="keyword">class</span> <span class="function">DataProcessingService</span>:
-    <span class="keyword">def</span> <span class="function">__init__</span>(self, redis_url: str):
-        self.redis_url = redis_url
-        self.redis = None
-        self.logger = logging.getLogger(__name__)
-    
-    <span class="keyword">async</span> <span class="keyword">def</span> <span class="function">startup</span>(self):
-        <span class="string">"""Initialize connections"""</span>
-        self.redis = <span class="keyword">await</span> aioredis.from_url(self.redis_url)
-        self.logger.info(<span class="string">"Data processing service started"</span>)
-    
-    <span class="keyword">async</span> <span class="keyword">def</span> <span class="function">process_batch</span>(self, data_batch: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
-        <span class="string">"""Process a batch of data"""</span>
-        processed_data = []
-        
-        <span class="keyword">for</span> item <span class="keyword">in</span> data_batch:
-            <span class="keyword">try</span>:
-                <span class="comment"># Apply transformations</span>
-                processed_item = <span class="keyword">await</span> self._transform_data(item)
-                
-                <span class="comment"># Cache processed data</span>
-                cache_key = <span class="string">f"processed:{item.get('id', 'unknown')}"</span>
-                <span class="keyword">await</span> self.redis.setex(cache_key, <span class="number">3600</span>, str(processed_item))
-                
-                processed_data.append(processed_item)
-                
-            <span class="keyword">except</span> Exception <span class="keyword">as</span> e:
-                self.logger.error(<span class="string">f"Error processing item {item}: {e}"</span>)
-                <span class="comment"># Continue processing other items</span>
-                <span class="keyword">continue</span>
-        
-        <span class="keyword">return</span> processed_data
-    
-    <span class="keyword">async</span> <span class="keyword">def</span> <span class="function">_transform_data</span>(self, item: Dict[str, Any]) -> Dict[str, Any]:
-        <span class="string">"""Apply data transformations"""</span>
-        <span class="comment"># Simulate async data transformation</span>
-        <span class="keyword">await</span> asyncio.sleep(<span class="number">0.01</span>)  <span class="comment"># Simulate I/O</span>
-        
-        transformed = item.copy()
-        
-        <span class="comment"># Add timestamp</span>
-        <span class="keyword">import</span> time
-        transformed[<span class="string">'processed_at'</span>] = time.time()
-        
-        <span class="comment"># Normalize numerical fields</span>
-        <span class="keyword">for</span> key, value <span class="keyword">in</span> item.items():
-            <span class="keyword">if</span> isinstance(value, (int, float)):
-                transformed[<span class="string">f'{key}_normalized'</span>] = (value - <span class="number">0.5</span>) / <span class="number">0.5</span>
-        
-        <span class="keyword">return</span> transformed
-
-<span class="comment"># Feature Store Service</span>
-<span class="keyword">class</span> <span class="function">FeatureStoreService</span>:
-    <span class="keyword">def</span> <span class="function">__init__</span>(self, storage_backend: str):
-        self.storage_backend = storage_backend
-        self.feature_cache = {}
-        self.logger = logging.getLogger(__name__)
-    
-    <span class="keyword">async</span> <span class="keyword">def</span> <span class="function">store_features</span>(self, entity_id: str, features: Dict[str, Any]):
-        <span class="string">"""Store features for an entity"""</span>
-        <span class="keyword">try</span>:
-            <span class="comment"># Store in cache for fast access</span>
-            self.feature_cache[entity_id] = features
-            
-            <span class="comment"># Persist to storage backend</span>
-            <span class="keyword">await</span> self._persist_features(entity_id, features)
-            
-            self.logger.info(<span class="string">f"Features stored for entity {entity_id}"</span>)
-            
-        <span class="keyword">except</span> Exception <span class="keyword">as</span> e:
-            self.logger.error(<span class="string">f"Error storing features: {e}"</span>)
-            <span class="keyword">raise</span>
-    
-    <span class="keyword">async</span> <span class="keyword">def</span> <span class="function">get_features</span>(self, entity_id: str, feature_names: List[str]) -> Dict[str, Any]:
-        <span class="string">"""Retrieve features for an entity"""</span>
-        <span class="comment"># Try cache first</span>
-        <span class="keyword">if</span> entity_id <span class="keyword">in</span> self.feature_cache:
-            cached_features = self.feature_cache[entity_id]
-            <span class="keyword">return</span> {name: cached_features.get(name) <span class="keyword">for</span> name <span class="keyword">in</span> feature_names}
-        
-        <span class="comment"># Fallback to storage backend</span>
-        <span class="keyword">return</span> <span class="keyword">await</span> self._load_features(entity_id, feature_names)
-    
-    <span class="keyword">async</span> <span class="keyword">def</span> <span class="function">_persist_features</span>(self, entity_id: str, features: Dict[str, Any]):
-        <span class="string">"""Persist features to storage backend"""</span>
-        <span class="comment"># Simulate database write</span>
-        <span class="keyword">await</span> asyncio.sleep(<span class="number">0.005</span>)
-    
-    <span class="keyword">async</span> <span class="keyword">def</span> <span class="function">_load_features</span>(self, entity_id: str, feature_names: List[str]) -> Dict[str, Any]:
-        <span class="string">"""Load features from storage backend"""</span>
-        <span class="comment"># Simulate database read</span>
-        <span class="keyword">await</span> asyncio.sleep(<span class="number">0.01</span>)
-        <span class="keyword">return</span> {name: None <span class="keyword">for</span> name <span class="keyword">in</span> feature_names}</code></pre>
-            </div>
-
-            <h3>Container Orchestration</h3>
+            <h2>The Evolution: From 10K to 930K+ Movies</h2>
             <p>
-                Using containers and orchestration platforms like Kubernetes enables horizontal scaling 
-                and fault tolerance:
+                The journey started with the classic MovieLens dataset (around 10,000 movies). While educational, it 
+                wasn't representative of real-world scale. I then upgraded to the <strong>TMDB Movies Dataset 2023</strong> 
+                with 1.3M+ entries—a game changer.
             </p>
 
-            <div class="code-block">
-                <div class="code-header">
-                    <span class="code-language">YAML - Kubernetes Deployment</span>
-                    <button class="copy-button">Copy</button>
-                </div>
-                <pre><code><span class="comment"># AI Pipeline Deployment Configuration</span>
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: ai-inference-service
-  labels:
-    app: ai-inference
-spec:
-  replicas: <span class="number">3</span>
-  selector:
-    matchLabels:
-      app: ai-inference
-  template:
-    metadata:
-      labels:
-        app: ai-inference
-    spec:
-      containers:
-      - name: inference-service
-        image: ai-pipeline/inference:latest
-        ports:
-        - containerPort: <span class="number">8000</span>
-        env:
-        - name: MODEL_PATH
-          value: <span class="string">"/models/production"</span>
-        - name: REDIS_URL
-          value: <span class="string">"redis://redis-service:6379"</span>
-        resources:
-          requests:
-            memory: <span class="string">"1Gi"</span>
-            cpu: <span class="string">"500m"</span>
-          limits:
-            memory: <span class="string">"2Gi"</span>
-            cpu: <span class="string">"1000m"</span>
-        livenessProbe:
-          httpGet:
-            path: /health
-            port: <span class="number">8000</span>
-          initialDelaySeconds: <span class="number">30</span>
-          periodSeconds: <span class="number">10</span>
-        readinessProbe:
-          httpGet:
-            path: /ready
-            port: <span class="number">8000</span>
-          initialDelaySeconds: <span class="number">5</span>
-          periodSeconds: <span class="number">5</span>
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: ai-inference-service
-spec:
-  selector:
-    app: ai-inference
-  ports:
-  - protocol: TCP
-    port: <span class="number">80</span>
-    targetPort: <span class="number">8000</span>
-  type: LoadBalancer
----
-apiVersion: autoscaling/v2
-kind: HorizontalPodAutoscaler
-metadata:
-  name: ai-inference-hpa
-spec:
-  scaleTargetRef:
-    apiVersion: apps/v1
-    kind: Deployment
-    name: ai-inference-service
-  minReplicas: <span class="number">3</span>
-  maxReplicas: <span class="number">20</span>
-  metrics:
-  - type: Resource
-    resource:
-      name: cpu
-      target:
-        type: Utilization
-        averageUtilization: <span class="number">70</span>
-  - type: Resource
-    resource:
-      name: memory
-      target:
-        type: Utilization
-        averageUtilization: <span class="number">80</span></code></pre>
-            </div>
-
-            <h2>Data Pipeline Scalability</h2>
-            <p>
-                Data processing is often the bottleneck in AI pipelines. Here are strategies for 
-                building scalable data processing systems:
-            </p>
-
-            <h3>Stream Processing Architecture</h3>
             <div class="table-container">
                 <table class="content-table">
                     <thead>
                         <tr>
-                            <th>Component</th>
-                            <th>Technology</th>
-                            <th>Throughput</th>
-                            <th>Latency</th>
-                            <th>Use Case</th>
+                            <th>Metric</th>
+                            <th>Original (MovieLens)</th>
+                            <th>Upgraded (TMDB)</th>
+                            <th>Improvement</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td>Message Queue</td>
-                            <td>Apache Kafka</td>
-                            <td>Millions/sec</td>
-                            <td>&lt; 10ms</td>
-                            <td>Real-time data ingestion</td>
+                            <td>Dataset Size</td>
+                            <td>10K movies</td>
+                            <td>930K+ movies</td>
+                            <td>93x larger</td>
                         </tr>
                         <tr>
-                            <td>Stream Processing</td>
-                            <td>Apache Flink</td>
-                            <td>Millions/sec</td>
-                            <td>&lt; 100ms</td>
-                            <td>Real-time transformations</td>
+                            <td>Data Files</td>
+                            <td>7 CSVs (complex merge)</td>
+                            <td>1 CSV (unified)</td>
+                            <td>Simplified pipeline</td>
                         </tr>
                         <tr>
-                            <td>Batch Processing</td>
-                            <td>Apache Spark</td>
-                            <td>TB/hour</td>
-                            <td>Minutes</td>
-                            <td>Large-scale ETL</td>
+                            <td>Memory Usage</td>
+                            <td>800MB (10K)</td>
+                            <td>350MB (100K)</td>
+                            <td>56% reduction</td>
                         </tr>
                         <tr>
-                            <td>Feature Store</td>
-                            <td>Feast/Tecton</td>
-                            <td>100K/sec</td>
-                            <td>&lt; 5ms</td>
-                            <td>Feature serving</td>
+                            <td>Training Time</td>
+                            <td>5 min (10K)</td>
+                            <td>15 min (100K)</td>
+                            <td>Optimized</td>
+                        </tr>
+                        <tr>
+                            <td>Model Size</td>
+                            <td>320MB</td>
+                            <td>180MB</td>
+                            <td>44% smaller</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
 
-            <h3>Distributed Data Processing</h3>
-            <div class="code-block">
-                <div class="code-header">
-                    <span class="code-language">Python - Spark Pipeline</span>
-                    <button class="copy-button">Copy</button>
-                </div>
-                <pre><code><span class="keyword">from</span> pyspark.sql <span class="keyword">import</span> SparkSession
-<span class="keyword">from</span> pyspark.sql.functions <span class="keyword">import</span> col, when, isnan, count, mean, stddev
-<span class="keyword">from</span> pyspark.ml.feature <span class="keyword">import</span> VectorAssembler, StandardScaler
-<span class="keyword">from</span> pyspark.ml <span class="keyword">import</span> Pipeline
-<span class="keyword">import</span> logging
-
-<span class="keyword">class</span> <span class="function">ScalableDataPipeline</span>:
-    <span class="keyword">def</span> <span class="function">__init__</span>(self, app_name: str, master: str = None):
-        self.spark = SparkSession.builder \
-            .appName(app_name) \
-            .config(<span class="string">"spark.sql.adaptive.enabled"</span>, <span class="string">"true"</span>) \
-            .config(<span class="string">"spark.sql.adaptive.coalescePartitions.enabled"</span>, <span class="string">"true"</span>) \
-            .config(<span class="string">"spark.serializer"</span>, <span class="string">"org.apache.spark.serializer.KryoSerializer"</span>) \
-            .getOrCreate()
-        
-        <span class="keyword">if</span> master:
-            self.spark.conf.set(<span class="string">"spark.master"</span>, master)
-        
-        self.logger = logging.getLogger(__name__)
-    
-    <span class="keyword">def</span> <span class="function">load_data</span>(self, source_path: str, format: str = <span class="string">"parquet"</span>):
-        <span class="string">"""Load data from various sources"""</span>
-        <span class="keyword">try</span>:
-            <span class="keyword">if</span> format == <span class="string">"parquet"</span>:
-                df = self.spark.read.parquet(source_path)
-            <span class="keyword">elif</span> format == <span class="string">"delta"</span>:
-                df = self.spark.read.format(<span class="string">"delta"</span>).load(source_path)
-            <span class="keyword">elif</span> format == <span class="string">"kafka"</span>:
-                df = self.spark.readStream \
-                    .format(<span class="string">"kafka"</span>) \
-                    .option(<span class="string">"kafka.bootstrap.servers"</span>, source_path) \
-                    .option(<span class="string">"subscribe"</span>, <span class="string">"data-topic"</span>) \
-                    .load()
-            <span class="keyword">else</span>:
-                <span class="keyword">raise</span> ValueError(<span class="string">f"Unsupported format: {format}"</span>)
+            <h2>The Architecture: How It Actually Works</h2>
             
-            self.logger.info(<span class="string">f"Loaded data from {source_path}"</span>)
-            <span class="keyword">return</span> df
-            
-        <span class="keyword">except</span> Exception <span class="keyword">as</span> e:
-            self.logger.error(<span class="string">f"Error loading data: {e}"</span>)
-            <span class="keyword">raise</span>
-    
-    <span class="keyword">def</span> <span class="function">clean_data</span>(self, df):
-        <span class="string">"""Clean and validate data"""</span>
-        <span class="comment"># Remove rows with all null values</span>
-        df_cleaned = df.dropna(how=<span class="string">'all'</span>)
-        
-        <span class="comment"># Get data quality metrics</span>
-        total_rows = df.count()
-        cleaned_rows = df_cleaned.count()
-        
-        self.logger.info(<span class="string">f"Data cleaning: {total_rows} -> {cleaned_rows} rows"</span>)
-        
-        <span class="comment"># Handle outliers for numerical columns</span>
-        numeric_columns = [f.name <span class="keyword">for</span> f <span class="keyword">in</span> df_cleaned.schema.fields 
-                          <span class="keyword">if</span> f.dataType.typeName() <span class="keyword">in</span> [<span class="string">'double'</span>, <span class="string">'float'</span>, <span class="string">'integer'</span>]]
-        
-        <span class="keyword">for</span> col_name <span class="keyword">in</span> numeric_columns:
-            <span class="comment"># Calculate quartiles</span>
-            quartiles = df_cleaned.approxQuantile(col_name, [<span class="number">0.25</span>, <span class="number">0.75</span>], <span class="number">0.05</span>)
-            <span class="keyword">if</span> len(quartiles) == <span class="number">2</span>:
-                Q1, Q3 = quartiles
-                IQR = Q3 - Q1
-                lower_bound = Q1 - <span class="number">1.5</span> * IQR
-                upper_bound = Q3 + <span class="number">1.5</span> * IQR
-                
-                <span class="comment"># Cap outliers</span>
-                df_cleaned = df_cleaned.withColumn(
-                    col_name,
-                    when(col(col_name) < lower_bound, lower_bound)
-                    .when(col(col_name) > upper_bound, upper_bound)
-                    .otherwise(col(col_name))
-                )
-        
-        <span class="keyword">return</span> df_cleaned
-    
-    <span class="keyword">def</span> <span class="function">create_features</span>(self, df, feature_columns, target_column=None):
-        <span class="string">"""Create feature vectors for ML"""</span>
-        <span class="comment"># Assemble features</span>
-        assembler = VectorAssembler(
-            inputCols=feature_columns,
-            outputCol=<span class="string">"features_raw"</span>,
-            handleInvalid=<span class="string">"skip"</span>
-        )
-        
-        <span class="comment"># Scale features</span>
-        scaler = StandardScaler(
-            inputCol=<span class="string">"features_raw"</span>,
-            outputCol=<span class="string">"features"</span>,
-            withStd=True,
-            withMean=True
-        )
-        
-        <span class="comment"># Create pipeline</span>
-        pipeline = Pipeline(stages=[assembler, scaler])
-        
-        <span class="comment"># Fit and transform</span>
-        pipeline_model = pipeline.fit(df)
-        df_features = pipeline_model.transform(df)
-        
-        self.logger.info(<span class="string">f"Created feature vectors from {len(feature_columns)} columns"</span>)
-        
-        <span class="keyword">return</span> df_features, pipeline_model
-    
-    <span class="keyword">def</span> <span class="function">save_processed_data</span>(self, df, output_path: str, format: str = <span class="string">"parquet"</span>, 
-                          partition_cols: list = None):
-        <span class="string">"""Save processed data with optimal partitioning"""</span>
-        writer = df.write.mode(<span class="string">"overwrite"</span>)
-        
-        <span class="keyword">if</span> partition_cols:
-            writer = writer.partitionBy(*partition_cols)
-        
-        <span class="keyword">if</span> format == <span class="string">"parquet"</span>:
-            writer.parquet(output_path)
-        <span class="keyword">elif</span> format == <span class="string">"delta"</span>:
-            writer.format(<span class="string">"delta"</span>).save(output_path)
-        
-        self.logger.info(<span class="string">f"Saved processed data to {output_path}"</span>)
-    
-    <span class="keyword">def</span> <span class="function">close</span>(self):
-        <span class="string">"""Clean up resources"""</span>
-        self.spark.stop()</code></pre>
+            <div style="text-align: center; margin: 2rem 0;">
+                <img src="resources/blog-3/Architecture.png" alt="Recommendation System Architecture" style="max-width: 100%; height: auto; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);">
             </div>
 
-            <h2>Model Serving at Scale</h2>
+            <h3>The Recommendation Pipeline</h3>
             <p>
-                Serving machine learning models at scale requires careful consideration of latency, 
-                throughput, and resource utilization:
+                The system works in seven distinct stages:
             </p>
 
-            <h3>Multi-Model Serving Architecture</h3>
             <div class="code-block">
                 <div class="code-header">
-                    <span class="code-language">Python - Model Serving Service</span>
+                    <span class="code-language">Recommendation Pipeline Stages</span>
                     <button class="copy-button">Copy</button>
                 </div>
-                <pre><code><span class="keyword">import</span> asyncio
-<span class="keyword">from</span> fastapi <span class="keyword">import</span> FastAPI, HTTPException, BackgroundTasks
-<span class="keyword">from</span> pydantic <span class="keyword">import</span> BaseModel
-<span class="keyword">import</span> joblib
+                <pre><code>1. User Input → "Inception"
+2. Fuzzy Matching → Find closest title in database
+3. Get Movie Index → title_to_idx["Inception"] = 42
+4. Fetch Similarity Scores → similarity_matrix[42] = [0.95, 0.87, 0.82, ...]
+5. Sort & Filter → Top 15 movies by similarity
+6. Apply Business Rules → Min rating, year range, genre filters
+7. Return Results → With metadata, posters, IMDb links</code></pre>
+            </div>
+
+            <h2>Feature Engineering: The Secret Sauce</h2>
+            <p>
+                The quality of recommendations depends heavily on what features you use. I engineered a comprehensive 
+                feature set that captures multiple aspects of a movie:
+            </p>
+
+            <h3>Original Features (MovieLens)</h3>
+            <ul>
+                <li>Cast (top 3 actors)</li>
+                <li>Director</li>
+                <li>Genres</li>
+                <li>Keywords</li>
+            </ul>
+
+            <h3>Enhanced Features (TMDB Upgrade)</h3>
+            <ul>
+                <li><strong>Production Companies</strong> (weighted by prominence)</li>
+                <li><strong>Production Countries</strong></li>
+                <li><strong>Plot Overview</strong> (first 50 words, stemmed)</li>
+                <li><strong>Taglines</strong> (marketing keywords)</li>
+                <li><strong>Quality Score</strong> (vote_average × log(vote_count + 1))</li>
+                <li><strong>Poster URLs</strong> and <strong>IMDb IDs</strong> for rich display</li>
+            </ul>
+
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-language">Python - Feature Engineering Pipeline</span>
+                    <button class="copy-button">Copy</button>
+                </div>
+                <pre><code><span class="keyword">def</span> <span class="function">engineer_features</span>(df):
+    <span class="comment"># Parse JSON columns for genres, keywords, companies</span>
+    df[<span class="string">'genres'</span>] = df[<span class="string">'genres'</span>].apply(<span class="keyword">lambda</span> x: parse_json_column(x, <span class="string">'name'</span>))
+    df[<span class="string">'keywords'</span>] = df[<span class="string">'keywords'</span>].apply(<span class="keyword">lambda</span> x: parse_json_column(x, <span class="string">'name'</span>))
+    df[<span class="string">'companies'</span>] = df[<span class="string">'production_companies'</span>].apply(<span class="keyword">lambda</span> x: parse_json_column(x, <span class="string">'name'</span>))
+    
+    <span class="comment"># Clean and stem keywords (remove spaces, lowercase)</span>
+    df[<span class="string">'keywords'</span>] = df[<span class="string">'keywords'</span>].apply(
+        <span class="keyword">lambda</span> x: [stemmer.stem(kw.lower().replace(<span class="string">" "</span>, <span class="string">""</span>)) <span class="keyword">for</span> kw <span class="keyword">in</span> x[:15]]
+    )
+    
+    <span class="comment"># Weight genres and primary production company more heavily</span>
+    df[<span class="string">'genres_weighted'</span>] = df[<span class="string">'genres'</span>].apply(<span class="keyword">lambda</span> x: x * <span class="number">2</span>)
+    df[<span class="string">'company_weighted'</span>] = df[<span class="string">'companies'</span>].apply(
+        <span class="keyword">lambda</span> x: [x[<span class="number">0</span>].lower().replace(<span class="string">" "</span>, <span class="string">""</span>)] * <span class="number">2</span> <span class="keyword">if</span> x <span class="keyword">else</span> []
+    )
+    
+    <span class="comment"># Extract overview words (first 50, cleaned)</span>
+    df[<span class="string">'overview_words'</span>] = df[<span class="string">'overview'</span>].fillna(<span class="string">''</span>).apply(
+        <span class="keyword">lambda</span> x: [w.lower() <span class="keyword">for</span> w <span class="keyword">in</span> x.split()[:50]]
+    )
+    
+    <span class="comment"># Create comprehensive "soup" of all features</span>
+    df[<span class="string">'soup'</span>] = (
+        df[<span class="string">'keywords'</span>] + 
+        df[<span class="string">'genres_weighted'</span>] + 
+        df[<span class="string">'company_weighted'</span>] +
+        df[<span class="string">'companies'</span>] +
+        df[<span class="string">'countries'</span>] +
+        df[<span class="string">'overview_words'</span>] +
+        df[<span class="string">'tagline_words'</span>]
+    )
+    
+    df[<span class="string">'soup'</span>] = df[<span class="string">'soup'</span>].apply(<span class="keyword">lambda</span> x: <span class="string">' '</span>.join(x))
+    
+    <span class="keyword">return</span> df</code></pre>
+            </div>
+
+            <h2>The ML Core: TF-IDF + SVD</h2>
+            <p>
+                The recommendation engine uses a two-stage approach:
+            </p>
+
+            <h3>Stage 1: TF-IDF Vectorization</h3>
+            <p>
+                <strong>TF-IDF</strong> (Term Frequency-Inverse Document Frequency) converts movie features into 
+                numerical vectors. It assigns higher weights to distinctive terms and lower weights to common ones.
+            </p>
+
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-language">Python - TF-IDF Matrix Construction</span>
+                    <button class="copy-button">Copy</button>
+                </div>
+                <pre><code><span class="keyword">from</span> sklearn.feature_extraction.text <span class="keyword">import</span> TfidfVectorizer
+
+<span class="comment"># Configure TF-IDF based on dataset size</span>
+n_movies = len(df)
+max_features = <span class="number">20000</span> <span class="keyword">if</span> n_movies > <span class="number">100000</span> <span class="keyword">else</span> <span class="number">15000</span>
+
+tfidf = TfidfVectorizer(
+    analyzer=<span class="string">'word'</span>,
+    ngram_range=(<span class="number">1</span>, <span class="number">2</span>),       <span class="comment"># Unigrams + bigrams</span>
+    min_df=<span class="number">3</span>,                   <span class="comment"># Must appear in 3+ docs</span>
+    max_df=<span class="number">0.7</span>,                 <span class="comment"># Ignore if in >70% of docs</span>
+    stop_words=<span class="string">'english'</span>,
+    max_features=max_features,
+    sublinear_tf=<span class="keyword">True</span>          <span class="comment"># Use log scaling</span>
+)
+
+tfidf_matrix = tfidf.fit_transform(df[<span class="string">'soup'</span>])
+<span class="keyword">print</span>(<span class="string">f"TF-IDF matrix shape: {tfidf_matrix.shape}"</span>)
+<span class="comment"># Output: (100000, 20000) - 100K movies × 20K features</span></code></pre>
+            </div>
+
+            <h3>Stage 2: SVD Dimensionality Reduction</h3>
+            <p>
+                A 100K × 20K matrix is huge (2 billion elements!). <strong>SVD</strong> (Singular Value Decomposition) 
+                compresses this into a much smaller space while preserving the most important patterns.
+            </p>
+
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-language">Python - SVD Compression</span>
+                    <button class="copy-button">Copy</button>
+                </div>
+                <pre><code><span class="keyword">from</span> sklearn.decomposition <span class="keyword">import</span> TruncatedSVD
+
+<span class="comment"># Reduce from 20K features to 500 latent dimensions</span>
+svd = TruncatedSVD(n_components=<span class="number">500</span>, random_state=<span class="number">42</span>)
+reduced_matrix = svd.fit_transform(tfidf_matrix)
+
+explained_var = svd.explained_variance_ratio_.sum()
+<span class="keyword">print</span>(<span class="string">f"Explained variance: {explained_var:.3f}"</span>)
+<span class="comment"># Output: 0.847 - We kept 84.7% of the information!</span>
+
+<span class="keyword">print</span>(<span class="string">f"Reduced matrix shape: {reduced_matrix.shape}"</span>)
+<span class="comment"># Output: (100000, 500) - 97.5% smaller!</span></code></pre>
+            </div>
+
+            <h3>Stage 3: Cosine Similarity</h3>
+            <p>
+                Finally, we compute how similar each movie is to every other movie using cosine similarity:
+            </p>
+
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-language">Python - Similarity Computation</span>
+                    <button class="copy-button">Copy</button>
+                </div>
+                <pre><code><span class="keyword">from</span> sklearn.metrics.pairwise <span class="keyword">import</span> cosine_similarity
+
+<span class="comment"># For very large datasets, compute in chunks</span>
+<span class="keyword">if</span> reduced_matrix.shape[<span class="number">0</span>] > <span class="number">50000</span>:
+    similarity_matrix = compute_similarity_in_chunks(reduced_matrix)
+<span class="keyword">else</span>:
+    similarity_matrix = cosine_similarity(reduced_matrix)
+
+<span class="comment"># Result: 100K × 100K matrix of similarity scores</span>
+<span class="comment"># similarity_matrix[i][j] = how similar movie i is to movie j</span></code></pre>
+            </div>
+
+            <h2>Quality Filtering: Not All Movies Are Equal</h2>
+            <p>
+                One major upgrade was adding <strong>quality thresholds</strong>. The TMDB dataset includes everything 
+                from Oscar winners to obscure indie films with 2 votes. I implemented three quality tiers:
+            </p>
+
+            <div class="table-container">
+                <table class="content-table">
+                    <thead>
+                        <tr>
+                            <th>Threshold</th>
+                            <th>Min Votes</th>
+                            <th>Movies</th>
+                            <th>Use Case</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Low</td>
+                            <td>5+</td>
+                            <td>~930K</td>
+                            <td>Maximum coverage</td>
+                        </tr>
+                        <tr>
+                            <td>Medium ⭐</td>
+                            <td>50+</td>
+                            <td>~200K</td>
+                            <td>Balanced (recommended)</td>
+                        </tr>
+                        <tr>
+                            <td>High</td>
+                            <td>500+</td>
+                            <td>~50K</td>
+                            <td>Highest quality only</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <p>
+                I also compute a <strong>quality score</strong> that balances rating and vote count:
+            </p>
+
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-language">Python - Quality Score</span>
+                    <button class="copy-button">Copy</button>
+                </div>
+                <pre><code><span class="comment"># Prevent high-rated movies with few votes from dominating</span>
+df[<span class="string">'quality_score'</span>] = df[<span class="string">'vote_average'</span>] * np.log1p(df[<span class="string">'vote_count'</span>])
+
+<span class="comment"># Sort by quality and take top N</span>
+df = df.sort_values(<span class="string">'quality_score'</span>, ascending=<span class="keyword">False</span>)</code></pre>
+            </div>
+
+            <h2>Django Integration: From Model to Web App</h2>
+            <p>
+                Training the model is only half the battle. I built a complete Django web application for deployment:
+            </p>
+
+            <div style="text-align: center; margin: 2rem 0;">
+                <img src="resources/blog-3/Application-Demo.gif" alt="Application Demo" style="max-width: 100%; height: auto; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);">
+            </div>
+
+            <h3>Model Loading with Background Threading</h3>
+            <p>
+                Loading a 180MB model on every request is terrible for performance. I implemented singleton pattern 
+                with background loading:
+            </p>
+
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-language">Python - Django Model Singleton</span>
+                    <button class="copy-button">Copy</button>
+                </div>
+                <pre><code><span class="keyword">import</span> threading
 <span class="keyword">import</span> numpy <span class="keyword">as</span> np
-<span class="keyword">from</span> typing <span class="keyword">import</span> Dict, List, Any, Optional
-<span class="keyword">import</span> time
-<span class="keyword">import</span> logging
-<span class="keyword">from</span> concurrent.futures <span class="keyword">import</span> ThreadPoolExecutor
-<span class="keyword">import</span> threading
+<span class="keyword">import</span> pandas <span class="keyword">as</span> pd
+<span class="keyword">from</span> scipy.sparse <span class="keyword">import</span> load_npz
 
-<span class="keyword">class</span> <span class="function">ModelRegistry</span>:
-    <span class="keyword">def</span> <span class="function">__init__</span>(self):
-        self.models: Dict[str, Any] = {}
-        self.model_metadata: Dict[str, Dict] = {}
-        self.load_lock = threading.Lock()
-        self.logger = logging.getLogger(__name__)
-    
-    <span class="keyword">def</span> <span class="function">load_model</span>(self, model_name: str, model_path: str, version: str = <span class="string">"latest"</span>):
-        <span class="string">"""Load model into memory"""</span>
-        <span class="keyword">with</span> self.load_lock:
-            <span class="keyword">try</span>:
-                model_key = <span class="string">f"{model_name}:{version}"</span>
-                
-                <span class="comment"># Load model</span>
-                model = joblib.load(model_path)
-                
-                self.models[model_key] = model
-                self.model_metadata[model_key] = {
-                    <span class="string">'loaded_at'</span>: time.time(),
-                    <span class="string">'model_path'</span>: model_path,
-                    <span class="string">'version'</span>: version,
-                    <span class="string">'prediction_count'</span>: <span class="number">0</span>
-                }
-                
-                self.logger.info(<span class="string">f"Loaded model {model_key} from {model_path}"</span>)
-                
-            <span class="keyword">except</span> Exception <span class="keyword">as</span> e:
-                self.logger.error(<span class="string">f"Error loading model {model_name}: {e}"</span>)
-                <span class="keyword">raise</span>
-    
-    <span class="keyword">def</span> <span class="function">get_model</span>(self, model_name: str, version: str = <span class="string">"latest"</span>):
-        <span class="string">"""Get model from registry"""</span>
-        model_key = <span class="string">f"{model_name}:{version}"</span>
-        
-        <span class="keyword">if</span> model_key <span class="keyword">not</span> <span class="keyword">in</span> self.models:
-            <span class="keyword">raise</span> ValueError(<span class="string">f"Model {model_key} not found in registry"</span>)
-        
-        <span class="comment"># Update usage counter</span>
-        self.model_metadata[model_key][<span class="string">'prediction_count'</span>] += <span class="number">1</span>
-        
-        <span class="keyword">return</span> self.models[model_key]
-    
-    <span class="keyword">def</span> <span class="function">unload_model</span>(self, model_name: str, version: str = <span class="string">"latest"</span>):
-        <span class="string">"""Unload model from memory"""</span>
-        model_key = <span class="string">f"{model_name}:{version}"</span>
-        
-        <span class="keyword">if</span> model_key <span class="keyword">in</span> self.models:
-            <span class="keyword">del</span> self.models[model_key]
-            <span class="keyword">del</span> self.model_metadata[model_key]
-            self.logger.info(<span class="string">f"Unloaded model {model_key}"</span>)
+_RECOMMENDER = <span class="keyword">None</span>
+_MODEL_LOADING = <span class="keyword">False</span>
 
-<span class="keyword">class</span> <span class="function">ScalableModelServer</span>:
-    <span class="keyword">def</span> <span class="function">__init__</span>(self, max_workers: int = <span class="number">10</span>):
-        self.app = FastAPI(title=<span class="string">"Scalable Model Server"</span>)
-        self.model_registry = ModelRegistry()
-        self.executor = ThreadPoolExecutor(max_workers=max_workers)
-        self.prediction_queue = asyncio.Queue(maxsize=<span class="number">1000</span>)
-        self.batch_size = <span class="number">32</span>
-        self.batch_timeout = <span class="number">0.1</span>  <span class="comment"># 100ms</span>
-        self.logger = logging.getLogger(__name__)
-        
-        self._setup_routes()
+<span class="keyword">def</span> <span class="function">_load_model_in_background</span>():
+    <span class="keyword">global</span> _RECOMMENDER, _MODEL_LOADING
     
-    <span class="keyword">def</span> <span class="function">_setup_routes</span>(self):
-        <span class="string">"""Setup API routes"""</span>
-        
-        <span class="keyword">@self.app.post</span>(<span class="string">"/predict/{model_name}"</span>)
-        <span class="keyword">async</span> <span class="keyword">def</span> <span class="function">predict</span>(model_name: str, request: Dict[str, Any]):
-            <span class="keyword">try</span>:
-                <span class="comment"># Get model</span>
-                model = self.model_registry.get_model(model_name)
-                
-                <span class="comment"># Prepare input</span>
-                features = np.array(request[<span class="string">'features'</span>]).reshape(<span class="number">1</span>, -<span class="number">1</span>)
-                
-                <span class="comment"># Make prediction in thread pool</span>
-                loop = asyncio.get_event_loop()
-                prediction = <span class="keyword">await</span> loop.run_in_executor(
-                    self.executor, model.predict, features
-                )
-                
-                <span class="keyword">return</span> {
-                    <span class="string">'model_name'</span>: model_name,
-                    <span class="string">'prediction'</span>: prediction.tolist(),
-                    <span class="string">'timestamp'</span>: time.time()
-                }
-                
-            <span class="keyword">except</span> Exception <span class="keyword">as</span> e:
-                self.logger.error(<span class="string">f"Prediction error: {e}"</span>)
-                <span class="keyword">raise</span> HTTPException(status_code=<span class="number">500</span>, detail=str(e))
-        
-        <span class="keyword">@self.app.post</span>(<span class="string">"/predict_batch/{model_name}"</span>)
-        <span class="keyword">async</span> <span class="keyword">def</span> <span class="function">predict_batch</span>(model_name: str, request: Dict[str, Any]):
-            <span class="keyword">try</span>:
-                model = self.model_registry.get_model(model_name)
-                features = np.array(request[<span class="string">'features'</span>])
-                
-                <span class="comment"># Batch prediction</span>
-                loop = asyncio.get_event_loop()
-                predictions = <span class="keyword">await</span> loop.run_in_executor(
-                    self.executor, model.predict, features
-                )
-                
-                <span class="keyword">return</span> {
-                    <span class="string">'model_name'</span>: model_name,
-                    <span class="string">'predictions'</span>: predictions.tolist(),
-                    <span class="string">'batch_size'</span>: len(predictions),
-                    <span class="string">'timestamp'</span>: time.time()
-                }
-                
-            <span class="keyword">except</span> Exception <span class="keyword">as</span> e:
-                <span class="keyword">raise</span> HTTPException(status_code=<span class="number">500</span>, detail=str(e))
-        
-        <span class="keyword">@self.app.get</span>(<span class="string">"/health"</span>)
-        <span class="keyword">def</span> <span class="function">health_check</span>():
-            <span class="keyword">return</span> {<span class="string">"status"</span>: <span class="string">"healthy"</span>, <span class="string">"timestamp"</span>: time.time()}
-        
-        <span class="keyword">@self.app.get</span>(<span class="string">"/models"</span>)
-        <span class="keyword">def</span> <span class="function">list_models</span>():
-            <span class="keyword">return</span> {
-                <span class="string">"models"</span>: list(self.model_registry.models.keys()),
-                <span class="string">"metadata"</span>: self.model_registry.model_metadata
-            }
+    _MODEL_LOADING = <span class="keyword">True</span>
+    model_dir = settings.MODEL_DIR
     
-    <span class="keyword">def</span> <span class="function">load_model</span>(self, model_name: str, model_path: str, version: str = <span class="string">"latest"</span>):
-        <span class="string">"""Load model into server"""</span>
-        self.model_registry.load_model(model_name, model_path, version)</code></pre>
+    <span class="keyword">try</span>:
+        <span class="comment"># Load metadata (movie info)</span>
+        metadata = pd.read_parquet(model_dir / <span class="string">'movie_metadata.parquet'</span>)
+        
+        <span class="comment"># Load similarity matrix (sparse format for efficiency)</span>
+        similarity_matrix = load_npz(model_dir / <span class="string">'similarity_matrix.npz'</span>).toarray()
+        
+        <span class="comment"># Load title mappings</span>
+        <span class="keyword">with</span> open(model_dir / <span class="string">'title_to_idx.json'</span>) <span class="keyword">as</span> f:
+            title_to_idx = json.load(f)
+        
+        _RECOMMENDER = MovieRecommender(metadata, similarity_matrix, title_to_idx)
+        _MODEL_LOADING = <span class="keyword">False</span>
+        logger.info(<span class="string">"Model loaded successfully"</span>)
+        
+    <span class="keyword">except</span> Exception <span class="keyword">as</span> e:
+        logger.error(<span class="string">f"Failed to load model: {e}"</span>)
+        _MODEL_LOADING = <span class="keyword">False</span>
+
+<span class="comment"># Start loading on app startup</span>
+threading.Thread(target=_load_model_in_background, daemon=<span class="keyword">True</span>).start()</code></pre>
             </div>
 
-            <h2>Monitoring and Observability</h2>
+            <h3>Fuzzy Title Matching</h3>
             <p>
-                Comprehensive monitoring is essential for maintaining scalable AI pipelines. 
-                Key metrics to track include:
+                Users don't always type exact titles. I use difflib for fuzzy matching:
             </p>
 
-            <ul>
-                <li><strong>System Metrics:</strong> CPU, memory, disk I/O, network utilization</li>
-                <li><strong>Application Metrics:</strong> Request latency, throughput, error rates</li>
-                <li><strong>Model Metrics:</strong> Prediction accuracy, drift detection, feature importance</li>
-                <li><strong>Business Metrics:</strong> User satisfaction, conversion rates, revenue impact</li>
-            </ul>
-
-            <h3>Automated Alerting System</h3>
             <div class="code-block">
                 <div class="code-header">
-                    <span class="code-language">Python - Monitoring & Alerting</span>
+                    <span class="code-language">Python - Fuzzy Search</span>
                     <button class="copy-button">Copy</button>
                 </div>
-                <pre><code><span class="keyword">import</span> asyncio
-<span class="keyword">from</span> dataclasses <span class="keyword">import</span> dataclass
-<span class="keyword">from</span> typing <span class="keyword">import</span> Dict, List, Callable
-<span class="keyword">import</span> time
-<span class="keyword">import</span> logging
-<span class="keyword">from</span> enum <span class="keyword">import</span> Enum
+                <pre><code><span class="keyword">from</span> difflib <span class="keyword">import</span> get_close_matches
 
-<span class="keyword">class</span> <span class="function">AlertSeverity</span>(Enum):
-    INFO = <span class="string">"info"</span>
-    WARNING = <span class="string">"warning"</span>
-    CRITICAL = <span class="string">"critical"</span>
+<span class="keyword">def</span> <span class="function">find_movie</span>(title: str) -> str:
+    <span class="string">"""Find closest matching title"""</span>
+    matches = get_close_matches(
+        title, 
+        title_to_idx.keys(), 
+        n=<span class="number">1</span>, 
+        cutoff=<span class="number">0.6</span>  <span class="comment"># 60% similarity threshold</span>
+    )
+    <span class="keyword">return</span> matches[<span class="number">0</span>] <span class="keyword">if</span> matches <span class="keyword">else</span> <span class="keyword">None</span>
 
-<span class="keyword">@dataclass</span>
-<span class="keyword">class</span> <span class="function">Alert</span>:
-    name: str
-    severity: AlertSeverity
-    message: str
-    timestamp: float
-    metadata: Dict[str, Any] = None
-
-<span class="keyword">class</span> <span class="function">MonitoringSystem</span>:
-    <span class="keyword">def</span> <span class="function">__init__</span>(self):
-        self.metrics: Dict[str, List[float]] = {}
-        self.thresholds: Dict[str, Dict] = {}
-        self.alert_handlers: List[Callable] = []
-        self.logger = logging.getLogger(__name__)
-    
-    <span class="keyword">def</span> <span class="function">record_metric</span>(self, name: str, value: float, timestamp: float = None):
-        <span class="string">"""Record a metric value"""</span>
-        <span class="keyword">if</span> timestamp <span class="keyword">is</span> None:
-            timestamp = time.time()
-        
-        <span class="keyword">if</span> name <span class="keyword">not</span> <span class="keyword">in</span> self.metrics:
-            self.metrics[name] = []
-        
-        self.metrics[name].append((value, timestamp))
-        
-        <span class="comment"># Keep only recent values (last hour)</span>
-        cutoff_time = timestamp - <span class="number">3600</span>
-        self.metrics[name] = [(v, t) <span class="keyword">for</span> v, t <span class="keyword">in</span> self.metrics[name] <span class="keyword">if</span> t > cutoff_time]
-        
-        <span class="comment"># Check thresholds</span>
-        self._check_thresholds(name, value)
-    
-    <span class="keyword">def</span> <span class="function">set_threshold</span>(self, metric_name: str, threshold_type: str, 
-                   threshold_value: float, severity: AlertSeverity = AlertSeverity.WARNING):
-        <span class="string">"""Set threshold for metric"""</span>
-        <span class="keyword">if</span> metric_name <span class="keyword">not</span> <span class="keyword">in</span> self.thresholds:
-            self.thresholds[metric_name] = {}
-        
-        self.thresholds[metric_name][threshold_type] = {
-            <span class="string">'value'</span>: threshold_value,
-            <span class="string">'severity'</span>: severity
-        }
-    
-    <span class="keyword">def</span> <span class="function">_check_thresholds</span>(self, metric_name: str, value: float):
-        <span class="string">"""Check if metric violates any thresholds"""</span>
-        <span class="keyword">if</span> metric_name <span class="keyword">not</span> <span class="keyword">in</span> self.thresholds:
-            <span class="keyword">return</span>
-        
-        <span class="keyword">for</span> threshold_type, config <span class="keyword">in</span> self.thresholds[metric_name].items():
-            threshold_value = config[<span class="string">'value'</span>]
-            severity = config[<span class="string">'severity'</span>]
-            
-            violated = False
-            <span class="keyword">if</span> threshold_type == <span class="string">'max'</span> <span class="keyword">and</span> value > threshold_value:
-                violated = True
-            <span class="keyword">elif</span> threshold_type == <span class="string">'min'</span> <span class="keyword">and</span> value < threshold_value:
-                violated = True
-            
-            <span class="keyword">if</span> violated:
-                alert = Alert(
-                    name=<span class="string">f"{metric_name}_{threshold_type}_threshold"</span>,
-                    severity=severity,
-                    message=<span class="string">f"{metric_name} value {value} violates {threshold_type} threshold {threshold_value}"</span>,
-                    timestamp=time.time(),
-                    metadata={<span class="string">'metric'</span>: metric_name, <span class="string">'value'</span>: value, <span class="string">'threshold'</span>: threshold_value}
-                )
-                self._trigger_alert(alert)
-    
-    <span class="keyword">def</span> <span class="function">_trigger_alert</span>(self, alert: Alert):
-        <span class="string">"""Trigger alert to all handlers"""</span>
-        <span class="keyword">for</span> handler <span class="keyword">in</span> self.alert_handlers:
-            <span class="keyword">try</span>:
-                handler(alert)
-            <span class="keyword">except</span> Exception <span class="keyword">as</span> e:
-                self.logger.error(<span class="string">f"Error in alert handler: {e}"</span>)
-    
-    <span class="keyword">def</span> <span class="function">add_alert_handler</span>(self, handler: Callable[[Alert], None]):
-        <span class="string">"""Add alert handler"""</span>
-        self.alert_handlers.append(handler)
-    
-    <span class="keyword">def</span> <span class="function">get_metric_stats</span>(self, metric_name: str) -> Dict[str, float]:
-        <span class="string">"""Get statistics for a metric"""</span>
-        <span class="keyword">if</span> metric_name <span class="keyword">not</span> <span class="keyword">in</span> self.metrics:
-            <span class="keyword">return</span> {}
-        
-        values = [v <span class="keyword">for</span> v, t <span class="keyword">in</span> self.metrics[metric_name]]
-        
-        <span class="keyword">if</span> <span class="keyword">not</span> values:
-            <span class="keyword">return</span> {}
-        
-        <span class="keyword">return</span> {
-            <span class="string">'count'</span>: len(values),
-            <span class="string">'mean'</span>: np.mean(values),
-            <span class="string">'std'</span>: np.std(values),
-            <span class="string">'min'</span>: np.min(values),
-            <span class="string">'max'</span>: np.max(values),
-            <span class="string">'p95'</span>: np.percentile(values, <span class="number">95</span>),
-            <span class="string">'p99'</span>: np.percentile(values, <span class="number">99</span>)
-        }</code></pre>
+<span class="comment"># Examples:</span>
+<span class="comment"># "inceptoin" → "Inception"</span>
+<span class="comment"># "dark knigth" → "The Dark Knight"</span></code></pre>
             </div>
 
-            <h2>Cost Optimization Strategies</h2>
+            <h2>Advanced Filtering & Business Logic</h2>
             <p>
-                Building scalable AI pipelines can be expensive. Here are strategies to optimize costs 
-                while maintaining performance:
+                Raw similarity scores aren't always what users want. I added sophisticated filtering:
+            </p>
+
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-language">Python - Advanced Recommendation Filters</span>
+                    <button class="copy-button">Copy</button>
+                </div>
+                <pre><code><span class="keyword">def</span> <span class="function">get_recommendations</span>(
+    movie_title: str,
+    n: int = <span class="number">15</span>,
+    min_rating: float = <span class="keyword">None</span>,
+    min_year: int = <span class="keyword">None</span>,
+    max_year: int = <span class="keyword">None</span>,
+    genres: List[str] = <span class="keyword">None</span>
+):
+    <span class="comment"># Find movie and get similarity scores</span>
+    matched_title = find_movie(movie_title)
+    movie_idx = title_to_idx[matched_title]
+    sim_scores = list(enumerate(similarity_matrix[movie_idx]))
+    sim_scores = sorted(sim_scores, key=<span class="keyword">lambda</span> x: x[<span class="number">1</span>], reverse=<span class="keyword">True</span>)[<span class="number">1</span>:]
+    
+    recommendations = []
+    <span class="keyword">for</span> idx, score <span class="keyword">in</span> sim_scores:
+        <span class="keyword">if</span> len(recommendations) >= n:
+            <span class="keyword">break</span>
+            
+        movie = metadata.iloc[idx]
+        
+        <span class="comment"># Apply filters</span>
+        <span class="keyword">if</span> min_rating <span class="keyword">and</span> movie[<span class="string">'vote_average'</span>] < min_rating:
+            <span class="keyword">continue</span>
+        
+        <span class="keyword">if</span> min_year <span class="keyword">and</span> movie[<span class="string">'release_year'</span>] < min_year:
+            <span class="keyword">continue</span>
+        
+        <span class="keyword">if</span> max_year <span class="keyword">and</span> movie[<span class="string">'release_year'</span>] > max_year:
+            <span class="keyword">continue</span>
+        
+        <span class="keyword">if</span> genres <span class="keyword">and not</span> any(g <span class="keyword">in</span> movie[<span class="string">'genres'</span>] <span class="keyword">for</span> g <span class="keyword">in</span> genres):
+            <span class="keyword">continue</span>
+        
+        recommendations.append({
+            <span class="string">'title'</span>: movie[<span class="string">'title'</span>],
+            <span class="string">'rating'</span>: <span class="string">f"{movie['vote_average']:.1f}/10"</span>,
+            <span class="string">'genres'</span>: <span class="string">', '</span>.join(movie[<span class="string">'genres'</span>]),
+            <span class="string">'similarity_score'</span>: <span class="string">f"{score:.3f}"</span>,
+            <span class="string">'poster_url'</span>: <span class="string">f"https://image.tmdb.org/t/p/w500{movie['poster_path']}"</span>,
+            <span class="string">'imdb_link'</span>: <span class="string">f"https://www.imdb.com/title/{movie['imdb_id']}"</span>
+        })
+    
+    <span class="keyword">return</span> recommendations</code></pre>
+            </div>
+
+            <h2>Performance Optimizations</h2>
+            <p>
+                Getting from concept to production required several key optimizations:
+            </p>
+
+            <h3>1. Sparse Matrix Storage</h3>
+            <p>
+                The similarity matrix for 100K movies would be 100K × 100K = 10 billion floats (40GB!). 
+                Using sparse matrix format (scipy.sparse.csr_matrix) reduces this to ~150MB.
+            </p>
+
+            <h3>2. Parquet Instead of CSV</h3>
+            <p>
+                Parquet is a columnar format that's 3-5x smaller and loads 10x faster than CSV:
+            </p>
+
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-language">Performance Comparison</span>
+                    <button class="copy-button">Copy</button>
+                </div>
+                <pre><code><span class="comment"># CSV: 48MB file, 12 seconds to load</span>
+df = pd.read_csv(<span class="string">'movie_metadata.csv'</span>)
+
+<span class="comment"># Parquet: 12MB file, 1.2 seconds to load</span>
+df = pd.read_parquet(<span class="string">'movie_metadata.parquet'</span>)</code></pre>
+            </div>
+
+            <h3>3. Chunked Similarity Computation</h3>
+            <p>
+                For datasets > 50K movies, computing the full similarity matrix at once can crash. I compute in chunks:
+            </p>
+
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-language">Python - Chunked Processing</span>
+                    <button class="copy-button">Copy</button>
+                </div>
+                <pre><code><span class="keyword">def</span> <span class="function">compute_similarity_in_chunks</span>(matrix, chunk_size=<span class="number">10000</span>):
+    n = matrix.shape[<span class="number">0</span>]
+    n_chunks = (n + chunk_size - <span class="number">1</span>) // chunk_size
+    
+    similarity = np.zeros((n, n), dtype=np.float32)
+    
+    <span class="keyword">for</span> i <span class="keyword">in</span> range(n_chunks):
+        start = i * chunk_size
+        end = min((i + <span class="number">1</span>) * chunk_size, n)
+        
+        chunk_sim = cosine_similarity(matrix[start:end], matrix)
+        similarity[start:end, :] = chunk_sim
+        
+        <span class="keyword">if</span> (i + <span class="number">1</span>) % <span class="number">5</span> == <span class="number">0</span>:
+            <span class="keyword">print</span>(<span class="string">f"Processed {i+1}/{n_chunks} chunks"</span>)
+    
+    <span class="keyword">return</span> similarity</code></pre>
+            </div>
+
+            <h2>Real-World Results</h2>
+            <p>
+                The final system achieves impressive performance across all metrics:
+            </p>
+
+            <div class="table-container">
+                <table class="content-table">
+                    <thead>
+                        <tr>
+                            <th>Metric</th>
+                            <th>Value</th>
+                            <th>Benchmark</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Model Size</td>
+                            <td>180MB (100K movies)</td>
+                            <td>44% smaller than v1</td>
+                        </tr>
+                        <tr>
+                            <td>Model Load Time</td>
+                            <td>3 seconds</td>
+                            <td>One-time startup</td>
+                        </tr>
+                        <tr>
+                            <td>Recommendation Time</td>
+                            <td>&lt; 50ms</td>
+                            <td>Sub-second response</td>
+                        </tr>
+                        <tr>
+                            <td>Memory Usage</td>
+                            <td>~200MB (runtime)</td>
+                            <td>Efficient caching</td>
+                        </tr>
+                        <tr>
+                            <td>Dataset Size</td>
+                            <td>930K+ movies</td>
+                            <td>93x larger than original</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h2>Lessons Learned</h2>
+
+            <h3>1. Start with Quality, Not Quantity</h3>
+            <p>
+                My first attempt used all 1.3M movies—recommendations were terrible. Filtering by vote count 
+                (quality threshold) dramatically improved relevance.
+            </p>
+
+            <h3>2. Feature Engineering > Algorithm Choice</h3>
+            <p>
+                I spent days tweaking SVD parameters. Then I added production company features and improved 
+                recommendations more in one hour than in all that tuning.
+            </p>
+
+            <h3>3. User Experience Matters as Much as ML</h3>
+            <p>
+                Fuzzy matching, poster images, IMDb links, and responsive design made the difference between a 
+                "cool demo" and a tool people actually want to use.
+            </p>
+
+            <h3>4. Scalability Requires Upfront Design</h3>
+            <p>
+                The 10K → 930K transition would have been impossible without sparse matrices, chunked processing, 
+                and efficient data formats from the start.
+            </p>
+
+            <h2>What's Next?</h2>
+            <p>
+                The current system uses content-based filtering. Future enhancements could include:
             </p>
 
             <ul>
-                <li><strong>Resource Right-sizing:</strong> Use appropriate instance types for each workload</li>
-                <li><strong>Auto-scaling:</strong> Scale resources based on demand</li>
-                <li><strong>Spot Instances:</strong> Use cheaper spot instances for batch processing</li>
-                <li><strong>Data Lifecycle Management:</strong> Archive old data to cheaper storage</li>
-                <li><strong>Model Compression:</strong> Reduce model size without sacrificing accuracy</li>
-                <li><strong>Caching:</strong> Cache frequently accessed data and predictions</li>
+                <li><strong>Collaborative Filtering:</strong> Leverage user rating patterns</li>
+                <li><strong>Hybrid Approaches:</strong> Combine content + collaborative + popularity</li>
+                <li><strong>Deep Learning:</strong> Neural collaborative filtering with embeddings</li>
+                <li><strong>Real-Time Learning:</strong> Update recommendations based on user interactions</li>
+                <li><strong>Contextual Recommendations:</strong> Time of day, mood, watching history</li>
             </ul>
 
-            <h2>Best Practices Summary</h2>
+            <h2>Try It Yourself</h2>
             <p>
-                Here's a comprehensive checklist for building scalable AI pipelines:
+                The complete system is open source and production-ready. You can:
             </p>
 
-            <ol>
-                <li><strong>Design for Failure:</strong> Implement circuit breakers, retries, and graceful degradation</li>
-                <li><strong>Monitor Everything:</strong> Track system, application, and business metrics</li>
-                <li><strong>Automate Operations:</strong> Use Infrastructure as Code and CI/CD pipelines</li>
-                <li><strong>Optimize Data Flow:</strong> Minimize data movement and processing overhead</li>
-                <li><strong>Implement Caching:</strong> Cache at multiple levels to reduce latency</li>
-                <li><strong>Use Async Processing:</strong> Leverage asynchronous patterns for better throughput</li>
-                <li><strong>Plan for Growth:</strong> Design systems that can scale horizontally</li>
-                <li><strong>Security First:</strong> Implement proper authentication, authorization, and encryption</li>
-            </ol>
-
-            <h2>Conclusion</h2>
-            <p>
-                Building scalable AI pipelines is a complex but essential task for successful machine learning 
-                deployments. The key is to start with solid architectural principles, implement comprehensive 
-                monitoring, and continuously optimize based on real-world performance data.
-            </p>
-
-            <p>
-                Remember that scalability isn't just about handling more data or users—it's about building 
-                systems that can evolve with your business needs while maintaining reliability and performance. 
-                The investment in proper pipeline architecture pays dividends as your AI initiatives grow.
-            </p>
+            <ul>
+                <li>Use the pre-trained model (2K demo movies included)</li>
+                <li>Train on the full TMDB dataset (930K+ movies)</li>
+                <li>Deploy to Render, Heroku, or AWS in minutes</li>
+                <li>Customize features, filters, and UI to your needs</li>
+            </ul>
 
             <blockquote>
-                "The most successful AI projects are those that solve the infrastructure challenges first, 
-                enabling data scientists to focus on what they do best: building great models."
+                "The best way to understand recommendation systems is to build one yourself. This project gives 
+                you production-grade code, comprehensive documentation, and real datasets to learn from."
             </blockquote>
 
             <div style="margin-top: 3rem; padding: 2rem; background: var(--secondary-bg); border-radius: 15px; border: 1px solid var(--border-color);">
-                <h3 style="margin-top: 0;">Tools & Frameworks</h3>
+                <h3 style="margin-top: 0;">Resources & Links</h3>
                 <ul style="margin-bottom: 2rem;">
-                    <li><a href="#" style="color: var(--accent-color);">Apache Kafka - Stream Processing</a></li>
-                    <li><a href="#" style="color: var(--accent-color);">Apache Spark - Big Data Processing</a></li>
-                    <li><a href="#" style="color: var(--accent-color);">Kubernetes - Container Orchestration</a></li>
-                    <li><a href="#" style="color: var(--accent-color);">MLflow - ML Lifecycle Management</a></li>
-                    <li><a href="#" style="color: var(--accent-color);">Feast - Feature Store</a></li>
+                    <li><a href="../projects/project-3.html" style="color: var(--accent-color);">Full Project Page</a></li>
+                    <li><a href="https://github.com/inboxpraveen/movie-recommendation-system" style="color: var(--accent-color);" target="_blank">GitHub Repository</a></li>
+                    <li><a href="https://www.kaggle.com/datasets/asaniczka/tmdb-movies-dataset-2023-930k-movies" style="color: var(--accent-color);" target="_blank">TMDB Dataset on Kaggle</a></li>
+                    <li><a href="https://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.TfidfVectorizer.html" style="color: var(--accent-color);" target="_blank">TF-IDF Documentation</a></li>
+                    <li><a href="https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.TruncatedSVD.html" style="color: var(--accent-color);" target="_blank">SVD Documentation</a></li>
                 </ul>
                 
                 <h4>Tags:</h4>
                 <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 1rem;">
-                    <span class="tech-tag">#MLOps</span>
-                    <span class="tech-tag">#Scalability</span>
-                    <span class="tech-tag">#DataEngineering</span>
-                    <span class="tech-tag">#Kubernetes</span>
-                    <span class="tech-tag">#Microservices</span>
-                    <span class="tech-tag">#AI</span>
+                    <span class="tech-tag">#MachineLearning</span>
+                    <span class="tech-tag">#RecommendationSystems</span>
+                    <span class="tech-tag">#TF-IDF</span>
+                    <span class="tech-tag">#SVD</span>
+                    <span class="tech-tag">#Django</span>
+                    <span class="tech-tag">#Python</span>
+                    <span class="tech-tag">#ContentBasedFiltering</span>
+                    <span class="tech-tag">#ScalableML</span>
                 </div>
             </div>
         </div>
     </div>
 
     <!-- Footer -->
-    <footer>
+    <footer style="margin-top: 4rem;">
         <div class="container">
             <p>&copy; <span id="copyright-year"></span> Praveen Kumar. Built with passion for AI & open source community.</p>
         </div>

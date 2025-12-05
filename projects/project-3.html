@@ -3,28 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Predictive Analytics Platform - Praveen Kumar</title>
+    <title>Movie Recommendation System - AI-Powered Content Filtering | Praveen Kumar</title>
     
     <!-- SEO Meta Tags -->
-    <meta name="description" content="End-to-end machine learning platform for time series forecasting and predictive analytics. Automated model selection, hyperparameter tuning, and real-time predictions with 94.3% accuracy.">
-    <meta name="keywords" content="Predictive Analytics, Time Series Forecasting, AutoML, XGBoost, LightGBM, MLOps, MLflow, Machine Learning Platform">
+    <meta name="description" content="Production-ready movie recommendation system using TF-IDF, SVD, and content-based filtering. Scales from 10K to 1M+ movies with Django deployment. Open-source and fully documented.">
+    <meta name="keywords" content="Recommendation System, Machine Learning, Content-Based Filtering, TF-IDF, SVD, Django, Python, Scalable ML">
     <meta name="author" content="Praveen Kumar">
     
     <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="Predictive Analytics Platform - End-to-End ML System">
-    <meta property="og:description" content="Comprehensive ML platform for time series forecasting with automated model selection, hyperparameter tuning, and real-time predictions. 94.3% accuracy, 150ms response time.">
+    <meta property="og:title" content="Movie Recommendation System - AI-Powered Content Filtering">
+    <meta property="og:description" content="Production-ready recommendation system handling 930K+ movies using advanced ML. TF-IDF, SVD, Django deployment, and comprehensive documentation.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://inboxpraveen.github.io/projects/project-3.html">
-    <meta property="og:image" content="https://inboxpraveen.github.io/assests/Original.png">
-    <meta property="og:image:alt" content="Predictive Analytics Platform">
+    <meta property="og:image" content="https://inboxpraveen.github.io/projects/resources/project-3/Logo.png">
+    <meta property="og:image:alt" content="Movie Recommendation System Logo">
     <meta property="og:site_name" content="Praveen Kumar Portfolio">
     
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Predictive Analytics Platform - End-to-End ML System">
-    <meta name="twitter:description" content="ML platform for time series forecasting: automated model selection, hyperparameter tuning, 94.3% accuracy, 150ms response.">
-    <meta name="twitter:image" content="https://inboxpraveen.github.io/assests/Original.png">
-    <meta name="twitter:image:alt" content="Predictive Analytics Platform">
+    <meta name="twitter:title" content="Movie Recommendation System - Production ML">
+    <meta name="twitter:description" content="Scalable recommendation system: 930K+ movies, TF-IDF + SVD, Django deployment. Open-source with full documentation.">
+    <meta name="twitter:image" content="https://inboxpraveen.github.io/projects/resources/project-3/Logo.png">
+    <meta name="twitter:image:alt" content="Movie Recommendation System">
     
     <!-- Canonical URL -->
     <link rel="canonical" href="https://inboxpraveen.github.io/projects/project-3.html">
@@ -49,28 +49,28 @@
         </div>
     </nav>
 
-    <!-- Project Page - Predictive Analytics Platform -->
+    <!-- Project Page - Movie Recommendation System -->
     <div class="page-container active">
         <div class="page-header">
             <div class="container">
                 <a href="../index.html#projects" class="back-button">← Back to Projects</a>
-                <h1 class="page-title">Predictive Analytics Platform</h1>
+                <h1 class="page-title">Movie Recommendation System</h1>
                 <div class="page-meta">
                     <div class="meta-item">
                         <span>📅</span>
-                        <span>Completed: February 2024</span>
+                        <span>Completed: December 2025</span>
                     </div>
                     <div class="meta-item">
                         <span>⏱️</span>
-                        <span>Duration: 8 months</span>
+                        <span>Version: 2.0.0</span>
                     </div>
                     <div class="meta-item">
                         <span>👥</span>
-                        <span>Team Size: 4</span>
+                        <span>Team Size: Solo</span>
                     </div>
                     <div class="meta-item">
                         <span>🏷️</span>
-                        <span>Machine Learning</span>
+                        <span>ML • Recommendation Systems • Django</span>
                     </div>
                 </div>
             </div>
@@ -79,381 +79,415 @@
         <div class="content-section">
             <h2>Project Overview</h2>
             <p>
-                Developed a comprehensive end-to-end machine learning platform for time series forecasting and 
-                predictive analytics. The platform automates the entire ML pipeline from data ingestion to 
-                model deployment, featuring automated model selection, hyperparameter tuning, and real-time 
-                prediction serving.
+                The <strong>Movie Recommendation System</strong> is a production-ready Django application that delivers 
+                intelligent movie recommendations using advanced machine learning algorithms. Built to scale from thousands 
+                to millions of movies, it combines <strong>TF-IDF vectorization</strong>, <strong>SVD dimensionality 
+                reduction</strong>, and <strong>content-based filtering</strong> to provide highly relevant suggestions 
+                in under 50 milliseconds.
             </p>
             
-            <div class="content-image">📊</div>
+            <div style="text-align: center; margin: 2rem 0;">
+                <img src="resources/project-3/Header.png" alt="Movie Recommendation System Header" style="max-width: 100%; height: auto; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);">
+            </div>
             
             <p>
-                The system serves multiple business units with different forecasting needs, from sales prediction 
-                to inventory optimization. Built with scalability in mind, it can handle millions of time series 
-                and provides sub-second predictions with 99.9% uptime.
+                Unlike basic keyword matching systems, this recommender understands the <em>semantic meaning</em> of 
+                movie features—genres, keywords, production companies, plot summaries, and more. The system evolved from 
+                handling 10,000 movies in the MovieLens dataset to successfully processing <strong>930,000+ movies</strong> 
+                from the comprehensive TMDB dataset while maintaining excellent performance and recommendation quality.
             </p>
 
+            <h2>The Challenge</h2>
+            <p>
+                Building a recommendation system that works at scale presents several key challenges:
+            </p>
+            <ul>
+                <li><strong>Computational Scale:</strong> Computing similarity across millions of movie pairs requires efficient algorithms</li>
+                <li><strong>Quality vs. Coverage:</strong> Balancing comprehensive coverage with recommendation relevance</li>
+                <li><strong>Cold Start Problem:</strong> Providing recommendations without user interaction history</li>
+                <li><strong>Performance:</strong> Delivering sub-second response times despite massive datasets</li>
+                <li><strong>Memory Efficiency:</strong> Managing large similarity matrices without excessive RAM usage</li>
+                <li><strong>Feature Engineering:</strong> Capturing meaningful movie attributes for accurate matching</li>
+            </ul>
+
             <h2>Technical Architecture</h2>
+            <div style="text-align: center; margin: 2rem 0;">
+                <img src="resources/project-3/Architecture.png" alt="System Architecture" style="max-width: 100%; height: auto; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);">
+            </div>
             <div class="diagram-container">
-                <div class="diagram">ML Pipeline Architecture</div>
-                <p style="margin-top: 1rem; color: var(--text-secondary);">
-                    Data Ingestion → Feature Engineering → Model Training → Validation → Deployment → Monitoring
+                <p style="margin-top: 1rem; color: var(--text-secondary); text-align: center;">
+                    Feature Engineering → TF-IDF Vectorization → SVD Reduction → Cosine Similarity → Recommendations
                 </p>
             </div>
 
-            <h3>Technology Stack</h3>
+            <h3>Core ML Pipeline</h3>
             <div class="tech-stack">
                 <div class="tech-category">
                     <h4>Machine Learning</h4>
                     <div class="tech-list">
-                        <span class="tech-item">Scikit-learn</span>
-                        <span class="tech-item">XGBoost</span>
-                        <span class="tech-item">LightGBM</span>
-                        <span class="tech-item">Prophet</span>
+                        <span class="tech-item">TF-IDF</span>
+                        <span class="tech-item">SVD</span>
+                        <span class="tech-item">Cosine Similarity</span>
+                        <span class="tech-item">scikit-learn</span>
+                    </div>
+                </div>
+                <div class="tech-category">
+                    <h4>Backend & Storage</h4>
+                    <div class="tech-list">
+                        <span class="tech-item">Django 6.0</span>
+                        <span class="tech-item">Python 3.10+</span>
+                        <span class="tech-item">Parquet</span>
+                        <span class="tech-item">NumPy/SciPy</span>
                     </div>
                 </div>
                 <div class="tech-category">
                     <h4>Data Processing</h4>
                     <div class="tech-list">
-                        <span class="tech-item">Pandas</span>
-                        <span class="tech-item">NumPy</span>
-                        <span class="tech-item">Apache Spark</span>
-                        <span class="tech-item">Dask</span>
-                    </div>
-                </div>
-                <div class="tech-category">
-                    <h4>MLOps & Infrastructure</h4>
-                    <div class="tech-list">
-                        <span class="tech-item">MLflow</span>
-                        <span class="tech-item">Kubernetes</span>
-                        <span class="tech-item">AWS</span>
-                        <span class="tech-item">Airflow</span>
+                        <span class="tech-item">pandas</span>
+                        <span class="tech-item">NLTK</span>
+                        <span class="tech-item">Sparse Matrices</span>
+                        <span class="tech-item">Chunked Processing</span>
                     </div>
                 </div>
             </div>
 
             <h2>Key Features</h2>
+            
+            <h3>Advanced Content-Based Filtering</h3>
             <ul>
-                <li><strong>Automated Model Selection:</strong> Intelligent algorithm selection based on data characteristics</li>
-                <li><strong>Hyperparameter Optimization:</strong> Bayesian optimization for efficient parameter tuning</li>
-                <li><strong>Feature Engineering:</strong> Automated feature extraction and selection for time series</li>
-                <li><strong>Real-time Predictions:</strong> Low-latency serving infrastructure for live predictions</li>
-                <li><strong>Model Monitoring:</strong> Continuous performance tracking and drift detection</li>
-                <li><strong>A/B Testing:</strong> Built-in experimentation framework for model comparison</li>
+                <li><strong>Rich Feature Set:</strong> Genres, keywords, production companies, countries, plot summaries, and taglines</li>
+                <li><strong>Weighted Features:</strong> Strategic weighting of genres and primary production companies</li>
+                <li><strong>Stemming & NLP:</strong> Linguistic processing for better semantic matching</li>
+                <li><strong>Quality Scoring:</strong> Intelligent ranking combining ratings and vote counts</li>
             </ul>
 
-            <h2>Core Implementation</h2>
+            <h3>Scalability & Performance</h3>
+            <ul>
+                <li><strong>Three-Tier Quality Filtering:</strong> Low (5+ votes), Medium (50+ votes), High (500+ votes)</li>
+                <li><strong>SVD Dimensionality Reduction:</strong> Compresses 20K features to 500 dimensions while preserving 85% variance</li>
+                <li><strong>Sparse Matrix Storage:</strong> Reduces 40GB dense matrix to ~150MB sparse format</li>
+                <li><strong>Chunked Computation:</strong> Processes large datasets without memory overflow</li>
+                <li><strong>Efficient Data Formats:</strong> Parquet for 3-5x compression and 10x faster loading</li>
+            </ul>
+
+            <h3>User Experience</h3>
+            <ul>
+                <li><strong>Fuzzy Title Matching:</strong> Handles typos and partial titles intelligently</li>
+                <li><strong>Real-Time Search:</strong> Autocomplete suggestions as you type</li>
+                <li><strong>Advanced Filtering:</strong> Filter by year range, minimum rating, and genres</li>
+                <li><strong>Rich Metadata:</strong> Ratings, genres, production companies, release dates</li>
+                <li><strong>External Integration:</strong> Direct links to Google Search and IMDb</li>
+                <li><strong>Poster Images:</strong> Visual movie posters from TMDB</li>
+            </ul>
+
+            <h2>Implementation Highlights</h2>
+
             <div class="code-block">
                 <div class="code-header">
-                    <span class="code-language">Python - Automated ML Pipeline</span>
+                    <span class="code-language">Python - Core Recommendation Logic</span>
                     <button class="copy-button">Copy</button>
                 </div>
-                <pre><code><span class="keyword">import</span> pandas <span class="keyword">as</span> pd
-<span class="keyword">import</span> numpy <span class="keyword">as</span> np
-<span class="keyword">from</span> sklearn.ensemble <span class="keyword">import</span> RandomForestRegressor
-<span class="keyword">from</span> xgboost <span class="keyword">import</span> XGBRegressor
-<span class="keyword">from</span> lightgbm <span class="keyword">import</span> LGBMRegressor
-<span class="keyword">from</span> optuna <span class="keyword">import</span> create_study
-<span class="keyword">import</span> mlflow
-
-<span class="keyword">class</span> <span class="function">AutoMLPipeline</span>:
-    <span class="keyword">def</span> <span class="function">__init__</span>(self, target_metric=<span class="string">'rmse'</span>):
-        self.target_metric = target_metric
-        self.models = {
-            <span class="string">'xgboost'</span>: XGBRegressor(),
-            <span class="string">'lightgbm'</span>: LGBMRegressor(),
-            <span class="string">'random_forest'</span>: RandomForestRegressor()
-        }
-        self.best_model = None
-        self.best_params = None
-        self.feature_importance = None
+                <pre><code><span class="keyword">class</span> <span class="function">MovieRecommender</span>:
+    <span class="string">"""Production-ready recommendation engine"""</span>
     
-    <span class="keyword">def</span> <span class="function">feature_engineering</span>(self, df, date_col, target_col):
-        <span class="string">"""Automated feature engineering for time series"""</span>
+    <span class="keyword">def</span> <span class="function">__init__</span>(self, model_dir):
+        <span class="comment"># Load pre-trained model artifacts</span>
+        self.metadata = pd.read_parquet(model_dir / <span class="string">'movie_metadata.parquet'</span>)
+        self.similarity_matrix = load_npz(model_dir / <span class="string">'similarity_matrix.npz'</span>).toarray()
         
-        <span class="comment"># Convert date column</span>
-        df[date_col] = pd.to_datetime(df[date_col])
-        df = df.sort_values(date_col)
-        
-        <span class="comment"># Time-based features</span>
-        df[<span class="string">'year'</span>] = df[date_col].dt.year
-        df[<span class="string">'month'</span>] = df[date_col].dt.month
-        df[<span class="string">'day'</span>] = df[date_col].dt.day
-        df[<span class="string">'dayofweek'</span>] = df[date_col].dt.dayofweek
-        df[<span class="string">'quarter'</span>] = df[date_col].dt.quarter
-        
-        <span class="comment"># Lag features</span>
-        <span class="keyword">for</span> lag <span class="keyword">in</span> [<span class="number">1</span>, <span class="number">7</span>, <span class="number">30</span>, <span class="number">365</span>]:
-            df[<span class="string">f'{target_col}_lag_{lag}'</span>] = df[target_col].shift(lag)
-        
-        <span class="comment"># Rolling statistics</span>
-        <span class="keyword">for</span> window <span class="keyword">in</span> [<span class="number">7</span>, <span class="number">30</span>, <span class="number">90</span>]:
-            df[<span class="string">f'{target_col}_rolling_mean_{window}'</span>] = df[target_col].rolling(window).mean()
-            df[<span class="string">f'{target_col}_rolling_std_{window}'</span>] = df[target_col].rolling(window).std()
-        
-        <span class="comment"># Trend and seasonality</span>
-        df[<span class="string">f'{target_col}_pct_change'</span>] = df[target_col].pct_change()
-        df[<span class="string">f'{target_col}_diff'</span>] = df[target_col].diff()
-        
-        <span class="keyword">return</span> df.dropna()
+        <span class="keyword">with</span> open(model_dir / <span class="string">'title_to_idx.json'</span>) <span class="keyword">as</span> f:
+            self.title_to_idx = json.load(f)
     
-    <span class="keyword">def</span> <span class="function">optimize_hyperparameters</span>(self, X_train, y_train, X_val, y_val, model_name):
-        <span class="string">"""Bayesian hyperparameter optimization"""</span>
+    <span class="keyword">def</span> <span class="function">get_recommendations</span>(self, movie_title, n=<span class="number">15</span>, min_rating=<span class="keyword">None</span>):
+        <span class="comment"># Fuzzy match title</span>
+        matched_title = self.find_movie(movie_title)
+        <span class="keyword">if not</span> matched_title:
+            <span class="keyword">return</span> {<span class="string">'error'</span>: <span class="string">'Movie not found'</span>}
         
-        <span class="keyword">def</span> <span class="function">objective</span>(trial):
-            <span class="keyword">if</span> model_name == <span class="string">'xgboost'</span>:
-                params = {
-                    <span class="string">'n_estimators'</span>: trial.suggest_int(<span class="string">'n_estimators'</span>, <span class="number">100</span>, <span class="number">1000</span>),
-                    <span class="string">'max_depth'</span>: trial.suggest_int(<span class="string">'max_depth'</span>, <span class="number">3</span>, <span class="number">10</span>),
-                    <span class="string">'learning_rate'</span>: trial.suggest_float(<span class="string">'learning_rate'</span>, <span class="number">0.01</span>, <span class="number">0.3</span>),
-                    <span class="string">'subsample'</span>: trial.suggest_float(<span class="string">'subsample'</span>, <span class="number">0.8</span>, <span class="number">1.0</span>)
-                }
-                model = XGBRegressor(**params, random_state=<span class="number">42</span>)
-            
-            <span class="keyword">elif</span> model_name == <span class="string">'lightgbm'</span>:
-                params = {
-                    <span class="string">'n_estimators'</span>: trial.suggest_int(<span class="string">'n_estimators'</span>, <span class="number">100</span>, <span class="number">1000</span>),
-                    <span class="string">'max_depth'</span>: trial.suggest_int(<span class="string">'max_depth'</span>, <span class="number">3</span>, <span class="number">10</span>),
-                    <span class="string">'learning_rate'</span>: trial.suggest_float(<span class="string">'learning_rate'</span>, <span class="number">0.01</span>, <span class="number">0.3</span>),
-                    <span class="string">'feature_fraction'</span>: trial.suggest_float(<span class="string">'feature_fraction'</span>, <span class="number">0.8</span>, <span class="number">1.0</span>)
-                }
-                model = LGBMRegressor(**params, random_state=<span class="number">42</span>)
-            
-            <span class="keyword">else</span>:  <span class="comment"># random_forest</span>
-                params = {
-                    <span class="string">'n_estimators'</span>: trial.suggest_int(<span class="string">'n_estimators'</span>, <span class="number">100</span>, <span class="number">500</span>),
-                    <span class="string">'max_depth'</span>: trial.suggest_int(<span class="string">'max_depth'</span>, <span class="number">3</span>, <span class="number">20</span>),
-                    <span class="string">'min_samples_split'</span>: trial.suggest_int(<span class="string">'min_samples_split'</span>, <span class="number">2</span>, <span class="number">10</span>)
-                }
-                model = RandomForestRegressor(**params, random_state=<span class="number">42</span>)
-            
-            model.fit(X_train, y_train)
-            predictions = model.predict(X_val)
-            rmse = np.sqrt(np.mean((y_val - predictions) ** <span class="number">2</span>))
-            
-            <span class="keyword">return</span> rmse
+        <span class="comment"># Get similarity scores</span>
+        movie_idx = self.title_to_idx[matched_title]
+        sim_scores = list(enumerate(self.similarity_matrix[movie_idx]))
+        sim_scores = sorted(sim_scores, key=<span class="keyword">lambda</span> x: x[<span class="number">1</span>], reverse=<span class="keyword">True</span>)[<span class="number">1</span>:]
         
-        study = create_study(direction=<span class="string">'minimize'</span>)
-        study.optimize(objective, n_trials=<span class="number">100</span>)
+        <span class="comment"># Apply filters and format results</span>
+        recommendations = []
+        <span class="keyword">for</span> idx, score <span class="keyword">in</span> sim_scores:
+            <span class="keyword">if</span> len(recommendations) >= n:
+                <span class="keyword">break</span>
+                
+            movie = self.metadata.iloc[idx]
+            
+            <span class="keyword">if</span> min_rating <span class="keyword">and</span> movie[<span class="string">'vote_average'</span>] < min_rating:
+                <span class="keyword">continue</span>
+            
+            recommendations.append({
+                <span class="string">'title'</span>: movie[<span class="string">'title'</span>],
+                <span class="string">'rating'</span>: <span class="string">f"{movie['vote_average']:.1f}/10"</span>,
+                <span class="string">'genres'</span>: <span class="string">', '</span>.join(movie[<span class="string">'genres'</span>]),
+                <span class="string">'similarity_score'</span>: <span class="string">f"{score:.3f}"</span>,
+                <span class="string">'imdb_link'</span>: <span class="string">f"https://www.imdb.com/title/{movie['imdb_id']}"</span>
+            })
         
-        <span class="keyword">return</span> study.best_params, study.best_value</code></pre>
+        <span class="keyword">return</span> {<span class="string">'recommendations'</span>: recommendations}</code></pre>
             </div>
 
-            <h2>Performance Results</h2>
+            <h3>Training Pipeline</h3>
+            <p>
+                The system includes a complete training pipeline for creating custom models from any movie dataset:
+            </p>
+
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-language">Python - Model Training</span>
+                    <button class="copy-button">Copy</button>
+                </div>
+                <pre><code><span class="keyword">from</span> training.train <span class="keyword">import</span> MovieRecommenderTrainer
+
+<span class="comment"># Initialize trainer with configuration</span>
+trainer = MovieRecommenderTrainer(
+    output_dir=<span class="string">'./models'</span>,
+    use_dimensionality_reduction=<span class="keyword">True</span>,
+    n_components=<span class="number">500</span>  <span class="comment"># SVD components</span>
+)
+
+<span class="comment"># Train on TMDB dataset</span>
+df, sim_matrix = trainer.train(
+    <span class="string">'path/to/TMDB_movie_dataset.csv'</span>,
+    quality_threshold=<span class="string">'medium'</span>,  <span class="comment"># 50+ votes</span>
+    max_movies=<span class="number">100000</span>          <span class="comment"># Top 100K by quality</span>
+)
+
+<span class="comment"># Models saved automatically:
+# - movie_metadata.parquet
+# - similarity_matrix.npz
+# - title_to_idx.json
+# - tfidf_vectorizer.pkl
+# - svd_model.pkl</span></code></pre>
+            </div>
+
+            <h2>Performance Metrics</h2>
             <div class="project-stats">
                 <div class="stat-box">
-                    <div class="stat-value">94.3%</div>
-                    <div class="stat-label">Prediction Accuracy</div>
+                    <div class="stat-value">930K+</div>
+                    <div class="stat-label">Movies Supported</div>
                 </div>
                 <div class="stat-box">
-                    <div class="stat-value">150ms</div>
-                    <div class="stat-label">Avg Response Time</div>
+                    <div class="stat-value">&lt;50ms</div>
+                    <div class="stat-label">Recommendation Time</div>
                 </div>
                 <div class="stat-box">
-                    <div class="stat-value">1M+</div>
-                    <div class="stat-label">Time Series Handled</div>
+                    <div class="stat-value">180MB</div>
+                    <div class="stat-label">Model Size (100K)</div>
                 </div>
                 <div class="stat-box">
-                    <div class="stat-value">99.9%</div>
-                    <div class="stat-label">System Uptime</div>
+                    <div class="stat-value">85%</div>
+                    <div class="stat-label">Variance Retained (SVD)</div>
                 </div>
             </div>
 
-            <h3>Model Performance Comparison</h3>
+            <h3>System Capabilities</h3>
             <div class="table-container">
                 <table class="content-table">
                     <thead>
                         <tr>
-                            <th>Model</th>
-                            <th>RMSE</th>
-                            <th>MAE</th>
+                            <th>Configuration</th>
+                            <th>Movies</th>
                             <th>Training Time</th>
-                            <th>Inference Time</th>
+                            <th>Memory</th>
+                            <th>Model Size</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td>XGBoost</td>
-                            <td>0.085</td>
-                            <td>0.063</td>
-                            <td>2.3 min</td>
-                            <td>12ms</td>
+                            <td>Demo (Included)</td>
+                            <td>2K</td>
+                            <td>N/A</td>
+                            <td>50MB</td>
+                            <td>8MB</td>
                         </tr>
                         <tr>
-                            <td>LightGBM</td>
-                            <td>0.087</td>
-                            <td>0.065</td>
-                            <td>1.8 min</td>
-                            <td>8ms</td>
+                            <td>Small</td>
+                            <td>10K</td>
+                            <td>2 min</td>
+                            <td>500MB</td>
+                            <td>40MB</td>
                         </tr>
                         <tr>
-                            <td>Random Forest</td>
-                            <td>0.092</td>
-                            <td>0.071</td>
-                            <td>3.1 min</td>
-                            <td>15ms</td>
+                            <td>Medium ⭐</td>
+                            <td>100K</td>
+                            <td>15 min</td>
+                            <td>2GB</td>
+                            <td>180MB</td>
                         </tr>
                         <tr>
-                            <td>Prophet</td>
-                            <td>0.098</td>
-                            <td>0.074</td>
-                            <td>4.2 min</td>
-                            <td>25ms</td>
+                            <td>Large</td>
+                            <td>930K+</td>
+                            <td>60 min</td>
+                            <td>6GB</td>
+                            <td>800MB</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
 
-            <h2>MLOps Implementation</h2>
-            <p>
-                The platform includes comprehensive MLOps capabilities for production deployment and monitoring:
-            </p>
-
-            <div class="code-block">
-                <div class="code-header">
-                    <span class="code-language">Python - Model Serving & Monitoring</span>
-                    <button class="copy-button">Copy</button>
+            <h2>Live Demo</h2>
+            <div class="demo-section">
+                <h3>See the System in Action</h3>
+                <p>Watch how the recommendation engine handles user queries with fuzzy matching, filtering, and rich metadata display!</p>
+                <div style="text-align: center; margin: 2rem 0;">
+                    <img src="resources/project-3/Application-Demo.gif" alt="Application Demo" style="max-width: 100%; height: auto; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);">
                 </div>
-                <pre><code><span class="keyword">from</span> fastapi <span class="keyword">import</span> FastAPI, HTTPException
-<span class="keyword">from</span> pydantic <span class="keyword">import</span> BaseModel
-<span class="keyword">import</span> mlflow.pyfunc
-<span class="keyword">import</span> pandas <span class="keyword">as</span> pd
-<span class="keyword">import</span> logging
-<span class="keyword">from</span> datetime <span class="keyword">import</span> datetime
-
-app = FastAPI(title=<span class="string">"Predictive Analytics API"</span>)
-
-<span class="comment"># Load model</span>
-model = mlflow.pyfunc.load_model(<span class="string">"models:/sales_forecasting/production"</span>)
-
-<span class="keyword">class</span> <span class="function">PredictionRequest</span>(BaseModel):
-    features: dict
-    series_id: str
-
-<span class="keyword">class</span> <span class="function">ModelMonitor</span>:
-    <span class="keyword">def</span> <span class="function">__init__</span>(self):
-        self.prediction_counts = {}
-        self.error_counts = {}
-        self.response_times = []
-    
-    <span class="keyword">def</span> <span class="function">log_prediction</span>(self, series_id: str, prediction: float, 
-                      actual: float = None, response_time: float = None):
-        <span class="string">"""Log prediction for monitoring"""</span>
-        timestamp = datetime.now()
-        
-        <span class="comment"># Update counters</span>
-        self.prediction_counts[series_id] = self.prediction_counts.get(series_id, <span class="number">0</span>) + <span class="number">1</span>
-        
-        <span class="keyword">if</span> response_time:
-            self.response_times.append(response_time)
-        
-        <span class="comment"># Log to MLflow</span>
-        <span class="keyword">with</span> mlflow.start_run(run_name=<span class="string">f"prediction_{timestamp}"</span>):
-            mlflow.log_metric(<span class="string">"prediction_value"</span>, prediction)
-            <span class="keyword">if</span> actual:
-                error = abs(prediction - actual)
-                mlflow.log_metric(<span class="string">"prediction_error"</span>, error)
-            <span class="keyword">if</span> response_time:
-                mlflow.log_metric(<span class="string">"response_time_ms"</span>, response_time)
-    
-    <span class="keyword">def</span> <span class="function">detect_drift</span>(self, recent_errors: list, historical_mean: float):
-        <span class="string">"""Simple drift detection"""</span>
-        <span class="keyword">if</span> len(recent_errors) < <span class="number">10</span>:
-            <span class="keyword">return</span> False
-        
-        recent_mean = np.mean(recent_errors)
-        <span class="keyword">return</span> recent_mean > historical_mean * <span class="number">1.5</span>  <span class="comment"># 50% increase threshold</span>
-
-monitor = ModelMonitor()
-
-<span class="keyword">@app.post</span>(<span class="string">"/predict"</span>)
-<span class="keyword">async</span> <span class="keyword">def</span> <span class="function">predict</span>(request: PredictionRequest):
-    <span class="string">"""Generate prediction"""</span>
-    start_time = datetime.now()
-    
-    <span class="keyword">try</span>:
-        <span class="comment"># Prepare input</span>
-        input_df = pd.DataFrame([request.features])
-        
-        <span class="comment"># Generate prediction</span>
-        prediction = model.predict(input_df)[<span class="number">0</span>]
-        
-        <span class="comment"># Calculate response time</span>
-        response_time = (datetime.now() - start_time).total_seconds() * <span class="number">1000</span>
-        
-        <span class="comment"># Log for monitoring</span>
-        monitor.log_prediction(
-            series_id=request.series_id,
-            prediction=prediction,
-            response_time=response_time
-        )
-        
-        <span class="keyword">return</span> {
-            <span class="string">"prediction"</span>: float(prediction),
-            <span class="string">"series_id"</span>: request.series_id,
-            <span class="string">"timestamp"</span>: datetime.now().isoformat(),
-            <span class="string">"response_time_ms"</span>: response_time
-        }
-    
-    <span class="keyword">except</span> Exception <span class="keyword">as</span> e:
-        monitor.error_counts[<span class="string">"prediction_errors"</span>] = monitor.error_counts.get(<span class="string">"prediction_errors"</span>, <span class="number">0</span>) + <span class="number">1</span>
-        <span class="keyword">raise</span> HTTPException(status_code=<span class="number">500</span>, detail=str(e))</code></pre>
+                <div style="display: flex; justify-content: center; align-items: center; gap: 1rem; flex-wrap: wrap; margin-top: 1.5rem;">
+                    <a href="https://github.com/inboxpraveen/movie-recommendation-system" class="demo-button" target="_blank">GitHub Repository</a>
+                    <a href="https://github.com/inboxpraveen/movie-recommendation-system#readme" class="demo-button" target="_blank" style="background: var(--secondary-bg); color: var(--accent-color); border: 1px solid var(--accent-color);">Documentation</a>
+                </div>
             </div>
 
-            <h2>Business Impact</h2>
+            <h2>Deployment Options</h2>
             <p>
-                The platform has delivered significant business value across multiple departments:
+                The system is deployment-ready with configurations for multiple platforms:
             </p>
 
+            <h3>Quick Deploy to Render (Free Tier)</h3>
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-language">Bash - Deploy to Render</span>
+                    <button class="copy-button">Copy</button>
+                </div>
+                <pre><code><span class="comment"># 1. Push to GitHub</span>
+git push origin main
+
+<span class="comment"># 2. Connect to Render (auto-detects render.yaml)</span>
+<span class="comment"># 3. Configure environment variables</span>
+SECRET_KEY=<your-secret-key>
+DEBUG=False
+MODEL_DIR=./models
+
+<span class="comment"># 4. Deploy! (Render handles build & deployment)</span></code></pre>
+            </div>
+
+            <h3>Also Supports</h3>
             <ul>
-                <li><strong>Sales Forecasting:</strong> 25% improvement in forecast accuracy, reducing inventory costs by $2M annually</li>
-                <li><strong>Demand Planning:</strong> Optimized supply chain operations with 15% reduction in stockouts</li>
-                <li><strong>Financial Planning:</strong> Enhanced budget accuracy with 30% better revenue predictions</li>
-                <li><strong>Marketing ROI:</strong> Improved campaign effectiveness through predictive customer analytics</li>
+                <li><strong>Heroku:</strong> Procfile included, one-click deployment</li>
+                <li><strong>Docker:</strong> Containerized deployment for any platform</li>
+                <li><strong>AWS:</strong> Elastic Beanstalk and EC2 compatible</li>
+                <li><strong>Local:</strong> Runs perfectly on laptop for development</li>
             </ul>
 
             <h2>Challenges & Solutions</h2>
+            
             <p>
-                <strong>Data Quality:</strong> Inconsistent data formats and missing values across different sources. 
-                Implemented robust data validation pipelines and automated data quality checks with alerts 
-                for anomalies.
+                <strong>Challenge 1: Memory Explosion with Large Datasets</strong><br>
+                Computing similarity for 100K movies creates a 100K × 100K matrix (40GB if dense). 
+                <em>Solution:</em> Implemented sparse matrix storage (scipy.sparse) reducing size to ~150MB, 
+                plus chunked computation to prevent memory overflow during training.
             </p>
             
             <p>
-                <strong>Model Drift:</strong> Performance degradation over time due to changing patterns. 
-                Built automated retraining pipelines with drift detection algorithms that trigger model 
-                updates when performance drops below thresholds.
+                <strong>Challenge 2: Slow Feature Extraction</strong><br>
+                Initial implementation took 30+ minutes to process 100K movies due to inefficient JSON parsing. 
+                <em>Solution:</em> Optimized with vectorized operations, Parquet format (10x faster loading), 
+                and parallel processing where possible. Training time reduced to 15 minutes.
             </p>
 
             <p>
-                <strong>Scalability:</strong> Handling millions of time series efficiently. Implemented 
-                distributed computing with Apache Spark and optimized feature engineering pipelines 
-                to process large datasets in parallel.
+                <strong>Challenge 3: Poor Recommendation Quality at Scale</strong><br>
+                When scaling to 1M+ movies, recommendations included obscure films with 2-3 votes. 
+                <em>Solution:</em> Implemented three-tier quality filtering (low/medium/high) and a quality 
+                score combining rating and vote count. Dramatically improved relevance.
             </p>
+
+            <p>
+                <strong>Challenge 4: Cold Start - No User History</strong><br>
+                Content-based filtering doesn't require user history, but how to bootstrap? 
+                <em>Solution:</em> Rich feature engineering (genres, companies, plot, keywords) allows 
+                high-quality recommendations from the first query without any user interaction data.
+            </p>
+
+            <h2>Evolution & Impact</h2>
+            <div class="table-container">
+                <table class="content-table">
+                    <thead>
+                        <tr>
+                            <th>Metric</th>
+                            <th>Version 1.0</th>
+                            <th>Version 2.0</th>
+                            <th>Improvement</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Dataset Size</td>
+                            <td>10K movies</td>
+                            <td>930K+ movies</td>
+                            <td>93x larger</td>
+                        </tr>
+                        <tr>
+                            <td>Model Size</td>
+                            <td>320MB</td>
+                            <td>180MB</td>
+                            <td>44% smaller</td>
+                        </tr>
+                        <tr>
+                            <td>Memory Usage</td>
+                            <td>800MB</td>
+                            <td>350MB</td>
+                            <td>56% less</td>
+                        </tr>
+                        <tr>
+                            <td>Recommendation Time</td>
+                            <td>~100ms</td>
+                            <td>&lt;50ms</td>
+                            <td>2x faster</td>
+                        </tr>
+                        <tr>
+                            <td>Features Used</td>
+                            <td>4</td>
+                            <td>10+</td>
+                            <td>2.5x richer</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
 
             <h2>Future Enhancements</h2>
             <ul>
-                <li>Deep learning models for complex patterns (LSTM, Transformer)</li>
-                <li>Multi-variate forecasting with external data sources</li>
-                <li>Automated feature selection using genetic algorithms</li>
-                <li>Real-time model updates with online learning</li>
-                <li>Causal inference for better decision making</li>
-                <li>Integration with business intelligence tools</li>
+                <li><strong>Version 2.1:</strong> User authentication, personal watchlists, rating system, recommendation history</li>
+                <li><strong>Version 2.2:</strong> Collaborative filtering using user interaction data</li>
+                <li><strong>Version 2.3:</strong> Hybrid recommendations combining content-based + collaborative</li>
+                <li><strong>Version 3.0:</strong> Deep learning with neural collaborative filtering</li>
+                <li><strong>Long-term:</strong> Real-time learning from user feedback, contextual recommendations (time/mood)</li>
+            </ul>
+
+            <h2>Key Learnings</h2>
+            <ul>
+                <li>Feature engineering matters more than algorithm choice—adding production company features improved recommendations more than days of parameter tuning</li>
+                <li>Quality filtering is essential at scale—1M movies is meaningless if half have <5 votes</li>
+                <li>Sparse matrices and efficient data formats are non-negotiable for production ML systems</li>
+                <li>User experience (fuzzy matching, posters, external links) transforms a "cool demo" into a useful tool</li>
+                <li>Comprehensive documentation is as important as the code—future you will thank present you</li>
             </ul>
 
             <div style="margin-top: 3rem; padding: 2rem; background: var(--secondary-bg); border-radius: 15px; border: 1px solid var(--border-color);">
-                <h3 style="margin-top: 0;">Project Resources</h3>
-                <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1rem;">
-                    <a href="#" class="demo-button" style="margin: 0;">Platform Demo</a>
-                    <a href="#" class="demo-button" style="margin: 0; background: var(--secondary-bg); color: var(--accent-color); border: 1px solid var(--accent-color);">Case Study</a>
-                    <a href="#" class="demo-button" style="margin: 0; background: var(--secondary-bg); color: var(--accent-color); border: 1px solid var(--accent-color);">Technical Documentation</a>
+                <h3 style="margin-top: 0;">Project Links</h3>
+                <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1rem; margin-bottom: 2rem;">
+                    <a href="https://github.com/inboxpraveen/movie-recommendation-system" class="demo-button" style="margin: 0;" target="_blank">GitHub Repository</a>
+                    <a href="https://github.com/inboxpraveen/movie-recommendation-system#readme" class="demo-button" style="margin: 0; background: var(--secondary-bg); color: var(--accent-color); border: 1px solid var(--accent-color);" target="_blank">Full Documentation</a>
+                    <a href="../blogs/blog-3.html" class="demo-button" style="margin: 0; background: var(--secondary-bg); color: var(--accent-color); border: 1px solid var(--accent-color);">Read Blog Post</a>
                 </div>
+                
+                <h4>Technical Resources:</h4>
+                <ul>
+                    <li><a href="https://github.com/inboxpraveen/movie-recommendation-system/blob/main/PROJECT_GUIDE.md" style="color: var(--accent-color);" target="_blank">Complete Project Guide</a></li>
+                    <li><a href="https://github.com/inboxpraveen/movie-recommendation-system/blob/main/training/guide.md" style="color: var(--accent-color);" target="_blank">Model Training Guide</a></li>
+                    <li><a href="https://www.kaggle.com/datasets/asaniczka/tmdb-movies-dataset-2023-930k-movies" style="color: var(--accent-color);" target="_blank">TMDB Dataset (Kaggle)</a></li>
+                </ul>
             </div>
         </div>
     </div>
 
     <!-- Footer -->
-    <footer>
+    <footer style="margin-top: 4rem;">
         <div class="container">
             <p>&copy; <span id="copyright-year"></span> Praveen Kumar. Built with passion for AI & open source community.</p>
         </div>
