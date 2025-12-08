@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Speech Annotation Tool - Transcription Review & Correction Platform | Praveen Kumar</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Production-ready web application for reviewing and correcting ASR transcriptions. Features background job processing, progress tracking, session persistence, row locking, and export options. Built with Flask, Whisper, and FFmpeg.">
+    <meta name="keywords" content="Speech Annotation, ASR, Whisper, Flask, Background Jobs, Transcription Review, Audio Processing, FFmpeg, Data Annotation">
+    <meta name="author" content="Praveen Kumar">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Speech Annotation Tool - Transcription Review & Correction Platform">
+    <meta property="og:description" content="Production-ready annotation platform for reviewing ASR transcriptions. Features advanced background processing, progress tracking, session persistence, and intelligent row locking. Built with Flask, Whisper, and FFmpeg.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://inboxpraveen.github.io/projects/project-4.html">
+    <meta property="og:image" content="https://inboxpraveen.github.io/projects/resources/project-4/Header.png">
+    <meta property="og:image:alt" content="Speech Annotation Tool">
+    <meta property="og:site_name" content="Praveen Kumar Portfolio">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Speech Annotation Tool - Transcription Review & Correction Platform">
+    <meta name="twitter:description" content="Production-ready annotation platform with background jobs, progress tracking, session persistence, and row locking for data teams.">
+    <meta name="twitter:image" content="https://inboxpraveen.github.io/projects/resources/project-4/Header.png">
+    <meta name="twitter:image:alt" content="Speech Annotation Tool">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://inboxpraveen.github.io/projects/project-4.html">
+    
+    <link rel="icon" type="image/x-icon" href="../assests/favicon.ico">
+    <link rel="stylesheet" href="../index.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo" onclick="window.location.href='../index.html'" style="cursor: pointer;">PK</div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../index.html#about">About</a></li>
+                <li><a href="../index.html#projects">Projects</a></li>
+                <li><a href="../index.html#blog">Blog</a></li>
+                <li><a href="../index.html#contact">Contact</a></li>
+                <li><a href="../assests/Resume.pdf" target="_blank" title="Updated Nov 2025">Resume</a></li>
+            </ul>
+            <button class="mobile-menu" id="mobileMenu">☰</button>
+        </div>
+    </nav>
+
+    <!-- Project Page - Speech Annotation Tool -->
+    <div class="page-container active">
+        <div class="page-header">
+            <div class="container">
+                <a href="../index.html#projects" class="back-button">← Back to Projects</a>
+                <h1 class="page-title">Speech Annotation Tool</h1>
+                <div class="page-meta">
+                    <div class="meta-item">
+                        <span>📅</span>
+                        <span>Completed: December 2025</span>
+                    </div>
+                    <div class="meta-item">
+                        <span>⏱️</span>
+                        <span>Version: 2.0.0</span>
+                    </div>
+                    <div class="meta-item">
+                        <span>👥</span>
+                        <span>Team Size: Solo</span>
+                    </div>
+                    <div class="meta-item">
+                        <span>🏷️</span>
+                        <span>Speech AI • Flask • Whisper • FFmpeg • Background Jobs</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2>Project Overview</h2>
+            <p>
+                The <strong>Speech Annotation Tool</strong> is a production-ready web application designed for data annotation teams to 
+                review and correct ASR (Automatic Speech Recognition) transcriptions efficiently and safely. Built for teams working 
+                with speech-to-text accuracy improvement, the platform combines <strong>intelligent background job processing</strong>, 
+                <strong>real-time progress tracking</strong>, <strong>browser-based session persistence</strong>, and <strong>smart row locking</strong> 
+                to deliver a reliable, responsive workflow that keeps annotators productive without blocking the UI.
+            </p>
+            
+            <div style="text-align: center; margin: 2rem 0;">
+                <img src="resources/project-4/Header.png" alt="Speech Annotation Tool Header" style="max-width: 100%; height: auto; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);">
+            </div>
+            
+            <p>
+                The tool elegantly solves the transcription review bottleneck by supporting two distinct workflows: 
+                <strong>Review &amp; Correct</strong> for teams with pre-chunked audio and existing Excel transcripts, and 
+                <strong>Auto-Transcribe</strong> for starting from scratch with raw audio files. Everything runs on a lightweight 
+                Flask stack with no external job queue required—threading-based background jobs, CSV-based persistence, and 
+                localStorage-based session tracking keep the entire system simple to deploy and maintain while remaining powerful 
+                enough for production use.
+            </p>
+
+            <h2>The Challenge</h2>
+            <p>
+                Data annotation teams working with audio transcriptions face several critical problems:
+            </p>
+            <ul>
+                <li><strong>Blocking UI during Long Operations:</strong> Processing hundreds of audio files shouldn't freeze the interface</li>
+                <li><strong>Progress Visibility:</strong> Teams need real-time feedback on job status and completion percentage</li>
+                <li><strong>Accidental Overwrites:</strong> When corrections are finalized, they must be protected from accidental edits</li>
+                <li><strong>Session Loss:</strong> Corrections made to dozens of rows should survive browser refresh</li>
+                <li><strong>Data Export Flexibility:</strong> Results must be downloadable in multiple formats on demand</li>
+                <li><strong>Audio Format Chaos:</strong> Raw audio arrives in dozens of formats (MP3, WAV, WMA, OPUS, FLAC, M4A, etc.)</li>
+                <li><strong>Quality Assurance:</strong> Human reviewers must have confidence in what they're correcting</li>
+                <li><strong>No Infrastructure Overhead:</strong> Deployment shouldn't require Celery, Redis, or message brokers</li>
+            </ul>
+
+            <h2>Technical Architecture</h2>
+            <div style="text-align: center; margin: 2rem 0;">
+                <img src="resources/project-4/Architecture.png" alt="System Architecture" style="max-width: 100%; height: auto; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);">
+            </div>
+            <div class="diagram-container">
+                <p style="margin-top: 1rem; color: var(--text-secondary); text-align: center;">
+                    Audio Input → Format Detection → FFmpeg Conversion → Segmentation → Whisper Transcription → CSV Storage → Web UI → Export
+                </p>
+            </div>
+
+            <h3>Core System Components</h3>
+            <div class="tech-stack">
+                <div class="tech-category">
+                    <h4>Backend Framework</h4>
+                    <div class="tech-list">
+                        <span class="tech-item">Flask 3.0+</span>
+                        <span class="tech-item">Python 3.10+</span>
+                        <span class="tech-item">pandas</span>
+                        <span class="tech-item">Jinja2 Templates</span>
+                    </div>
+                </div>
+                <div class="tech-category">
+                    <h4>Speech Processing</h4>
+                    <div class="tech-list">
+                        <span class="tech-item">OpenAI Whisper</span>
+                        <span class="tech-item">FFmpeg</span>
+                        <span class="tech-item">Audio Streaming</span>
+                        <span class="tech-item">Format Detection</span>
+                    </div>
+                </div>
+                <div class="tech-category">
+                    <h4>Background Jobs</h4>
+                    <div class="tech-list">
+                        <span class="tech-item">Python Threading</span>
+                        <span class="tech-item">Job Manager</span>
+                        <span class="tech-item">JSON Persistence</span>
+                        <span class="tech-item">Type-Based Locking</span>
+                    </div>
+                </div>
+                <div class="tech-category">
+                    <h4>Frontend</h4>
+                    <div class="tech-list">
+                        <span class="tech-item">Vanilla JavaScript</span>
+                        <span class="tech-item">Bootstrap 5</span>
+                        <span class="tech-item">localStorage API</span>
+                        <span class="tech-item">Fetch API</span>
+                    </div>
+                </div>
+            </div>
+
+            <h2>Key Features & Capabilities</h2>
+            
+            <h3>Two Purpose-Built Workflows</h3>
+            <p>
+                The platform supports distinct workflows optimized for different data scenarios:
+            </p>
+            <ul>
+                <li><strong>Review &amp; Correct (Primary):</strong> Load pre-chunked audio with Excel transcripts, review in-table, save with autosave, lock when finalized</li>
+                <li><strong>Auto-Transcribe (Secondary):</strong> Point to any folder of audio files, automatic FFmpeg chunking (30-second segments), Whisper transcription, background progress tracking</li>
+            </ul>
+
+            <h3>Advanced Background Job System</h3>
+            <ul>
+                <li><strong>Threaded Execution:</strong> Jobs run in daemon threads without blocking the Flask web server</li>
+                <li><strong>Type-Based Locking:</strong> Only one job per type (TRANSCRIBE, MANUAL_IMPORT) can run simultaneously, preventing conflicts</li>
+                <li><strong>Progress Reporting:</strong> Real-time progress updates with percentage completion and item counters</li>
+                <li><strong>JSON Persistence:</strong> Job status survives application restarts; no external storage required</li>
+                <li><strong>Error Handling:</strong> Graceful failure tracking with detailed error messages for debugging</li>
+            </ul>
+
+            <h3>Intelligent Progress Tracking</h3>
+            <ul>
+                <li><strong>Auto-Updating Banner:</strong> Smart progress bar that appears during active jobs and auto-dismisses on completion</li>
+                <li><strong>2-Second Polling Cadence:</strong> Frontend polls job status every 2 seconds for responsive UX</li>
+                <li><strong>Item-Level Granularity:</strong> Shows "X of Y items processed" for intuitive progress understanding</li>
+                <li><strong>Status Lifecycle:</strong> pending → running → completed/failed with clear visual indicators</li>
+            </ul>
+
+            <h3>Session Persistence &amp; Correction Tracking</h3>
+            <ul>
+                <li><strong>localStorage Tracking:</strong> Browser-based storage tracks every correction made, survives refresh and restart</li>
+                <li><strong>Correction Metadata:</strong> Stores original text, corrected text, timestamp, and completion status</li>
+                <li><strong>Statistics Dashboard:</strong> Real-time counters showing total records, corrected records, and locked records</li>
+                <li><strong>Privacy-First:</strong> All tracking happens locally in the browser; no server-side session overhead</li>
+            </ul>
+
+            <h3>Smart Row Locking</h3>
+            <ul>
+                <li><strong>Prevent Accidental Edits:</strong> Lock rows when finalized to make them read-only with yellow highlighting</li>
+                <li><strong>Lock Timestamps:</strong> Track when each row was locked for audit purposes</li>
+                <li><strong>Toggle Unlock:</strong> Reviewers can unlock if changes needed; all edits are tracked</li>
+                <li><strong>Bulk Operations Ready:</strong> Architecture supports future batch lock/unlock operations</li>
+            </ul>
+
+            <h3>Audio Processing Intelligence</h3>
+            <ul>
+                <li><strong>Format Auto-Detection:</strong> Supports MP3, WAV, WMA, MPEG, OPUS, FLAC, M4A, and more via FFmpeg</li>
+                <li><strong>Smart Conversion:</strong> Automatically converts any audio to 16kHz mono WAV for Whisper consistency</li>
+                <li><strong>Fixed Segmentation:</strong> Chunks audio into configurable segments (default 30 seconds) for manageable processing</li>
+                <li><strong>Streaming Architecture:</strong> FFmpeg streaming avoids loading entire files into memory, enabling massive file support</li>
+                <li><strong>Browser Playback:</strong> Each segment can be played directly in the browser for manual verification</li>
+            </ul>
+
+            <h3>Flexible Data Import &amp; Export</h3>
+            <ul>
+                <li><strong>Excel Ingestion:</strong> Bulk import pre-chunked data via Excel with required columns validation</li>
+                <li><strong>Column Enforcement:</strong> Checks for required columns (filename, transcription) before import</li>
+                <li><strong>Multi-Format Export:</strong> Download as CSV or XLSX (Excel) anytime, includes all corrections and metadata</li>
+                <li><strong>Instant Downloads:</strong> Export operations complete in milliseconds regardless of dataset size</li>
+            </ul>
+
+            <h2>Implementation Highlights</h2>
+
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-language">Python - Job Manager Architecture</span>
+                    <button class="copy-button">Copy</button>
+                </div>
+                <pre><code><span class="keyword">class</span> <span class="function">JobManager</span>:
+    <span class="string">"""
+    Singleton managing all background jobs with threading
+    Type-based locking prevents concurrent job conflicts
+    """</span>
+    
+    <span class="keyword">def</span> <span class="function">run_job_async</span>(self, job_id, job_type, task_func, total_items):
+        <span class="comment"># Check if another job of this type is running</span>
+        can_start, active_id = self.can_start_job(job_type)
+        <span class="keyword">if</span> <span class="keyword">not</span> can_start:
+            <span class="keyword">return</span> {<span class="string">'error'</span>: <span class="string">'Job already running'</span>, 
+                    <span class="string">'active_job_id'</span>: active_id}
+        
+        <span class="comment"># Create job info</span>
+        job_info = self.create_job(job_id, job_type, total_items)
+        
+        <span class="comment"># Spawn daemon thread</span>
+        <span class="keyword">def</span> <span class="function">wrapper</span>():
+            <span class="keyword">try</span>:
+                self.start_job(job_id)
+                result = task_func(job_id, self)
+                self.complete_job(job_id, result)
+            <span class="keyword">except</span> <span class="function">Exception</span> <span class="keyword">as</span> e:
+                self.fail_job(job_id, str(e))
+        
+        thread = Thread(target=wrapper, daemon=<span class="keyword">True</span>)
+        thread.start()
+        <span class="keyword">return</span> job_info
+    
+    <span class="keyword">def</span> <span class="function">update_progress</span>(self, job_id, processed, total):
+        <span class="string">"""Called by task to report progress"""</span>
+        self._jobs[job_id][<span class="string">'processed_items'</span>] = processed
+        self._jobs[job_id][<span class="string">'progress'</span>] = int((processed / total) * 100)
+        self._persist_jobs()  <span class="comment"># Save to JSON</span></code></pre>
+            </div>
+
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-language">Python - Audio Processing Pipeline</span>
+                    <button class="copy-button">Copy</button>
+                </div>
+                <pre><code><span class="keyword">def</span> <span class="function">auto_transcribe_workflow</span>(job_id, job_manager):
+    <span class="string">"""
+    Complete auto-transcribe pipeline:
+    Folder → Audio Files → FFmpeg Convert → Segment → Whisper → CSV
+    """</span>
+    
+    audio_files = list(iter_audio_files(folder_path))
+    job_manager.update_progress(job_id, 0, len(audio_files))
+    
+    <span class="keyword">for</span> idx, audio_file <span class="keyword">in</span> enumerate(audio_files):
+        <span class="comment"># Step 1: Convert to standardized WAV</span>
+        wav_path = convert_to_wav(audio_file, job_id)
+        
+        <span class="comment"># Step 2: Segment into 30-second chunks</span>
+        segments = segment_audio(wav_path, job_id, segment_seconds=<span class="number">30</span>)
+        
+        <span class="comment"># Step 3: Transcribe each segment</span>
+        model = load_model(model_name)  <span class="comment"># LRU cached</span>
+        <span class="keyword">for</span> segment in segments:
+            transcript = transcribe_file(model, segment)
+            
+            <span class="comment"># Step 4: Store in CSV</span>
+            append_record({
+                <span class="string">'filename'</span>: segment,
+                <span class="string">'transcription'</span>: transcript,
+                <span class="string">'job_id'</span>: job_id
+            })
+        
+        <span class="comment"># Step 5: Report progress</span>
+        job_manager.update_progress(job_id, idx + 1, len(audio_files))</code></pre>
+            </div>
+
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-language">JavaScript - Correction Tracker</span>
+                    <button class="copy-button">Copy</button>
+                </div>
+                <pre><code><span class="keyword">class</span> <span class="function">CorrectionTracker</span> {
+    <span class="string">/**
+     * Manages localStorage-based correction history
+     * Tracks which records were edited and what changes made
+     */</span>
+    
+    constructor() {
+        this.storageKey = <span class="string">'asr_corrections_tracker'</span>;
+        this.tracker = this.loadFromStorage();
+    }
+    
+    <span class="function">markCorrected</span>(recordId, originalText, correctedText) {
+        this.tracker[recordId] = {
+            corrected: <span class="keyword">true</span>,
+            originalText,
+            correctedText,
+            timestamp: <span class="keyword">new</span> Date().toISOString()
+        };
+        this.saveToStorage();
+    }
+    
+    <span class="function">getStats</span>() {
+        <span class="keyword">const</span> total = Object.keys(this.tracker).length;
+        <span class="keyword">const</span> corrected = Object.values(this.tracker)
+            .filter(r =&gt; r.corrected).length;
+        <span class="keyword">return</span> { total, corrected };
+    }
+}</code></pre>
+            </div>
+
+            <h2>Performance Metrics</h2>
+            <div class="project-stats">
+                <div class="stat-box">
+                    <div class="stat-value">1000s</div>
+                    <div class="stat-label">Files via Background Jobs</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-value">30s</div>
+                    <div class="stat-label">Default Segment Size</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-value">2s</div>
+                    <div class="stat-label">UI Polling Cadence</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-value">0ms</div>
+                    <div class="stat-label">UI Blocking</div>
+                </div>
+            </div>
+
+            <h3>Workflow Capabilities</h3>
+            <div class="table-container">
+                <table class="content-table">
+                    <thead>
+                        <tr>
+                            <th>Workflow</th>
+                            <th>Use Case</th>
+                            <th>Input</th>
+                            <th>Processing</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Review &amp; Correct</td>
+                            <td>Teams with pre-chunked audio</td>
+                            <td>Audio folder + Excel file</td>
+                            <td>Direct table load, inline edit, save</td>
+                        </tr>
+                        <tr>
+                            <td>Auto-Transcribe ⭐</td>
+                            <td>Starting from raw audio</td>
+                            <td>Audio folder (any format)</td>
+                            <td>Convert → Segment → Transcribe → Show results</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h2>Live Demo</h2>
+            <div class="demo-section">
+                <h3>See the System in Action</h3>
+                <p>Watch how the tool handles background transcription jobs, live progress updates, and responsive UI interactions without blocking the interface!</p>
+                <div style="text-align: center; margin: 2rem 0;">
+                    <img src="resources/project-4/Application-Dashboard.png" alt="Application Dashboard" style="max-width: 100%; height: auto; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);">
+                </div>
+                <div style="display: flex; justify-content: center; align-items: center; gap: 1rem; flex-wrap: wrap; margin-top: 1.5rem;">
+                    <a href="https://github.com/inboxpraveen/Speech-Annotation-Tool" class="demo-button" target="_blank">GitHub Repository</a>
+                    <a href="https://github.com/inboxpraveen/Speech-Annotation-Tool/blob/master/PROJECT_DOCUMENTATION.md" class="demo-button" target="_blank" style="background: var(--secondary-bg); color: var(--accent-color); border: 1px solid var(--accent-color);">Documentation</a>
+                </div>
+            </div>
+
+            <h2>Deployment Options</h2>
+            <p>
+                The system is deployment-ready with simple configurations for multiple platforms. No Celery, Redis, or message brokers required—just Python, Flask, and FFmpeg.
+            </p>
+
+            <h3>Quick Deploy</h3>
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-language">Bash - Local Development</span>
+                    <button class="copy-button">Copy</button>
+                </div>
+                <pre><code><span class="comment"># Clone and setup</span>
+git clone https://github.com/inboxpraveen/Speech-Annotation-Tool.git
+cd Speech-Annotation-Tool
+
+<span class="comment"># Create virtual environment</span>
+python -m venv venv
+source venv/bin/activate  <span class="comment"># Windows: venv\Scripts\activate</span>
+
+<span class="comment"># Install dependencies</span>
+pip install -r requirements.txt
+
+<span class="comment"># Run application</span>
+python app.py
+<span class="comment"># Open http://localhost:5000</span></code></pre>
+            </div>
+
+            <h3>Also Supports</h3>
+            <ul>
+                <li><strong>Gunicorn:</strong> Production WSGI server with multi-worker support</li>
+                <li><strong>Docker:</strong> Containerized deployment with pre-installed FFmpeg and dependencies</li>
+                <li><strong>Systemd:</strong> Service files for long-running instances on Linux servers</li>
+                <li><strong>Cloud:</strong> Compatible with any cloud provider (AWS, Heroku, Railway, Render)</li>
+            </ul>
+
+            <h2>Technical Challenges & Solutions</h2>
+            
+            <p>
+                <strong>Challenge 1: Non-Blocking Background Jobs Without External Infrastructure</strong><br>
+                Transcribing hundreds of files would block the web interface and exhaust memory. 
+                <em>Solution:</em> Implemented Python threading with daemon threads and a singleton JobManager class. 
+                Jobs run independently while the Flask server remains responsive. Type-based locking prevents concurrent conflicts. 
+                Progress persisted to JSON, so status survives restarts.
+            </p>
+            
+            <p>
+                <strong>Challenge 2: Audio Format Chaos</strong><br>
+                Audio files arrive in dozens of formats (MP3, M4A, OPUS, FLAC, etc.) with varying sample rates and channels. 
+                <em>Solution:</em> Integrated FFmpeg for universal format conversion with intelligent preprocessing. 
+                All audio automatically converted to standardized 16kHz mono WAV before Whisper processing. 
+                FFmpeg streaming prevents memory overflow on large files.
+            </p>
+
+            <p>
+                <strong>Challenge 3: Session State Without Server Overhead</strong><br>
+                Tracking which of hundreds of records were corrected would require server sessions. 
+                <em>Solution:</em> Leveraged browser localStorage to track corrections client-side. 
+                CorrectionTracker class stores correction metadata with timestamps. Survives browser refresh, 
+                restart, and network issues without server-side complexity.
+            </p>
+
+            <p>
+                <strong>Challenge 4: UI Responsiveness During Long Operations</strong><br>
+                Users need real-time feedback on job progress without page reloads blocking interaction. 
+                <em>Solution:</em> Smart polling strategy with 2-second refresh cadence. Frontend polls job status 
+                via API while UI remains interactive. Progress banner auto-appears and dismisses intelligently. 
+                Silent table refreshes don't interrupt user workflow.
+            </p>
+
+            <p>
+                <strong>Challenge 5: Data Safety and Accident Prevention</strong><br>
+                Corrected transcripts must be protected from accidental overwrites by team members. 
+                <em>Solution:</em> Implemented row-level locking with timestamp tracking. Once locked, rows become 
+                read-only and visually highlighted. Lock state persisted in CSV with optional unlock capability. 
+                Audit trail tracking enables debugging of accidental changes.
+            </p>
+
+            <h2>Architecture Decisions</h2>
+
+            <h3>Why Threading Instead of Celery?</h3>
+            <p>
+                This project deliberately avoids external job queues like Celery. Threading provides:
+            </p>
+            <ul>
+                <li><strong>Zero Infrastructure:</strong> No Redis/RabbitMQ broker required for deployment</li>
+                <li><strong>Simpler Debugging:</strong> Exceptions and logs all in one Python process</li>
+                <li><strong>Fast Iteration:</strong> Deploy with single Python command, no daemon management</li>
+                <li><strong>Sufficient Scale:</strong> Handles thousands of files for team-based annotation</li>
+                <li><strong>Type-Based Locking:</strong> One job per type prevents conflicts without complex state</li>
+            </ul>
+            <p>
+                For distributed processing across multiple servers, Celery migration path documented in PROJECT_DOCUMENTATION.md.
+            </p>
+
+            <h3>Why CSV Instead of Database?</h3>
+            <ul>
+                <li><strong>Human-Readable:</strong> Data visible in Excel, easily debuggable</li>
+                <li><strong>No Setup:</strong> No database server required, just files</li>
+                <li><strong>Thread-Safe:</strong> RLock-based file access prevents corruption under concurrency</li>
+                <li><strong>Export-Ready:</strong> Already in the format users need for downloads</li>
+                <li><strong>Migration Path:</strong> Easy to migrate to SQLite or PostgreSQL when scale demands</li>
+            </ul>
+
+            <h2>Key Learnings</h2>
+            <ul>
+                <li>Threading-based jobs are sufficient for team-scale annotation workflows; complexity of Celery only justified at massive scale</li>
+                <li>localStorage-based session tracking eliminates server-side session overhead entirely while improving privacy</li>
+                <li>Smart UI polling (2-second cadence) balances responsiveness with server load—too frequent causes overhead, too slow feels sluggish</li>
+                <li>Row-level locking prevents most annotation errors; much cheaper than fixing mistakes after the fact</li>
+                <li>FFmpeg streaming for audio processing enables handling of massive files without memory bloat</li>
+                <li>Type-based job locking is simpler and more effective than complex queue systems for single-server deployments</li>
+                <li>CSV + pandas is surprisingly powerful for data persistence; premature database migration adds unnecessary complexity</li>
+            </ul>
+
+            <h2>Future Enhancements</h2>
+            <ul>
+                <li><strong>Version 2.1:</strong> Multi-user authentication, per-user correction tracking, team dashboards</li>
+                <li><strong>Version 2.2:</strong> Speaker diarization support, custom Whisper model fine-tuning interface</li>
+                <li><strong>Version 2.3:</strong> WebSocket-based real-time progress (currently polling)</li>
+                <li><strong>Version 3.0:</strong> PostgreSQL backend for enterprise deployments, distributed Celery workers</li>
+                <li><strong>Future:</strong> Batch export with filtering, quality metrics dashboard, annotation team benchmarking</li>
+            </ul>
+
+            <div style="margin-top: 3rem; padding: 2rem; background: var(--secondary-bg); border-radius: 15px; border: 1px solid var(--border-color);">
+                <h3 style="margin-top: 0;">Project Links</h3>
+                <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1rem; margin-bottom: 2rem;">
+                    <a href="https://github.com/inboxpraveen/Speech-Annotation-Tool" class="demo-button" style="margin: 0;" target="_blank">GitHub Repository</a>
+                    <a href="https://github.com/inboxpraveen/Speech-Annotation-Tool/blob/master/PROJECT_DOCUMENTATION.md" class="demo-button" style="margin: 0; background: var(--secondary-bg); color: var(--accent-color); border: 1px solid var(--accent-color);" target="_blank">Full Documentation</a>
+                    <a href="https://github.com/inboxpraveen/Speech-Annotation-Tool/blob/master/QUICK_START.md" class="demo-button" style="margin: 0; background: var(--secondary-bg); color: var(--accent-color); border: 1px solid var(--accent-color);" target="_blank">Quick Start Guide</a>
+                </div>
+                
+                <h4>Technical Resources:</h4>
+                <ul>
+                    <li><a href="https://github.com/inboxpraveen/Speech-Annotation-Tool/blob/master/README.md" style="color: var(--accent-color);" target="_blank">Complete Project Guide</a></li>
+                    <li><a href="https://github.com/inboxpraveen/Speech-Annotation-Tool/blob/master/PROJECT_DOCUMENTATION.md" style="color: var(--accent-color);" target="_blank">Technical Architecture Details</a></li>
+                    <li><a href="https://github.com/inboxpraveen/Speech-Annotation-Tool/tree/master/asr_tool" style="color: var(--accent-color);" target="_blank">Source Code (asr_tool/)</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer style="margin-top: 4rem;">
+        <div class="container">
+            <p>&copy; <span id="copyright-year"></span> Praveen Kumar. Built with passion for AI & open source community.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu functionality
+        const mobileMenu = document.getElementById('mobileMenu');
+        const navLinks = document.getElementById('navLinks');
+
+        mobileMenu.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Copy button functionality
+        document.addEventListener('click', function(e) {
+            if (e.target.classList.contains('copy-button')) {
+                const codeBlock = e.target.closest('.code-block');
+                const code = codeBlock.querySelector('pre').textContent;
+                
+                navigator.clipboard.writeText(code).then(() => {
+                    e.target.textContent = 'Copied!';
+                    setTimeout(() => {
+                        e.target.textContent = 'Copy';
+                    }, 2000);
+                });
+            }
+        });
+
+        // Navbar background on scroll
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.style.background = 'rgba(10, 10, 10, 0.98)';
+            } else {
+                nav.style.background = 'rgba(10, 10, 10, 0.95)';
+            }
+        });
+
+        // Update copyright year dynamically
+        window.addEventListener('load', function() {
+            const yearElement = document.getElementById('copyright-year');
+            if (yearElement) {
+                yearElement.textContent = new Date().getFullYear();
+            }
+        });
+    </script>
+</body>
+</html>
