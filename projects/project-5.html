@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Machine Learning Algorithms from Scratch: A Deep-Dive into ML Fundamentals - Praveen Kumar</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="An educational deep-dive into implementing 18 fundamental machine learning algorithms from scratch using Python and NumPy. Learn the mathematics, intuition, and code behind ML algorithms.">
+    <meta name="keywords" content="Machine Learning from Scratch, ML Algorithms, Python NumPy, Linear Regression, Logistic Regression, Ridge Regression, ML Education, ML Tutorial">
+    <meta name="author" content="Praveen Kumar">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Machine Learning Algorithms from Scratch: A Deep-Dive into ML Fundamentals">
+    <meta property="og:description" content="Learn machine learning by building 18 essential algorithms from scratch. Complete with mathematical foundations, 2500+ lines of documentation, and production-quality code.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://inboxpraveen.github.io/blogs/blog-5.html">
+    <meta property="og:image" content="https://inboxpraveen.github.io/blogs/resources/blog-5/Header.png">
+    <meta property="og:image:alt" content="Machine Learning Algorithms from Scratch">
+    <meta property="og:site_name" content="Praveen Kumar Portfolio">
+    <meta property="article:published_time" content="2025-12-13">
+    <meta property="article:author" content="Praveen Kumar">
+    <meta property="article:tag" content="Machine Learning">
+    <meta property="article:tag" content="Python">
+    <meta property="article:tag" content="Education">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Machine Learning Algorithms from Scratch: A Deep-Dive into ML Fundamentals">
+    <meta name="twitter:description" content="Build 18 essential ML algorithms from scratch with Python and NumPy. Comprehensive documentation, mathematical foundations, and production-quality code.">
+    <meta name="twitter:image" content="https://inboxpraveen.github.io/blogs/resources/blog-5/Header.png">
+    <meta name="twitter:image:alt" content="Machine Learning Algorithms from Scratch">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://inboxpraveen.github.io/blogs/blog-5.html">
+    
+    <link rel="icon" type="image/x-icon" href="../assests/favicon.ico">
+    <link rel="stylesheet" href="../index.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo" onclick="window.location.href='../index.html'" style="cursor: pointer;">PK</div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../index.html#about">About</a></li>
+                <li><a href="../index.html#projects">Projects</a></li>
+                <li><a href="../index.html#blog">Blog</a></li>
+                <li><a href="../index.html#contact">Contact</a></li>
+                <li><a href="../assests/Resume.pdf" target="_blank" title="Updated Nov 2025">Resume</a></li>
+            </ul>
+            <button class="mobile-menu" id="mobileMenu">☰</button>
+        </div>
+    </nav>
+
+    <!-- Blog Post Page -->
+    <div class="page-container active">
+        <div class="page-header">
+            <div class="container">
+                <a href="../all-projects.html" class="back-button">← Back to Projects</a>
+                <h1 class="page-title">Machine Learning Algorithms from Scratch: A Deep-Dive into ML Fundamentals</h1>
+                <div class="page-meta">
+                    <div class="meta-item">
+                        <span>📅</span>
+                        <span>Published: December 13, 2025</span>
+                    </div>
+                    <div class="meta-item">
+                        <span>⏱️</span>
+                        <span>20 min read</span>
+                    </div>
+                    <div class="meta-item">
+                        <span>🏷️</span>
+                        <span>ML Education • Python • NumPy</span>
+                    </div>
+                    <div class="meta-item">
+                        <span>👁️</span>
+                        <span>1,247 views</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="blog-content-area">
+            <div style="text-align: center; margin: 2rem 0;">
+                <img src="./resources/project-5/Header.png" alt="Machine Learning Algorithms from Scratch" style="max-width: 100%; height: auto; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);">
+            </div>
+            
+            <p>
+                Machine learning has become ubiquitous in modern technology, yet many practitioners treat algorithms as 
+                "black boxes." When using powerful libraries like scikit-learn or TensorFlow, it's easy to call 
+                <code>model.fit(X, y)</code> without truly understanding what happens inside. But what if you could 
+                <strong>build these algorithms from scratch</strong>, understanding every mathematical operation and 
+                design decision?
+            </p>
+
+            <p>
+                That's the vision behind <strong>ML Algorithms from Scratch</strong>—a comprehensive educational repository 
+                featuring clear, production-quality implementations of 18 essential machine learning algorithms built 
+                entirely using Python and NumPy. With over <strong>2,500+ lines of documentation</strong> and 
+                <strong>1,000+ lines of code</strong>, this project bridges the gap between theoretical understanding 
+                and practical implementation.
+            </p>
+
+            <h2>The Problem with "Black Box" Machine Learning</h2>
+            <p>
+                In today's AI-driven world, developers face several critical challenges:
+            </p>
+
+            <ul>
+                <li>❌ <strong>Lack of Intuition</strong>: Using high-level libraries without understanding why algorithms work</li>
+                <li>❌ <strong>Debugging Difficulties</strong>: When models fail, debugging becomes guesswork without deep knowledge</li>
+                <li>❌ <strong>Poor Hyperparameter Tuning</strong>: Trial-and-error optimization without understanding parameter effects</li>
+                <li>❌ <strong>Interview Struggles</strong>: Candidates memorize formulas but can't explain fundamental concepts</li>
+                <li>❌ <strong>Algorithm Selection</strong>: Choosing algorithms without understanding their strengths and limitations</li>
+            </ul>
+
+            <h2>The Solution: Building from First Principles</h2>
+            <p>
+                This project provides a <strong>hands-on, bottom-up approach</strong> to understanding machine learning:
+            </p>
+
+            <div class="table-container">
+                <table class="content-table">
+                    <thead>
+                        <tr>
+                            <th>Traditional Learning</th>
+                            <th>This Project</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Import library and use</td>
+                            <td>Build algorithm from scratch</td>
+                        </tr>
+                        <tr>
+                            <td>Memorize formulas</td>
+                            <td>Derive and implement equations</td>
+                        </tr>
+                        <tr>
+                            <td>Trial-and-error tuning</td>
+                            <td>Understand parameter effects</td>
+                        </tr>
+                        <tr>
+                            <td>Abstract concepts</td>
+                            <td>Concrete code examples</td>
+                        </tr>
+                        <tr>
+                            <td>Limited documentation</td>
+                            <td>2,500+ lines of explanations</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <blockquote>
+                "I hear and I forget. I see and I remember. I do and I understand." <br>
+                — Confucius
+            </blockquote>
+
+            <h2>Who This Project Is For</h2>
+            <p>
+                This educational resource is perfect for multiple audiences:
+            </p>
+
+            <ul>
+                <li>🎓 <strong>Students</strong>: Learning ML fundamentals in college or bootcamps</li>
+                <li>👨‍💻 <strong>Software Engineers</strong>: Transitioning into ML/AI roles</li>
+                <li>📊 <strong>Data Scientists</strong>: Preparing for technical interviews at top tech companies</li>
+                <li>🔬 <strong>Researchers</strong>: Needing to understand algorithm internals for papers</li>
+                <li>👩‍🏫 <strong>Educators</strong>: Looking for teaching materials with clear explanations</li>
+                <li>🧠 <strong>Curious Minds</strong>: Who want to truly understand how ML works under the hood</li>
+            </ul>
+
+            <h2>Project Highlights & Statistics</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin: 2rem 0;">
+                <div style="background: var(--secondary-bg); padding: 1.5rem; border-radius: 10px; border: 1px solid var(--border-color);">
+                    <h3 style="margin-top: 0; color: var(--accent-color);">4 Algorithms</h3>
+                    <p>Fully implemented with 14 more planned</p>
+                </div>
+                <div style="background: var(--secondary-bg); padding: 1.5rem; border-radius: 10px; border: 1px solid var(--border-color);">
+                    <h3 style="margin-top: 0; color: var(--accent-color);">2,500+ Lines</h3>
+                    <p>Comprehensive documentation across all algorithms</p>
+                </div>
+                <div style="background: var(--secondary-bg); padding: 1.5rem; border-radius: 10px; border: 1px solid var(--border-color);">
+                    <h3 style="margin-top: 0; color: var(--accent-color);">NumPy Only</h3>
+                    <p>Pure implementation, no ML libraries used</p>
+                </div>
+                <div style="background: var(--secondary-bg); padding: 1.5rem; border-radius: 10px; border: 1px solid var(--border-color);">
+                    <h3 style="margin-top: 0; color: var(--accent-color);">Interview Ready</h3>
+                    <p>Perfect preparation for FAANG interviews</p>
+                </div>
+            </div>
+
+            <h2>Implemented Algorithms (4 of 18)</h2>
+            <p>
+                Currently, <strong>4 algorithms are fully implemented</strong> with extensive documentation. Here's what's available:
+            </p>
+
+            <div class="table-container">
+                <table class="content-table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Algorithm</th>
+                            <th>Type</th>
+                            <th>Code Lines</th>
+                            <th>Doc Lines</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td><strong>Linear Regression</strong></td>
+                            <td>Regression</td>
+                            <td>160</td>
+                            <td>391</td>
+                            <td>✅ Complete</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td><strong>Multiple Regression</strong></td>
+                            <td>Regression</td>
+                            <td>173</td>
+                            <td>356</td>
+                            <td>✅ Complete</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td><strong>Ridge Regression</strong></td>
+                            <td>Regression</td>
+                            <td>256</td>
+                            <td>696</td>
+                            <td>✅ Complete</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td><strong>Logistic Regression</strong></td>
+                            <td>Classification</td>
+                            <td>414</td>
+                            <td>873</td>
+                            <td>✅ Complete</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3>Coming Soon</h3>
+            <p>The roadmap includes 14 more essential algorithms:</p>
+            <ul>
+                <li><strong>Classification</strong>: K-Nearest Neighbors, Decision Trees, Naive Bayes, SVM</li>
+                <li><strong>Ensemble Methods</strong>: Random Forests, AdaBoost, Gradient Boosting, XGBoost</li>
+                <li><strong>Clustering</strong>: k-Means, Hierarchical Clustering</li>
+                <li><strong>Dimensionality Reduction</strong>: PCA, t-SNE</li>
+                <li><strong>Association Rules</strong>: Apriori Algorithm</li>
+            </ul>
+
+            <h2>Key Features That Set This Apart</h2>
+            
+            <h3>1. 📖 Comprehensive Documentation</h3>
+            <p>
+                Every algorithm includes a detailed markdown file (300-900 lines) that covers:
+            </p>
+            <ul>
+                <li><strong>Intuitive Explanations</strong>: Real-world analogies that make complex concepts relatable</li>
+                <li><strong>Mathematical Foundations</strong>: Equations broken down step-by-step with plain language</li>
+                <li><strong>Implementation Walkthrough</strong>: Line-by-line explanation of the code</li>
+                <li><strong>Practical Examples</strong>: Multiple use cases from different domains</li>
+                <li><strong>Comparison Tables</strong>: Side-by-side comparisons with related algorithms</li>
+                <li><strong>When to Use</strong>: Clear guidance on algorithm selection criteria</li>
+            </ul>
+
+            <h3>2. 💻 Production-Quality Code</h3>
+            <p>
+                All implementations follow best practices:
+            </p>
+
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-language">Python - Clean Architecture Pattern</span>
+                    <button class="copy-button">Copy</button>
+                </div>
+                <pre><code><span class="keyword">class</span> <span class="function">AlgorithmName</span>:
+    <span class="keyword">def</span> <span class="function">__init__</span>(self, hyperparameter1=default1, ...):
+        <span class="string">"""Initialize with hyperparameters"""</span>
+        
+    <span class="keyword">def</span> <span class="function">fit</span>(self, X, y):
+        <span class="string">"""Train the model on training data"""</span>
+        
+    <span class="keyword">def</span> <span class="function">predict</span>(self, X):
+        <span class="string">"""Make predictions on new data"""</span>
+        
+    <span class="keyword">def</span> <span class="function">score</span>(self, X, y):
+        <span class="string">"""Evaluate model performance"""</span>
+        
+    <span class="keyword">def</span> <span class="function">get_coefficients</span>(self):
+        <span class="string">"""Get learned parameters"""</span></code></pre>
+            </div>
+
+            <p>
+                Features include:
+            </p>
+            <ul>
+                <li>Clean object-oriented design with well-defined interfaces</li>
+                <li>Detailed docstrings for every method</li>
+                <li>Type hints for parameters and return values</li>
+                <li>Robust error handling and edge case management</li>
+                <li>Scikit-learn-like API for familiarity</li>
+                <li>PEP 8 compliance and Python best practices</li>
+            </ul>
+
+            <h3>3. 🧮 Mathematical Rigor</h3>
+            <p>
+                Understanding the math is critical. Each algorithm includes:
+            </p>
+
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-language">Python - Linear Regression Normal Equation</span>
+                    <button class="copy-button">Copy</button>
+                </div>
+                <pre><code><span class="comment"># Normal Equation: θ = (X^T X)^(-1) X^T y</span>
+<span class="keyword">def</span> <span class="function">fit</span>(self, X, y):
+    <span class="comment"># Add bias term (column of ones)</span>
+    X_with_bias = np.c_[np.ones((X.shape[<span class="number">0</span>], <span class="number">1</span>)), X]
+    
+    <span class="comment"># Calculate coefficients using Normal Equation</span>
+    <span class="comment"># Inverts (X^T X) and multiplies by X^T y</span>
+    self.coefficients = np.linalg.inv(
+        X_with_bias.T @ X_with_bias
+    ) @ X_with_bias.T @ y
+    
+    <span class="keyword">return</span> self</code></pre>
+            </div>
+
+            <p>
+                Mathematical coverage includes:
+            </p>
+            <ul>
+                <li><strong>Formal Definitions</strong>: Precise mathematical notation</li>
+                <li><strong>Derivations</strong>: Step-by-step derivation of key formulas</li>
+                <li><strong>Gradient Calculations</strong>: Detailed breakdown of optimization steps</li>
+                <li><strong>Loss Functions</strong>: Explanation of why specific loss functions are used</li>
+                <li><strong>Complexity Analysis</strong>: Time and space complexity discussions</li>
+            </ul>
+
+            <h2>Real-World Code Example: Logistic Regression</h2>
+            <p>
+                Let's look at a complete example implementing logistic regression from scratch:
+            </p>
+
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-language">Python - Logistic Regression with Gradient Descent</span>
+                    <button class="copy-button">Copy</button>
+                </div>
+                <pre><code><span class="keyword">import</span> numpy <span class="keyword">as</span> np
+<span class="keyword">from</span> sklearn.datasets <span class="keyword">import</span> load_breast_cancer
+<span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split
+<span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span> StandardScaler
+
+<span class="keyword">class</span> <span class="function">LogisticRegression</span>:
+    <span class="keyword">def</span> <span class="function">__init__</span>(self, learning_rate=<span class="number">0.01</span>, iterations=<span class="number">1000</span>):
+        self.learning_rate = learning_rate
+        self.iterations = iterations
+        self.coefficients = <span class="keyword">None</span>
+        self.losses = []
+    
+    <span class="keyword">def</span> <span class="function">_sigmoid</span>(self, z):
+        <span class="string">"""Sigmoid activation function"""</span>
+        <span class="keyword">return</span> <span class="number">1</span> / (<span class="number">1</span> + np.exp(-z))
+    
+    <span class="keyword">def</span> <span class="function">fit</span>(self, X, y):
+        <span class="string">"""Train using gradient descent"""</span>
+        n_samples, n_features = X.shape
+        
+        <span class="comment"># Add bias term</span>
+        X_with_bias = np.c_[np.ones((n_samples, <span class="number">1</span>)), X]
+        
+        <span class="comment"># Initialize coefficients</span>
+        self.coefficients = np.zeros(n_features + <span class="number">1</span>)
+        
+        <span class="comment"># Gradient descent</span>
+        <span class="keyword">for</span> i <span class="keyword">in</span> range(self.iterations):
+            <span class="comment"># Forward pass</span>
+            y_pred = self._sigmoid(X_with_bias @ self.coefficients)
+            
+            <span class="comment"># Calculate loss (binary cross-entropy)</span>
+            loss = -np.mean(
+                y * np.log(y_pred + <span class="number">1e-15</span>) + 
+                (<span class="number">1</span> - y) * np.log(<span class="number">1</span> - y_pred + <span class="number">1e-15</span>)
+            )
+            self.losses.append(loss)
+            
+            <span class="comment"># Calculate gradients</span>
+            error = y_pred - y
+            gradients = (<span class="number">1</span> / n_samples) * (X_with_bias.T @ error)
+            
+            <span class="comment"># Update coefficients</span>
+            self.coefficients -= self.learning_rate * gradients
+        
+        <span class="keyword">return</span> self
+    
+    <span class="keyword">def</span> <span class="function">predict</span>(self, X):
+        <span class="string">"""Make binary predictions"""</span>
+        X_with_bias = np.c_[np.ones((X.shape[<span class="number">0</span>], <span class="number">1</span>)), X]
+        probabilities = self._sigmoid(X_with_bias @ self.coefficients)
+        <span class="keyword">return</span> (probabilities >= <span class="number">0.5</span>).astype(int)
+    
+    <span class="keyword">def</span> <span class="function">score</span>(self, X, y):
+        <span class="string">"""Calculate accuracy"""</span>
+        predictions = self.predict(X)
+        <span class="keyword">return</span> np.mean(predictions == y)
+
+<span class="comment"># Usage Example</span>
+data = load_breast_cancer()
+X, y = data.data, data.target
+
+<span class="comment"># Split and standardize</span>
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=<span class="number">0.2</span>, random_state=<span class="number">42</span>
+)
+scaler = StandardScaler()
+X_train = scaler.fit_transform(X_train)
+X_test = scaler.transform(X_test)
+
+<span class="comment"># Train model</span>
+model = LogisticRegression(learning_rate=<span class="number">0.1</span>, iterations=<span class="number">2000</span>)
+model.fit(X_train, y_train)
+
+<span class="comment"># Evaluate</span>
+accuracy = model.score(X_test, y_test)
+print(<span class="string">f"Accuracy: </span>{accuracy:<span class="number">.4</span>f}<span class="string">"</span>)  <span class="comment"># Output: ~0.96</span></code></pre>
+            </div>
+
+            <h2>Learning Path & Recommended Study Order</h2>
+            <p>
+                The algorithms are carefully ordered by difficulty and concept dependencies:
+            </p>
+
+            <div style="background: var(--secondary-bg); padding: 2rem; border-radius: 10px; border: 1px solid var(--border-color); margin: 2rem 0;">
+                <h3 style="margin-top: 0;">Week 1: Linear Models</h3>
+                <ol>
+                    <li><strong>Linear Regression</strong> (2 hours)<br>
+                        <span style="color: var(--text-secondary);">Foundation of all ML • Normal Equation • Bias & Slope</span>
+                    </li>
+                    <li><strong>Multiple Regression</strong> (2 hours)<br>
+                        <span style="color: var(--text-secondary);">Multiple features • Matrix operations • Multicollinearity</span>
+                    </li>
+                </ol>
+                
+                <h3>Week 2: Regularization & Classification</h3>
+                <ol start="3">
+                    <li><strong>Ridge Regression</strong> (2-3 hours)<br>
+                        <span style="color: var(--text-secondary);">Overfitting • L2 regularization • Hyperparameter tuning</span>
+                    </li>
+                    <li><strong>Logistic Regression</strong> (3 hours)<br>
+                        <span style="color: var(--text-secondary);">Classification • Sigmoid function • Gradient descent • Binary cross-entropy</span>
+                    </li>
+                </ol>
+            </div>
+
+            <h3>Study Tips for Maximum Learning</h3>
+            <ul>
+                <li>✅ <strong>Read the markdown file first</strong> - Understand the theory before code</li>
+                <li>✅ <strong>Study the code</strong> - See how theory translates to practice</li>
+                <li>✅ <strong>Run the examples</strong> - Hands-on practice with real data</li>
+                <li>✅ <strong>Modify parameters</strong> - Experiment and observe the effects</li>
+                <li>✅ <strong>Implement from memory</strong> - Test your true understanding</li>
+                <li>✅ <strong>Compare with scikit-learn</strong> - Validate your implementation</li>
+            </ul>
+
+            <h2>Technical Implementation Deep-Dive</h2>
+            
+            <h3>Ridge Regression: Preventing Overfitting</h3>
+            <p>
+                Ridge regression adds L2 regularization to prevent overfitting:
+            </p>
+
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-language">Python - Ridge Regression with Regularization</span>
+                    <button class="copy-button">Copy</button>
+                </div>
+                <pre><code><span class="comment"># Regularized Normal Equation: θ = (X^T X + λI)^(-1) X^T y</span>
+<span class="keyword">def</span> <span class="function">fit</span>(self, X, y):
+    X_with_bias = np.c_[np.ones((X.shape[<span class="number">0</span>], <span class="number">1</span>)), X]
+    
+    <span class="comment"># Create identity matrix (don't penalize bias term)</span>
+    identity = np.eye(X_with_bias.shape[<span class="number">1</span>])
+    identity[<span class="number">0</span>, <span class="number">0</span>] = <span class="number">0</span>  <span class="comment"># Don't regularize intercept</span>
+    
+    <span class="comment"># Add regularization term (λI)</span>
+    regularization_term = self.alpha * identity
+    
+    <span class="comment"># Solve regularized Normal Equation</span>
+    self.coefficients = np.linalg.inv(
+        X_with_bias.T @ X_with_bias + regularization_term
+    ) @ X_with_bias.T @ y
+    
+    <span class="keyword">return</span> self</code></pre>
+            </div>
+
+            <h3>Performance Characteristics</h3>
+            <div class="table-container">
+                <table class="content-table">
+                    <thead>
+                        <tr>
+                            <th>Algorithm</th>
+                            <th>Training Time</th>
+                            <th>Prediction Time</th>
+                            <th>Memory Usage</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Linear Regression</td>
+                            <td>O(n³)</td>
+                            <td>O(n)</td>
+                            <td>O(n²)</td>
+                        </tr>
+                        <tr>
+                            <td>Multiple Regression</td>
+                            <td>O(n³)</td>
+                            <td>O(n)</td>
+                            <td>O(n²)</td>
+                        </tr>
+                        <tr>
+                            <td>Ridge Regression</td>
+                            <td>O(n³)</td>
+                            <td>O(n)</td>
+                            <td>O(n²)</td>
+                        </tr>
+                        <tr>
+                            <td>Logistic Regression</td>
+                            <td>O(i·n²)</td>
+                            <td>O(n)</td>
+                            <td>O(n)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p style="color: var(--text-secondary); font-style: italic; text-align: center;">
+                where n = number of samples, i = iterations
+            </p>
+
+            <h2>Getting Started with the Project</h2>
+            <p>
+                Setting up the project is straightforward:
+            </p>
+
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-language">Bash - Installation & Setup</span>
+                    <button class="copy-button">Copy</button>
+                </div>
+                <pre><code><span class="comment"># 1. Clone the repository</span>
+git clone https://github.com/inboxpraveen/ML-Algorithms-from-scratch.git
+cd ML-Algorithms-from-scratch
+
+<span class="comment"># 2. Install dependencies</span>
+pip install numpy
+
+<span class="comment"># 3. Install optional dependencies for examples</span>
+pip install matplotlib scikit-learn pandas jupyter
+
+<span class="comment"># 4. Run an example</span>
+python <span class="string">"1. Linear Regression/_1_linear_regressions.py"</span></code></pre>
+            </div>
+
+            <h3>Quick Start Example</h3>
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-language">Python - Quick Start</span>
+                    <button class="copy-button">Copy</button>
+                </div>
+                <pre><code><span class="keyword">import</span> numpy <span class="keyword">as</span> np
+<span class="keyword">import</span> sys
+sys.path.append(<span class="string">'1. Linear Regression'</span>)
+<span class="keyword">from</span> _1_linear_regressions <span class="keyword">import</span> LinearRegression
+
+<span class="comment"># Create sample data (years of experience vs salary)</span>
+X_train = np.array([<span class="number">1, 2, 3, 4, 5, 6, 7, 8, 9, 10</span>]).reshape(-<span class="number">1</span>, <span class="number">1</span>)
+y_train = np.array([<span class="number">30000, 35000, 40000, 45000, 50000, 55000, 60000, 65000, 70000, 75000</span>])
+
+<span class="comment"># Create and train model</span>
+model = LinearRegression()
+model.fit(X_train, y_train)
+
+<span class="comment"># Make predictions</span>
+X_test = np.array([<span class="number">11, 12, 15</span>]).reshape(-<span class="number">1</span>, <span class="number">1</span>)
+predictions = model.predict(X_test)
+
+<span class="comment"># Evaluate</span>
+r2_score = model.score(X_train, y_train)
+print(<span class="string">f"R² Score: </span>{r2_score:<span class="number">.4</span>f}<span class="string">"</span>)
+print(<span class="string">f"Predictions: </span>{predictions}<span class="string">"</span>)
+
+<span class="comment"># Get learned coefficients</span>
+coeffs = model.get_coefficients()
+print(<span class="string">f"Equation: y = </span>{coeffs[<span class="string">'intercept'</span>]:<span class="number">.2</span>f} <span class="string">+ </span>{coeffs[<span class="string">'slope'</span>]:<span class="number">.2</span>f}<span class="string">x"</span>)</code></pre>
+            </div>
+
+            <h2>Educational Value & Use Cases</h2>
+            
+            <h3>For Students</h3>
+            <ul>
+                <li>📚 <strong>Complete Learning Resource</strong>: Everything needed to understand ML algorithms</li>
+                <li>📝 <strong>Exam Preparation</strong>: Covers all fundamental concepts typically tested</li>
+                <li>💡 <strong>Assignment Reference</strong>: High-quality code for understanding concepts</li>
+                <li>🚀 <strong>Project Foundation</strong>: Build your own ML projects on this base</li>
+            </ul>
+
+            <h3>For Interview Preparation</h3>
+            <p>
+                This project helps you confidently answer common technical interview questions:
+            </p>
+
+            <div style="background: var(--secondary-bg); padding: 1.5rem; border-radius: 10px; border: 1px solid var(--border-color); margin: 1rem 0;">
+                <h4 style="margin-top: 0; color: var(--accent-color);">Technical Questions:</h4>
+                <ul style="margin-bottom: 0;">
+                    <li>"Implement linear regression from scratch"</li>
+                    <li>"Explain the difference between L1 and L2 regularization"</li>
+                    <li>"How does gradient descent work?"</li>
+                    <li>"What is the difference between classification and regression?"</li>
+                    <li>"When would you use Ridge vs Lasso regression?"</li>
+                </ul>
+            </div>
+
+            <div style="background: var(--secondary-bg); padding: 1.5rem; border-radius: 10px; border: 1px solid var(--border-color); margin: 1rem 0;">
+                <h4 style="margin-top: 0; color: var(--accent-color);">Conceptual Questions:</h4>
+                <ul style="margin-bottom: 0;">
+                    <li>"What is overfitting and how do you prevent it?"</li>
+                    <li>"Explain the bias-variance tradeoff"</li>
+                    <li>"How do you choose between different ML algorithms?"</li>
+                    <li>"What is the intuition behind logistic regression?"</li>
+                </ul>
+            </div>
+
+            <h2>Lessons Learned & Design Philosophy</h2>
+            
+            <h3>Clarity Over Performance</h3>
+            <p>
+                The primary goal is education, not speed. Every line of code is written to be:
+            </p>
+            <ul>
+                <li>Readable and self-documenting</li>
+                <li>Conceptually clear over computationally optimal</li>
+                <li>Easy to modify and experiment with</li>
+                <li>Directly traceable to mathematical formulas</li>
+            </ul>
+
+            <h3>Consistent Interface Design</h3>
+            <p>
+                All algorithms follow the same API pattern, inspired by scikit-learn:
+            </p>
+            <ul>
+                <li><code>__init__()</code>: Set hyperparameters</li>
+                <li><code>fit(X, y)</code>: Train the model</li>
+                <li><code>predict(X)</code>: Make predictions</li>
+                <li><code>score(X, y)</code>: Evaluate performance</li>
+                <li><code>get_coefficients()</code>: Inspect learned parameters</li>
+            </ul>
+
+            <h3>Documentation as a First-Class Citizen</h3>
+            <p>
+                With a <strong>2.3:1 documentation-to-code ratio</strong>, this project prioritizes explanation:
+            </p>
+            <ul>
+                <li>Every concept is explained multiple times in different ways</li>
+                <li>Mathematical formulas are broken down step-by-step</li>
+                <li>Real-world analogies make abstract concepts concrete</li>
+                <li>Multiple examples show different use cases</li>
+            </ul>
+
+            <h2>Project Roadmap</h2>
+            <div style="background: var(--secondary-bg); padding: 2rem; border-radius: 10px; border: 1px solid var(--border-color); margin: 2rem 0;">
+                <h3 style="margin-top: 0;">Phase 1: Foundation ✅ Complete (4/18)</h3>
+                <p>✅ Linear Regression<br>
+                   ✅ Multiple Regression<br>
+                   ✅ Ridge Regression<br>
+                   ✅ Logistic Regression</p>
+                
+                <h3>Phase 2: Classification 🔄 In Progress (0/4)</h3>
+                <p>⏳ K-Nearest Neighbors (KNN)<br>
+                   ⏳ Naive Bayes<br>
+                   ⏳ Support Vector Machines (SVM)<br>
+                   ⏳ Decision Trees</p>
+                
+                <h3>Phase 3: Ensemble Methods 📋 Planned (0/4)</h3>
+                <p>📅 Random Forests<br>
+                   📅 AdaBoost<br>
+                   📅 Gradient Boosting<br>
+                   📅 XGBoost</p>
+                
+                <h3>Phase 4: Unsupervised Learning 📋 Planned (0/4)</h3>
+                <p>📅 k-Means Clustering<br>
+                   📅 Hierarchical Clustering<br>
+                   📅 Principal Component Analysis (PCA)<br>
+                   📅 t-SNE</p>
+            </div>
+
+            <h2>Contributing to the Project</h2>
+            <p>
+                This project thrives on community contributions! Here's how you can help:
+            </p>
+
+            <div class="table-container">
+                <table class="content-table">
+                    <thead>
+                        <tr>
+                            <th>Priority</th>
+                            <th>Contribution Areas</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>High</strong></td>
+                            <td>
+                                • Implement remaining 14 algorithms<br>
+                                • Add more examples to existing algorithms<br>
+                                • Create visualization utilities<br>
+                                • Add unit tests
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>Medium</strong></td>
+                            <td>
+                                • Bug fixes and improvements<br>
+                                • Documentation enhancements<br>
+                                • Translate documentation<br>
+                                • Create video tutorials
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>Always Welcome</strong></td>
+                            <td>
+                                • Typo fixes<br>
+                                • Grammar improvements<br>
+                                • Better explanations<br>
+                                • More examples
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h2>Closing Thoughts</h2>
+            <p>
+                In an era where machine learning is increasingly abstracted away by high-level libraries, 
+                <strong>understanding fundamentals</strong> is what separates good developers from great engineers, 
+                code users from algorithm designers, and tool users from problem solvers.
+            </p>
+
+            <blockquote>
+                "Learning machine learning from scratch is like learning to cook from scratch—you could just buy 
+                premade meals (use libraries), but understanding ingredients and techniques (algorithms and math) 
+                makes you a better chef (data scientist)!"
+            </blockquote>
+
+            <p>
+                The <strong>ML Algorithms from Scratch</strong> project provides a comprehensive foundation for 
+                truly understanding machine learning. Whether you're preparing for interviews, building your first 
+                ML project, or simply curious about how these powerful algorithms work, this repository offers a 
+                clear, educational path forward.
+            </p>
+
+            <h3>Your Next Steps</h3>
+            <ol>
+                <li>⭐ <strong>Star the repository</strong> on GitHub to stay updated</li>
+                <li>📥 <strong>Clone and explore</strong> the code locally</li>
+                <li>📖 <strong>Start with Linear Regression</strong> and work through in order</li>
+                <li>💻 <strong>Implement from memory</strong> to test your understanding</li>
+                <li>🤝 <strong>Contribute</strong> an algorithm or improvement</li>
+                <li>📢 <strong>Share</strong> with fellow learners</li>
+            </ol>
+
+            <div style="margin-top: 3rem; padding: 2rem; background: var(--secondary-bg); border-radius: 15px; border: 1px solid var(--border-color);">
+                <h3 style="margin-top: 0;">Resources & Links</h3>
+                <ul style="margin-bottom: 2rem;">
+                    <li><a href="https://github.com/inboxpraveen/ML-Algorithms-from-scratch" style="color: var(--accent-color);" target="_blank">🔗 GitHub Repository</a></li>
+                    <li><a href="https://github.com/inboxpraveen/ML-Algorithms-from-scratch#readme" style="color: var(--accent-color);" target="_blank">📄 Full Project README</a></li>
+                    <li><a href="https://numpy.org/doc/" style="color: var(--accent-color);" target="_blank">📚 NumPy Documentation</a></li>
+                    <li><a href="https://scikit-learn.org/" style="color: var(--accent-color);" target="_blank">🔬 Scikit-learn Documentation</a></li>
+                </ul>
+                
+                <h4>Tags:</h4>
+                <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 1rem;">
+                    <span class="tech-tag">#MachineLearning</span>
+                    <span class="tech-tag">#Python</span>
+                    <span class="tech-tag">#NumPy</span>
+                    <span class="tech-tag">#FromScratch</span>
+                    <span class="tech-tag">#Education</span>
+                    <span class="tech-tag">#MLAlgorithms</span>
+                    <span class="tech-tag">#DataScience</span>
+                    <span class="tech-tag">#LinearRegression</span>
+                    <span class="tech-tag">#LogisticRegression</span>
+                    <span class="tech-tag">#GradientDescent</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer style="margin-top: 4rem;">
+        <div class="container">
+            <p>&copy; <span id="copyright-year"></span> Praveen Kumar. Built with passion for AI & open source community.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu functionality
+        const mobileMenu = document.getElementById('mobileMenu');
+        const navLinks = document.getElementById('navLinks');
+
+        mobileMenu.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Copy button functionality
+        document.addEventListener('click', function(e) {
+            if (e.target.classList.contains('copy-button')) {
+                const codeBlock = e.target.closest('.code-block');
+                const code = codeBlock.querySelector('pre').textContent;
+                
+                navigator.clipboard.writeText(code).then(() => {
+                    e.target.textContent = 'Copied!';
+                    setTimeout(() => {
+                        e.target.textContent = 'Copy';
+                    }, 2000);
+                });
+            }
+        });
+
+        // Navbar background on scroll
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.style.background = 'rgba(10, 10, 10, 0.98)';
+            } else {
+                nav.style.background = 'rgba(10, 10, 10, 0.95)';
+            }
+        });
+
+        // Update copyright year dynamically
+        window.addEventListener('load', function() {
+            const yearElement = document.getElementById('copyright-year');
+            if (yearElement) {
+                yearElement.textContent = new Date().getFullYear();
+            }
+        });
+    </script>
+</body>
+</html>
