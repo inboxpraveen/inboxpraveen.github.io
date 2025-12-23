@@ -56,8 +56,7 @@
                 <h1>Praveen Kumar</h1>
                 <p class="hero-subtitle">Principal AI Engineer & Solution Architect</p>
                 <p class="hero-description">
-                    Sharing open-source projects, blogs & knowledge on building end-to-end AI products 
-                    — from idea to deployment. Passionate about speech, OCR, LLMs & scalable systems.
+                    I build end-to-end AI products, from first prototype to production. I'm deep into speech AI, OCR, and LLMs, and I love sharing what I learn through open-source projects and blogs.
                 </p>
                 <a href="#projects" class="cta-button">View My Work</a>
             </div>
@@ -71,22 +70,13 @@
             <div class="about-content fade-in">
                 <div class="about-text">
                     <p>
-                        I am a <strong>Principal AI Engineer</strong> who specializes in designing and delivering 
-                        high-impact AI systems that solve real business problems at scale. My work spans speech 
-                        intelligence, LLM-driven automation, RAG pipelines, and document processing—combining deep 
-                        technical knowledge with a strong focus on reliability, performance, and real-world value.
+                        I'm an AI Engineer focused on building systems that actually work in the real world. My background is in speech intelligence, LLM automation, and document processing. I don't just build models; I build the infrastructure that makes them reliable and fast.
                     </p>
                     <p>
-                        Over the years, I have architected and shipped multiple production AI platforms including 
-                        real-time voice agents, multilingual transcription and QA systems, and multi-tenant document 
-                        intelligence suites for enterprise customers. I enjoy taking complex, research-grade ideas 
-                        and turning them into clean, maintainable, and high-performance products that teams can trust.
+                        I've spent the last few years architecting AI platforms for enterprise clients, from real-time voice agents to massive document intelligence suites. I like taking messy, complex ideas and turning them into clean, production-ready code that teams can actually trust.
                     </p>
                     <p>
-                        My core strengths include building modular and scalable microservice architectures, optimizing 
-                        GPU workloads, fine-tuning LLMs, and creating robust observability layers. Beyond engineering, 
-                        I mentor teams, establish engineering standards, and collaborate closely with business leaders 
-                        to ensure AI solutions align with KPIs and operational goals.
+                        When I'm not coding, I'm usually mentoring teams or figuring out how to make GPU workloads more efficient. I'm big on modular design, observability, and building solutions that align with real business goals.
                     </p>
                     <div class="skills">
                         <span class="skill-tag">Python</span>
@@ -261,8 +251,7 @@
             <h2 class="section-title fade-in">Let's Connect</h2>
             <div class="contact-content fade-in">
                 <p class="contact-text">
-                    Interested in collaborating on AI projects or discussing the latest 
-                    developments in machine learning? I'd love to hear from you.
+                    Have a cool project in mind or just want to chat about the latest in AI? I'm always up for a good conversation. Drop me a line!
                 </p>
                 <div class="contact-links">
                     <a href="mailto:inboxpraveen.17@gmail.com" class="contact-link">
@@ -318,14 +307,15 @@
 
         // Intersection Observer for fade-in animations
         const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
+            threshold: 0.15,
+            rootMargin: '0px 0px -20px 0px'
         };
 
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
                 }
             });
         }, observerOptions);
@@ -363,8 +353,8 @@
         window.addEventListener('load', () => {
             const heroTitle = document.querySelector('.hero h1');
             setTimeout(() => {
-                typeWriter(heroTitle, 'Praveen Kumar', 150);
-            }, 1000);
+                typeWriter(heroTitle, 'Praveen Kumar', 100);
+            }, 500);
         });
 
         // Add parallax effect to hero section
