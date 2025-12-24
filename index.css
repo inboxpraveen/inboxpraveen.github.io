@@ -866,6 +866,46 @@ footer {
 }
 
 @media (max-width: 768px) {
+    section {
+        padding: 3rem 0;
+    }
+
+    .hero {
+        min-height: 60vh;
+        padding-top: 2rem;
+        background: radial-gradient(ellipse at center, rgba(0, 212, 255, 0.1) 0%, transparent 70%);
+    }
+
+    .hero h1 {
+        font-size: clamp(2rem, 10vw, 3rem);
+        margin-bottom: 0.5rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1.15rem;
+        margin-bottom: 1rem;
+    }
+
+    .hero-description {
+        font-size: 1rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .fade-in {
+        transform: translateY(15px);
+    }
+
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
     .page-meta {
         flex-direction: column;
         align-items: flex-start;
@@ -910,7 +950,20 @@ footer {
     }
 
     .stats {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+
+    .stat-item {
+        padding: 1rem;
+    }
+
+    .stat-number {
+        font-size: 1.5rem;
+    }
+
+    .stat-label {
+        font-size: 0.85rem;
     }
 
     .projects-grid {

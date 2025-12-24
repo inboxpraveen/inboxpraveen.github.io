@@ -50,7 +50,7 @@
     </nav>
 
     <!-- Blog Page Header -->
-    <section class="hero" style="min-height: 60vh;">
+    <section class="hero">
         <div class="container">
             <div class="hero-content" style="text-align: center;">
                 <h1 style="font-size: clamp(2.5rem, 6vw, 4rem);">The AI Notebook</h1>
@@ -277,8 +277,8 @@
 
         // Intersection Observer for fade-in animations
         const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
+            threshold: 0.05,
+            rootMargin: '0px 0px 50px 0px'
         };
 
         const observer = new IntersectionObserver((entries) => {
