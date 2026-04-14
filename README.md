@@ -41,6 +41,7 @@ Portfolio/
     │   └── resources/
     │       └── project-1/      # Project images and assets
     ```
+```
 
 ## Technologies Used
 
