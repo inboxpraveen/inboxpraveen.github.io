@@ -85,7 +85,7 @@ For GitHub Pages deployment, the site is typically hosted at: `https://inboxprav
 
 ## License
 
-© 2025 Praveen Kumar. All rights reserved.
+© 2026 Praveen Kumar. All rights reserved.
 
 ---
 
