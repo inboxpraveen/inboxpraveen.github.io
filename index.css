@@ -362,71 +362,6 @@ section {
     text-decoration: underline;
 }
 
-/* Blog Section */
-.blog-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 1.5rem;
-}
-
-.blog-card {
-    background: var(--secondary-bg);
-    border-radius: 12px;
-    overflow: hidden;
-    border: 1px solid var(--border-color);
-    transition: var(--transition);
-}
-
-.blog-card:hover {
-    transform: translateY(-5px);
-    border-color: var(--accent-color);
-}
-
-.blog-image {
-    width: 100%;
-    height: 180px;
-    background: var(--accent-gradient);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 2rem;
-}
-
-.blog-content {
-    padding: 1.25rem;
-}
-
-.blog-date {
-    color: var(--accent-color);
-    font-size: 0.85rem;
-    margin-bottom: 0.4rem;
-}
-
-.blog-title {
-    font-size: 1.2rem;
-    font-weight: 600;
-    margin-bottom: 0.75rem;
-    color: var(--text-primary);
-}
-
-.blog-excerpt {
-    color: var(--text-secondary);
-    margin-bottom: 0.75rem;
-    font-size: 0.95rem;
-}
-
-.read-more {
-    color: var(--accent-color);
-    text-decoration: none;
-    font-weight: 500;
-    transition: var(--transition);
-    font-size: 0.9rem;
-}
-
-.read-more:hover {
-    text-decoration: underline;
-}
-
 /* Contact Section */
 .contact-content {
     max-width: 600px;
@@ -498,7 +433,7 @@ footer {
     transform: translateY(0);
 }
 
-/* Project & Blog Page Styles */
+/* Project page styles */
 .page-container {
     display: none;
     min-height: 100vh;
@@ -795,33 +730,6 @@ footer {
     box-shadow: 0 10px 20px rgba(0, 212, 255, 0.3);
 }
 
-.blog-content-area {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 0 2rem;
-}
-
-.blog-content-area blockquote {
-    border-left: 4px solid var(--accent-color);
-    background: var(--secondary-bg);
-    margin: 2rem 0;
-    padding: 1.5rem;
-    border-radius: 0 10px 10px 0;
-    font-style: italic;
-    color: var(--text-secondary);
-}
-
-.blog-content-area ul, .blog-content-area ol {
-    margin: 1.5rem 0;
-    padding-left: 2rem;
-    color: var(--text-secondary);
-}
-
-.blog-content-area li {
-    margin: 0.5rem 0;
-    line-height: 1.6;
-}
-
 .table-container {
     overflow-x: auto;
     margin: 2rem 0;
@@ -967,10 +875,6 @@ footer {
     }
 
     .projects-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .blog-grid {
         grid-template-columns: 1fr;
     }
 
