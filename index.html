@@ -4,13 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Praveen Kumar - Principal AI Engineer & Solution Architect</title>
-    
-    <!-- SEO Meta Tags -->
+
     <meta name="description" content="Praveen Kumar - Principal AI Engineer specializing in LLMs, Speech AI, OCR, and scalable ML systems. Sharing open-source projects and knowledge on building end-to-end AI products.">
     <meta name="keywords" content="AI Engineer, Machine Learning, LLM, Speech AI, OCR, RAG, Python, PyTorch, FastAPI, Document AI, AI Portfolio">
     <meta name="author" content="Praveen Kumar">
-    
-    <!-- Open Graph Meta Tags -->
+
     <meta property="og:title" content="Praveen Kumar - Principal AI Engineer & Solution Architect">
     <meta property="og:description" content="Principal AI Engineer specializing in LLMs, Speech AI, OCR, and scalable ML systems. Sharing open-source projects and knowledge on building end-to-end AI products.">
     <meta property="og:type" content="website">
@@ -18,318 +16,79 @@
     <meta property="og:image" content="https://inboxpraveen.github.io/assests/Original.png">
     <meta property="og:image:alt" content="Praveen Kumar - Principal AI Engineer Portfolio">
     <meta property="og:site_name" content="Praveen Kumar Portfolio">
-    
-    <!-- Twitter Card Meta Tags -->
+
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Praveen Kumar - Principal AI Engineer & Solution Architect">
-    <meta name="twitter:description" content="Principal AI Engineer specializing in LLMs, Speech AI, OCR, and scalable ML systems. Sharing open-source AI projects and knowledge.">
+    <meta name="twitter:description" content="Principal AI Engineer specializing in LLMs, Speech AI, OCR, and scalable ML systems.">
     <meta name="twitter:image" content="https://inboxpraveen.github.io/assests/Original.png">
     <meta name="twitter:image:alt" content="Praveen Kumar - Principal AI Engineer Portfolio">
-    
-    <!-- Canonical URL -->
+
     <link rel="canonical" href="https://inboxpraveen.github.io/">
-    
     <link rel="icon" type="image/x-icon" href="assests/favicon.ico">
     <link rel="stylesheet" href="index.css">
 </head>
-<body>
-    <!-- Navigation -->
-    <nav>
-        <div class="nav-container">
-            <div class="logo" onclick="window.location.href='index.html'" style="cursor: pointer;">PK</div>
-            <ul class="nav-links" id="navLinks">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="https://github.com/inboxpraveen" target="_blank" rel="noopener noreferrer">GitHub</a></li>
-                <li><a href="#contact">Contact</a></li>
-                <li><a href="./assests/Resume.pdf" target="_blank" title="Updated Nov 2025">Resume</a></li>
-            </ul>
-            <button class="mobile-menu" id="mobileMenu">☰</button>
-        </div>
-    </nav>
+<body class="landing-body">
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <h1>Praveen Kumar</h1>
-                <p class="hero-subtitle">Principal AI Engineer & Solution Architect</p>
-                <p class="hero-description">
-                    I build end-to-end AI products, from first prototype to production. I'm deep into speech AI, OCR, and LLMs, and I love sharing what I learn through open-source projects on GitHub.
+    <div class="landing">
+
+        <!-- Top: logo only -->
+        <div class="landing-top">
+            <span class="logo">PK</span>
+        </div>
+
+        <!-- Center: hero content -->
+        <main class="landing-main">
+            <div class="landing-content">
+                <h1 class="landing-title">Praveen Kumar</h1>
+                <p class="landing-subtitle">Principal AI Engineer &amp; Solution Architect</p>
+                <p class="landing-desc">
+                    I build end-to-end AI products, from first prototype to production. Deep into speech AI, OCR, and LLMs — and I love sharing what I learn through open-source.
                 </p>
-                <a href="#projects" class="cta-button">View My Work</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about">
-        <div class="container">
-            <h2 class="section-title fade-in">About Me</h2>
-            <div class="about-content fade-in">
-                <div class="about-text">
-                    <p>
-                        I'm an AI Engineer focused on building systems that actually work in the real world. My background is in speech intelligence, LLM automation, and document processing. I don't just build models; I build the infrastructure that makes them reliable and fast.
-                    </p>
-                    <p>
-                        I've spent the last few years architecting AI platforms for enterprise clients, from real-time voice agents to massive document intelligence suites. I like taking messy, complex ideas and turning them into clean, production-ready code that teams can actually trust.
-                    </p>
-                    <p>
-                        When I'm not coding, I'm usually mentoring teams or figuring out how to make GPU workloads more efficient. I'm big on modular design, observability, and building solutions that align with real business goals.
-                    </p>
-                    <div class="skills">
-                        <span class="skill-tag">Python</span>
-                        <span class="skill-tag">PyTorch</span>
-                        <span class="skill-tag">FastAPI</span>
-                        <span class="skill-tag">LLMs & RAG</span>
-                        <span class="skill-tag">Speech AI</span>
-                        <span class="skill-tag">vLLM</span>
-                        <span class="skill-tag">Whisper</span>
-                        <span class="skill-tag">LangChain</span>
-                        <span class="skill-tag">OCR & Document AI</span>
-                        <span class="skill-tag">Vector Databases</span>
-                        <span class="skill-tag">Docker & K8s</span>
-                        <span class="skill-tag">AWS & GPU Infra</span>
-                        <span class="skill-tag">PostgreSQL</span>
-                        <span class="skill-tag">Redis</span>
-                        <span class="skill-tag">Multi-Tenant SaaS</span>
-                        <span class="skill-tag">CI/CD</span>
-                    </div>
-                </div>
-                <div class="stats">
-                    <div class="stat-item">
-                        <div class="stat-number">10+</div>
-                        <div class="stat-label">Production AI Platforms</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">5+</div>
-                        <div class="stat-label">Years Experience</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">50+</div>
-                        <div class="stat-label">Models Deployed</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">15+</div>
-                        <div class="stat-label">Enterprise Clients</div>
-                    </div>
+                <div class="landing-actions">
+                    <a href="all-projects.html" class="cta-button">View My Work</a>
+                    <span class="actions-divider" aria-hidden="true"></span>
+                    <a href="about.html" class="landing-link">About</a>
+                    <a href="https://github.com/inboxpraveen" target="_blank" rel="noopener noreferrer" class="landing-link landing-link--ext">GitHub&nbsp;↗</a>
                 </div>
             </div>
-        </div>
-    </section>
+        </main>
 
-    <!-- Projects Section -->
-    <section id="projects">
-        <div class="container">
-            <h2 class="section-title fade-in">Featured Projects</h2>
-            <div class="projects-grid fade-in">
-                <div class="project-card">
-                    <div style="width: 100%; height: 180px; overflow: hidden; border-radius: 10px; margin-bottom: 1rem;">
-                        <img src="projects/resources/project-1/Main-Logo.png" alt="Context Search Engine" style="width: 100%; height: 100%; object-fit: cover; display: block;">
-                    </div>
-                    <h3 class="project-title">Context Search Engine</h3>
-                    <p class="project-description">
-                        AI-powered semantic document search platform using transformer embeddings and FAISS. 
-                        Goes beyond keywords to understand meaning and context in your documents.
-                    </p>
-                    <div class="project-tech">
-                        <span class="tech-tag">Transformers</span>
-                        <span class="tech-tag">FAISS</span>
-                        <span class="tech-tag">NLP</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="projects/project-1.html" class="project-link">View Project</a>
-                        <a href="https://github.com/inboxpraveen/context-search-engine" class="project-link" target="_blank">Source Code</a>
-                    </div>
-                </div>
+        <!-- Bottom: copyright -->
+        <footer class="landing-footer">
+            <p>&copy; <span id="copyright-year"></span> Praveen Kumar. Built with passion for AI &amp; open source.</p>
+        </footer>
 
-                <div class="project-card">
-                    <div style="width: 100%; height: 180px; overflow: hidden; border-radius: 10px; margin-bottom: 1rem;">
-                        <img src="projects/resources/project-2/Header.png" alt="Docuvera - Loss360" style="width: 100%; height: 100%; object-fit: cover; display: block;">
-                    </div>
-                    <h3 class="project-title">Docuvera - Loss360</h3>
-                    <p class="project-description">
-                        Enterprise multi-tenant SaaS platform for automated insurance loss run processing. 
-                        Combines OCR and domain-specific LLMs to extract structured data from unstructured documents.
-                    </p>
-                    <div class="project-tech">
-                        <span class="tech-tag">OCR</span>
-                        <span class="tech-tag">LLM</span>
-                        <span class="tech-tag">Multi-Tenant</span>
-                        <span class="tech-tag">InsurTech</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="projects/project-2.html" class="project-link">View Project</a>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div style="width: 100%; height: 180px; overflow: hidden; border-radius: 10px; margin-bottom: 1rem;">
-                        <img src="projects/resources/project-3/Logo.png" alt="Movie Recommendation System" style="width: 100%; height: 100%; object-fit: cover; display: block;">
-                    </div>
-                    <h3 class="project-title">Movie Recommendation System</h3>
-                    <p class="project-description">
-                        Production-ready recommendation engine using TF-IDF, SVD, and content-based filtering. 
-                        Scales from 10K to 930K+ movies with intelligent quality filtering and Django deployment.
-                    </p>
-                    <div class="project-tech">
-                        <span class="tech-tag">ML</span>
-                        <span class="tech-tag">TF-IDF</span>
-                        <span class="tech-tag">SVD</span>
-                        <span class="tech-tag">Django</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="projects/project-3.html" class="project-link">View Project</a>
-                        <a href="https://github.com/inboxpraveen/movie-recommendation-system" class="project-link" target="_blank">Source Code</a>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- View All Projects Link -->
-            <div class="fade-in" style="text-align: center; margin-top: 3rem;">
-                <a href="all-projects.html" class="cta-button">View All Projects</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact">
-        <div class="container">
-            <h2 class="section-title fade-in">Let's Connect</h2>
-            <div class="contact-content fade-in">
-                <p class="contact-text">
-                    Have a cool project in mind or just want to chat about the latest in AI? I'm always up for a good conversation. Drop me a line!
-                </p>
-                <div class="contact-links">
-                    <a href="mailto:inboxpraveen.17@gmail.com" class="contact-link">
-                        <span>✉️</span> Email
-                    </a>
-                    <a href="https://www.linkedin.com/in/praveen-kumar-inbox/" target="_blank" class="contact-link">
-                        <span>💼</span> LinkedIn
-                    </a>
-                    <a href="https://github.com/inboxpraveen" target="_blank" class="contact-link">
-                        <span>🐙</span> GitHub
-                    </a>
-                    <a href="https://x.com/InboxPraveen" target="_blank" class="contact-link">
-                        <span>🐦</span> Twitter
-                    </a>
-                    <a href="./assests/Resume.pdf" class="contact-link" target="_blank" download>
-                        <span>📄</span> Resume <span style="font-size: 0.75em; color: var(--text-secondary);">(Updated Nov 2025)</span>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <p>&copy; <span id="copyright-year"></span> Praveen Kumar. Built with passion for AI & open source community.</p>
-        </div>
-    </footer>
+    </div>
 
     <script>
-        const mobileMenu = document.getElementById('mobileMenu');
-        const navLinks = document.getElementById('navLinks');
-
-        mobileMenu.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-        });
-
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-                // Close mobile menu if open
-                navLinks.classList.remove('active');
-            });
-        });
-
-        // Intersection Observer for fade-in animations
-        const observerOptions = {
-            threshold: 0.15,
-            rootMargin: '0px 0px -20px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, observerOptions);
-
-        // Observe all fade-in elements
-        document.querySelectorAll('.fade-in').forEach(el => {
-            observer.observe(el);
-        });
-
-        // Navbar background on scroll
-        window.addEventListener('scroll', () => {
-            const nav = document.querySelector('nav');
-            if (window.scrollY > 100) {
-                nav.style.background = 'rgba(10, 10, 10, 0.98)';
-            } else {
-                nav.style.background = 'rgba(10, 10, 10, 0.95)';
-            }
-        });
-
-        // Add typing effect to hero title
-        function typeWriter(element, text, speed = 100) {
+        // Typing effect on hero title
+        function typeWriter(element, text, speed = 55) {
             let i = 0;
             element.innerHTML = '';
             function type() {
                 if (i < text.length) {
-                    element.innerHTML += text.charAt(i);
+                    element.innerHTML = text.slice(0, i + 1) + '<span style="border-right:2px solid #00d4ff;margin-left:1px;animation:blink 0.7s step-end infinite;"></span>';
                     i++;
                     setTimeout(type, speed);
+                } else {
+                    setTimeout(() => { element.innerHTML = text; }, 800);
                 }
             }
             type();
         }
 
-        // Initialize typing effect when page loads
         window.addEventListener('load', () => {
-            const heroTitle = document.querySelector('.hero h1');
-            setTimeout(() => {
-                typeWriter(heroTitle, 'Praveen Kumar', 100);
-            }, 500);
+            document.getElementById('copyright-year').textContent = new Date().getFullYear();
+            setTimeout(() => typeWriter(document.querySelector('.landing-title'), 'Praveen Kumar', 55), 300);
         });
 
-        // Add parallax effect to hero section
-        window.addEventListener('scroll', () => {
-            const scrolled = window.pageYOffset;
-            const hero = document.querySelector('.hero');
-            const rate = scrolled * -0.5;
-            hero.style.transform = `translateY(${rate}px)`;
-        });
-
-        // Add glitch effect to logo on hover
+        // Logo glitch
         const logo = document.querySelector('.logo');
-        logo.addEventListener('mouseenter', () => {
-            logo.style.animation = 'glitch 0.3s ease-in-out';
-        });
-
-        logo.addEventListener('animationend', () => {
-            logo.style.animation = '';
-        });
-
-        // Update copyright year dynamically
-        window.addEventListener('load', function() {
-            const yearElement = document.getElementById('copyright-year');
-            if (yearElement) {
-                yearElement.textContent = new Date().getFullYear();
-            }
-        });
+        logo.addEventListener('mouseenter', () => { logo.style.animation = 'glitch 0.3s ease-in-out'; });
+        logo.addEventListener('animationend', () => { logo.style.animation = ''; });
     </script>
+    <style>
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+    </style>
 </body>
 </html>
