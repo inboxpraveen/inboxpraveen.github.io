@@ -159,10 +159,13 @@
         }, { threshold: 0.1 });
         document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
-        window.addEventListener('scroll', () => {
-            const nav = document.querySelector('nav');
-            nav.style.background = window.scrollY > 60 ? 'rgba(10,10,10,0.98)' : 'rgba(10,10,10,0.95)';
-        }, { passive: true });
+        const navEl = document.querySelector('nav');
+        const onScroll = () => {
+            if (window.scrollY > 20) navEl.classList.add('scrolled');
+            else navEl.classList.remove('scrolled');
+        };
+        window.addEventListener('scroll', onScroll, { passive: true });
+        onScroll();
 
         window.addEventListener('load', () => {
             document.getElementById('copyright-year').textContent = new Date().getFullYear();
