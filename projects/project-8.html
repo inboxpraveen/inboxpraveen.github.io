@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MoM AI - AI-Powered Minutes of Meeting | Praveen Kumar</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="MoM AI is a web app that takes meeting recordings, transcribes them using multi-provider speech-to-text APIs, and generates clean, structured Minutes of Meeting using LLMs. Built with Flask, Celery, Redis, and Docker.">
+    <meta name="keywords" content="Minutes of Meeting, AI Transcription, Speech-to-Text, LLM Summarization, Flask, Celery, Redis, Docker, Deepgram, AssemblyAI, OpenAI, Open Source">
+    <meta name="author" content="Praveen Kumar">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="MoM AI - AI-Powered Minutes of Meeting">
+    <meta property="og:description" content="Upload a meeting recording, get structured minutes automatically. Multi-provider transcription with LLM-powered summarization, background processing, and Docker-ready deployment.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://inboxpraveen.github.io/projects/project-8.html">
+    <meta property="og:image" content="https://inboxpraveen.github.io/projects/resources/project-8/Homepage.png">
+    <meta property="og:image:alt" content="MoM AI Platform">
+    <meta property="og:site_name" content="Praveen Kumar Portfolio">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="MoM AI - AI-Powered Minutes of Meeting">
+    <meta name="twitter:description" content="Upload a meeting recording, get structured minutes. Multi-provider speech-to-text with LLM summarization — open source and Docker-ready.">
+    <meta name="twitter:image" content="https://inboxpraveen.github.io/projects/resources/project-8/Homepage.png">
+    <meta name="twitter:image:alt" content="MoM AI Platform">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://inboxpraveen.github.io/projects/project-8.html">
+    
+    <link rel="icon" type="image/x-icon" href="../assests/favicon.ico">
+    <link rel="stylesheet" href="../index.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo" onclick="window.location.href='../index.html'" style="cursor: pointer;">PK</div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../all-projects.html">Projects</a></li>
+                <li><a href="../about.html">About</a></li>
+                <li><a href="https://github.com/inboxpraveen" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+            </ul>
+            <button class="mobile-menu" id="mobileMenu">☰</button>
+        </div>
+    </nav>
+
+    <!-- Project Page - MoM AI -->
+    <div class="page-container active">
+        <div class="page-header">
+            <div class="container">
+                <a href="../all-projects.html" class="back-button">← Back to Projects</a>
+                <h1 class="page-title">MoM AI</h1>
+                <div class="page-meta">
+                    <div class="meta-item">
+                        <span>📅</span>
+                        <span>Completed: 2025</span>
+                    </div>
+                    <div class="meta-item">
+                        <span>⏱️</span>
+                        <span>Version: 1.0.0</span>
+                    </div>
+                    <div class="meta-item">
+                        <span>👥</span>
+                        <span>Team Size: Solo</span>
+                    </div>
+                    <div class="meta-item">
+                        <span>🏷️</span>
+                        <span>Flask • Celery • Redis • OpenAI SDK • Docker</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2>Project Overview</h2>
+            <p>
+                <strong>MoM AI</strong> is a web application that automates the process of turning meeting recordings into 
+                structured minutes. You upload an audio or video file, the system transcribes it using a speech provider of 
+                your choice (Deepgram, AssemblyAI, Sarvam AI, or ElevenLabs), and then sends the transcript to an LLM to 
+                generate organized Minutes of Meeting.
+            </p>
+
+            <div style="text-align: center; margin: 2rem 0;">
+                <img src="./resources/project-8/Homepage.png" alt="MoM AI - Home Page" style="max-width: 100%; height: auto; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);">
+            </div>
+
+            <p>
+                The output includes a meeting summary, key discussion points, decisions made, action items, and next steps. 
+                Everything is presented in a clean, readable format inside the browser. The app handles the entire pipeline 
+                in the background, so you can upload a recording and come back when it is done.
+            </p>
+
+            <h2>Why I Built This</h2>
+            <p>
+                After attending several team meetings, I noticed that writing minutes manually was repetitive, time-consuming, 
+                and often inconsistent. Notes were scattered, key decisions got missed, and action items were forgotten.
+            </p>
+            <p>
+                I built this as a side project to solve that problem for myself first. It was also a good opportunity to learn 
+                how to integrate multiple AI APIs into a single pipeline, work with background task processing, and understand 
+                how different speech-to-text providers handle real-world audio.
+            </p>
+            <p>
+                The project is open source because I believe the pattern of combining speech-to-text with LLM summarization is 
+                useful for many developers. Sharing the full implementation felt more valuable than keeping it private.
+            </p>
+
+            <h2>The Problem</h2>
+            <p>Writing meeting minutes manually has a few common issues:</p>
+            <ul>
+                <li>It takes time to re-listen to recordings and extract key points.</li>
+                <li>Different people format notes differently, making them hard to follow.</li>
+                <li>Important decisions and action items often get lost or left vague.</li>
+                <li>For longer meetings, the effort needed to summarize grows quickly.</li>
+            </ul>
+            <p>
+                MoM AI reduces this work to a single upload. The output follows a consistent structure every time: summary, 
+                attendees, discussion points, decisions, action items, and next steps. This makes it easier to review meetings, 
+                track responsibilities, and share outcomes with the team.
+            </p>
+
+            <h2>Key Features</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin: 2rem 0;">
+                <div style="background: var(--secondary-bg); padding: 1.5rem; border-radius: 10px; border: 1px solid var(--border-color);">
+                    <h3 style="margin-top: 0; color: var(--accent-color);">Multi-Provider Transcription</h3>
+                    <p>Supports Deepgram, AssemblyAI, Sarvam AI, and ElevenLabs with speaker diarization</p>
+                </div>
+                <div style="background: var(--secondary-bg); padding: 1.5rem; border-radius: 10px; border: 1px solid var(--border-color);">
+                    <h3 style="margin-top: 0; color: var(--accent-color);">LLM Summarization</h3>
+                    <p>Works with any OpenAI-compatible API — OpenAI, Groq, OpenRouter, Ollama, and others</p>
+                </div>
+                <div style="background: var(--secondary-bg); padding: 1.5rem; border-radius: 10px; border: 1px solid var(--border-color);">
+                    <h3 style="margin-top: 0; color: var(--accent-color);">Background Processing</h3>
+                    <p>Celery + Redis for async processing — upload and come back when it is done</p>
+                </div>
+                <div style="background: var(--secondary-bg); padding: 1.5rem; border-radius: 10px; border: 1px solid var(--border-color);">
+                    <h3 style="margin-top: 0; color: var(--accent-color);">Docker-Ready Deployment</h3>
+                    <p>Full stack runs with a single <code>docker compose up</code> command</p>
+                </div>
+            </div>
+
+            <ul>
+                <li><strong>Admin settings panel</strong> to configure LLM provider, speech provider, API keys, and file retention policy from the UI</li>
+                <li><strong>Automatic file cleanup</strong> that deletes meeting recordings after a configurable number of days</li>
+                <li><strong>Role-based access</strong> with admin and user roles</li>
+                <li><strong>Wide format support</strong> for MP4, MP3, WAV, M4A, WebM, OGG, and MKV files</li>
+            </ul>
+
+            <h2>How It Works</h2>
+            <p>The processing flow has four clear steps:</p>
+
+            <ol>
+                <li>
+                    <strong>Upload</strong> — The user uploads a meeting recording through the web interface. The file is saved 
+                    to the server and a background job is queued.
+                </li>
+                <li>
+                    <strong>Audio Conversion</strong> — The Celery worker picks up the job and uses <code>ffmpeg</code> to convert 
+                    the uploaded file into a 16 kHz mono WAV file. This standardized format works reliably across all speech providers.
+                </li>
+                <li>
+                    <strong>Transcription</strong> — The WAV file is sent to the configured speech-to-text provider. The transcript 
+                    comes back with speaker labels (e.g., Speaker 0, Speaker 1) when diarization is available.
+                </li>
+                <li>
+                    <strong>Summarization</strong> — The full transcript is sent to the configured LLM with a structured prompt 
+                    asking for a summary, discussion points, decisions, action items, and next steps. The LLM returns Markdown, 
+                    which is then rendered as HTML and stored in the database.
+                </li>
+            </ol>
+
+            <p>
+                The user interface polls the backend for progress updates and displays the final transcript and minutes once 
+                processing is complete.
+            </p>
+
+            <h2>Screenshots</h2>
+
+            <h3>Login</h3>
+            <div style="text-align: center; margin: 2rem 0;">
+                <img src="./resources/project-8/Login.png" alt="MoM AI - Login Page" style="max-width: 100%; height: auto; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);">
+            </div>
+
+            <h3>Upload Page</h3>
+            <div style="text-align: center; margin: 2rem 0;">
+                <img src="./resources/project-8/Upload.png" alt="MoM AI - Upload Page" style="max-width: 100%; height: auto; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);">
+            </div>
+
+            <h3>Meetings Dashboard</h3>
+            <div style="text-align: center; margin: 2rem 0;">
+                <img src="./resources/project-8/Meetings.png" alt="MoM AI - Meetings Dashboard" style="max-width: 100%; height: auto; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);">
+            </div>
+
+            <h3>Meeting Outcomes</h3>
+            <div style="text-align: center; margin: 2rem 0;">
+                <img src="./resources/project-8/Meeting-Outcomes.png" alt="MoM AI - Meeting Outcomes" style="max-width: 100%; height: auto; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);">
+            </div>
+
+            <h2>Tech Stack</h2>
+            <div class="tech-stack">
+                <div class="tech-category">
+                    <h4>Backend</h4>
+                    <div class="tech-list">
+                        <span class="tech-item">Python 3.12+</span>
+                        <span class="tech-item">Flask</span>
+                        <span class="tech-item">Flask-SQLAlchemy</span>
+                        <span class="tech-item">Flask-Login</span>
+                    </div>
+                </div>
+                <div class="tech-category">
+                    <h4>Task Queue & Storage</h4>
+                    <div class="tech-list">
+                        <span class="tech-item">Celery</span>
+                        <span class="tech-item">Redis</span>
+                        <span class="tech-item">SQLite (default)</span>
+                        <span class="tech-item">PostgreSQL (optional)</span>
+                    </div>
+                </div>
+                <div class="tech-category">
+                    <h4>AI & Speech</h4>
+                    <div class="tech-list">
+                        <span class="tech-item">OpenAI SDK</span>
+                        <span class="tech-item">Deepgram SDK</span>
+                        <span class="tech-item">AssemblyAI SDK</span>
+                        <span class="tech-item">Sarvam AI SDK</span>
+                        <span class="tech-item">ElevenLabs SDK</span>
+                    </div>
+                </div>
+                <div class="tech-category">
+                    <h4>Frontend & Deployment</h4>
+                    <div class="tech-list">
+                        <span class="tech-item">Jinja2</span>
+                        <span class="tech-item">Tailwind-style CSS</span>
+                        <span class="tech-item">FFmpeg</span>
+                        <span class="tech-item">Docker Compose</span>
+                    </div>
+                </div>
+            </div>
+
+            <h2>Core Logic: How the Code Works</h2>
+            <p>
+                This section shows the key parts of the implementation. The full source is on GitHub.
+            </p>
+
+            <h3>Processing Pipeline (Celery Task)</h3>
+            <p>
+                This is the main task that ties everything together. It converts the audio, transcribes it, sends the 
+                transcript to the LLM, and stores the result.
+            </p>
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-language">Python - Celery task orchestrating the full pipeline</span>
+                    <button class="copy-button">Copy</button>
+                </div>
+                <pre><code><span class="decorator">@celery.task</span>(bind=<span class="keyword">True</span>, name=<span class="string">"app.tasks.process.process_meeting"</span>, max_retries=<span class="number">2</span>)
+<span class="keyword">def</span> <span class="function">process_meeting</span>(self, meeting_id: <span class="builtin">int</span>) -> <span class="builtin">dict</span>:
+    meeting = db.session.get(Meeting, meeting_id)
+    wav_path = <span class="keyword">None</span>
+
+    <span class="keyword">def</span> <span class="function">_update</span>(status, progress, **kwargs):
+        meeting.status = status
+        meeting.progress = progress
+        <span class="keyword">for</span> k, v <span class="keyword">in</span> kwargs.items():
+            <span class="builtin">setattr</span>(meeting, k, v)
+        db.session.commit()
+
+    <span class="keyword">try</span>:
+        upload_folder = current_app.config[<span class="string">"UPLOAD_FOLDER"</span>]
+        audio_path = os.path.join(upload_folder, meeting.stored_filename)
+
+        _update(<span class="string">"processing"</span>, <span class="number">10</span>)
+        wav_path = convert_to_wav(audio_path, output_dir=tempfile.mkdtemp())
+
+        _update(<span class="string">"transcribing"</span>, <span class="number">35</span>)
+        speech_provider = get_speech_provider()
+        transcript = speech_provider.transcribe_file(wav_path)
+
+        _update(<span class="string">"summarizing"</span>, <span class="number">70</span>)
+        llm = get_llm_client()
+        minutes_md = llm.generate_minutes(transcript)
+        minutes_html = md_lib.markdown(minutes_md, extensions=[<span class="string">"tables"</span>, <span class="string">"nl2br"</span>])
+
+        _update(<span class="string">"completed"</span>, <span class="number">100</span>, transcript=transcript, minutes_of_meeting=minutes_html)
+        <span class="keyword">return</span> {<span class="string">"meeting_id"</span>: meeting_id, <span class="string">"status"</span>: <span class="string">"completed"</span>}
+    <span class="keyword">except</span> <span class="builtin">Exception</span> <span class="keyword">as</span> exc:
+        _update(<span class="string">"failed"</span>, <span class="number">0</span>, error_message=<span class="builtin">str</span>(exc))
+        <span class="keyword">raise</span>
+    <span class="keyword">finally</span>:
+        <span class="keyword">if</span> wav_path <span class="keyword">and</span> os.path.exists(wav_path):
+            os.remove(wav_path)</code></pre>
+            </div>
+
+            <h3>LLM Summarization Prompt</h3>
+            <p>
+                The LLM receives a structured system prompt that guides it to produce consistent, well-organized minutes every time.
+            </p>
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-language">Python - Structured prompt for meeting summarization</span>
+                    <button class="copy-button">Copy</button>
+                </div>
+                <pre><code><span class="keyword">def</span> <span class="function">generate_minutes</span>(self, transcript: <span class="builtin">str</span>) -> <span class="builtin">str</span>:
+    system_prompt = (
+        <span class="string">"You are an expert meeting analyst. Given a meeting transcript, "</span>
+        <span class="string">"produce well-structured **Minutes of Meeting** in Markdown with:\n\n"</span>
+        <span class="string">"## Meeting Summary\n"</span>
+        <span class="string">"A concise 2-4 sentence overview.\n\n"</span>
+        <span class="string">"## Attendees\n"</span>
+        <span class="string">"Names/roles mentioned (or 'Not specified').\n\n"</span>
+        <span class="string">"## Key Discussion Points\n"</span>
+        <span class="string">"Bullet list of main topics discussed.\n\n"</span>
+        <span class="string">"## Decisions Made\n"</span>
+        <span class="string">"Numbered list of decisions reached.\n\n"</span>
+        <span class="string">"## Action Items\n"</span>
+        <span class="string">"Table with columns: | Task | Owner | Due Date |\n\n"</span>
+        <span class="string">"## Next Steps\n"</span>
+        <span class="string">"What happens after this meeting.\n\n"</span>
+        <span class="string">"Be concise, professional, and accurate. "</span>
+        <span class="string">"Use only information from the transcript."</span>
+    )
+    messages = [
+        {<span class="string">"role"</span>: <span class="string">"system"</span>, <span class="string">"content"</span>: system_prompt},
+        {<span class="string">"role"</span>: <span class="string">"user"</span>, <span class="string">"content"</span>: <span class="string">f"Transcript:\n\n{transcript}"</span>},
+    ]
+    <span class="keyword">return</span> self.complete(messages)</code></pre>
+            </div>
+
+            <h3>Speech Provider Factory</h3>
+            <p>
+                Providers are swappable at runtime. The admin picks a provider from the settings panel, and this factory 
+                returns the correct implementation.
+            </p>
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-language">Python - Runtime-configurable speech provider selection</span>
+                    <button class="copy-button">Copy</button>
+                </div>
+                <pre><code><span class="keyword">def</span> <span class="function">get_speech_provider</span>() -> BaseSpeechProvider:
+    provider_name = SystemConfig.get(<span class="string">"speech_provider"</span>, <span class="string">"deepgram"</span>).lower()
+
+    <span class="keyword">if</span> provider_name == <span class="string">"deepgram"</span>:
+        <span class="keyword">from</span> app.providers.speech.deepgram_provider <span class="keyword">import</span> DeepgramProvider
+        <span class="keyword">return</span> DeepgramProvider(api_key=SystemConfig.get(<span class="string">"deepgram_api_key"</span>, <span class="string">""</span>))
+
+    <span class="keyword">elif</span> provider_name == <span class="string">"assemblyai"</span>:
+        <span class="keyword">from</span> app.providers.speech.assemblyai_provider <span class="keyword">import</span> AssemblyAIProvider
+        <span class="keyword">return</span> AssemblyAIProvider(api_key=SystemConfig.get(<span class="string">"assemblyai_api_key"</span>, <span class="string">""</span>))
+
+    <span class="keyword">elif</span> provider_name == <span class="string">"sarvam"</span>:
+        <span class="keyword">from</span> app.providers.speech.sarvam_provider <span class="keyword">import</span> SarvamProvider
+        <span class="keyword">return</span> SarvamProvider(api_key=SystemConfig.get(<span class="string">"sarvam_api_key"</span>, <span class="string">""</span>))
+
+    <span class="keyword">elif</span> provider_name == <span class="string">"elevenlabs"</span>:
+        <span class="keyword">from</span> app.providers.speech.elevenlabs_provider <span class="keyword">import</span> ElevenLabsProvider
+        <span class="keyword">return</span> ElevenLabsProvider(api_key=SystemConfig.get(<span class="string">"elevenlabs_api_key"</span>, <span class="string">""</span>))</code></pre>
+            </div>
+
+            <h3>Audio Conversion</h3>
+            <p>
+                All uploaded files are normalized to 16 kHz mono WAV before being sent to any speech provider. This keeps the 
+                transcription step consistent regardless of the input format.
+            </p>
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-language">Python - FFmpeg-based audio normalization</span>
+                    <button class="copy-button">Copy</button>
+                </div>
+                <pre><code><span class="keyword">def</span> <span class="function">convert_to_wav</span>(input_path: <span class="builtin">str</span>, output_dir: <span class="builtin">str</span> = <span class="keyword">None</span>) -> <span class="builtin">str</span>:
+    output_dir = output_dir <span class="keyword">or</span> tempfile.gettempdir()
+    os.makedirs(output_dir, exist_ok=<span class="keyword">True</span>)
+    base_name = os.path.splitext(os.path.basename(input_path))[<span class="number">0</span>]
+    output_path = os.path.join(output_dir, <span class="string">f"{base_name}_converted.wav"</span>)
+
+    cmd = [
+        <span class="string">"ffmpeg"</span>, <span class="string">"-y"</span>,
+        <span class="string">"-i"</span>, input_path,
+        <span class="string">"-ar"</span>, <span class="string">"16000"</span>,
+        <span class="string">"-ac"</span>, <span class="string">"1"</span>,
+        <span class="string">"-vn"</span>,
+        output_path,
+    ]
+
+    result = subprocess.run(cmd, stdout=subprocess.PIPE,
+                            stderr=subprocess.PIPE, timeout=<span class="number">600</span>)
+    <span class="keyword">if</span> result.returncode != <span class="number">0</span>:
+        <span class="keyword">raise</span> <span class="builtin">RuntimeError</span>(<span class="string">f"ffmpeg conversion failed:\n{result.stderr.decode()}"</span>)
+    <span class="keyword">return</span> output_path</code></pre>
+            </div>
+
+            <h2>My Contribution</h2>
+            <p>I designed and built this project end to end.</p>
+            <ul>
+                <li>Architected the full pipeline from file upload to final minutes output</li>
+                <li>Built the Flask backend with blueprints, SQLAlchemy models, and Jinja2 templates</li>
+                <li>Integrated four different speech-to-text providers (Deepgram, AssemblyAI, Sarvam AI, ElevenLabs) behind a common interface using the factory pattern</li>
+                <li>Wrote the LLM integration layer using the OpenAI SDK, making it compatible with any OpenAI-compatible endpoint (OpenAI, Groq, OpenRouter, Ollama, and others)</li>
+                <li>Set up Celery with Redis for background processing and periodic cleanup tasks</li>
+                <li>Built the admin panel for managing providers, API keys, and system settings at runtime</li>
+                <li>Designed the UI with a clean, responsive layout</li>
+                <li>Dockerized the entire stack (Flask, Celery worker, Celery beat, Redis) for one-command deployment</li>
+            </ul>
+
+            <h2>Challenges & Learnings</h2>
+
+            <p>
+                <strong>Handling different speech provider APIs and output formats</strong><br>
+                Each provider returns transcripts in a different structure. Some give word-level timestamps, others give 
+                utterances, and speaker labels vary across providers. I had to normalize these outputs into a consistent 
+                format that the LLM could work with reliably. This taught me the importance of building a clean abstraction 
+                layer when dealing with multiple external APIs.
+            </p>
+
+            <p>
+                <strong>Managing long-running tasks without blocking the web server</strong><br>
+                Audio files can be large, and transcription plus summarization can take minutes. I set up Celery with Redis 
+                to handle this asynchronously. Getting the progress tracking right (so the UI could show real-time status 
+                updates via polling) required careful state management on the database side.
+            </p>
+
+            <p>
+                <strong>Prompt engineering for consistent LLM output</strong><br>
+                Early versions of the summarization prompt produced inconsistent results. Sometimes the LLM would skip 
+                sections, use different headings, or add unnecessary commentary. Iterating on the system prompt to get a 
+                reliable, structured output taught me that small wording changes in prompts can significantly affect the 
+                quality and consistency of the result.
+            </p>
+
+            <p>
+                <strong>Audio format normalization across different input types</strong><br>
+                Users upload files in all sorts of formats (MP4, WebM, M4A, OGG). Not all speech providers handle all 
+                formats well. Converting everything to a standardized 16 kHz mono WAV using ffmpeg before transcription 
+                solved compatibility issues across all providers.
+            </p>
+
+            <h2>Installation & Setup</h2>
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-language">Bash - Run with Docker Compose</span>
+                    <button class="copy-button">Copy</button>
+                </div>
+                <pre><code><span class="comment"># Clone the repository</span>
+git clone https://github.com/inboxpraveen/LLM-Minutes-of-Meeting.git
+cd LLM-Minutes-of-Meeting
+
+<span class="comment"># Start the full stack (Flask, Celery worker, Celery beat, Redis)</span>
+docker compose up</code></pre>
+            </div>
+            <p>
+                Once running, open the web interface in your browser. Configure your speech provider and LLM settings from 
+                the admin panel, then upload a meeting recording to get started.
+            </p>
+
+            <h2>Future Improvements</h2>
+            <ul>
+                <li>Real-time meeting transcription by integrating with a live audio stream instead of only uploaded files</li>
+                <li>Multi-language support with automatic language detection before transcription</li>
+                <li>Email or Slack integration to automatically send the generated minutes to meeting participants</li>
+                <li>Side-by-side transcript and minutes view so users can verify the minutes against the original transcript</li>
+                <li>Export options for PDF, DOCX, and plain text formats</li>
+                <li>Meeting analytics to track trends like frequently discussed topics and recurring action items</li>
+            </ul>
+
+            <h2>Closing Note</h2>
+            <p>
+                MoM AI is open source and built to be useful. Whether you want to automate your own meeting notes, learn how 
+                to integrate speech-to-text and LLM APIs, or just explore the codebase for ideas, you are welcome to use, 
+                fork, or improve it.
+            </p>
+            <p>
+                If you find it helpful or have suggestions, feel free to open an issue or contribute on GitHub.
+            </p>
+
+            <div style="margin-top: 3rem; padding: 2rem; background: var(--secondary-bg); border-radius: 15px; border: 1px solid var(--border-color);">
+                <h3 style="margin-top: 0;">Resources & Links</h3>
+                <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1rem; margin-bottom: 2rem;">
+                    <a href="https://github.com/inboxpraveen/LLM-Minutes-of-Meeting" class="demo-button" style="margin: 0;" target="_blank">GitHub Repository</a>
+                </div>
+                
+                <h4>Tags:</h4>
+                <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 1rem;">
+                    <span class="tech-tag">#MinutesOfMeeting</span>
+                    <span class="tech-tag">#SpeechToText</span>
+                    <span class="tech-tag">#LLM</span>
+                    <span class="tech-tag">#Flask</span>
+                    <span class="tech-tag">#Celery</span>
+                    <span class="tech-tag">#Redis</span>
+                    <span class="tech-tag">#Docker</span>
+                    <span class="tech-tag">#OpenAI</span>
+                    <span class="tech-tag">#Deepgram</span>
+                    <span class="tech-tag">#AssemblyAI</span>
+                    <span class="tech-tag">#OpenSource</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer style="margin-top: 4rem;">
+        <div class="container">
+            <p>&copy; <span id="copyright-year"></span> Praveen Kumar. Built with passion for AI & open source community.</p>
+        </div>
+    </footer>
+
+    <script>
+        const mobileMenu = document.getElementById('mobileMenu');
+        const navLinks = document.getElementById('navLinks');
+
+        mobileMenu.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        document.addEventListener('click', function(e) {
+            if (e.target.classList.contains('copy-button')) {
+                const codeBlock = e.target.closest('.code-block');
+                const code = codeBlock.querySelector('pre').textContent;
+                
+                navigator.clipboard.writeText(code).then(() => {
+                    e.target.textContent = 'Copied!';
+                    setTimeout(() => {
+                        e.target.textContent = 'Copy';
+                    }, 2000);
+                });
+            }
+        });
+
+        const navEl = document.querySelector('nav');
+        const onNavScroll = () => {
+            if (window.scrollY > 20) navEl.classList.add('scrolled');
+            else navEl.classList.remove('scrolled');
+        };
+        window.addEventListener('scroll', onNavScroll, { passive: true });
+        onNavScroll();
+
+        window.addEventListener('load', function() {
+            const yearElement = document.getElementById('copyright-year');
+            if (yearElement) {
+                yearElement.textContent = new Date().getFullYear();
+            }
+        });
+    </script>
+</body>
+</html>
