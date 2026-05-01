@@ -1,84 +1,78 @@
-# Portfolio Website - Praveen Kumar
+# Portfolio Website — Praveen Kumar
 
-A modern, responsive portfolio website showcasing AI engineering projects and professional experience, with links to source code on GitHub.
+A hand-crafted, dark-themed developer portfolio built from scratch with vanilla HTML, CSS, and JavaScript. No frameworks, no build tools, no dependencies.
+
+**Live:** [inboxpraveen.github.io](https://inboxpraveen.github.io)
 
 ## Overview
 
-This is a personal portfolio website for Praveen Kumar, a Principal AI Engineer & Solution Architect specializing in speech AI, LLMs, OCR, and scalable AI systems. The website features a clean, dark-themed design with smooth animations and modern UI/UX.
+Personal portfolio for Praveen Kumar — Principal AI Engineer & Solution Architect specializing in speech AI, LLMs, OCR, and scalable ML systems. The site serves as a centralized showcase for open-source projects, each with a dedicated deep-dive page covering motivation, architecture, code walkthroughs, and screenshots.
 
 ## Features
 
-- **Hero Section**: Professional introduction with role and specialization
-- **About Section**: Detailed background, skills, and statistics
-- **Projects Showcase**: Featured AI/ML projects with detailed case studies
-- **Contact Information**: Multiple ways to connect
-- **Responsive Design**: Optimized for desktop, tablet, and mobile devices
-- **Modern UI**: Dark theme with accent colors and smooth animations
+- **Cinematic landing page** with typing animation and logo glitch effect
+- **Project showcase grid** with thumbnail cards, tech tags, and pointer-tracked glow on hover
+- **Deep project pages** — each project gets a full write-up with overview, motivation, screenshots, tech stack, code samples, and challenges
+- **About page** with professional background, skills, and contact links
+- **Dark theme** with carefully tuned surface hierarchy and accent colors
+- **Fully responsive** across mobile, tablet, and desktop
+- **SEO-optimized** with Open Graph, Twitter Cards, canonical URLs, and structured meta on every page
+- **Code blocks with copy buttons** for easy sharing of technical content
+- **Intersection Observer animations** for smooth fade-in on scroll
+- **Zero dependencies** — pure HTML, CSS, and JS deployed directly to GitHub Pages
 
 ## Project Structure
 
 ```
-Portfolio/
-└── inboxpraveen.github.io/
-    ├── index.html              # Main landing page
-    ├── index.css               # Global styles
-    ├── all-projects.html       # All projects listing
-    ├── under-dev.html          # Under development placeholder
-    ├── assests/
-    │   ├── favicon.ico
-    │   ├── Original.png
-    │   └── Resume.pdf
-    ├── projects/
-    │   ├── project-*.html      # Individual project pages
-    │   └── resources/          # Project images and assets
+inboxpraveen.github.io/
+├── index.html              # Landing page
+├── index.css               # Shared design system (single stylesheet)
+├── all-projects.html       # Project showcase grid
+├── about.html              # About & contact page
+├── under-dev.html          # Placeholder for upcoming project pages
+├── assests/
+│   ├── favicon.ico
+│   ├── Original.png
+│   └── Resume.pdf
+└── projects/
+    ├── project-1.html      # Individual project deep-dive pages
+    ├── project-2.html
+    ├── ...
+    └── resources/
+        ├── project-1/      # Screenshots and assets per project
+        ├── project-2/
+        └── ...
 ```
 
-## Technologies Used
+## Technologies
 
-- **Frontend**: HTML5, CSS3, Vanilla JavaScript
-- **Design**: Modern dark theme with gradient accents
-- **Features**:
-  - Smooth scrolling navigation
-  - Intersection Observer for animations
-  - Responsive mobile menu
-  - Parallax effects
-  - Typing animations
+| Layer | Tools |
+|-------|-------|
+| **Frontend** | HTML5, CSS3, Vanilla JavaScript |
+| **Design system** | CSS Custom Properties, CSS Grid, Flexbox, `clamp()` fluid typography |
+| **Interactions** | Intersection Observer API, Pointer Events, Clipboard API |
+| **Hosting** | GitHub Pages |
+| **SEO** | Open Graph, Twitter Cards, canonical URLs |
 
-## Key Sections
+## Adding a New Project
 
-### Projects Featured
+1. Create `projects/project-N.html` using an existing project page as the template
+2. Add screenshots to `projects/resources/project-N/`
+3. Add a project card to `all-projects.html` inside the `.projects-grid`
 
-1. **Context Search Engine** - AI-powered semantic document search using transformers and FAISS
-2. **Docuvera - Loss360** - Enterprise multi-tenant SaaS for insurance document processing
-3. **Autonomous Vehicle Perception** - Computer vision pipeline with YOLO and Kalman filters
+No build step required — edit, commit, and push.
 
-### Technical Skills Highlighted
+## Local Development
 
-- Python, PyTorch, FastAPI
-- LLMs & RAG, Speech AI
-- vLLM, Whisper, LangChain
-- OCR & Document AI
-- Vector Databases
-- Docker & K8s, AWS & GPU Infrastructure
-- PostgreSQL, Redis
-- Multi-Tenant SaaS, CI/CD
-
-## Viewing the Website
-
-Simply open `inboxpraveen.github.io/index.html` in a web browser to view the portfolio locally.
-
-For GitHub Pages deployment, the site is typically hosted at: `https://inboxpraveen.github.io`
+Open `index.html` in any browser. No server or tooling needed.
 
 ## Contact
 
-- **Email**: inboxpraveen.17@gmail.com
-- **LinkedIn**: [Profile Link]
-- **GitHub**: [Repository Link]
+- **Email:** inboxpraveen.17@gmail.com
+- **LinkedIn:** [linkedin.com/in/praveen-kumar-inbox](https://www.linkedin.com/in/praveen-kumar-inbox/)
+- **GitHub:** [github.com/inboxpraveen](https://github.com/inboxpraveen)
+- **Twitter:** [x.com/InboxPraveen](https://x.com/InboxPraveen)
 
 ## License
 
 © 2026 Praveen Kumar. All rights reserved.
-
----
-
-Built with passion for AI & open source community.
