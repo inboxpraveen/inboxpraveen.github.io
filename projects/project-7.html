@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AudioFP - Audio Fingerprinting Platform | Praveen Kumar</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="A self-hosted audio fingerprinting platform that identifies any audio clip in seconds. Built with Python, Flask, and the Wang (2003) algorithm. Supports audio and video files, multiple storage backends, and runs entirely locally.">
+    <meta name="keywords" content="Audio Fingerprinting, Shazam, Python, Flask, Signal Processing, Spectrogram, FFmpeg, SQLite, PostgreSQL, Self-Hosted, Open Source">
+    <meta name="author" content="Praveen Kumar">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="AudioFP - Audio Fingerprinting Platform">
+    <meta property="og:description" content="Self-hosted audio search engine that identifies any audio clip in seconds using spectral peak extraction and combinatorial hashing. No cloud, no API keys — runs entirely locally.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://inboxpraveen.github.io/projects/project-7.html">
+    <meta property="og:image" content="https://inboxpraveen.github.io/projects/resources/project-7/Header.png">
+    <meta property="og:image:alt" content="AudioFP Platform">
+    <meta property="og:site_name" content="Praveen Kumar Portfolio">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="AudioFP - Audio Fingerprinting Platform">
+    <meta name="twitter:description" content="Self-hosted audio search engine using spectral peak extraction and combinatorial hashing. Identify clips from 3 seconds of audio — no cloud required.">
+    <meta name="twitter:image" content="https://inboxpraveen.github.io/projects/resources/project-7/Header.png">
+    <meta name="twitter:image:alt" content="AudioFP Platform">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://inboxpraveen.github.io/projects/project-7.html">
+    
+    <link rel="icon" type="image/x-icon" href="../assests/favicon.ico">
+    <link rel="stylesheet" href="../index.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo" onclick="window.location.href='../index.html'" style="cursor: pointer;">PK</div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../all-projects.html">Projects</a></li>
+                <li><a href="../about.html">About</a></li>
+                <li><a href="https://github.com/inboxpraveen" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+            </ul>
+            <button class="mobile-menu" id="mobileMenu">☰</button>
+        </div>
+    </nav>
+
+    <!-- Project Page - AudioFP -->
+    <div class="page-container active">
+        <div class="page-header">
+            <div class="container">
+                <a href="../all-projects.html" class="back-button">← Back to Projects</a>
+                <h1 class="page-title">AudioFP</h1>
+                <div class="page-meta">
+                    <div class="meta-item">
+                        <span>📅</span>
+                        <span>Completed: 2025</span>
+                    </div>
+                    <div class="meta-item">
+                        <span>⏱️</span>
+                        <span>Version: 1.0.0</span>
+                    </div>
+                    <div class="meta-item">
+                        <span>👥</span>
+                        <span>Team Size: Solo</span>
+                    </div>
+                    <div class="meta-item">
+                        <span>🏷️</span>
+                        <span>Python • Flask • librosa • FFmpeg • SQLite</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2>Project Overview</h2>
+            <p>
+                <strong>AudioFP</strong> is a self-hosted audio fingerprinting platform. You upload your audio or video files 
+                into a library, and then you can search that library using any short clip. The system identifies which file the 
+                clip belongs to and tells you exactly where in the original recording it appears.
+            </p>
+
+            <div style="text-align: center; margin: 2rem 0;">
+                <img src="./resources/project-7/Header.png" alt="AudioFP Platform" style="max-width: 100%; height: auto; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);">
+            </div>
+            
+            <p>
+                It works without any cloud service, transcription, or API keys. The entire pipeline runs locally. Think of it 
+                as a private version of Shazam that you fully control and can build on top of.
+            </p>
+
+            <h2>Why I Built This</h2>
+            <p>
+                I wanted to deeply understand how audio fingerprinting actually works under the hood. Tools like Shazam are 
+                impressive, but the algorithm behind them is rarely explained in a way that is practical to implement.
+            </p>
+            <p>
+                This project started as a side project to read the original Wang (2003) research paper, implement the algorithm 
+                from scratch, and then wrap it into something usable. The goal was to learn by doing and then share the result 
+                as a clean, working reference for anyone else curious about the same problem.
+            </p>
+            <p>
+                There was no commercial motivation. It was purely about understanding, building, and sharing.
+            </p>
+
+            <h2>The Problem</h2>
+            <p>
+                If you have a large collection of audio or video files, finding where a specific sound or song clip appears is 
+                not straightforward. Standard text search cannot help, and most cloud-based tools require you to send your files 
+                to an external service.
+            </p>
+            <p>
+                AudioFP solves this locally. You index your own files once, and after that you can take any short clip — even 
+                3 seconds with background noise — and instantly find its match across thousands of files. No data leaves your machine.
+            </p>
+            <p>
+                It also addresses a knowledge gap: most explanations of audio fingerprinting stop at theory. This project shows 
+                a full working implementation in Python that developers can read, run, and learn from.
+            </p>
+
+            <h2>Key Features</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin: 2rem 0;">
+                <div style="background: var(--secondary-bg); padding: 1.5rem; border-radius: 10px; border: 1px solid var(--border-color);">
+                    <h3 style="margin-top: 0; color: var(--accent-color);">3-Second Identification</h3>
+                    <p>Identifies audio from clips as short as 3 seconds, even with background noise</p>
+                </div>
+                <div style="background: var(--secondary-bg); padding: 1.5rem; border-radius: 10px; border: 1px solid var(--border-color);">
+                    <h3 style="margin-top: 0; color: var(--accent-color);">Exact Timestamp</h3>
+                    <p>Shows the exact position in the original file where the clip comes from</p>
+                </div>
+                <div style="background: var(--secondary-bg); padding: 1.5rem; border-radius: 10px; border: 1px solid var(--border-color);">
+                    <h3 style="margin-top: 0; color: var(--accent-color);">Audio & Video Support</h3>
+                    <p>Supports MP3, WAV, FLAC, MP4, MKV, and more — audio extracted automatically via FFmpeg</p>
+                </div>
+                <div style="background: var(--secondary-bg); padding: 1.5rem; border-radius: 10px; border: 1px solid var(--border-color);">
+                    <h3 style="margin-top: 0; color: var(--accent-color);">Multiple Backends</h3>
+                    <p>SQLite, PostgreSQL, and in-memory storage backends with pluggable architecture</p>
+                </div>
+            </div>
+
+            <ul>
+                <li><strong>Batch indexing</strong> runs in the background with live progress tracking</li>
+                <li><strong>REST API</strong> for programmatic access to all features</li>
+                <li><strong>Clean web interface</strong> with drag-and-drop upload, dark mode, and library management</li>
+                <li><strong>Fully local</strong> — no cloud services, no API keys, no data leaves your machine</li>
+            </ul>
+
+            <h2>Screenshots</h2>
+
+            <h3>Audio Library (Light Mode)</h3>
+            <div style="text-align: center; margin: 2rem 0;">
+                <img src="./resources/project-7/Audio-Library-Light.png" alt="AudioFP Library - Light Mode" style="max-width: 100%; height: auto; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);">
+            </div>
+
+            <h3>Audio Search</h3>
+            <div style="text-align: center; margin: 2rem 0;">
+                <img src="./resources/project-7/Audio-Search-Light.png" alt="AudioFP Search Interface" style="max-width: 100%; height: auto; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);">
+            </div>
+
+            <h3>Audio Library (Dark Mode)</h3>
+            <div style="text-align: center; margin: 2rem 0;">
+                <img src="./resources/project-7/Audio-Library-Dark.png" alt="AudioFP Library - Dark Mode" style="max-width: 100%; height: auto; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);">
+            </div>
+
+            <h3>Architecture</h3>
+            <div style="text-align: center; margin: 2rem 0;">
+                <img src="./resources/project-7/Architecture.png" alt="AudioFP Architecture Diagram" style="max-width: 100%; height: auto; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);">
+            </div>
+
+            <h2>How It Works</h2>
+            <p>The system follows two main flows:</p>
+
+            <h3>Indexing (training your library)</h3>
+            <ol>
+                <li>You upload an audio or video file, or point to a folder of files.</li>
+                <li>The audio is loaded and resampled to 11,025 Hz for fast processing.</li>
+                <li>A Short-Time Fourier Transform (STFT) produces a spectrogram — a time-frequency map of the audio.</li>
+                <li>The system finds the most prominent spectral peaks in that map, forming a <strong>constellation map</strong>.</li>
+                <li>Each peak is paired with nearby peaks to generate combinatorial hash values. Each hash encodes two frequencies and the time gap between them.</li>
+                <li>These hashes and their time offsets are stored in the fingerprint database.</li>
+            </ol>
+
+            <h3>Searching</h3>
+            <ol>
+                <li>You upload a short query clip.</li>
+                <li>The same fingerprinting pipeline runs on the clip to produce its hashes.</li>
+                <li>The system looks up all those hashes in the database in a single batch SQL query.</li>
+                <li>For each candidate match, it checks whether the time offsets are consistent. A true match produces many hashes that align at the same time offset.</li>
+                <li>The result is returned with the matched song title and the timestamp in the original recording.</li>
+            </ol>
+
+            <h2>Tech Stack</h2>
+            <div class="tech-stack">
+                <div class="tech-category">
+                    <h4>Backend</h4>
+                    <div class="tech-list">
+                        <span class="tech-item">Python 3.12+</span>
+                        <span class="tech-item">Flask</span>
+                        <span class="tech-item">Flask-CORS</span>
+                        <span class="tech-item">Gunicorn</span>
+                    </div>
+                </div>
+                <div class="tech-category">
+                    <h4>Audio Processing</h4>
+                    <div class="tech-list">
+                        <span class="tech-item">librosa</span>
+                        <span class="tech-item">NumPy</span>
+                        <span class="tech-item">SciPy</span>
+                        <span class="tech-item">soundfile</span>
+                        <span class="tech-item">FFmpeg</span>
+                    </div>
+                </div>
+                <div class="tech-category">
+                    <h4>Storage</h4>
+                    <div class="tech-list">
+                        <span class="tech-item">SQLite (default)</span>
+                        <span class="tech-item">PostgreSQL</span>
+                        <span class="tech-item">In-memory</span>
+                    </div>
+                </div>
+                <div class="tech-category">
+                    <h4>Frontend & Testing</h4>
+                    <div class="tech-list">
+                        <span class="tech-item">Vanilla HTML/CSS/JS</span>
+                        <span class="tech-item">pytest</span>
+                        <span class="tech-item">pytest-cov</span>
+                    </div>
+                </div>
+            </div>
+
+            <h2>My Contribution</h2>
+            <p>I designed and built this project end to end.</p>
+            <ul>
+                <li>Implemented the fingerprinting algorithm from the original Wang (2003) research paper in Python</li>
+                <li>Built the spectral peak extraction, combinatorial hash generation, and time-offset voting logic from scratch</li>
+                <li>Designed a pluggable storage layer with SQLite, PostgreSQL, and in-memory backends</li>
+                <li>Tuned SQLite for concurrent read performance using WAL mode, a covering index, memory-mapped I/O, and thread-local connections</li>
+                <li>Built the background indexing system using daemon threads and a ThreadPoolExecutor</li>
+                <li>Wrote the REST API and single-file frontend SPA</li>
+                <li>Set up environment-aware configuration for development and production</li>
+            </ul>
+
+            <h2>Challenges & Learnings</h2>
+
+            <p>
+                <strong>Understanding the algorithm deeply enough to implement it correctly</strong><br>
+                The Wang (2003) paper describes the approach at a high level. Translating that into code that actually produces 
+                reliable matches required understanding why each step exists. Getting the peak extraction threshold and fan-out 
+                value right so that the fingerprints are both noise-tolerant and not too large took several iterations.
+            </p>
+
+            <p>
+                <strong>Making SQLite fast for hash lookups at scale</strong><br>
+                A naive implementation would run one SQL query per hash. With hundreds of thousands of hashes per song, that is 
+                completely impractical. The solution was batching all hash lookups into a single <code>WHERE hash_value IN (...)</code> 
+                query, combined with a covering index so the database never touches the main table heap. Adding WAL mode and 
+                memory-mapped I/O made concurrent reads much more reliable.
+            </p>
+
+            <p>
+                <strong>Supporting both audio and video files cleanly</strong><br>
+                Users often have audio embedded in video files. Handling this required adding FFmpeg as a decoding step before 
+                the audio processing pipeline. Making this seamless — including detecting the file type and routing it 
+                correctly — took more edge-case handling than expected.
+            </p>
+
+            <p>
+                <strong>Background indexing without a task queue</strong><br>
+                Running long indexing jobs without blocking the server and keeping the frontend updated on progress required 
+                implementing job tracking using daemon threads and an in-memory job store. Getting thread safety right with 
+                Flask's threaded mode and SQLite's per-thread connections was a good practical exercise.
+            </p>
+
+            <h2>Core Logic: How the Code Works</h2>
+            <p>
+                This section shows the high-level implementation of each major step in the pipeline. The full source is on GitHub.
+            </p>
+
+            <h3>Step 1: Load Audio (and extract from video automatically)</h3>
+            <p>
+                Any file — audio or video — goes through a single <code>load_audio</code> function. If it is a video, FFmpeg 
+                strips the audio track silently before anything else runs.
+            </p>
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-language">Python - Audio loading with automatic video extraction</span>
+                    <button class="copy-button">Copy</button>
+                </div>
+                <pre><code><span class="keyword">def</span> <span class="function">load_audio</span>(filepath: <span class="builtin">str</span>, sr: <span class="builtin">int</span> = <span class="number">11025</span>) -> <span class="builtin">tuple</span>:
+    <span class="keyword">if</span> is_video_file(filepath):
+        <span class="keyword">return</span> extract_audio_from_video(filepath, sr=sr)
+
+    audio, sample_rate = librosa.load(filepath, sr=sr, mono=<span class="keyword">True</span>)
+    <span class="keyword">return</span> audio, sample_rate
+
+
+<span class="keyword">def</span> <span class="function">extract_audio_from_video</span>(video_path: <span class="builtin">str</span>, sr: <span class="builtin">int</span> = <span class="number">11025</span>) -> <span class="builtin">tuple</span>:
+    subprocess.run([
+        <span class="string">"ffmpeg"</span>, <span class="string">"-y"</span>, <span class="string">"-i"</span>, video_path,
+        <span class="string">"-vn"</span>, <span class="string">"-acodec"</span>, <span class="string">"pcm_s16le"</span>,
+        <span class="string">"-ar"</span>, <span class="builtin">str</span>(sr), <span class="string">"-ac"</span>, <span class="string">"1"</span>,
+        tmp_path,
+    ])
+    audio, sample_rate = librosa.load(tmp_path, sr=sr, mono=<span class="keyword">True</span>)
+    <span class="keyword">return</span> audio, sample_rate</code></pre>
+            </div>
+
+            <h3>Step 2: Build the Spectrogram and Extract Peaks</h3>
+            <p>
+                The audio is converted into a time-frequency spectrogram. The most prominent points in that map (local maxima 
+                above a noise threshold) are kept as the "constellation map" of the recording.
+            </p>
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-language">Python - Spectrogram and spectral peak extraction</span>
+                    <button class="copy-button">Copy</button>
+                </div>
+                <pre><code><span class="keyword">def</span> <span class="function">audio_to_spectrogram</span>(audio, n_fft=<span class="number">2048</span>, hop_length=<span class="number">512</span>):
+    stft = librosa.stft(audio, n_fft=n_fft, hop_length=hop_length)
+    <span class="keyword">return</span> np.abs(stft)
+
+
+<span class="keyword">def</span> <span class="function">_find_spectral_peaks</span>(spectrogram, neighborhood_size=<span class="number">20</span>, min_amplitude=<span class="number">10</span>):
+    log_spec = np.log1p(spectrogram)
+
+    local_max = maximum_filter(log_spec, size=neighborhood_size) == log_spec
+    above_threshold = log_spec > np.log1p(min_amplitude)
+
+    freq_idx, time_idx = np.where(local_max & above_threshold)
+    peaks = <span class="builtin">list</span>(<span class="builtin">zip</span>(time_idx, freq_idx, spectrogram[freq_idx, time_idx]))
+    peaks.sort(key=<span class="keyword">lambda</span> x: x[<span class="number">0</span>])
+    <span class="keyword">return</span> peaks</code></pre>
+            </div>
+
+            <h3>Step 3: Generate Hashes</h3>
+            <p>
+                Each peak is paired with the next <code>fan_value</code> peaks in time. The pair of frequencies and the time gap 
+                between them are packed into a single integer hash. This is the fingerprint.
+            </p>
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-language">Python - Combinatorial hash generation</span>
+                    <button class="copy-button">Copy</button>
+                </div>
+                <pre><code><span class="keyword">def</span> <span class="function">generate_hashes</span>(peaks, fan_value=<span class="number">10</span>):
+    hashes = []
+    <span class="keyword">for</span> i, (anchor_time, anchor_freq, _) <span class="keyword">in</span> <span class="builtin">enumerate</span>(peaks):
+        <span class="keyword">for</span> j <span class="keyword">in</span> <span class="builtin">range</span>(<span class="number">1</span>, fan_value + <span class="number">1</span>):
+            <span class="keyword">if</span> i + j >= <span class="builtin">len</span>(peaks):
+                <span class="keyword">break</span>
+            target_time, target_freq, _ = peaks[i + j]
+            time_delta = target_time - anchor_time
+
+            <span class="keyword">if</span> time_delta > <span class="number">1023</span>:
+                <span class="keyword">continue</span>
+
+            hash_value = (
+                (<span class="builtin">int</span>(anchor_freq) << <span class="number">20</span>) |
+                (<span class="builtin">int</span>(target_freq) << <span class="number">10</span>) |
+                (<span class="builtin">int</span>(time_delta) & <span class="number">0x3FF</span>)
+            )
+            hashes.append((hash_value, <span class="builtin">int</span>(anchor_time)))
+    <span class="keyword">return</span> hashes</code></pre>
+            </div>
+            <p>A typical 3-minute song produces roughly 100K to 500K hashes depending on the <code>fan_value</code> setting.</p>
+
+            <h3>Step 4: Match a Query Clip</h3>
+            <p>
+                When a short query clip arrives, it goes through the same pipeline. Its hashes are looked up in the database in 
+                a single batch query. If a song shares the same audio segment, its hashes will align at a consistent time offset. 
+                The most common offset wins.
+            </p>
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-language">Python - Fingerprint matching with time-offset voting</span>
+                    <button class="copy-button">Copy</button>
+                </div>
+                <pre><code><span class="keyword">def</span> <span class="function">match_fingerprint</span>(query_hashes, db_store, hop_length=<span class="number">512</span>, sr=<span class="number">11025</span>):
+    hash_to_qtimes = defaultdict(<span class="builtin">list</span>)
+    <span class="keyword">for</span> hash_value, query_time, _ <span class="keyword">in</span> query_hashes:
+        hash_to_qtimes[hash_value].append(query_time)
+
+    db_results = db_store.query_hashes_batch(<span class="builtin">list</span>(hash_to_qtimes.keys()))
+
+    candidate_offsets = defaultdict(<span class="builtin">list</span>)
+    <span class="keyword">for</span> hash_value, song_id, db_time <span class="keyword">in</span> db_results:
+        <span class="keyword">for</span> query_time <span class="keyword">in</span> hash_to_qtimes[hash_value]:
+            candidate_offsets[song_id].append(db_time - query_time)
+
+    scored = []
+    <span class="keyword">for</span> song_id, offsets <span class="keyword">in</span> candidate_offsets.items():
+        best_offset, aligned_count = Counter(offsets).most_common(<span class="number">1</span>)[<span class="number">0</span>]
+        confidence = aligned_count / <span class="builtin">len</span>(query_hashes)
+        match_time_sec = best_offset * hop_length / sr
+        scored.append((song_id, confidence, match_time_sec))
+
+    <span class="keyword">return</span> <span class="builtin">sorted</span>(scored, key=<span class="keyword">lambda</span> x: x[<span class="number">1</span>], reverse=<span class="keyword">True</span>)</code></pre>
+            </div>
+            <p>
+                The key insight is that noise or partial recordings shift all shared hashes by the same constant. The offset 
+                histogram naturally surfaces the correct match.
+            </p>
+
+            <h2>Installation & Setup</h2>
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-language">Bash - Run from source</span>
+                    <button class="copy-button">Copy</button>
+                </div>
+                <pre><code><span class="comment"># Clone the repository</span>
+git clone https://github.com/inboxpraveen/Audio-Fingerprint.git
+cd Audio-Fingerprint
+
+<span class="comment"># Create a virtual environment</span>
+python -m venv venv
+source venv/bin/activate  <span class="comment"># Windows: venv\Scripts\activate</span>
+
+<span class="comment"># Install dependencies</span>
+pip install -r requirements.txt
+
+<span class="comment"># Run the app</span>
+python run.py</code></pre>
+            </div>
+            <p>
+                FFmpeg must be installed and available on your system <code>PATH</code>. The app starts on <code>localhost</code> 
+                and opens a single-page web interface in your browser.
+            </p>
+
+            <h2>Future Improvements</h2>
+            <ul>
+                <li>Add a Docker image so the setup requires no manual dependency installation</li>
+                <li>Support PostgreSQL-backed fingerprint search at larger scale</li>
+                <li>Add a similarity confidence score display in the UI</li>
+                <li>Explore approximate nearest-neighbor indexing for very large libraries</li>
+                <li>Add a CLI tool for indexing and searching without starting the web server</li>
+            </ul>
+
+            <h2>Closing Note</h2>
+            <p>
+                AudioFP is fully open source under the MIT license. It was built as a learning exercise and shared so that other 
+                developers, students, and AI engineers curious about audio processing can read the code, run it locally, and use 
+                it as a starting point for their own work.
+            </p>
+            <p>
+                If you find it useful, have questions, or want to contribute, feel free to open an issue or pull request on GitHub.
+            </p>
+
+            <div style="margin-top: 3rem; padding: 2rem; background: var(--secondary-bg); border-radius: 15px; border: 1px solid var(--border-color);">
+                <h3 style="margin-top: 0;">Resources & Links</h3>
+                <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1rem; margin-bottom: 2rem;">
+                    <a href="https://github.com/inboxpraveen/Audio-Fingerprint" class="demo-button" style="margin: 0;" target="_blank">GitHub Repository</a>
+                </div>
+                
+                <h4>Tags:</h4>
+                <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 1rem;">
+                    <span class="tech-tag">#AudioFingerprinting</span>
+                    <span class="tech-tag">#Python</span>
+                    <span class="tech-tag">#Flask</span>
+                    <span class="tech-tag">#SignalProcessing</span>
+                    <span class="tech-tag">#librosa</span>
+                    <span class="tech-tag">#FFmpeg</span>
+                    <span class="tech-tag">#SQLite</span>
+                    <span class="tech-tag">#SelfHosted</span>
+                    <span class="tech-tag">#OpenSource</span>
+                    <span class="tech-tag">#Shazam</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer style="margin-top: 4rem;">
+        <div class="container">
+            <p>&copy; <span id="copyright-year"></span> Praveen Kumar. Built with passion for AI & open source community.</p>
+        </div>
+    </footer>
+
+    <script>
+        const mobileMenu = document.getElementById('mobileMenu');
+        const navLinks = document.getElementById('navLinks');
+
+        mobileMenu.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        document.addEventListener('click', function(e) {
+            if (e.target.classList.contains('copy-button')) {
+                const codeBlock = e.target.closest('.code-block');
+                const code = codeBlock.querySelector('pre').textContent;
+                
+                navigator.clipboard.writeText(code).then(() => {
+                    e.target.textContent = 'Copied!';
+                    setTimeout(() => {
+                        e.target.textContent = 'Copy';
+                    }, 2000);
+                });
+            }
+        });
+
+        const navEl = document.querySelector('nav');
+        const onNavScroll = () => {
+            if (window.scrollY > 20) navEl.classList.add('scrolled');
+            else navEl.classList.remove('scrolled');
+        };
+        window.addEventListener('scroll', onNavScroll, { passive: true });
+        onNavScroll();
+
+        window.addEventListener('load', function() {
+            const yearElement = document.getElementById('copyright-year');
+            if (yearElement) {
+                yearElement.textContent = new Date().getFullYear();
+            }
+        });
+    </script>
+</body>
+</html>
