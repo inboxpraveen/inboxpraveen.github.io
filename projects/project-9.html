@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Website - Personal Developer Portfolio | Praveen Kumar</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="A modern, dark-themed developer portfolio built from scratch with vanilla HTML, CSS, and JavaScript. Features a cinematic landing page, project showcase grid with pointer-tracked glow effects, and fully responsive design — no frameworks, no build tools.">
+    <meta name="keywords" content="Portfolio Website, Developer Portfolio, HTML, CSS, JavaScript, Responsive Design, Dark Theme, GitHub Pages, SEO, Open Graph, Open Source">
+    <meta name="author" content="Praveen Kumar">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Portfolio Website - Personal Developer Portfolio">
+    <meta property="og:description" content="A hand-crafted dark-themed developer portfolio with cinematic landing, project showcase grid, pointer-tracked glow cards, and responsive design — built entirely without frameworks.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://inboxpraveen.github.io/projects/project-9.html">
+    <meta property="og:image" content="https://inboxpraveen.github.io/projects/resources/project-9/Main-Page.png">
+    <meta property="og:image:alt" content="Portfolio Website">
+    <meta property="og:site_name" content="Praveen Kumar Portfolio">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Portfolio Website - Personal Developer Portfolio">
+    <meta name="twitter:description" content="Dark-themed developer portfolio built from scratch — cinematic landing, project showcase, responsive design, zero dependencies.">
+    <meta name="twitter:image" content="https://inboxpraveen.github.io/projects/resources/project-9/Main-Page.png">
+    <meta name="twitter:image:alt" content="Portfolio Website">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://inboxpraveen.github.io/projects/project-9.html">
+    
+    <link rel="icon" type="image/x-icon" href="../assests/favicon.ico">
+    <link rel="stylesheet" href="../index.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo" onclick="window.location.href='../index.html'" style="cursor: pointer;">PK</div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../all-projects.html">Projects</a></li>
+                <li><a href="../about.html">About</a></li>
+                <li><a href="https://github.com/inboxpraveen" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+            </ul>
+            <button class="mobile-menu" id="mobileMenu">☰</button>
+        </div>
+    </nav>
+
+    <!-- Project Page - Portfolio Website -->
+    <div class="page-container active">
+        <div class="page-header">
+            <div class="container">
+                <a href="../all-projects.html" class="back-button">← Back to Projects</a>
+                <h1 class="page-title">Portfolio Website</h1>
+                <div class="page-meta">
+                    <div class="meta-item">
+                        <span>📅</span>
+                        <span>Completed: 2025</span>
+                    </div>
+                    <div class="meta-item">
+                        <span>⏱️</span>
+                        <span>Actively Maintained</span>
+                    </div>
+                    <div class="meta-item">
+                        <span>👥</span>
+                        <span>Team Size: Solo</span>
+                    </div>
+                    <div class="meta-item">
+                        <span>🏷️</span>
+                        <span>HTML • CSS • JavaScript • GitHub Pages</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2>Project Overview</h2>
+            <p>
+                This is my personal portfolio website — the site you are currently browsing. It is a hand-crafted, 
+                dark-themed developer portfolio built entirely from scratch using vanilla HTML, CSS, and JavaScript 
+                with zero external frameworks or build tools.
+            </p>
+
+            <div style="text-align: center; margin: 2rem 0;">
+                <img src="./resources/project-9/Main-Page.png" alt="Portfolio Website - Landing Page" style="max-width: 100%; height: auto; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);">
+            </div>
+
+            <p>
+                The site serves as a centralized place to present my AI and machine learning projects with in-depth 
+                write-ups, technical breakdowns, and screenshots. It is hosted on GitHub Pages and designed to load 
+                fast, look clean, and work well on any device.
+            </p>
+
+            <h2>Why I Built This</h2>
+            <p>
+                I wanted a single place where all my projects could live with proper context — not just a link to a 
+                GitHub repository, but a full explanation of what each project does, why I built it, how it works 
+                under the hood, and what I learned along the way.
+            </p>
+            <p>
+                GitHub README files are great for quick setup instructions, but they are not the right format for 
+                telling the story behind a project. A portfolio site lets me control the presentation, add 
+                screenshots, walk through architecture decisions, and give each project the space it deserves.
+            </p>
+            <p>
+                I also wanted to prove to myself that a polished, modern-looking website does not require React, 
+                Next.js, Tailwind, or any other framework. Vanilla HTML, CSS, and JavaScript are more than enough 
+                when you know what you are doing.
+            </p>
+
+            <h2>The Problem</h2>
+            <p>
+                Developer portfolios often fall into one of two traps: they are either overly minimal (a list of 
+                GitHub links with no context) or overengineered with heavy frameworks that add complexity without 
+                adding value.
+            </p>
+            <p>
+                I wanted something in between — a site that is visually polished and pleasant to read, but simple 
+                to maintain. No build step, no package.json, no CI pipeline. Just HTML files that I can edit 
+                directly and push to GitHub. The site should also load instantly, work perfectly on mobile, and 
+                score well on SEO without any plugins or tooling.
+            </p>
+
+            <h2>Key Features</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin: 2rem 0;">
+                <div style="background: var(--secondary-bg); padding: 1.5rem; border-radius: 10px; border: 1px solid var(--border-color);">
+                    <h3 style="margin-top: 0; color: var(--accent-color);">Cinematic Landing</h3>
+                    <p>Full-viewport landing page with typing animation, glitch effect on the logo, and a clean call-to-action layout</p>
+                </div>
+                <div style="background: var(--secondary-bg); padding: 1.5rem; border-radius: 10px; border: 1px solid var(--border-color);">
+                    <h3 style="margin-top: 0; color: var(--accent-color);">Project Showcase Grid</h3>
+                    <p>Card-based grid with thumbnail images, tech tags, and pointer-tracked glow effects on hover</p>
+                </div>
+                <div style="background: var(--secondary-bg); padding: 1.5rem; border-radius: 10px; border: 1px solid var(--border-color);">
+                    <h3 style="margin-top: 0; color: var(--accent-color);">Deep Project Pages</h3>
+                    <p>Each project has a dedicated page with full write-up, screenshots, code samples, and tech stack breakdown</p>
+                </div>
+                <div style="background: var(--secondary-bg); padding: 1.5rem; border-radius: 10px; border: 1px solid var(--border-color);">
+                    <h3 style="margin-top: 0; color: var(--accent-color);">Zero Dependencies</h3>
+                    <p>No frameworks, no bundlers, no build step — vanilla HTML, CSS, and JS that deploys directly to GitHub Pages</p>
+                </div>
+            </div>
+
+            <ul>
+                <li><strong>Fully responsive</strong> — adapts gracefully from mobile to ultra-wide desktop screens</li>
+                <li><strong>Dark theme by default</strong> with carefully chosen contrast ratios for readability</li>
+                <li><strong>SEO-optimized</strong> with Open Graph, Twitter Cards, canonical URLs, and structured meta tags on every page</li>
+                <li><strong>Code blocks with copy buttons</strong> on project pages for easy sharing of technical content</li>
+                <li><strong>Intersection Observer animations</strong> for smooth fade-in effects as content enters the viewport</li>
+                <li><strong>Mobile hamburger menu</strong> with click-outside-to-close behavior</li>
+            </ul>
+
+            <h2>Screenshots</h2>
+
+            <h3>Landing Page</h3>
+            <div style="text-align: center; margin: 2rem 0;">
+                <img src="./resources/project-9/Main-Page.png" alt="Portfolio - Landing Page" style="max-width: 100%; height: auto; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);">
+            </div>
+
+            <h3>Projects Page</h3>
+            <div style="text-align: center; margin: 2rem 0;">
+                <img src="./resources/project-9/Projects-Page.png" alt="Portfolio - Projects Page" style="max-width: 100%; height: auto; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);">
+            </div>
+
+            <h3>About Page</h3>
+            <div style="text-align: center; margin: 2rem 0;">
+                <img src="./resources/project-9/About-Page.png" alt="Portfolio - About Page" style="max-width: 100%; height: auto; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);">
+            </div>
+
+            <h2>Site Architecture</h2>
+            <p>The site is structured as a set of static HTML pages with a single shared stylesheet:</p>
+
+            <ul>
+                <li><strong>index.html</strong> — Landing page with typing animation and navigation links</li>
+                <li><strong>all-projects.html</strong> — Project showcase grid with card-based layout</li>
+                <li><strong>about.html</strong> — Personal introduction, skills, and contact links</li>
+                <li><strong>projects/project-N.html</strong> — Individual project deep-dive pages (one per project)</li>
+                <li><strong>index.css</strong> — Single stylesheet powering the entire site's design system</li>
+            </ul>
+
+            <p>
+                There is no routing library, no templating engine, and no JavaScript framework. Each page is a 
+                self-contained HTML file that links to the shared CSS. Navigation is plain anchor tags. This makes 
+                the site trivial to deploy — push to <code>main</code> and GitHub Pages serves it immediately.
+            </p>
+
+            <h2>Design Decisions</h2>
+
+            <h3>Dark Theme as Default</h3>
+            <p>
+                The entire site uses a dark color palette with <code>#07090d</code> as the primary background and 
+                <code>#00d4ff</code> as the accent color. This was a deliberate choice — most developer portfolios 
+                default to light themes, and a well-executed dark theme stands out while being easier on the eyes 
+                during extended reading.
+            </p>
+
+            <h3>CSS Custom Properties for Consistency</h3>
+            <p>
+                All colors, spacings, and surface styles are defined as CSS custom properties in <code>:root</code>. 
+                This means changing the accent color or background tone is a single-line edit that propagates across 
+                every page automatically.
+            </p>
+
+            <h3>Pointer-Tracked Glow on Project Cards</h3>
+            <p>
+                The project cards on the showcase page have a subtle radial glow that follows the mouse cursor. 
+                This is done by tracking <code>pointermove</code> events and setting CSS custom properties 
+                (<code>--glow-x</code>, <code>--glow-y</code>) that a radial gradient uses for positioning. 
+                It adds a layer of interactivity without any external library.
+            </p>
+
+            <h2>Tech Stack</h2>
+            <div class="tech-stack">
+                <div class="tech-category">
+                    <h4>Frontend</h4>
+                    <div class="tech-list">
+                        <span class="tech-item">HTML5</span>
+                        <span class="tech-item">CSS3</span>
+                        <span class="tech-item">Vanilla JavaScript</span>
+                    </div>
+                </div>
+                <div class="tech-category">
+                    <h4>Design System</h4>
+                    <div class="tech-list">
+                        <span class="tech-item">CSS Custom Properties</span>
+                        <span class="tech-item">CSS Grid</span>
+                        <span class="tech-item">Flexbox</span>
+                        <span class="tech-item">clamp() Typography</span>
+                    </div>
+                </div>
+                <div class="tech-category">
+                    <h4>Interactions</h4>
+                    <div class="tech-list">
+                        <span class="tech-item">Intersection Observer API</span>
+                        <span class="tech-item">Pointer Events</span>
+                        <span class="tech-item">Clipboard API</span>
+                    </div>
+                </div>
+                <div class="tech-category">
+                    <h4>Hosting & SEO</h4>
+                    <div class="tech-list">
+                        <span class="tech-item">GitHub Pages</span>
+                        <span class="tech-item">Open Graph</span>
+                        <span class="tech-item">Twitter Cards</span>
+                        <span class="tech-item">Canonical URLs</span>
+                    </div>
+                </div>
+            </div>
+
+            <h2>Core Implementation Details</h2>
+
+            <h3>Typing Animation on Landing Page</h3>
+            <p>
+                The landing page hero title uses a custom typing effect that reveals the name character by character 
+                with a blinking cursor. Once complete, the cursor fades out and the final text is set cleanly.
+            </p>
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-language">JavaScript - Typing effect on landing page</span>
+                    <button class="copy-button">Copy</button>
+                </div>
+                <pre><code><span class="keyword">function</span> <span class="function">typeWriter</span>(element, text, speed = <span class="number">55</span>) {
+    <span class="keyword">let</span> i = <span class="number">0</span>;
+    element.innerHTML = <span class="string">''</span>;
+    <span class="keyword">function</span> <span class="function">type</span>() {
+        <span class="keyword">if</span> (i < text.length) {
+            element.innerHTML = text.slice(<span class="number">0</span>, i + <span class="number">1</span>)
+                + <span class="string">'&lt;span style="border-right:2px solid #00d4ff;'</span>
+                + <span class="string">'animation:blink 0.7s step-end infinite;"&gt;&lt;/span&gt;'</span>;
+            i++;
+            setTimeout(type, speed);
+        } <span class="keyword">else</span> {
+            setTimeout(() => { element.innerHTML = text; }, <span class="number">800</span>);
+        }
+    }
+    type();
+}</code></pre>
+            </div>
+
+            <h3>Pointer-Tracked Glow Effect</h3>
+            <p>
+                Each project card tracks the mouse position and exposes it as CSS custom properties. The card's 
+                background uses a radial gradient positioned at those coordinates to create a dynamic glow.
+            </p>
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-language">JavaScript - Pointer-tracked glow on project cards</span>
+                    <button class="copy-button">Copy</button>
+                </div>
+                <pre><code>document.querySelectorAll(<span class="string">'.project-card'</span>).forEach(card => {
+    card.addEventListener(<span class="string">'pointermove'</span>, (e) => {
+        <span class="keyword">const</span> r = card.getBoundingClientRect();
+        card.style.setProperty(
+            <span class="string">'--glow-x'</span>,
+            ((e.clientX - r.left) / r.width) * <span class="number">100</span> + <span class="string">'%'</span>
+        );
+        card.style.setProperty(
+            <span class="string">'--glow-y'</span>,
+            ((e.clientY - r.top) / r.height) * <span class="number">100</span> + <span class="string">'%'</span>
+        );
+    });
+});</code></pre>
+            </div>
+
+            <h3>Responsive Navigation</h3>
+            <p>
+                The navigation collapses into a hamburger menu on smaller screens. Clicking outside the menu 
+                dismisses it — a small UX detail that many custom navs miss.
+            </p>
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-language">JavaScript - Mobile menu with click-outside dismiss</span>
+                    <button class="copy-button">Copy</button>
+                </div>
+                <pre><code>mobileMenu.addEventListener(<span class="string">'click'</span>, (e) => {
+    e.stopPropagation();
+    <span class="keyword">const</span> isOpen = navLinks.classList.toggle(<span class="string">'active'</span>);
+    mobileMenu.setAttribute(<span class="string">'aria-expanded'</span>, isOpen);
+    mobileMenu.textContent = isOpen ? <span class="string">'✕'</span> : <span class="string">'☰'</span>;
+});
+
+document.addEventListener(<span class="string">'click'</span>, (e) => {
+    <span class="keyword">if</span> (!navLinks.contains(e.target) && !mobileMenu.contains(e.target)) {
+        navLinks.classList.remove(<span class="string">'active'</span>);
+        mobileMenu.textContent = <span class="string">'☰'</span>;
+    }
+});</code></pre>
+            </div>
+
+            <h3>Fade-in on Scroll</h3>
+            <p>
+                Elements with the <code>.fade-in</code> class start invisible and transition into view when the 
+                Intersection Observer detects them entering the viewport. Each element is observed once and then 
+                unobserved to avoid repeated triggers.
+            </p>
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-language">JavaScript - Intersection Observer for scroll animations</span>
+                    <button class="copy-button">Copy</button>
+                </div>
+                <pre><code><span class="keyword">const</span> observer = <span class="keyword">new</span> IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        <span class="keyword">if</span> (entry.isIntersecting) {
+            entry.target.classList.add(<span class="string">'visible'</span>);
+            observer.unobserve(entry.target);
+        }
+    });
+}, { threshold: <span class="number">0.1</span>, rootMargin: <span class="string">'0px 0px -10px 0px'</span> });
+
+document.querySelectorAll(<span class="string">'.fade-in'</span>).forEach(el => observer.observe(el));</code></pre>
+            </div>
+
+            <h2>My Contribution</h2>
+            <p>I designed and built the entire site from scratch.</p>
+            <ul>
+                <li>Designed the visual language — dark theme, accent colors, typography scale, and spacing system</li>
+                <li>Built the CSS design system using custom properties, grid, flexbox, and clamp-based fluid typography</li>
+                <li>Implemented the cinematic landing page with typing animation and logo glitch effect</li>
+                <li>Created the project card grid with pointer-tracked glow effect and fade-in scroll animations</li>
+                <li>Built individual project page templates with structured sections for consistent deep-dive write-ups</li>
+                <li>Wrote all project content including technical breakdowns, code walkthroughs, and architecture explanations</li>
+                <li>Optimized SEO with Open Graph, Twitter Cards, canonical URLs, and descriptive meta tags on every page</li>
+                <li>Ensured full responsiveness across mobile, tablet, and desktop breakpoints</li>
+            </ul>
+
+            <h2>Challenges & Learnings</h2>
+
+            <p>
+                <strong>Building a design system without a framework</strong><br>
+                Without Tailwind or a component library, every design decision had to be encoded manually in CSS. 
+                This forced me to think carefully about reusable patterns. CSS custom properties became essential 
+                for maintaining consistency — once I established the token system, adding new pages became 
+                straightforward because the visual language was already defined.
+            </p>
+
+            <p>
+                <strong>Making dark themes readable</strong><br>
+                Dark backgrounds are easy to get wrong. Too much contrast hurts the eyes; too little makes text 
+                invisible. I spent time tuning the surface hierarchy (<code>--primary-bg</code>, 
+                <code>--secondary-bg</code>, <code>--accent-bg</code>) and text colors to ensure every section 
+                has clear visual separation without harsh white-on-black contrast.
+            </p>
+
+            <p>
+                <strong>Responsive layout without a grid framework</strong><br>
+                Using CSS Grid and Flexbox directly, without Bootstrap or a utility framework, meant I had to 
+                understand the layout algorithms deeply. The project card grid uses 
+                <code>repeat(auto-fit, minmax(250px, 1fr))</code> to automatically adapt from one column on 
+                mobile to three on desktop — no media queries needed for that specific layout.
+            </p>
+
+            <p>
+                <strong>Writing compelling project content</strong><br>
+                The hardest part of a portfolio is not the code — it is the writing. Each project page needed 
+                to explain the what, why, and how in a way that is interesting to both technical and non-technical 
+                readers. Iterating on the content structure (overview, motivation, problem, features, tech stack, 
+                challenges) took longer than building the site itself.
+            </p>
+
+            <h2>Project Structure</h2>
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-language">File structure</span>
+                    <button class="copy-button">Copy</button>
+                </div>
+                <pre><code>inboxpraveen.github.io/
+├── index.html              # Landing page
+├── all-projects.html       # Project showcase grid
+├── about.html              # About & contact page
+├── index.css               # Shared design system
+├── assests/
+│   ├── favicon.ico
+│   ├── Resume.pdf
+│   └── Original.png
+└── projects/
+    ├── project-1.html      # Context Search Engine
+    ├── project-2.html      # Docuvera - Loss360
+    ├── ...
+    ├── project-9.html      # This page (Portfolio Website)
+    └── resources/
+        ├── project-1/      # Screenshots per project
+        ├── project-2/
+        ├── ...
+        └── project-9/</code></pre>
+            </div>
+
+            <h2>Future Improvements</h2>
+            <ul>
+                <li>Add a blog section for long-form technical articles and tutorials</li>
+                <li>Implement a light/dark theme toggle with localStorage persistence</li>
+                <li>Add project filtering and search on the all-projects page</li>
+                <li>Create an RSS feed for project updates</li>
+                <li>Add page transition animations between project pages</li>
+                <li>Explore converting to a static site generator while keeping the zero-dependency philosophy</li>
+            </ul>
+
+            <h2>Closing Note</h2>
+            <p>
+                This portfolio is a living project that grows with every new thing I build. It is open source, 
+                and the entire codebase is available on GitHub. If you are building your own portfolio and want 
+                to reference the structure, design system, or project page template, feel free to explore the 
+                repository.
+            </p>
+            <p>
+                Sometimes the simplest tools are the most effective. This site is proof that you do not need a 
+                JavaScript framework to build something that looks good and works well.
+            </p>
+
+            <div style="margin-top: 3rem; padding: 2rem; background: var(--secondary-bg); border-radius: 15px; border: 1px solid var(--border-color);">
+                <h3 style="margin-top: 0;">Resources & Links</h3>
+                <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1rem; margin-bottom: 2rem;">
+                    <a href="https://inboxpraveen.github.io/" class="demo-button" style="margin: 0;" target="_blank">Live Website</a>
+                    <a href="https://github.com/inboxpraveen/inboxpraveen.github.io" class="demo-button" style="margin: 0;" target="_blank">GitHub Repository</a>
+                </div>
+                
+                <h4>Tags:</h4>
+                <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 1rem;">
+                    <span class="tech-tag">#Portfolio</span>
+                    <span class="tech-tag">#HTML</span>
+                    <span class="tech-tag">#CSS</span>
+                    <span class="tech-tag">#JavaScript</span>
+                    <span class="tech-tag">#DarkTheme</span>
+                    <span class="tech-tag">#ResponsiveDesign</span>
+                    <span class="tech-tag">#GitHubPages</span>
+                    <span class="tech-tag">#ZeroDependencies</span>
+                    <span class="tech-tag">#OpenSource</span>
+                    <span class="tech-tag">#SEO</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer style="margin-top: 4rem;">
+        <div class="container">
+            <p>&copy; <span id="copyright-year"></span> Praveen Kumar. Built with passion for AI & open source community.</p>
+        </div>
+    </footer>
+
+    <script>
+        const mobileMenu = document.getElementById('mobileMenu');
+        const navLinks = document.getElementById('navLinks');
+
+        mobileMenu.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        document.addEventListener('click', function(e) {
+            if (e.target.classList.contains('copy-button')) {
+                const codeBlock = e.target.closest('.code-block');
+                const code = codeBlock.querySelector('pre').textContent;
+                
+                navigator.clipboard.writeText(code).then(() => {
+                    e.target.textContent = 'Copied!';
+                    setTimeout(() => {
+                        e.target.textContent = 'Copy';
+                    }, 2000);
+                });
+            }
+        });
+
+        const navEl = document.querySelector('nav');
+        const onNavScroll = () => {
+            if (window.scrollY > 20) navEl.classList.add('scrolled');
+            else navEl.classList.remove('scrolled');
+        };
+        window.addEventListener('scroll', onNavScroll, { passive: true });
+        onNavScroll();
+
+        window.addEventListener('load', function() {
+            const yearElement = document.getElementById('copyright-year');
+            if (yearElement) {
+                yearElement.textContent = new Date().getFullYear();
+            }
+        });
+    </script>
+</body>
+</html>
