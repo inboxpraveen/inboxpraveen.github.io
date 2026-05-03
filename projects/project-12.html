@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skin Cancer Detection - Deep Learning for Dermatology | Praveen Kumar</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="A production-grade deep learning system for automated skin lesion classification using the HAM10000 dataset. Features custom CNN and ResNet architectures, real-time camera inference, and a REST API for detecting seven types of skin lesions.">
+    <meta name="keywords" content="Skin Cancer Detection, Deep Learning, HAM10000, CNN, ResNet, TensorFlow, Keras, Medical AI, Computer Vision, Image Classification, Dermatology AI, Python">
+    <meta name="author" content="Praveen Kumar">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Skin Cancer Detection - Deep Learning for Dermatology">
+    <meta property="og:description" content="Automated skin lesion classification using custom CNN and ResNet architectures on the HAM10000 dataset. Includes training pipeline, evaluation, real-time camera service, and REST API.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://inboxpraveen.github.io/projects/project-12.html">
+    <meta property="og:image" content="https://inboxpraveen.github.io/projects/resources/project-12/Header.png">
+    <meta property="og:image:alt" content="Skin Cancer Detection System Architecture">
+    <meta property="og:site_name" content="Praveen Kumar Portfolio">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Skin Cancer Detection - Deep Learning for Dermatology">
+    <meta name="twitter:description" content="Production-grade deep learning system for classifying 7 types of skin lesions using custom CNN and ResNet on HAM10000 dataset.">
+    <meta name="twitter:image" content="https://inboxpraveen.github.io/projects/resources/project-12/Header.png">
+    <meta name="twitter:image:alt" content="Skin Cancer Detection System Architecture">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://inboxpraveen.github.io/projects/project-12.html">
+    
+    <link rel="icon" type="image/x-icon" href="../assests/favicon.ico">
+    <link rel="stylesheet" href="../index.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo" onclick="window.location.href='../index.html'" style="cursor: pointer;">PK</div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../all-projects.html">Projects</a></li>
+                <li><a href="../about.html">About</a></li>
+                <li><a href="https://github.com/inboxpraveen" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+            </ul>
+            <button class="mobile-menu" id="mobileMenu">☰</button>
+        </div>
+    </nav>
+
+    <!-- Project Page - Skin Cancer Detection -->
+    <div class="page-container active">
+        <div class="page-header">
+            <div class="container">
+                <a href="../all-projects.html" class="back-button">← Back to Projects</a>
+                <h1 class="page-title">Skin Cancer Detection</h1>
+                <div class="page-meta">
+                    <div class="meta-item">
+                        <span>📅</span>
+                        <span>Completed: 2024</span>
+                    </div>
+                    <div class="meta-item">
+                        <span>⏱️</span>
+                        <span>Side Project</span>
+                    </div>
+                    <div class="meta-item">
+                        <span>👥</span>
+                        <span>Team Size: Solo</span>
+                    </div>
+                    <div class="meta-item">
+                        <span>🏷️</span>
+                        <span>TensorFlow • Keras • Flask • OpenCV</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2>Project Overview</h2>
+            <p>
+                This is a production-grade deep learning system for automated skin lesion classification. It uses 
+                the HAM10000 dataset to train custom CNN and ResNet architectures that classify dermoscopic images 
+                into seven types of skin lesions. The system covers the full ML lifecycle: data loading and 
+                augmentation, model training with checkpointing, comprehensive evaluation, single-image and batch 
+                inference, a real-time camera service, and a REST API.
+            </p>
+
+            <div style="text-align: center; margin: 2rem 0;">
+                <img src="./resources/project-12/Header.png" alt="Skin Cancer Detection - System Overview" style="max-width: 100%; height: auto; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);">
+            </div>
+
+            <p>
+                The project follows a modular design where each component has a single, well-defined responsibility. 
+                All hyperparameters are centralized in a single config file, training runs are logged with timestamps 
+                and configurations, and the system includes proper error handling and resource management throughout.
+            </p>
+
+            <h2>Why I Built This</h2>
+            <p>
+                Skin cancer is one of the most common cancers worldwide, and early detection dramatically improves 
+                treatment outcomes. I wanted to build a complete, end-to-end deep learning system that goes beyond 
+                a notebook experiment - something that could actually be deployed as a tool for preliminary screening.
+            </p>
+            <p>
+                This project also gave me a reason to implement custom CNN architectures from scratch, work with 
+                medical imaging data, build proper training and evaluation pipelines, and package everything with 
+                a camera service and REST API for real-world inference. It is designed to be extensible so that 
+                more advanced architectures like EfficientNet or Vision Transformers can be plugged in with minimal 
+                changes.
+            </p>
+
+            <h2>The Problem</h2>
+            <p>
+                Classifying skin lesions from dermoscopic images is challenging even for trained dermatologists. 
+                The seven lesion types in the HAM10000 dataset have significant visual overlap, and the dataset 
+                is heavily imbalanced with melanocytic nevi dominating the distribution.
+            </p>
+            <p>This project tackles the problem by:</p>
+            <ul>
+                <li>Building custom CNN architectures that avoid dense layers entirely, using 1x1 convolutions to preserve spatial information</li>
+                <li>Implementing a custom ResNet with skip connections and L2 regularization for better generalization</li>
+                <li>Applying data augmentation (rotation, zoom, shifts, flips) to handle the class imbalance</li>
+                <li>Providing a modular pipeline that makes it easy to swap in transfer learning models for higher accuracy</li>
+                <li>Including deployment options: real-time camera feed, REST API, and batch processing</li>
+            </ul>
+
+            <h2>System Architecture</h2>
+            <div style="text-align: center; margin: 2rem 0;">
+                <img src="./resources/project-12/Architecture.png" alt="Skin Cancer Detection - System Architecture" style="max-width: 100%; height: auto; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);">
+            </div>
+
+            <h2>Key Features</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin: 2rem 0;">
+                <div style="background: var(--secondary-bg); padding: 1.5rem; border-radius: 10px; border: 1px solid var(--border-color);">
+                    <h3 style="margin-top: 0; color: var(--accent-color);">Custom CNN Architecture</h3>
+                    <p>Sequential CNN with ~1.2M parameters. Uses 1x1 and kernel-sized convolutions instead of dense layers, progressive filter growth (32→256), and batch normalization throughout.</p>
+                </div>
+                <div style="background: var(--secondary-bg); padding: 1.5rem; border-radius: 10px; border: 1px solid var(--border-color);">
+                    <h3 style="margin-top: 0; color: var(--accent-color);">Custom ResNet</h3>
+                    <p>Residual network with ~2.5M parameters, skip connections via concatenation, L2 regularization, flexible input sizes, and transition layers with 1x1 convolutions.</p>
+                </div>
+                <div style="background: var(--secondary-bg); padding: 1.5rem; border-radius: 10px; border: 1px solid var(--border-color);">
+                    <h3 style="margin-top: 0; color: var(--accent-color);">Cyclic Learning Rate</h3>
+                    <p>Custom Keras callback implementing cyclic LR policy with triangular, triangular2, and exp_range modes to help escape local minima and speed up convergence.</p>
+                </div>
+                <div style="background: var(--secondary-bg); padding: 1.5rem; border-radius: 10px; border: 1px solid var(--border-color);">
+                    <h3 style="margin-top: 0; color: var(--accent-color);">Data Pipeline</h3>
+                    <p>Complete data loading with CSV metadata handling, train/val/test splitting, per-channel normalization using training statistics, and real-time augmentation via ImageDataGenerator.</p>
+                </div>
+                <div style="background: var(--secondary-bg); padding: 1.5rem; border-radius: 10px; border: 1px solid var(--border-color);">
+                    <h3 style="margin-top: 0; color: var(--accent-color);">Real-Time Camera Service</h3>
+                    <p>Webcam-based live detection at ~5-10 FPS with visual overlays showing class name, confidence, and top-3 predictions. Supports screenshot capture and keyboard controls.</p>
+                </div>
+                <div style="background: var(--secondary-bg); padding: 1.5rem; border-radius: 10px; border: 1px solid var(--border-color);">
+                    <h3 style="margin-top: 0; color: var(--accent-color);">REST API</h3>
+                    <p>Flask-based API with health check, file upload, and base64 image endpoints. CORS enabled, JSON responses, and support for multiple image formats.</p>
+                </div>
+            </div>
+
+            <h2>How It Works</h2>
+            <p>
+                The system is organized into an offline training phase and an online inference phase. Data 
+                preprocessing, model training, and evaluation happen offline, while the camera service and REST API 
+                handle real-time predictions.
+            </p>
+            <ol>
+                <li><strong>Data loading:</strong> The pipeline reads metadata from a CSV file, handles missing values (fills age with mean), maps image IDs to file paths, and loads images resized to 90×120×3.</li>
+                <li><strong>Splitting and normalization:</strong> Data is split into train (84%), validation (15%), and test (1%) sets. Images are normalized using the training set's mean (~160.0) and standard deviation (~46.7) for zero-centered, unit-variance inputs.</li>
+                <li><strong>Augmentation:</strong> During training, ImageDataGenerator applies random rotations (up to 10°), zoom (up to 10%), width/height shifts (up to 10%), and horizontal flips on the fly.</li>
+                <li><strong>Training:</strong> The model trains with callbacks for checkpointing (best validation accuracy), CSV logging, TensorBoard, learning rate scheduling, and early stopping. All outputs are saved to timestamped log directories.</li>
+                <li><strong>Evaluation:</strong> The evaluator computes accuracy, precision, recall, F1 score (macro and weighted), generates a confusion matrix, and produces a full classification report for all seven lesion classes.</li>
+                <li><strong>Inference:</strong> Single images or batches are preprocessed with the same normalization pipeline and fed through the trained model. The output includes the predicted class, confidence score, and full probability distribution.</li>
+                <li><strong>Deployment:</strong> The camera service runs predictions on live webcam frames, while the Flask API accepts image uploads for integration with web or mobile applications.</li>
+            </ol>
+
+            <h2>Model Architectures</h2>
+
+            <h3>Sequential CNN (~1.2M parameters, ~75% accuracy)</h3>
+            <p>
+                The baseline CNN uses nine convolutional layers organized in three blocks of three, with progressive 
+                filter growth from 32 to 256. Each convolution is followed by batch normalization and ReLU. MaxPool 
+                and 20% dropout separate the blocks. The key design decision is avoiding dense layers entirely - 
+                the final classification uses a 1×1 convolution for channel reduction and a kernel-sized convolution 
+                that maps directly to the seven output classes.
+            </p>
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-language">Sequential CNN Architecture</span>
+                    <button class="copy-button">Copy</button>
+                </div>
+                <pre><code>Input (90, 120, 3)
+    │
+    ├── Conv2D(32, 3x3) + BatchNorm + ReLU
+    ├── Conv2D(64, 3x3) + BatchNorm + ReLU
+    ├── Conv2D(64, 3x3) + BatchNorm + ReLU
+    ├── MaxPool(2x2) + Dropout(0.2)
+    │
+    ├── Conv2D(64, 3x3) + BatchNorm + ReLU
+    ├── Conv2D(128, 3x3) + BatchNorm + ReLU
+    ├── Conv2D(128, 3x3) + BatchNorm + ReLU
+    ├── MaxPool(2x2) + Dropout(0.2)
+    │
+    ├── Conv2D(128, 3x3) + BatchNorm + ReLU
+    ├── Conv2D(256, 3x3) + BatchNorm + ReLU
+    ├── Conv2D(256, 3x3) + BatchNorm + ReLU
+    ├── MaxPool(2x2) + Dropout(0.2)
+    │
+    ├── Conv2D(7, 1x1) + BatchNorm + ReLU
+    ├── Conv2D(7, 6x9)
+    ├── Flatten
+    └── Softmax → Output (7 classes)</code></pre>
+            </div>
+
+            <h3>Custom ResNet (~2.5M parameters, ~71% accuracy)</h3>
+            <p>
+                The ResNet variant uses residual blocks where the input is concatenated with the processed output 
+                (skip connections). Each block has two Conv+BN+ReLU layers, and a 1×1 transition convolution reduces 
+                channels after concatenation. L2 regularization (0.001) is applied to all convolutional layers. The 
+                network ends with GlobalAveragePooling2D, which allows flexible input sizes.
+            </p>
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-language">ResNet Architecture with Skip Connections</span>
+                    <button class="copy-button">Copy</button>
+                </div>
+                <pre><code>Input (flexible size, default 90x120x3)
+    │
+    ├── Conv2D(32, 3x3) + BatchNorm + ReLU
+    │
+    ├── ResBlock 1 (32 → 64 filters) + MaxPool
+    ├── ResBlock 2 (64 → 128 filters) + MaxPool
+    ├── ResBlock 3 (128 → 256 filters) + MaxPool
+    ├── ResBlock 4 (256 → 512 filters, no pool)
+    │
+    ├── Conv2D(7, 1x1) [channel reduction]
+    ├── GlobalAveragePooling2D
+    └── Softmax → Output (7 classes)
+
+ResBlock Structure:
+    Input ──────────────────────┐
+      │                         │
+      ├── Conv2D + BN + ReLU    │
+      ├── Conv2D + BN + ReLU    │
+      │                         │
+      └── Concatenate ──────────┘
+           │
+           ├── Conv2D(1x1) [transition]
+           ├── BatchNorm + ReLU
+           └── MaxPool (except final block)</code></pre>
+            </div>
+
+            <h2>Core Code Snippets</h2>
+
+            <h3>Data preprocessing and normalization</h3>
+            <p>
+                Images are normalized using training set statistics so the model sees zero-centered, unit-variance 
+                inputs. This normalization must be applied consistently at both training and inference time.
+            </p>
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-language">Python - Data normalization pipeline</span>
+                    <button class="copy-button">Copy</button>
+                </div>
+                <pre><code><span class="comment"># Compute training set statistics</span>
+train_mean = X_train.mean()   <span class="comment"># ≈ 160.0</span>
+train_std  = X_train.std()    <span class="comment"># ≈ 46.7</span>
+
+<span class="comment"># Normalize all splits using training statistics</span>
+X_train = (X_train - train_mean) / train_std
+X_val   = (X_val   - train_mean) / train_std
+X_test  = (X_test  - train_mean) / train_std
+
+<span class="comment"># Convert labels to one-hot encoding</span>
+y_train = to_categorical(y_train, num_classes=<span class="number">7</span>)
+y_val   = to_categorical(y_val,   num_classes=<span class="number">7</span>)
+y_test  = to_categorical(y_test,  num_classes=<span class="number">7</span>)</code></pre>
+            </div>
+
+            <h3>Cyclic learning rate callback</h3>
+            <p>
+                The cyclic LR oscillates between a base and max learning rate, helping the optimizer escape 
+                local minima. The ResNet model uses this with a triangular policy cycling between 0.001 and 0.1.
+            </p>
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-language">Python - CyclicLR Keras callback</span>
+                    <button class="copy-button">Copy</button>
+                </div>
+                <pre><code><span class="keyword">class</span> CyclicLR(Callback):
+    <span class="keyword">def</span> __init__(<span class="keyword">self</span>, base_lr=<span class="number">0.001</span>, max_lr=<span class="number">0.1</span>,
+                 step_size=<span class="number">2000</span>, mode=<span class="string">'triangular'</span>):
+        <span class="keyword">self</span>.base_lr = base_lr
+        <span class="keyword">self</span>.max_lr = max_lr
+        <span class="keyword">self</span>.step_size = step_size
+        <span class="keyword">self</span>.mode = mode
+
+    <span class="keyword">def</span> on_batch_begin(<span class="keyword">self</span>, batch, logs=<span class="keyword">None</span>):
+        cycle = np.floor(<span class="number">1</span> + <span class="keyword">self</span>.iterations / (<span class="number">2</span> * <span class="keyword">self</span>.step_size))
+        x = np.abs(<span class="keyword">self</span>.iterations / <span class="keyword">self</span>.step_size - <span class="number">2</span> * cycle + <span class="number">1</span>)
+        lr = <span class="keyword">self</span>.base_lr + (<span class="keyword">self</span>.max_lr - <span class="keyword">self</span>.base_lr) * max(<span class="number">0</span>, <span class="number">1</span> - x)
+        K.set_value(<span class="keyword">self</span>.model.optimizer.lr, lr)</code></pre>
+            </div>
+
+            <h3>Inference prediction output</h3>
+            <p>
+                The predictor returns structured results including the predicted class, confidence, and the 
+                full probability distribution across all seven lesion types.
+            </p>
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-language">Python - Prediction output format</span>
+                    <button class="copy-button">Copy</button>
+                </div>
+                <pre><code>result = predictor.predict(image)
+
+<span class="comment"># Output format:</span>
+{
+    <span class="string">'class_code'</span>: <span class="string">'nv'</span>,
+    <span class="string">'class_name'</span>: <span class="string">'Melanocytic nevi'</span>,
+    <span class="string">'class_index'</span>: <span class="number">5</span>,
+    <span class="string">'confidence'</span>: <span class="number">0.856</span>,
+    <span class="string">'all_probabilities'</span>: {
+        <span class="string">'Melanocytic nevi'</span>: <span class="number">0.856</span>,
+        <span class="string">'Melanoma'</span>: <span class="number">0.089</span>,
+        <span class="string">'Benign keratosis-like lesions'</span>: <span class="number">0.032</span>,
+        <span class="string">'Basal cell carcinoma'</span>: <span class="number">0.012</span>,
+        ...
+    }
+}</code></pre>
+            </div>
+
+            <h3>REST API usage</h3>
+            <p>
+                The Flask API accepts image uploads and returns predictions in JSON format. It supports both 
+                multipart file upload and base64-encoded images.
+            </p>
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-language">Python - API client example</span>
+                    <button class="copy-button">Copy</button>
+                </div>
+                <pre><code><span class="keyword">import</span> requests
+
+<span class="keyword">with</span> open(<span class="string">'lesion.jpg'</span>, <span class="string">'rb'</span>) <span class="keyword">as</span> f:
+    response = requests.post(
+        <span class="string">'http://localhost:5000/predict'</span>,
+        files={<span class="string">'image'</span>: f}
+    )
+
+result = response.json()
+print(<span class="keyword">f</span><span class="string">"Predicted: {result['class_name']}"</span>)
+print(<span class="keyword">f</span><span class="string">"Confidence: {result['confidence']:.2%}"</span>)</code></pre>
+            </div>
+
+            <h2>Tech Stack</h2>
+            <div class="tech-stack">
+                <div class="tech-category">
+                    <h4>Deep Learning</h4>
+                    <div class="tech-list">
+                        <span class="tech-item">TensorFlow</span>
+                        <span class="tech-item">Keras</span>
+                        <span class="tech-item">Custom CNN</span>
+                        <span class="tech-item">Custom ResNet</span>
+                        <span class="tech-item">Cyclic LR</span>
+                    </div>
+                </div>
+                <div class="tech-category">
+                    <h4>Backend & API</h4>
+                    <div class="tech-list">
+                        <span class="tech-item">Python 3.8+</span>
+                        <span class="tech-item">Flask</span>
+                        <span class="tech-item">OpenCV</span>
+                        <span class="tech-item">NumPy</span>
+                        <span class="tech-item">pandas</span>
+                        <span class="tech-item">scikit-learn</span>
+                    </div>
+                </div>
+                <div class="tech-category">
+                    <h4>Data & Training</h4>
+                    <div class="tech-list">
+                        <span class="tech-item">HAM10000 Dataset</span>
+                        <span class="tech-item">ImageDataGenerator</span>
+                        <span class="tech-item">TensorBoard</span>
+                        <span class="tech-item">ModelCheckpoint</span>
+                    </div>
+                </div>
+                <div class="tech-category">
+                    <h4>Deployment</h4>
+                    <div class="tech-list">
+                        <span class="tech-item">REST API</span>
+                        <span class="tech-item">Camera Service</span>
+                        <span class="tech-item">Docker</span>
+                        <span class="tech-item">Batch Processing</span>
+                    </div>
+                </div>
+            </div>
+
+            <h2>Evaluation & Metrics</h2>
+            <p>
+                The evaluation pipeline computes per-class and aggregate metrics across all seven lesion types. 
+                The Sequential CNN achieves ~75% test accuracy and the Custom ResNet ~71%, which are reasonable 
+                baselines for training from scratch on a relatively small dataset (10K images) at reduced resolution 
+                (90×120).
+            </p>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin: 2rem 0;">
+                <div style="background: var(--secondary-bg); padding: 1.5rem; border-radius: 10px; border: 1px solid var(--border-color); text-align: center;">
+                    <h3 style="margin-top: 0; color: var(--accent-color); font-size: 2rem;">~75%</h3>
+                    <p style="margin-bottom: 0;">Sequential CNN Accuracy</p>
+                </div>
+                <div style="background: var(--secondary-bg); padding: 1.5rem; border-radius: 10px; border: 1px solid var(--border-color); text-align: center;">
+                    <h3 style="margin-top: 0; color: var(--accent-color); font-size: 2rem;">~71%</h3>
+                    <p style="margin-bottom: 0;">Custom ResNet Accuracy</p>
+                </div>
+                <div style="background: var(--secondary-bg); padding: 1.5rem; border-radius: 10px; border: 1px solid var(--border-color); text-align: center;">
+                    <h3 style="margin-top: 0; color: var(--accent-color); font-size: 2rem;">7</h3>
+                    <p style="margin-bottom: 0;">Lesion Classes</p>
+                </div>
+                <div style="background: var(--secondary-bg); padding: 1.5rem; border-radius: 10px; border: 1px solid var(--border-color); text-align: center;">
+                    <h3 style="margin-top: 0; color: var(--accent-color); font-size: 2rem;">10K+</h3>
+                    <p style="margin-bottom: 0;">Training Images</p>
+                </div>
+            </div>
+
+            <p>
+                The evaluation module generates confusion matrices, per-class precision/recall/F1, and class 
+                distribution comparisons. The seven classes are: Actinic keratoses, Basal cell carcinoma, 
+                Benign keratosis-like lesions, Dermatofibroma, Melanoma, Melanocytic nevi, and Vascular lesions.
+            </p>
+
+            <h3>Model Comparison</h3>
+            <div style="overflow-x: auto; margin: 1.5rem 0;">
+                <table style="width: 100%; border-collapse: collapse; background: var(--secondary-bg); border-radius: 10px; overflow: hidden;">
+                    <thead>
+                        <tr style="background: rgba(0, 212, 255, 0.1);">
+                            <th style="padding: 1rem; text-align: left; border-bottom: 1px solid var(--border-color);">Model</th>
+                            <th style="padding: 1rem; text-align: center; border-bottom: 1px solid var(--border-color);">Parameters</th>
+                            <th style="padding: 1rem; text-align: center; border-bottom: 1px solid var(--border-color);">Accuracy</th>
+                            <th style="padding: 1rem; text-align: center; border-bottom: 1px solid var(--border-color);">Optimizer</th>
+                            <th style="padding: 1rem; text-align: center; border-bottom: 1px solid var(--border-color);">Training Time</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="padding: 1rem; border-bottom: 1px solid var(--border-color);">Sequential CNN</td>
+                            <td style="padding: 1rem; text-align: center; border-bottom: 1px solid var(--border-color);">~1.2M</td>
+                            <td style="padding: 1rem; text-align: center; border-bottom: 1px solid var(--border-color);">~75%</td>
+                            <td style="padding: 1rem; text-align: center; border-bottom: 1px solid var(--border-color);">Adam (lr=0.001)</td>
+                            <td style="padding: 1rem; text-align: center; border-bottom: 1px solid var(--border-color);">30-40 min</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 1rem; border-bottom: 1px solid var(--border-color);">Custom ResNet</td>
+                            <td style="padding: 1rem; text-align: center; border-bottom: 1px solid var(--border-color);">~2.5M</td>
+                            <td style="padding: 1rem; text-align: center; border-bottom: 1px solid var(--border-color);">~71%</td>
+                            <td style="padding: 1rem; text-align: center; border-bottom: 1px solid var(--border-color);">SGD + Cyclic LR</td>
+                            <td style="padding: 1rem; text-align: center; border-bottom: 1px solid var(--border-color);">25-35 min</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 1rem; border-bottom: 1px solid var(--border-color); color: var(--text-secondary);">EfficientNetB0 (extensible)</td>
+                            <td style="padding: 1rem; text-align: center; border-bottom: 1px solid var(--border-color); color: var(--text-secondary);">~5.3M</td>
+                            <td style="padding: 1rem; text-align: center; border-bottom: 1px solid var(--border-color); color: var(--text-secondary);">85-88%</td>
+                            <td style="padding: 1rem; text-align: center; border-bottom: 1px solid var(--border-color); color: var(--text-secondary);">Adam (2-stage)</td>
+                            <td style="padding: 1rem; text-align: center; border-bottom: 1px solid var(--border-color); color: var(--text-secondary);">45-60 min</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 1rem; color: var(--text-secondary);">Ensemble (extensible)</td>
+                            <td style="padding: 1rem; text-align: center; color: var(--text-secondary);">~15M+</td>
+                            <td style="padding: 1rem; text-align: center; color: var(--text-secondary);">90-93%</td>
+                            <td style="padding: 1rem; text-align: center; color: var(--text-secondary);">Mixed</td>
+                            <td style="padding: 1rem; text-align: center; color: var(--text-secondary);">2-3 hours</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h2>Deployment Options</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin: 2rem 0;">
+                <div style="background: var(--secondary-bg); padding: 1.5rem; border-radius: 10px; border: 1px solid var(--border-color);">
+                    <h3 style="margin-top: 0; color: var(--accent-color);">Camera Service</h3>
+                    <p>Real-time webcam inference with visual overlays. Runs at ~5-10 FPS, shows top-3 predictions, supports screenshot saving and keyboard controls.</p>
+                    <div class="code-block" style="margin-top: 1rem;">
+                        <pre style="font-size: 0.8rem;"><code>python src/camera_service.py \
+  --model models/sequential_best.h5 \
+  --mode camera</code></pre>
+                    </div>
+                </div>
+                <div style="background: var(--secondary-bg); padding: 1.5rem; border-radius: 10px; border: 1px solid var(--border-color);">
+                    <h3 style="margin-top: 0; color: var(--accent-color);">REST API</h3>
+                    <p>Flask API with <code>/predict</code> and <code>/predict_base64</code> endpoints. CORS enabled, JSON responses, supports multiple image formats.</p>
+                    <div class="code-block" style="margin-top: 1rem;">
+                        <pre style="font-size: 0.8rem;"><code>python src/camera_service.py \
+  --model models/sequential_best.h5 \
+  --mode api --port 5000</code></pre>
+                    </div>
+                </div>
+                <div style="background: var(--secondary-bg); padding: 1.5rem; border-radius: 10px; border: 1px solid var(--border-color);">
+                    <h3 style="margin-top: 0; color: var(--accent-color);">Batch Processing</h3>
+                    <p>Process large datasets offline using the <code>SkinCancerPredictor</code> class. Supports single image, batch prediction, and top-K results.</p>
+                    <div class="code-block" style="margin-top: 1rem;">
+                        <pre style="font-size: 0.8rem;"><code>predictor = SkinCancerPredictor(
+    'models/sequential_best.h5')
+results = predictor.predict_batch(
+    image_list)</code></pre>
+                    </div>
+                </div>
+            </div>
+
+            <h2>Design Decisions</h2>
+
+            <p>
+                <strong>No dense layers in the Sequential CNN</strong><br>
+                Instead of flattening feature maps into a dense layer (which discards spatial structure and adds 
+                millions of parameters), the model uses 1×1 convolutions for channel reduction and a final 
+                convolution with a kernel matching the remaining spatial dimensions. This keeps the parameter 
+                count low and preserves spatial information until the very last layer.
+            </p>
+
+            <p>
+                <strong>Concatenation-based skip connections</strong><br>
+                The custom ResNet uses concatenation instead of addition for skip connections. This gives 
+                subsequent layers access to both the original and processed features, at the cost of requiring 
+                a 1×1 transition convolution to reduce channel count. It is a deliberate trade-off for richer 
+                feature reuse in a shallow network.
+            </p>
+
+            <p>
+                <strong>Training set normalization</strong><br>
+                All data splits are normalized using the training set's mean and standard deviation, not their 
+                own statistics. This prevents information leakage and ensures the model sees the same data 
+                distribution at training, validation, and inference time.
+            </p>
+
+            <p>
+                <strong>Modular architecture for extensibility</strong><br>
+                The system is explicitly designed to make it easy to plug in transfer learning models 
+                (EfficientNet, Vision Transformers, DenseNet) for significantly higher accuracy. The baseline 
+                models are educational starting points; the architecture supports production-grade models with 
+                minimal changes.
+            </p>
+
+            <h2>My Contribution</h2>
+            <p>I designed and built this project end to end:</p>
+            <ul>
+                <li>Designed the Sequential CNN and custom ResNet architectures with specific trade-offs for this problem domain</li>
+                <li>Built the complete data pipeline: CSV metadata loading, image preprocessing, normalization, augmentation, and train/val/test splitting</li>
+                <li>Implemented the training pipeline with callbacks for checkpointing, logging, TensorBoard, learning rate scheduling, and early stopping</li>
+                <li>Created the evaluation module with per-class metrics, confusion matrix visualization, and classification reports</li>
+                <li>Built the inference system supporting single image, batch, and top-K predictions</li>
+                <li>Developed the real-time camera service with visual overlays and the Flask REST API</li>
+                <li>Wrote the custom CyclicLR callback implementing triangular, triangular2, and exp_range policies</li>
+            </ul>
+
+            <h2>Challenges & Learnings</h2>
+
+            <p>
+                <strong>Class imbalance in the HAM10000 dataset</strong><br>
+                Melanocytic nevi dominates the dataset, making up over 60% of all samples. Without augmentation 
+                and careful evaluation (per-class metrics, not just overall accuracy), the model can learn to 
+                predict the majority class and still report deceptively high accuracy. Monitoring recall on 
+                minority classes like dermatofibroma and vascular lesions was critical.
+            </p>
+
+            <p>
+                <strong>Consistent preprocessing across training and inference</strong><br>
+                The normalization step uses training set statistics (mean ≈ 160.0, std ≈ 46.7). Getting this 
+                wrong at inference time - for example, normalizing with the test set's own statistics - 
+                silently degrades predictions without an obvious error. I made sure the same preprocessing 
+                path is shared between the training pipeline and the inference module.
+            </p>
+
+            <p>
+                <strong>Choosing between dense and fully-convolutional heads</strong><br>
+                Early experiments with a traditional flatten + dense layer approach worked but added millions 
+                of parameters. Switching to a fully-convolutional classification head (1×1 reduction + 
+                kernel-sized final convolution) reduced the parameter count significantly while maintaining 
+                comparable accuracy.
+            </p>
+
+            <p>
+                <strong>Cyclic learning rate tuning</strong><br>
+                The cyclic LR bounds (0.001 to 0.1) required careful tuning. Too high a max_lr caused 
+                training instability, while too low eliminated the benefit of cycling. The step size needs to 
+                match the number of iterations per epoch for meaningful exploration of the loss landscape.
+            </p>
+
+            <h2>Future Improvements</h2>
+            <ul>
+                <li>Integrate transfer learning models (EfficientNet, DenseNet, ResNet50) with two-stage training for 85-90%+ accuracy</li>
+                <li>Increase input resolution from 90×120 to 224×224 to capture finer-grained lesion features</li>
+                <li>Add class weighting or oversampling to better handle the imbalanced class distribution</li>
+                <li>Implement test-time augmentation for more robust predictions on new images</li>
+                <li>Add model quantization and TFLite conversion for mobile deployment</li>
+                <li>Build a Gradio or Streamlit demo for easier public access without API setup</li>
+                <li>Implement ensemble methods combining multiple architectures for production use</li>
+            </ul>
+
+            <h2>Closing Note</h2>
+            <p>
+                This project is fully open source and was built as both a learning exercise and a practical 
+                demonstration of medical image classification. The baseline models are intentionally simple 
+                - they are meant as starting points that clearly show how custom architectures work, with a 
+                modular design that makes it straightforward to swap in more powerful models.
+            </p>
+            <p>
+                If you are interested in medical AI, deep learning architectures, or building end-to-end ML 
+                systems with proper evaluation and deployment, this codebase covers the full pipeline from raw 
+                data to a running API. Feel free to use it, extend it, or build on top of it.
+            </p>
+
+            <div style="margin-top: 3rem; padding: 2rem; background: var(--secondary-bg); border-radius: 15px; border: 1px solid var(--border-color);">
+                <h3 style="margin-top: 0;">Resources & Links</h3>
+                <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1rem; margin-bottom: 2rem;">
+                    <a href="https://github.com/inboxpraveen/Skin-Cancer-Detection" class="demo-button" style="margin: 0;" target="_blank">GitHub Repository</a>
+                </div>
+                
+                <h4>Tags:</h4>
+                <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 1rem;">
+                    <span class="tech-tag">#DeepLearning</span>
+                    <span class="tech-tag">#MedicalAI</span>
+                    <span class="tech-tag">#ComputerVision</span>
+                    <span class="tech-tag">#SkinCancer</span>
+                    <span class="tech-tag">#HAM10000</span>
+                    <span class="tech-tag">#CNN</span>
+                    <span class="tech-tag">#ResNet</span>
+                    <span class="tech-tag">#TensorFlow</span>
+                    <span class="tech-tag">#Keras</span>
+                    <span class="tech-tag">#Flask</span>
+                    <span class="tech-tag">#OpenCV</span>
+                    <span class="tech-tag">#Python</span>
+                    <span class="tech-tag">#OpenSource</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer style="margin-top: 4rem;">
+        <div class="container">
+            <p>&copy; <span id="copyright-year"></span> Praveen Kumar. Built with passion for AI & open source community.</p>
+        </div>
+    </footer>
+
+    <script>
+        const mobileMenu = document.getElementById('mobileMenu');
+        const navLinks = document.getElementById('navLinks');
+
+        mobileMenu.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        document.addEventListener('click', function(e) {
+            if (e.target.classList.contains('copy-button')) {
+                const codeBlock = e.target.closest('.code-block');
+                const code = codeBlock.querySelector('pre').textContent;
+                
+                navigator.clipboard.writeText(code).then(() => {
+                    e.target.textContent = 'Copied!';
+                    setTimeout(() => {
+                        e.target.textContent = 'Copy';
+                    }, 2000);
+                });
+            }
+        });
+
+        const navEl = document.querySelector('nav');
+        const onNavScroll = () => {
+            if (window.scrollY > 20) navEl.classList.add('scrolled');
+            else navEl.classList.remove('scrolled');
+        };
+        window.addEventListener('scroll', onNavScroll, { passive: true });
+        onNavScroll();
+
+        window.addEventListener('load', function() {
+            const yearElement = document.getElementById('copyright-year');
+            if (yearElement) {
+                yearElement.textContent = new Date().getFullYear();
+            }
+        });
+    </script>
+</body>
+</html>
