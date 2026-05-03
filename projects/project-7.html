@@ -12,7 +12,7 @@
     
     <!-- Open Graph Meta Tags -->
     <meta property="og:title" content="AudioFP - Audio Fingerprinting Platform">
-    <meta property="og:description" content="Self-hosted audio search engine that identifies any audio clip in seconds using spectral peak extraction and combinatorial hashing. No cloud, no API keys — runs entirely locally.">
+    <meta property="og:description" content="Self-hosted audio search engine that identifies any audio clip in seconds using spectral peak extraction and combinatorial hashing. No cloud, no API keys - runs entirely locally.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://inboxpraveen.github.io/projects/project-7.html">
     <meta property="og:image" content="https://inboxpraveen.github.io/projects/resources/project-7/Header.png">
@@ -22,7 +22,7 @@
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="AudioFP - Audio Fingerprinting Platform">
-    <meta name="twitter:description" content="Self-hosted audio search engine using spectral peak extraction and combinatorial hashing. Identify clips from 3 seconds of audio — no cloud required.">
+    <meta name="twitter:description" content="Self-hosted audio search engine using spectral peak extraction and combinatorial hashing. Identify clips from 3 seconds of audio - no cloud required.">
     <meta name="twitter:image" content="https://inboxpraveen.github.io/projects/resources/project-7/Header.png">
     <meta name="twitter:image:alt" content="AudioFP Platform">
     
@@ -112,8 +112,8 @@
                 to an external service.
             </p>
             <p>
-                AudioFP solves this locally. You index your own files once, and after that you can take any short clip — even 
-                3 seconds with background noise — and instantly find its match across thousands of files. No data leaves your machine.
+                AudioFP solves this locally. You index your own files once, and after that you can take any short clip - even 
+                3 seconds with background noise - and instantly find its match across thousands of files. No data leaves your machine.
             </p>
             <p>
                 It also addresses a knowledge gap: most explanations of audio fingerprinting stop at theory. This project shows 
@@ -132,7 +132,7 @@
                 </div>
                 <div style="background: var(--secondary-bg); padding: 1.5rem; border-radius: 10px; border: 1px solid var(--border-color);">
                     <h3 style="margin-top: 0; color: var(--accent-color);">Audio & Video Support</h3>
-                    <p>Supports MP3, WAV, FLAC, MP4, MKV, and more — audio extracted automatically via FFmpeg</p>
+                    <p>Supports MP3, WAV, FLAC, MP4, MKV, and more - audio extracted automatically via FFmpeg</p>
                 </div>
                 <div style="background: var(--secondary-bg); padding: 1.5rem; border-radius: 10px; border: 1px solid var(--border-color);">
                     <h3 style="margin-top: 0; color: var(--accent-color);">Multiple Backends</h3>
@@ -144,7 +144,7 @@
                 <li><strong>Batch indexing</strong> runs in the background with live progress tracking</li>
                 <li><strong>REST API</strong> for programmatic access to all features</li>
                 <li><strong>Clean web interface</strong> with drag-and-drop upload, dark mode, and library management</li>
-                <li><strong>Fully local</strong> — no cloud services, no API keys, no data leaves your machine</li>
+                <li><strong>Fully local</strong> - no cloud services, no API keys, no data leaves your machine</li>
             </ul>
 
             <h2>Screenshots</h2>
@@ -176,7 +176,7 @@
             <ol>
                 <li>You upload an audio or video file, or point to a folder of files.</li>
                 <li>The audio is loaded and resampled to 11,025 Hz for fast processing.</li>
-                <li>A Short-Time Fourier Transform (STFT) produces a spectrogram — a time-frequency map of the audio.</li>
+                <li>A Short-Time Fourier Transform (STFT) produces a spectrogram - a time-frequency map of the audio.</li>
                 <li>The system finds the most prominent spectral peaks in that map, forming a <strong>constellation map</strong>.</li>
                 <li>Each peak is paired with nearby peaks to generate combinatorial hash values. Each hash encodes two frequencies and the time gap between them.</li>
                 <li>These hashes and their time offsets are stored in the fingerprint database.</li>
@@ -262,8 +262,8 @@
             <p>
                 <strong>Supporting both audio and video files cleanly</strong><br>
                 Users often have audio embedded in video files. Handling this required adding FFmpeg as a decoding step before 
-                the audio processing pipeline. Making this seamless — including detecting the file type and routing it 
-                correctly — took more edge-case handling than expected.
+                the audio processing pipeline. Making this seamless - including detecting the file type and routing it 
+                correctly - took more edge-case handling than expected.
             </p>
 
             <p>
@@ -280,7 +280,7 @@
 
             <h3>Step 1: Load Audio (and extract from video automatically)</h3>
             <p>
-                Any file — audio or video — goes through a single <code>load_audio</code> function. If it is a video, FFmpeg 
+                Any file - audio or video - goes through a single <code>load_audio</code> function. If it is a video, FFmpeg 
                 strips the audio track silently before anything else runs.
             </p>
             <div class="code-block">

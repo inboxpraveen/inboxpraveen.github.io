@@ -1,5 +1,5 @@
 /* ==========================================================================
-   inboxpraveen.github.io — modern UI system
+   inboxpraveen.github.io - modern UI system
    Single source of truth for index / about / all-projects / project-* pages.
    ========================================================================== */
 
@@ -105,7 +105,7 @@ a {
     --shadow-glow: 0 10px 40px rgba(0, 212, 255, 0.18);
     --shadow-glow-strong: 0 18px 60px rgba(0, 212, 255, 0.28);
 
-    /* Easings — premium feel */
+    /* Easings - premium feel */
     --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
     --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
     --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
@@ -233,7 +233,7 @@ section {
     isolation: isolate;
 }
 
-/* Aurora blobs — slow, ambient */
+/* Aurora blobs - slow, ambient */
 .landing::before {
     content: '';
     position: absolute;

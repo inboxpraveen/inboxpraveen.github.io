@@ -92,7 +92,7 @@
                 The tool elegantly solves the transcription review bottleneck by supporting two distinct workflows: 
                 <strong>Review &amp; Correct</strong> for teams with pre-chunked audio and existing Excel transcripts, and 
                 <strong>Auto-Transcribe</strong> for starting from scratch with raw audio files. Everything runs on a lightweight 
-                Flask stack with no external job queue required—threading-based background jobs, CSV-based persistence, and 
+                Flask stack with no external job queue required-threading-based background jobs, CSV-based persistence, and 
                 localStorage-based session tracking keep the entire system simple to deploy and maintain while remaining powerful 
                 enough for production use.
             </p>
@@ -401,7 +401,7 @@
 
             <h2>Deployment Options</h2>
             <p>
-                The system is deployment-ready with simple configurations for multiple platforms. No Celery, Redis, or message brokers required—just Python, Flask, and FFmpeg.
+                The system is deployment-ready with simple configurations for multiple platforms. No Celery, Redis, or message brokers required-just Python, Flask, and FFmpeg.
             </p>
 
             <h3>Quick Deploy</h3>
@@ -506,7 +506,7 @@ python app.py
             <ul>
                 <li>Threading-based jobs are sufficient for team-scale annotation workflows; complexity of Celery only justified at massive scale</li>
                 <li>localStorage-based session tracking eliminates server-side session overhead entirely while improving privacy</li>
-                <li>Smart UI polling (2-second cadence) balances responsiveness with server load—too frequent causes overhead, too slow feels sluggish</li>
+                <li>Smart UI polling (2-second cadence) balances responsiveness with server load-too frequent causes overhead, too slow feels sluggish</li>
                 <li>Row-level locking prevents most annotation errors; much cheaper than fixing mistakes after the fact</li>
                 <li>FFmpeg streaming for audio processing enables handling of massive files without memory bloat</li>
                 <li>Type-based job locking is simpler and more effective than complex queue systems for single-server deployments</li>

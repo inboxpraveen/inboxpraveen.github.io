@@ -94,7 +94,7 @@
             <p>
                 The app is available as a one-click Windows executable from the 
                 <a href="https://github.com/inboxpraveen/Daily-Tracker/releases" style="color: var(--accent-color);" target="_blank">GitHub Releases</a> 
-                page — no Python install required.
+                page - no Python install required.
             </p>
 
             <h2>Why I Built This</h2>
@@ -123,7 +123,7 @@
             </p>
             <p>
                 It is also useful as a reference codebase for developers who want to see how to build a full Flask app 
-                with a database, a multi-page UI, chart integration, and file export — all in a single, readable Python file.
+                with a database, a multi-page UI, chart integration, and file export - all in a single, readable Python file.
             </p>
 
             <h2>Key Features</h2>
@@ -142,7 +142,7 @@
                 </div>
                 <div style="background: var(--secondary-bg); padding: 1.5rem; border-radius: 10px; border: 1px solid var(--border-color);">
                     <h3 style="margin-top: 0; color: var(--accent-color);">One-Click EXE</h3>
-                    <p>Packaged as a single Windows <code>.exe</code> via PyInstaller — no setup needed</p>
+                    <p>Packaged as a single Windows <code>.exe</code> via PyInstaller - no setup needed</p>
                 </div>
             </div>
 
@@ -188,12 +188,12 @@
 
             <h2>How It Works</h2>
             <ol>
-                <li><strong>Start the app</strong> — Run <code>app.py</code> directly or launch <code>HabitFlow.exe</code>. Flask starts on the first available port from a predefined list and opens your browser automatically.</li>
-                <li><strong>Track habits</strong> — The browser loads the tracker page. Client-side JavaScript calls the Flask API to fetch your habits and completions for the current month and renders the grid.</li>
-                <li><strong>Check off habits</strong> — Clicking a checkbox sends a toggle request to <code>/api/completions/toggle</code>. Flask writes the change to the SQLite database and responds immediately.</li>
-                <li><strong>View your dashboard</strong> — The dashboard page calls <code>/api/stats/...</code> and <code>/api/stats/year/&lt;year&gt;</code> to fetch monthly and yearly summaries, which are rendered as Chart.js charts and stat cards.</li>
-                <li><strong>Export to Excel</strong> — Clicking the export button navigates to <code>/api/export/&lt;year&gt;/&lt;month&gt;</code>. Flask uses XlsxWriter to build a multi-sheet <code>.xlsx</code> file on the fly and streams it back as a download.</li>
-                <li><strong>Data storage</strong> — All data is stored in a local SQLite file at <code>%APPDATA%\HabitFlow\habits.db</code> on Windows, or <code>~/.local/share/HabitFlow/habits.db</code> on other systems.</li>
+                <li><strong>Start the app</strong> - Run <code>app.py</code> directly or launch <code>HabitFlow.exe</code>. Flask starts on the first available port from a predefined list and opens your browser automatically.</li>
+                <li><strong>Track habits</strong> - The browser loads the tracker page. Client-side JavaScript calls the Flask API to fetch your habits and completions for the current month and renders the grid.</li>
+                <li><strong>Check off habits</strong> - Clicking a checkbox sends a toggle request to <code>/api/completions/toggle</code>. Flask writes the change to the SQLite database and responds immediately.</li>
+                <li><strong>View your dashboard</strong> - The dashboard page calls <code>/api/stats/...</code> and <code>/api/stats/year/&lt;year&gt;</code> to fetch monthly and yearly summaries, which are rendered as Chart.js charts and stat cards.</li>
+                <li><strong>Export to Excel</strong> - Clicking the export button navigates to <code>/api/export/&lt;year&gt;/&lt;month&gt;</code>. Flask uses XlsxWriter to build a multi-sheet <code>.xlsx</code> file on the fly and streams it back as a download.</li>
+                <li><strong>Data storage</strong> - All data is stored in a local SQLite file at <code>%APPDATA%\HabitFlow\habits.db</code> on Windows, or <code>~/.local/share/HabitFlow/habits.db</code> on other systems.</li>
             </ol>
 
             <h2>Tech Stack</h2>
@@ -264,8 +264,8 @@
 
             <p>
                 <strong>Building the Excel export</strong><br>
-                XlsxWriter is powerful but verbose. Writing the <code>export_excel</code> function — which generates three 
-                formatted worksheets with embedded charts — took significant iteration. The challenge was balancing 
+                XlsxWriter is powerful but verbose. Writing the <code>export_excel</code> function - which generates three 
+                formatted worksheets with embedded charts - took significant iteration. The challenge was balancing 
                 formatting detail with code clarity, and handling edge cases like missing data for certain months.
             </p>
 
@@ -390,7 +390,7 @@ thread.start()</code></pre>
 https://github.com/inboxpraveen/Daily-Tracker/releases
 
 <span class="comment"># 2. Download HabitFlow.exe</span>
-<span class="comment"># 3. Double-click to run — your browser opens automatically</span></code></pre>
+<span class="comment"># 3. Double-click to run - your browser opens automatically</span></code></pre>
             </div>
 
             <h3>Option 2: Run from Source</h3>
@@ -431,7 +431,7 @@ python app.py</code></pre>
             </p>
             <p>
                 If it helps you track your habits, gives you a reference for building a Flask app, or serves as a 
-                starting point for your own tool — that is exactly what it was meant to do.
+                starting point for your own tool - that is exactly what it was meant to do.
             </p>
             <p>
                 Bug reports, suggestions, and pull requests are welcome.

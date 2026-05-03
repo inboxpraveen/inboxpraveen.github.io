@@ -22,7 +22,7 @@
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="MoM AI - AI-Powered Minutes of Meeting">
-    <meta name="twitter:description" content="Upload a meeting recording, get structured minutes. Multi-provider speech-to-text with LLM summarization — open source and Docker-ready.">
+    <meta name="twitter:description" content="Upload a meeting recording, get structured minutes. Multi-provider speech-to-text with LLM summarization - open source and Docker-ready.">
     <meta name="twitter:image" content="https://inboxpraveen.github.io/projects/resources/project-8/Homepage.png">
     <meta name="twitter:image:alt" content="MoM AI Platform">
     
@@ -130,11 +130,11 @@
                 </div>
                 <div style="background: var(--secondary-bg); padding: 1.5rem; border-radius: 10px; border: 1px solid var(--border-color);">
                     <h3 style="margin-top: 0; color: var(--accent-color);">LLM Summarization</h3>
-                    <p>Works with any OpenAI-compatible API — OpenAI, Groq, OpenRouter, Ollama, and others</p>
+                    <p>Works with any OpenAI-compatible API - OpenAI, Groq, OpenRouter, Ollama, and others</p>
                 </div>
                 <div style="background: var(--secondary-bg); padding: 1.5rem; border-radius: 10px; border: 1px solid var(--border-color);">
                     <h3 style="margin-top: 0; color: var(--accent-color);">Background Processing</h3>
-                    <p>Celery + Redis for async processing — upload and come back when it is done</p>
+                    <p>Celery + Redis for async processing - upload and come back when it is done</p>
                 </div>
                 <div style="background: var(--secondary-bg); padding: 1.5rem; border-radius: 10px; border: 1px solid var(--border-color);">
                     <h3 style="margin-top: 0; color: var(--accent-color);">Docker-Ready Deployment</h3>
@@ -154,19 +154,19 @@
 
             <ol>
                 <li>
-                    <strong>Upload</strong> — The user uploads a meeting recording through the web interface. The file is saved 
+                    <strong>Upload</strong> - The user uploads a meeting recording through the web interface. The file is saved 
                     to the server and a background job is queued.
                 </li>
                 <li>
-                    <strong>Audio Conversion</strong> — The Celery worker picks up the job and uses <code>ffmpeg</code> to convert 
+                    <strong>Audio Conversion</strong> - The Celery worker picks up the job and uses <code>ffmpeg</code> to convert 
                     the uploaded file into a 16 kHz mono WAV file. This standardized format works reliably across all speech providers.
                 </li>
                 <li>
-                    <strong>Transcription</strong> — The WAV file is sent to the configured speech-to-text provider. The transcript 
+                    <strong>Transcription</strong> - The WAV file is sent to the configured speech-to-text provider. The transcript 
                     comes back with speaker labels (e.g., Speaker 0, Speaker 1) when diarization is available.
                 </li>
                 <li>
-                    <strong>Summarization</strong> — The full transcript is sent to the configured LLM with a structured prompt 
+                    <strong>Summarization</strong> - The full transcript is sent to the configured LLM with a structured prompt 
                     asking for a summary, discussion points, decisions, action items, and next steps. The LLM returns Markdown, 
                     which is then rendered as HTML and stored in the database.
                 </li>

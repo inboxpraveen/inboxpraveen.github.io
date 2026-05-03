@@ -1,4 +1,4 @@
-# Portfolio Website — Praveen Kumar
+# Portfolio Website - Praveen Kumar
 
 A hand-crafted, dark-themed developer portfolio built from scratch with vanilla HTML, CSS, and JavaScript. No frameworks, no build tools, no dependencies.
 
@@ -6,20 +6,20 @@ A hand-crafted, dark-themed developer portfolio built from scratch with vanilla 
 
 ## Overview
 
-Personal portfolio for Praveen Kumar — Principal AI Engineer & Solution Architect specializing in speech AI, LLMs, OCR, and scalable ML systems. The site serves as a centralized showcase for open-source projects, each with a dedicated deep-dive page covering motivation, architecture, code walkthroughs, and screenshots.
+Personal portfolio for Praveen Kumar - Principal AI Engineer & Solution Architect specializing in speech AI, LLMs, OCR, and scalable ML systems. The site serves as a centralized showcase for open-source projects, each with a dedicated deep-dive page covering motivation, architecture, code walkthroughs, and screenshots.
 
 ## Features
 
 - **Cinematic landing page** with typing animation and logo glitch effect
 - **Project showcase grid** with thumbnail cards, tech tags, and pointer-tracked glow on hover
-- **Deep project pages** — each project gets a full write-up with overview, motivation, screenshots, tech stack, code samples, and challenges
+- **Deep project pages** - each project gets a full write-up with overview, motivation, screenshots, tech stack, code samples, and challenges
 - **About page** with professional background, skills, and contact links
 - **Dark theme** with carefully tuned surface hierarchy and accent colors
 - **Fully responsive** across mobile, tablet, and desktop
 - **SEO-optimized** with Open Graph, Twitter Cards, canonical URLs, and structured meta on every page
 - **Code blocks with copy buttons** for easy sharing of technical content
 - **Intersection Observer animations** for smooth fade-in on scroll
-- **Zero dependencies** — pure HTML, CSS, and JS deployed directly to GitHub Pages
+- **Zero dependencies** - pure HTML, CSS, and JS deployed directly to GitHub Pages
 
 ## Project Structure
 
@@ -60,7 +60,7 @@ inboxpraveen.github.io/
 2. Add screenshots to `projects/resources/project-N/`
 3. Add a project card to `all-projects.html` inside the `.projects-grid`
 
-No build step required — edit, commit, and push.
+No build step required - edit, commit, and push.
 
 ## Local Development
 

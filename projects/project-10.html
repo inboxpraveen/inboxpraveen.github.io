@@ -15,15 +15,15 @@
     <meta property="og:description" content="Find players with similar play styles in FC 25 using cosine similarity on 34 attributes. Supports male/female models, radar chart comparisons for up to 4 players, and autocomplete search.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://inboxpraveen.github.io/projects/project-10.html">
-    <meta property="og:image" content="https://inboxpraveen.github.io/projects/resources/project-10/Main-Dashboard.gif">
+    <meta property="og:image" content="https://inboxpraveen.github.io/projects/resources/project-10/Home-Page-DarkTheme.png">
     <meta property="og:image:alt" content="FIFA Player Recommendation System Dashboard">
     <meta property="og:site_name" content="Praveen Kumar Portfolio">
     
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="FIFA Player Recommendation System - AI-Powered Player Similarity">
-    <meta name="twitter:description" content="Content-based filtering for FC 25 FIFA players — cosine similarity on 34 attributes, radar chart comparisons, male/female model toggle.">
-    <meta name="twitter:image" content="https://inboxpraveen.github.io/projects/resources/project-10/Main-Dashboard.gif">
+    <meta name="twitter:description" content="Content-based filtering for FC 25 FIFA players - cosine similarity on 34 attributes, radar chart comparisons, male/female model toggle.">
+    <meta name="twitter:image" content="https://inboxpraveen.github.io/projects/resources/project-10/Home-Page-DarkTheme.png">
     <meta name="twitter:image:alt" content="FIFA Player Recommendation System Dashboard">
     
     <!-- Canonical URL -->
@@ -84,11 +84,11 @@
             </p>
 
             <div style="text-align: center; margin: 2rem 0;">
-                <img src="./resources/project-10/Main-Dashboard.gif" alt="FIFA Player Recommendation System - Main Dashboard" style="max-width: 100%; height: auto; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);">
+                <img src="./resources/project-10/Home-Page-DarkTheme.png" alt="FIFA Player Recommendation System - Home Page" style="max-width: 100%; height: auto; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);">
             </div>
 
             <p>
-                The app runs entirely in the browser against a Flask backend. There is no database — all recommendations 
+                The app runs entirely in the browser against a Flask backend. There is no database - all recommendations 
                 come from a precomputed similarity model built at training time and loaded into memory at startup.
             </p>
 
@@ -138,7 +138,7 @@
                 </div>
                 <div style="background: var(--secondary-bg); padding: 1.5rem; border-radius: 10px; border: 1px solid var(--border-color);">
                     <h3 style="margin-top: 0; color: var(--accent-color);">Multi-Player Comparison</h3>
-                    <p>Compare 2 to 4 players at once with a side-by-side radar chart overlay — great for scouting alternatives.</p>
+                    <p>Compare 2 to 4 players at once with a side-by-side radar chart overlay - great for scouting alternatives.</p>
                 </div>
                 <div style="background: var(--secondary-bg); padding: 1.5rem; border-radius: 10px; border: 1px solid var(--border-color);">
                     <h3 style="margin-top: 0; color: var(--accent-color);">Player Detail View</h3>
@@ -146,7 +146,7 @@
                 </div>
                 <div style="background: var(--secondary-bg); padding: 1.5rem; border-radius: 10px; border: 1px solid var(--border-color);">
                     <h3 style="margin-top: 0; color: var(--accent-color);">Top Players & Stats</h3>
-                    <p>Browse top-rated players and dataset statistics directly from the UI — no manual CSV digging required.</p>
+                    <p>Browse top-rated players and dataset statistics directly from the UI - no manual CSV digging required.</p>
                 </div>
             </div>
 
@@ -157,13 +157,45 @@
             </p>
             <ol>
                 <li><strong>Data preparation:</strong> The training script reads a CSV file of FC 25 player stats, cleans the data, removes duplicates, and assigns each player a position category.</li>
-                <li><strong>Feature extraction:</strong> 34 numeric attributes are selected per player — pace, shooting, passing, dribbling, defending, and specific sub-stats like sprint speed, vision, and composure.</li>
+                <li><strong>Feature extraction:</strong> 34 numeric attributes are selected per player - pace, shooting, passing, dribbling, defending, and specific sub-stats like sprint speed, vision, and composure.</li>
                 <li><strong>Normalization:</strong> Each player's feature vector is min-max normalized so all attributes contribute equally to the similarity score.</li>
                 <li><strong>Similarity matrix:</strong> The full pairwise cosine similarity matrix is precomputed over all players. The matrix, the original DataFrame, and feature names are bundled and saved as a <code>.pkl</code> file using <code>joblib</code>.</li>
-                <li><strong>Serving:</strong> At startup, Flask loads the pickled models into memory. All API calls work against this in-memory data — no live database.</li>
+                <li><strong>Serving:</strong> At startup, Flask loads the pickled models into memory. All API calls work against this in-memory data - no live database.</li>
                 <li><strong>Recommendation:</strong> When you request similar players, the app reads the player's similarity row, applies optional position and age filters, and returns the top N results sorted by score.</li>
                 <li><strong>Frontend:</strong> A single-page HTML/JS app calls the Flask JSON API and renders results using Chart.js radar charts.</li>
             </ol>
+
+            <h2>Screenshots</h2>
+
+            <h3>Home Page (Light Theme)</h3>
+            <div style="text-align: center; margin: 2rem 0;">
+                <img src="./resources/project-10/Home-Page.png" alt="FIFA Player Recommendation System - Home Page Light Theme" style="max-width: 100%; height: auto; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);">
+            </div>
+
+            <h3>Home Page (Dark Theme)</h3>
+            <div style="text-align: center; margin: 2rem 0;">
+                <img src="./resources/project-10/Home-Page-DarkTheme.png" alt="FIFA Player Recommendation System - Home Page Dark Theme" style="max-width: 100%; height: auto; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);">
+            </div>
+
+            <h3>Player Search</h3>
+            <div style="text-align: center; margin: 2rem 0;">
+                <img src="./resources/project-10/Player-Search.png" alt="FIFA Player Recommendation System - Player Search" style="max-width: 100%; height: auto; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);">
+            </div>
+
+            <h3>Player Recommendations</h3>
+            <div style="text-align: center; margin: 2rem 0;">
+                <img src="./resources/project-10/Player-Recommendations.png" alt="FIFA Player Recommendation System - Player Recommendations" style="max-width: 100%; height: auto; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);">
+            </div>
+
+            <h3>Player Profile View</h3>
+            <div style="text-align: center; margin: 2rem 0;">
+                <img src="./resources/project-10/Player-Profile-View.png" alt="FIFA Player Recommendation System - Player Profile View" style="max-width: 100%; height: auto; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);">
+            </div>
+
+            <h3>Compare Players</h3>
+            <div style="text-align: center; margin: 2rem 0;">
+                <img src="./resources/project-10/Compare-Players.png" alt="FIFA Player Recommendation System - Compare Players" style="max-width: 100%; height: auto; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);">
+            </div>
 
             <h2>Tech Stack</h2>
             <div class="tech-stack">
@@ -335,7 +367,7 @@ candidates.sort(key=<span class="keyword">lambda</span> x: x[<span class="number
             </p>
             <p>
                 It is a practical, working example of how content-based filtering applies beyond the typical movies 
-                or books domain — if your items have structured numeric features, cosine similarity is a powerful 
+                or books domain - if your items have structured numeric features, cosine similarity is a powerful 
                 and surprisingly interpretable baseline.
             </p>
 
