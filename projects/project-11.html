@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Autoencoders & Decoders using Keras - Deep Learning for Image Compression | Praveen Kumar</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="A comprehensive, modular Python application implementing PCA, Convolutional, and Denoising Autoencoders using TensorFlow/Keras. Features image retrieval, morphing, and a full CLI with 5 operational modes.">
+    <meta name="keywords" content="Autoencoder, Deep Learning, TensorFlow, Keras, Image Compression, Dimensionality Reduction, Denoising, Image Retrieval, Image Morphing, Latent Space, CNN, Python">
+    <meta name="author" content="Praveen Kumar">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Autoencoders & Decoders using Keras - Deep Learning for Image Compression">
+    <meta property="og:description" content="Modular Python implementation of PCA, Convolutional, and Denoising Autoencoders with image retrieval and morphing applications. Full CLI with 5 modes.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://inboxpraveen.github.io/projects/project-11.html">
+    <meta property="og:image" content="https://inboxpraveen.github.io/projects/resources/project-11/Autoencoder-Decoder Concept Image.png">
+    <meta property="og:image:alt" content="Autoencoder-Decoder Architecture Concept">
+    <meta property="og:site_name" content="Praveen Kumar Portfolio">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Autoencoders & Decoders using Keras - Deep Learning for Image Compression">
+    <meta name="twitter:description" content="PCA, Convolutional, and Denoising Autoencoders with image retrieval and morphing. Modern TensorFlow 2.13+ with modular professional design.">
+    <meta name="twitter:image" content="https://inboxpraveen.github.io/projects/resources/project-11/Autoencoder-Decoder Concept Image.png">
+    <meta name="twitter:image:alt" content="Autoencoder-Decoder Architecture Concept">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://inboxpraveen.github.io/projects/project-11.html">
+    
+    <link rel="icon" type="image/x-icon" href="../assests/favicon.ico">
+    <link rel="stylesheet" href="../index.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo" onclick="window.location.href='../index.html'" style="cursor: pointer;">PK</div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../all-projects.html">Projects</a></li>
+                <li><a href="../about.html">About</a></li>
+                <li><a href="https://github.com/inboxpraveen" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+            </ul>
+            <button class="mobile-menu" id="mobileMenu">☰</button>
+        </div>
+    </nav>
+
+    <!-- Project Page - Autoencoders & Decoders -->
+    <div class="page-container active">
+        <div class="page-header">
+            <div class="container">
+                <a href="../all-projects.html" class="back-button">← Back to Projects</a>
+                <h1 class="page-title">Autoencoders & Decoders using Keras</h1>
+                <div class="page-meta">
+                    <div class="meta-item">
+                        <span>📅</span>
+                        <span>Completed: 2024</span>
+                    </div>
+                    <div class="meta-item">
+                        <span>⏱️</span>
+                        <span>Side Project</span>
+                    </div>
+                    <div class="meta-item">
+                        <span>👥</span>
+                        <span>Team Size: Solo</span>
+                    </div>
+                    <div class="meta-item">
+                        <span>🏷️</span>
+                        <span>TensorFlow • Keras • scikit-learn • NumPy</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2>Project Overview</h2>
+            <p>
+                This is a comprehensive, modular Python application implementing multiple autoencoder architectures 
+                for image compression, reconstruction, denoising, similarity search, and image morphing. It was 
+                upgraded from an old Jupyter notebook into a professional, production-quality codebase with a 
+                single CLI entry point supporting five operational modes.
+            </p>
+
+            <div style="text-align: center; margin: 2rem 0;">
+                <img src="./resources/project-11/Autoencoder-Decoder Concept Image.png" alt="Autoencoder-Decoder Architecture Concept" style="max-width: 100%; height: auto; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);">
+            </div>
+
+            <p>
+                The project covers progressive complexity: from a simple linear PCA-style autoencoder, through a 
+                deep convolutional architecture, to a noise-robust denoising variant. Each model shares the same 
+                interface and can be used for downstream applications like image retrieval via k-NN in latent space 
+                and smooth image morphing via latent interpolation.
+            </p>
+
+            <h2>Why I Built This</h2>
+            <p>
+                I had an old Jupyter notebook that implemented autoencoders using TensorFlow 1.x. It worked, but it 
+                was a single monolithic file that was hard to reproduce, extend, or share. I wanted to rebuild it 
+                as a proper Python application: modular, documented, typed, and runnable with a single command.
+            </p>
+            <p>
+                Beyond the refactoring goal, this project is designed as an educational resource. It shows how 
+                autoencoders work at three levels of complexity, demonstrates real applications (retrieval and 
+                morphing), and serves as a reference for anyone learning about latent space representations in 
+                deep learning.
+            </p>
+
+            <h2>The Core Idea</h2>
+            <p>
+                An autoencoder is a neural network that learns to compress data into a small representation 
+                and then reconstruct the original from that compressed form. The bottleneck forces the network 
+                to learn what is truly important about the input - it cannot memorize, it must understand.
+            </p>
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-language">Autoencoder Architecture Flow</span>
+                    <button class="copy-button">Copy</button>
+                </div>
+                <pre><code>Input Image (32×32×3 = 3,072 numbers)
+        ↓
+    [ENCODER]
+    Compresses information
+        ↓
+Latent Code (32 numbers) ← The "essence" of the image
+        ↓
+    [DECODER]
+    Reconstructs from code
+        ↓
+Output Image (32×32×3 = 3,072 numbers)
+
+Loss = ||Input - Output||²  →  minimize reconstruction error</code></pre>
+            </div>
+            <p>
+                The key insight is that the latent space (the space of all compressed codes) develops useful 
+                properties: nearby codes correspond to similar images, the space is continuous, and you can 
+                interpolate smoothly between any two images by interpolating their codes.
+            </p>
+
+            <h2>Key Features</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin: 2rem 0;">
+                <div style="background: var(--secondary-bg); padding: 1.5rem; border-radius: 10px; border: 1px solid var(--border-color);">
+                    <h3 style="margin-top: 0; color: var(--accent-color);">PCA Autoencoder</h3>
+                    <p>Linear dimensionality reduction with ~100K parameters. Pure matrix multiplications, trains in 2 minutes on CPU. A 96× compression baseline.</p>
+                </div>
+                <div style="background: var(--secondary-bg); padding: 1.5rem; border-radius: 10px; border: 1px solid var(--border-color);">
+                    <h3 style="margin-top: 0; color: var(--accent-color);">Convolutional Autoencoder</h3>
+                    <p>Deep CNN with ~800K parameters learning hierarchical features: edges → textures → parts → objects. Non-linear compression with excellent reconstruction quality.</p>
+                </div>
+                <div style="background: var(--secondary-bg); padding: 1.5rem; border-radius: 10px; border: 1px solid var(--border-color);">
+                    <h3 style="margin-top: 0; color: var(--accent-color);">Denoising Autoencoder</h3>
+                    <p>Trained on corrupted inputs to reconstruct clean originals. Learns noise-invariant features that capture true structure rather than noise.</p>
+                </div>
+                <div style="background: var(--secondary-bg); padding: 1.5rem; border-radius: 10px; border: 1px solid var(--border-color);">
+                    <h3 style="margin-top: 0; color: var(--accent-color);">Image Retrieval</h3>
+                    <p>Similarity search using k-NN in latent space. Encode all images once, then find semantically similar images via fast nearest neighbor lookup.</p>
+                </div>
+                <div style="background: var(--secondary-bg); padding: 1.5rem; border-radius: 10px; border: 1px solid var(--border-color);">
+                    <h3 style="margin-top: 0; color: var(--accent-color);">Image Morphing</h3>
+                    <p>Smooth interpolation between any two images by linearly interpolating their latent codes and decoding intermediate points.</p>
+                </div>
+                <div style="background: var(--secondary-bg); padding: 1.5rem; border-radius: 10px; border: 1px solid var(--border-color);">
+                    <h3 style="margin-top: 0; color: var(--accent-color);">CLI with 5 Modes</h3>
+                    <p>Single entry point supporting PCA, convolutional, denoising, retrieval, and morphing modes. Fully configurable with command-line arguments.</p>
+                </div>
+            </div>
+
+            <h2>Architecture Details</h2>
+
+            <h3>PCA Autoencoder (Linear Baseline)</h3>
+            <p>
+                The simplest architecture: flatten the image, project down to a 32-dimensional code through a 
+                single dense layer, then project back up. No activation functions, pure linear transformations. 
+                This is mathematically equivalent to PCA but learned through backpropagation.
+            </p>
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-language">PCA Autoencoder Architecture</span>
+                    <button class="copy-button">Copy</button>
+                </div>
+                <pre><code>Input (32×32×3)
+      ↓
+   Flatten → (3,072)
+      ↓
+   Dense(32) ← Bottleneck (96× compression)
+      ↓
+   Dense(3,072)
+      ↓
+   Reshape → (32×32×3)
+      ↓
+Output (32×32×3)
+
+Parameters: ~100,000 | Training: ~2 min (CPU)</code></pre>
+            </div>
+
+            <h3>Convolutional Autoencoder (Production Quality)</h3>
+            <p>
+                A deep CNN that learns hierarchical features through four convolutional blocks with progressive 
+                filter growth (32 → 64 → 128 → 256). The decoder mirrors the encoder using transpose convolutions 
+                for learned upsampling. This achieves the same 96× compression ratio as PCA but captures 
+                non-linear patterns for dramatically better reconstruction.
+            </p>
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-language">Convolutional Autoencoder Architecture</span>
+                    <button class="copy-button">Copy</button>
+                </div>
+                <pre><code>ENCODER:
+Input (32×32×3)
+  → Conv2D(32, 3×3) + ReLU + MaxPool(2×2)  → (16×16×32)
+  → Conv2D(64, 3×3) + ReLU + MaxPool(2×2)  → (8×8×64)
+  → Conv2D(128, 3×3) + ReLU + MaxPool(2×2) → (4×4×128)
+  → Conv2D(256, 3×3) + ReLU + MaxPool(2×2) → (2×2×256)
+  → Flatten → Dense(32) + ReLU  ← Bottleneck
+
+DECODER:
+Dense(1024) + ReLU → Reshape (2×2×256)
+  → Conv2DTranspose(128, 3×3, stride=2) + ReLU → (4×4×128)
+  → Conv2DTranspose(64, 3×3, stride=2) + ReLU  → (8×8×64)
+  → Conv2DTranspose(32, 3×3, stride=2) + ReLU  → (16×16×32)
+  → Conv2DTranspose(3, 3×3, stride=2)          → (32×32×3)
+
+Parameters: ~800,000 | Training: ~20 min (CPU) / ~5 min (GPU)</code></pre>
+            </div>
+
+            <h3>What Each Encoder Layer Learns</h3>
+            <div style="overflow-x: auto; margin: 1.5rem 0;">
+                <table style="width: 100%; border-collapse: collapse; background: var(--secondary-bg); border-radius: 10px; overflow: hidden;">
+                    <thead>
+                        <tr style="background: rgba(0, 212, 255, 0.1);">
+                            <th style="padding: 1rem; text-align: left; border-bottom: 1px solid var(--border-color);">Layer</th>
+                            <th style="padding: 1rem; text-align: center; border-bottom: 1px solid var(--border-color);">Resolution</th>
+                            <th style="padding: 1rem; text-align: center; border-bottom: 1px solid var(--border-color);">Learns</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="padding: 1rem; border-bottom: 1px solid var(--border-color);">Conv Block 1</td>
+                            <td style="padding: 1rem; text-align: center; border-bottom: 1px solid var(--border-color);">16×16×32</td>
+                            <td style="padding: 1rem; text-align: center; border-bottom: 1px solid var(--border-color);">Edges, colors</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 1rem; border-bottom: 1px solid var(--border-color);">Conv Block 2</td>
+                            <td style="padding: 1rem; text-align: center; border-bottom: 1px solid var(--border-color);">8×8×64</td>
+                            <td style="padding: 1rem; text-align: center; border-bottom: 1px solid var(--border-color);">Textures, patterns</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 1rem; border-bottom: 1px solid var(--border-color);">Conv Block 3</td>
+                            <td style="padding: 1rem; text-align: center; border-bottom: 1px solid var(--border-color);">4×4×128</td>
+                            <td style="padding: 1rem; text-align: center; border-bottom: 1px solid var(--border-color);">Object parts</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 1rem; border-bottom: 1px solid var(--border-color);">Conv Block 4</td>
+                            <td style="padding: 1rem; text-align: center; border-bottom: 1px solid var(--border-color);">2×2×256</td>
+                            <td style="padding: 1rem; text-align: center; border-bottom: 1px solid var(--border-color);">High-level features</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 1rem;">Dense Bottleneck</td>
+                            <td style="padding: 1rem; text-align: center;">32</td>
+                            <td style="padding: 1rem; text-align: center;">Abstract representation</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h2>How It Works</h2>
+            <ol>
+                <li><strong>Data loading:</strong> The STL-10 dataset is automatically downloaded and preprocessed. Images are resized to 32×32×3 and normalized to [0, 1].</li>
+                <li><strong>Model building:</strong> Each architecture returns three models - the full autoencoder, the encoder alone, and the decoder alone - sharing weights. This allows independent use of each component.</li>
+                <li><strong>Training:</strong> The autoencoder is trained to minimize MSE between input and output. Input equals output (unsupervised). Callbacks handle early stopping, learning rate scheduling, and checkpointing.</li>
+                <li><strong>Encoding:</strong> After training, the encoder maps any image to a compact latent code. Similar images produce similar codes, which enables downstream applications.</li>
+                <li><strong>Retrieval:</strong> All training images are encoded once. Given a query image, its code is compared against all stored codes using k-NN to find the most similar images.</li>
+                <li><strong>Morphing:</strong> Two images are encoded, their codes are linearly interpolated at N steps, and each intermediate code is decoded to produce a smooth visual transition.</li>
+                <li><strong>Denoising:</strong> Gaussian noise is added to inputs each epoch during training, but the target remains the clean original. This forces the network to learn features that ignore noise.</li>
+            </ol>
+
+            <h2>Core Code Snippets</h2>
+
+            <h3>Building the convolutional autoencoder</h3>
+            <p>
+                The build function returns three separate models that share weights. This is the key pattern 
+                that enables using the encoder and decoder independently after training.
+            </p>
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-language">Python - Building the autoencoder</span>
+                    <button class="copy-button">Copy</button>
+                </div>
+                <pre><code><span class="keyword">from</span> models <span class="keyword">import</span> build_convolutional_autoencoder
+
+autoencoder, encoder, decoder = build_convolutional_autoencoder(
+    input_shape=(<span class="number">32</span>, <span class="number">32</span>, <span class="number">3</span>),
+    code_size=<span class="number">32</span>,
+    filters=(<span class="number">32</span>, <span class="number">64</span>, <span class="number">128</span>, <span class="number">256</span>)
+)
+
+autoencoder.compile(optimizer=<span class="string">'adamax'</span>, loss=<span class="string">'mse'</span>)
+autoencoder.fit(X_train, X_train, epochs=<span class="number">25</span>, batch_size=<span class="number">32</span>)</code></pre>
+            </div>
+
+            <h3>Image retrieval via latent space k-NN</h3>
+            <p>
+                Once images are encoded, finding similar images is just a nearest neighbor search in the 
+                32-dimensional latent space. This is orders of magnitude faster than comparing raw pixels.
+            </p>
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-language">Python - Similarity search in latent space</span>
+                    <button class="copy-button">Copy</button>
+                </div>
+                <pre><code><span class="keyword">from</span> image_retrieval <span class="keyword">import</span> ImageRetrieval
+
+retrieval = ImageRetrieval(encoder)
+retrieval.index_images(X_train)  <span class="comment"># Encode all images once</span>
+
+<span class="comment"># Find 5 most similar images to a query</span>
+distances, similar = retrieval.find_similar(query_image, n_neighbors=<span class="number">5</span>)</code></pre>
+            </div>
+
+            <h3>Image morphing via latent interpolation</h3>
+            <p>
+                Smooth transitions between images are possible because the latent space is continuous. 
+                Linearly interpolating between two codes produces semantically meaningful intermediate images.
+            </p>
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-language">Python - Latent space interpolation</span>
+                    <button class="copy-button">Copy</button>
+                </div>
+                <pre><code><span class="keyword">from</span> image_morphing <span class="keyword">import</span> interpolate_images
+
+<span class="comment"># Generate 7-step morph between two images</span>
+morphed = interpolate_images(
+    image1, image2,
+    encoder, decoder,
+    n_steps=<span class="number">7</span>
+)
+
+<span class="comment"># How it works internally:</span>
+<span class="comment"># z1 = encoder(image1), z2 = encoder(image2)</span>
+<span class="comment"># z_interp = α×z1 + (1-α)×z2 for α ∈ [0, 1]</span>
+<span class="comment"># morphed[i] = decoder(z_interp[i])</span></code></pre>
+            </div>
+
+            <h3>Denoising training loop</h3>
+            <p>
+                The denoising autoencoder adds fresh noise each epoch so the network never memorizes 
+                specific noise patterns. The target is always the clean original image.
+            </p>
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-language">Python - Denoising training with fresh noise per epoch</span>
+                    <button class="copy-button">Copy</button>
+                </div>
+                <pre><code><span class="keyword">from</span> utils <span class="keyword">import</span> apply_gaussian_noise
+
+<span class="keyword">for</span> epoch <span class="keyword">in</span> range(<span class="number">25</span>):
+    X_train_noisy = apply_gaussian_noise(X_train, sigma=<span class="number">0.1</span>)
+    autoencoder.fit(X_train_noisy, X_train, epochs=<span class="number">1</span>)
+    <span class="comment"># Key: noisy input → clean target</span></code></pre>
+            </div>
+
+            <h2>Performance & Metrics</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin: 2rem 0;">
+                <div style="background: var(--secondary-bg); padding: 1.5rem; border-radius: 10px; border: 1px solid var(--border-color); text-align: center;">
+                    <h3 style="margin-top: 0; color: var(--accent-color); font-size: 2rem;">96×</h3>
+                    <p style="margin-bottom: 0;">Compression Ratio</p>
+                </div>
+                <div style="background: var(--secondary-bg); padding: 1.5rem; border-radius: 10px; border: 1px solid var(--border-color); text-align: center;">
+                    <h3 style="margin-top: 0; color: var(--accent-color); font-size: 2rem;">5</h3>
+                    <p style="margin-bottom: 0;">Operational Modes</p>
+                </div>
+                <div style="background: var(--secondary-bg); padding: 1.5rem; border-radius: 10px; border: 1px solid var(--border-color); text-align: center;">
+                    <h3 style="margin-top: 0; color: var(--accent-color); font-size: 2rem;">3</h3>
+                    <p style="margin-bottom: 0;">Model Architectures</p>
+                </div>
+                <div style="background: var(--secondary-bg); padding: 1.5rem; border-radius: 10px; border: 1px solid var(--border-color); text-align: center;">
+                    <h3 style="margin-top: 0; color: var(--accent-color); font-size: 2rem;">12K+</h3>
+                    <p style="margin-bottom: 0;">Training Images</p>
+                </div>
+            </div>
+
+            <h3>Model Comparison</h3>
+            <div style="overflow-x: auto; margin: 1.5rem 0;">
+                <table style="width: 100%; border-collapse: collapse; background: var(--secondary-bg); border-radius: 10px; overflow: hidden;">
+                    <thead>
+                        <tr style="background: rgba(0, 212, 255, 0.1);">
+                            <th style="padding: 1rem; text-align: left; border-bottom: 1px solid var(--border-color);">Model</th>
+                            <th style="padding: 1rem; text-align: center; border-bottom: 1px solid var(--border-color);">MSE Loss</th>
+                            <th style="padding: 1rem; text-align: center; border-bottom: 1px solid var(--border-color);">Compression</th>
+                            <th style="padding: 1rem; text-align: center; border-bottom: 1px solid var(--border-color);">Code Size</th>
+                            <th style="padding: 1rem; text-align: center; border-bottom: 1px solid var(--border-color);">Training Time (CPU)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="padding: 1rem; border-bottom: 1px solid var(--border-color);">PCA</td>
+                            <td style="padding: 1rem; text-align: center; border-bottom: 1px solid var(--border-color);">~0.0066</td>
+                            <td style="padding: 1rem; text-align: center; border-bottom: 1px solid var(--border-color);">96×</td>
+                            <td style="padding: 1rem; text-align: center; border-bottom: 1px solid var(--border-color);">32</td>
+                            <td style="padding: 1rem; text-align: center; border-bottom: 1px solid var(--border-color);">~2 min</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 1rem; border-bottom: 1px solid var(--border-color);">Convolutional (32)</td>
+                            <td style="padding: 1rem; text-align: center; border-bottom: 1px solid var(--border-color);">~0.0056</td>
+                            <td style="padding: 1rem; text-align: center; border-bottom: 1px solid var(--border-color);">96×</td>
+                            <td style="padding: 1rem; text-align: center; border-bottom: 1px solid var(--border-color);">32</td>
+                            <td style="padding: 1rem; text-align: center; border-bottom: 1px solid var(--border-color);">~20 min</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 1rem; border-bottom: 1px solid var(--border-color);">Convolutional (128)</td>
+                            <td style="padding: 1rem; text-align: center; border-bottom: 1px solid var(--border-color);">~0.0035</td>
+                            <td style="padding: 1rem; text-align: center; border-bottom: 1px solid var(--border-color);">24×</td>
+                            <td style="padding: 1rem; text-align: center; border-bottom: 1px solid var(--border-color);">128</td>
+                            <td style="padding: 1rem; text-align: center; border-bottom: 1px solid var(--border-color);">~25 min</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 1rem;">Denoising (512)</td>
+                            <td style="padding: 1rem; text-align: center;">~0.0063</td>
+                            <td style="padding: 1rem; text-align: center;">6×</td>
+                            <td style="padding: 1rem; text-align: center;">512</td>
+                            <td style="padding: 1rem; text-align: center;">~40 min</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h2>Usage</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin: 2rem 0;">
+                <div style="background: var(--secondary-bg); padding: 1.5rem; border-radius: 10px; border: 1px solid var(--border-color);">
+                    <h3 style="margin-top: 0; color: var(--accent-color);">PCA Mode</h3>
+                    <p>Fast linear baseline. Great for learning the autoencoder concept without waiting for deep training.</p>
+                    <div class="code-block" style="margin-top: 1rem;">
+                        <pre style="font-size: 0.8rem;"><code>python main.py --mode pca \
+  --epochs 15 --code-size 32</code></pre>
+                    </div>
+                </div>
+                <div style="background: var(--secondary-bg); padding: 1.5rem; border-radius: 10px; border: 1px solid var(--border-color);">
+                    <h3 style="margin-top: 0; color: var(--accent-color);">Convolutional Mode</h3>
+                    <p>Best reconstruction quality. Production-grade deep autoencoder with learned hierarchical features.</p>
+                    <div class="code-block" style="margin-top: 1rem;">
+                        <pre style="font-size: 0.8rem;"><code>python main.py --mode convolutional \
+  --epochs 25 --code-size 32</code></pre>
+                    </div>
+                </div>
+                <div style="background: var(--secondary-bg); padding: 1.5rem; border-radius: 10px; border: 1px solid var(--border-color);">
+                    <h3 style="margin-top: 0; color: var(--accent-color);">Denoising Mode</h3>
+                    <p>Trains with corrupted inputs for noise removal. Produces robust, noise-invariant features.</p>
+                    <div class="code-block" style="margin-top: 1rem;">
+                        <pre style="font-size: 0.8rem;"><code>python main.py --mode denoising \
+  --epochs 25 --noise-sigma 0.1</code></pre>
+                    </div>
+                </div>
+                <div style="background: var(--secondary-bg); padding: 1.5rem; border-radius: 10px; border: 1px solid var(--border-color);">
+                    <h3 style="margin-top: 0; color: var(--accent-color);">Retrieval Mode</h3>
+                    <p>Find similar images using k-NN in latent space. Requires a trained model.</p>
+                    <div class="code-block" style="margin-top: 1rem;">
+                        <pre style="font-size: 0.8rem;"><code>python main.py --mode retrieval \
+  --model-path saved_models \
+  --n-queries 3 --n-neighbors 5</code></pre>
+                    </div>
+                </div>
+                <div style="background: var(--secondary-bg); padding: 1.5rem; border-radius: 10px; border: 1px solid var(--border-color);">
+                    <h3 style="margin-top: 0; color: var(--accent-color);">Morphing Mode</h3>
+                    <p>Smooth image transitions via latent interpolation. Visualizes the continuity of the learned space.</p>
+                    <div class="code-block" style="margin-top: 1rem;">
+                        <pre style="font-size: 0.8rem;"><code>python main.py --mode morphing \
+  --model-path saved_models \
+  --n-pairs 5 --n-steps 7</code></pre>
+                    </div>
+                </div>
+                <div style="background: var(--secondary-bg); padding: 1.5rem; border-radius: 10px; border: 1px solid var(--border-color);">
+                    <h3 style="margin-top: 0; color: var(--accent-color);">Quick Demo</h3>
+                    <p>Run the 2-minute example script that trains PCA and shows reconstruction results immediately.</p>
+                    <div class="code-block" style="margin-top: 1rem;">
+                        <pre style="font-size: 0.8rem;"><code>pip install -r requirements.txt
+python example_usage.py</code></pre>
+                    </div>
+                </div>
+            </div>
+
+            <h2>Project Structure</h2>
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-language">Project Directory Layout</span>
+                    <button class="copy-button">Copy</button>
+                </div>
+                <pre><code>Autoencoders-Decoders-using-Keras/
+│
+├── main.py                    # CLI entry point (5 modes)
+├── config.py                  # Configuration management
+├── example_usage.py           # Quick 2-minute demo
+│
+├── models/                    # Autoencoder architectures
+│   ├── pca_autoencoder.py            # Linear (PCA-style)
+│   ├── convolutional_autoencoder.py  # Deep CNN
+│   └── denoising_autoencoder.py      # Noise-robust
+│
+├── utils/                     # Reusable utilities
+│   ├── data_loader.py               # Dataset handling
+│   ├── visualization.py             # Plotting tools
+│   └── noise.py                     # Noise generation
+│
+├── image_retrieval.py        # Similarity search
+├── image_morphing.py         # Image interpolation
+│
+├── requirements.txt          # Dependencies
+└── README.md                 # Complete documentation</code></pre>
+            </div>
+
+            <h2>Tech Stack</h2>
+            <div class="tech-stack">
+                <div class="tech-category">
+                    <h4>Deep Learning</h4>
+                    <div class="tech-list">
+                        <span class="tech-item">TensorFlow 2.13+</span>
+                        <span class="tech-item">Keras</span>
+                        <span class="tech-item">Conv2D / Conv2DTranspose</span>
+                        <span class="tech-item">Dense Layers</span>
+                    </div>
+                </div>
+                <div class="tech-category">
+                    <h4>Data & ML</h4>
+                    <div class="tech-list">
+                        <span class="tech-item">NumPy</span>
+                        <span class="tech-item">scikit-learn</span>
+                        <span class="tech-item">k-NN</span>
+                        <span class="tech-item">STL-10 Dataset</span>
+                    </div>
+                </div>
+                <div class="tech-category">
+                    <h4>Visualization</h4>
+                    <div class="tech-list">
+                        <span class="tech-item">Matplotlib</span>
+                        <span class="tech-item">Training Curves</span>
+                        <span class="tech-item">Reconstruction Plots</span>
+                        <span class="tech-item">Morphing Sequences</span>
+                    </div>
+                </div>
+                <div class="tech-category">
+                    <h4>Engineering</h4>
+                    <div class="tech-list">
+                        <span class="tech-item">Type Hints</span>
+                        <span class="tech-item">Google Docstrings</span>
+                        <span class="tech-item">CLI (argparse)</span>
+                        <span class="tech-item">Modular Design</span>
+                    </div>
+                </div>
+            </div>
+
+            <h2>The Upgrade: Old Notebook → Modern Application</h2>
+            <div style="overflow-x: auto; margin: 1.5rem 0;">
+                <table style="width: 100%; border-collapse: collapse; background: var(--secondary-bg); border-radius: 10px; overflow: hidden;">
+                    <thead>
+                        <tr style="background: rgba(0, 212, 255, 0.1);">
+                            <th style="padding: 1rem; text-align: left; border-bottom: 1px solid var(--border-color);">Aspect</th>
+                            <th style="padding: 1rem; text-align: center; border-bottom: 1px solid var(--border-color);">Old (Notebook)</th>
+                            <th style="padding: 1rem; text-align: center; border-bottom: 1px solid var(--border-color);">New (Python Scripts)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="padding: 1rem; border-bottom: 1px solid var(--border-color);">Structure</td>
+                            <td style="padding: 1rem; text-align: center; border-bottom: 1px solid var(--border-color);">Single .ipynb file</td>
+                            <td style="padding: 1rem; text-align: center; border-bottom: 1px solid var(--border-color);">Modular Python packages</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 1rem; border-bottom: 1px solid var(--border-color);">Framework</td>
+                            <td style="padding: 1rem; text-align: center; border-bottom: 1px solid var(--border-color);">TensorFlow 1.x / old Keras</td>
+                            <td style="padding: 1rem; text-align: center; border-bottom: 1px solid var(--border-color);">TensorFlow 2.13+</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 1rem; border-bottom: 1px solid var(--border-color);">Usage</td>
+                            <td style="padding: 1rem; text-align: center; border-bottom: 1px solid var(--border-color);">Run cells manually</td>
+                            <td style="padding: 1rem; text-align: center; border-bottom: 1px solid var(--border-color);">Single CLI command</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 1rem; border-bottom: 1px solid var(--border-color);">Code Quality</td>
+                            <td style="padding: 1rem; text-align: center; border-bottom: 1px solid var(--border-color);">Mixed inline code</td>
+                            <td style="padding: 1rem; text-align: center; border-bottom: 1px solid var(--border-color);">Professional, typed, documented</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 1rem; border-bottom: 1px solid var(--border-color);">Reproducibility</td>
+                            <td style="padding: 1rem; text-align: center; border-bottom: 1px solid var(--border-color);">Hard to reproduce</td>
+                            <td style="padding: 1rem; text-align: center; border-bottom: 1px solid var(--border-color);">Fully reproducible with seed</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 1rem;">Extensibility</td>
+                            <td style="padding: 1rem; text-align: center;">Difficult</td>
+                            <td style="padding: 1rem; text-align: center;">Easy with modular design</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h2>My Contribution</h2>
+            <p>I designed and built this project end to end:</p>
+            <ul>
+                <li>Upgraded the entire codebase from a single TF 1.x notebook to a modular TF 2.13+ application with 16 professional files</li>
+                <li>Designed and implemented three autoencoder architectures with progressive complexity (PCA → CNN → Denoising)</li>
+                <li>Built the image retrieval system using k-NN in latent space for fast semantic similarity search</li>
+                <li>Implemented image morphing via latent space interpolation with configurable step counts</li>
+                <li>Created the unified CLI entry point supporting all five modes with full argument customization</li>
+                <li>Wrote comprehensive documentation covering theory, architecture, usage, and mathematical foundations</li>
+            </ul>
+
+            <h2>Challenges & Learnings</h2>
+
+            <p>
+                <strong>Linear vs non-linear compression quality</strong><br>
+                The PCA autoencoder shows exactly what you lose with linear compression - it captures global 
+                structure but misses textures, fine edges, and complex patterns. Comparing its output side by 
+                side with the convolutional autoencoder makes the value of non-linear feature learning immediately 
+                visible and intuitive.
+            </p>
+
+            <p>
+                <strong>Latent space continuity is not guaranteed</strong><br>
+                Unlike variational autoencoders, standard autoencoders do not explicitly enforce continuity in 
+                latent space. Morphing works because the training distribution is dense enough, but there can be 
+                "holes" in latent space where decoded outputs look unrealistic. Understanding this limitation was 
+                key to setting correct expectations for the morphing application.
+            </p>
+
+            <p>
+                <strong>Denoising requires careful noise calibration</strong><br>
+                Too little noise (sigma &lt; 0.05) and the network barely learns denoising - it can reconstruct 
+                clean images without ignoring noise. Too much noise (sigma &gt; 0.3) and reconstruction quality 
+                degrades because the input is too corrupted to extract structure from. The sweet spot (0.1-0.2) 
+                produces genuinely robust features.
+            </p>
+
+            <p>
+                <strong>Code size vs reconstruction quality trade-off</strong><br>
+                A code size of 32 achieves 96× compression but visibly loses fine detail. Increasing to 128 
+                dramatically improves quality at the cost of less compression (24×). This trade-off is fundamental 
+                to representation learning and becomes a design decision based on the downstream application.
+            </p>
+
+            <h2>Future Improvements</h2>
+            <ul>
+                <li>Add a Variational Autoencoder (VAE) with KL divergence regularization for a properly structured latent space</li>
+                <li>Implement GAN-based decoder training for sharper reconstructions (adversarial autoencoder)</li>
+                <li>Support higher resolution inputs (64×64, 128×128) with deeper architectures</li>
+                <li>Add latent space visualization using t-SNE or UMAP to show cluster structure</li>
+                <li>Implement progressive training where code size gradually decreases during training</li>
+                <li>Add a Streamlit or Gradio demo for interactive exploration without command-line setup</li>
+            </ul>
+
+            <h2>Closing Note</h2>
+            <p>
+                This project is fully open source and designed to be both educational and practical. It demonstrates 
+                how autoencoders work at multiple levels of complexity, shows real-world applications beyond simple 
+                reconstruction, and serves as a clean reference implementation for anyone learning about latent 
+                representations in deep learning.
+            </p>
+            <p>
+                If you are studying representation learning, working on image compression, or just want to understand 
+                how neural networks learn to "summarize" images into compact codes, this project covers the full 
+                pipeline from theory to working applications.
+            </p>
+
+            <div style="margin-top: 3rem; padding: 2rem; background: var(--secondary-bg); border-radius: 15px; border: 1px solid var(--border-color);">
+                <h3 style="margin-top: 0;">Resources & Links</h3>
+                <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1rem; margin-bottom: 2rem;">
+                    <a href="https://github.com/inboxpraveen/Autoencoders-Decoders-using-Keras" class="demo-button" style="margin: 0;" target="_blank">GitHub Repository</a>
+                </div>
+                
+                <h4>Tags:</h4>
+                <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 1rem;">
+                    <span class="tech-tag">#Autoencoder</span>
+                    <span class="tech-tag">#DeepLearning</span>
+                    <span class="tech-tag">#TensorFlow</span>
+                    <span class="tech-tag">#Keras</span>
+                    <span class="tech-tag">#ComputerVision</span>
+                    <span class="tech-tag">#DimensionalityReduction</span>
+                    <span class="tech-tag">#ImageRetrieval</span>
+                    <span class="tech-tag">#LatentSpace</span>
+                    <span class="tech-tag">#Denoising</span>
+                    <span class="tech-tag">#CNN</span>
+                    <span class="tech-tag">#Python</span>
+                    <span class="tech-tag">#OpenSource</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer style="margin-top: 4rem;">
+        <div class="container">
+            <p>&copy; <span id="copyright-year"></span> Praveen Kumar. Built with passion for AI & open source community.</p>
+        </div>
+    </footer>
+
+    <script>
+        const mobileMenu = document.getElementById('mobileMenu');
+        const navLinks = document.getElementById('navLinks');
+
+        mobileMenu.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        document.addEventListener('click', function(e) {
+            if (e.target.classList.contains('copy-button')) {
+                const codeBlock = e.target.closest('.code-block');
+                const code = codeBlock.querySelector('pre').textContent;
+                
+                navigator.clipboard.writeText(code).then(() => {
+                    e.target.textContent = 'Copied!';
+                    setTimeout(() => {
+                        e.target.textContent = 'Copy';
+                    }, 2000);
+                });
+            }
+        });
+
+        const navEl = document.querySelector('nav');
+        const onNavScroll = () => {
+            if (window.scrollY > 20) navEl.classList.add('scrolled');
+            else navEl.classList.remove('scrolled');
+        };
+        window.addEventListener('scroll', onNavScroll, { passive: true });
+        onNavScroll();
+
+        window.addEventListener('load', function() {
+            const yearElement = document.getElementById('copyright-year');
+            if (yearElement) {
+                yearElement.textContent = new Date().getFullYear();
+            }
+        });
+    </script>
+</body>
+</html>
