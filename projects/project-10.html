@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FIFA Player Recommendation System - AI-Powered Player Similarity | Praveen Kumar</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="A web-based FIFA FC 25 player recommendation system built with Flask and scikit-learn. Uses cosine similarity on 34 player attributes to find similar players, supports gender toggle, multi-player radar chart comparisons, and runs entirely in-browser against a Flask backend.">
+    <meta name="keywords" content="FIFA Player Recommendation, Cosine Similarity, scikit-learn, Flask, Chart.js, Content-Based Filtering, Machine Learning, FC 25, Recommendation System, Python">
+    <meta name="author" content="Praveen Kumar">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="FIFA Player Recommendation System - AI-Powered Player Similarity">
+    <meta property="og:description" content="Find players with similar play styles in FC 25 using cosine similarity on 34 attributes. Supports male/female models, radar chart comparisons for up to 4 players, and autocomplete search.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://inboxpraveen.github.io/projects/project-10.html">
+    <meta property="og:image" content="https://inboxpraveen.github.io/projects/resources/project-10/Main-Dashboard.gif">
+    <meta property="og:image:alt" content="FIFA Player Recommendation System Dashboard">
+    <meta property="og:site_name" content="Praveen Kumar Portfolio">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="FIFA Player Recommendation System - AI-Powered Player Similarity">
+    <meta name="twitter:description" content="Content-based filtering for FC 25 FIFA players — cosine similarity on 34 attributes, radar chart comparisons, male/female model toggle.">
+    <meta name="twitter:image" content="https://inboxpraveen.github.io/projects/resources/project-10/Main-Dashboard.gif">
+    <meta name="twitter:image:alt" content="FIFA Player Recommendation System Dashboard">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://inboxpraveen.github.io/projects/project-10.html">
+    
+    <link rel="icon" type="image/x-icon" href="../assests/favicon.ico">
+    <link rel="stylesheet" href="../index.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo" onclick="window.location.href='../index.html'" style="cursor: pointer;">PK</div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../all-projects.html">Projects</a></li>
+                <li><a href="../about.html">About</a></li>
+                <li><a href="https://github.com/inboxpraveen" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+            </ul>
+            <button class="mobile-menu" id="mobileMenu">☰</button>
+        </div>
+    </nav>
+
+    <!-- Project Page - FIFA Player Recommendation System -->
+    <div class="page-container active">
+        <div class="page-header">
+            <div class="container">
+                <a href="../all-projects.html" class="back-button">← Back to Projects</a>
+                <h1 class="page-title">FIFA Player Recommendation System</h1>
+                <div class="page-meta">
+                    <div class="meta-item">
+                        <span>📅</span>
+                        <span>Completed: 2024</span>
+                    </div>
+                    <div class="meta-item">
+                        <span>⏱️</span>
+                        <span>Side Project</span>
+                    </div>
+                    <div class="meta-item">
+                        <span>👥</span>
+                        <span>Team Size: Solo</span>
+                    </div>
+                    <div class="meta-item">
+                        <span>🏷️</span>
+                        <span>Flask • scikit-learn • Chart.js • Python</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2>Project Overview</h2>
+            <p>
+                This is a web-based player recommendation system built on FC 25 FIFA stats. You search for a player, 
+                and the app finds the most similar players from the dataset using their in-game attributes. It supports 
+                both male and female players, lets you compare up to four players side by side, and visualizes the 
+                comparisons using radar charts.
+            </p>
+
+            <div style="text-align: center; margin: 2rem 0;">
+                <img src="./resources/project-10/Main-Dashboard.gif" alt="FIFA Player Recommendation System - Main Dashboard" style="max-width: 100%; height: auto; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);">
+            </div>
+
+            <p>
+                The app runs entirely in the browser against a Flask backend. There is no database — all recommendations 
+                come from a precomputed similarity model built at training time and loaded into memory at startup.
+            </p>
+
+            <h2>Why I Built This</h2>
+            <p>
+                I built this as a side project to work on something concrete with recommender systems. Most tutorials 
+                on recommendation engines use movies or books. I wanted to apply the same ideas to a domain that is 
+                more interesting to me, and one where the features are richer and more structured.
+            </p>
+            <p>
+                This project also gave me a reason to build a full end-to-end ML system from scratch: data cleaning, 
+                feature engineering, model training, a REST API, and a frontend. I published it open source so that 
+                other developers learning about content-based filtering or ML systems have a real working example 
+                they can read, run, and modify.
+            </p>
+
+            <h2>The Problem</h2>
+            <p>
+                Finding players with similar play styles in FIFA is not straightforward. The game has hundreds of 
+                attributes per player, and comparing them manually does not scale.
+            </p>
+            <p>This project reduces that problem by:</p>
+            <ul>
+                <li>Computing how similar any two players are across 34 key attributes</li>
+                <li>Giving you the top N most similar players for any player you search</li>
+                <li>Letting you compare multiple players visually with radar charts</li>
+                <li>Supporting filters like position category and age gap so results stay relevant</li>
+            </ul>
+            <p>
+                It is a practical example of how content-based filtering works when your "items" have structured 
+                numeric features.
+            </p>
+
+            <h2>Key Features</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin: 2rem 0;">
+                <div style="background: var(--secondary-bg); padding: 1.5rem; border-radius: 10px; border: 1px solid var(--border-color);">
+                    <h3 style="margin-top: 0; color: var(--accent-color);">Player Search</h3>
+                    <p>Search with filters for name, position, overall rating, nationality, league, and team. Autocomplete for player name lookups.</p>
+                </div>
+                <div style="background: var(--secondary-bg); padding: 1.5rem; border-radius: 10px; border: 1px solid var(--border-color);">
+                    <h3 style="margin-top: 0; color: var(--accent-color);">Similarity Recommendations</h3>
+                    <p>Cosine similarity on 34 player attributes returns the top N most similar players for any input player.</p>
+                </div>
+                <div style="background: var(--secondary-bg); padding: 1.5rem; border-radius: 10px; border: 1px solid var(--border-color);">
+                    <h3 style="margin-top: 0; color: var(--accent-color);">Gender Toggle</h3>
+                    <p>Separate trained models for male and female players. Switch between them with a single toggle for fully isolated results.</p>
+                </div>
+                <div style="background: var(--secondary-bg); padding: 1.5rem; border-radius: 10px; border: 1px solid var(--border-color);">
+                    <h3 style="margin-top: 0; color: var(--accent-color);">Multi-Player Comparison</h3>
+                    <p>Compare 2 to 4 players at once with a side-by-side radar chart overlay — great for scouting alternatives.</p>
+                </div>
+                <div style="background: var(--secondary-bg); padding: 1.5rem; border-radius: 10px; border: 1px solid var(--border-color);">
+                    <h3 style="margin-top: 0; color: var(--accent-color);">Player Detail View</h3>
+                    <p>Individual stats cards with a dedicated radar chart per player, showing all 34 attributes at a glance.</p>
+                </div>
+                <div style="background: var(--secondary-bg); padding: 1.5rem; border-radius: 10px; border: 1px solid var(--border-color);">
+                    <h3 style="margin-top: 0; color: var(--accent-color);">Top Players & Stats</h3>
+                    <p>Browse top-rated players and dataset statistics directly from the UI — no manual CSV digging required.</p>
+                </div>
+            </div>
+
+            <h2>How It Works</h2>
+            <p>
+                The system is split into an offline training phase and an online serving phase. The heavy computation 
+                happens once at training time so that every query at runtime is just a fast array lookup.
+            </p>
+            <ol>
+                <li><strong>Data preparation:</strong> The training script reads a CSV file of FC 25 player stats, cleans the data, removes duplicates, and assigns each player a position category.</li>
+                <li><strong>Feature extraction:</strong> 34 numeric attributes are selected per player — pace, shooting, passing, dribbling, defending, and specific sub-stats like sprint speed, vision, and composure.</li>
+                <li><strong>Normalization:</strong> Each player's feature vector is min-max normalized so all attributes contribute equally to the similarity score.</li>
+                <li><strong>Similarity matrix:</strong> The full pairwise cosine similarity matrix is precomputed over all players. The matrix, the original DataFrame, and feature names are bundled and saved as a <code>.pkl</code> file using <code>joblib</code>.</li>
+                <li><strong>Serving:</strong> At startup, Flask loads the pickled models into memory. All API calls work against this in-memory data — no live database.</li>
+                <li><strong>Recommendation:</strong> When you request similar players, the app reads the player's similarity row, applies optional position and age filters, and returns the top N results sorted by score.</li>
+                <li><strong>Frontend:</strong> A single-page HTML/JS app calls the Flask JSON API and renders results using Chart.js radar charts.</li>
+            </ol>
+
+            <h2>Tech Stack</h2>
+            <div class="tech-stack">
+                <div class="tech-category">
+                    <h4>Backend</h4>
+                    <div class="tech-list">
+                        <span class="tech-item">Python 3.8+</span>
+                        <span class="tech-item">Flask</span>
+                        <span class="tech-item">scikit-learn</span>
+                        <span class="tech-item">pandas</span>
+                        <span class="tech-item">NumPy</span>
+                        <span class="tech-item">joblib</span>
+                        <span class="tech-item">gunicorn</span>
+                    </div>
+                </div>
+                <div class="tech-category">
+                    <h4>Frontend</h4>
+                    <div class="tech-list">
+                        <span class="tech-item">HTML</span>
+                        <span class="tech-item">CSS</span>
+                        <span class="tech-item">Vanilla JavaScript</span>
+                        <span class="tech-item">Chart.js 4.4.0</span>
+                        <span class="tech-item">Font Awesome 6.4.0</span>
+                        <span class="tech-item">Google Fonts (Inter)</span>
+                    </div>
+                </div>
+                <div class="tech-category">
+                    <h4>Data</h4>
+                    <div class="tech-list">
+                        <span class="tech-item">FC 25 FIFA CSVs</span>
+                        <span class="tech-item">Male Player Dataset</span>
+                        <span class="tech-item">Female Player Dataset</span>
+                    </div>
+                </div>
+                <div class="tech-category">
+                    <h4>ML</h4>
+                    <div class="tech-list">
+                        <span class="tech-item">Cosine Similarity</span>
+                        <span class="tech-item">Min-Max Normalization</span>
+                        <span class="tech-item">Content-Based Filtering</span>
+                        <span class="tech-item">Precomputed Similarity Matrix</span>
+                    </div>
+                </div>
+            </div>
+
+            <h2>Core Code Snippets</h2>
+
+            <h3>The 34 attributes used to measure player similarity</h3>
+            <p>
+                These features form the input vectors for cosine similarity. Every recommendation comes down to how 
+                close two players' normalized versions of these values are.
+            </p>
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-language">Python - Feature columns for cosine similarity</span>
+                    <button class="copy-button">Copy</button>
+                </div>
+                <pre><code>FEATURE_COLUMNS = [
+    <span class="string">'PAC'</span>, <span class="string">'SHO'</span>, <span class="string">'PAS'</span>, <span class="string">'DRI'</span>, <span class="string">'DEF'</span>, <span class="string">'PHY'</span>,
+    <span class="string">'Acceleration'</span>, <span class="string">'Sprint Speed'</span>, <span class="string">'Positioning'</span>, <span class="string">'Finishing'</span>,
+    <span class="string">'Shot Power'</span>, <span class="string">'Long Shots'</span>, <span class="string">'Volleys'</span>, <span class="string">'Penalties'</span>,
+    <span class="string">'Vision'</span>, <span class="string">'Crossing'</span>, <span class="string">'Free Kick Accuracy'</span>, <span class="string">'Short Passing'</span>,
+    <span class="string">'Long Passing'</span>, <span class="string">'Curve'</span>, <span class="string">'Dribbling'</span>, <span class="string">'Agility'</span>, <span class="string">'Balance'</span>,
+    <span class="string">'Reactions'</span>, <span class="string">'Ball Control'</span>, <span class="string">'Composure'</span>, <span class="string">'Interceptions'</span>,
+    <span class="string">'Heading Accuracy'</span>, <span class="string">'Def Awareness'</span>, <span class="string">'Standing Tackle'</span>,
+    <span class="string">'Sliding Tackle'</span>, <span class="string">'Jumping'</span>, <span class="string">'Stamina'</span>, <span class="string">'Strength'</span>, <span class="string">'Aggression'</span>
+]</code></pre>
+            </div>
+
+            <h3>Precomputing the full similarity matrix at training time</h3>
+            <p>
+                This is a deliberate trade-off: spend time and memory once at training so that every recommendation 
+                at query time is just an array lookup.
+            </p>
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-language">Python - Precompute similarity matrix</span>
+                    <button class="copy-button">Copy</button>
+                </div>
+                <pre><code><span class="comment"># Precompute similarity matrix for fast recommendations</span>
+print(<span class="string">"Computing similarity matrix..."</span>)
+<span class="keyword">self</span>.similarity_matrix = cosine_similarity(normalized_features)
+print(<span class="keyword">f</span><span class="string">"Similarity matrix computed: {self.similarity_matrix.shape}"</span>)</code></pre>
+            </div>
+
+            <h3>Filtering and ranking recommendations</h3>
+            <p>
+                After reading the similarity row for a player, the system skips the player itself, applies optional 
+                position and age filters, and returns the top N results sorted by score.
+            </p>
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-language">Python - Recommendation filtering and ranking</span>
+                    <button class="copy-button">Copy</button>
+                </div>
+                <pre><code>similarity_scores = <span class="keyword">self</span>.similarity_matrix[player_idx]
+
+<span class="keyword">for</span> idx, score <span class="keyword">in</span> enumerate(similarity_scores):
+    <span class="keyword">if</span> idx == player_idx:  <span class="comment"># Skip the player itself</span>
+        <span class="keyword">continue</span>
+
+    <span class="keyword">if</span> same_position <span class="keyword">and</span> player_position:
+        <span class="keyword">if</span> candidate.get(<span class="string">'Position_Category'</span>) != player_position:
+            <span class="keyword">continue</span>
+
+    <span class="comment"># ... age gap filter applied here ...</span>
+
+candidates.sort(key=<span class="keyword">lambda</span> x: x[<span class="number">1</span>], reverse=<span class="keyword">True</span>)
+
+<span class="keyword">for</span> idx, score <span class="keyword">in</span> candidates[:n_recommendations]:
+    <span class="comment"># build and return result list</span></code></pre>
+            </div>
+
+            <h2>My Contribution</h2>
+            <p>I designed and built this project end to end:</p>
+            <ul>
+                <li>Defined the feature set and data processing pipeline for both male and female player datasets</li>
+                <li>Built the <code>DataProcessor</code> and <code>PlayerRecommender</code> classes from scratch</li>
+                <li>Implemented the cosine similarity-based recommendation logic with position and age filtering</li>
+                <li>Wrote the Flask REST API with all search, recommend, compare, and stats endpoints</li>
+                <li>Designed and built the single-page frontend with Chart.js radar charts</li>
+                <li>Set up packaging, training scripts, and documentation</li>
+            </ul>
+
+            <h2>Challenges & Learnings</h2>
+
+            <p>
+                <strong>Scaling the similarity matrix</strong><br>
+                The precomputed similarity matrix is O(n²) in memory. For a large player dataset, this gets heavy fast. 
+                I kept it as a deliberate design choice for query speed, but it made me think carefully about when this 
+                trade-off makes sense versus using approximate nearest neighbor methods like FAISS or Annoy.
+            </p>
+
+            <p>
+                <strong>Consistent normalization between training and inference</strong><br>
+                When I added a feature to recommend players by custom attribute values (not from the dataset), I had 
+                to ensure the input was normalized the same way as the training data. It is easy to get this subtly 
+                wrong, and the recommendations would silently degrade without an obvious error.
+            </p>
+
+            <p>
+                <strong>Name resolution ambiguity</strong><br>
+                Player names in the CSV are not always unique or clean. The lookup function falls back to substring 
+                matching, which means it can return a different player than intended. Handling name resolution reliably 
+                turned out to be trickier than expected.
+            </p>
+
+            <p>
+                <strong>Separating male and female models cleanly</strong><br>
+                The two player pools have different data distributions. Keeping them as completely separate trained 
+                models was the simplest and most reliable approach, even though it doubles the memory footprint at 
+                runtime.
+            </p>
+
+            <h2>Future Improvements</h2>
+            <ul>
+                <li>Replace the precomputed O(n²) matrix with an approximate nearest neighbor index (FAISS or Annoy) to reduce memory and support larger datasets</li>
+                <li>Add a proper name normalization step so player lookups are more reliable</li>
+                <li>Support dataset updates without retraining from scratch</li>
+                <li>Add a Docker setup for easier one-command deployment</li>
+                <li>Expose a simple public API so other developers can build on top of the recommendation engine</li>
+            </ul>
+
+            <h2>Closing Note</h2>
+            <p>
+                This project is fully open source under the MIT license. It was built as a personal learning project 
+                and shared so others can use it, study it, or improve it. If you find it useful, run into a bug, or 
+                have an idea to make it better, feel free to open an issue or a pull request on GitHub.
+            </p>
+            <p>
+                It is a practical, working example of how content-based filtering applies beyond the typical movies 
+                or books domain — if your items have structured numeric features, cosine similarity is a powerful 
+                and surprisingly interpretable baseline.
+            </p>
+
+            <div style="margin-top: 3rem; padding: 2rem; background: var(--secondary-bg); border-radius: 15px; border: 1px solid var(--border-color);">
+                <h3 style="margin-top: 0;">Resources & Links</h3>
+                <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1rem; margin-bottom: 2rem;">
+                    <a href="https://github.com/inboxpraveen/FIFA-Player-Recomendation" class="demo-button" style="margin: 0;" target="_blank">GitHub Repository</a>
+                </div>
+                
+                <h4>Tags:</h4>
+                <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 1rem;">
+                    <span class="tech-tag">#RecommendationSystem</span>
+                    <span class="tech-tag">#ContentBasedFiltering</span>
+                    <span class="tech-tag">#CosineSimilarity</span>
+                    <span class="tech-tag">#Flask</span>
+                    <span class="tech-tag">#scikit-learn</span>
+                    <span class="tech-tag">#ChartJS</span>
+                    <span class="tech-tag">#FIFA</span>
+                    <span class="tech-tag">#FC25</span>
+                    <span class="tech-tag">#MachineLearning</span>
+                    <span class="tech-tag">#Python</span>
+                    <span class="tech-tag">#OpenSource</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer style="margin-top: 4rem;">
+        <div class="container">
+            <p>&copy; <span id="copyright-year"></span> Praveen Kumar. Built with passion for AI & open source community.</p>
+        </div>
+    </footer>
+
+    <script>
+        const mobileMenu = document.getElementById('mobileMenu');
+        const navLinks = document.getElementById('navLinks');
+
+        mobileMenu.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        document.addEventListener('click', function(e) {
+            if (e.target.classList.contains('copy-button')) {
+                const codeBlock = e.target.closest('.code-block');
+                const code = codeBlock.querySelector('pre').textContent;
+                
+                navigator.clipboard.writeText(code).then(() => {
+                    e.target.textContent = 'Copied!';
+                    setTimeout(() => {
+                        e.target.textContent = 'Copy';
+                    }, 2000);
+                });
+            }
+        });
+
+        const navEl = document.querySelector('nav');
+        const onNavScroll = () => {
+            if (window.scrollY > 20) navEl.classList.add('scrolled');
+            else navEl.classList.remove('scrolled');
+        };
+        window.addEventListener('scroll', onNavScroll, { passive: true });
+        onNavScroll();
+
+        window.addEventListener('load', function() {
+            const yearElement = document.getElementById('copyright-year');
+            if (yearElement) {
+                yearElement.textContent = new Date().getFullYear();
+            }
+        });
+    </script>
+</body>
+</html>
