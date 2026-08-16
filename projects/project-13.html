@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Py Internals - Interactive Python Memory Course | Praveen Kumar</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="An open-source interactive course that teaches Python by making its memory model visible. Hand-authored snapshots, step-through animation, quizzes, and a vanilla HTML/CSS/JS engine on GitHub Pages.">
+    <meta name="keywords" content="Py Internals, Python Memory Model, Python Education, Names vs Objects, References, Garbage Collection, Interactive Course, Vanilla JavaScript, GitHub Pages, Open Source">
+    <meta name="author" content="Praveen Kumar">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Py Internals - Interactive Python Memory Course">
+    <meta property="og:description" content="Most tutorials teach you what to type. Py Internals teaches you what Python does with it — names, objects, frames, and garbage collection as an animated memory diagram.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://inboxpraveen.github.io/projects/project-13.html">
+    <meta property="og:image" content="https://inboxpraveen.github.io/projects/resources/project-13/Homepage.png">
+    <meta property="og:image:alt" content="Py Internals course homepage">
+    <meta property="og:site_name" content="Praveen Kumar Portfolio">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Py Internals - Interactive Python Memory Course">
+    <meta name="twitter:description" content="Open-source course that visualizes Python's object model: names, objects, frames, references, and GC — step through at your own pace.">
+    <meta name="twitter:image" content="https://inboxpraveen.github.io/projects/resources/project-13/Homepage.png">
+    <meta name="twitter:image:alt" content="Py Internals course homepage">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://inboxpraveen.github.io/projects/project-13.html">
+    
+    <link rel="icon" type="image/x-icon" href="../assests/favicon.ico">
+    <link rel="stylesheet" href="../index.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo" onclick="window.location.href='../index.html'" style="cursor: pointer;">PK</div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../all-projects.html">Projects</a></li>
+                <li><a href="../about.html">About</a></li>
+                <li><a href="https://github.com/inboxpraveen" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+            </ul>
+            <button class="mobile-menu" id="mobileMenu">☰</button>
+        </div>
+    </nav>
+
+    <!-- Project Page - Py Internals -->
+    <div class="page-container active">
+        <div class="page-header">
+            <div class="container">
+                <a href="../all-projects.html" class="back-button">← Back to Projects</a>
+                <h1 class="page-title">Py Internals</h1>
+                <div class="page-meta">
+                    <div class="meta-item">
+                        <span>📅</span>
+                        <span>Live: 2026</span>
+                    </div>
+                    <div class="meta-item">
+                        <span>⏱️</span>
+                        <span>5 sessions shipped, 2 planned</span>
+                    </div>
+                    <div class="meta-item">
+                        <span>👥</span>
+                        <span>Founder &amp; sole engineer</span>
+                    </div>
+                    <div class="meta-item">
+                        <span>🏷️</span>
+                        <span>HTML • CSS • JavaScript • GitHub Pages</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2>Project Overview</h2>
+            <p>
+                <strong>Py Internals</strong> is an open-source, interactive course that teaches Python by making 
+                its memory model visible. Most tutorials teach you what to type. This one teaches you what Python 
+                does with it — names, objects, frames, references, and garbage collection — as an animated memory 
+                diagram you can step through at your own pace.
+            </p>
+
+            <div style="text-align: center; margin: 2rem 0;">
+                <img src="./resources/project-13/Homepage.png" alt="Py Internals - Course homepage" style="max-width: 100%; height: auto; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);">
+            </div>
+
+            <p>
+                Each lesson is a lab: Python on the left, a memory diagram on the right, and a written explanation 
+                underneath. There is no backend, no account, no analytics tracker, and no build step. Open the URL 
+                and start. I built the product, the pedagogy, the visual system, and the frontend myself.
+            </p>
+
+            <h2>Why I Built This</h2>
+            <p>
+                A huge number of people can use Python and still cannot explain it. They write <code>x = 42</code> 
+                and think a box named <code>x</code> now contains 42. They write <code>b = a</code> on a list and 
+                are shocked when <code>b.append(1)</code> changes <code>a</code>. They pass a dict into a function, 
+                mutate a nested list, then rebind the parameter — and cannot predict what the caller still sees.
+            </p>
+            <p>
+                That gap — between syntax fluency and a working mental model — is where the real bugs live. It is 
+                also where most courses stop. They show the happy path, print a result, and move on. The learner 
+                never sees that a name is a binding, that assignment rebinds while <code>append</code> mutates, 
+                that two names can point at one object, or that a function call is a temporary namespace on a stack.
+            </p>
+            <p>
+                I wanted three things at once: a picture you can trust, a pace you control, and zero friction. 
+                If you cannot draw the memory, the explanation is unfinished. Autoplay exists, but the real design 
+                is step-by-step. And a learner on a cheap laptop or a teacher on a projector should just open the URL.
+            </p>
+
+            <h2>The Problem</h2>
+            <p>
+                Courses optimize for finishing a task. They rarely draw the thing that actually matters: what 
+                objects exist, which names point at them, and whether a line rebound a name or mutated an object.
+            </p>
+            <p>The learner never sees:</p>
+            <ul>
+                <li>that a name is a binding, not a box</li>
+                <li>that assignment rebinds, while methods like <code>append</code> mutate</li>
+                <li>that two names can point at one object</li>
+                <li>that a function call is a temporary namespace on a stack</li>
+                <li>that a class stores behavior and an instance stores data</li>
+                <li>that a <code>for</code> loop is <code>iter</code> + <code>next</code> + <code>StopIteration</code></li>
+                <li>that a generator is a paused frame, not a finished list</li>
+            </ul>
+            <p>
+                I built Py Internals to close that gap visually, for free, with no login and no install.
+            </p>
+
+            <h2>Who It Is For</h2>
+            <p>
+                Developers who already write Python and keep hitting “why did that happen?” People coming from 
+                languages where variables really are boxes. Teachers and bootcamps who need a shared picture of 
+                names versus objects. Anyone who has used Python Tutor and wanted a slower, more editorial, more 
+                course-like version of that idea.
+            </p>
+            <p>
+                It is not a syntax bootcamp, a LeetCode trainer, or a CPython source-code tour. The model stays 
+                at the Python level on purpose: names, objects, references, frames. Implementation details — C 
+                structs, interned small ints, the GIL — appear only when they change the mental model.
+            </p>
+
+            <h2>Key Features</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin: 2rem 0;">
+                <div style="background: var(--secondary-bg); padding: 1.5rem; border-radius: 10px; border: 1px solid var(--border-color);">
+                    <h3 style="margin-top: 0; color: var(--accent-color);">Memory Visualizer</h3>
+                    <p>Stack frames, heap objects, reference links, refcounts, and visual states for new, rebound, mutated, and about-to-be-collected objects.</p>
+                </div>
+                <div style="background: var(--secondary-bg); padding: 1.5rem; border-radius: 10px; border: 1px solid var(--border-color);">
+                    <h3 style="margin-top: 0; color: var(--accent-color);">Step-Through Labs</h3>
+                    <p>Each demo is a scripted execution. Play, pause, next, previous, reset, and speed — keyboard controls make it feel like a debugger, not a slideshow.</p>
+                </div>
+                <div style="background: var(--secondary-bg); padding: 1.5rem; border-radius: 10px; border: 1px solid var(--border-color);">
+                    <h3 style="margin-top: 0; color: var(--accent-color);">Learning Loop</h3>
+                    <p>See the animation, read the model in prose, then predict the next diagram in a quiz. A perfect score marks the session complete.</p>
+                </div>
+                <div style="background: var(--secondary-bg); padding: 1.5rem; border-radius: 10px; border: 1px solid var(--border-color);">
+                    <h3 style="margin-top: 0; color: var(--accent-color);">Zero Friction</h3>
+                    <p>No React, no npm, no login. Static files on GitHub Pages. Progress lives in localStorage. Clone it, serve it, learn.</p>
+                </div>
+                <div style="background: var(--secondary-bg); padding: 1.5rem; border-radius: 10px; border: 1px solid var(--border-color);">
+                    <h3 style="margin-top: 0; color: var(--accent-color);">Course Surface</h3>
+                    <p>Narrative articles, “watch for” hints, type chips, a searchable glossary of ~35 terms, and a homepage that remembers where you left off.</p>
+                </div>
+                <div style="background: var(--secondary-bg); padding: 1.5rem; border-radius: 10px; border: 1px solid var(--border-color);">
+                    <h3 style="margin-top: 0; color: var(--accent-color);">Extensible Engine</h3>
+                    <p>Content and renderer are separate. A new lesson is a new story in the same snapshot language — not a new visualizer.</p>
+                </div>
+            </div>
+
+            <h2>Screenshots</h2>
+
+            <h3>A session page</h3>
+            <p>
+                Each session opens like an essay with a lab in the middle: a learning goal, a recommended path, 
+                and a sidebar that tracks where you are in the course.
+            </p>
+            <div style="text-align: center; margin: 2rem 0;">
+                <img src="./resources/project-13/Session-Example.png" alt="Py Internals - Session 01 Variables and Mutability" style="max-width: 100%; height: auto; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);">
+            </div>
+
+            <h3>The interactive lab</h3>
+            <p>
+                Python on the left, memory on the right. The diagram is the product: namespaces, heap objects, 
+                type-colored chips, and playback that you own. Space to pause. R to reset.
+            </p>
+            <div style="text-align: center; margin: 2rem 0;">
+                <img src="./resources/project-13/Interactive-Lab-Example.png" alt="Py Internals - Interactive memory lab" style="max-width: 100%; height: auto; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);">
+            </div>
+
+            <h2>How It Works</h2>
+            <p>
+                A session is not a video and not a notebook. It is a scripted execution of a small Python program, 
+                authored as a sequence of memory snapshots.
+            </p>
+            <p>
+                Each snapshot is a plain JavaScript object: which frames exist, which names are bound, which heap 
+                objects are alive, what their refcounts are, and what just changed. A renderer turns that snapshot 
+                into DOM — stack on one side, heap on the other, highlight rings, GC pulse. An animator owns time. 
+                A highlighter syncs the current line in the code panel.
+            </p>
+
+            <div class="table-container">
+                <table class="content-table">
+                    <thead>
+                        <tr>
+                            <th>Layer</th>
+                            <th>Responsibility</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>session.js</code></td>
+                            <td>The lesson itself — code, steps, titles, explanations, and memory snapshots</td>
+                        </tr>
+                        <tr>
+                            <td><code>PJ.MemoryViz</code></td>
+                            <td>Draw one snapshot: frames, heap, highlights, object states</td>
+                        </tr>
+                        <tr>
+                            <td><code>PJ.Animator</code></td>
+                            <td>Own playback: index, timer, controls, step dots, speed</td>
+                        </tr>
+                        <tr>
+                            <td><code>PJ.Syntax</code></td>
+                            <td>Highlight Python and mark the active / already-executed lines</td>
+                        </tr>
+                        <tr>
+                            <td><code>PJ.Core</code></td>
+                            <td>App chrome: sidebar, quizzes, progress, “continue learning”, keyboard</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <p>
+                That split is the architecture. A new lesson does not require a new visualizer. It requires a new 
+                story told in the same snapshot language. The implementation guide is explicit about how to write 
+                that story: first step is empty memory, last step is the settled state, one concept per step, 
+                5–8 steps per demo, highlight only what this step is about.
+            </p>
+
+            <h3>A snapshot is the lesson format</h3>
+            <p>
+                Below is the kind of object a session authors. Teaching addresses stay stable on purpose. This is 
+                a diagram for a learner, not a dump from a live interpreter.
+            </p>
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-language">JavaScript - Memory snapshot for one animation step</span>
+                    <button class="copy-button">Copy</button>
+                </div>
+                <pre><code>{
+  title: <span class="string">"Two names, one list"</span>,
+  line: <span class="number">2</span>,
+  frames: [
+    {
+      name: <span class="string">"global"</span>,
+      bindings: [
+        { name: <span class="string">"a"</span>, ref: <span class="string">"0x7f10"</span> },
+        { name: <span class="string">"b"</span>, ref: <span class="string">"0x7f10"</span> }
+      ]
+    }
+  ],
+  heap: [
+    {
+      id: <span class="string">"0x7f10"</span>,
+      type: <span class="string">"list"</span>,
+      value: [<span class="number">1</span>, <span class="number">2</span>],
+      refs: <span class="number">2</span>,
+      mutable: <span class="keyword">true</span>,
+      state: <span class="string">"mutated"</span>
+    }
+  ]
+}</code></pre>
+            </div>
+
+            <h3>The course is one argument, told five times</h3>
+            <p>
+                A name points at an object. Everything else is a consequence of that.
+            </p>
+            <p>
+                Functions add temporary names (frames). Lists and dicts store more references. Classes split data 
+                (instance) from behavior (class). Iterators are cursors over those objects. Generators are frames 
+                that pause instead of returning. I do not need a visitor to walk every session. If they understand 
+                that sentence, they understand the product.
+            </p>
+
+            <h2>What the Diagram Shows</h2>
+            <ul>
+                <li><strong>Namespaces / stack frames</strong> — which names exist, and what they point at</li>
+                <li><strong>Heap objects</strong> — type, value, simulated <code>id()</code>, mutability, reference count</li>
+                <li><strong>Reference links</strong> — names pointing at objects, containers pointing at nested objects</li>
+                <li><strong>State changes</strong> — new, rebound, mutated, about to be garbage-collected</li>
+                <li><strong>Call stacks</strong> — a new frame appears when a function runs and disappears when it returns</li>
+                <li><strong>Type / class links</strong> — instance → class, subclass → base, bound methods, MRO-style lookup</li>
+            </ul>
+            <p>
+                The visualizer handles single frames or a full call stack, inline versus referenced values, and 
+                lists, dicts, functions, classes, instances, methods, and generators. Type-specific colors mean 
+                an int and a list are never visually the same.
+            </p>
+
+            <h2>Tech Stack</h2>
+            <div class="tech-stack">
+                <div class="tech-category">
+                    <h4>Frontend</h4>
+                    <div class="tech-list">
+                        <span class="tech-item">Semantic HTML5</span>
+                        <span class="tech-item">Vanilla CSS</span>
+                        <span class="tech-item">Vanilla JS (ES2020)</span>
+                    </div>
+                </div>
+                <div class="tech-category">
+                    <h4>Design System</h4>
+                    <div class="tech-list">
+                        <span class="tech-item">CSS Custom Properties</span>
+                        <span class="tech-item">Lora + DM Sans</span>
+                        <span class="tech-item">JetBrains Mono</span>
+                        <span class="tech-item">Type-colored chips</span>
+                    </div>
+                </div>
+                <div class="tech-category">
+                    <h4>Learning Runtime</h4>
+                    <div class="tech-list">
+                        <span class="tech-item">Hand-authored snapshots</span>
+                        <span class="tech-item">DOM renderer</span>
+                        <span class="tech-item">Keyboard playback</span>
+                        <span class="tech-item">localStorage progress</span>
+                    </div>
+                </div>
+                <div class="tech-category">
+                    <h4>Hosting &amp; License</h4>
+                    <div class="tech-list">
+                        <span class="tech-item">GitHub Pages</span>
+                        <span class="tech-item">No build step</span>
+                        <span class="tech-item">PI Community License</span>
+                        <span class="tech-item">Attribution + share-alike</span>
+                    </div>
+                </div>
+            </div>
+
+            <h2>How This Is Different</h2>
+            <p>
+                The quizzes do not ask “what does this print?” They ask “which memory picture is true?”
+            </p>
+
+            <div class="table-container">
+                <table class="content-table">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Typical course</th>
+                            <th>Python Tutor</th>
+                            <th>Py Internals</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Job</td>
+                            <td>Teach syntax and exercises</td>
+                            <td>Visualize your code once</td>
+                            <td>Teach the model with a visual, as a course</td>
+                        </tr>
+                        <tr>
+                            <td>Unit of attention</td>
+                            <td>A topic chapter</td>
+                            <td>A single program run</td>
+                            <td>One idea per animation step</td>
+                        </tr>
+                        <tr>
+                            <td>Memory</td>
+                            <td>Mentioned, rarely drawn</td>
+                            <td>Drawn, but you bring the code</td>
+                            <td>Drawn for you, then named in prose</td>
+                        </tr>
+                        <tr>
+                            <td>Pedagogy</td>
+                            <td>Watch / type / quiz syntax</td>
+                            <td>Explore / debug</td>
+                            <td>Watch → name → predict</td>
+                        </tr>
+                        <tr>
+                            <td>Friction</td>
+                            <td>Account, video, CMS</td>
+                            <td>Paste code, hope the example is good</td>
+                            <td>Open URL, press Next</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <p>
+                <strong>Versus Python Tutor.</strong> Philip Guo’s visualizer is the original and still the best 
+                general tracer. Py Internals is not trying to replace it. Python Tutor visualizes arbitrary user 
+                code. This course visualizes authored lessons: every step has a title, a claim, a highlight, and 
+                a reason. A live tracer shows everything. A teacher shows the one thing that matters on this step.
+            </p>
+            <p>
+                <strong>Versus books.</strong> <em>Fluent Python</em> is the book that made the object model click 
+                for a lot of us. Books cannot step. They cannot pulse a dying object when the refcount hits zero. 
+                They cannot let you rewind <code>b = a</code> until the alias is obvious. This is the visual 
+                companion to that kind of thinking — not a replacement for it.
+            </p>
+            <p>
+                <strong>Versus video.</strong> Video is time you cannot query. Here the learner owns the clock. 
+                The same demo, five times, until the picture sticks.
+            </p>
+            <p>
+                <strong>Versus a React/Next app.</strong> A framework would have been faster to start and heavier 
+                forever. The audience includes people who will read the source to learn how the site itself works. 
+                The stack is part of the teaching: complexity is earned, not default.
+            </p>
+
+            <h2>Constraints I Chose on Purpose</h2>
+            <p>
+                <strong>No live Python in the browser.</strong> Snapshots are hand-authored. That costs time and 
+                buys clarity. A real interpreter would show interned ints, peephole details, and frame objects 
+                the learner is not ready for. The guide is explicit: this is a teaching diagram, not a claim that 
+                CPython looks like these DIVs.
+            </p>
+            <p>
+                <strong>No backend.</strong> Progress is local. That means no cross-device sync and no learning 
+                analytics — and also no accounts, no cookies, no outage, no GDPR surface.
+            </p>
+            <p>
+                <strong>Python-level model, not C-level.</strong> I will not explain <code>PyObject</code> headers 
+                in Session 01. I will explain why <code>a is b</code> is the question you meant to ask.
+            </p>
+            <p>
+                <strong>One concept per step.</strong> If a step asks you to watch two mutations, the step is wrong.
+            </p>
+            <p>
+                <strong>Beautiful enough to take seriously.</strong> Learning tools default to homework gray. This 
+                one is typeset like an essay with a lab in the middle — cream paper, editorial serif titles, deep 
+                teal and amber. That is a product decision, not decoration.
+            </p>
+
+            <h2>What Shipped</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 1.5rem; margin: 2rem 0;">
+                <div style="background: var(--secondary-bg); padding: 1.5rem; border-radius: 10px; border: 1px solid var(--border-color); text-align: center;">
+                    <h3 style="margin-top: 0; color: var(--accent-color); font-size: 2rem;">5</h3>
+                    <p style="margin-bottom: 0;">Live sessions</p>
+                </div>
+                <div style="background: var(--secondary-bg); padding: 1.5rem; border-radius: 10px; border: 1px solid var(--border-color); text-align: center;">
+                    <h3 style="margin-top: 0; color: var(--accent-color); font-size: 2rem;">~23</h3>
+                    <p style="margin-bottom: 0;">Interactive demos</p>
+                </div>
+                <div style="background: var(--secondary-bg); padding: 1.5rem; border-radius: 10px; border: 1px solid var(--border-color); text-align: center;">
+                    <h3 style="margin-top: 0; color: var(--accent-color); font-size: 2rem;">~100</h3>
+                    <p style="margin-bottom: 0;">Authored steps</p>
+                </div>
+                <div style="background: var(--secondary-bg); padding: 1.5rem; border-radius: 10px; border: 1px solid var(--border-color); text-align: center;">
+                    <h3 style="margin-top: 0; color: var(--accent-color); font-size: 2rem;">18</h3>
+                    <p style="margin-bottom: 0;">Quiz items</p>
+                </div>
+                <div style="background: var(--secondary-bg); padding: 1.5rem; border-radius: 10px; border: 1px solid var(--border-color); text-align: center;">
+                    <h3 style="margin-top: 0; color: var(--accent-color); font-size: 2rem;">~35</h3>
+                    <p style="margin-bottom: 0;">Glossary terms</p>
+                </div>
+            </div>
+            <p>
+                Shared CSS and JS across every session. Session-specific logic lives only in that session’s 
+                <code>session.js</code>. The homepage, glossary, and labs share one design language. The license 
+                matches the intent: free to use, share, adapt, and embed for education; attribution required; 
+                share-alike for derivatives; no selling or paywalling the material without permission.
+            </p>
+
+            <h2>My Contribution</h2>
+            <p>I designed and built the entire product:</p>
+            <ul>
+                <li>Turned a fuzzy learning problem into a specific product: visualize the object model as a course, not a tracer</li>
+                <li>Designed the domain-specific snapshot format and the engine that renders it</li>
+                <li>Built the visualizer, animator, syntax highlighter, quizzes, glossary, and progress system in vanilla JS</li>
+                <li>Created the design system — tokens for color, type, spacing, radius, shadow, and motion</li>
+                <li>Wrote the pedagogy as UX: empty states first, one idea per step, predict-then-reveal, glossary in reach</li>
+                <li>Authored the live sessions, demos, explanations, and quiz items</li>
+                <li>Documented the snapshot schema, component reference, and “don’t leak session CSS into the shared system”</li>
+                <li>Wrote the PI Community License so the course stays free to teach from and hard to lock up</li>
+            </ul>
+
+            <h2>Challenges &amp; Learnings</h2>
+            <p>
+                <strong>Authoring is the hard part.</strong> The engine is a few hundred lines. The work is deciding 
+                what not to show. Every demo is a storyboard: empty world, one change, one sentence, one highlight. 
+                Nested lists cannot be honest arrows yet, so parent slots carry readable labels and the inner object 
+                sits on the heap beside them. That compromise is documented so future sessions do not pretend the 
+                diagram is a memory dump.
+            </p>
+            <p>
+                <strong>Shared engine versus session drift.</strong> Session 02 needed call stacks. Session 03 needed 
+                nested references. Session 04 needed <code>classRef</code> and bases. The rule became: promote a 
+                pattern to shared CSS/JS only when a second session needs it unchanged. Until then, keep it local. 
+                That kept the core small.
+            </p>
+            <p>
+                <strong>Teaching without lying.</strong> Closures are not literally dicts. Shallow copy is not “a 
+                broken copy.” <code>self</code> is not magic. The copy in the UI has to be vivid and still 
+                defensible. The implementation guide is as much an ethics document as a style guide.
+            </p>
+            <p>
+                <strong>Making “no build tools” feel like a product.</strong> Design tokens, motion, keyboard, 
+                progress, quizzes, responsive stage — all without a component library. The cost is discipline. 
+                The payoff is that a contributor can open one HTML file and understand the page.
+            </p>
+
+            <h2>What's Next</h2>
+            <p>
+                Decorators first — first-class functions, wrappers, <code>functools</code> — then the GIL, threads, 
+                processes, and asyncio. Same visual contract, harder runtime questions.
+            </p>
+            <p>
+                After that, the interesting product question is not “more topics.” It is whether the snapshot 
+                language can grow — true nested arrows, richer generator frames — without breaking the rule that 
+                one step teaches one thing.
+            </p>
+
+            <h2>Closing Note</h2>
+            <p>
+                A learner who finishes the live path should look at unfamiliar Python and ask better questions: 
+                What objects exist? Which names point at them? Did this line rebind or mutate? Which frame is this 
+                name in? Is this a copy or an alias? Where does this attribute actually live?
+            </p>
+            <p>
+                That is the win. Not “they completed five modules.” They stopped being surprised by the language 
+                they already use.
+            </p>
+            <p>
+                Standing on: Python Tutor (Philip Guo), the CPython internals docs, and <em>Fluent Python</em> 
+                (Luciano Ramalho).
+            </p>
+
+            <div style="margin-top: 3rem; padding: 2rem; background: var(--secondary-bg); border-radius: 15px; border: 1px solid var(--border-color);">
+                <h3 style="margin-top: 0;">Resources &amp; Links</h3>
+                <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1rem; margin-bottom: 2rem;">
+                    <a href="https://inboxpraveen.github.io/Py-Internals" class="demo-button" style="margin: 0;" target="_blank" rel="noopener noreferrer">Live Course</a>
+                    <a href="https://github.com/inboxpraveen/Py-Internals" class="demo-button" style="margin: 0;" target="_blank" rel="noopener noreferrer">GitHub Repository</a>
+                </div>
+                
+                <h4>Tags:</h4>
+                <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 1rem;">
+                    <span class="tech-tag">#Python</span>
+                    <span class="tech-tag">#Education</span>
+                    <span class="tech-tag">#MemoryModel</span>
+                    <span class="tech-tag">#InteractiveCourse</span>
+                    <span class="tech-tag">#VanillaJS</span>
+                    <span class="tech-tag">#HTML</span>
+                    <span class="tech-tag">#CSS</span>
+                    <span class="tech-tag">#GitHubPages</span>
+                    <span class="tech-tag">#OpenSource</span>
+                    <span class="tech-tag">#Pedagogy</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer style="margin-top: 4rem;">
+        <div class="container">
+            <p>&copy; <span id="copyright-year"></span> Praveen Kumar. Built with passion for AI &amp; open source community.</p>
+        </div>
+    </footer>
+
+    <script>
+        const mobileMenu = document.getElementById('mobileMenu');
+        const navLinks = document.getElementById('navLinks');
+
+        mobileMenu.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        document.addEventListener('click', function(e) {
+            if (e.target.classList.contains('copy-button')) {
+                const codeBlock = e.target.closest('.code-block');
+                const code = codeBlock.querySelector('pre').textContent;
+                
+                navigator.clipboard.writeText(code).then(() => {
+                    e.target.textContent = 'Copied!';
+                    setTimeout(() => {
+                        e.target.textContent = 'Copy';
+                    }, 2000);
+                });
+            }
+        });
+
+        const navEl = document.querySelector('nav');
+        const onNavScroll = () => {
+            if (window.scrollY > 20) navEl.classList.add('scrolled');
+            else navEl.classList.remove('scrolled');
+        };
+        window.addEventListener('scroll', onNavScroll, { passive: true });
+        onNavScroll();
+
+        window.addEventListener('load', function() {
+            const yearElement = document.getElementById('copyright-year');
+            if (yearElement) {
+                yearElement.textContent = new Date().getFullYear();
+            }
+        });
+    </script>
+</body>
+</html>
