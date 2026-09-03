@@ -33,64 +33,75 @@
     <link rel="stylesheet" href="../index.css">
 </head>
 <body>
+
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <div class="progress-track" aria-hidden="true"><div class="progress-bar" data-progress></div></div>
+
     <!-- Navigation -->
-    <nav>
+    <nav class="site-nav">
         <div class="nav-container">
-            <div class="logo" onclick="window.location.href='../index.html'" style="cursor: pointer;">PK</div>
+            <a href="../index.html" class="logo" aria-label="Praveen Kumar, home">PK</a>
             <ul class="nav-links" id="navLinks">
                 <li><a href="../index.html">Home</a></li>
-                <li><a href="../all-projects.html">Projects</a></li>
+                <li><a href="../all-projects.html" aria-current="page">Projects</a></li>
                 <li><a href="../about.html">About</a></li>
                 <li><a href="https://github.com/inboxpraveen" target="_blank" rel="noopener noreferrer">GitHub</a></li>
             </ul>
-            <button class="mobile-menu" id="mobileMenu">☰</button>
+            <button class="mobile-menu" id="mobileMenu" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="navLinks">
+                <span class="bars"></span>
+            </button>
         </div>
     </nav>
 
     <!-- Project Page - Docuvera Loss360 -->
-    <div class="page-container active">
+    <main id="main" class="page-container active">
         <div class="page-header">
             <div class="container">
                 <a href="../all-projects.html" class="back-button">← Back to Projects</a>
                 <h1 class="page-title">Docuvera - Loss360</h1>
                 <div class="page-meta">
                     <div class="meta-item">
-                        <span>🏢</span>
+                        <svg class="icon" aria-hidden="true"><use href="#i-building"></use></svg>
                         <span>Company: Trellissoft</span>
                     </div>
                     <div class="meta-item">
-                        <span>📅</span>
+                        <svg class="icon" aria-hidden="true"><use href="#i-calendar"></use></svg>
                         <span>Duration: 3 months</span>
                     </div>
                     <div class="meta-item">
-                        <span>👥</span>
+                        <svg class="icon" aria-hidden="true"><use href="#i-user"></use></svg>
                         <span>Team Size: 8</span>
                     </div>
                     <div class="meta-item">
-                        <span>🎯</span>
+                        <svg class="icon" aria-hidden="true"><use href="#i-target"></use></svg>
                         <span>Role: Lead Engineer & Solution Architect</span>
                     </div>
                     <div class="meta-item">
-                        <span>🏷️</span>
+                        <svg class="icon" aria-hidden="true"><use href="#i-tag"></use></svg>
                         <span>InsurTech • AI/ML • Multi-Tenant SaaS</span>
                     </div>
                 </div>
             </div>
         </div>
 
+        <nav class="toc" data-toc aria-label="On this page">
+            <p class="toc-label">On this page</p>
+        </nav>
+
         <div class="content-section">
             <h2>Project Overview</h2>
             <p>
                 As the <strong>Lead Engineer and Solution Architect</strong> at Trellissoft, I designed and led the development 
-                of <strong>Docuvera - Loss360</strong>, an enterprise-grade multi-tenant SaaS platform that revolutionizes 
-                how insurance companies process loss run documents. The platform combines cutting-edge OCR technology with 
+                of <strong>Docuvera - Loss360</strong>, an enterprise-grade multi-tenant SaaS platform that changes 
+                how insurance companies process loss run documents. The platform combines a purpose-built OCR engine with 
                 domain-specific Large Language Models to automate the extraction and analysis of insurance claims data 
                 from unstructured documents.
             </p>
             
-            <div style="text-align: center; margin: 2rem 0;">
-                <img src="resources/project-2/Header.png" alt="Docuvera - Loss360 Overview" style="max-width: 100%; height: auto; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);">
-            </div>
+            <figure class="content-figure">
+                <img src="resources/project-2/Header.webp" alt="Docuvera - Loss360 Overview" loading="lazy" decoding="async">
+            </figure>
             
             <p>
                 Loss run reports-critical documents containing historical claims data-traditionally arrive in varied formats 
@@ -124,7 +135,7 @@
             </div>
 
             <p>
-                As the solution architect, I designed a scalable microservices-based architecture that seamlessly integrates 
+                As the solution architect, I designed a scalable microservices-based architecture that integrates 
                 proprietary OCR and LLM models. The system architecture emphasizes:
             </p>
 
@@ -397,7 +408,7 @@
             </p>
 
             <p>
-                <strong>Model Versioning & Updates:</strong> As we improved our AI models, we needed seamless upgrades 
+                <strong>Model Versioning & Updates:</strong> As we improved our AI models, we needed upgrades 
                 without disrupting active tenants. I designed a model registry system allowing per-tenant model selection 
                 with blue-green deployment patterns, enabling zero-downtime model updates and A/B testing of new versions.
             </p>
@@ -433,57 +444,49 @@
                     Technical details shared represent architectural patterns and anonymized metrics.</em>
                 </p>
             </div>
-        </div>
-    </div>
 
-    <!-- Footer -->
-    <footer style="margin-top: 4rem;">
+            <div class="tag-row" style="--domain: var(--d-docai);">
+                <span class="domain-pill">Document AI</span>
+                <span class="stack-tag">Python</span>
+                <span class="stack-tag">FastAPI</span>
+                <span class="stack-tag">PostgreSQL</span>
+                <span class="stack-tag">Redis</span>
+                <span class="stack-tag">Kubernetes</span>
+            </div>
+        </div>
+    </main>
+
+    <footer class="site-footer">
         <div class="container">
-            <p>&copy; <span id="copyright-year"></span> Praveen Kumar. Built with passion for AI & open source community.</p>
+            <div class="footer-grid">
+                <p class="footer-note">
+                    &copy; <span data-year>2026</span> Praveen Kumar &middot;
+                    Static HTML, one stylesheet, no build step &mdash;
+                    <a href="https://github.com/inboxpraveen/inboxpraveen.github.io" target="_blank" rel="noopener noreferrer">source on GitHub</a>
+                </p>
+                <div class="footer-social">
+                    <a href="https://github.com/inboxpraveen" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                        <svg class="icon" aria-hidden="true"><use href="#i-github"></use></svg>
+                    </a>
+                    <a href="https://www.linkedin.com/in/praveen-kumar-inbox/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                        <svg class="icon" aria-hidden="true"><use href="#i-linkedin"></use></svg>
+                    </a>
+                    <a href="https://x.com/InboxPraveen" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
+                        <svg class="icon" aria-hidden="true"><use href="#i-x"></use></svg>
+                    </a>
+                    <a href="mailto:inboxpraveen.17@gmail.com" aria-label="Email">
+                        <svg class="icon" aria-hidden="true"><use href="#i-mail"></use></svg>
+                    </a>
+                </div>
+            </div>
         </div>
     </footer>
 
-    <script>
-        // Mobile menu functionality
-        const mobileMenu = document.getElementById('mobileMenu');
-        const navLinks = document.getElementById('navLinks');
+    <button class="back-to-top" type="button" data-back-to-top aria-label="Back to top">
+        <svg class="icon" aria-hidden="true"><use href="#i-arrow-up"></use></svg>
+    </button>
 
-        mobileMenu.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-        });
-
-        // Copy button functionality
-        document.addEventListener('click', function(e) {
-            if (e.target.classList.contains('copy-button')) {
-                const codeBlock = e.target.closest('.code-block');
-                const code = codeBlock.querySelector('pre').textContent;
-                
-                navigator.clipboard.writeText(code).then(() => {
-                    e.target.textContent = 'Copied!';
-                    setTimeout(() => {
-                        e.target.textContent = 'Copy';
-                    }, 2000);
-                });
-            }
-        });
-
-        // Glass nav on scroll
-        const navEl = document.querySelector('nav');
-        const onNavScroll = () => {
-            if (window.scrollY > 20) navEl.classList.add('scrolled');
-            else navEl.classList.remove('scrolled');
-        };
-        window.addEventListener('scroll', onNavScroll, { passive: true });
-        onNavScroll();
-
-        // Update copyright year dynamically
-        window.addEventListener('load', function() {
-            const yearElement = document.getElementById('copyright-year');
-            if (yearElement) {
-                yearElement.textContent = new Date().getFullYear();
-            }
-        });
-    </script>
+    <script src="../site.js" defer></script>
 </body>
 </html>
 

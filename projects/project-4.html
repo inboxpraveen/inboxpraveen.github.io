@@ -33,46 +33,57 @@
     <link rel="stylesheet" href="../index.css">
 </head>
 <body>
+
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <div class="progress-track" aria-hidden="true"><div class="progress-bar" data-progress></div></div>
+
     <!-- Navigation -->
-    <nav>
+    <nav class="site-nav">
         <div class="nav-container">
-            <div class="logo" onclick="window.location.href='../index.html'" style="cursor: pointer;">PK</div>
+            <a href="../index.html" class="logo" aria-label="Praveen Kumar, home">PK</a>
             <ul class="nav-links" id="navLinks">
                 <li><a href="../index.html">Home</a></li>
-                <li><a href="../all-projects.html">Projects</a></li>
+                <li><a href="../all-projects.html" aria-current="page">Projects</a></li>
                 <li><a href="../about.html">About</a></li>
                 <li><a href="https://github.com/inboxpraveen" target="_blank" rel="noopener noreferrer">GitHub</a></li>
             </ul>
-            <button class="mobile-menu" id="mobileMenu">☰</button>
+            <button class="mobile-menu" id="mobileMenu" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="navLinks">
+                <span class="bars"></span>
+            </button>
         </div>
     </nav>
 
     <!-- Project Page - Speech Annotation Tool -->
-    <div class="page-container active">
+    <main id="main" class="page-container active">
         <div class="page-header">
             <div class="container">
                 <a href="../all-projects.html" class="back-button">← Back to Projects</a>
                 <h1 class="page-title">Speech Annotation Tool</h1>
                 <div class="page-meta">
                     <div class="meta-item">
-                        <span>📅</span>
+                        <svg class="icon" aria-hidden="true"><use href="#i-calendar"></use></svg>
                         <span>Completed: December 2025</span>
                     </div>
                     <div class="meta-item">
-                        <span>⏱️</span>
+                        <svg class="icon" aria-hidden="true"><use href="#i-pulse"></use></svg>
                         <span>Version: 2.0.0</span>
                     </div>
                     <div class="meta-item">
-                        <span>👥</span>
+                        <svg class="icon" aria-hidden="true"><use href="#i-user"></use></svg>
                         <span>Team Size: Solo</span>
                     </div>
                     <div class="meta-item">
-                        <span>🏷️</span>
+                        <svg class="icon" aria-hidden="true"><use href="#i-tag"></use></svg>
                         <span>Speech AI • Flask • Whisper • FFmpeg • Background Jobs</span>
                     </div>
                 </div>
             </div>
         </div>
+
+        <nav class="toc" data-toc aria-label="On this page">
+            <p class="toc-label">On this page</p>
+        </nav>
 
         <div class="content-section">
             <h2>Project Overview</h2>
@@ -84,9 +95,9 @@
                 to deliver a reliable, responsive workflow that keeps annotators productive without blocking the UI.
             </p>
             
-            <div style="text-align: center; margin: 2rem 0;">
-                <img src="resources/project-4/Header.png" alt="Speech Annotation Tool Header" style="max-width: 100%; height: auto; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);">
-            </div>
+            <figure class="content-figure">
+                <img src="resources/project-4/Header.webp" alt="Speech Annotation Tool Header" loading="lazy" decoding="async">
+            </figure>
             
             <p>
                 The tool elegantly solves the transcription review bottleneck by supporting two distinct workflows: 
@@ -113,9 +124,9 @@
             </ul>
 
             <h2>Technical Architecture</h2>
-            <div style="text-align: center; margin: 2rem 0;">
-                <img src="resources/project-4/Architecture.png" alt="System Architecture" style="max-width: 100%; height: auto; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);">
-            </div>
+            <figure class="content-figure">
+                <img src="resources/project-4/Architecture.webp" alt="System Architecture" loading="lazy" decoding="async">
+            </figure>
             <div class="diagram-container">
                 <p style="margin-top: 1rem; color: var(--text-secondary); text-align: center;">
                     Audio Input → Format Detection → FFmpeg Conversion → Segmentation → Whisper Transcription → CSV Storage → Web UI → Export
@@ -389,10 +400,10 @@
             <h2>Live Demo</h2>
             <div class="demo-section">
                 <h3>See the System in Action</h3>
-                <p>Watch how the tool handles background transcription jobs, live progress updates, and responsive UI interactions without blocking the interface!</p>
-                <div style="text-align: center; margin: 2rem 0;">
-                    <img src="resources/project-4/Application-Dashboard.png" alt="Application Dashboard" style="max-width: 100%; height: auto; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);">
-                </div>
+                <p>Watch how the tool handles background transcription jobs, live progress updates, and responsive UI interactions without blocking the interface.</p>
+                <figure class="content-figure">
+                    <img src="resources/project-4/Application-Dashboard.webp" alt="Application Dashboard" loading="lazy" decoding="async">
+                </figure>
                 <div style="display: flex; justify-content: center; align-items: center; gap: 1rem; flex-wrap: wrap; margin-top: 1.5rem;">
                     <a href="https://github.com/inboxpraveen/Speech-Annotation-Tool" class="demo-button" target="_blank">GitHub Repository</a>
                     <a href="https://github.com/inboxpraveen/Speech-Annotation-Tool/blob/master/PROJECT_DOCUMENTATION.md" class="demo-button" target="_blank" style="background: var(--secondary-bg); color: var(--accent-color); border: 1px solid var(--accent-color);">Documentation</a>
@@ -536,58 +547,51 @@ python app.py
                     <li><a href="https://github.com/inboxpraveen/Speech-Annotation-Tool/blob/master/PROJECT_DOCUMENTATION.md" style="color: var(--accent-color);" target="_blank">Technical Architecture Details</a></li>
                     <li><a href="https://github.com/inboxpraveen/Speech-Annotation-Tool/tree/master/asr_tool" style="color: var(--accent-color);" target="_blank">Source Code (asr_tool/)</a></li>
                 </ul>
+
+                <div class="tag-row" style="--domain: var(--d-speech);">
+                    <span class="domain-pill">Speech &amp; Audio</span>
+                    <span class="stack-tag">Flask</span>
+                    <span class="stack-tag">Whisper</span>
+                    <span class="stack-tag">FFmpeg</span>
+                    <span class="stack-tag">Python</span>
+                    <span class="stack-tag">Vanilla JS</span>
+                </div>
             </div>
         </div>
-    </div>
+    </main>
 
     <!-- Footer -->
-    <footer style="margin-top: 4rem;">
+    <footer class="site-footer">
         <div class="container">
-            <p>&copy; <span id="copyright-year"></span> Praveen Kumar. Built with passion for AI & open source community.</p>
+            <div class="footer-grid">
+                <p class="footer-note">
+                    &copy; <span data-year>2026</span> Praveen Kumar &middot;
+                    Static HTML, one stylesheet, no build step &mdash;
+                    <a href="https://github.com/inboxpraveen/inboxpraveen.github.io" target="_blank" rel="noopener noreferrer">source on GitHub</a>
+                </p>
+                <div class="footer-social">
+                    <a href="https://github.com/inboxpraveen" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                        <svg class="icon" aria-hidden="true"><use href="#i-github"></use></svg>
+                    </a>
+                    <a href="https://www.linkedin.com/in/praveen-kumar-inbox/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                        <svg class="icon" aria-hidden="true"><use href="#i-linkedin"></use></svg>
+                    </a>
+                    <a href="https://x.com/InboxPraveen" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
+                        <svg class="icon" aria-hidden="true"><use href="#i-x"></use></svg>
+                    </a>
+                    <a href="mailto:inboxpraveen.17@gmail.com" aria-label="Email">
+                        <svg class="icon" aria-hidden="true"><use href="#i-mail"></use></svg>
+                    </a>
+                </div>
+            </div>
         </div>
     </footer>
 
-    <script>
-        // Mobile menu functionality
-        const mobileMenu = document.getElementById('mobileMenu');
-        const navLinks = document.getElementById('navLinks');
+    <button class="back-to-top" type="button" data-back-to-top aria-label="Back to top">
+        <svg class="icon" aria-hidden="true"><use href="#i-arrow-up"></use></svg>
+    </button>
 
-        mobileMenu.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-        });
-
-        // Copy button functionality
-        document.addEventListener('click', function(e) {
-            if (e.target.classList.contains('copy-button')) {
-                const codeBlock = e.target.closest('.code-block');
-                const code = codeBlock.querySelector('pre').textContent;
-                
-                navigator.clipboard.writeText(code).then(() => {
-                    e.target.textContent = 'Copied!';
-                    setTimeout(() => {
-                        e.target.textContent = 'Copy';
-                    }, 2000);
-                });
-            }
-        });
-
-        // Glass nav on scroll
-        const navEl = document.querySelector('nav');
-        const onNavScroll = () => {
-            if (window.scrollY > 20) navEl.classList.add('scrolled');
-            else navEl.classList.remove('scrolled');
-        };
-        window.addEventListener('scroll', onNavScroll, { passive: true });
-        onNavScroll();
-
-        // Update copyright year dynamically
-        window.addEventListener('load', function() {
-            const yearElement = document.getElementById('copyright-year');
-            if (yearElement) {
-                yearElement.textContent = new Date().getFullYear();
-            }
-        });
-    </script>
+    <script src="../site.js" defer></script>
 </body>
 </html>
 

@@ -6,14 +6,14 @@
     <title>Under Development | Praveen Kumar</title>
     
     <!-- SEO Meta Tags -->
-    <meta name="description" content="This page is currently under development. Great things take time! Check back soon for exciting AI and machine learning content.">
+    <meta name="description" content="A project page that is not written yet. It goes live once the architecture, the code walkthrough and the honest list of what broke are all done.">
     <meta name="keywords" content="AI Development, Machine Learning Projects, Coming Soon">
     <meta name="author" content="Praveen Kumar">
     <meta name="robots" content="noindex, nofollow">
     
     <!-- Open Graph Meta Tags -->
     <meta property="og:title" content="Under Development - Praveen Kumar">
-    <meta property="og:description" content="This page is currently being crafted with the same attention to detail and innovation that goes into every AI project. Great things take time!">
+    <meta property="og:description" content="The project exists; the write-up doesn't yet. It goes live once the architecture, the code walkthrough and the honest list of what broke are all written.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://inboxpraveen.github.io/under-dev.html">
     <meta property="og:image" content="https://inboxpraveen.github.io/assests/Original.png">
@@ -23,7 +23,7 @@
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Under Development - Praveen Kumar">
-    <meta name="twitter:description" content="This page is currently being crafted with attention to detail. Check back soon!">
+    <meta name="twitter:description" content="The project exists; the write-up doesn't yet. Check back once it's written.">
     <meta name="twitter:image" content="https://inboxpraveen.github.io/assests/Original.png">
     
     <link rel="icon" type="image/x-icon" href="assests/favicon.ico">
@@ -172,8 +172,11 @@
         }
 
         .highlight-icon {
-            font-size: 2rem;
-            margin-bottom: 0.75rem;
+            font-size: 0.82rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            color: var(--accent-color);
+            margin-bottom: 0.6rem;
             display: block;
         }
 
@@ -270,76 +273,89 @@
     </style>
 </head>
 <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
     <!-- Navigation -->
-    <nav>
+    <nav class="site-nav">
         <div class="nav-container">
-            <div class="logo" onclick="window.location.href='index.html'" style="cursor: pointer;">PK</div>
+            <a href="index.html" class="logo" aria-label="Praveen Kumar, home">PK</a>
             <ul class="nav-links" id="navLinks">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="all-projects.html">Projects</a></li>
                 <li><a href="about.html">About</a></li>
                 <li><a href="https://github.com/inboxpraveen" target="_blank" rel="noopener noreferrer">GitHub</a></li>
             </ul>
-            <button class="mobile-menu" id="mobileMenu" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+            <button class="mobile-menu" id="mobileMenu" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="navLinks">
+                <span class="bars"></span>
+            </button>
         </div>
     </nav>
 
     <!-- Main content -->
-    <div class="development-container">
+    <main id="main" class="development-container">
         <div class="bg-grid"></div>
 
         <!-- Floating code elements -->
-        <div class="code-float">function buildAwesome() {</div>
-        <div class="code-float">import tensorflow as tf</div>
-        <div class="code-float">const magic = await AI.create()</div>
-        <div class="code-float">model.train(amazing_data)</div>
-        <div class="code-float">return innovation;</div>
+        <div class="code-float">git commit -m "wip"</div>
+        <div class="code-float">TODO: write this page</div>
+        <div class="code-float">assert not shipped_yet</div>
+        <div class="code-float">// works on my machine</div>
+        <div class="code-float">$ git push --force  # no</div>
 
         <div class="development-content">
             <div class="dev-icon" id="devIcon">🚧</div>
-            <h1 class="dev-title">Under Development</h1>
-            <p class="dev-subtitle">Building Something Amazing</p>
+            <h1 class="dev-title">Not finished yet</h1>
+            <p class="dev-subtitle">This one is still a branch</p>
             <p class="dev-message">
-                This page is currently being crafted with the same attention to detail and innovation
-                that goes into every AI project. Great things take time, and this will be worth the wait!
+                The project exists; the write-up doesn't. I'd rather leave a page blank than publish
+                a half-explained system, so this one goes live when the architecture diagram, the code
+                walkthrough and the honest list of what broke are all actually written.
             </p>
 
             <!-- What's coming highlight cards -->
             <div class="highlights">
                 <div class="highlight-card">
-                    <span class="highlight-icon">🤖</span>
-                    <h3>AI-Powered Core</h3>
-                    <p>Advanced ML models trained for precision and performance</p>
+                    <span class="highlight-icon" aria-hidden="true">01</span>
+                    <h3>The problem</h3>
+                    <p>What was actually broken, and why the obvious fix didn't work</p>
                 </div>
                 <div class="highlight-card">
-                    <span class="highlight-icon">⚡</span>
-                    <h3>Production-Ready</h3>
-                    <p>Scalable architecture built for real-world deployment</p>
+                    <span class="highlight-icon" aria-hidden="true">02</span>
+                    <h3>The architecture</h3>
+                    <p>How it's put together, including the parts I'd do differently</p>
                 </div>
                 <div class="highlight-card">
-                    <span class="highlight-icon">🔬</span>
-                    <h3>Research-Driven</h3>
-                    <p>Grounded in the latest papers and best practices</p>
+                    <span class="highlight-icon" aria-hidden="true">03</span>
+                    <h3>The receipts</h3>
+                    <p>Screenshots, numbers, and the code that does the interesting work</p>
                 </div>
             </div>
 
             <div class="action-buttons">
                 <a href="all-projects.html" class="btn btn-primary">
-                    <span>🗂️</span> View All Projects
+                    Browse the finished ones
                 </a>
                 <a href="index.html" class="btn btn-secondary">
-                    <span>🏠</span> Back to Home
+                    Back to home
                 </a>
             </div>
         </div>
-    </div>
+    </main>
 
     <!-- Footer -->
-    <footer>
+    <footer class="site-footer">
         <div class="container">
-            <p>&copy; <span id="copyright-year"></span> Praveen Kumar. Built with passion for AI &amp; open source community.</p>
+            <div class="footer-grid">
+                <p class="footer-note">
+                    &copy; <span data-year>2026</span> Praveen Kumar &middot;
+                    Static HTML, one stylesheet, no build step &mdash;
+                    <a href="https://github.com/inboxpraveen/inboxpraveen.github.io" target="_blank" rel="noopener noreferrer">source on GitHub</a>
+                </p>
+            </div>
         </div>
     </footer>
+
+    <script src="site.js" defer></script>
 
     <script>
         // Mobile menu toggle
@@ -425,10 +441,6 @@
         }`;
         document.head.appendChild(s);
 
-        // Copyright year
-        window.addEventListener('load', () => {
-            document.getElementById('copyright-year').textContent = new Date().getFullYear();
-        });
     </script>
 </body>
 </html>

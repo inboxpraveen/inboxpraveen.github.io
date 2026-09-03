@@ -12,7 +12,7 @@
     
     <!-- Open Graph Meta Tags -->
     <meta property="og:title" content="Portfolio Website - Personal Developer Portfolio">
-    <meta property="og:description" content="A hand-crafted dark-themed developer portfolio with cinematic landing, project showcase grid, pointer-tracked glow cards, and responsive design - built entirely without frameworks.">
+    <meta property="og:description" content="A hand-built dark-themed developer portfolio with cinematic landing, project showcase grid, pointer-tracked glow cards, and responsive design - built entirely without frameworks.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://inboxpraveen.github.io/projects/project-9.html">
     <meta property="og:image" content="https://inboxpraveen.github.io/projects/resources/project-9/Main-Page.png">
@@ -33,58 +33,69 @@
     <link rel="stylesheet" href="../index.css">
 </head>
 <body>
+
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <div class="progress-track" aria-hidden="true"><div class="progress-bar" data-progress></div></div>
+
     <!-- Navigation -->
-    <nav>
+    <nav class="site-nav">
         <div class="nav-container">
-            <div class="logo" onclick="window.location.href='../index.html'" style="cursor: pointer;">PK</div>
+            <a href="../index.html" class="logo" aria-label="Praveen Kumar, home">PK</a>
             <ul class="nav-links" id="navLinks">
                 <li><a href="../index.html">Home</a></li>
-                <li><a href="../all-projects.html">Projects</a></li>
+                <li><a href="../all-projects.html" aria-current="page">Projects</a></li>
                 <li><a href="../about.html">About</a></li>
                 <li><a href="https://github.com/inboxpraveen" target="_blank" rel="noopener noreferrer">GitHub</a></li>
             </ul>
-            <button class="mobile-menu" id="mobileMenu">☰</button>
+            <button class="mobile-menu" id="mobileMenu" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="navLinks">
+                <span class="bars"></span>
+            </button>
         </div>
     </nav>
 
     <!-- Project Page - Portfolio Website -->
-    <div class="page-container active">
+    <main id="main" class="page-container active">
         <div class="page-header">
             <div class="container">
                 <a href="../all-projects.html" class="back-button">← Back to Projects</a>
                 <h1 class="page-title">Portfolio Website</h1>
                 <div class="page-meta">
                     <div class="meta-item">
-                        <span>📅</span>
+                        <svg class="icon" aria-hidden="true"><use href="#i-calendar"></use></svg>
                         <span>Completed: 2025</span>
                     </div>
                     <div class="meta-item">
-                        <span>⏱️</span>
+                        <svg class="icon" aria-hidden="true"><use href="#i-pulse"></use></svg>
                         <span>Actively Maintained</span>
                     </div>
                     <div class="meta-item">
-                        <span>👥</span>
+                        <svg class="icon" aria-hidden="true"><use href="#i-user"></use></svg>
                         <span>Team Size: Solo</span>
                     </div>
                     <div class="meta-item">
-                        <span>🏷️</span>
+                        <svg class="icon" aria-hidden="true"><use href="#i-tag"></use></svg>
                         <span>HTML • CSS • JavaScript • GitHub Pages</span>
                     </div>
                 </div>
             </div>
         </div>
 
+        <nav class="toc" data-toc aria-label="On this page">
+            <p class="toc-label">On this page</p>
+        </nav>
+
         <div class="content-section">
             <h2>Project Overview</h2>
             <p>
-                This is my personal portfolio website - the site you are currently browsing. It is a hand-crafted, 
+                This is my personal portfolio website - the site you are currently browsing. It is a hand-built, 
                 dark-themed developer portfolio built entirely from scratch using vanilla HTML, CSS, and JavaScript 
                 with zero external frameworks or build tools.
             </p>
 
-            <div style="text-align: center; margin: 2rem 0;">
-                <img src="./resources/project-9/Main-Page.png" alt="Portfolio Website - Landing Page" style="max-width: 100%; height: auto; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);">
-            </div>
+            <figure class="content-figure">
+                <img src="./resources/project-9/Main-Page.webp" alt="Portfolio Website - Landing Page" loading="lazy" decoding="async">
+            </figure>
 
             <p>
                 The site serves as a centralized place to present my AI and machine learning projects with in-depth 
@@ -126,7 +137,7 @@
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin: 2rem 0;">
                 <div style="background: var(--secondary-bg); padding: 1.5rem; border-radius: 10px; border: 1px solid var(--border-color);">
                     <h3 style="margin-top: 0; color: var(--accent-color);">Cinematic Landing</h3>
-                    <p>Full-viewport landing page with typing animation, glitch effect on the logo, and a clean call-to-action layout</p>
+                    <p>Full-viewport landing page where the name fades up and a rotating specialty line carries the motion, glitch effect on the logo, and a clean call-to-action layout</p>
                 </div>
                 <div style="background: var(--secondary-bg); padding: 1.5rem; border-radius: 10px; border: 1px solid var(--border-color);">
                     <h3 style="margin-top: 0; color: var(--accent-color);">Project Showcase Grid</h3>
@@ -154,34 +165,35 @@
             <h2>Screenshots</h2>
 
             <h3>Landing Page</h3>
-            <div style="text-align: center; margin: 2rem 0;">
-                <img src="./resources/project-9/Main-Page.png" alt="Portfolio - Landing Page" style="max-width: 100%; height: auto; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);">
-            </div>
+            <figure class="content-figure">
+                <img src="./resources/project-9/Main-Page.webp" alt="Portfolio - Landing Page" loading="lazy" decoding="async">
+            </figure>
 
             <h3>Projects Page</h3>
-            <div style="text-align: center; margin: 2rem 0;">
-                <img src="./resources/project-9/Projects-Page.png" alt="Portfolio - Projects Page" style="max-width: 100%; height: auto; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);">
-            </div>
+            <figure class="content-figure">
+                <img src="./resources/project-9/Projects-Page.webp" alt="Portfolio - Projects Page" loading="lazy" decoding="async">
+            </figure>
 
             <h3>About Page</h3>
-            <div style="text-align: center; margin: 2rem 0;">
-                <img src="./resources/project-9/About-Page.png" alt="Portfolio - About Page" style="max-width: 100%; height: auto; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);">
-            </div>
+            <figure class="content-figure">
+                <img src="./resources/project-9/About-Page.webp" alt="Portfolio - About Page" loading="lazy" decoding="async">
+            </figure>
 
             <h2>Site Architecture</h2>
             <p>The site is structured as a set of static HTML pages with a single shared stylesheet:</p>
 
             <ul>
-                <li><strong>index.html</strong> - Landing page with typing animation and navigation links</li>
+                <li><strong>index.html</strong> - Landing page with a rotating specialty line and navigation links, scrolling on into selected work, a short bio with count-up stats, and a contact row</li>
                 <li><strong>all-projects.html</strong> - Project showcase grid with card-based layout</li>
                 <li><strong>about.html</strong> - Personal introduction, skills, and contact links</li>
                 <li><strong>projects/project-N.html</strong> - Individual project deep-dive pages (one per project)</li>
                 <li><strong>index.css</strong> - Single stylesheet powering the entire site's design system</li>
+                <li><strong>site.js</strong> - Single script powering every page's shared behaviour</li>
             </ul>
 
             <p>
                 There is no routing library, no templating engine, and no JavaScript framework. Each page is a 
-                self-contained HTML file that links to the shared CSS. Navigation is plain anchor tags. This makes 
+                self-contained HTML file that links to the shared CSS and the shared script. Navigation is plain anchor tags. This makes 
                 the site trivial to deploy - push to <code>main</code> and GitHub Pages serves it immediately.
             </p>
 
@@ -250,31 +262,38 @@
 
             <h2>Core Implementation Details</h2>
 
-            <h3>Typing Animation on Landing Page</h3>
+            <h3>Rotating Specialty Line on Landing Page</h3>
             <p>
-                The landing page hero title uses a custom typing effect that reveals the name character by character 
-                with a blinking cursor. Once complete, the cursor fades out and the final text is set cleanly.
+                The landing page name fades up on load, and the motion is carried by the line underneath it, which
+                cycles through a list of specialties held in a <code>data-rotate</code> attribute. Each swap fades
+                the current word out and the next one in, and the rotation is skipped when reduced motion is preferred.
             </p>
             <div class="code-block">
                 <div class="code-header">
-                    <span class="code-language">JavaScript - Typing effect on landing page</span>
+                    <span class="code-language">JavaScript - Rotating specialty line on landing page</span>
                     <button class="copy-button">Copy</button>
                 </div>
-                <pre><code><span class="keyword">function</span> <span class="function">typeWriter</span>(element, text, speed = <span class="number">55</span>) {
-    <span class="keyword">let</span> i = <span class="number">0</span>;
-    element.innerHTML = <span class="string">''</span>;
-    <span class="keyword">function</span> <span class="function">type</span>() {
-        <span class="keyword">if</span> (i < text.length) {
-            element.innerHTML = text.slice(<span class="number">0</span>, i + <span class="number">1</span>)
-                + <span class="string">'&lt;span style="border-right:2px solid #00d4ff;'</span>
-                + <span class="string">'animation:blink 0.7s step-end infinite;"&gt;&lt;/span&gt;'</span>;
-            i++;
-            setTimeout(type, speed);
-        } <span class="keyword">else</span> {
-            setTimeout(() => { element.innerHTML = text; }, <span class="number">800</span>);
-        }
-    }
-    type();
+                <pre><code><span class="keyword">function</span> <span class="function">initRotator</span>() {
+    <span class="keyword">var</span> el = document.querySelector(<span class="string">'[data-rotate]'</span>);
+    <span class="keyword">if</span> (!el) <span class="keyword">return</span>;
+
+    <span class="keyword">var</span> words;
+    <span class="keyword">try</span> { words = JSON.parse(el.getAttribute(<span class="string">'data-rotate'</span>)); }
+    <span class="keyword">catch</span> (err) { <span class="keyword">return</span>; }
+    <span class="keyword">if</span> (!words || !words.length) <span class="keyword">return</span>;
+
+    el.textContent = words[<span class="number">0</span>];
+    <span class="keyword">if</span> (reduceMotion || words.length &lt; <span class="number">2</span>) <span class="keyword">return</span>;
+
+    <span class="keyword">var</span> i = <span class="number">0</span>;
+    setInterval(<span class="keyword">function</span> () {
+        el.classList.add(<span class="string">'is-swapping'</span>);
+        setTimeout(<span class="keyword">function</span> () {
+            i = (i + <span class="number">1</span>) % words.length;
+            el.textContent = words[i];
+            el.classList.remove(<span class="string">'is-swapping'</span>);
+        }, <span class="number">280</span>);
+    }, <span class="number">2600</span>);
 }</code></pre>
             </div>
 
@@ -313,18 +332,20 @@
                     <span class="code-language">JavaScript - Mobile menu with click-outside dismiss</span>
                     <button class="copy-button">Copy</button>
                 </div>
-                <pre><code>mobileMenu.addEventListener(<span class="string">'click'</span>, (e) => {
+                <pre><code><span class="keyword">var</span> setOpen = <span class="keyword">function</span> (open) {
+    links.classList.toggle(<span class="string">'active'</span>, open);
+    toggle.classList.toggle(<span class="string">'is-open'</span>, open);
+    toggle.setAttribute(<span class="string">'aria-expanded'</span>, String(open));
+    document.body.classList.toggle(<span class="string">'nav-open'</span>, open);
+};
+
+toggle.addEventListener(<span class="string">'click'</span>, <span class="keyword">function</span> (e) {
     e.stopPropagation();
-    <span class="keyword">const</span> isOpen = navLinks.classList.toggle(<span class="string">'active'</span>);
-    mobileMenu.setAttribute(<span class="string">'aria-expanded'</span>, isOpen);
-    mobileMenu.textContent = isOpen ? <span class="string">'✕'</span> : <span class="string">'☰'</span>;
+    setOpen(!links.classList.contains(<span class="string">'active'</span>));
 });
 
-document.addEventListener(<span class="string">'click'</span>, (e) => {
-    <span class="keyword">if</span> (!navLinks.contains(e.target) && !mobileMenu.contains(e.target)) {
-        navLinks.classList.remove(<span class="string">'active'</span>);
-        mobileMenu.textContent = <span class="string">'☰'</span>;
-    }
+document.addEventListener(<span class="string">'click'</span>, <span class="keyword">function</span> (e) {
+    <span class="keyword">if</span> (!links.contains(e.target) &amp;&amp; !toggle.contains(e.target)) setOpen(<span class="keyword">false</span>);
 });</code></pre>
             </div>
 
@@ -356,7 +377,7 @@ document.querySelectorAll(<span class="string">'.fade-in'</span>).forEach(el => 
             <ul>
                 <li>Designed the visual language - dark theme, accent colors, typography scale, and spacing system</li>
                 <li>Built the CSS design system using custom properties, grid, flexbox, and clamp-based fluid typography</li>
-                <li>Implemented the cinematic landing page with typing animation and logo glitch effect</li>
+                <li>Implemented the cinematic landing page with a fade-up name, rotating specialty line, and logo glitch effect</li>
                 <li>Created the project card grid with pointer-tracked glow effect and fade-in scroll animations</li>
                 <li>Built individual project page templates with structured sections for consistent deep-dive write-ups</li>
                 <li>Wrote all project content including technical breakdowns, code walkthroughs, and architecture explanations</li>
@@ -409,6 +430,7 @@ document.querySelectorAll(<span class="string">'.fade-in'</span>).forEach(el => 
 ├── all-projects.html       # Project showcase grid
 ├── about.html              # About & contact page
 ├── index.css               # Shared design system
+├── site.js                 # Shared behaviour for every page
 ├── assests/
 │   ├── favicon.ico
 │   ├── Resume.pdf
@@ -429,7 +451,6 @@ document.querySelectorAll(<span class="string">'.fade-in'</span>).forEach(el => 
             <ul>
                 <li>Add a blog section for long-form technical articles and tutorials</li>
                 <li>Implement a light/dark theme toggle with localStorage persistence</li>
-                <li>Add project filtering and search on the all-projects page</li>
                 <li>Create an RSS feed for project updates</li>
                 <li>Add page transition animations between project pages</li>
                 <li>Explore converting to a static site generator while keeping the zero-dependency philosophy</li>
@@ -455,65 +476,47 @@ document.querySelectorAll(<span class="string">'.fade-in'</span>).forEach(el => 
                 </div>
                 
                 <h4>Tags:</h4>
-                <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 1rem;">
-                    <span class="tech-tag">#Portfolio</span>
-                    <span class="tech-tag">#HTML</span>
-                    <span class="tech-tag">#CSS</span>
-                    <span class="tech-tag">#JavaScript</span>
-                    <span class="tech-tag">#DarkTheme</span>
-                    <span class="tech-tag">#ResponsiveDesign</span>
-                    <span class="tech-tag">#GitHubPages</span>
-                    <span class="tech-tag">#ZeroDependencies</span>
-                    <span class="tech-tag">#OpenSource</span>
-                    <span class="tech-tag">#SEO</span>
+                <div class="tag-row" style="--domain: var(--d-apps);">
+                    <span class="domain-pill">Apps &amp; Tools</span>
+                    <span class="stack-tag">HTML</span>
+                    <span class="stack-tag">CSS</span>
+                    <span class="stack-tag">Vanilla JS</span>
+                    <span class="stack-tag">GitHub Pages</span>
                 </div>
             </div>
         </div>
-    </div>
+    </main>
 
-    <!-- Footer -->
-    <footer style="margin-top: 4rem;">
+    <footer class="site-footer">
         <div class="container">
-            <p>&copy; <span id="copyright-year"></span> Praveen Kumar. Built with passion for AI & open source community.</p>
+            <div class="footer-grid">
+                <p class="footer-note">
+                    &copy; <span data-year>2026</span> Praveen Kumar &middot;
+                    Static HTML, one stylesheet, no build step &mdash;
+                    <a href="https://github.com/inboxpraveen/inboxpraveen.github.io" target="_blank" rel="noopener noreferrer">source on GitHub</a>
+                </p>
+                <div class="footer-social">
+                    <a href="https://github.com/inboxpraveen" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                        <svg class="icon" aria-hidden="true"><use href="#i-github"></use></svg>
+                    </a>
+                    <a href="https://www.linkedin.com/in/praveen-kumar-inbox/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                        <svg class="icon" aria-hidden="true"><use href="#i-linkedin"></use></svg>
+                    </a>
+                    <a href="https://x.com/InboxPraveen" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
+                        <svg class="icon" aria-hidden="true"><use href="#i-x"></use></svg>
+                    </a>
+                    <a href="mailto:inboxpraveen.17@gmail.com" aria-label="Email">
+                        <svg class="icon" aria-hidden="true"><use href="#i-mail"></use></svg>
+                    </a>
+                </div>
+            </div>
         </div>
     </footer>
 
-    <script>
-        const mobileMenu = document.getElementById('mobileMenu');
-        const navLinks = document.getElementById('navLinks');
+    <button class="back-to-top" type="button" data-back-to-top aria-label="Back to top">
+        <svg class="icon" aria-hidden="true"><use href="#i-arrow-up"></use></svg>
+    </button>
 
-        mobileMenu.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-        });
-
-        document.addEventListener('click', function(e) {
-            if (e.target.classList.contains('copy-button')) {
-                const codeBlock = e.target.closest('.code-block');
-                const code = codeBlock.querySelector('pre').textContent;
-                
-                navigator.clipboard.writeText(code).then(() => {
-                    e.target.textContent = 'Copied!';
-                    setTimeout(() => {
-                        e.target.textContent = 'Copy';
-                    }, 2000);
-                });
-            }
-        });
-
-        const navEl = document.querySelector('nav');
-        const onNavScroll = () => {
-            if (window.scrollY > 20) navEl.classList.add('scrolled');
-            else navEl.classList.remove('scrolled');
-        };
-        window.addEventListener('scroll', onNavScroll, { passive: true });
-        onNavScroll();
-
-        window.addEventListener('load', function() {
-            const yearElement = document.getElementById('copyright-year');
-            if (yearElement) {
-                yearElement.textContent = new Date().getFullYear();
-            }
-        });
-    </script>
+    <script src="../site.js" defer></script>
 </body>
 </html>

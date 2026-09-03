@@ -33,46 +33,57 @@
     <link rel="stylesheet" href="../index.css">
 </head>
 <body>
+
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <div class="progress-track" aria-hidden="true"><div class="progress-bar" data-progress></div></div>
+
     <!-- Navigation -->
-    <nav>
+    <nav class="site-nav">
         <div class="nav-container">
-            <div class="logo" onclick="window.location.href='../index.html'" style="cursor: pointer;">PK</div>
+            <a href="../index.html" class="logo" aria-label="Praveen Kumar, home">PK</a>
             <ul class="nav-links" id="navLinks">
                 <li><a href="../index.html">Home</a></li>
-                <li><a href="../all-projects.html">Projects</a></li>
+                <li><a href="../all-projects.html" aria-current="page">Projects</a></li>
                 <li><a href="../about.html">About</a></li>
                 <li><a href="https://github.com/inboxpraveen" target="_blank" rel="noopener noreferrer">GitHub</a></li>
             </ul>
-            <button class="mobile-menu" id="mobileMenu">☰</button>
+            <button class="mobile-menu" id="mobileMenu" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="navLinks">
+                <span class="bars"></span>
+            </button>
         </div>
     </nav>
 
     <!-- Project Page - MoM AI -->
-    <div class="page-container active">
+    <main id="main" class="page-container active">
         <div class="page-header">
             <div class="container">
                 <a href="../all-projects.html" class="back-button">← Back to Projects</a>
                 <h1 class="page-title">MoM AI</h1>
                 <div class="page-meta">
                     <div class="meta-item">
-                        <span>📅</span>
+                        <svg class="icon" aria-hidden="true"><use href="#i-calendar"></use></svg>
                         <span>Completed: 2025</span>
                     </div>
                     <div class="meta-item">
-                        <span>⏱️</span>
+                        <svg class="icon" aria-hidden="true"><use href="#i-pulse"></use></svg>
                         <span>Version: 1.0.0</span>
                     </div>
                     <div class="meta-item">
-                        <span>👥</span>
+                        <svg class="icon" aria-hidden="true"><use href="#i-user"></use></svg>
                         <span>Team Size: Solo</span>
                     </div>
                     <div class="meta-item">
-                        <span>🏷️</span>
+                        <svg class="icon" aria-hidden="true"><use href="#i-tag"></use></svg>
                         <span>Flask • Celery • Redis • OpenAI SDK • Docker</span>
                     </div>
                 </div>
             </div>
         </div>
+
+        <nav class="toc" data-toc aria-label="On this page">
+            <p class="toc-label">On this page</p>
+        </nav>
 
         <div class="content-section">
             <h2>Project Overview</h2>
@@ -83,9 +94,9 @@
                 generate organized Minutes of Meeting.
             </p>
 
-            <div style="text-align: center; margin: 2rem 0;">
-                <img src="./resources/project-8/Homepage.png" alt="MoM AI - Home Page" style="max-width: 100%; height: auto; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);">
-            </div>
+            <figure class="content-figure">
+                <img src="./resources/project-8/Homepage.webp" alt="MoM AI - Home Page" loading="lazy" decoding="async">
+            </figure>
 
             <p>
                 The output includes a meeting summary, key discussion points, decisions made, action items, and next steps. 
@@ -180,24 +191,24 @@
             <h2>Screenshots</h2>
 
             <h3>Login</h3>
-            <div style="text-align: center; margin: 2rem 0;">
-                <img src="./resources/project-8/Login.png" alt="MoM AI - Login Page" style="max-width: 100%; height: auto; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);">
-            </div>
+            <figure class="content-figure">
+                <img src="./resources/project-8/Login.webp" alt="MoM AI - Login Page" loading="lazy" decoding="async">
+            </figure>
 
             <h3>Upload Page</h3>
-            <div style="text-align: center; margin: 2rem 0;">
-                <img src="./resources/project-8/Upload.png" alt="MoM AI - Upload Page" style="max-width: 100%; height: auto; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);">
-            </div>
+            <figure class="content-figure">
+                <img src="./resources/project-8/Upload.webp" alt="MoM AI - Upload Page" loading="lazy" decoding="async">
+            </figure>
 
             <h3>Meetings Dashboard</h3>
-            <div style="text-align: center; margin: 2rem 0;">
-                <img src="./resources/project-8/Meetings.png" alt="MoM AI - Meetings Dashboard" style="max-width: 100%; height: auto; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);">
-            </div>
+            <figure class="content-figure">
+                <img src="./resources/project-8/Meetings.webp" alt="MoM AI - Meetings Dashboard" loading="lazy" decoding="async">
+            </figure>
 
             <h3>Meeting Outcomes</h3>
-            <div style="text-align: center; margin: 2rem 0;">
-                <img src="./resources/project-8/Meeting-Outcomes.png" alt="MoM AI - Meeting Outcomes" style="max-width: 100%; height: auto; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);">
-            </div>
+            <figure class="content-figure">
+                <img src="./resources/project-8/Meeting-Outcomes.webp" alt="MoM AI - Meeting Outcomes" loading="lazy" decoding="async">
+            </figure>
 
             <h2>Tech Stack</h2>
             <div class="tech-stack">
@@ -480,66 +491,48 @@ docker compose up</code></pre>
                 </div>
                 
                 <h4>Tags:</h4>
-                <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 1rem;">
-                    <span class="tech-tag">#MinutesOfMeeting</span>
-                    <span class="tech-tag">#SpeechToText</span>
-                    <span class="tech-tag">#LLM</span>
-                    <span class="tech-tag">#Flask</span>
-                    <span class="tech-tag">#Celery</span>
-                    <span class="tech-tag">#Redis</span>
-                    <span class="tech-tag">#Docker</span>
-                    <span class="tech-tag">#OpenAI</span>
-                    <span class="tech-tag">#Deepgram</span>
-                    <span class="tech-tag">#AssemblyAI</span>
-                    <span class="tech-tag">#OpenSource</span>
+                <div class="tag-row" style="--domain: var(--d-llm);">
+                    <span class="domain-pill">LLM &amp; RAG</span>
+                    <span class="stack-tag">Flask</span>
+                    <span class="stack-tag">Celery</span>
+                    <span class="stack-tag">Redis</span>
+                    <span class="stack-tag">OpenAI SDK</span>
+                    <span class="stack-tag">Docker</span>
                 </div>
             </div>
         </div>
-    </div>
+    </main>
 
-    <!-- Footer -->
-    <footer style="margin-top: 4rem;">
+    <footer class="site-footer">
         <div class="container">
-            <p>&copy; <span id="copyright-year"></span> Praveen Kumar. Built with passion for AI & open source community.</p>
+            <div class="footer-grid">
+                <p class="footer-note">
+                    &copy; <span data-year>2026</span> Praveen Kumar &middot;
+                    Static HTML, one stylesheet, no build step &mdash;
+                    <a href="https://github.com/inboxpraveen/inboxpraveen.github.io" target="_blank" rel="noopener noreferrer">source on GitHub</a>
+                </p>
+                <div class="footer-social">
+                    <a href="https://github.com/inboxpraveen" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                        <svg class="icon" aria-hidden="true"><use href="#i-github"></use></svg>
+                    </a>
+                    <a href="https://www.linkedin.com/in/praveen-kumar-inbox/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                        <svg class="icon" aria-hidden="true"><use href="#i-linkedin"></use></svg>
+                    </a>
+                    <a href="https://x.com/InboxPraveen" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
+                        <svg class="icon" aria-hidden="true"><use href="#i-x"></use></svg>
+                    </a>
+                    <a href="mailto:inboxpraveen.17@gmail.com" aria-label="Email">
+                        <svg class="icon" aria-hidden="true"><use href="#i-mail"></use></svg>
+                    </a>
+                </div>
+            </div>
         </div>
     </footer>
 
-    <script>
-        const mobileMenu = document.getElementById('mobileMenu');
-        const navLinks = document.getElementById('navLinks');
+    <button class="back-to-top" type="button" data-back-to-top aria-label="Back to top">
+        <svg class="icon" aria-hidden="true"><use href="#i-arrow-up"></use></svg>
+    </button>
 
-        mobileMenu.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-        });
-
-        document.addEventListener('click', function(e) {
-            if (e.target.classList.contains('copy-button')) {
-                const codeBlock = e.target.closest('.code-block');
-                const code = codeBlock.querySelector('pre').textContent;
-                
-                navigator.clipboard.writeText(code).then(() => {
-                    e.target.textContent = 'Copied!';
-                    setTimeout(() => {
-                        e.target.textContent = 'Copy';
-                    }, 2000);
-                });
-            }
-        });
-
-        const navEl = document.querySelector('nav');
-        const onNavScroll = () => {
-            if (window.scrollY > 20) navEl.classList.add('scrolled');
-            else navEl.classList.remove('scrolled');
-        };
-        window.addEventListener('scroll', onNavScroll, { passive: true });
-        onNavScroll();
-
-        window.addEventListener('load', function() {
-            const yearElement = document.getElementById('copyright-year');
-            if (yearElement) {
-                yearElement.textContent = new Date().getFullYear();
-            }
-        });
-    </script>
+    <script src="../site.js" defer></script>
 </body>
 </html>

@@ -3,422 +3,500 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>All Projects - Praveen Kumar | AI & ML Portfolio</title>
-    
+    <title>Projects - Praveen Kumar | AI &amp; ML Portfolio</title>
+
     <!-- SEO Meta Tags -->
-    <meta name="description" content="Explore Praveen Kumar's complete portfolio of AI and machine learning projects including semantic search engines, multi-tenant SaaS platforms, document processing systems, and more.">
-    <meta name="keywords" content="AI Projects, Machine Learning Portfolio, Semantic Search, Document Processing, LLM Applications, Computer Vision, NLP Projects">
+    <meta name="description" content="Thirteen projects by Praveen Kumar, each with a full write-up: document AI and OCR pipelines, LLM and RAG systems, speech recognition tooling, computer vision models and classic ML at scale.">
+    <meta name="keywords" content="AI Projects, Machine Learning Portfolio, RAG, Semantic Search, Document AI, OCR, Speech Recognition, Whisper, Computer Vision, NLP Projects">
     <meta name="author" content="Praveen Kumar">
-    
+
     <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="All Projects - Praveen Kumar | Principal AI Engineer Portfolio">
-    <meta property="og:description" content="From cutting-edge research implementations to production-ready applications. Explore AI, deep learning, computer vision, NLP, and scalable system design projects.">
+    <meta property="og:title" content="Projects - Praveen Kumar | Principal AI Engineer">
+    <meta property="og:description" content="Thirteen projects, each written up in detail: document AI, LLM and RAG systems, speech tooling, computer vision and classic ML. Filter by what you care about.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://inboxpraveen.github.io/all-projects.html">
     <meta property="og:image" content="https://inboxpraveen.github.io/projects/resources/project-1/Project-Overview.png">
-    <meta property="og:image:alt" content="Principal AI Engineer Project Portfolio">
+    <meta property="og:image:alt" content="Praveen Kumar project portfolio">
     <meta property="og:site_name" content="Praveen Kumar Portfolio">
-    
+
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="All Projects - Praveen Kumar | Principal AI Engineer Portfolio">
-    <meta name="twitter:description" content="Explore cutting-edge AI projects: semantic search, document processing, LLM applications, and production-ready ML systems.">
+    <meta name="twitter:title" content="Projects - Praveen Kumar | Principal AI Engineer">
+    <meta name="twitter:description" content="Thirteen projects, each written up in detail: document AI, LLM and RAG systems, speech tooling, computer vision and classic ML.">
     <meta name="twitter:image" content="https://inboxpraveen.github.io/projects/resources/project-1/Project-Overview.png">
-    <meta name="twitter:image:alt" content="Principal AI Engineer Project Portfolio">
-    
-    <!-- Canonical URL -->
+    <meta name="twitter:image:alt" content="Praveen Kumar project portfolio">
+
     <link rel="canonical" href="https://inboxpraveen.github.io/all-projects.html">
-    
     <link rel="icon" type="image/x-icon" href="assests/favicon.ico">
     <link rel="stylesheet" href="index.css">
 </head>
 <body>
+
+    <a class="skip-link" href="#main">Skip to content</a>
+
     <!-- Navigation -->
-    <nav>
+    <nav class="site-nav">
         <div class="nav-container">
-            <div class="logo" onclick="window.location.href='index.html'" style="cursor: pointer;">PK</div>
+            <a href="index.html" class="logo" aria-label="Praveen Kumar, home">PK</a>
             <ul class="nav-links" id="navLinks">
                 <li><a href="index.html">Home</a></li>
-                <li><a href="all-projects.html" style="color: var(--accent-color);">Projects</a></li>
+                <li><a href="all-projects.html" aria-current="page">Projects</a></li>
                 <li><a href="about.html">About</a></li>
                 <li><a href="https://github.com/inboxpraveen" target="_blank" rel="noopener noreferrer">GitHub</a></li>
             </ul>
-            <button class="mobile-menu" id="mobileMenu">☰</button>
+            <button class="mobile-menu" id="mobileMenu" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="navLinks">
+                <span class="bars"></span>
+            </button>
         </div>
     </nav>
 
-    <!-- Projects Page Header -->
-    <section class="hero">
-        <div class="container">
-            <div class="hero-content" style="text-align: center;">
-                <h1 style="font-size: clamp(2.5rem, 6vw, 4rem);">What I've Built</h1>
-                <p class="hero-subtitle">A showcase of AI systems, production platforms, and open-source tools.</p>
-                <p class="hero-description">
-                    I'm a firm believer in learning by doing. This is a collection of my work, ranging from enterprise-grade SaaS platforms to experimental "from scratch" implementations.
-                </p>
-            </div>
-        </div>
-    </section>
+    <main id="main">
 
-    <!-- All Projects Section -->
-    <section id="projects">
-        <div class="container">
-            <div class="projects-grid fade-in">
-                <!-- Featured Projects (from main page) -->
-                <div class="project-card">
-                    <div style="width: 100%; height: 180px; overflow: hidden; border-radius: 10px; margin-bottom: 1rem;">
-                        <img src="projects/resources/project-1/Dashboard-With-Documents.png" alt="Context Search Engine" style="width: 100%; height: 100%; object-fit: cover; display: block;">
-                    </div>
-                    <h3 class="project-title">Context Search Engine</h3>
-                    <p class="project-description">
-                        AI-powered semantic document search platform using transformer embeddings and FAISS. 
-                        Goes beyond keywords to understand meaning and context in your documents.
+        <!-- Header -->
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h1>What I&rsquo;ve built</h1>
+                    <p class="hero-subtitle">Thirteen projects, each one written up properly.</p>
+                    <p class="hero-description">
+                        Some of these paid the bills; some existed only because I wanted to know how the thing
+                        worked. Every one has a page explaining the problem, the architecture, the parts that
+                        broke, and what I would do differently. Filter by what you care about &mdash; or hit
+                        <kbd>/</kbd> and search.
                     </p>
-                    <div class="project-tech">
-                        <span class="tech-tag">Transformers</span>
-                        <span class="tech-tag">FAISS</span>
-                        <span class="tech-tag">NLP</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="projects/project-1.html" class="project-link">View Project</a>
-                        <a href="https://github.com/inboxpraveen/context-search-engine" class="project-link" target="_blank">Source Code</a>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div style="width: 100%; height: 180px; overflow: hidden; border-radius: 10px; margin-bottom: 1rem;">
-                        <img src="projects/resources/project-2/Header.png" alt="Docuvera - Loss360" style="width: 100%; height: 100%; object-fit: cover; display: block;">
-                    </div>
-                    <h3 class="project-title">Docuvera - Loss360</h3>
-                    <p class="project-description">
-                        Enterprise multi-tenant SaaS platform for automated insurance loss run processing. 
-                        Combines OCR and domain-specific LLMs to extract structured data from unstructured documents.
-                    </p>
-                    <div class="project-tech">
-                        <span class="tech-tag">OCR</span>
-                        <span class="tech-tag">LLM</span>
-                        <span class="tech-tag">Multi-Tenant</span>
-                        <span class="tech-tag">InsurTech</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="projects/project-2.html" class="project-link">View Project</a>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div style="width: 100%; height: 180px; overflow: hidden; border-radius: 10px; margin-bottom: 1rem;">
-                        <img src="projects/resources/project-3/Homepage.png" alt="Movie Recommendation System" style="width: 100%; height: 100%; object-fit: cover; display: block;">
-                    </div>
-                    <h3 class="project-title">Movie Recommendation System</h3>
-                    <p class="project-description">
-                        Production-ready recommendation engine using TF-IDF, SVD, and content-based filtering. 
-                        Handles 930K+ movies with intelligent quality filtering, advanced features, and Django deployment.
-                    </p>
-                    <div class="project-tech">
-                        <span class="tech-tag">Machine Learning</span>
-                        <span class="tech-tag">TF-IDF</span>
-                        <span class="tech-tag">SVD</span>
-                        <span class="tech-tag">Django</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="projects/project-3.html" class="project-link">View Project</a>
-                        <a href="https://github.com/inboxpraveen/movie-recommendation-system" class="project-link" target="_blank">Source Code</a>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div style="width: 100%; height: 180px; overflow: hidden; border-radius: 10px; margin-bottom: 1rem;">
-                        <img src="projects/resources/project-4/Application-Dashboard.png" alt="Speech Annotation Tool" style="width: 100%; height: 100%; object-fit: cover; display: block;">
-                    </div>
-                    <h3 class="project-title">Speech Annotation Tool</h3>
-                    <p class="project-description">
-                        Flask-based speech annotation platform for reviewing and correcting ASR transcripts with background jobs, row locking, and real-time progress tracking.
-                    </p>
-                    <div class="project-tech">
-                        <span class="tech-tag">Speech AI</span>
-                        <span class="tech-tag">Flask</span>
-                        <span class="tech-tag">Whisper</span>
-                        <span class="tech-tag">FFmpeg</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="projects/project-4.html" class="project-link">View Project</a>
-                        <a href="https://github.com/inboxpraveen/Speech-Annotation-Tool" class="project-link" target="_blank">Source Code</a>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div style="width: 100%; height: 180px; overflow: hidden; border-radius: 10px; margin-bottom: 1rem;">
-                        <img src="projects/resources/project-5/Header.png" alt="ML Algorithms from Scratch" style="width: 100%; height: 100%; object-fit: cover; display: block;">
-                    </div>
-                    <h3 class="project-title">ML Algorithms from Scratch</h3>
-                    <p class="project-description">
-                        Educational repository implementing 18 essential ML algorithms from scratch using Python and NumPy. Features 2,500+ lines of documentation with mathematical foundations and production-quality code.
-                    </p>
-                    <div class="project-tech">
-                        <span class="tech-tag">Machine Learning</span>
-                        <span class="tech-tag">Python</span>
-                        <span class="tech-tag">NumPy</span>
-                        <span class="tech-tag">Education</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="projects/project-5.html" class="project-link">View Project</a>
-                        <a href="https://github.com/inboxpraveen/ML-Algorithms-from-scratch" class="project-link" target="_blank">Source Code</a>
-                    </div>
-                </div>
-
-                <!-- Additional Projects -->
-
-                <div class="project-card">
-                    <div style="width: 100%; height: 180px; overflow: hidden; border-radius: 10px; margin-bottom: 1rem;">
-                        <img src="projects/resources/project-6/Dashboard.png" alt="HabitFlow" style="width: 100%; height: 100%; object-fit: cover; display: block;">
-                    </div>
-                    <h3 class="project-title">HabitFlow</h3>
-                    <p class="project-description">
-                        A simple, local-first habit tracker built with Flask and SQLite. Runs on your machine, keeps your data private. Features a monthly tracking grid, dashboard with charts, and Excel export.
-                    </p>
-                    <div class="project-tech">
-                        <span class="tech-tag">Flask</span>
-                        <span class="tech-tag">SQLite</span>
-                        <span class="tech-tag">Chart.js</span>
-                        <span class="tech-tag">PyInstaller</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="projects/project-6.html" class="project-link">View Project</a>
-                        <a href="https://github.com/inboxpraveen/Daily-Tracker" class="project-link" target="_blank">Source Code</a>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div style="width: 100%; height: 180px; overflow: hidden; border-radius: 10px; margin-bottom: 1rem;">
-                        <img src="projects/resources/project-7/Audio-Library-Light.png" alt="AudioFP - Audio Fingerprinting Platform" style="width: 100%; height: 100%; object-fit: cover; display: block;">
-                    </div>
-                    <h3 class="project-title">AudioFP - Audio Fingerprinting Platform</h3>
-                    <p class="project-description">
-                        A self-hosted audio search engine that identifies any audio clip in seconds. Uses spectral peak extraction and combinatorial hashing inspired by Shazam, running entirely locally.
-                    </p>
-                    <div class="project-tech">
-                        <span class="tech-tag">Python</span>
-                        <span class="tech-tag">Flask</span>
-                        <span class="tech-tag">Signal Processing</span>
-                        <span class="tech-tag">Audio AI</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="projects/project-7.html" class="project-link">View Project</a>
-                        <a href="https://github.com/inboxpraveen/Audio-Fingerprint" class="project-link" target="_blank">Source Code</a>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div style="width: 100%; height: 180px; overflow: hidden; border-radius: 10px; margin-bottom: 1rem;">
-                        <img src="projects/resources/project-8/Homepage.png" alt="MoM AI - Minutes of Meeting" style="width: 100%; height: 100%; object-fit: cover; display: block;">
-                    </div>
-                    <h3 class="project-title">MoM AI - Minutes of Meeting</h3>
-                    <p class="project-description">
-                        An AI-powered web app that takes meeting recordings, transcribes them using multi-provider speech-to-text, and generates clean, structured Minutes of Meeting using LLMs.
-                    </p>
-                    <div class="project-tech">
-                        <span class="tech-tag">Flask</span>
-                        <span class="tech-tag">Celery</span>
-                        <span class="tech-tag">LLM</span>
-                        <span class="tech-tag">Speech-to-Text</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="projects/project-8.html" class="project-link">View Project</a>
-                        <a href="https://github.com/inboxpraveen/LLM-Minutes-of-Meeting" class="project-link" target="_blank">Source Code</a>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div style="width: 100%; height: 180px; overflow: hidden; border-radius: 10px; margin-bottom: 1rem;">
-                        <img src="projects/resources/project-9/Main-Page.png" alt="Portfolio Website" style="width: 100%; height: 100%; object-fit: cover; display: block;">
-                    </div>
-                    <h3 class="project-title">Portfolio Website</h3>
-                    <p class="project-description">
-                        A hand-crafted, dark-themed developer portfolio built from scratch with vanilla HTML, CSS, and JavaScript. Features cinematic landing, project showcase grid with pointer-tracked glow, and zero dependencies.
-                    </p>
-                    <div class="project-tech">
-                        <span class="tech-tag">HTML</span>
-                        <span class="tech-tag">CSS</span>
-                        <span class="tech-tag">JavaScript</span>
-                        <span class="tech-tag">GitHub Pages</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="projects/project-9.html" class="project-link">View Project</a>
-                        <a href="https://github.com/inboxpraveen/inboxpraveen.github.io" class="project-link" target="_blank">Source Code</a>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div style="width: 100%; height: 180px; overflow: hidden; border-radius: 10px; margin-bottom: 1rem;">
-                        <img src="projects/resources/project-10/Home-Page-DarkTheme.png" alt="FIFA Player Recommendation System" style="width: 100%; height: 100%; object-fit: cover; display: block;">
-                    </div>
-                    <h3 class="project-title">FIFA Player Recommendation System</h3>
-                    <p class="project-description">
-                        A web-based FC 25 player recommendation system using cosine similarity on 34 attributes. Features separate models for male and female players, multi-player radar chart comparisons, and advanced search filters.
-                    </p>
-                    <div class="project-tech">
-                        <span class="tech-tag">Flask</span>
-                        <span class="tech-tag">scikit-learn</span>
-                        <span class="tech-tag">Chart.js</span>
-                        <span class="tech-tag">Machine Learning</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="projects/project-10.html" class="project-link">View Project</a>
-                        <a href="https://github.com/inboxpraveen/FIFA-Player-Recomendation" class="project-link" target="_blank">Source Code</a>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div style="width: 100%; height: 180px; overflow: hidden; border-radius: 10px; margin-bottom: 1rem;">
-                        <img src="projects/resources/project-11/Autoencoder-Decoder Concept Image.png" alt="Autoencoders & Decoders using Keras" style="width: 100%; height: 100%; object-fit: cover; display: block;">
-                    </div>
-                    <h3 class="project-title">Autoencoders & Decoders using Keras</h3>
-                    <p class="project-description">
-                        A comprehensive, educational implementation of various autoencoder architectures for image processing - covering dimensionality reduction, reconstruction, denoising, similarity search, and image morphing.
-                    </p>
-                    <div class="project-tech">
-                        <span class="tech-tag">Deep Learning</span>
-                        <span class="tech-tag">TensorFlow/Keras</span>
-                        <span class="tech-tag">Computer Vision</span>
-                        <span class="tech-tag">Education</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="projects/project-11.html" class="project-link">View Project</a>
-                        <a href="https://github.com/inboxpraveen/Autoencoders-Decoders-using-Keras" class="project-link" target="_blank">Source Code</a>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div style="width: 100%; height: 180px; overflow: hidden; border-radius: 10px; margin-bottom: 1rem;">
-                        <img src="projects/resources/project-12/Header.png" alt="Skin Cancer Detection" style="width: 100%; height: 100%; object-fit: cover; display: block;">
-                    </div>
-                    <h3 class="project-title">Skin Cancer Detection</h3>
-                    <p class="project-description">
-                        A production-grade deep learning system for automated skin lesion classification using the HAM10000 dataset. Provides training, evaluation, and real-time inference for detecting seven types of skin lesions.
-                    </p>
-                    <div class="project-tech">
-                        <span class="tech-tag">Deep Learning</span>
-                        <span class="tech-tag">Medical AI</span>
-                        <span class="tech-tag">Computer Vision</span>
-                        <span class="tech-tag">HAM10000</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="projects/project-12.html" class="project-link">View Project</a>
-                        <a href="https://github.com/inboxpraveen/Skin-Cancer-Detection" class="project-link" target="_blank">Source Code</a>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div style="width: 100%; height: 180px; overflow: hidden; border-radius: 10px; margin-bottom: 1rem;">
-                        <img src="projects/resources/project-13/Homepage.png" alt="Py Internals" style="width: 100%; height: 100%; object-fit: cover; display: block;">
-                    </div>
-                    <h3 class="project-title">Py Internals</h3>
-                    <p class="project-description">
-                        Open-source interactive course that visualizes Python's object model. Hand-authored memory snapshots, step-through animation, and quizzes — built to close the gap between writing Python and understanding why it behaves that way.
-                    </p>
-                    <div class="project-tech">
-                        <span class="tech-tag">Python</span>
-                        <span class="tech-tag">Education</span>
-                        <span class="tech-tag">Vanilla JS</span>
-                        <span class="tech-tag">GitHub Pages</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="projects/project-13.html" class="project-link">View Project</a>
-                        <a href="https://github.com/inboxpraveen/Py-Internals" class="project-link" target="_blank">Source Code</a>
-                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Contact Section -->
-    <section id="contact">
-        <div class="container">
-            <h2 class="section-title fade-in">Let's Collaborate</h2>
-            <div class="contact-content fade-in">
-                <p class="contact-text">
-                    Interested in any of these projects or want to build something new together? I'm always excited to work on challenging problems.
-                </p>
-                <div class="contact-links">
+        <!-- Projects -->
+        <section id="projects" style="padding-top: 0;">
+            <div class="container" data-filter-root>
+
+                <div class="filter-bar" data-reveal>
+                    <div class="filter-chips" role="group" aria-label="Filter projects by domain">
+                        <button class="filter-chip is-active" type="button" data-filter="all" aria-pressed="true">All</button>
+                        <button class="filter-chip" type="button" data-filter="llm-rag" aria-pressed="false" style="--domain: var(--d-llm);"><span class="dot" aria-hidden="true"></span>LLM &amp; RAG</button>
+                        <button class="filter-chip" type="button" data-filter="document-ai" aria-pressed="false" style="--domain: var(--d-docai);"><span class="dot" aria-hidden="true"></span>Document AI</button>
+                        <button class="filter-chip" type="button" data-filter="speech-audio" aria-pressed="false" style="--domain: var(--d-speech);"><span class="dot" aria-hidden="true"></span>Speech &amp; Audio</button>
+                        <button class="filter-chip" type="button" data-filter="computer-vision" aria-pressed="false" style="--domain: var(--d-vision);"><span class="dot" aria-hidden="true"></span>Computer Vision</button>
+                        <button class="filter-chip" type="button" data-filter="classic-ml" aria-pressed="false" style="--domain: var(--d-ml);"><span class="dot" aria-hidden="true"></span>Classic ML</button>
+                        <button class="filter-chip" type="button" data-filter="learning-resource" aria-pressed="false" style="--domain: var(--d-learn);"><span class="dot" aria-hidden="true"></span>Learning Resource</button>
+                        <button class="filter-chip" type="button" data-filter="apps-tools" aria-pressed="false" style="--domain: var(--d-apps);"><span class="dot" aria-hidden="true"></span>Apps &amp; Tools</button>
+                    </div>
+
+                    <label class="filter-search" for="projectSearch">
+                        <svg class="icon" aria-hidden="true"><use href="#i-search"></use></svg>
+                        <span class="visually-hidden-label" hidden>Search projects</span>
+                        <input type="search" id="projectSearch" placeholder="Search FAISS, Whisper, Celery&hellip;" autocomplete="off" aria-label="Search projects">
+                        <kbd>/</kbd>
+                    </label>
+
+                    <span class="filter-count" data-filter-count aria-live="polite">13 projects</span>
+                </div>
+
+                <div class="projects-grid" data-reveal-group>
+                <article class="project-card" data-domain="Document AI" data-search="docuvera - loss360 document ai python fastapi postgresql redis kubernetes ocr plus domain-tuned llms pull structured claims data from unstandardized loss runs" style="--domain: var(--d-docai);">
+                    <span class="card-rule" aria-hidden="true"></span>
+                    <a class="card-media" href="projects/project-2.html" tabindex="-1" aria-label="Docuvera &mdash; Loss360 &mdash; Document AI">
+                        <span class="featured-rank">Featured</span>
+                        <img src="projects/resources/project-2/Header.webp" alt="" loading="lazy" decoding="async">
+                        <span class="domain-pill" aria-hidden="true">Document AI</span>
+                    </a>
+                    <div class="card-body">
+                        <div class="tag-row">
+                            <span class="stack-tag">Python</span>
+                            <span class="stack-tag">FastAPI</span>
+                            <span class="stack-tag">PostgreSQL</span>
+                        </div>
+                        <h3 class="project-title"><a href="projects/project-2.html">Docuvera &mdash; Loss360</a></h3>
+                        <p class="project-description">Multi-tenant SaaS that turns insurance loss-run PDFs and scans into structured claims data, pairing a custom OCR engine with domain-tuned LLMs. Schema-per-tenant isolation in PostgreSQL, 92% extraction accuracy, and under two minutes per document.</p>
+                        <div class="card-foot">
+                            <span class="card-meta">
+                                In production
+                                <span class="sep" aria-hidden="true"></span>
+                                Lead engineer, team of 8
+                            </span>
+                            <span class="card-meta">Closed source</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="project-card" data-domain="LLM &amp; RAG" data-search="mom ai llm &amp; rag flask celery redis openai sdk docker four speech-to-text providers behind one factory; an llm writes the minutes" style="--domain: var(--d-llm);">
+                    <span class="card-rule" aria-hidden="true"></span>
+                    <a class="card-media" href="projects/project-8.html" tabindex="-1" aria-label="MoM AI &mdash; Minutes of Meeting &mdash; LLM &amp; RAG">
+                        <span class="featured-rank">Featured</span>
+                        <img src="projects/resources/project-8/Homepage.webp" alt="" loading="lazy" decoding="async">
+                        <span class="domain-pill" aria-hidden="true">LLM &amp; RAG</span>
+                    </a>
+                    <div class="card-body">
+                        <div class="tag-row">
+                            <span class="stack-tag">Flask</span>
+                            <span class="stack-tag">Celery</span>
+                            <span class="stack-tag">Redis</span>
+                        </div>
+                        <h3 class="project-title"><a href="projects/project-8.html">MoM AI &mdash; Minutes of Meeting</a></h3>
+                        <p class="project-description">Meeting recordings in, structured minutes out. FFmpeg normalizes the audio, a Celery worker routes it to one of four speech-to-text providers, and an LLM writes the summary, decisions and action items. Both provider layers swap at runtime.</p>
+                        <div class="card-foot">
+                            <span class="card-meta">
+                                2025
+                                <span class="sep" aria-hidden="true"></span>
+                                Open source
+                            </span>
+                            <a href="https://github.com/inboxpraveen/LLM-Minutes-of-Meeting" class="project-link" target="_blank" rel="noopener noreferrer">Source</a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="project-card" data-domain="Speech &amp; Audio" data-search="speech annotation tool speech &amp; audio flask whisper ffmpeg python vanilla js threading-based job manager replaces celery for non-blocking asr transcription" style="--domain: var(--d-speech);">
+                    <span class="card-rule" aria-hidden="true"></span>
+                    <a class="card-media" href="projects/project-4.html" tabindex="-1" aria-label="Speech Annotation Tool &mdash; Speech &amp; Audio">
+                        <img src="projects/resources/project-4/Application-Dashboard.webp" alt="" loading="lazy" decoding="async">
+                        <span class="domain-pill" aria-hidden="true">Speech &amp; Audio</span>
+                    </a>
+                    <div class="card-body">
+                        <div class="tag-row">
+                            <span class="stack-tag">Flask</span>
+                            <span class="stack-tag">Whisper</span>
+                            <span class="stack-tag">FFmpeg</span>
+                        </div>
+                        <h3 class="project-title"><a href="projects/project-4.html">Speech Annotation Tool</a></h3>
+                        <p class="project-description">A review desk for ASR output. FFmpeg converts any format to 16 kHz mono WAV, splits it into 30-second segments, and Whisper transcribes them in daemon threads. Type-based job locking and JSON-persisted progress, so no Celery and no Redis.</p>
+                        <div class="card-foot">
+                            <span class="card-meta">
+                                2025
+                                <span class="sep" aria-hidden="true"></span>
+                                Open source
+                            </span>
+                            <a href="https://github.com/inboxpraveen/Speech-Annotation-Tool" class="project-link" target="_blank" rel="noopener noreferrer">Source</a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="project-card" data-domain="Speech &amp; Audio" data-search="audiofp speech &amp; audio python flask librosa ffmpeg sqlite shazam's 2003 algorithm rebuilt from the paper, matching a 3-second clip fully offline" style="--domain: var(--d-speech);">
+                    <span class="card-rule" aria-hidden="true"></span>
+                    <a class="card-media" href="projects/project-7.html" tabindex="-1" aria-label="AudioFP &mdash; Speech &amp; Audio">
+                        <img src="projects/resources/project-7/Audio-Library-Light.webp" alt="" loading="lazy" decoding="async">
+                        <span class="domain-pill" aria-hidden="true">Speech &amp; Audio</span>
+                    </a>
+                    <div class="card-body">
+                        <div class="tag-row">
+                            <span class="stack-tag">Python</span>
+                            <span class="stack-tag">Flask</span>
+                            <span class="stack-tag">librosa</span>
+                        </div>
+                        <h3 class="project-title"><a href="projects/project-7.html">AudioFP</a></h3>
+                        <p class="project-description">Shazam's 2003 paper, rebuilt from scratch. Spectral peaks come off an STFT spectrogram, peak pairs and time gaps hash into single integers, and time-offset voting over one batched SQLite lookup identifies a three-second clip &mdash; entirely offline.</p>
+                        <div class="card-foot">
+                            <span class="card-meta">
+                                2025
+                                <span class="sep" aria-hidden="true"></span>
+                                Open source
+                            </span>
+                            <a href="https://github.com/inboxpraveen/Audio-Fingerprint" class="project-link" target="_blank" rel="noopener noreferrer">Source</a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="project-card" data-domain="LLM &amp; RAG" data-search="context search engine llm &amp; rag python pytorch faiss flask distilbert configurable chunk size, overlap, model and top_k to tune retrieval empirically" style="--domain: var(--d-llm);">
+                    <span class="card-rule" aria-hidden="true"></span>
+                    <a class="card-media" href="projects/project-1.html" tabindex="-1" aria-label="Context Search Engine &mdash; LLM &amp; RAG">
+                        <span class="featured-rank">Featured</span>
+                        <img src="projects/resources/project-1/Dashboard-With-Documents.webp" alt="" loading="lazy" decoding="async">
+                        <span class="domain-pill" aria-hidden="true">LLM &amp; RAG</span>
+                    </a>
+                    <div class="card-body">
+                        <div class="tag-row">
+                            <span class="stack-tag">Python</span>
+                            <span class="stack-tag">PyTorch</span>
+                            <span class="stack-tag">FAISS</span>
+                        </div>
+                        <h3 class="project-title"><a href="projects/project-1.html">Context Search Engine</a></h3>
+                        <p class="project-description">Semantic search over your own files. PDF, DOCX and TXT get chunked with overlap, embedded with DistilBERT and indexed in FAISS. Chunk size, overlap, model and top-k are all knobs, because retrieval quality is an empirical question.</p>
+                        <div class="card-foot">
+                            <span class="card-meta">
+                                2025
+                                <span class="sep" aria-hidden="true"></span>
+                                Open source
+                            </span>
+                            <a href="https://github.com/inboxpraveen/context-search-engine" class="project-link" target="_blank" rel="noopener noreferrer">Source</a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="project-card" data-domain="Classic ML" data-search="movie recommendation system classic ml python django scikit-learn pandas nltk svd-compressed tf-idf similarity serves 930k+ movies in under 50ms" style="--domain: var(--d-ml);">
+                    <span class="card-rule" aria-hidden="true"></span>
+                    <a class="card-media" href="projects/project-3.html" tabindex="-1" aria-label="Movie Recommendation System &mdash; Classic ML">
+                        <img src="projects/resources/project-3/Homepage.webp" alt="" loading="lazy" decoding="async">
+                        <span class="domain-pill" aria-hidden="true">Classic ML</span>
+                    </a>
+                    <div class="card-body">
+                        <div class="tag-row">
+                            <span class="stack-tag">Python</span>
+                            <span class="stack-tag">Django</span>
+                            <span class="stack-tag">scikit-learn</span>
+                        </div>
+                        <h3 class="project-title"><a href="projects/project-3.html">Movie Recommendation System</a></h3>
+                        <p class="project-description">Content-based movie recommendations at scale. TF-IDF vectors over genres, keywords, companies and plot text, compressed from 20K features to 500 dimensions with SVD. Sparse storage turns a 40GB dense matrix into 150MB; queries land under 50ms.</p>
+                        <div class="card-foot">
+                            <span class="card-meta">
+                                2025
+                                <span class="sep" aria-hidden="true"></span>
+                                Open source
+                            </span>
+                            <a href="https://github.com/inboxpraveen/movie-recommendation-system" class="project-link" target="_blank" rel="noopener noreferrer">Source</a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="project-card" data-domain="Computer Vision" data-search="skin cancer detection computer vision tensorflow keras flask opencv python cnn classifies dermoscopy images into 7 lesion types with no dense layers in the head" style="--domain: var(--d-vision);">
+                    <span class="card-rule" aria-hidden="true"></span>
+                    <a class="card-media" href="projects/project-12.html" tabindex="-1" aria-label="Skin Cancer Detection &mdash; Computer Vision">
+                        <img src="projects/resources/project-12/Header.webp" alt="" loading="lazy" decoding="async">
+                        <span class="domain-pill" aria-hidden="true">Computer Vision</span>
+                    </a>
+                    <div class="card-body">
+                        <div class="tag-row">
+                            <span class="stack-tag">TensorFlow</span>
+                            <span class="stack-tag">Keras</span>
+                            <span class="stack-tag">Flask</span>
+                        </div>
+                        <h3 class="project-title"><a href="projects/project-12.html">Skin Cancer Detection</a></h3>
+                        <p class="project-description">Seven-class skin lesion classifier trained from scratch on HAM10000. The custom CNN head uses 1x1 and kernel-sized convolutions instead of dense layers, with a concatenation-skip ResNet variant alongside. Ships with a Flask API and a webcam service.</p>
+                        <div class="card-foot">
+                            <span class="card-meta">
+                                2024
+                                <span class="sep" aria-hidden="true"></span>
+                                Open source
+                            </span>
+                            <a href="https://github.com/inboxpraveen/Skin-Cancer-Detection" class="project-link" target="_blank" rel="noopener noreferrer">Source</a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="project-card" data-domain="Learning Resource" data-search="py internals learning resource vanilla js html css github pages localstorage python lessons authored as memory snapshots you step through like a debugger" style="--domain: var(--d-learn);">
+                    <span class="card-rule" aria-hidden="true"></span>
+                    <a class="card-media" href="projects/project-13.html" tabindex="-1" aria-label="Py Internals &mdash; Learning Resource">
+                        <img src="projects/resources/project-13/Homepage.webp" alt="" loading="lazy" decoding="async">
+                        <span class="domain-pill" aria-hidden="true">Learning Resource</span>
+                    </a>
+                    <div class="card-body">
+                        <div class="tag-row">
+                            <span class="stack-tag">Vanilla JS</span>
+                            <span class="stack-tag">HTML</span>
+                            <span class="stack-tag">CSS</span>
+                        </div>
+                        <h3 class="project-title"><a href="projects/project-13.html">Py Internals</a></h3>
+                        <p class="project-description">An interactive Python course where every lesson is a hand-authored memory snapshot &mdash; frames, bindings, heap objects, refcounts &mdash; that you step through like a debugger. Five sessions and around 100 steps, running as static files.</p>
+                        <div class="card-foot">
+                            <span class="card-meta">
+                                2026
+                                <span class="sep" aria-hidden="true"></span>
+                                Actively shipping
+                            </span>
+                            <a href="https://github.com/inboxpraveen/Py-Internals" class="project-link" target="_blank" rel="noopener noreferrer">Source</a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="project-card" data-domain="Classic ML" data-search="fifa player recommendation system classic ml python flask scikit-learn chart.js pandas precomputed cosine similarity matrix over 34 attributes; every query is an array lookup" style="--domain: var(--d-ml);">
+                    <span class="card-rule" aria-hidden="true"></span>
+                    <a class="card-media" href="projects/project-10.html" tabindex="-1" aria-label="FIFA Player Recommendation System &mdash; Classic ML">
+                        <img src="projects/resources/project-10/Home-Page-DarkTheme.webp" alt="" loading="lazy" decoding="async">
+                        <span class="domain-pill" aria-hidden="true">Classic ML</span>
+                    </a>
+                    <div class="card-body">
+                        <div class="tag-row">
+                            <span class="stack-tag">Python</span>
+                            <span class="stack-tag">Flask</span>
+                            <span class="stack-tag">scikit-learn</span>
+                        </div>
+                        <h3 class="project-title"><a href="projects/project-10.html">FIFA Player Recommendation System</a></h3>
+                        <p class="project-description">FC 25 player similarity over 34 min-max normalized attributes. The full pairwise cosine matrix is precomputed at training time and pickled, so Flask loads it once at startup and every query becomes a row lookup plus a couple of filters.</p>
+                        <div class="card-foot">
+                            <span class="card-meta">
+                                2024
+                                <span class="sep" aria-hidden="true"></span>
+                                Open source
+                            </span>
+                            <a href="https://github.com/inboxpraveen/FIFA-Player-Recomendation" class="project-link" target="_blank" rel="noopener noreferrer">Source</a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="project-card" data-domain="Computer Vision" data-search="autoencoders &amp; decoders using keras computer vision tensorflow keras python scikit-learn numpy three autoencoders sharing one encoder/decoder interface, driven by a five-mode cli" style="--domain: var(--d-vision);">
+                    <span class="card-rule" aria-hidden="true"></span>
+                    <a class="card-media" href="projects/project-11.html" tabindex="-1" aria-label="Autoencoders &amp; Decoders &mdash; Computer Vision">
+                        <img src="projects/resources/project-11/Autoencoder-Decoder%20Concept%20Image.webp" alt="" loading="lazy" decoding="async">
+                        <span class="domain-pill" aria-hidden="true">Computer Vision</span>
+                    </a>
+                    <div class="card-body">
+                        <div class="tag-row">
+                            <span class="stack-tag">TensorFlow</span>
+                            <span class="stack-tag">Keras</span>
+                            <span class="stack-tag">Python</span>
+                        </div>
+                        <h3 class="project-title"><a href="projects/project-11.html">Autoencoders &amp; Decoders</a></h3>
+                        <p class="project-description">Three autoencoders &mdash; PCA-style linear, convolutional and denoising &mdash; sharing one encoder/decoder interface behind a five-mode CLI. A 32-number code gives 96x compression on STL-10 and drives k-NN image retrieval and latent-space morphing.</p>
+                        <div class="card-foot">
+                            <span class="card-meta">
+                                2024
+                                <span class="sep" aria-hidden="true"></span>
+                                Open source
+                            </span>
+                            <a href="https://github.com/inboxpraveen/Autoencoders-Decoders-using-Keras" class="project-link" target="_blank" rel="noopener noreferrer">Source</a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="project-card" data-domain="Learning Resource" data-search="ml algorithms from scratch learning resource python numpy scikit-learn four regression and classification algorithms in raw numpy, math derived before code" style="--domain: var(--d-learn);">
+                    <span class="card-rule" aria-hidden="true"></span>
+                    <a class="card-media" href="projects/project-5.html" tabindex="-1" aria-label="ML Algorithms from Scratch &mdash; Learning Resource">
+                        <img src="projects/resources/project-5/Header.webp" alt="" loading="lazy" decoding="async">
+                        <span class="domain-pill" aria-hidden="true">Learning Resource</span>
+                    </a>
+                    <div class="card-body">
+                        <div class="tag-row">
+                            <span class="stack-tag">Python</span>
+                            <span class="stack-tag">NumPy</span>
+                            <span class="stack-tag">scikit-learn</span>
+                        </div>
+                        <h3 class="project-title"><a href="projects/project-5.html">ML Algorithms from Scratch</a></h3>
+                        <p class="project-description">Regression and classification in raw NumPy: the normal equation, its ridge form with an unpenalised intercept, and logistic regression by gradient descent on binary cross-entropy. Every algorithm derives the maths before it writes a line of code.</p>
+                        <div class="card-foot">
+                            <span class="card-meta">
+                                2025
+                                <span class="sep" aria-hidden="true"></span>
+                                4 of 18 done
+                            </span>
+                            <a href="https://github.com/inboxpraveen/ML-Algorithms-from-scratch" class="project-link" target="_blank" rel="noopener noreferrer">Source</a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="project-card" data-domain="Apps &amp; Tools" data-search="habitflow apps &amp; tools flask sqlite chart.js pyinstaller xlsxwriter habit tracker that ships as one windows exe and keeps all data in a local sqlite file" style="--domain: var(--d-apps);">
+                    <span class="card-rule" aria-hidden="true"></span>
+                    <a class="card-media" href="projects/project-6.html" tabindex="-1" aria-label="HabitFlow &mdash; Apps &amp; Tools">
+                        <img src="projects/resources/project-6/Dashboard.webp" alt="" loading="lazy" decoding="async">
+                        <span class="domain-pill" aria-hidden="true">Apps &amp; Tools</span>
+                    </a>
+                    <div class="card-body">
+                        <div class="tag-row">
+                            <span class="stack-tag">Flask</span>
+                            <span class="stack-tag">SQLite</span>
+                            <span class="stack-tag">Chart.js</span>
+                        </div>
+                        <h3 class="project-title"><a href="projects/project-6.html">HabitFlow</a></h3>
+                        <p class="project-description">A habit tracker that stays on your machine. Flask and SQLite behind a monthly check-off grid, Chart.js dashboards, and Excel export to three formatted sheets. PyInstaller ships it as one Windows exe that picks a free port and quits when you stop using it.</p>
+                        <div class="card-foot">
+                            <span class="card-meta">
+                                2025
+                                <span class="sep" aria-hidden="true"></span>
+                                Open source
+                            </span>
+                            <a href="https://github.com/inboxpraveen/Daily-Tracker" class="project-link" target="_blank" rel="noopener noreferrer">Source</a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="project-card" data-domain="Apps &amp; Tools" data-search="portfolio website apps &amp; tools html css vanilla js github pages the portfolio you are reading: static html, no framework, no build step" style="--domain: var(--d-apps);">
+                    <span class="card-rule" aria-hidden="true"></span>
+                    <a class="card-media" href="projects/project-9.html" tabindex="-1" aria-label="Portfolio Website &mdash; Apps &amp; Tools">
+                        <img src="projects/resources/project-9/Projects-Page.webp" alt="" loading="lazy" decoding="async">
+                        <span class="domain-pill" aria-hidden="true">Apps &amp; Tools</span>
+                    </a>
+                    <div class="card-body">
+                        <div class="tag-row">
+                            <span class="stack-tag">HTML</span>
+                            <span class="stack-tag">CSS</span>
+                            <span class="stack-tag">Vanilla JS</span>
+                        </div>
+                        <h3 class="project-title"><a href="projects/project-9.html">Portfolio Website</a></h3>
+                        <p class="project-description">This site. Static HTML pages over one CSS custom-property design system, with pointer-tracked card glows and Intersection Observer reveals in plain JavaScript. No framework, no bundler, no build step &mdash; pushing to main is the whole deploy.</p>
+                        <div class="card-foot">
+                            <span class="card-meta">
+                                2025
+                                <span class="sep" aria-hidden="true"></span>
+                                Actively maintained
+                            </span>
+                            <a href="https://github.com/inboxpraveen/inboxpraveen.github.io" class="project-link" target="_blank" rel="noopener noreferrer">Source</a>
+                        </div>
+                    </div>
+                </article>
+                </div>
+
+                <div class="filter-empty" data-filter-empty hidden>
+                    <strong>Nothing matches that.</strong>
+                    Try a different filter, or clear the search box.
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Contact -->
+        <section id="contact">
+            <div class="container">
+                <div class="section-head section-head--center" data-reveal>
+                    <p class="eyebrow">Say hello</p>
+                    <h2 class="section-heading">Want one of these, but for your problem?</h2>
+                    <p class="section-lede">
+                        Happy to talk through architecture, trade-offs, or why the obvious approach is not
+                        working. Email is fastest.
+                    </p>
+                </div>
+
+                <div class="contact-links" data-reveal>
                     <a href="mailto:inboxpraveen.17@gmail.com" class="contact-link">
-                        <span>✉️</span> Email
+                        <svg class="icon icon--lg" aria-hidden="true"><use href="#i-mail"></use></svg> Email
                     </a>
-                    <a href="https://www.linkedin.com/in/praveen-kumar-inbox/" target="_blank" class="contact-link">
-                        <span>💼</span> LinkedIn
+                    <a href="https://www.linkedin.com/in/praveen-kumar-inbox/" target="_blank" rel="noopener noreferrer" class="contact-link">
+                        <svg class="icon icon--lg" aria-hidden="true"><use href="#i-linkedin"></use></svg> LinkedIn
                     </a>
-                    <a href="https://github.com/inboxpraveen" target="_blank" class="contact-link">
-                        <span>🐙</span> GitHub
+                    <a href="https://github.com/inboxpraveen" target="_blank" rel="noopener noreferrer" class="contact-link">
+                        <svg class="icon icon--lg" aria-hidden="true"><use href="#i-github"></use></svg> GitHub
                     </a>
-                    <a href="https://x.com/InboxPraveen" target="_blank" class="contact-link">
-                        <span>🐦</span> Twitter
+                    <a href="https://x.com/InboxPraveen" target="_blank" rel="noopener noreferrer" class="contact-link">
+                        <svg class="icon icon--lg" aria-hidden="true"><use href="#i-x"></use></svg> Twitter
                     </a>
-                    <a href="./assests/Resume.pdf" class="contact-link" target="_blank" download>
-                        <span>📄</span> Resume <span style="font-size: 0.75em; color: var(--text-secondary);">(Updated Nov 2025)</span>
+                    <a href="./assests/Resume.pdf" class="contact-link" target="_blank" rel="noopener" download>
+                        <svg class="icon icon--lg" aria-hidden="true"><use href="#i-file"></use></svg> Resume
                     </a>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+
+    </main>
 
     <!-- Footer -->
-    <footer>
+    <footer class="site-footer">
         <div class="container">
-            <p>&copy; <span id="copyright-year"></span> Praveen Kumar. Built with passion for AI & open source community.</p>
+            <div class="footer-grid">
+                <p class="footer-note">
+                    &copy; <span data-year>2026</span> Praveen Kumar &middot;
+                    Static HTML, one stylesheet, no build step &mdash;
+                    <a href="https://github.com/inboxpraveen/inboxpraveen.github.io" target="_blank" rel="noopener noreferrer">source on GitHub</a>
+                </p>
+                <div class="footer-social">
+                    <a href="https://github.com/inboxpraveen" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                        <svg class="icon" aria-hidden="true"><use href="#i-github"></use></svg>
+                    </a>
+                    <a href="https://www.linkedin.com/in/praveen-kumar-inbox/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                        <svg class="icon" aria-hidden="true"><use href="#i-linkedin"></use></svg>
+                    </a>
+                    <a href="https://x.com/InboxPraveen" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
+                        <svg class="icon" aria-hidden="true"><use href="#i-x"></use></svg>
+                    </a>
+                    <a href="mailto:inboxpraveen.17@gmail.com" aria-label="Email">
+                        <svg class="icon" aria-hidden="true"><use href="#i-mail"></use></svg>
+                    </a>
+                </div>
+            </div>
         </div>
     </footer>
 
-    <script>
-        const mobileMenu = document.getElementById('mobileMenu');
-        const navLinks = document.getElementById('navLinks');
+    <button class="back-to-top" type="button" data-back-to-top aria-label="Back to top">
+        <svg class="icon" aria-hidden="true"><use href="#i-arrow-up"></use></svg>
+    </button>
 
-        mobileMenu.addEventListener('click', (e) => {
-            e.stopPropagation();
-            const isOpen = navLinks.classList.toggle('active');
-            mobileMenu.setAttribute('aria-expanded', isOpen);
-            mobileMenu.textContent = isOpen ? '✕' : '☰';
-        });
-
-        document.addEventListener('click', (e) => {
-            if (!navLinks.contains(e.target) && !mobileMenu.contains(e.target)) {
-                navLinks.classList.remove('active');
-                mobileMenu.textContent = '☰';
-            }
-        });
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.1, rootMargin: '0px 0px -10px 0px' });
-        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-
-        const navEl = document.querySelector('nav');
-        const onScroll = () => {
-            if (window.scrollY > 20) navEl.classList.add('scrolled');
-            else navEl.classList.remove('scrolled');
-        };
-        window.addEventListener('scroll', onScroll, { passive: true });
-        onScroll();
-
-        const logo = document.querySelector('.logo');
-        logo.addEventListener('mouseenter', () => { logo.style.animation = 'glitch 0.3s ease-in-out'; });
-        logo.addEventListener('animationend', () => { logo.style.animation = ''; });
-
-        // Pointer-tracked glow on project cards
-        document.querySelectorAll('.project-card').forEach(card => {
-            card.addEventListener('pointermove', (e) => {
-                const r = card.getBoundingClientRect();
-                card.style.setProperty('--glow-x', ((e.clientX - r.left) / r.width) * 100 + '%');
-                card.style.setProperty('--glow-y', ((e.clientY - r.top) / r.height) * 100 + '%');
-            });
-        });
-
-        window.addEventListener('load', () => {
-            document.getElementById('copyright-year').textContent = new Date().getFullYear();
-        });
-    </script>
+    <script src="site.js" defer></script>
 </body>
 </html>

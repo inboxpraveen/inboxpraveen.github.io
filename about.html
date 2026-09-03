@@ -5,20 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About - Praveen Kumar | Principal AI Engineer</title>
 
-    <meta name="description" content="About Praveen Kumar - Principal AI Engineer specializing in LLMs, Speech AI, OCR, and scalable ML systems. Get in touch or download his resume.">
-    <meta name="keywords" content="Praveen Kumar, AI Engineer, Machine Learning, About, Contact, Resume">
+    <meta name="description" content="Praveen Kumar is a Principal AI Engineer with six years building speech intelligence, document processing and LLM automation systems for enterprise teams. Background, skills, and how to get in touch.">
+    <meta name="keywords" content="Praveen Kumar, AI Engineer, Machine Learning Engineer, LLM, Speech AI, Document AI, About, Contact, Resume">
     <meta name="author" content="Praveen Kumar">
 
     <meta property="og:title" content="About Praveen Kumar | Principal AI Engineer">
-    <meta property="og:description" content="Principal AI Engineer specializing in LLMs, Speech AI, OCR, and scalable ML systems.">
-    <meta property="og:type" content="website">
+    <meta property="og:description" content="Six years building speech intelligence, document processing and LLM automation for enterprise teams. Here is the longer version.">
+    <meta property="og:type" content="profile">
     <meta property="og:url" content="https://inboxpraveen.github.io/about.html">
     <meta property="og:image" content="https://inboxpraveen.github.io/assests/Original.png">
+    <meta property="og:image:alt" content="Praveen Kumar - Principal AI Engineer">
     <meta property="og:site_name" content="Praveen Kumar Portfolio">
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="About Praveen Kumar | Principal AI Engineer">
-    <meta name="twitter:description" content="Principal AI Engineer specializing in LLMs, Speech AI, OCR, and scalable ML systems.">
+    <meta name="twitter:description" content="Six years building speech intelligence, document processing and LLM automation for enterprise teams.">
     <meta name="twitter:image" content="https://inboxpraveen.github.io/assests/Original.png">
 
     <link rel="canonical" href="https://inboxpraveen.github.io/about.html">
@@ -26,154 +27,273 @@
     <link rel="stylesheet" href="index.css">
 </head>
 <body>
+
+    <a class="skip-link" href="#main">Skip to content</a>
+
     <!-- Navigation -->
-    <nav>
+    <nav class="site-nav">
         <div class="nav-container">
-            <div class="logo" onclick="window.location.href='index.html'" style="cursor: pointer;">PK</div>
+            <a href="index.html" class="logo" aria-label="Praveen Kumar, home">PK</a>
             <ul class="nav-links" id="navLinks">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="all-projects.html">Projects</a></li>
-                <li><a href="about.html" style="color: var(--accent-color);">About</a></li>
+                <li><a href="about.html" aria-current="page">About</a></li>
                 <li><a href="https://github.com/inboxpraveen" target="_blank" rel="noopener noreferrer">GitHub</a></li>
             </ul>
-            <button class="mobile-menu" id="mobileMenu">☰</button>
+            <button class="mobile-menu" id="mobileMenu" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="navLinks">
+                <span class="bars"></span>
+            </button>
         </div>
     </nav>
 
-    <!-- About Page Header (matches all-projects style) -->
-    <section class="hero">
-        <div class="container">
-            <div class="hero-content" style="text-align: center;">
-                <h1 style="font-size: clamp(2.5rem, 6vw, 4rem);">About Me</h1>
-                <p class="hero-subtitle">Principal AI Engineer building systems that work in the real world.</p>
-                <p class="hero-description">
-                    Speech, LLMs, OCR, and everything in between - from first prototype to production at scale.
-                </p>
-            </div>
-        </div>
-    </section>
+    <main id="main">
 
-    <!-- About content -->
-    <section style="padding: 0 0 3.5rem;">
-        <div class="container">
-            <div class="about-text fade-in" style="margin-bottom: 3rem;">
-                <p>
-                    I'm an AI Engineer focused on building systems that actually work in the real world. My background is in speech intelligence, LLM automation, and document processing. I don't just build models; I build the infrastructure that makes them reliable and fast.
-                </p>
-                <p>
-                    I've spent the last few years architecting AI platforms for enterprise clients, from real-time voice agents to massive document intelligence suites. I like taking messy, complex ideas and turning them into clean, production-ready code that teams can actually trust.
-                </p>
-                <p>
-                    When I'm not coding, I'm usually mentoring teams or figuring out how to make GPU workloads more efficient. I'm big on modular design, observability, and building solutions that align with real business goals.
-                </p>
-
-                <hr style="border: none; border-top: 1px solid var(--border-color); margin: 1.25rem 0;">
-                <div class="stat-chips">
-                    <span class="stat-chip"><strong>10+</strong> Production AI Platforms</span>
-                    <span class="stat-chip"><strong>5+</strong> Years Experience</span>
-                    <span class="stat-chip"><strong>50+</strong> Models Deployed</span>
-                    <span class="stat-chip"><strong>15+</strong> Enterprise Clients</span>
+        <!-- Header -->
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h1>About me</h1>
+                    <p class="hero-subtitle">Principal AI Engineer. Six years of getting models past the demo.</p>
+                    <p class="hero-description">
+                        Speech, documents, LLMs, and all the unglamorous infrastructure that decides whether any
+                        of it survives contact with production.
+                    </p>
                 </div>
-                <hr style="border: none; border-top: 1px solid var(--border-color); margin: 1.25rem 0;">
-
-                <div class="skills">
-                    <span class="skill-tag">Python</span>
-                    <span class="skill-tag">PyTorch</span>
-                    <span class="skill-tag">FastAPI</span>
-                    <span class="skill-tag">LLMs & RAG</span>
-                    <span class="skill-tag">Speech AI</span>
-                    <span class="skill-tag">vLLM</span>
-                    <span class="skill-tag">Whisper</span>
-                    <span class="skill-tag">LangChain</span>
-                    <span class="skill-tag">OCR & Document AI</span>
-                    <span class="skill-tag">Vector Databases</span>
-                    <span class="skill-tag">Docker & K8s</span>
-                    <span class="skill-tag">AWS & GPU Infra</span>
-                    <span class="skill-tag">PostgreSQL</span>
-                    <span class="skill-tag">Redis</span>
-                    <span class="skill-tag">Multi-Tenant SaaS</span>
-                    <span class="skill-tag">CI/CD</span>
-                </div>
-                
             </div>
+        </section>
 
-            <!-- Contact & Resume -->
-            <div class="fade-in">
-                <h2 class="section-title" style="text-align: left; font-size: 1.6rem; margin-bottom: 1.25rem;">Let's Connect</h2>
-                <p class="contact-text" style="text-align: left; margin-bottom: 1.5rem;">
-                    Have a project in mind or just want to chat about AI? Drop me a line.
-                </p>
-                <div class="contact-links" style="justify-content: flex-start;">
+        <!-- Long version -->
+        <section style="padding-top: 0;">
+            <div class="container">
+
+                <div class="about-text" style="max-width: 760px;" data-reveal>
+                    <p class="lead">
+                        I build AI systems that hold up outside a notebook. Most of my work sits in three places:
+                        speech intelligence, LLM automation, and document processing &mdash; usually all three at
+                        once, because that's what an enterprise problem actually looks like.
+                    </p>
+                    <p>
+                        The last few years have been spent architecting AI platforms for enterprise clients:
+                        real-time voice agents, document intelligence suites that chew through unstandardized PDFs,
+                        multi-tenant systems where one client's data must never touch another's. I don't just
+                        train the model. I build the queue that retries it, the schema that isolates it, the
+                        observability that tells you when it quietly starts getting worse.
+                    </p>
+                    <p>
+                        I like the messy end of the problem. Give me an idea that three people describe three
+                        different ways, and I will turn it into something a team can actually run, extend and
+                        trust. I'm opinionated about modular design, honest metrics, and never shipping a system
+                        nobody can debug at 2am.
+                    </p>
+                    <p>
+                        Away from the keyboard, I'm usually mentoring engineers or working out how to make GPU
+                        workloads cost less than they did last month. The open-source work on this site is the
+                        other outlet &mdash; if I learn something worth knowing, I'd rather write it down than
+                        let it evaporate.
+                    </p>
+                </div>
+
+                <div class="stat-grid" data-reveal-group>
+                    <div class="stat-card">
+                        <div class="value"><span data-count-to="6">6</span></div>
+                        <div class="label">Years building AI systems</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="value"><span data-count-to="10" data-count-suffix="+">10+</span></div>
+                        <div class="label">Production AI platforms</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="value"><span data-count-to="50" data-count-suffix="+">50+</span></div>
+                        <div class="label">Models deployed</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="value"><span data-count-to="15" data-count-suffix="+">15+</span></div>
+                        <div class="label">Enterprise clients served</div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- How I work -->
+        <section id="how-i-work" style="padding-top: 0;">
+            <div class="container">
+                <div class="section-head" data-reveal>
+                    <p class="eyebrow">How I work</p>
+                    <h2 class="section-heading">The shape of a project, most of the time</h2>
+                    <p class="section-lede">
+                        Not a methodology with a logo. Just the order things tend to happen in when the result
+                        has to survive real users.
+                    </p>
+                </div>
+
+                <div class="timeline" data-reveal-group>
+                    <div class="timeline-item">
+                        <p class="timeline-when">First</p>
+                        <h3 class="timeline-what">Find the failure mode before the architecture</h3>
+                        <p>
+                            Every AI product has one thing that decides whether it works: the accent the ASR
+                            misses, the scanned page the OCR mangles, the query the retriever answers confidently
+                            and wrongly. Everything else gets easier once that's named.
+                        </p>
+                    </div>
+                    <div class="timeline-item">
+                        <p class="timeline-when">Then</p>
+                        <h3 class="timeline-what">Prototype ugly, harden deliberately</h3>
+                        <p>
+                            The first version exists to be measured, not admired. Once the numbers say the
+                            approach holds, it gets rebuilt properly &mdash; boundaries, retries, idempotency, and
+                            a schema that won't need a migration in a month.
+                        </p>
+                    </div>
+                    <div class="timeline-item">
+                        <p class="timeline-when">Always</p>
+                        <h3 class="timeline-what">Make the system explain itself</h3>
+                        <p>
+                            Models degrade quietly. Logs, traces and per-tenant metrics aren't a nice-to-have on
+                            an AI platform; they are the only way anyone finds out that last week's fine-tune made
+                            things worse.
+                        </p>
+                    </div>
+                    <div class="timeline-item">
+                        <p class="timeline-when">Finally</p>
+                        <h3 class="timeline-what">Hand it over so it outlives me</h3>
+                        <p>
+                            Documentation, runbooks and a team that understands the trade-offs. A platform only
+                            one person can operate isn't finished, however good the metrics look.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Toolkit -->
+        <section id="toolkit" style="padding-top: 0;">
+            <div class="container">
+                <div class="section-head" data-reveal>
+                    <p class="eyebrow">Toolkit</p>
+                    <h2 class="section-heading">What I reach for</h2>
+                    <p class="section-lede">
+                        Grouped honestly: the things I use weekly, not everything I've ever opened a tutorial on.
+                    </p>
+                </div>
+
+                <div class="skill-groups" data-reveal-group>
+                    <div class="skill-group">
+                        <h3>Languages &amp; core</h3>
+                        <ul>
+                            <li><span class="stack-tag">Python</span></li>
+                            <li><span class="stack-tag">SQL</span></li>
+                            <li><span class="stack-tag">JavaScript</span></li>
+                        </ul>
+                    </div>
+                    <div class="skill-group">
+                        <h3>AI &amp; machine learning</h3>
+                        <ul>
+                            <li><span class="stack-tag">PyTorch</span></li>
+                            <li><span class="stack-tag">TensorFlow / Keras</span></li>
+                            <li><span class="stack-tag">LLMs &amp; RAG</span></li>
+                            <li><span class="stack-tag">LangChain</span></li>
+                            <li><span class="stack-tag">Whisper</span></li>
+                            <li><span class="stack-tag">vLLM</span></li>
+                            <li><span class="stack-tag">OCR &amp; Document AI</span></li>
+                            <li><span class="stack-tag">scikit-learn</span></li>
+                        </ul>
+                    </div>
+                    <div class="skill-group">
+                        <h3>Serving &amp; infrastructure</h3>
+                        <ul>
+                            <li><span class="stack-tag">FastAPI</span></li>
+                            <li><span class="stack-tag">Flask</span></li>
+                            <li><span class="stack-tag">Docker</span></li>
+                            <li><span class="stack-tag">Kubernetes</span></li>
+                            <li><span class="stack-tag">Celery</span></li>
+                            <li><span class="stack-tag">AWS</span></li>
+                            <li><span class="stack-tag">GPU infrastructure</span></li>
+                            <li><span class="stack-tag">CI/CD</span></li>
+                        </ul>
+                    </div>
+                    <div class="skill-group">
+                        <h3>Data &amp; storage</h3>
+                        <ul>
+                            <li><span class="stack-tag">PostgreSQL</span></li>
+                            <li><span class="stack-tag">Redis</span></li>
+                            <li><span class="stack-tag">Vector databases</span></li>
+                            <li><span class="stack-tag">FAISS</span></li>
+                            <li><span class="stack-tag">SQLite</span></li>
+                            <li><span class="stack-tag">Multi-tenant design</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact -->
+        <section id="contact">
+            <div class="container">
+                <div class="section-head" data-reveal>
+                    <p class="eyebrow">Say hello</p>
+                    <h2 class="section-heading">Let's talk</h2>
+                    <p class="section-lede">
+                        Whether it's a role, a system that needs rescuing, or a question about something on this
+                        site &mdash; email is the fastest way to reach me.
+                    </p>
+                </div>
+
+                <div class="contact-links" style="justify-content: flex-start;" data-reveal>
                     <a href="mailto:inboxpraveen.17@gmail.com" class="contact-link">
-                        <span>✉️</span> Email
+                        <svg class="icon icon--lg" aria-hidden="true"><use href="#i-mail"></use></svg> Email
                     </a>
-                    <a href="https://www.linkedin.com/in/praveen-kumar-inbox/" target="_blank" class="contact-link">
-                        <span>💼</span> LinkedIn
+                    <a href="https://www.linkedin.com/in/praveen-kumar-inbox/" target="_blank" rel="noopener noreferrer" class="contact-link">
+                        <svg class="icon icon--lg" aria-hidden="true"><use href="#i-linkedin"></use></svg> LinkedIn
                     </a>
-                    <a href="https://github.com/inboxpraveen" target="_blank" class="contact-link">
-                        <span>🐙</span> GitHub
+                    <a href="https://github.com/inboxpraveen" target="_blank" rel="noopener noreferrer" class="contact-link">
+                        <svg class="icon icon--lg" aria-hidden="true"><use href="#i-github"></use></svg> GitHub
                     </a>
-                    <a href="https://x.com/InboxPraveen" target="_blank" class="contact-link">
-                        <span>🐦</span> Twitter
+                    <a href="https://x.com/InboxPraveen" target="_blank" rel="noopener noreferrer" class="contact-link">
+                        <svg class="icon icon--lg" aria-hidden="true"><use href="#i-x"></use></svg> Twitter
                     </a>
-                    <a href="./assests/Resume.pdf" class="contact-link" target="_blank" download>
-                        <span>📄</span> Resume <span style="font-size: 0.75em; opacity: 0.7;">(Nov 2025)</span>
+                    <a href="./assests/Resume.pdf" class="contact-link" target="_blank" rel="noopener" download>
+                        <svg class="icon icon--lg" aria-hidden="true"><use href="#i-file"></use></svg>
+                        Resume <span style="font-size: 0.78em; color: var(--text-muted);">(Nov 2025)</span>
                     </a>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+
+    </main>
 
     <!-- Footer -->
-    <footer>
+    <footer class="site-footer">
         <div class="container">
-            <p>&copy; <span id="copyright-year"></span> Praveen Kumar. Built with passion for AI &amp; open source community.</p>
+            <div class="footer-grid">
+                <p class="footer-note">
+                    &copy; <span data-year>2026</span> Praveen Kumar &middot;
+                    Static HTML, one stylesheet, no build step &mdash;
+                    <a href="https://github.com/inboxpraveen/inboxpraveen.github.io" target="_blank" rel="noopener noreferrer">source on GitHub</a>
+                </p>
+                <div class="footer-social">
+                    <a href="https://github.com/inboxpraveen" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                        <svg class="icon" aria-hidden="true"><use href="#i-github"></use></svg>
+                    </a>
+                    <a href="https://www.linkedin.com/in/praveen-kumar-inbox/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                        <svg class="icon" aria-hidden="true"><use href="#i-linkedin"></use></svg>
+                    </a>
+                    <a href="https://x.com/InboxPraveen" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
+                        <svg class="icon" aria-hidden="true"><use href="#i-x"></use></svg>
+                    </a>
+                    <a href="mailto:inboxpraveen.17@gmail.com" aria-label="Email">
+                        <svg class="icon" aria-hidden="true"><use href="#i-mail"></use></svg>
+                    </a>
+                </div>
+            </div>
         </div>
     </footer>
 
-    <script>
-        const mobileMenu = document.getElementById('mobileMenu');
-        const navLinks = document.getElementById('navLinks');
+    <button class="back-to-top" type="button" data-back-to-top aria-label="Back to top">
+        <svg class="icon" aria-hidden="true"><use href="#i-arrow-up"></use></svg>
+    </button>
 
-        mobileMenu.addEventListener('click', (e) => {
-            e.stopPropagation();
-            const isOpen = navLinks.classList.toggle('active');
-            mobileMenu.setAttribute('aria-expanded', isOpen);
-            mobileMenu.textContent = isOpen ? '✕' : '☰';
-        });
-
-        document.addEventListener('click', (e) => {
-            if (!navLinks.contains(e.target) && !mobileMenu.contains(e.target)) {
-                navLinks.classList.remove('active');
-                mobileMenu.textContent = '☰';
-            }
-        });
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.1 });
-        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-
-        const navEl = document.querySelector('nav');
-        const onScroll = () => {
-            if (window.scrollY > 20) navEl.classList.add('scrolled');
-            else navEl.classList.remove('scrolled');
-        };
-        window.addEventListener('scroll', onScroll, { passive: true });
-        onScroll();
-
-        window.addEventListener('load', () => {
-            document.getElementById('copyright-year').textContent = new Date().getFullYear();
-        });
-
-        const logo = document.querySelector('.logo');
-        logo.addEventListener('mouseenter', () => { logo.style.animation = 'glitch 0.3s ease-in-out'; });
-        logo.addEventListener('animationend', () => { logo.style.animation = ''; });
-    </script>
+    <script src="site.js" defer></script>
 </body>
 </html>

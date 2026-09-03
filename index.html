@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Praveen Kumar - Principal AI Engineer & Solution Architect</title>
+    <title>Praveen Kumar - Principal AI Engineer &amp; Solution Architect</title>
 
-    <meta name="description" content="Praveen Kumar - Principal AI Engineer specializing in LLMs, Speech AI, OCR, and scalable ML systems. Sharing open-source projects and knowledge on building end-to-end AI products.">
-    <meta name="keywords" content="AI Engineer, Machine Learning, LLM, Speech AI, OCR, RAG, Python, PyTorch, FastAPI, Document AI, AI Portfolio">
+    <meta name="description" content="Praveen Kumar - Principal AI Engineer working on speech AI, document intelligence, LLMs and RAG. Six years of taking AI systems from prototype to production, with 13 open write-ups on how they were built.">
+    <meta name="keywords" content="AI Engineer, Machine Learning, LLM, RAG, Speech AI, OCR, Document AI, Python, PyTorch, FastAPI, AI Portfolio">
     <meta name="author" content="Praveen Kumar">
 
-    <meta property="og:title" content="Praveen Kumar - Principal AI Engineer & Solution Architect">
-    <meta property="og:description" content="Principal AI Engineer specializing in LLMs, Speech AI, OCR, and scalable ML systems. Sharing open-source projects and knowledge on building end-to-end AI products.">
+    <meta property="og:title" content="Praveen Kumar - Principal AI Engineer &amp; Solution Architect">
+    <meta property="og:description" content="Six years of taking AI systems from prototype to production: speech AI, document intelligence, LLMs and RAG. Thirteen projects, each written up in detail.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://inboxpraveen.github.io/">
     <meta property="og:image" content="https://inboxpraveen.github.io/assests/Original.png">
@@ -18,77 +18,324 @@
     <meta property="og:site_name" content="Praveen Kumar Portfolio">
 
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Praveen Kumar - Principal AI Engineer & Solution Architect">
-    <meta name="twitter:description" content="Principal AI Engineer specializing in LLMs, Speech AI, OCR, and scalable ML systems.">
+    <meta name="twitter:title" content="Praveen Kumar - Principal AI Engineer &amp; Solution Architect">
+    <meta name="twitter:description" content="Six years of taking AI systems from prototype to production: speech AI, document intelligence, LLMs and RAG.">
     <meta name="twitter:image" content="https://inboxpraveen.github.io/assests/Original.png">
     <meta name="twitter:image:alt" content="Praveen Kumar - Principal AI Engineer Portfolio">
 
     <link rel="canonical" href="https://inboxpraveen.github.io/">
     <link rel="icon" type="image/x-icon" href="assests/favicon.ico">
     <link rel="stylesheet" href="index.css">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Praveen Kumar",
+      "url": "https://inboxpraveen.github.io/",
+      "jobTitle": "Principal AI Engineer & Solution Architect",
+      "email": "mailto:inboxpraveen.17@gmail.com",
+      "knowsAbout": ["Large Language Models", "Retrieval Augmented Generation", "Speech Recognition", "Optical Character Recognition", "Machine Learning Engineering", "MLOps"],
+      "sameAs": [
+        "https://github.com/inboxpraveen",
+        "https://www.linkedin.com/in/praveen-kumar-inbox/",
+        "https://x.com/InboxPraveen"
+      ]
+    }
+    </script>
 </head>
-<body class="landing-body">
+<body>
 
-    <div class="landing">
+    <a class="skip-link" href="#main">Skip to content</a>
 
-        <!-- Top: logo only -->
-        <div class="landing-top">
-            <span class="logo">PK</span>
+    <!-- Navigation -->
+    <nav class="site-nav">
+        <div class="nav-container">
+            <a href="index.html" class="logo" aria-label="Praveen Kumar, home">PK</a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html" aria-current="page">Home</a></li>
+                <li><a href="all-projects.html">Projects</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="https://github.com/inboxpraveen" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+            </ul>
+            <button class="mobile-menu" id="mobileMenu" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="navLinks">
+                <span class="bars"></span>
+            </button>
         </div>
+    </nav>
 
-        <!-- Center: hero content -->
-        <main class="landing-main">
-            <div class="landing-content">
-                <h1 class="landing-title">Praveen Kumar</h1>
-                <p class="landing-subtitle">Principal AI Engineer &amp; Solution Architect</p>
-                <p class="landing-desc">
-                    I build end-to-end AI products, from first prototype to production. Deep into speech AI, OCR, and LLMs - and I love sharing what I learn through open-source.
-                </p>
-                <div class="landing-actions">
-                    <a href="all-projects.html" class="cta-button">View My Work</a>
-                    <span class="actions-divider" aria-hidden="true"></span>
-                    <a href="about.html" class="landing-link">About</a>
-                    <a href="https://github.com/inboxpraveen" target="_blank" rel="noopener noreferrer" class="landing-link landing-link--ext">GitHub&nbsp;↗</a>
+    <main id="main">
+
+        <!-- Hero -->
+        <section class="landing">
+            <div class="landing-main">
+                <div class="landing-content">
+                    <p class="landing-eyebrow">
+                        <span class="pulse-dot" aria-hidden="true"></span>
+                        Currently building document and voice AI for enterprise teams
+                    </p>
+
+                    <h1 class="landing-title">Praveen Kumar</h1>
+                    <p class="landing-subtitle">Principal AI Engineer &amp; Solution Architect</p>
+
+                    <p class="landing-rotate">
+                        <span>Six years of it. Mostly</span>
+                        <span class="rotate-word" data-rotate='["speech AI","document intelligence","RAG pipelines","OCR at scale","LLM automation"]'>speech AI</span>
+                    </p>
+
+                    <p class="landing-desc">
+                        I take AI systems from the first rough prototype to the version that survives real
+                        traffic, real documents and real users. Everything I learn on the way ends up here,
+                        written down properly.
+                    </p>
+
+                    <div class="landing-actions">
+                        <a href="all-projects.html" class="cta-button">
+                            See the work
+                            <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"></use></svg>
+                        </a>
+                        <span class="actions-divider" aria-hidden="true"></span>
+                        <a href="about.html" class="landing-link">About</a>
+                        <a href="./assests/Resume.pdf" class="landing-link" target="_blank" rel="noopener">Resume</a>
+                        <a href="https://github.com/inboxpraveen" target="_blank" rel="noopener noreferrer" class="landing-link landing-link--ext">
+                            GitHub
+                            <svg class="icon" aria-hidden="true"><use href="#i-external"></use></svg>
+                        </a>
+                    </div>
                 </div>
             </div>
-        </main>
 
-        <!-- Bottom: copyright -->
-        <footer class="landing-footer">
-            <p>&copy; <span id="copyright-year"></span> Praveen Kumar. Built with passion for AI &amp; open source.</p>
-        </footer>
+            <a href="#selected-work" class="scroll-cue" aria-label="Scroll to selected work">
+                <span class="cue-track" aria-hidden="true"></span>
+                <span>Selected work</span>
+            </a>
+        </section>
 
-    </div>
+        <!-- Selected work -->
+        <section id="selected-work">
+            <div class="container">
+                <div class="section-head" data-reveal>
+                    <p class="eyebrow">Selected work</p>
+                    <h2 class="section-heading">Three I'd show you first</h2>
+                    <p class="section-lede">
+                        Thirteen projects live in the archive. These three are the ones that taught me the
+                        most about shipping AI that other people depend on.
+                    </p>
+                </div>
 
-    <script>
-        // Typing effect on hero title
-        function typeWriter(element, text, speed = 55) {
-            let i = 0;
-            element.innerHTML = '';
-            function type() {
-                if (i < text.length) {
-                    element.innerHTML = text.slice(0, i + 1) + '<span style="border-right:2px solid #00d4ff;margin-left:1px;animation:blink 0.7s step-end infinite;"></span>';
-                    i++;
-                    setTimeout(type, speed);
-                } else {
-                    setTimeout(() => { element.innerHTML = text; }, 800);
-                }
-            }
-            type();
-        }
+                <div class="featured-list" data-reveal-group>
 
-        window.addEventListener('load', () => {
-            document.getElementById('copyright-year').textContent = new Date().getFullYear();
-            setTimeout(() => typeWriter(document.querySelector('.landing-title'), 'Praveen Kumar', 55), 300);
-        });
+                    <!-- 01 -->
+                    <article class="featured-card" data-glow style="--domain: var(--d-docai);">
+                        <div class="featured-media">
+                            <span class="featured-rank">01</span>
+                            <img src="projects/resources/project-2/Header.webp" alt="Docuvera Loss360 document intelligence platform" loading="lazy" decoding="async" width="1600" height="893">
+                        </div>
+                        <div class="featured-body">
+                            <div class="tag-row">
+                                <span class="domain-pill">Document AI</span>
+                                <span class="stack-tag">FastAPI</span>
+                                <span class="stack-tag">PostgreSQL</span>
+                                <span class="stack-tag">Kubernetes</span>
+                            </div>
+                            <h3 class="featured-title"><a href="projects/project-2.html">Docuvera &mdash; Loss360</a></h3>
+                            <p class="featured-desc">
+                                Multi-tenant SaaS that turns insurance loss-run PDFs and scans into structured
+                                claims data. A custom OCR engine feeds domain-tuned LLMs, with schema-per-tenant
+                                isolation in PostgreSQL so no client's data can leak into another's.
+                            </p>
+                            <div class="featured-foot">
+                                <span class="card-meta">
+                                    <svg class="icon" aria-hidden="true"><use href="#i-user"></use></svg>
+                                    Lead engineer, team of 8
+                                    <span class="sep" aria-hidden="true"></span>
+                                    92% extraction accuracy
+                                    <span class="sep" aria-hidden="true"></span>
+                                    10+ tenants live
+                                </span>
+                                <a href="projects/project-2.html" class="project-link">Read the write-up</a>
+                            </div>
+                        </div>
+                    </article>
 
-        // Logo glitch
-        const logo = document.querySelector('.logo');
-        logo.addEventListener('mouseenter', () => { logo.style.animation = 'glitch 0.3s ease-in-out'; });
-        logo.addEventListener('animationend', () => { logo.style.animation = ''; });
-    </script>
-    <style>
-        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
-    </style>
+                    <!-- 02 -->
+                    <article class="featured-card" data-glow style="--domain: var(--d-llm);">
+                        <div class="featured-media">
+                            <span class="featured-rank">02</span>
+                            <img src="projects/resources/project-8/Homepage.webp" alt="MoM AI meeting minutes application homepage" loading="lazy" decoding="async" width="1600" height="861">
+                        </div>
+                        <div class="featured-body">
+                            <div class="tag-row">
+                                <span class="domain-pill">LLM &amp; RAG</span>
+                                <span class="stack-tag">Flask</span>
+                                <span class="stack-tag">Celery</span>
+                                <span class="stack-tag">Redis</span>
+                                <span class="stack-tag">Docker</span>
+                            </div>
+                            <h3 class="featured-title"><a href="projects/project-8.html">MoM AI &mdash; Minutes of Meeting</a></h3>
+                            <p class="featured-desc">
+                                Drop in a recording, get back minutes. FFmpeg normalizes the audio, a Celery worker
+                                routes it to one of four speech-to-text providers, and an LLM returns the summary,
+                                the decisions and the action items. Both providers swap at runtime.
+                            </p>
+                            <div class="featured-foot">
+                                <span class="card-meta">
+                                    <svg class="icon" aria-hidden="true"><use href="#i-pulse"></use></svg>
+                                    4 STT providers behind one factory
+                                    <span class="sep" aria-hidden="true"></span>
+                                    Open source
+                                </span>
+                                <a href="projects/project-8.html" class="project-link">Read the write-up</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- 03 -->
+                    <article class="featured-card" data-glow style="--domain: var(--d-llm);">
+                        <div class="featured-media">
+                            <span class="featured-rank">03</span>
+                            <img src="projects/resources/project-1/Dashboard-With-Documents.webp" alt="Context Search Engine dashboard listing indexed documents" loading="lazy" decoding="async" width="1600" height="576">
+                        </div>
+                        <div class="featured-body">
+                            <div class="tag-row">
+                                <span class="domain-pill">LLM &amp; RAG</span>
+                                <span class="stack-tag">PyTorch</span>
+                                <span class="stack-tag">FAISS</span>
+                                <span class="stack-tag">DistilBERT</span>
+                            </div>
+                            <h3 class="featured-title"><a href="projects/project-1.html">Context Search Engine</a></h3>
+                            <p class="featured-desc">
+                                Semantic search over your own documents. PDFs, DOCX and text files are chunked
+                                with overlap, embedded with DistilBERT and indexed in FAISS. Chunk size, overlap,
+                                model and top-k are all knobs, because retrieval quality is an empirical question.
+                            </p>
+                            <div class="featured-foot">
+                                <span class="card-meta">
+                                    <svg class="icon" aria-hidden="true"><use href="#i-search"></use></svg>
+                                    Sub-200ms queries
+                                    <span class="sep" aria-hidden="true"></span>
+                                    Runs entirely offline
+                                </span>
+                                <a href="projects/project-1.html" class="project-link">Read the write-up</a>
+                            </div>
+                        </div>
+                    </article>
+
+                </div>
+
+                <p class="text-center" style="margin-top: 2rem;" data-reveal>
+                    <a href="all-projects.html" class="landing-link">
+                        Browse all 13 projects
+                        <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"></use></svg>
+                    </a>
+                </p>
+            </div>
+        </section>
+
+        <!-- Short version -->
+        <section id="short-version">
+            <div class="container">
+                <div class="section-head" data-reveal>
+                    <p class="eyebrow">The short version</p>
+                    <h2 class="section-heading">Models are the easy part</h2>
+                    <p class="section-lede">
+                        The hard part is everything around them: the queue that retries, the tenant boundary that
+                        holds, the GPU bill that doesn't spiral, the transcript a human can actually correct. That's
+                        the work I've spent six years getting good at &mdash; speech intelligence, document
+                        processing and LLM automation, mostly for enterprise teams who need it to hold up on a
+                        Monday morning.
+                    </p>
+                </div>
+
+                <div class="stat-grid" data-reveal-group>
+                    <div class="stat-card">
+                        <div class="value"><span data-count-to="6">6</span></div>
+                        <div class="label">Years building AI systems</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="value"><span data-count-to="10" data-count-suffix="+">10+</span></div>
+                        <div class="label">Production AI platforms</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="value"><span data-count-to="50" data-count-suffix="+">50+</span></div>
+                        <div class="label">Models deployed</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="value"><span data-count-to="13">13</span></div>
+                        <div class="label">Projects written up here</div>
+                    </div>
+                </div>
+
+                <p style="margin-top: 1.5rem;" data-reveal>
+                    <a href="about.html" class="landing-link">
+                        The longer version
+                        <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"></use></svg>
+                    </a>
+                </p>
+            </div>
+        </section>
+
+        <!-- Contact -->
+        <section id="contact">
+            <div class="container">
+                <div class="section-head section-head--center" data-reveal>
+                    <p class="eyebrow">Say hello</p>
+                    <h2 class="section-heading">Got something hard to build?</h2>
+                    <p class="section-lede">
+                        I like problems where the obvious approach doesn't work yet. Email is fastest, but any of
+                        these reach me.
+                    </p>
+                </div>
+
+                <div class="contact-links" data-reveal>
+                    <a href="mailto:inboxpraveen.17@gmail.com" class="contact-link">
+                        <svg class="icon icon--lg" aria-hidden="true"><use href="#i-mail"></use></svg> Email
+                    </a>
+                    <a href="https://www.linkedin.com/in/praveen-kumar-inbox/" target="_blank" rel="noopener noreferrer" class="contact-link">
+                        <svg class="icon icon--lg" aria-hidden="true"><use href="#i-linkedin"></use></svg> LinkedIn
+                    </a>
+                    <a href="https://github.com/inboxpraveen" target="_blank" rel="noopener noreferrer" class="contact-link">
+                        <svg class="icon icon--lg" aria-hidden="true"><use href="#i-github"></use></svg> GitHub
+                    </a>
+                    <a href="https://x.com/InboxPraveen" target="_blank" rel="noopener noreferrer" class="contact-link">
+                        <svg class="icon icon--lg" aria-hidden="true"><use href="#i-x"></use></svg> Twitter
+                    </a>
+                    <a href="./assests/Resume.pdf" class="contact-link" target="_blank" rel="noopener" download>
+                        <svg class="icon icon--lg" aria-hidden="true"><use href="#i-file"></use></svg> Resume
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <p class="footer-note">
+                    &copy; <span data-year>2026</span> Praveen Kumar &middot;
+                    Static HTML, one stylesheet, no build step &mdash;
+                    <a href="https://github.com/inboxpraveen/inboxpraveen.github.io" target="_blank" rel="noopener noreferrer">source on GitHub</a>
+                </p>
+                <div class="footer-social">
+                    <a href="https://github.com/inboxpraveen" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                        <svg class="icon" aria-hidden="true"><use href="#i-github"></use></svg>
+                    </a>
+                    <a href="https://www.linkedin.com/in/praveen-kumar-inbox/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                        <svg class="icon" aria-hidden="true"><use href="#i-linkedin"></use></svg>
+                    </a>
+                    <a href="https://x.com/InboxPraveen" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
+                        <svg class="icon" aria-hidden="true"><use href="#i-x"></use></svg>
+                    </a>
+                    <a href="mailto:inboxpraveen.17@gmail.com" aria-label="Email">
+                        <svg class="icon" aria-hidden="true"><use href="#i-mail"></use></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="site.js" defer></script>
 </body>
 </html>

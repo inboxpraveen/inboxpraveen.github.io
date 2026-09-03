@@ -33,46 +33,57 @@
     <link rel="stylesheet" href="../index.css">
 </head>
 <body>
+
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <div class="progress-track" aria-hidden="true"><div class="progress-bar" data-progress></div></div>
+
     <!-- Navigation -->
-    <nav>
+    <nav class="site-nav">
         <div class="nav-container">
-            <div class="logo" onclick="window.location.href='../index.html'" style="cursor: pointer;">PK</div>
+            <a href="../index.html" class="logo" aria-label="Praveen Kumar, home">PK</a>
             <ul class="nav-links" id="navLinks">
                 <li><a href="../index.html">Home</a></li>
-                <li><a href="../all-projects.html">Projects</a></li>
+                <li><a href="../all-projects.html" aria-current="page">Projects</a></li>
                 <li><a href="../about.html">About</a></li>
                 <li><a href="https://github.com/inboxpraveen" target="_blank" rel="noopener noreferrer">GitHub</a></li>
             </ul>
-            <button class="mobile-menu" id="mobileMenu">☰</button>
+            <button class="mobile-menu" id="mobileMenu" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="navLinks">
+                <span class="bars"></span>
+            </button>
         </div>
     </nav>
 
     <!-- Project Page - ML Algorithms from Scratch -->
-    <div class="page-container active">
+    <main id="main" class="page-container active">
         <div class="page-header">
             <div class="container">
                 <a href="../all-projects.html" class="back-button">← Back to Projects</a>
                 <h1 class="page-title">ML Algorithms from Scratch</h1>
                 <div class="page-meta">
                     <div class="meta-item">
-                        <span>📅</span>
+                        <svg class="icon" aria-hidden="true"><use href="#i-calendar"></use></svg>
                         <span>Completed: December 2025</span>
                     </div>
                     <div class="meta-item">
-                        <span>⏱️</span>
+                        <svg class="icon" aria-hidden="true"><use href="#i-pulse"></use></svg>
                         <span>Version: 1.0.0</span>
                     </div>
                     <div class="meta-item">
-                        <span>👥</span>
+                        <svg class="icon" aria-hidden="true"><use href="#i-user"></use></svg>
                         <span>Team Size: Solo</span>
                     </div>
                     <div class="meta-item">
-                        <span>🏷️</span>
+                        <svg class="icon" aria-hidden="true"><use href="#i-tag"></use></svg>
                         <span>ML Education • Python • NumPy</span>
                     </div>
                 </div>
             </div>
         </div>
+
+        <nav class="toc" data-toc aria-label="On this page">
+            <p class="toc-label">On this page</p>
+        </nav>
 
         <div class="content-section">
             <h2>Project Overview</h2>
@@ -83,9 +94,9 @@
                 that explain the theory, mathematics, and code behind each algorithm.
             </p>
             
-            <div style="text-align: center; margin: 2rem 0;">
-                <img src="./resources/project-5/Header.png" alt="ML Algorithms from Scratch" style="max-width: 100%; height: auto; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);">
-            </div>
+            <figure class="content-figure">
+                <img src="./resources/project-5/Header.webp" alt="ML Algorithms from Scratch" loading="lazy" decoding="async">
+            </figure>
             
             <p>
                 Unlike typical machine learning tutorials that rely on scikit-learn or TensorFlow, this repository builds 
@@ -764,70 +775,48 @@ print(<span class="string">f"Equation: y = </span>{coeffs[<span class="string">'
                 </ul>
                 
                 <h4>Tags:</h4>
-                <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 1rem;">
-                    <span class="tech-tag">#MachineLearning</span>
-                    <span class="tech-tag">#Python</span>
-                    <span class="tech-tag">#NumPy</span>
-                    <span class="tech-tag">#FromScratch</span>
-                    <span class="tech-tag">#Education</span>
-                    <span class="tech-tag">#MLAlgorithms</span>
-                    <span class="tech-tag">#DataScience</span>
-                    <span class="tech-tag">#LinearRegression</span>
-                    <span class="tech-tag">#LogisticRegression</span>
-                    <span class="tech-tag">#GradientDescent</span>
+                <div class="tag-row" style="--domain: var(--d-learn);">
+                    <span class="domain-pill">Learning Resource</span>
+                    <span class="stack-tag">Python</span>
+                    <span class="stack-tag">NumPy</span>
+                    <span class="stack-tag">scikit-learn</span>
                 </div>
             </div>
         </div>
-    </div>
+    </main>
 
     <!-- Footer -->
-    <footer style="margin-top: 4rem;">
+    <footer class="site-footer">
         <div class="container">
-            <p>&copy; <span id="copyright-year"></span> Praveen Kumar. Built with passion for AI & open source community.</p>
+            <div class="footer-grid">
+                <p class="footer-note">
+                    &copy; <span data-year>2026</span> Praveen Kumar &middot;
+                    Static HTML, one stylesheet, no build step &mdash;
+                    <a href="https://github.com/inboxpraveen/inboxpraveen.github.io" target="_blank" rel="noopener noreferrer">source on GitHub</a>
+                </p>
+                <div class="footer-social">
+                    <a href="https://github.com/inboxpraveen" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                        <svg class="icon" aria-hidden="true"><use href="#i-github"></use></svg>
+                    </a>
+                    <a href="https://www.linkedin.com/in/praveen-kumar-inbox/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                        <svg class="icon" aria-hidden="true"><use href="#i-linkedin"></use></svg>
+                    </a>
+                    <a href="https://x.com/InboxPraveen" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
+                        <svg class="icon" aria-hidden="true"><use href="#i-x"></use></svg>
+                    </a>
+                    <a href="mailto:inboxpraveen.17@gmail.com" aria-label="Email">
+                        <svg class="icon" aria-hidden="true"><use href="#i-mail"></use></svg>
+                    </a>
+                </div>
+            </div>
         </div>
     </footer>
 
-    <script>
-        // Mobile menu functionality
-        const mobileMenu = document.getElementById('mobileMenu');
-        const navLinks = document.getElementById('navLinks');
+    <button class="back-to-top" type="button" data-back-to-top aria-label="Back to top">
+        <svg class="icon" aria-hidden="true"><use href="#i-arrow-up"></use></svg>
+    </button>
 
-        mobileMenu.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-        });
-
-        // Copy button functionality
-        document.addEventListener('click', function(e) {
-            if (e.target.classList.contains('copy-button')) {
-                const codeBlock = e.target.closest('.code-block');
-                const code = codeBlock.querySelector('pre').textContent;
-                
-                navigator.clipboard.writeText(code).then(() => {
-                    e.target.textContent = 'Copied!';
-                    setTimeout(() => {
-                        e.target.textContent = 'Copy';
-                    }, 2000);
-                });
-            }
-        });
-
-        // Glass nav on scroll
-        const navEl = document.querySelector('nav');
-        const onNavScroll = () => {
-            if (window.scrollY > 20) navEl.classList.add('scrolled');
-            else navEl.classList.remove('scrolled');
-        };
-        window.addEventListener('scroll', onNavScroll, { passive: true });
-        onNavScroll();
-
-        // Update copyright year dynamically
-        window.addEventListener('load', function() {
-            const yearElement = document.getElementById('copyright-year');
-            if (yearElement) {
-                yearElement.textContent = new Date().getFullYear();
-            }
-        });
-    </script>
+    <script src="../site.js" defer></script>
 </body>
 </html>
 
