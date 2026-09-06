@@ -5,12 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Praveen Kumar - Principal AI Engineer &amp; Solution Architect</title>
 
-    <meta name="description" content="Praveen Kumar - Principal AI Engineer working on speech AI, document intelligence, LLMs and RAG. Six years of taking AI systems from prototype to production, with 13 open write-ups on how they were built.">
+    <meta name="description" content="Praveen Kumar - Principal AI Engineer working on speech AI, document intelligence, LLMs and RAG. Six years of taking AI systems from prototype to production, with 14 open write-ups on how they were built.">
     <meta name="keywords" content="AI Engineer, Machine Learning, LLM, RAG, Speech AI, OCR, Document AI, Python, PyTorch, FastAPI, AI Portfolio">
     <meta name="author" content="Praveen Kumar">
 
     <meta property="og:title" content="Praveen Kumar - Principal AI Engineer &amp; Solution Architect">
-    <meta property="og:description" content="Six years of taking AI systems from prototype to production: speech AI, document intelligence, LLMs and RAG. Thirteen projects, each written up in detail.">
+    <meta property="og:description" content="Six years of taking AI systems from prototype to production: speech AI, document intelligence, LLMs and RAG. Fourteen projects, each written up in detail.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://inboxpraveen.github.io/">
     <meta property="og:image" content="https://inboxpraveen.github.io/assests/Original.png">
@@ -118,42 +118,43 @@
                     <p class="eyebrow">Selected work</p>
                     <h2 class="section-heading">Three I'd show you first</h2>
                     <p class="section-lede">
-                        Thirteen projects live in the archive. These three are the ones that taught me the
-                        most about shipping AI that other people depend on.
+                        Fourteen projects live in the archive. These three are the ones that taught me the
+                        most about shipping things other people depend on.
                     </p>
                 </div>
 
                 <div class="featured-list" data-reveal-group>
 
                     <!-- 01 -->
-                    <article class="featured-card" data-glow style="--domain: var(--d-docai);">
+                    <article class="featured-card" data-glow style="--domain: var(--d-llm);">
                         <div class="featured-media">
                             <span class="featured-rank">01</span>
-                            <img src="projects/resources/project-2/Header.webp" alt="Docuvera Loss360 document intelligence platform" loading="lazy" decoding="async" width="1600" height="893">
+                            <img src="projects/resources/project-14/Header.webp" alt="CleanFrame turning a messy spreadsheet into typed, canonical data through a saved recipe" loading="lazy" decoding="async" width="1600" height="900">
                         </div>
                         <div class="featured-body">
                             <div class="tag-row">
-                                <span class="domain-pill">Document AI</span>
-                                <span class="stack-tag">FastAPI</span>
-                                <span class="stack-tag">PostgreSQL</span>
-                                <span class="stack-tag">Kubernetes</span>
+                                <span class="domain-pill">LLM &amp; RAG</span>
+                                <span class="stack-tag">Python</span>
+                                <span class="stack-tag">pandas</span>
+                                <span class="stack-tag">PyPI</span>
                             </div>
-                            <h3 class="featured-title"><a href="projects/project-2.html">Docuvera &mdash; Loss360</a></h3>
+                            <h3 class="featured-title"><a href="projects/project-14.html">CleanFrame</a></h3>
                             <p class="featured-desc">
-                                Multi-tenant SaaS that turns insurance loss-run PDFs and scans into structured
-                                claims data. A custom OCR engine feeds domain-tuned LLMs, with schema-per-tenant
-                                isolation in PostgreSQL so no client's data can leak into another's.
+                                A data-cleaning engine you can actually put in a pipeline. An LLM writes the plan
+                                once; the plan compiles to a YAML recipe that replays over next month's file in pure
+                                pandas &mdash; no API calls, same answer every time. When the schema drifts it stops
+                                and tells you, instead of quietly corrupting the column.
                             </p>
                             <div class="featured-foot">
                                 <span class="card-meta">
-                                    <svg class="icon" aria-hidden="true"><use href="#i-user"></use></svg>
-                                    Lead engineer, team of 8
+                                    <svg class="icon" aria-hidden="true"><use href="#i-code"></use></svg>
+                                    On PyPI as cleanframe-engine
                                     <span class="sep" aria-hidden="true"></span>
-                                    92% extraction accuracy
+                                    Apache-2.0
                                     <span class="sep" aria-hidden="true"></span>
-                                    10+ tenants live
+                                    Runs fully offline
                                 </span>
-                                <a href="projects/project-2.html" class="project-link">Read the write-up</a>
+                                <a href="projects/project-14.html" class="project-link">Read the write-up</a>
                             </div>
                         </div>
                     </article>
@@ -191,32 +192,33 @@
                     </article>
 
                     <!-- 03 -->
-                    <article class="featured-card" data-glow style="--domain: var(--d-llm);">
+                    <article class="featured-card" data-glow style="--domain: var(--d-learn);">
                         <div class="featured-media">
                             <span class="featured-rank">03</span>
-                            <img src="projects/resources/project-1/Dashboard-With-Documents.webp" alt="Context Search Engine dashboard listing indexed documents" loading="lazy" decoding="async" width="1600" height="576">
+                            <img src="projects/resources/project-13/Homepage.webp" alt="Py Internals interactive Python memory course homepage" loading="lazy" decoding="async" width="1600" height="557">
                         </div>
                         <div class="featured-body">
                             <div class="tag-row">
-                                <span class="domain-pill">LLM &amp; RAG</span>
-                                <span class="stack-tag">PyTorch</span>
-                                <span class="stack-tag">FAISS</span>
-                                <span class="stack-tag">DistilBERT</span>
+                                <span class="domain-pill">Learning Resource</span>
+                                <span class="stack-tag">Vanilla JS</span>
+                                <span class="stack-tag">HTML</span>
+                                <span class="stack-tag">CSS</span>
                             </div>
-                            <h3 class="featured-title"><a href="projects/project-1.html">Context Search Engine</a></h3>
+                            <h3 class="featured-title"><a href="projects/project-13.html">Py Internals</a></h3>
                             <p class="featured-desc">
-                                Semantic search over your own documents. PDFs, DOCX and text files are chunked
-                                with overlap, embedded with DistilBERT and indexed in FAISS. Chunk size, overlap,
-                                model and top-k are all knobs, because retrieval quality is an empirical question.
+                                An interactive course that teaches Python by drawing its memory. Code on the left,
+                                stack and heap on the right, one idea per animation step. No backend, no build
+                                step, no account &mdash; hand-authored snapshots rendered by a few hundred lines of
+                                vanilla JS.
                             </p>
                             <div class="featured-foot">
                                 <span class="card-meta">
-                                    <svg class="icon" aria-hidden="true"><use href="#i-search"></use></svg>
-                                    Sub-200ms queries
+                                    <svg class="icon" aria-hidden="true"><use href="#i-sparkle"></use></svg>
+                                    5 sessions, ~23 interactive labs
                                     <span class="sep" aria-hidden="true"></span>
-                                    Runs entirely offline
+                                    Open source
                                 </span>
-                                <a href="projects/project-1.html" class="project-link">Read the write-up</a>
+                                <a href="projects/project-13.html" class="project-link">Read the write-up</a>
                             </div>
                         </div>
                     </article>
@@ -225,7 +227,7 @@
 
                 <p class="text-center" style="margin-top: 2rem;" data-reveal>
                     <a href="all-projects.html" class="landing-link">
-                        Browse all 13 projects
+                        Browse all 14 projects
                         <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"></use></svg>
                     </a>
                 </p>
@@ -261,7 +263,7 @@
                         <div class="label">Models deployed</div>
                     </div>
                     <div class="stat-card">
-                        <div class="value"><span data-count-to="13">13</span></div>
+                        <div class="value"><span data-count-to="14">14</span></div>
                         <div class="label">Projects written up here</div>
                     </div>
                 </div>

@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CleanFrame - The Reproducible Data-Cleaning Engine for Python | Praveen Kumar</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="CleanFrame is an open-source Python library that turns messy spreadsheets into clean, typed data. An LLM writes the cleaning plan once; a YAML recipe replays it forever in pure pandas, with cell-level diffs and schema-drift alerts.">
+    <meta name="keywords" content="CleanFrame, cleanframe-engine, Data Cleaning, pandas, Data Quality, Reproducible Pipelines, Schema Drift, ETL, Python Library, LLM Planning, Open Source, PyPI">
+    <meta name="author" content="Praveen Kumar">
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="CleanFrame - The Reproducible Data-Cleaning Engine for Python">
+    <meta property="og:description" content="AI suggests. Pandas executes. Rules validate. You approve. A data-cleaning engine built for pipelines, not for demos - and it replays with zero LLM calls.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://inboxpraveen.github.io/projects/project-14.html">
+    <meta property="og:image" content="https://inboxpraveen.github.io/projects/resources/project-14/Header.png">
+    <meta property="og:image:alt" content="CleanFrame - messy data in, recipe in the middle, clean data out">
+    <meta property="og:site_name" content="Praveen Kumar Portfolio">
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="CleanFrame - The Reproducible Data-Cleaning Engine for Python">
+    <meta name="twitter:description" content="The LLM never touches your data - it only writes the plan. The plan compiles to deterministic pandas, saved as a recipe you can review in a pull request.">
+    <meta name="twitter:image" content="https://inboxpraveen.github.io/projects/resources/project-14/Header.png">
+    <meta name="twitter:image:alt" content="CleanFrame - messy data in, recipe in the middle, clean data out">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://inboxpraveen.github.io/projects/project-14.html">
+
+    <link rel="icon" type="image/x-icon" href="../assests/favicon.ico">
+    <link rel="stylesheet" href="../index.css">
+</head>
+<body>
+
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <div class="progress-track" aria-hidden="true"><div class="progress-bar" data-progress></div></div>
+
+    <!-- Navigation -->
+    <nav class="site-nav">
+        <div class="nav-container">
+            <a href="../index.html" class="logo" aria-label="Praveen Kumar, home">PK</a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../all-projects.html" aria-current="page">Projects</a></li>
+                <li><a href="../about.html">About</a></li>
+                <li><a href="https://github.com/inboxpraveen" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+            </ul>
+            <button class="mobile-menu" id="mobileMenu" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="navLinks">
+                <span class="bars"></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Project Page - CleanFrame -->
+    <main id="main" class="page-container active">
+        <div class="page-header">
+            <div class="container">
+                <a href="../all-projects.html" class="back-button">&larr; Back to Projects</a>
+                <h1 class="page-title">CleanFrame</h1>
+                <div class="page-meta">
+                    <div class="meta-item">
+                        <span><svg class="icon" aria-hidden="true"><use href="#i-calendar"></use></svg></span>
+                        <span>Released: 2026</span>
+                    </div>
+                    <div class="meta-item">
+                        <span><svg class="icon" aria-hidden="true"><use href="#i-code"></use></svg></span>
+                        <span>pip install cleanframe-engine</span>
+                    </div>
+                    <div class="meta-item">
+                        <span><svg class="icon" aria-hidden="true"><use href="#i-user"></use></svg></span>
+                        <span>Author &amp; sole maintainer</span>
+                    </div>
+                    <div class="meta-item">
+                        <span><svg class="icon" aria-hidden="true"><use href="#i-tag"></use></svg></span>
+                        <span>Python &bull; pandas &bull; PyYAML &bull; Jinja2</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <nav class="toc" data-toc aria-label="On this page">
+            <p class="toc-label">On this page</p>
+        </nav>
+
+        <div class="content-section">
+            <h2>Project Overview</h2>
+            <p>
+                <strong>CleanFrame</strong> is an open-source Python library that turns the spreadsheet nobody
+                wants to open into clean, typed, validated data &mdash; and then makes sure you never have to do
+                it by hand again. It profiles the file, detects the issues, proposes a plan, executes that plan
+                in pure pandas, and saves the whole thing as a <strong>recipe</strong>: a versionable YAML file
+                that replays on next month's file with zero AI calls.
+            </p>
+
+            <figure class="content-figure">
+                <img src="./resources/project-14/Header.webp" alt="CleanFrame - messy data on the left, a recipe.yaml in the middle, clean typed data on the right" loading="lazy" decoding="async">
+            </figure>
+
+            <p>
+                It ships on PyPI as <code>cleanframe-engine</code>, imports as <code>cleanframe</code>, and comes
+                with a CLI. It is Apache-2.0, it runs fully offline, and the LLM is optional in the strictest
+                sense: you can install it, clean a file, save a recipe and replay it forever without ever setting
+                an API key.
+            </p>
+
+            <h2>Why I Built This</h2>
+            <p>
+                Every team has that file. The vendor spreadsheet that arrives monthly with dates in three
+                formats. The CRM export where <code>Bengaluru</code>, <code>Bangalore</code> and <code>BLR</code>
+                are three different cities. The finance sheet with <code>&#8377;1,20,000</code> sitting in a
+                column pandas typed as <code>object</code>.
+            </p>
+            <p>
+                You clean it by hand. Next month it arrives broken in a new way, and you clean it again. I have
+                watched that loop eat a data team's week, every month, for years &mdash; and I have been the
+                person inside the loop.
+            </p>
+            <p>
+                The obvious 2026 answer is "point an LLM agent at the dataframe." I tried it, and it fails for a
+                boring reason: you can't ship <em>the model probably fixed it</em> to production. The same file
+                and the same prompt give you two different answers on Tuesday and Wednesday. There's no diff to
+                review, no artifact to commit, and nothing that fails loudly when the input changes shape.
+            </p>
+            <p>
+                So CleanFrame is built on one rule, and everything else follows from it:
+            </p>
+            <p style="margin: 1.75rem 0; padding: 1.1rem 1.4rem; background: var(--secondary-bg); border-left: 3px solid var(--accent-color); border-radius: 10px;">
+                <strong>The LLM never touches your data. It only writes the plan.</strong>
+            </p>
+            <p>
+                The plan compiles to deterministic pandas operations. Same input, same output, every time. Every
+                changed cell is tracked. Every step is reviewable, reversible, and exportable as plain Python you
+                can read without CleanFrame installed.
+            </p>
+
+            <h2>The Problem</h2>
+            <p>
+                The tooling around messy data is split into camps that each solve one third of it:
+            </p>
+            <ul>
+                <li><strong>Profilers</strong> (YData Profiling) tell you what is wrong and stop there</li>
+                <li><strong>Validators</strong> (Great Expectations, pandera) guard the gate but never fix anything</li>
+                <li><strong>Chat-with-your-data tools</strong> (PandasAI) fix things ad hoc, and say themselves that they're exploration tools</li>
+                <li><strong>GUI cleaners</strong> (OpenRefine) are excellent and entirely manual</li>
+                <li><strong>SaaS importers</strong> (Flatfile, OneSchema) do the whole job and start around $6k a year</li>
+            </ul>
+            <p>
+                Nothing in that list gives you a fix that is <em>reproducible</em>. That's the gap, and it isn't
+                about the algorithm &mdash; it's about the artifact. A cleaned CSV is a dead end. A cleaning
+                <em>recipe</em> lives in git, gets reviewed in a pull request, and replays in CI.
+            </p>
+
+            <h2>How It Works</h2>
+            <p>
+                One pass through the pipeline produces four things: a cleaned frame, a recipe, a cell-level diff,
+                and a quarantine table holding the rows validation refused.
+            </p>
+
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-language">Architecture</span>
+                    <button class="copy-button">Copy</button>
+                </div>
+                <pre><code>CSV / Excel / DataFrame
+   |
+   v
+profile.py --&gt; detectors/ --&gt; planner.py --&gt; Recipe (YAML)
+                  |               |               |
+                  |         llm.py (optional)     |
+                  v                               v
+               Issues                       executor.py
+                                                  |
+                     +----------------------------+----------------+
+                     v              v              v                v
+                validate.py      diff.py       drift.py         report.py</code></pre>
+            </div>
+
+            <p>
+                The profiler assigns each column a semantic type and a set of statistics. Detectors &mdash; ten
+                families of them, all plugins &mdash; turn those statistics into typed issues with confidence
+                scores. The planner gates on confidence, resolves renames, and fixes the operation order. Only
+                then, and only if you asked for it, does a model see anything at all: column names, dtypes and
+                regex sketches of the value patterns, never the raw cells.
+            </p>
+            <p>
+                The executor runs in four phases, in this order, because the order is what makes replay
+                deterministic: column ops, then the atomic rename map, then frame-level ops like dedup, then
+                validation. The diff is computed afterwards from the lineage the executor recorded, so it reports
+                what actually happened rather than re-deriving a guess.
+            </p>
+
+            <div class="table-container">
+                <table class="content-table">
+                    <thead>
+                        <tr>
+                            <th>Module</th>
+                            <th>Responsibility</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>profile.py</code></td>
+                            <td>Semantic typing and column statistics</td>
+                        </tr>
+                        <tr>
+                            <td><code>detectors/</code></td>
+                            <td>Issue discovery and op proposals &mdash; dates, currency, categories, contacts, dedup, nulls, outliers, text, units, schema mapping</td>
+                        </tr>
+                        <tr>
+                            <td><code>planner.py</code></td>
+                            <td>Confidence gating, rename resolution, canonical op order</td>
+                        </tr>
+                        <tr>
+                            <td><code>llm.py</code></td>
+                            <td>Optional plan writer &mdash; metadata only, never raw cells</td>
+                        </tr>
+                        <tr>
+                            <td><code>executor.py</code></td>
+                            <td>Deterministic four-phase replay, plus cell lineage</td>
+                        </tr>
+                        <tr>
+                            <td><code>drift.py</code></td>
+                            <td>Fingerprint comparison on replay &mdash; the thing that stops the pipeline</td>
+                        </tr>
+                        <tr>
+                            <td><code>codegen.py</code></td>
+                            <td>Recipe to a standalone pandas script with no CleanFrame dependency</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h2>The Recipe Is the Product</h2>
+            <p>
+                The cleaned dataframe is a side effect. The recipe is the thing worth keeping: short enough to
+                read in a pull request, precise enough to argue with, and stamped with a fingerprint of the file
+                it was written against.
+            </p>
+
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-language">YAML - customer.recipe.yaml, generated by CleanFrame, owned by git</span>
+                    <button class="copy-button">Copy</button>
+                </div>
+                <pre><code><span class="comment"># CleanFrame recipe - generated by CleanFrame, edited by you, owned by git.</span>
+version: <span class="number">1</span>
+source_fingerprint:
+  columns: <span class="number">6</span>
+  column_names: [<span class="string">Customer Name</span>, <span class="string">Signup Date</span>, <span class="string">Amount</span>, <span class="string">City</span>, <span class="string">Email</span>, <span class="string">Phone</span>]
+  row_count: <span class="number">6</span>
+  hash_sample: <span class="string">09264e6b98b451bc</span>
+columns:
+  <span class="string">Customer Name</span>:
+    rename_to: customer_name
+    ops: [collapse_whitespace]
+  <span class="string">Signup Date</span>:
+    rename_to: signup_date
+    ops:
+    - parse_date:
+        formats: [<span class="string">'%Y-%m-%d'</span>, <span class="string">'%d/%m/%Y'</span>, <span class="string">'%d %b %Y'</span>]
+  <span class="string">Amount</span>:
+    rename_to: amount_inr
+    ops: [parse_number]
+  <span class="string">City</span>:
+    rename_to: city
+    normalize_values: {<span class="string">bengaluru</span>: Bengaluru, <span class="string">MUMBAI</span>: Mumbai}
+validate:
+- {column: email, check: valid_email, on_fail: quarantine}
+- {column: amount_inr, check: <span class="string">"&gt;= 0"</span>, on_fail: quarantine}</code></pre>
+            </div>
+
+            <p>
+                Next month the file comes back. No model, no tokens, no variance:
+            </p>
+
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-language">Bash - replay costs nothing and cannot drift silently</span>
+                    <button class="copy-button">Copy</button>
+                </div>
+                <pre><code>cleanframe apply new_customers.csv --recipe customer.recipe.yaml --out clean.csv</code></pre>
+            </div>
+
+            <p>
+                And when the incoming file has quietly changed shape, the run stops instead of corrupting a
+                column. This is the feature I care about most, because it's the one that turns a cleaning script
+                into something you can leave unattended in Airflow:
+            </p>
+
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-language">Console - schema drift halts the pipeline</span>
+                    <button class="copy-button">Copy</button>
+                </div>
+                <pre><code>&#9888; Schema drift detected in new_customers.csv
+  - Column <span class="string">"Amt (INR)"</span> is new - 94% match to recipe column <span class="string">"amount_inr"</span>
+  - 312 values in <span class="string">"signup_date"</span> match no allowed date format (new: <span class="string">"Jan 5, 26"</span>)
+  Run `cleanframe suggest new_customers.csv --recipe customer.recipe.yaml --update`
+  to review a patch.</code></pre>
+            </div>
+
+            <h2>Every Changed Cell, Named</h2>
+            <p>
+                A cleaning tool that can't show its work is a cleaning tool you have to trust. CleanFrame tracks
+                lineage through the executor, so the diff is a record of what each op touched rather than a
+                recomputed guess. This is the real output on the sample file that ships in the repo:
+            </p>
+
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-language">Console - result.diff.show()</span>
+                    <button class="copy-button">Copy</button>
+                </div>
+                <pre><code>CleanFrame diff  18 cell(s) changed in 6 column(s), 1 row(s) dropped (6 -&gt; 5 rows)
+  renamed: Customer Name -&gt; customer_name, Amount -&gt; amount_inr, ...
+
+signup_date  (5 changed)
+  row 0: - <span class="string">'31/01/2024'</span>   + <span class="string">'2024-01-31'</span>
+  row 2: - <span class="string">'1 Jan 2024'</span>   + <span class="string">'2024-01-01'</span>
+
+amount_inr  (6 changed)
+  row 0: - <span class="string">'&#8377;1,20,000'</span>    + <span class="number">120000.0</span>
+  row 2: - <span class="string">'&#8377;1200'</span>         + <span class="number">1200.0</span>
+
+city  (2 changed)
+  row 1: - <span class="string">'bengaluru '</span>  + <span class="string">'Bengaluru'</span>
+  row 3: - <span class="string">'MUMBAI'</span>       + <span class="string">'Mumbai'</span>
+
+dropped rows: 1 (email:valid_email)</code></pre>
+            </div>
+
+            <p>
+                That last line matters as much as the rest. The row with the invalid email wasn't deleted &mdash;
+                it went to <code>result.quarantine</code> with the reason attached. Validation failures are held
+                back with an explanation, never silently discarded.
+            </p>
+
+            <h2>Screenshots</h2>
+
+            <h3>The quality report</h3>
+            <p>
+                Before you change a single cell, <code>cleanframe report</code> writes a standalone HTML file: a
+                quality score, an issue list with severity and confidence, and the detector that raised each one.
+                No API key, no config, one command.
+            </p>
+            <figure class="content-figure">
+                <img src="./resources/project-14/Quality-Report.webp" alt="CleanFrame HTML report showing a quality score of 87 and twelve detected issues with severity and confidence" loading="lazy" decoding="async">
+            </figure>
+
+            <h3>Column profiles</h3>
+            <p>
+                Below the issues, every column gets a semantic type badge, a missing-value rate, a cardinality
+                count and a value distribution. This is the view that usually ends the argument about whose
+                export is broken.
+            </p>
+            <figure class="content-figure">
+                <img src="./resources/project-14/Column-Profiles.webp" alt="CleanFrame column profile cards showing semantic types, missing rates and value distributions" loading="lazy" decoding="async">
+            </figure>
+
+            <h2>Where the LLM Fits</h2>
+            <p>
+                CleanFrame is LLM-optional and provider-agnostic. Planning has three exposure levels, and the
+                default is the one where nothing leaves your machine. Replay &mdash; the mode you actually run
+                in production &mdash; needs no model at all:
+            </p>
+
+            <div class="table-container">
+                <table class="content-table">
+                    <thead>
+                        <tr>
+                            <th>Mode</th>
+                            <th>What runs</th>
+                            <th>Data leaves your machine?</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Rules-only</strong> (default)</td>
+                            <td>Deterministic detectors and heuristics</td>
+                            <td>Never</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Metadata</strong></td>
+                            <td>The model sees column names, dtypes and regex sketches of value patterns</td>
+                            <td>Metadata only</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Sample</strong></td>
+                            <td>The model sees an anonymized, shuffled sample you approve first</td>
+                            <td>The approved sample only</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Replay</strong></td>
+                            <td>A saved recipe</td>
+                            <td>Never &mdash; replay needs no model at all</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <p>
+                Keys come from environment variables and are never stored, logged or transmitted. Any provider
+                that speaks OpenAI Chat Completions works out of the box &mdash; Anthropic natively, plus OpenAI,
+                OpenRouter, Groq, Together, Fireworks, DeepSeek, Mistral, Gemini, xAI and Cohere, or a local
+                Ollama or LM Studio endpoint. There's a hard cost ceiling too: <code>max_tokens_budget</code>
+                aborts planning before it gets expensive, rather than after.
+            </p>
+            <p>
+                Air-gapped operation is a first-class mode, not a degraded one. That was a deliberate constraint
+                &mdash; the teams with the messiest data are often the ones who can't send it anywhere.
+            </p>
+
+            <h2>What It Cleans</h2>
+
+            <div class="table-container">
+                <table class="content-table">
+                    <thead>
+                        <tr>
+                            <th>Problem</th>
+                            <th>Example</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Column name chaos</td>
+                            <td><code>Cust Name</code>, <code>customer_name</code>, <code>CustomerName</code> &rarr; <code>customer_name</code></td>
+                        </tr>
+                        <tr>
+                            <td>Date formats</td>
+                            <td><code>12/01/24</code>, <code>1 Jan 2024</code>, <code>2024-01-01</code> &rarr; ISO dates</td>
+                        </tr>
+                        <tr>
+                            <td>Currency and numbers</td>
+                            <td><code>&#8377;1,20,000</code>, <code>$1,200</code>, <code>1200 INR</code> &rarr; typed floats plus a currency column</td>
+                        </tr>
+                        <tr>
+                            <td>Category variants</td>
+                            <td><code>Bengaluru</code> / <code>Bangalore</code> / <code>BLR</code> &rarr; one canonical value</td>
+                        </tr>
+                        <tr>
+                            <td>Emails and phones</td>
+                            <td>Validation, normalization, country codes</td>
+                        </tr>
+                        <tr>
+                            <td>Duplicates</td>
+                            <td>Exact and fuzzy matching, with reviewable merge proposals</td>
+                        </tr>
+                        <tr>
+                            <td>Missing values</td>
+                            <td>Detected and explained; strategies proposed, never silently applied</td>
+                        </tr>
+                        <tr>
+                            <td>Units</td>
+                            <td><code>5kg</code>, <code>5000 g</code>, <code>5 KG</code> &rarr; normalized</td>
+                        </tr>
+                        <tr>
+                            <td>Schema mapping</td>
+                            <td>A messy file onto your target schema, with confidence scores</td>
+                        </tr>
+                        <tr>
+                            <td>Outliers</td>
+                            <td>Flagged with evidence &mdash; detected, never auto-"fixed"</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h2>Making It Production-Safe</h2>
+            <p>
+                The first release worked. Making it something I'd put in someone else's pipeline took a full
+                audit of the CLI, the API, the packaging and the docs &mdash; and that audit is where the
+                interesting bugs were. Almost all of them shared a shape: <strong>the library was wrong
+                quietly</strong>.
+            </p>
+            <ul>
+                <li>
+                    <code>normalize_phone</code> on a column pandas had read as float appended a spurious digit.
+                    One blank cell turned <code>9876543210</code> into <code>98765432100</code>, and nothing
+                    warned.
+                </li>
+                <li>
+                    European decimals were parsed with the US convention. <code>&euro;1.200,50</code> became
+                    <code>1.2005</code>, while the issue report said nothing was unparseable.
+                </li>
+                <li>
+                    A fuzzy category merge folded <code>Unapproved</code> into <code>Approved</code>. A spelling
+                    that is another spelling plus a negation prefix is now never merged.
+                </li>
+                <li>
+                    A ragged CSV row shifted every column left, because pandas promoted the first field to the
+                    index. Reads now pass <code>index_col=False</code>.
+                </li>
+                <li>
+                    <code>values: [Yes, No]</code> in a validation rule matched nothing: YAML 1.1 reads those as
+                    booleans, so the rule rejected every row it was meant to accept.
+                </li>
+                <li>
+                    Generated code interpolated column names into comments and <code>raise</code> statements
+                    unescaped, so a CSV header containing a newline produced an exported script that executed
+                    arbitrary statements. Exports now escape spreadsheet formula injection in headers too, not
+                    just in cells.
+                </li>
+            </ul>
+            <p>
+                The rules that came out of it are invariants the test suite now enforces. Unknown op parameters
+                are rejected at load time instead of silently doing nothing. Wrongly-typed parameters are refused
+                rather than coerced &mdash; <code>remove_symbols: 5</code> used to delete every digit 5. Writing
+                output over the input file needs an explicit <code>--overwrite</code>, and every write goes
+                through a temporary file that's moved into place. And the CLI has distinct exit codes, so a drift
+                stop (<code>3</code>) is scriptably different from a validation failure (<code>4</code>) and from
+                a usage error (<code>2</code>).
+            </p>
+            <p>
+                Alongside that came the scaling work: out-of-core streaming replay for larger-than-RAM CSVs,
+                multi-sheet Excel workbooks cleaned into one reviewable recipe, read-time encoding and delimiter
+                sniffing pinned into the recipe so a replay reads the file exactly the way the original run did,
+                detector sampling capped at 50k values, and a diff that snapshots only the columns an op touched
+                &mdash; so peak memory stays near the size of the input instead of double it.
+            </p>
+
+            <h2>Tech Stack</h2>
+            <div class="tech-stack">
+                <div class="tech-category">
+                    <h4>Core</h4>
+                    <div class="tech-list">
+                        <span class="tech-item">Python 3.10+</span>
+                        <span class="tech-item">pandas</span>
+                        <span class="tech-item">NumPy</span>
+                        <span class="tech-item">PyYAML</span>
+                        <span class="tech-item">python-dateutil</span>
+                    </div>
+                </div>
+                <div class="tech-category">
+                    <h4>Optional Extras</h4>
+                    <div class="tech-list">
+                        <span class="tech-item">openpyxl (Excel)</span>
+                        <span class="tech-item">pyarrow (Parquet)</span>
+                        <span class="tech-item">Anthropic SDK</span>
+                        <span class="tech-item">OpenAI SDK</span>
+                    </div>
+                </div>
+                <div class="tech-category">
+                    <h4>Reporting &amp; CLI</h4>
+                    <div class="tech-list">
+                        <span class="tech-item">Jinja2</span>
+                        <span class="tech-item">Standalone HTML reports</span>
+                        <span class="tech-item">argparse CLI</span>
+                        <span class="tech-item">Typed exit codes</span>
+                    </div>
+                </div>
+                <div class="tech-category">
+                    <h4>Engineering</h4>
+                    <div class="tech-list">
+                        <span class="tech-item">hatchling</span>
+                        <span class="tech-item">pytest</span>
+                        <span class="tech-item">mypy</span>
+                        <span class="tech-item">ruff</span>
+                        <span class="tech-item">CodeQL</span>
+                        <span class="tech-item">GitHub Actions</span>
+                    </div>
+                </div>
+            </div>
+
+            <h2>How This Is Different</h2>
+            <p>
+                Use PandasAI to explore. Use pandera or Great Expectations to guard. Use OpenRefine when a human
+                should do it by hand. CleanFrame is for the job none of them does repeatably: fix it, and be
+                able to fix it the same way again next month.
+            </p>
+
+            <div class="table-container">
+                <table class="content-table">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>CleanFrame</th>
+                            <th>PandasAI</th>
+                            <th>GX / pandera</th>
+                            <th>Flatfile / OneSchema</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Fixes data, not just reports it</td>
+                            <td>Yes</td>
+                            <td>Ad hoc</td>
+                            <td>Validates only</td>
+                            <td>Yes</td>
+                        </tr>
+                        <tr>
+                            <td>Deterministic and reproducible</td>
+                            <td>Yes &mdash; recipes</td>
+                            <td>No</td>
+                            <td>Yes</td>
+                            <td>Partly</td>
+                        </tr>
+                        <tr>
+                            <td>Built for pipelines</td>
+                            <td>Yes</td>
+                            <td>Exploration only</td>
+                            <td>Yes</td>
+                            <td>Yes</td>
+                        </tr>
+                        <tr>
+                            <td>Works with zero LLM, offline</td>
+                            <td>Yes</td>
+                            <td>No</td>
+                            <td>Yes</td>
+                            <td>Partly</td>
+                        </tr>
+                        <tr>
+                            <td>Cell-level diff and lineage</td>
+                            <td>Yes</td>
+                            <td>No</td>
+                            <td>No</td>
+                            <td>Partly</td>
+                        </tr>
+                        <tr>
+                            <td>Schema-drift alerts on re-import</td>
+                            <td>Yes</td>
+                            <td>No</td>
+                            <td>Partly</td>
+                            <td>From $6k a year</td>
+                        </tr>
+                        <tr>
+                            <td>Free and open source</td>
+                            <td>Apache-2.0</td>
+                            <td>Yes</td>
+                            <td>Yes</td>
+                            <td>No</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h2>What Shipped</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 1.5rem; margin: 2rem 0;">
+                <div style="background: var(--secondary-bg); padding: 1.5rem; border-radius: 10px; border: 1px solid var(--border-color); text-align: center;">
+                    <h3 style="margin-top: 0; color: var(--accent-color); font-size: 2rem;">~11K</h3>
+                    <p style="margin-bottom: 0;">Lines of typed Python</p>
+                </div>
+                <div style="background: var(--secondary-bg); padding: 1.5rem; border-radius: 10px; border: 1px solid var(--border-color); text-align: center;">
+                    <h3 style="margin-top: 0; color: var(--accent-color); font-size: 2rem;">336</h3>
+                    <p style="margin-bottom: 0;">Tests across 24 suites</p>
+                </div>
+                <div style="background: var(--secondary-bg); padding: 1.5rem; border-radius: 10px; border: 1px solid var(--border-color); text-align: center;">
+                    <h3 style="margin-top: 0; color: var(--accent-color); font-size: 2rem;">10</h3>
+                    <p style="margin-bottom: 0;">Detector families</p>
+                </div>
+                <div style="background: var(--secondary-bg); padding: 1.5rem; border-radius: 10px; border: 1px solid var(--border-color); text-align: center;">
+                    <h3 style="margin-top: 0; color: var(--accent-color); font-size: 2rem;">0</h3>
+                    <p style="margin-bottom: 0;">API calls on replay</p>
+                </div>
+            </div>
+
+            <h2>My Contribution</h2>
+            <p>I designed, built, documented and released the whole thing:</p>
+            <ul>
+                <li>Framed the product around the artifact rather than the output &mdash; the recipe is the deliverable, the clean CSV is a side effect</li>
+                <li>Designed the recipe format, the schema format, the source fingerprint, and the drift comparison that reads it</li>
+                <li>Built the profiler, the plugin detector system, the confidence-gating planner and the four-phase deterministic executor</li>
+                <li>Wrote the cell-level lineage and diff, the quarantine model, and the codegen that exports a recipe as a dependency-free pandas script</li>
+                <li>Built the provider-agnostic LLM layer with three exposure levels and a hard token budget</li>
+                <li>Added the scaling work: multi-sheet workbooks, out-of-core streaming replay, read-time format auto-correction</li>
+                <li>Ran the production-hardening audit and fixed the silent-corruption class of bugs it surfaced</li>
+                <li>Set up CI, mypy, ruff, CodeQL, Dependabot, the wiki sync and the PyPI release</li>
+                <li>Wrote the README, the wiki, the production guide, the recipe and schema specs, and the contributor invariants</li>
+            </ul>
+
+            <h2>Challenges &amp; Learnings</h2>
+            <p>
+                <strong>Determinism is a discipline, not a feature.</strong> It costs you something on almost
+                every line. Sort before iterating anywhere order is observable. No clock, no <code>random</code>,
+                no network in the core path. The detector registry runs in <code>(priority, name)</code> order and
+                columns in frame order. Even the LLM's sample shuffle is seeded by column name, and it only
+                affects the prompt &mdash; never the executor. Miss one of those and "same input, same output"
+                becomes a claim you can't keep.
+            </p>
+            <p>
+                <strong>Silent success is worse than a crash.</strong> Nearly every serious bug in the audit was
+                a path where the library did something plausible and said nothing. An op parameter that loaded
+                and did nothing. A currency parse that produced a number, just the wrong one. A drift guard
+                disabled by a typo in <code>on_drift</code>. The fix was a rule rather than a patch: reject
+                unknown parameters at load time, refuse wrongly-typed ones instead of coercing them, and warn
+                visibly whenever the library degrades. A tool that cleans your data has to be honest about what
+                it couldn't do.
+            </p>
+            <p>
+                <strong>The LLM boundary has to be architectural.</strong> "We only send metadata" is a promise
+                that decays the moment a convenient prompt needs one more field. Making exposure a typed mode
+                &mdash; and making <code>none</code> mean no network call at all, rather than "the same payload
+                as metadata" &mdash; is the difference between a policy and a property.
+            </p>
+            <p>
+                <strong>Import direction is a real constraint.</strong> Dependencies have to point strictly
+                downward, which sounds like taste until a cycle between <code>recipe</code> and
+                <code>validate</code> makes a load-time guard impossible to place. Splitting the check registry
+                into its own module removed the last cycle in the package. Small change, and it's why the
+                contributor guide leads with the rule.
+            </p>
+            <p>
+                <strong>Publishing is its own engineering.</strong> The name <code>cleanframe</code> was taken on
+                PyPI, so the distribution is <code>cleanframe-engine</code> while the import package stays
+                <code>cleanframe</code>. The sdist ships an explicit allow-list, so an untracked file in a working
+                tree can never end up in a release. And CodeQL found a real bug the day the repo went public: the
+                <code>Severity</code> enum defined only <code>__lt__</code>, so the <code>str</code> mixin
+                answered everything else and <code>Severity.ERROR &gt; Severity.INFO</code> came back
+                <code>False</code> &mdash; because <code>"error"</code> sorts before <code>"info"</code>
+                alphabetically.
+            </p>
+
+            <h2>What's Next</h2>
+            <p>
+                <strong>MessyData-100</strong> is the piece I most want to exist: a public benchmark of a hundred
+                genuinely messy files with a leaderboard, so "this tool cleans data well" becomes a measurable
+                claim instead of a marketing one. After that, exporters for pandera, Great Expectations and dbt,
+                so a CleanFrame recipe drops into the validation stack a team already runs.
+            </p>
+            <p>
+                Then a Polars backend, and a recipe registry for teams &mdash; recipes shared the way schemas are
+                shared today.
+            </p>
+            <p>
+                The detector plugin system exists because the long tail of messy-data weirdness isn't something
+                one person can enumerate. A new detector is about thirty lines, and the good first issues are
+                tagged for exactly that.
+            </p>
+
+            <h2>Closing Note</h2>
+            <p>
+                The bet behind CleanFrame is that the durable output of an AI tool shouldn't be the answer. It
+                should be the artifact that produces the answer &mdash; something you can read, review, version,
+                and run again without the model.
+            </p>
+            <p>
+                AI suggests. Pandas executes. Rules validate. You approve. Profile it once, recipe it forever.
+            </p>
+
+            <div style="margin-top: 3rem; padding: 2rem; background: var(--secondary-bg); border-radius: 15px; border: 1px solid var(--border-color);">
+                <h3 style="margin-top: 0;">Resources &amp; Links</h3>
+                <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1rem; margin-bottom: 2rem;">
+                    <a href="https://pypi.org/project/cleanframe-engine/" class="demo-button" style="margin: 0;" target="_blank" rel="noopener noreferrer">Install from PyPI</a>
+                    <a href="https://github.com/inboxpraveen/Cleanframe" class="demo-button" style="margin: 0;" target="_blank" rel="noopener noreferrer">GitHub Repository</a>
+                    <a href="https://github.com/inboxpraveen/Cleanframe/wiki" class="demo-button" style="margin: 0;" target="_blank" rel="noopener noreferrer">Documentation Wiki</a>
+                </div>
+
+                <h4>Tags:</h4>
+                <div class="tag-row" style="--domain: var(--d-llm);">
+                    <span class="domain-pill">LLM &amp; RAG</span>
+                    <span class="stack-tag">Python</span>
+                    <span class="stack-tag">pandas</span>
+                    <span class="stack-tag">PyYAML</span>
+                    <span class="stack-tag">Data Quality</span>
+                    <span class="stack-tag">Open Source</span>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <p class="footer-note">
+                    &copy; <span data-year>2026</span> Praveen Kumar &middot;
+                    Static HTML, one stylesheet, no build step &mdash;
+                    <a href="https://github.com/inboxpraveen/inboxpraveen.github.io" target="_blank" rel="noopener noreferrer">source on GitHub</a>
+                </p>
+                <div class="footer-social">
+                    <a href="https://github.com/inboxpraveen" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                        <svg class="icon" aria-hidden="true"><use href="#i-github"></use></svg>
+                    </a>
+                    <a href="https://www.linkedin.com/in/praveen-kumar-inbox/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                        <svg class="icon" aria-hidden="true"><use href="#i-linkedin"></use></svg>
+                    </a>
+                    <a href="https://x.com/InboxPraveen" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
+                        <svg class="icon" aria-hidden="true"><use href="#i-x"></use></svg>
+                    </a>
+                    <a href="mailto:inboxpraveen.17@gmail.com" aria-label="Email">
+                        <svg class="icon" aria-hidden="true"><use href="#i-mail"></use></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <button class="back-to-top" type="button" data-back-to-top aria-label="Back to top">
+        <svg class="icon" aria-hidden="true"><use href="#i-arrow-up"></use></svg>
+    </button>
+
+    <script src="../site.js" defer></script>
+
+</body>
+</html>

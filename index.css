@@ -1469,6 +1469,16 @@ footer .container {
     color: var(--text-secondary);
 }
 
+.content-section ul,
+.content-section ol {
+    margin: 0 0 1.35rem;
+    padding-left: 1.35rem;
+}
+
+.content-section li {
+    margin-bottom: 0.45rem;
+}
+
 .content-image {
     width: 100%;
     max-width: 620px;
