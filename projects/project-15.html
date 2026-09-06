@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Easy-vLLM - The Right vLLM Settings for Your GPU | Praveen Kumar</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Easy-vLLM is a browser tool that works out which vLLM settings your GPU can actually run. Type a model id, pick your card, get a vllm serve command, a docker-compose file and an honest VRAM verdict. No install, no server.">
+    <meta name="keywords" content="Easy-vLLM, vLLM, LLM Serving, GPU Memory Calculator, VRAM Estimator, KV Cache, Quantization, FP8, AWQ, GPTQ, NVFP4, ROCm, Tensor Parallel, Static Site, GitHub Pages">
+    <meta name="author" content="Praveen Kumar">
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Easy-vLLM - The Right vLLM Settings for Your GPU">
+    <meta property="og:description" content="vllm serve has over two hundred flags and the right ones change with your card. This tells you which ones you need, whether the model fits, and how many requests you can serve - entirely in the browser.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://inboxpraveen.github.io/projects/project-15.html">
+    <meta property="og:image" content="https://inboxpraveen.github.io/projects/resources/project-15/Header.png">
+    <meta property="og:image:alt" content="Easy-vLLM showing a memory verdict for Qwen3-8B on an RTX 4090">
+    <meta property="og:site_name" content="Praveen Kumar Portfolio">
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Easy-vLLM - The Right vLLM Settings for Your GPU">
+    <meta name="twitter:description" content="Type a model id, pick your GPU, get a working vllm serve command and an honest answer about whether it fits. Runs entirely in your browser.">
+    <meta name="twitter:image" content="https://inboxpraveen.github.io/projects/resources/project-15/Header.png">
+    <meta name="twitter:image:alt" content="Easy-vLLM showing a memory verdict for Qwen3-8B on an RTX 4090">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://inboxpraveen.github.io/projects/project-15.html">
+
+    <link rel="icon" type="image/x-icon" href="../assests/favicon.ico">
+    <link rel="stylesheet" href="../index.css">
+</head>
+<body>
+
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <div class="progress-track" aria-hidden="true"><div class="progress-bar" data-progress></div></div>
+
+    <!-- Navigation -->
+    <nav class="site-nav">
+        <div class="nav-container">
+            <a href="../index.html" class="logo" aria-label="Praveen Kumar, home">PK</a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../all-projects.html" aria-current="page">Projects</a></li>
+                <li><a href="../about.html">About</a></li>
+                <li><a href="https://github.com/inboxpraveen" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+            </ul>
+            <button class="mobile-menu" id="mobileMenu" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="navLinks">
+                <span class="bars"></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Project Page - Easy-vLLM -->
+    <main id="main" class="page-container active">
+        <div class="page-header">
+            <div class="container">
+                <a href="../all-projects.html" class="back-button">&larr; Back to Projects</a>
+                <h1 class="page-title">Easy-vLLM</h1>
+                <div class="page-meta">
+                    <div class="meta-item">
+                        <span><svg class="icon" aria-hidden="true"><use href="#i-calendar"></use></svg></span>
+                        <span>2026 &bull; v3</span>
+                    </div>
+                    <div class="meta-item">
+                        <span><svg class="icon" aria-hidden="true"><use href="#i-external"></use></svg></span>
+                        <span>Live, no install</span>
+                    </div>
+                    <div class="meta-item">
+                        <span><svg class="icon" aria-hidden="true"><use href="#i-user"></use></svg></span>
+                        <span>Author &amp; sole maintainer</span>
+                    </div>
+                    <div class="meta-item">
+                        <span><svg class="icon" aria-hidden="true"><use href="#i-tag"></use></svg></span>
+                        <span>Vanilla JS &bull; ES Modules &bull; GitHub Pages</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <nav class="toc" data-toc aria-label="On this page">
+            <p class="toc-label">On this page</p>
+        </nav>
+
+        <div class="content-section">
+            <h2>Project Overview</h2>
+            <p>
+                <strong>Easy-vLLM</strong> answers the two questions everybody has before deploying a model with
+                <a href="https://github.com/vllm-project/vllm" target="_blank" rel="noopener noreferrer">vLLM</a>:
+                <em>will this fit on my GPU</em>, and <em>which flags do I actually need</em>. You type a Hugging
+                Face model id, pick your card, and get back a working <code>vllm serve</code> command, a
+                <code>docker-compose.yml</code> that matches your hardware, and an honest verdict on whether the
+                thing will start.
+            </p>
+
+            <figure class="content-figure">
+                <img src="./resources/project-15/Header.webp" alt="Easy-vLLM showing Qwen3-8B on an RTX 4090 at 140 percent of VRAM, marked will not fit" loading="lazy" decoding="async">
+            </figure>
+
+            <p>
+                It runs entirely in the browser. No install, no account, no server &mdash; the only network
+                request it makes is to <code>huggingface.co</code> for the public <code>config.json</code> of the
+                model you named. It is Apache-2.0 and hosted on GitHub Pages.
+            </p>
+
+            <h2>Why I Built This</h2>
+            <p>
+                vLLM is the best open-source inference engine I have used, and <code>vllm serve</code> exposes
+                over two hundred flags. That is not a criticism &mdash; the surface area is the point. But it
+                means the first hour with vLLM is spent reading a help text that cannot tell you the one thing
+                you need to know, which is what <em>your</em> card can do.
+            </p>
+            <p>
+                The answers genuinely change per GPU. FP8 is the single best thing you can do on an RTX 4090 and
+                simply does not exist on a 3090 &mdash; one generation apart. AWQ and GPTQ, the two formats every
+                tutorial reaches for, have no ROCm kernels at all, so half the advice on the internet is wrong if
+                you are on an MI300X. A V100 cannot run current vLLM at all, and the error you get does not say
+                so in those words.
+            </p>
+            <p>
+                I had watched people &mdash; and myself &mdash; download 140 GB of weights to discover a
+                configuration that was never going to load. The feedback loop is brutal: a typo in a flag costs
+                you a model download and a ten minute startup before anything tells you it was wrong.
+            </p>
+
+            <h2>The Problem</h2>
+            <p>
+                Three things make vLLM configuration harder than it looks, and none of them are vLLM's fault.
+            </p>
+            <p>
+                <strong>The KV cache, not the weights, is usually what kills you.</strong> Everyone sizes a
+                deployment by parameter count. But an 8B model in bfloat16 is about 15.6 GiB of weights &mdash;
+                and at 5,120 tokens of context across 32 concurrent requests, its KV cache is
+                <em>22.5 GiB</em>. The part nobody budgets for is larger than the part everybody does.
+            </p>
+            <p>
+                <strong>Parameter counts are lies for Mixture-of-Experts models.</strong> A "30B-A3B" model
+                advertises 3B active parameters. All 30B still sit in VRAM. Size for the active count and you
+                will be out of memory by a factor of ten.
+            </p>
+            <p>
+                <strong>The flags move.</strong> Between the version I first wrote this against and today,
+                <code>--swap-space</code> and <code>--max-num-partial-prefills</code> were removed outright,
+                <code>--async-scheduling</code> and <code>--disable-cascade-attn</code> became defaults,
+                bitsandbytes moved out of the main package into a plugin, and <code>--kv-cache-dtype fp16</code>
+                became <code>float16</code>. A generator that is not maintained against the current CLI produces
+                commands that fail on startup.
+            </p>
+
+            <h2>How It Works</h2>
+            <p>
+                Nine modules, no framework, no build step. Every keystroke recomputes the whole estimate
+                synchronously &mdash; it is arithmetic, and it is fast enough that debouncing would only add
+                latency.
+            </p>
+
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-language">Architecture</span>
+                    <button class="copy-button">Copy</button>
+                </div>
+                <pre><code>model id ──▶ config-parser.js ──▶ huggingface.co/&lt;id&gt;/resolve/main/config.json
+                     │                (CORS, read-only, public)
+                     ▼
+              parameter count, KV shape, detected quantization
+                     │
+     GPU preset ──▶ hardware.js ──▶ capability flags: bf16 / fp8 / fp4 / marlin
+                     │                       │
+                     ▼                       ▼
+              estimator.js            validators.js         recommendRecipe()
+           weights + KV + runtime    what will not run     what to use instead
+                     │                       │                     │
+                     └───────────┬───────────┴─────────────────────┘
+                                 ▼
+                    command.js ──▶ vllm serve …
+                   artifacts.js ──▶ docker-compose.yml, .env, tests, README
+                        zip.js ──▶ one download, no dependency</code></pre>
+            </div>
+
+            <p>
+                The centre of it is <code>hardware.js</code>: one table mapping thirteen GPU generations to what
+                their kernels support. Everything else is derived from it &mdash; which quantizations appear as
+                recommended, which are greyed out as unsupported, which Docker image you get, and what the tool
+                suggests when your configuration does not fit. Adding a new card is one line; adding a new
+                generation is one entry with its capability flags.
+            </p>
+
+            <h2>Counting Parameters Properly</h2>
+            <p>
+                The usual shortcut for model size is <code>12 &times; layers &times; hidden&sup2;</code>. It is
+                off by several percent on dense models and badly wrong on everything else, which matters when the
+                whole point is to tell someone whether 15.6 GiB fits in 24.
+            </p>
+            <p>
+                So the parser adds up the actual tensors: attention projections respecting grouped-query
+                attention, the MLP or expert blocks, and embeddings counted once when the model ties them. For
+                Mixture-of-Experts models it counts <em>every</em> expert, because every expert is resident.
+            </p>
+
+            <div class="table-container">
+                <table class="content-table">
+                    <thead>
+                        <tr>
+                            <th>Model</th>
+                            <th>Published size</th>
+                            <th>What the parser computes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Qwen3-8B</td>
+                            <td>8.2 B</td>
+                            <td>8.19 B</td>
+                        </tr>
+                        <tr>
+                            <td>Mistral-7B-Instruct-v0.3</td>
+                            <td>7.25 B</td>
+                            <td>7.25 B</td>
+                        </tr>
+                        <tr>
+                            <td>Llama-3.1-8B-Instruct</td>
+                            <td>8.03 B</td>
+                            <td>8.03 B</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <p>
+                Those three cases are pinned in the test suite. If a change to the counting logic moves any of
+                them, the build fails.
+            </p>
+
+            <h2>It Tells You What to Change</h2>
+            <p>
+                A verdict on its own is not much use. The more valuable output is the number underneath it
+                &mdash; how many concurrent requests the leftover VRAM actually supports at the context length
+                you asked for &mdash; and an ordered list of fixes, each with a button that applies it.
+            </p>
+
+            <figure class="content-figure">
+                <img src="./resources/project-15/Recommendation.webp" alt="The results panel showing a memory breakdown and a recommendation to use FP8 for both weights and cache" loading="lazy" decoding="async">
+            </figure>
+
+            <p>
+                The recommendation engine climbs a ladder and stops at the first rung that fits: nothing, then an
+                FP8 cache, then FP8 weights, then 4-bit. It reaches for the cheapest change first, because
+                halving the KV cache costs no quality while dropping the weights to 4-bit does.
+            </p>
+            <p>
+                Getting this right took a correction. The first version compared only the weights against total
+                VRAM, so it would cheerfully print <em>"no reason to quantize"</em> next to a verdict that said
+                <em>"will not fit"</em> &mdash; because the KV cache, the thing that actually overflowed, was not
+                in the comparison. The engine now takes the cache as an input, and a test asserts the
+                recommendation can never contradict the verdict.
+            </p>
+
+            <h2>The Hardware Table Is the Product</h2>
+            <p>
+                The part people bookmark is the cheat sheet: which generation supports what, and which
+                quantization to reach for on each. It is generated from the same table the wizard uses, so the
+                documentation cannot drift away from the behaviour.
+            </p>
+
+            <figure class="content-figure">
+                <img src="./resources/project-15/Cheat-Sheet.webp" alt="The vLLM cheat sheet listing GPU generations against bfloat16, FP8 and 4-bit float support" loading="lazy" decoding="async">
+            </figure>
+
+            <div class="table-container">
+                <table class="content-table">
+                    <thead>
+                        <tr>
+                            <th>Generation</th>
+                            <th>bfloat16</th>
+                            <th>FP8</th>
+                            <th>4-bit float</th>
+                            <th>Reach for</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Volta &mdash; V100</td>
+                            <td>No</td>
+                            <td>No</td>
+                            <td>No</td>
+                            <td>Unsupported by current vLLM</td>
+                        </tr>
+                        <tr>
+                            <td>Turing &mdash; T4</td>
+                            <td>No</td>
+                            <td>No</td>
+                            <td>No</td>
+                            <td>AWQ or GPTQ, and <code>float16</code></td>
+                        </tr>
+                        <tr>
+                            <td>Ampere &mdash; 3090, A100</td>
+                            <td>Yes</td>
+                            <td>No</td>
+                            <td>No</td>
+                            <td>AWQ, GPTQ, compressed-tensors</td>
+                        </tr>
+                        <tr>
+                            <td>Ada &mdash; 4090, L40S</td>
+                            <td>Yes</td>
+                            <td>Yes</td>
+                            <td>No</td>
+                            <td>FP8</td>
+                        </tr>
+                        <tr>
+                            <td>Hopper &mdash; H100, H200</td>
+                            <td>Yes</td>
+                            <td>Yes</td>
+                            <td>No</td>
+                            <td>FP8</td>
+                        </tr>
+                        <tr>
+                            <td>Blackwell &mdash; 5090, B200</td>
+                            <td>Yes</td>
+                            <td>Yes</td>
+                            <td>Yes</td>
+                            <td>NVFP4</td>
+                        </tr>
+                        <tr>
+                            <td>CDNA 3 &mdash; MI300X</td>
+                            <td>Yes</td>
+                            <td>Yes</td>
+                            <td>No</td>
+                            <td>FP8 or Quark &mdash; <strong>not</strong> AWQ</td>
+                        </tr>
+                        <tr>
+                            <td>CDNA 4 &mdash; MI355X</td>
+                            <td>Yes</td>
+                            <td>Yes</td>
+                            <td>Yes</td>
+                            <td>Quark, MXFP4</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h2>What It Generates</h2>
+            <p>
+                Six files, and the compose file is the one that earns its keep. Picking the wrong container image
+                is the most common way a first deployment fails, so the generator branches on vendor: NVIDIA gets
+                the usual device reservation block, AMD gets <code>/dev/kfd</code> and <code>/dev/dri</code>
+                passed through plus <code>group_add: video</code>, Intel gets the render node, and CPU gets
+                neither.
+            </p>
+
+            <figure class="content-figure">
+                <img src="./resources/project-15/Generated-Files.webp" alt="The generated docker-compose.yml for an NVIDIA deployment, with the image pinned and ipc host set" loading="lazy" decoding="async">
+            </figure>
+
+            <div class="table-container">
+                <table class="content-table">
+                    <thead>
+                        <tr>
+                            <th>Hardware</th>
+                            <th>Image the generator picks</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>NVIDIA, CUDA 12.8+</td>
+                            <td><code>vllm/vllm-openai</code></td>
+                        </tr>
+                        <tr>
+                            <td>AMD, ROCm 6.3+</td>
+                            <td><code>vllm/vllm-openai-rocm</code></td>
+                        </tr>
+                        <tr>
+                            <td>Intel GPU</td>
+                            <td><code>vllm/vllm-openai-xpu</code></td>
+                        </tr>
+                        <tr>
+                            <td>No GPU</td>
+                            <td><code>vllm/vllm-openai-cpu</code></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <p>
+                Tags are pinned rather than <code>:latest</code>, the generated README explains every choice the
+                wizard made, and the whole folder downloads as a zip written by about a hundred lines of
+                <code>zip.js</code> &mdash; store-only entries, no compression library, no dependency.
+            </p>
+
+            <h2>Why I Deleted the Server</h2>
+            <p>
+                Versions 1 and 2 were a Flask app. Pydantic schemas, a SQLite history table, Jinja templates,
+                nine JSON endpoints, a pytest suite. It worked. It was also, in hindsight, absurd: a tool whose
+                entire purpose is telling you whether you can run something, that first requires you to clone a
+                repo, make a virtualenv, install four packages and start a server on port 5000.
+            </p>
+            <p>
+                Nothing it did needed a server. The memory estimate is arithmetic. The command builder is string
+                concatenation. The history was a list of small JSON blobs. So v3 deleted the backend entirely:
+                every Python module was ported to a browser ES module, SQLite became <code>localStorage</code>,
+                Jinja templates became template literals, and pytest became Node's built-in test runner.
+            </p>
+
+            <div class="table-container">
+                <table class="content-table">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>v2 &mdash; Flask</th>
+                            <th>v3 &mdash; static</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>To use it</td>
+                            <td>clone, venv, pip install, run</td>
+                            <td>open a link</td>
+                        </tr>
+                        <tr>
+                            <td>Model config</td>
+                            <td>download <code>config.json</code>, drag it in</td>
+                            <td>fetched from the Hub as you type</td>
+                        </tr>
+                        <tr>
+                            <td>History</td>
+                            <td>SQLite on the server</td>
+                            <td><code>localStorage</code>, per browser</td>
+                        </tr>
+                        <tr>
+                            <td>Estimate latency</td>
+                            <td>debounced HTTP round trip</td>
+                            <td>synchronous, per keystroke</td>
+                        </tr>
+                        <tr>
+                            <td>Dependencies</td>
+                            <td>Flask, Pydantic, Jinja2, pytest</td>
+                            <td>none</td>
+                        </tr>
+                        <tr>
+                            <td>Hosting</td>
+                            <td>somebody's machine</td>
+                            <td>GitHub Pages</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <p>
+                The migration also removed the feature I was most attached to and least willing to defend: the
+                drag-and-drop <code>config.json</code> upload. Hugging Face serves <code>config.json</code> with
+                permissive CORS headers, which I verified end to end before committing to the approach, so the
+                browser can just read it. Typing <code>Qwen/Qwen3-8B</code> now does what dragging a downloaded
+                file used to. The dropzone still exists, but only as the fallback for gated repos and local
+                models &mdash; which is the only place it was ever really needed.
+            </p>
+
+            <h2>Tech Stack</h2>
+            <div class="tech-stack">
+                <div class="tech-category">
+                    <h4>Front end</h4>
+                    <div class="tech-list">
+                        <span class="tech-item">Vanilla JavaScript</span>
+                        <span class="tech-item">ES Modules</span>
+                        <span class="tech-item">CSS custom properties</span>
+                        <span class="tech-item">No framework</span>
+                        <span class="tech-item">No build step</span>
+                    </div>
+                </div>
+                <div class="tech-category">
+                    <h4>Browser APIs</h4>
+                    <div class="tech-list">
+                        <span class="tech-item">fetch + CORS</span>
+                        <span class="tech-item">localStorage</span>
+                        <span class="tech-item">Blob &amp; object URLs</span>
+                        <span class="tech-item">WebGL renderer info</span>
+                    </div>
+                </div>
+                <div class="tech-category">
+                    <h4>Domain</h4>
+                    <div class="tech-list">
+                        <span class="tech-item">vLLM v0.28 CLI</span>
+                        <span class="tech-item">Hugging Face Hub</span>
+                        <span class="tech-item">CUDA &amp; ROCm</span>
+                        <span class="tech-item">FP8 / NVFP4 / AWQ / GPTQ</span>
+                        <span class="tech-item">Docker Compose</span>
+                    </div>
+                </div>
+                <div class="tech-category">
+                    <h4>Engineering</h4>
+                    <div class="tech-list">
+                        <span class="tech-item">node --test</span>
+                        <span class="tech-item">99 tests, zero deps</span>
+                        <span class="tech-item">GitHub Actions</span>
+                        <span class="tech-item">GitHub Pages</span>
+                    </div>
+                </div>
+            </div>
+
+            <h2>How This Is Different</h2>
+            <p>
+                There are VRAM calculators, and there are config generators. The gap this fills is between them:
+                a calculator tells you a number but not what to do about it, and a generator emits flags without
+                checking whether your card can run them.
+            </p>
+
+            <div class="table-container">
+                <table class="content-table">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Easy-vLLM</th>
+                            <th>VRAM calculators</th>
+                            <th>vLLM docs</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Counts MoE experts correctly</td>
+                            <td>Yes</td>
+                            <td>Usually not</td>
+                            <td>N/A</td>
+                        </tr>
+                        <tr>
+                            <td>Knows what your GPU cannot run</td>
+                            <td>Yes &mdash; blocks it</td>
+                            <td>No</td>
+                            <td>Scattered across pages</td>
+                        </tr>
+                        <tr>
+                            <td>Emits a runnable command</td>
+                            <td>Yes</td>
+                            <td>No</td>
+                            <td>Examples only</td>
+                        </tr>
+                        <tr>
+                            <td>Picks the right container image</td>
+                            <td>Yes, per vendor</td>
+                            <td>No</td>
+                            <td>Manual</td>
+                        </tr>
+                        <tr>
+                            <td>Tells you what to change</td>
+                            <td>Ordered fixes, one click</td>
+                            <td>No</td>
+                            <td>Prose</td>
+                        </tr>
+                        <tr>
+                            <td>Needs anything installed</td>
+                            <td>No</td>
+                            <td>Varies</td>
+                            <td>N/A</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h2>What Shipped</h2>
+            <ul>
+                <li>31 GPU presets across NVIDIA, AMD, Intel and CPU, from an RTX 3060 to a GB300 and an MI355X.</li>
+                <li>13 GPU generations with capability flags driving every recommendation and every block.</li>
+                <li>Live <code>config.json</code> fetch from the Hugging Face Hub as you type.</li>
+                <li>Exact parameter counting, including full expert counts for MoE models.</li>
+                <li>Six generated files, with vendor-correct Docker Compose.</li>
+                <li>A cheat sheet page generated from the same data the wizard uses.</li>
+                <li>99 tests on Node's built-in runner, with no dependencies at all.</li>
+            </ul>
+
+            <h2>My Contribution</h2>
+            <p>
+                Sole author. Design, the hardware capability model, the memory maths, the vLLM CLI research, the
+                migration off Flask, the test suite and the CI. Easy-vLLM is a helper for vLLM, not a fork of it
+                &mdash; all credit for the engine belongs to the vLLM project and its contributors.
+            </p>
+
+            <h2>Challenges &amp; Learnings</h2>
+            <p>
+                <strong>A generator is only as good as its last upgrade.</strong> Auditing the current CLI turned
+                up flags the old version was still emitting that vLLM had removed &mdash; the generated command
+                would have failed at startup. The lesson was to make that class of bug testable: there is now a
+                test that turns on every option at once and asserts that a list of removed flags never appears in
+                the output. Correctness against a moving upstream has to be a fixture, not vigilance.
+            </p>
+            <p>
+                <strong>Advice that contradicts itself is worse than no advice.</strong> The recommendation
+                engine printing "no reason to quantize" beside a "will not fit" verdict was the sharpest bug in
+                the project, and it came from a genuine modelling error: two features answering the same question
+                from different inputs. Making the verdict an input to the recommendation, rather than a parallel
+                computation, is what fixed it structurally.
+            </p>
+            <p>
+                <strong>Test the restore path with non-default values.</strong> Saved settings restored fine in
+                every check I ran, because every check used a single GPU. With four, the tensor-parallel value
+                silently collapsed back to 1 &mdash; the dropdown was rebuilt with only one option before the
+                saved value was written into it, so the assignment was dropped on the floor. Defaults hide entire
+                categories of bug.
+            </p>
+            <p>
+                <strong>Browsers make you honest about failure.</strong> Private-browsing modes do not return
+                empty from <code>localStorage</code>; they throw. Every read and write needed a guard, and the
+                generate path needed a fallback so that someone with storage blocked still gets the files they
+                just asked for rather than a confusing redirect.
+            </p>
+            <p>
+                <strong>Hugging Face answers 401 for repos that do not exist.</strong> It cannot say "no such
+                repo" without leaking whether a private one exists, so a typo and a gated model look identical
+                from outside. The error message has to cover both, and lead with the likelier one.
+            </p>
+
+            <h2>What's Next</h2>
+            <p>
+                A shareable-URL mode, so a configuration can be sent to a colleague as a link rather than
+                described in a message. Then throughput estimates alongside the memory ones &mdash; tokens per
+                second is the other question people ask, and it is harder, because it depends on kernels rather
+                than arithmetic.
+            </p>
+            <p>
+                Longer term, the GPU table wants to be community-maintained. Adding a card is one line and adding
+                a generation is one entry, which was a deliberate design goal: the long tail of hardware is not
+                something one person can keep current.
+            </p>
+
+            <h2>Closing Note</h2>
+            <p>
+                The thing I would keep from this project is the deletion. Removing the server made the tool
+                better on every axis that mattered &mdash; faster to use, faster to run, free to host, and
+                impossible to have "broken locally". The Flask version was not wrong, but it charged a setup cost
+                for a job that was always just arithmetic and a table.
+            </p>
+            <p>
+                Type a model, pick a card, get a command that works.
+            </p>
+
+            <div style="margin-top: 3rem; padding: 2rem; background: var(--secondary-bg); border-radius: 15px; border: 1px solid var(--border-color);">
+                <h3 style="margin-top: 0;">Resources &amp; Links</h3>
+                <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1rem; margin-bottom: 2rem;">
+                    <a href="https://inboxpraveen.github.io/Easy-vLLM/" class="demo-button" style="margin: 0;" target="_blank" rel="noopener noreferrer">Open the tool</a>
+                    <a href="https://inboxpraveen.github.io/Easy-vLLM/#cheatsheet" class="demo-button" style="margin: 0;" target="_blank" rel="noopener noreferrer">vLLM cheat sheet</a>
+                    <a href="https://github.com/inboxpraveen/Easy-vLLM" class="demo-button" style="margin: 0;" target="_blank" rel="noopener noreferrer">GitHub Repository</a>
+                </div>
+
+                <h4>Tags:</h4>
+                <div class="tag-row" style="--domain: var(--d-llm);">
+                    <span class="domain-pill">LLM &amp; RAG</span>
+                    <span class="stack-tag">vLLM</span>
+                    <span class="stack-tag">Vanilla JS</span>
+                    <span class="stack-tag">GPU Memory</span>
+                    <span class="stack-tag">Quantization</span>
+                    <span class="stack-tag">Docker</span>
+                    <span class="stack-tag">Open Source</span>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <p class="footer-note">
+                    &copy; <span data-year>2026</span> Praveen Kumar &middot;
+                    Static HTML, one stylesheet, no build step &mdash;
+                    <a href="https://github.com/inboxpraveen/inboxpraveen.github.io" target="_blank" rel="noopener noreferrer">source on GitHub</a>
+                </p>
+                <div class="footer-social">
+                    <a href="https://github.com/inboxpraveen" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                        <svg class="icon" aria-hidden="true"><use href="#i-github"></use></svg>
+                    </a>
+                    <a href="https://www.linkedin.com/in/praveen-kumar-inbox/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                        <svg class="icon" aria-hidden="true"><use href="#i-linkedin"></use></svg>
+                    </a>
+                    <a href="https://x.com/InboxPraveen" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
+                        <svg class="icon" aria-hidden="true"><use href="#i-x"></use></svg>
+                    </a>
+                    <a href="mailto:inboxpraveen.17@gmail.com" aria-label="Email">
+                        <svg class="icon" aria-hidden="true"><use href="#i-mail"></use></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <button class="back-to-top" type="button" data-back-to-top aria-label="Back to top">
+        <svg class="icon" aria-hidden="true"><use href="#i-arrow-up"></use></svg>
+    </button>
+
+    <script src="../site.js" defer></script>
+
+</body>
+</html>
