@@ -171,18 +171,20 @@
                                 <span class="stack-tag">Flask</span>
                                 <span class="stack-tag">Celery</span>
                                 <span class="stack-tag">Redis</span>
+                                <span class="stack-tag">Whisper</span>
                                 <span class="stack-tag">Docker</span>
                             </div>
                             <h3 class="featured-title"><a href="projects/project-8.html">MoM AI &mdash; Minutes of Meeting</a></h3>
                             <p class="featured-desc">
                                 Drop in a recording, get back minutes. FFmpeg normalizes the audio, a Celery worker
-                                routes it to one of four speech-to-text providers, and an LLM returns the summary,
-                                the decisions and the action items. Both providers swap at runtime.
+                                routes it to one of six speech-to-text backends &mdash; including Whisper on your own
+                                machine &mdash; and an LLM returns the summary, the decisions and the action items.
+                                Both layers swap at runtime, from a dropdown.
                             </p>
                             <div class="featured-foot">
                                 <span class="card-meta">
                                     <svg class="icon" aria-hidden="true"><use href="#i-pulse"></use></svg>
-                                    4 STT providers behind one factory
+                                    6 STT providers, one runs locally
                                     <span class="sep" aria-hidden="true"></span>
                                     Open source
                                 </span>

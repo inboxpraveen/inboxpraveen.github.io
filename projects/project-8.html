@@ -6,13 +6,13 @@
     <title>MoM AI - AI-Powered Minutes of Meeting | Praveen Kumar</title>
     
     <!-- SEO Meta Tags -->
-    <meta name="description" content="MoM AI is a web app that takes meeting recordings, transcribes them using multi-provider speech-to-text APIs, and generates clean, structured Minutes of Meeting using LLMs. Built with Flask, Celery, Redis, and Docker.">
-    <meta name="keywords" content="Minutes of Meeting, AI Transcription, Speech-to-Text, LLM Summarization, Flask, Celery, Redis, Docker, Deepgram, AssemblyAI, OpenAI, Open Source">
+    <meta name="description" content="MoM AI turns meeting recordings into structured Minutes of Meeting. Six speech-to-text providers including Whisper running locally with no API key, plus any OpenAI-compatible LLM.">
+    <meta name="keywords" content="Minutes of Meeting, AI Transcription, Speech-to-Text, LLM Summarization, Local Whisper, Self-Hosted, Offline, Flask, Celery, Redis, Docker, Deepgram, AssemblyAI, OpenAI, Open Source">
     <meta name="author" content="Praveen Kumar">
     
     <!-- Open Graph Meta Tags -->
     <meta property="og:title" content="MoM AI - AI-Powered Minutes of Meeting">
-    <meta property="og:description" content="Upload a meeting recording, get structured minutes automatically. Multi-provider transcription with LLM-powered summarization, background processing, and Docker-ready deployment.">
+    <meta property="og:description" content="Upload a recording, get structured minutes. Six transcription providers including local Whisper, any OpenAI-compatible LLM, and nothing leaves your machine.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://inboxpraveen.github.io/projects/project-8.html">
     <meta property="og:image" content="https://inboxpraveen.github.io/projects/resources/project-8/Homepage.png">
@@ -22,7 +22,7 @@
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="MoM AI - AI-Powered Minutes of Meeting">
-    <meta name="twitter:description" content="Upload a meeting recording, get structured minutes. Multi-provider speech-to-text with LLM summarization - open source and Docker-ready.">
+    <meta name="twitter:description" content="Upload a recording, get structured minutes. Six speech-to-text providers including Whisper running locally - open source, self-hosted, Docker-ready.">
     <meta name="twitter:image" content="https://inboxpraveen.github.io/projects/resources/project-8/Homepage.png">
     <meta name="twitter:image:alt" content="MoM AI Platform">
     
@@ -63,11 +63,11 @@
                 <div class="page-meta">
                     <div class="meta-item">
                         <svg class="icon" aria-hidden="true"><use href="#i-calendar"></use></svg>
-                        <span>Completed: 2025</span>
+                        <span>Released: 2026</span>
                     </div>
                     <div class="meta-item">
                         <svg class="icon" aria-hidden="true"><use href="#i-pulse"></use></svg>
-                        <span>Version: 1.0.0</span>
+                        <span>Version: 3.0.0</span>
                     </div>
                     <div class="meta-item">
                         <svg class="icon" aria-hidden="true"><use href="#i-user"></use></svg>
@@ -75,7 +75,7 @@
                     </div>
                     <div class="meta-item">
                         <svg class="icon" aria-hidden="true"><use href="#i-tag"></use></svg>
-                        <span>Flask • Celery • Redis • OpenAI SDK • Docker</span>
+                        <span>Flask • Celery • Redis • Whisper • OpenAI SDK • Docker</span>
                     </div>
                 </div>
             </div>
@@ -88,10 +88,15 @@
         <div class="content-section">
             <h2>Project Overview</h2>
             <p>
-                <strong>MoM AI</strong> is a web application that automates the process of turning meeting recordings into 
-                structured minutes. You upload an audio or video file, the system transcribes it using a speech provider of 
-                your choice (Deepgram, AssemblyAI, Sarvam AI, or ElevenLabs), and then sends the transcript to an LLM to 
-                generate organized Minutes of Meeting.
+                <strong>MoM AI</strong> is a web application that automates the process of turning meeting recordings into
+                structured minutes. You upload an audio or video file, the system transcribes it using a speech provider of
+                your choice, and then sends the transcript to an LLM to generate organized Minutes of Meeting.
+            </p>
+            <p>
+                Six transcription backends are supported: Deepgram, AssemblyAI, ElevenLabs Scribe and Sarvam AI over their
+                APIs, any endpoint that speaks the OpenAI transcription format, and Whisper running on your own machine with
+                no API key at all. Summarization works with any OpenAI-compatible chat API, which covers the hosted providers
+                as well as Ollama, LM Studio and vLLM locally. Every one of these is picked from a dropdown at runtime.
             </p>
 
             <figure class="content-figure">
@@ -136,8 +141,8 @@
             <h2>Key Features</h2>
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin: 2rem 0;">
                 <div style="background: var(--secondary-bg); padding: 1.5rem; border-radius: 10px; border: 1px solid var(--border-color);">
-                    <h3 style="margin-top: 0; color: var(--accent-color);">Multi-Provider Transcription</h3>
-                    <p>Supports Deepgram, AssemblyAI, Sarvam AI, and ElevenLabs with speaker diarization</p>
+                    <h3 style="margin-top: 0; color: var(--accent-color);">Six Transcription Backends</h3>
+                    <p>Deepgram, AssemblyAI, ElevenLabs, Sarvam AI, any OpenAI-compatible endpoint, or local Whisper. The first four return speaker labels</p>
                 </div>
                 <div style="background: var(--secondary-bg); padding: 1.5rem; border-radius: 10px; border: 1px solid var(--border-color);">
                     <h3 style="margin-top: 0; color: var(--accent-color);">LLM Summarization</h3>
@@ -151,13 +156,25 @@
                     <h3 style="margin-top: 0; color: var(--accent-color);">Docker-Ready Deployment</h3>
                     <p>Full stack runs with a single <code>docker compose up</code> command</p>
                 </div>
+                <div style="background: var(--secondary-bg); padding: 1.5rem; border-radius: 10px; border: 1px solid var(--border-color);">
+                    <h3 style="margin-top: 0; color: var(--accent-color);">Runs Without the Cloud</h3>
+                    <p>Whisper locally, an LLM on Ollama, no CDN and no telemetry. The only outbound calls are the ones you configure</p>
+                </div>
+                <div style="background: var(--secondary-bg); padding: 1.5rem; border-radius: 10px; border: 1px solid var(--border-color);">
+                    <h3 style="margin-top: 0; color: var(--accent-color);">Any Meeting Length</h3>
+                    <p>Long audio is split for the transcriber; long transcripts are summarized in parts and merged, so the context window is not the ceiling</p>
+                </div>
             </div>
 
             <ul>
-                <li><strong>Admin settings panel</strong> to configure LLM provider, speech provider, API keys, and file retention policy from the UI</li>
-                <li><strong>Automatic file cleanup</strong> that deletes meeting recordings after a configurable number of days</li>
+                <li><strong>Everything configured on screen</strong> - providers, API keys, models, the summarization prompt, retention and upload limits. There is no config file to edit and nothing to restart</li>
+                <li><strong>First-run setup wizard</strong> that creates the administrator account, so the app ships with no default password</li>
+                <li><strong>Secrets encrypted at rest</strong> using a key generated on first run and stored only on that machine</li>
+                <li><strong>Live job control</strong> with per-step progress, an activity log, and cancel or re-run on any meeting</li>
+                <li><strong>Built to be operated</strong> - liveness and readiness endpoints, Prometheus metrics, structured logs with request ids, and an admin System page showing every dependency</li>
+                <li><strong>Automatic file cleanup</strong> that deletes recordings after a configurable number of days while keeping transcripts and minutes</li>
                 <li><strong>Role-based access</strong> with admin and user roles</li>
-                <li><strong>Wide format support</strong> for MP4, MP3, WAV, M4A, WebM, OGG, and MKV files</li>
+                <li><strong>Wide format support</strong> for MP3, WAV, M4A, AAC, FLAC, OGG, Opus, WMA, MP4, MKV, MOV, WebM and AVI files</li>
             </ul>
 
             <h2>How It Works</h2>
@@ -177,15 +194,18 @@
                     comes back with speaker labels (e.g., Speaker 0, Speaker 1) when diarization is available.
                 </li>
                 <li>
-                    <strong>Summarization</strong> - The full transcript is sent to the configured LLM with a structured prompt 
-                    asking for a summary, discussion points, decisions, action items, and next steps. The LLM returns Markdown, 
-                    which is then rendered as HTML and stored in the database.
+                    <strong>Summarization</strong> - The transcript is sent to the configured LLM with a structured prompt
+                    asking for a summary, discussion points, decisions, action items, and next steps. If the transcript is
+                    longer than the configured chunk size, it is summarized part by part and those notes are merged into the
+                    final minutes, so a three-hour meeting works even on a small context window. The result is stored as
+                    Markdown and sanitized when rendered.
                 </li>
             </ol>
 
             <p>
-                The user interface polls the backend for progress updates and displays the final transcript and minutes once 
-                processing is complete.
+                The interface polls the backend for progress and shows each step as it happens, so a job that is going to fail
+                says why while it is still running rather than at the end. Failed and cancelled meetings can be re-run as long
+                as the recording is still on disk.
             </p>
 
             <h2>Screenshots</h2>
@@ -219,6 +239,8 @@
                         <span class="tech-item">Flask</span>
                         <span class="tech-item">Flask-SQLAlchemy</span>
                         <span class="tech-item">Flask-Login</span>
+                        <span class="tech-item">Flask-WTF</span>
+                        <span class="tech-item">Gunicorn</span>
                     </div>
                 </div>
                 <div class="tech-category">
@@ -236,15 +258,25 @@
                         <span class="tech-item">OpenAI SDK</span>
                         <span class="tech-item">Deepgram SDK</span>
                         <span class="tech-item">AssemblyAI SDK</span>
-                        <span class="tech-item">Sarvam AI SDK</span>
                         <span class="tech-item">ElevenLabs SDK</span>
+                        <span class="tech-item">faster-whisper</span>
+                    </div>
+                </div>
+                <div class="tech-category">
+                    <h4>Security & Observability</h4>
+                    <div class="tech-list">
+                        <span class="tech-item">cryptography (Fernet)</span>
+                        <span class="tech-item">nh3</span>
+                        <span class="tech-item">prometheus-client</span>
+                        <span class="tech-item">python-json-logger</span>
                     </div>
                 </div>
                 <div class="tech-category">
                     <h4>Frontend & Deployment</h4>
                     <div class="tech-list">
                         <span class="tech-item">Jinja2</span>
-                        <span class="tech-item">Tailwind-style CSS</span>
+                        <span class="tech-item">Tailwind CSS</span>
+                        <span class="tech-item">Alpine.js</span>
                         <span class="tech-item">FFmpeg</span>
                         <span class="tech-item">Docker Compose</span>
                     </div>
@@ -266,107 +298,119 @@
                     <span class="code-language">Python - Celery task orchestrating the full pipeline</span>
                     <button class="copy-button">Copy</button>
                 </div>
-                <pre><code><span class="decorator">@celery.task</span>(bind=<span class="keyword">True</span>, name=<span class="string">"app.tasks.process.process_meeting"</span>, max_retries=<span class="number">2</span>)
+                <pre><code><span class="decorator">@celery.task</span>(bind=<span class="keyword">True</span>, name=<span class="string">"app.tasks.process.process_meeting"</span>)
 <span class="keyword">def</span> <span class="function">process_meeting</span>(self, meeting_id: <span class="builtin">int</span>) -> <span class="builtin">dict</span>:
     meeting = db.session.get(Meeting, meeting_id)
-    wav_path = <span class="keyword">None</span>
+    config = settings.snapshot()
+    workdir = tempfile.mkdtemp(prefix=<span class="string">"mom-"</span>)
 
-    <span class="keyword">def</span> <span class="function">_update</span>(status, progress, **kwargs):
+    <span class="keyword">def</span> <span class="function">step</span>(status: <span class="builtin">str</span>, progress: <span class="builtin">int</span>, message: <span class="builtin">str</span> | <span class="keyword">None</span> = <span class="keyword">None</span>) -> <span class="keyword">None</span>:
         meeting.status = status
         meeting.progress = progress
-        <span class="keyword">for</span> k, v <span class="keyword">in</span> kwargs.items():
-            <span class="builtin">setattr</span>(meeting, k, v)
+        <span class="keyword">if</span> message:
+            meeting.log(message)
         db.session.commit()
 
+    <span class="keyword">def</span> <span class="function">guard</span>() -> <span class="keyword">None</span>:
+        db.session.commit()  <span class="comment"># persists pending work and re-reads the row</span>
+        <span class="keyword">if</span> meeting.cancel_requested:
+            <span class="keyword">raise</span> Cancelled()
+
     <span class="keyword">try</span>:
-        upload_folder = current_app.config[<span class="string">"UPLOAD_FOLDER"</span>]
-        audio_path = os.path.join(upload_folder, meeting.stored_filename)
+        guard()
+        step(<span class="string">"converting"</span>, <span class="number">5</span>, <span class="string">"Preparing audio"</span>)
+        audio = convert_to_wav(recording_path(meeting), workdir)
+        meeting.duration_seconds = probe_duration(audio)
 
-        _update(<span class="string">"processing"</span>, <span class="number">10</span>)
-        wav_path = convert_to_wav(audio_path, output_dir=tempfile.mkdtemp())
+        guard()
+        provider = get_speech_provider(config)
+        step(<span class="string">"transcribing"</span>, <span class="number">20</span>, <span class="string">f"Transcribing with {provider.label}"</span>)
+        transcript = (provider.transcribe(audio) <span class="keyword">or</span> <span class="string">""</span>).strip()
+        meeting.transcript = transcript
+        step(<span class="string">"transcribing"</span>, <span class="number">65</span>, <span class="string">f"Transcript ready ({len(transcript.split()):,} words)"</span>)
 
-        _update(<span class="string">"transcribing"</span>, <span class="number">35</span>)
-        speech_provider = get_speech_provider()
-        transcript = speech_provider.transcribe_file(wav_path)
+        guard()
+        client = get_llm_client(config)
+        step(<span class="string">"summarizing"</span>, <span class="number">70</span>, <span class="string">f"Writing minutes with {client.model}"</span>)
+        meeting.minutes_of_meeting = generate_minutes(
+            client, transcript, config[<span class="string">"minutes_prompt"</span>],
+            <span class="builtin">int</span>(config[<span class="string">"transcript_chunk_chars"</span>]), on_progress,
+        )
 
-        _update(<span class="string">"summarizing"</span>, <span class="number">70</span>)
-        llm = get_llm_client()
-        minutes_md = llm.generate_minutes(transcript)
-        minutes_html = md_lib.markdown(minutes_md, extensions=[<span class="string">"tables"</span>, <span class="string">"nl2br"</span>])
-
-        _update(<span class="string">"completed"</span>, <span class="number">100</span>, transcript=transcript, minutes_of_meeting=minutes_html)
+        step(<span class="string">"completed"</span>, <span class="number">100</span>, <span class="string">"Minutes ready"</span>)
         <span class="keyword">return</span> {<span class="string">"meeting_id"</span>: meeting_id, <span class="string">"status"</span>: <span class="string">"completed"</span>}
+
+    <span class="keyword">except</span> Cancelled:
+        step(<span class="string">"cancelled"</span>, meeting.progress <span class="keyword">or</span> <span class="number">0</span>, <span class="string">"Cancelled"</span>)
+        <span class="keyword">return</span> {<span class="string">"meeting_id"</span>: meeting_id, <span class="string">"status"</span>: <span class="string">"cancelled"</span>}
     <span class="keyword">except</span> <span class="builtin">Exception</span> <span class="keyword">as</span> exc:
-        _update(<span class="string">"failed"</span>, <span class="number">0</span>, error_message=<span class="builtin">str</span>(exc))
-        <span class="keyword">raise</span>
+        _fail(meeting, <span class="builtin">str</span>(exc))
+        <span class="keyword">return</span> {<span class="string">"meeting_id"</span>: meeting_id, <span class="string">"status"</span>: <span class="string">"failed"</span>}
     <span class="keyword">finally</span>:
-        <span class="keyword">if</span> wav_path <span class="keyword">and</span> os.path.exists(wav_path):
-            os.remove(wav_path)</code></pre>
+        shutil.rmtree(workdir, ignore_errors=<span class="keyword">True</span>)</code></pre>
             </div>
 
-            <h3>LLM Summarization Prompt</h3>
+            <h3>Summarizing a Meeting of Any Length</h3>
             <p>
-                The LLM receives a structured system prompt that guides it to produce consistent, well-organized minutes every time.
+                A three-hour meeting produces a transcript far larger than most context windows. Rather than truncate it,
+                the summarizer splits the transcript on paragraph boundaries, takes notes on each part, and then writes the
+                final minutes from those notes. Short meetings skip all of that and go through in a single call. The prompt
+                itself is no longer hardcoded &mdash; it is a setting, editable from the admin screen.
             </p>
             <div class="code-block">
                 <div class="code-header">
-                    <span class="code-language">Python - Structured prompt for meeting summarization</span>
+                    <span class="code-language">Python - Map-reduce summarization that ignores the context window</span>
                     <button class="copy-button">Copy</button>
                 </div>
-                <pre><code><span class="keyword">def</span> <span class="function">generate_minutes</span>(self, transcript: <span class="builtin">str</span>) -> <span class="builtin">str</span>:
-    system_prompt = (
-        <span class="string">"You are an expert meeting analyst. Given a meeting transcript, "</span>
-        <span class="string">"produce well-structured **Minutes of Meeting** in Markdown with:\n\n"</span>
-        <span class="string">"## Meeting Summary\n"</span>
-        <span class="string">"A concise 2-4 sentence overview.\n\n"</span>
-        <span class="string">"## Attendees\n"</span>
-        <span class="string">"Names/roles mentioned (or 'Not specified').\n\n"</span>
-        <span class="string">"## Key Discussion Points\n"</span>
-        <span class="string">"Bullet list of main topics discussed.\n\n"</span>
-        <span class="string">"## Decisions Made\n"</span>
-        <span class="string">"Numbered list of decisions reached.\n\n"</span>
-        <span class="string">"## Action Items\n"</span>
-        <span class="string">"Table with columns: | Task | Owner | Due Date |\n\n"</span>
-        <span class="string">"## Next Steps\n"</span>
-        <span class="string">"What happens after this meeting.\n\n"</span>
-        <span class="string">"Be concise, professional, and accurate. "</span>
-        <span class="string">"Use only information from the transcript."</span>
-    )
-    messages = [
-        {<span class="string">"role"</span>: <span class="string">"system"</span>, <span class="string">"content"</span>: system_prompt},
-        {<span class="string">"role"</span>: <span class="string">"user"</span>, <span class="string">"content"</span>: <span class="string">f"Transcript:\n\n{transcript}"</span>},
-    ]
-    <span class="keyword">return</span> self.complete(messages)</code></pre>
+                <pre><code><span class="keyword">def</span> <span class="function">generate_minutes</span>(
+    client: OpenAICompatibleLLM,
+    transcript: <span class="builtin">str</span>,
+    prompt: <span class="builtin">str</span>,
+    chunk_chars: <span class="builtin">int</span>,
+    on_progress: Callable[[<span class="builtin">int</span>, <span class="builtin">int</span>], <span class="keyword">None</span>] | <span class="keyword">None</span> = <span class="keyword">None</span>,
+) -> <span class="builtin">str</span>:
+    chunks = split_text(transcript, chunk_chars)
+    <span class="keyword">if</span> <span class="builtin">len</span>(chunks) == <span class="number">1</span>:
+        <span class="keyword">return</span> client.complete(prompt, <span class="string">f"Transcript:\n\n{transcript}"</span>)
+
+    notes = []
+    <span class="keyword">for</span> index, chunk <span class="keyword">in</span> <span class="builtin">enumerate</span>(chunks, start=<span class="number">1</span>):
+        notes.append(<span class="string">f"### Part {index} of {len(chunks)}\n{client.complete(PART_PROMPT, chunk)}"</span>)
+        <span class="keyword">if</span> on_progress:
+            on_progress(index, <span class="builtin">len</span>(chunks))
+    <span class="keyword">return</span> client.complete(prompt, MERGE_HEADER + <span class="string">"\n\n"</span>.join(notes))</code></pre>
             </div>
 
-            <h3>Speech Provider Factory</h3>
+            <h3>Speech Provider Registry</h3>
             <p>
-                Providers are swappable at runtime. The admin picks a provider from the settings panel, and this factory 
-                returns the correct implementation.
+                Every backend implements the same two methods, so adding one is a matter of writing the class and putting it
+                in the tuple. The whole selection layer is the file below. Each provider receives the settings snapshot and
+                reads whatever it needs from it, which keeps the caller free of provider-specific branching.
             </p>
             <div class="code-block">
                 <div class="code-header">
                     <span class="code-language">Python - Runtime-configurable speech provider selection</span>
                     <button class="copy-button">Copy</button>
                 </div>
-                <pre><code><span class="keyword">def</span> <span class="function">get_speech_provider</span>() -> BaseSpeechProvider:
-    provider_name = SystemConfig.get(<span class="string">"speech_provider"</span>, <span class="string">"deepgram"</span>).lower()
+                <pre><code>PROVIDERS: <span class="builtin">dict</span>[<span class="builtin">str</span>, <span class="builtin">type</span>[BaseSpeechProvider]] = {
+    p.name: p
+    <span class="keyword">for</span> p <span class="keyword">in</span> (
+        DeepgramProvider,
+        AssemblyAIProvider,
+        ElevenLabsProvider,
+        SarvamProvider,
+        OpenAICompatibleSpeechProvider,
+        LocalWhisperProvider,
+    )
+}
 
-    <span class="keyword">if</span> provider_name == <span class="string">"deepgram"</span>:
-        <span class="keyword">from</span> app.providers.speech.deepgram_provider <span class="keyword">import</span> DeepgramProvider
-        <span class="keyword">return</span> DeepgramProvider(api_key=SystemConfig.get(<span class="string">"deepgram_api_key"</span>, <span class="string">""</span>))
 
-    <span class="keyword">elif</span> provider_name == <span class="string">"assemblyai"</span>:
-        <span class="keyword">from</span> app.providers.speech.assemblyai_provider <span class="keyword">import</span> AssemblyAIProvider
-        <span class="keyword">return</span> AssemblyAIProvider(api_key=SystemConfig.get(<span class="string">"assemblyai_api_key"</span>, <span class="string">""</span>))
-
-    <span class="keyword">elif</span> provider_name == <span class="string">"sarvam"</span>:
-        <span class="keyword">from</span> app.providers.speech.sarvam_provider <span class="keyword">import</span> SarvamProvider
-        <span class="keyword">return</span> SarvamProvider(api_key=SystemConfig.get(<span class="string">"sarvam_api_key"</span>, <span class="string">""</span>))
-
-    <span class="keyword">elif</span> provider_name == <span class="string">"elevenlabs"</span>:
-        <span class="keyword">from</span> app.providers.speech.elevenlabs_provider <span class="keyword">import</span> ElevenLabsProvider
-        <span class="keyword">return</span> ElevenLabsProvider(api_key=SystemConfig.get(<span class="string">"elevenlabs_api_key"</span>, <span class="string">""</span>))</code></pre>
+<span class="keyword">def</span> <span class="function">get_speech_provider</span>(config: <span class="builtin">dict</span>) -> BaseSpeechProvider:
+    name = (config.get(<span class="string">"speech_provider"</span>) <span class="keyword">or</span> <span class="string">"deepgram"</span>).strip().lower()
+    provider = PROVIDERS.get(name)
+    <span class="keyword">if</span> provider <span class="keyword">is</span> <span class="keyword">None</span>:
+        <span class="keyword">raise</span> <span class="builtin">RuntimeError</span>(<span class="string">f"Unknown speech provider {name!r}."</span>)
+    <span class="keyword">return</span> provider(config)</code></pre>
             </div>
 
             <h3>Audio Conversion</h3>
@@ -379,25 +423,23 @@
                     <span class="code-language">Python - FFmpeg-based audio normalization</span>
                     <button class="copy-button">Copy</button>
                 </div>
-                <pre><code><span class="keyword">def</span> <span class="function">convert_to_wav</span>(input_path: <span class="builtin">str</span>, output_dir: <span class="builtin">str</span> = <span class="keyword">None</span>) -> <span class="builtin">str</span>:
-    output_dir = output_dir <span class="keyword">or</span> tempfile.gettempdir()
+                <pre><code><span class="keyword">def</span> <span class="function">convert_to_wav</span>(input_path: <span class="builtin">str</span>, output_dir: <span class="builtin">str</span>, timeout: <span class="builtin">int</span> = <span class="number">7200</span>) -> <span class="builtin">str</span>:
+    <span class="string">"""Normalise any recording to mono 16 kHz WAV, the format every provider accepts."""</span>
+    <span class="keyword">if</span> <span class="keyword">not</span> ffmpeg_available():
+        <span class="keyword">raise</span> <span class="builtin">RuntimeError</span>(
+            <span class="string">"ffmpeg was not found. Install it and make sure it is on PATH, "</span>
+            <span class="string">"or run the app with Docker where it is already included."</span>
+        )
+
     os.makedirs(output_dir, exist_ok=<span class="keyword">True</span>)
-    base_name = os.path.splitext(os.path.basename(input_path))[<span class="number">0</span>]
-    output_path = os.path.join(output_dir, <span class="string">f"{base_name}_converted.wav"</span>)
-
-    cmd = [
-        <span class="string">"ffmpeg"</span>, <span class="string">"-y"</span>,
-        <span class="string">"-i"</span>, input_path,
-        <span class="string">"-ar"</span>, <span class="string">"16000"</span>,
-        <span class="string">"-ac"</span>, <span class="string">"1"</span>,
-        <span class="string">"-vn"</span>,
-        output_path,
-    ]
-
-    result = subprocess.run(cmd, stdout=subprocess.PIPE,
-                            stderr=subprocess.PIPE, timeout=<span class="number">600</span>)
-    <span class="keyword">if</span> result.returncode != <span class="number">0</span>:
-        <span class="keyword">raise</span> <span class="builtin">RuntimeError</span>(<span class="string">f"ffmpeg conversion failed:\n{result.stderr.decode()}"</span>)
+    output_path = os.path.join(output_dir, <span class="string">"audio.wav"</span>)
+    result = _run(
+        [<span class="string">"ffmpeg"</span>, <span class="string">"-y"</span>, <span class="string">"-hide_banner"</span>, <span class="string">"-loglevel"</span>, <span class="string">"error"</span>, <span class="string">"-i"</span>, input_path,
+         <span class="string">"-ar"</span>, <span class="string">"16000"</span>, <span class="string">"-ac"</span>, <span class="string">"1"</span>, <span class="string">"-vn"</span>, output_path],
+        timeout,
+    )
+    <span class="keyword">if</span> result.returncode != <span class="number">0</span> <span class="keyword">or</span> <span class="keyword">not</span> os.path.exists(output_path):
+        <span class="keyword">raise</span> <span class="builtin">RuntimeError</span>(<span class="string">f"ffmpeg could not read the recording: {_tail(result.stderr)}"</span>)
     <span class="keyword">return</span> output_path</code></pre>
             </div>
 
@@ -406,10 +448,12 @@
             <ul>
                 <li>Architected the full pipeline from file upload to final minutes output</li>
                 <li>Built the Flask backend with blueprints, SQLAlchemy models, and Jinja2 templates</li>
-                <li>Integrated four different speech-to-text providers (Deepgram, AssemblyAI, Sarvam AI, ElevenLabs) behind a common interface using the factory pattern</li>
+                <li>Integrated six speech-to-text backends (Deepgram, AssemblyAI, ElevenLabs, Sarvam AI, any OpenAI-compatible endpoint, and Whisper running locally) behind a common interface</li>
                 <li>Wrote the LLM integration layer using the OpenAI SDK, making it compatible with any OpenAI-compatible endpoint (OpenAI, Groq, OpenRouter, Ollama, and others)</li>
                 <li>Set up Celery with Redis for background processing and periodic cleanup tasks</li>
                 <li>Built the admin panel for managing providers, API keys, and system settings at runtime</li>
+                <li>Moved every setting into a schema-driven admin screen with secrets encrypted at rest, and replaced the default password with a first-run setup wizard</li>
+                <li>Added the operational layer: liveness and readiness endpoints, Prometheus metrics, structured logging with request ids, and recovery for jobs whose worker dies mid-run</li>
                 <li>Designed the UI with a clean, responsive layout</li>
                 <li>Dockerized the entire stack (Flask, Celery worker, Celery beat, Redis) for one-command deployment</li>
             </ul>
@@ -441,9 +485,18 @@
 
             <p>
                 <strong>Audio format normalization across different input types</strong><br>
-                Users upload files in all sorts of formats (MP4, WebM, M4A, OGG). Not all speech providers handle all 
-                formats well. Converting everything to a standardized 16 kHz mono WAV using ffmpeg before transcription 
+                Users upload files in all sorts of formats (MP4, WebM, M4A, OGG). Not all speech providers handle all
+                formats well. Converting everything to a standardized 16 kHz mono WAV using ffmpeg before transcription
                 solved compatibility issues across all providers.
+            </p>
+
+            <p>
+                <strong>Two different ceilings on meeting length</strong><br>
+                A long recording runs into two unrelated limits, and I initially conflated them. The transcription APIs cap
+                the upload size, which is a bytes problem solved by splitting the audio with ffmpeg and joining the results.
+                The LLM caps the context window, which is a tokens problem and needs the transcript summarized in parts and
+                merged. Separating them meant each fix landed in exactly one place, and only the provider that actually has
+                an upload limit pays the cost of chunking.
             </p>
 
             <h2>Installation & Setup</h2>
@@ -457,20 +510,25 @@ git clone https://github.com/inboxpraveen/LLM-Minutes-of-Meeting.git
 cd LLM-Minutes-of-Meeting
 
 <span class="comment"># Start the full stack (Flask, Celery worker, Celery beat, Redis)</span>
-docker compose up</code></pre>
+docker compose up --build
+
+<span class="comment"># Or include Whisper in the image to transcribe with no API key at all</span>
+WITH_LOCAL_WHISPER=true docker compose up --build</code></pre>
             </div>
             <p>
-                Once running, open the web interface in your browser. Configure your speech provider and LLM settings from 
-                the admin panel, then upload a meeting recording to get started.
+                No <code>.env</code> file and no API keys are needed to start. Open <code>http://localhost:5000</code>, and the
+                first screen asks you to create the administrator account. From there, Settings is where you pick a speech
+                provider and an LLM endpoint, with a Test button on each to confirm the credentials work before you upload
+                anything.
             </p>
 
             <h2>Future Improvements</h2>
             <ul>
                 <li>Real-time meeting transcription by integrating with a live audio stream instead of only uploaded files</li>
-                <li>Multi-language support with automatic language detection before transcription</li>
+                <li>Speaker diarization for local Whisper, so the no-API-key path gets speaker labels too</li>
                 <li>Email or Slack integration to automatically send the generated minutes to meeting participants</li>
-                <li>Side-by-side transcript and minutes view so users can verify the minutes against the original transcript</li>
-                <li>Export options for PDF, DOCX, and plain text formats</li>
+                <li>A true side-by-side view, so a claim in the minutes can be checked against the transcript line that produced it</li>
+                <li>PDF and DOCX export to sit alongside the existing Markdown and plain text downloads</li>
                 <li>Meeting analytics to track trends like frequently discussed topics and recurring action items</li>
             </ul>
 
@@ -496,6 +554,7 @@ docker compose up</code></pre>
                     <span class="stack-tag">Flask</span>
                     <span class="stack-tag">Celery</span>
                     <span class="stack-tag">Redis</span>
+                    <span class="stack-tag">Whisper</span>
                     <span class="stack-tag">OpenAI SDK</span>
                     <span class="stack-tag">Docker</span>
                 </div>
