@@ -991,6 +991,11 @@ nav.site-nav.scrolled::after {
     gap: clamp(1rem, 2vw, 1.5rem);
 }
 
+/* Blog index: auto-fill so a short list keeps card-sized cards instead of one stretched across the row */
+.projects-grid.posts-grid {
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 480px), 1fr));
+}
+
 .project-card {
     --glow-x: 50%;
     --glow-y: 0%;

@@ -55,6 +55,7 @@
             <ul class="nav-links" id="navLinks">
                 <li><a href="index.html" aria-current="page">Home</a></li>
                 <li><a href="all-projects.html">Projects</a></li>
+                <li><a href="all-blogs.html">Blogs</a></li>
                 <li><a href="about.html">About</a></li>
                 <li><a href="https://github.com/inboxpraveen" target="_blank" rel="noopener noreferrer">GitHub</a></li>
             </ul>
@@ -230,6 +231,64 @@
                 <p class="text-center" style="margin-top: 2rem;" data-reveal>
                     <a href="all-projects.html" class="landing-link">
                         Browse all 15 projects
+                        <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"></use></svg>
+                    </a>
+                </p>
+            </div>
+        </section>
+
+        <!-- Writing -->
+        <section id="writing">
+            <div class="container">
+                <div class="section-head" data-reveal>
+                    <p class="eyebrow">Writing</p>
+                    <h2 class="section-heading">Notes from the workbench</h2>
+                    <p class="section-lede">
+                        Long-form, measured, reproducible. When a question keeps coming up at work I sit
+                        down with real hardware and answer it properly, then write down what the numbers said.
+                    </p>
+                </div>
+
+                <div class="featured-list" data-reveal-group>
+                    <article class="featured-card" data-glow style="--domain: var(--d-llm);">
+                        <div class="featured-media">
+                            <span class="featured-rank">New</span>
+                            <img src="blogs/resources/blog-1/Header.webp" alt="Decode speed of Qwen3-0.6B on one laptop, from the stock llama.cpp defaults to the tuned configuration" loading="lazy" decoding="async" width="1600" height="900">
+                        </div>
+                        <div class="featured-body">
+                            <div class="tag-row">
+                                <span class="domain-pill">LLM &amp; RAG</span>
+                                <span class="stack-tag">llama.cpp</span>
+                                <span class="stack-tag">Quantization</span>
+                                <span class="stack-tag">CUDA</span>
+                                <span class="stack-tag">Python</span>
+                            </div>
+                            <h3 class="featured-title"><a href="blogs/blog-1.html">Getting the most tokens per second out of one laptop with llama.cpp</a></h3>
+                            <p class="featured-desc">
+                                One Q8_0 model, one laptop, every knob llama.cpp exposes. Thread pinning on
+                                hybrid cores, the CPU backend DLLs, per-tensor quantization of the tied LM head,
+                                GPU offload splits, KV cache types and self-speculative decoding. Every step
+                                measured for speed and for accuracy against the BF16 reference, with the scripts
+                                to rerun it on your own machine.
+                            </p>
+                            <div class="featured-foot">
+                                <span class="card-meta">
+                                    <svg class="icon" aria-hidden="true"><use href="#i-calendar"></use></svg>
+                                    September 2026
+                                    <span class="sep" aria-hidden="true"></span>
+                                    <span data-read-time>Long read</span>
+                                    <span class="sep" aria-hidden="true"></span>
+                                    Scripts and raw results included
+                                </span>
+                                <a href="blogs/blog-1.html" class="project-link">Read the post</a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+
+                <p class="text-center" style="margin-top: 2rem;" data-reveal>
+                    <a href="all-blogs.html" class="landing-link">
+                        Browse all posts
                         <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"></use></svg>
                     </a>
                 </p>

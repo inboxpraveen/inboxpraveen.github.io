@@ -217,6 +217,8 @@
         var emptyEl = $('[data-filter-empty]');
 
         var active = 'all';
+        // "15 projects" on the projects page, "3 posts" on the blog index
+        var noun = root.getAttribute('data-filter-noun') || 'projects';
 
         var slug = function (s) { return s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, ''); };
 
@@ -236,9 +238,10 @@
             });
 
             if (countEl) {
+                var word = cards.length === 1 ? noun.replace(/s$/, '') : noun;
                 countEl.textContent = shown === cards.length
-                    ? cards.length + ' projects'
-                    : shown + ' of ' + cards.length + ' projects';
+                    ? cards.length + ' ' + word
+                    : shown + ' of ' + cards.length + ' ' + word;
             }
             if (emptyEl) emptyEl.hidden = shown !== 0;
         };

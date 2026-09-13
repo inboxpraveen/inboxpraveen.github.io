@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - Praveen Kumar | Notes on Inference, LLMs and Speech AI</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Long-form technical write-ups by Praveen Kumar: measured, reproducible notes on LLM inference engineering, quantization, speech AI and document intelligence.">
+    <meta name="keywords" content="AI Blog, LLM Inference, llama.cpp, Quantization, GGUF, CUDA, Speculative Decoding, Speech AI, Document AI, Machine Learning Engineering">
+    <meta name="author" content="Praveen Kumar">
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Blog - Praveen Kumar | Principal AI Engineer">
+    <meta property="og:description" content="Measured, reproducible technical write-ups on inference engineering, LLMs, speech and document AI.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://inboxpraveen.github.io/all-blogs.html">
+    <meta property="og:image" content="https://inboxpraveen.github.io/blogs/resources/blog-1/Header.png">
+    <meta property="og:image:alt" content="Praveen Kumar blog">
+    <meta property="og:site_name" content="Praveen Kumar Portfolio">
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Blog - Praveen Kumar | Principal AI Engineer">
+    <meta name="twitter:description" content="Measured, reproducible technical write-ups on inference engineering, LLMs, speech and document AI.">
+    <meta name="twitter:image" content="https://inboxpraveen.github.io/blogs/resources/blog-1/Header.png">
+    <meta name="twitter:image:alt" content="Praveen Kumar blog">
+
+    <link rel="canonical" href="https://inboxpraveen.github.io/all-blogs.html">
+    <link rel="icon" type="image/x-icon" href="assests/favicon.ico">
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <!-- Navigation -->
+    <nav class="site-nav">
+        <div class="nav-container">
+            <a href="index.html" class="logo" aria-label="Praveen Kumar, home">PK</a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="all-projects.html">Projects</a></li>
+                <li><a href="all-blogs.html" aria-current="page">Blogs</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="https://github.com/inboxpraveen" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+            </ul>
+            <button class="mobile-menu" id="mobileMenu" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="navLinks">
+                <span class="bars"></span>
+            </button>
+        </div>
+    </nav>
+
+    <main id="main">
+
+        <!-- Header -->
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h1>What I&rsquo;ve written</h1>
+                    <p class="hero-subtitle">Long-form notes, every number measured on real hardware.</p>
+                    <p class="hero-description">
+                        The projects page shows what I built. This page is for the things I had to work out
+                        along the way: how inference actually spends its time, which knobs move the needle
+                        and which only look like they do. Each post ships with the scripts and raw results
+                        so you can rerun it on your own machine. Hit <kbd>/</kbd> to search.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Posts -->
+        <section id="posts" style="padding-top: 0;">
+            <div class="container" data-filter-root data-filter-noun="posts">
+
+                <div class="filter-bar" data-reveal>
+                    <label class="filter-search" for="projectSearch">
+                        <svg class="icon" aria-hidden="true"><use href="#i-search"></use></svg>
+                        <span class="visually-hidden-label" hidden>Search posts</span>
+                        <input type="search" id="projectSearch" placeholder="Search llama.cpp, quantization, CUDA&hellip;" autocomplete="off" aria-label="Search posts">
+                        <kbd>/</kbd>
+                    </label>
+
+                    <span class="filter-count" data-filter-count aria-live="polite">1 post</span>
+                </div>
+
+                <div class="projects-grid posts-grid" data-reveal-group>
+
+                <article class="project-card" data-domain="LLM &amp; RAG" data-search="llama.cpp inference engineering qwen3 gguf q8_0 quantization kl divergence perplexity memory bandwidth cpu gpu cuda rtx 5060 p-cores e-cores thread pinning ggml-cpu dll speculative decoding n-gram prompt lookup cffi python driver tied embeddings lm head offload ngl override-tensor kv cache flash attention how to get the most tokens per second out of one laptop" style="--domain: var(--d-llm);">
+                    <span class="card-rule" aria-hidden="true"></span>
+                    <a class="card-media" href="blogs/blog-1.html" tabindex="-1" aria-label="Getting the most tokens per second out of one laptop with llama.cpp &mdash; LLM &amp; RAG">
+                        <span class="featured-rank">Featured</span>
+                        <img src="blogs/resources/blog-1/Header.webp" alt="" loading="lazy" decoding="async">
+                        <span class="domain-pill" aria-hidden="true">LLM &amp; RAG</span>
+                    </a>
+                    <div class="card-body">
+                        <div class="tag-row">
+                            <span class="stack-tag">llama.cpp</span>
+                            <span class="stack-tag">Quantization</span>
+                            <span class="stack-tag">CUDA</span>
+                            <span class="stack-tag">Python</span>
+                        </div>
+                        <h3 class="project-title"><a href="blogs/blog-1.html">Getting the most tokens per second out of one laptop with llama.cpp</a></h3>
+                        <p class="project-description">One Q8_0 model, one laptop, and every knob llama.cpp exposes: thread pinning on hybrid cores, the CPU backend DLLs, per-tensor quantization of the tied LM head, GPU offload splits, KV cache types and self-speculative decoding. Each step measured for speed and for accuracy against the BF16 reference.</p>
+                        <div class="card-foot">
+                            <span class="card-meta">
+                                September 2026
+                                <span class="sep" aria-hidden="true"></span>
+                                <span data-read-time>Long read</span>
+                            </span>
+                            <a href="blogs/blog-1.html" class="project-link">Read the post</a>
+                        </div>
+                    </div>
+                </article>
+
+                </div>
+
+                <div class="filter-empty" data-filter-empty hidden>
+                    <strong>Nothing matches that.</strong>
+                    Try a different search.
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Contact -->
+        <section id="contact">
+            <div class="container">
+                <div class="section-head section-head--center" data-reveal>
+                    <p class="eyebrow">Say hello</p>
+                    <h2 class="section-heading">Want one of these, but for your problem?</h2>
+                    <p class="section-lede">
+                        Happy to talk through architecture, trade-offs, or why the obvious approach is not
+                        working. Email is fastest.
+                    </p>
+                </div>
+
+                <div class="contact-links" data-reveal>
+                    <a href="mailto:inboxpraveen.17@gmail.com" class="contact-link">
+                        <svg class="icon icon--lg" aria-hidden="true"><use href="#i-mail"></use></svg> Email
+                    </a>
+                    <a href="https://www.linkedin.com/in/praveen-kumar-inbox/" target="_blank" rel="noopener noreferrer" class="contact-link">
+                        <svg class="icon icon--lg" aria-hidden="true"><use href="#i-linkedin"></use></svg> LinkedIn
+                    </a>
+                    <a href="https://github.com/inboxpraveen" target="_blank" rel="noopener noreferrer" class="contact-link">
+                        <svg class="icon icon--lg" aria-hidden="true"><use href="#i-github"></use></svg> GitHub
+                    </a>
+                    <a href="https://x.com/InboxPraveen" target="_blank" rel="noopener noreferrer" class="contact-link">
+                        <svg class="icon icon--lg" aria-hidden="true"><use href="#i-x"></use></svg> Twitter
+                    </a>
+                    <a href="./assests/Resume.pdf" class="contact-link" target="_blank" rel="noopener" download>
+                        <svg class="icon icon--lg" aria-hidden="true"><use href="#i-file"></use></svg> Resume
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <p class="footer-note">
+                    &copy; <span data-year>2026</span> Praveen Kumar &middot;
+                    Static HTML, one stylesheet, no build step &mdash;
+                    <a href="https://github.com/inboxpraveen/inboxpraveen.github.io" target="_blank" rel="noopener noreferrer">source on GitHub</a>
+                </p>
+                <div class="footer-social">
+                    <a href="https://github.com/inboxpraveen" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                        <svg class="icon" aria-hidden="true"><use href="#i-github"></use></svg>
+                    </a>
+                    <a href="https://www.linkedin.com/in/praveen-kumar-inbox/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                        <svg class="icon" aria-hidden="true"><use href="#i-linkedin"></use></svg>
+                    </a>
+                    <a href="https://x.com/InboxPraveen" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
+                        <svg class="icon" aria-hidden="true"><use href="#i-x"></use></svg>
+                    </a>
+                    <a href="mailto:inboxpraveen.17@gmail.com" aria-label="Email">
+                        <svg class="icon" aria-hidden="true"><use href="#i-mail"></use></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <button class="back-to-top" type="button" data-back-to-top aria-label="Back to top">
+        <svg class="icon" aria-hidden="true"><use href="#i-arrow-up"></use></svg>
+    </button>
+
+    <script src="site.js" defer></script>
+</body>
+</html>
