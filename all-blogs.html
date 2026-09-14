@@ -58,7 +58,7 @@
             <div class="container">
                 <div class="hero-content">
                     <h1>What I&rsquo;ve written</h1>
-                    <p class="hero-subtitle">Long-form notes, every number measured on real hardware.</p>
+                    <p class="hero-subtitle">Long-form notes, every number measured on real hardware or traced to a dated source.</p>
                     <p class="hero-description">
                         The projects page shows what I built. This page is for the things I had to work out
                         along the way: how inference actually spends its time, which knobs move the needle
@@ -81,10 +81,36 @@
                         <kbd>/</kbd>
                     </label>
 
-                    <span class="filter-count" data-filter-count aria-live="polite">2 posts</span>
+                    <span class="filter-count" data-filter-count aria-live="polite">3 posts</span>
                 </div>
 
                 <div class="projects-grid posts-grid" data-reveal-group>
+
+                <article class="project-card" data-domain="LLM &amp; RAG" data-search="cerebras wafer scale engine wse-3 cs-3 cs-4 sram inference tokens per second per user speculative decoding groq lpu nvidia blackwell b200 h100 memory bandwidth ceiling latency microseconds per layer kv cache context prefill pipeline parallel mixture of experts kimi gpt-oss llama 405b hardware from the outside artificial analysis waferllm" style="--domain: var(--d-llm);">
+                    <span class="card-rule" aria-hidden="true"></span>
+                    <a class="card-media" href="blogs/blog-3.html" tabindex="-1" aria-label="Where the bandwidth line ends: how Cerebras gets to 2,000 tokens a second, worked out from the outside &mdash; LLM &amp; RAG">
+                        <img src="blogs/resources/blog-3/Header.webp" alt="" loading="lazy" decoding="async">
+                        <span class="domain-pill" aria-hidden="true">LLM &amp; RAG</span>
+                    </a>
+                    <div class="card-body">
+                        <div class="tag-row">
+                            <span class="stack-tag">Cerebras</span>
+                            <span class="stack-tag">Hardware</span>
+                            <span class="stack-tag">Inference engineering</span>
+                            <span class="stack-tag">Python</span>
+                        </div>
+                        <h3 class="project-title"><a href="blogs/blog-3.html">Where the bandwidth line ends: how Cerebras gets to 2,000 tokens a second, worked out from the outside</a></h3>
+                        <p class="project-description">The bandwidth line predicts 600,000 tokens a second for four Cerebras wafers on a 70B model and they get 2,000. An engineering read from public sources only: every speed claim dated and sourced, the wafer rebuilt from the core up, the microseconds a transformer layer really costs on a mesh and why eight published speeds agree on it, what the SRAM design gives up in context, prompts, batch and power, how Groq and NVIDIA solve the same equation, and what carries back to a laptop.</p>
+                        <div class="card-foot">
+                            <span class="card-meta">
+                                14 September 2026
+                                <span class="sep" aria-hidden="true"></span>
+                                <span data-read-time>Long read</span>
+                            </span>
+                            <a href="blogs/blog-3.html" class="project-link">Read the post</a>
+                        </div>
+                    </div>
+                </article>
 
                 <article class="project-card" data-domain="LLM &amp; RAG" data-search="llama.cpp inference engineering field guide bytes per token memory bandwidth ceiling architectures dense mixture of experts moe mamba state space ssm hybrid falcon-h1 lfm2 gemma sliding window attention encoder-decoder t5 embeddings nomic kv cache context depth kl divergence ten minute accuracy test pre-checks battery power limit thin client old cpu no avx2 sse4.2 q4_0 k-quants speculative decoding custom kernels drivers edge hardware what to try first" style="--domain: var(--d-llm);">
                     <span class="card-rule" aria-hidden="true"></span>
@@ -104,7 +130,7 @@
                         <p class="project-description">What carries over from one machine to another: bandwidth divided by the bytes a token really reads. Six architectures (dense, MoE, sliding-window, two hybrids, a pure SSM) measured on CPU and GPU against that line, plus encoders and T5. A pre-check script that caught a laptop running at a third of its speed, a ten-minute KL-divergence recipe, which quant to pick on a CPU without AVX2, and the order to try things in.</p>
                         <div class="card-foot">
                             <span class="card-meta">
-                                September 2026
+                                12 September 2026
                                 <span class="sep" aria-hidden="true"></span>
                                 <span data-read-time>Long read</span>
                             </span>
@@ -131,7 +157,7 @@
                         <p class="project-description">One Q8_0 model, one laptop, and every knob llama.cpp exposes: thread pinning on hybrid cores, the CPU backend DLLs, per-tensor quantization of the tied LM head, GPU offload splits, KV cache types and self-speculative decoding. Each step measured for speed and for accuracy against the BF16 reference.</p>
                         <div class="card-foot">
                             <span class="card-meta">
-                                September 2026
+                                7 September 2026
                                 <span class="sep" aria-hidden="true"></span>
                                 <span data-read-time>Long read</span>
                             </span>
