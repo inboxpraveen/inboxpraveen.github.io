@@ -1,0 +1,1303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Before you tune anything: a field guide to inference speed and accuracy on the hardware you actually have | Praveen Kumar</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="How to carry one laptop's llama.cpp results to any machine and any model. Bytes per token as the one number that transfers, what dense, MoE, hybrid, SSM, encoder-decoder and encoder-only architectures do to it, six architectures measured on CPU and GPU, a pre-check script, a ten-minute accuracy test, and the order to try things in.">
+    <meta name="keywords" content="llama.cpp, GGUF, Quantization, KL Divergence, Memory Bandwidth, Mixture of Experts, Mamba, State Space Models, Sliding Window Attention, Encoder-Decoder, Embeddings, Speculative Decoding, Edge Inference, Thin Client, Pre-checks, Inference Engineering">
+    <meta name="author" content="Praveen Kumar">
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Before you tune anything: a field guide to inference speed and accuracy on the hardware you actually have">
+    <meta property="og:description" content="The one number that transfers between machines, what each model architecture does to it, six architectures measured, a pre-check script, and the order to try things in.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://inboxpraveen.github.io/blogs/blog-2.html">
+    <meta property="og:image" content="https://inboxpraveen.github.io/blogs/resources/blog-2/Header.png">
+    <meta property="og:image:alt" content="Decode speed against bytes read per token for six model architectures on one laptop, with the bandwidth ceiling drawn in">
+    <meta property="og:site_name" content="Praveen Kumar Portfolio">
+    <meta property="article:published_time" content="2026-09-14">
+    <meta property="article:author" content="Praveen Kumar">
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Before you tune anything: a field guide to inference speed and accuracy on the hardware you actually have">
+    <meta name="twitter:description" content="Bytes per token, six architectures measured on CPU and GPU, a pre-check script, a ten-minute accuracy test, and what to try first on your own hardware.">
+    <meta name="twitter:image" content="https://inboxpraveen.github.io/blogs/resources/blog-2/Header.png">
+    <meta name="twitter:image:alt" content="Decode speed against bytes read per token for six model architectures on one laptop, with the bandwidth ceiling drawn in">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://inboxpraveen.github.io/blogs/blog-2.html">
+
+    <link rel="icon" type="image/x-icon" href="../assests/favicon.ico">
+    <link rel="stylesheet" href="../index.css">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "Before you tune anything: a field guide to inference speed and accuracy on the hardware you actually have",
+      "description": "How to carry one laptop's llama.cpp results to any machine and any model: bytes per token, architectures, pre-checks, a ten-minute accuracy test, and the order to try things in.",
+      "datePublished": "2026-09-14",
+      "dateModified": "2026-09-14",
+      "author": { "@type": "Person", "name": "Praveen Kumar", "url": "https://inboxpraveen.github.io/" },
+      "image": "https://inboxpraveen.github.io/blogs/resources/blog-2/Header.png",
+      "url": "https://inboxpraveen.github.io/blogs/blog-2.html",
+      "keywords": ["llama.cpp", "GGUF", "quantization", "mixture of experts", "state space models", "memory bandwidth", "edge inference", "inference engineering"]
+    }
+    </script>
+</head>
+<body>
+
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <div class="progress-track" aria-hidden="true"><div class="progress-bar" data-progress></div></div>
+
+    <!-- Navigation -->
+    <nav class="site-nav">
+        <div class="nav-container">
+            <a href="../index.html" class="logo" aria-label="Praveen Kumar, home">PK</a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../all-projects.html">Projects</a></li>
+                <li><a href="../all-blogs.html" aria-current="page">Blogs</a></li>
+                <li><a href="../about.html">About</a></li>
+                <li><a href="https://github.com/inboxpraveen" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+            </ul>
+            <button class="mobile-menu" id="mobileMenu" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="navLinks">
+                <span class="bars"></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Blog post 2 -->
+    <main id="main" class="page-container active">
+        <div class="page-header">
+            <div class="container">
+                <a href="../all-blogs.html" class="back-button">&larr; Back to Blog</a>
+                <h1 class="page-title">Before you tune anything: a field guide to inference speed and accuracy on the hardware you actually have</h1>
+                <div class="page-meta">
+                    <div class="meta-item">
+                        <span><svg class="icon" aria-hidden="true"><use href="#i-calendar"></use></svg></span>
+                        <span>Published: 14 September 2026</span>
+                    </div>
+                    <div class="meta-item">
+                        <span><svg class="icon" aria-hidden="true"><use href="#i-pulse"></use></svg></span>
+                        <span data-read-time>50 min read</span>
+                    </div>
+                    <div class="meta-item">
+                        <span><svg class="icon" aria-hidden="true"><use href="#i-code"></use></svg></span>
+                        <span>llama.cpp b10941 &bull; six architectures</span>
+                    </div>
+                    <div class="meta-item">
+                        <span><svg class="icon" aria-hidden="true"><use href="#i-tag"></use></svg></span>
+                        <span>Inference engineering &bull; Architectures &bull; Edge hardware &bull; Python</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <nav class="toc" data-toc aria-label="On this page">
+            <p class="toc-label">On this page</p>
+        </nav>
+
+        <div class="content-section">
+            <h2>What people asked after the first post</h2>
+            <p>
+                The <a href="./blog-1.html">first post</a> took one small model and one laptop and measured
+                every knob llama.cpp has. The questions it left me with are the same ones I get at work, in
+                different clothes. "Our model is a mixture of experts, does the head trick still apply?" "We
+                ship on a thin client with no AVX2, which of those numbers survive?" "Does any of this hold
+                for an embedding model, or for Whisper?" "It's a Mac, is the GPU chapter useless?" Fair
+                questions. The first post was honest about being one machine and one model, and one machine
+                and one model is exactly what nobody else has.
+            </p>
+            <p>
+                So this is the second half. It's not another benchmark dump. It's the part I should have
+                written first, the part the first post's closing section only gestured at: what actually carries over from one machine to another, what changes when the
+                model has a different shape inside, and what order to try things in when you sit down at a box
+                you've never tuned. I did go back to the bench for it, because the honest way to say "this
+                generalizes" is to try it on models that are built differently and see. Six small models of
+                six architectures went through the same three tests on the CPU and the GPU. Where I measured,
+                I say measured. Where I computed from a file's metadata, I say computed. Where I'm repeating
+                something other people have reported and I haven't checked, I say that too, and you should
+                treat it as a thing to test, not a thing to trust.
+            </p>
+            <p>
+                The flow is deliberate. Each section ends on the question the next one answers, because that's
+                how the work actually goes: you learn the ceiling, then you ask why you're under it, then you
+                ask what it costs to move, then you ask whether the machine is even what you think it is.
+                Read it straight through once, then keep it open as a checklist.
+            </p>
+
+            <div class="table-container">
+                <table class="content-table">
+                    <thead>
+                        <tr>
+                            <th>Section</th>
+                            <th>The question it answers</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>One number that transfers</td><td>What can I predict about a machine I haven't touched?</td></tr>
+                        <tr><td>What's inside the file decides the bytes</td><td>How do dense, MoE, hybrid, SSM, encoder-decoder and encoder-only models change that prediction?</td></tr>
+                        <tr><td>Context is bytes too</td><td>Why does the same model get slower as the conversation grows, and by how much per architecture?</td></tr>
+                        <tr><td>Accuracy: measure it in ten minutes</td><td>Fewer bytes is faster; how do I know what it cost, on my model, without a day of compute?</td></tr>
+                        <tr><td>Pre-checks</td><td>Is this machine actually the machine I think it is? (Mine wasn't, twice.)</td></tr>
+                        <tr><td>The order of things to try</td><td>Given the device class, what do I try first, second, third, and what do I skip?</td></tr>
+                        <tr><td>Past the ceiling</td><td>When is speculative decoding worth it, by workload and by device?</td></tr>
+                        <tr><td>When to write code</td><td>When do custom kernels, layers or drivers pay, and how do I tell before writing them?</td></tr>
+                        <tr><td>A protocol for a new box</td><td>How do I do all of this in an hour and write it down so it's still useful next month?</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <p>
+                Everything here was produced by scripts in the same
+                <a href="https://github.com/inboxpraveen/ggml-inference-lab" target="_blank" rel="noopener noreferrer">companion repository</a>
+                as the first post: <code>zoo.sh</code> for the architecture runs, <code>zoo_meta.py</code>
+                for the file metadata, <code>precheck.py</code> for the machine checks, <code>charts2.py</code>
+                for the figures. The build is the same prebuilt llama.cpp b10941 as before, no compiler.
+            </p>
+
+            <h2>One number that transfers</h2>
+            <p>
+                Almost nothing from a benchmark transfers between machines. Tokens per second doesn't. The
+                best thread count doesn't. The right quant doesn't. What transfers is a division: the memory
+                bandwidth of the device the weights live on, divided by the bytes that have to be read to
+                produce one token. Generating a token with a dense model means reading every weight once, so
+                for a 633 MB file on a laptop whose single DDR5 stick can deliver 44.8 GB/s in theory, nothing
+                can exceed 70 tokens per second, and in practice the first post found the honest ceiling was
+                between 34 and 44.8 GB/s worth of reads. Every CPU result in that post was a story about
+                getting closer to that line. The line itself is the only thing that carries over.
+            </p>
+            <p>
+                Here is what that division looks like for hardware people actually own. The lines are spec
+                sheets. The dots are measured on my laptop, and each sits under the line for its device.
+            </p>
+
+            <figure class="content-figure">
+                <img src="./resources/blog-2/ceilings.svg" alt="Log-log chart of tokens per second ceiling against bytes read per token, with one line per bandwidth class from a 2010 DDR3 desktop at 21 GB/s to an RTX 4090 at 1008 GB/s. Three measured dots from the laptop sit just under their respective lines." loading="lazy" decoding="async">
+                <figcaption>Bandwidth divided by bytes. Lines are spec sheets; dots are measured on the laptop from the first post and sit under their line. The gap between a dot and its line is what tuning can recover. Nothing gets above the line except speculation.</figcaption>
+            </figure>
+
+            <p>
+                Read it once and you can already answer most of the questions people ask. A 4 GB model on a
+                2010 desktop with dual-channel DDR3 tops out around 5 tokens per second, and no flag will
+                change that. The same file on an Apple laptop with unified memory at 120 GB/s tops out at 30.
+                On a discrete GPU at 384 GB/s it's 96, and on a 4090 it's 250. A second DIMM in my laptop
+                would move my line up by exactly 2x, which is more than every flag in the first post combined.
+                That's the first thing to know about a new machine: not its CPU model, not its core count,
+                but how many bytes per second it can pull from wherever the weights sit.
+            </p>
+            <p>
+                The theoretical number is easy: memory speed in MT/s times bus width in bytes times channels.
+                The achievable number needs a measurement, and it's worth taking two. The first is a plain
+                streaming read: several processes each summing a private buffer, started together, aggregate
+                bytes over wall time. On my laptop that gives 32.7 GB/s, 73% of
+                theoretical. The second is llama.cpp itself decoding a small dense model, with the file size
+                multiplied by tokens per second. That gives 33.7 GB/s here, a little higher, because
+                ggml's kernels are better at keeping the memory controller busy than a numpy sum. Plan with the
+                second one. The streaming test is a floor, and a useful one, because if llama.cpp comes in
+                well below it you know the problem is in the software setup and not the hardware.
+            </p>
+
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-language">The thirty-second version, for any machine</span>
+                    <button class="copy-button">Copy</button>
+                </div>
+                <pre><code><span class="comment"># 1. what the DIMMs promise (Windows; on Linux use dmidecode -t memory, on macOS system_profiler SPMemoryDataType)</span>
+powershell "Get-CimInstance Win32_PhysicalMemory | Select Capacity, ConfiguredClockSpeed, DataWidth"
+<span class="comment">#    theoretical GB/s = MT/s x (DataWidth / 8) x number of DIMMs / 1000</span>
+
+<span class="comment"># 2. what llama.cpp actually pulls: a small dense model, decode only, threads = physical P-cores</span>
+llama-bench -m Qwen3-0.6B-Q8_0.gguf -p 0 -n 64 -r 3 -t 8 -o jsonl
+<span class="comment">#    effective GB/s = model_size x avg_ts / 1e9. This is your line.</span>
+
+<span class="comment"># 3. the ceiling for any file you're considering</span>
+<span class="comment">#    tok/s &lt;= effective GB/s / (bytes read per token)</span></code></pre>
+            </div>
+
+            <p>
+                Bandwidth is the numerator and it's a property of the machine. The denominator, bytes read
+                per token, is a property of the model, and it's where the "but my model is different"
+                questions live. For a dense decoder it's the file size, near enough. For anything else it
+                isn't, and the difference is the whole next section. So: how many bytes does your model
+                actually read to produce one token?
+            </p>
+
+            <h2>What's inside the file decides the bytes</h2>
+            <p>
+                A GGUF file is a list of tensors with names, shapes and types, and the names tell you what a
+                decode step will touch. I wrote a small script, <code>zoo_meta.py</code>, that reads that list
+                for a model and adds up the bytes by role: attention projections, feed-forward weights, expert
+                weights, state-space or convolution weights, the output head. Then it works out which of those
+                a single token actually reads. For a dense model that's everything. For a mixture of experts
+                it's everything except the experts the router didn't pick. Here's what six small models of six
+                different architectures look like through that lens, all at Q8_0 so the bytes are comparable.
+            </p>
+
+            <figure class="content-figure">
+                <img src="./resources/blog-2/arch-bytes.svg" alt="Stacked horizontal bars of megabytes read per decode step for six models, split into attention, feed-forward or active experts, SSM or convolution, and head. The Granite MoE bar has a hatched extension showing experts in the file that are not read." loading="lazy" decoding="async">
+                <figcaption>Bytes per decode step by role, computed from each file's tensor list. The hatched part of the Granite bar is in the file and in RAM, but not on the memory bus for any given token.</figcaption>
+            </figure>
+
+            <p>
+                Then I ran the same three tests on every one of them: decode at 128 tokens, prompt processing
+                at 512, and decode again at 2K and 8K tokens of context, on the CPU with eight threads and on
+                the GPU with everything offloaded. The table has the file size, the bytes one token actually
+                reads, and the speed on both devices. The last column of each device pair is the one to look
+                at: bytes read times tokens per second, which is the bandwidth the model effectively used.
+            </p>
+
+            <div class="table-container">
+                <table class="content-table">
+                    <thead>
+                        <tr>
+                            <th>Model</th>
+                            <th>Architecture</th>
+                            <th>MB in file</th>
+                            <th>MB read / token</th>
+                            <th>KV KB / token (f16)</th>
+                            <th>CPU tg128, -t 8</th>
+                            <th>CPU GB/s used</th>
+                            <th>CPU pp512</th>
+                            <th>RTX 5060 tg128</th>
+                            <th>GPU GB/s used</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Qwen3-0.6B</td><td>dense decoder, GQA, tied head</td><td>633</td><td>633</td><td>112</td><td>56.5&nbsp;&plusmn;&nbsp;0.2</td><td>36</td><td>314&nbsp;&plusmn;&nbsp;4</td><td>370&nbsp;&plusmn;&nbsp;2</td><td>234</td></tr>
+                        <tr><td>Gemma-3-1B</td><td>dense, 5 local : 1 global attention, tied head</td><td>1063</td><td>1063</td><td>26</td><td>34.9&nbsp;&plusmn;&nbsp;0.2</td><td>37</td><td>204&nbsp;&plusmn;&nbsp;2</td><td>210&nbsp;&plusmn;&nbsp;1</td><td>223</td></tr>
+                        <tr><td>Granite-3.1 1B-A400M</td><td>MoE, 8 of 32 experts per token</td><td>1421</td><td>458</td><td>48</td><td>73.8&nbsp;&plusmn;&nbsp;1.7</td><td>34</td><td>454&nbsp;&plusmn;&nbsp;3</td><td>477&nbsp;&plusmn;&nbsp;3</td><td>218</td></tr>
+                        <tr><td>Falcon-H1-0.5B</td><td>hybrid, Mamba2 and attention in every layer</td><td>555</td><td>520</td><td>18</td><td>57.3&nbsp;&plusmn;&nbsp;0.7</td><td>30</td><td>438&nbsp;&plusmn;&nbsp;11</td><td>294&nbsp;&plusmn;&nbsp;3</td><td>153</td></tr>
+                        <tr><td>LFM2-700M</td><td>hybrid, 10 short-conv + 6 attention layers</td><td>789</td><td>789</td><td>12</td><td>47.9&nbsp;&plusmn;&nbsp;0.5</td><td>38</td><td>412&nbsp;&plusmn;&nbsp;18</td><td>358&nbsp;&plusmn;&nbsp;3</td><td>282</td></tr>
+                        <tr><td>Mamba-130M</td><td>pure SSM, no attention</td><td>141</td><td>141</td><td>state only</td><td>216.6&nbsp;&plusmn;&nbsp;2.6</td><td>31</td><td>804&nbsp;&plusmn;&nbsp;13</td><td>893&nbsp;&plusmn;&nbsp;14</td><td>126</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <figure class="content-figure">
+                <img src="./resources/blog-2/zoo-speed.svg" alt="Two panels of horizontal bars showing effective bandwidth per model. On the CPU, Qwen3, Gemma, Granite and LFM2 reach 34 to 38 GB/s against lines at 34 and 44.8; Falcon-H1 and Mamba reach 30 and 31. On the GPU all six sit well under the 384 GB/s line, between 126 and 282." loading="lazy" decoding="async">
+                <figcaption>Effective bandwidth, measured. On the CPU, four of six architectures sit on the line once MoE is counted at its active bytes. The two with a state-space scan sit a little under it. On the GPU every model this small is launch-bound, whatever its architecture.</figcaption>
+            </figure>
+
+            <p>
+                Two findings, and they're the reason the first post's CPU story transfers. First, on the CPU
+                the bandwidth line holds across architectures as long as you count the bytes correctly. The
+                dense Qwen3 pulls 36 GB/s, Gemma-3 with its local and global attention
+                37, the Granite MoE 34 when you count only the experts it routes
+                to, and LFM2 with its convolution layers 38. Those are the same number within
+                noise, and they're the same number the first post found for Qwen3 alone. The two models with
+                a Mamba-style state-space scan come in lower, Falcon-H1 at 30 and Mamba-130M at
+                31, because a scan does arithmetic per token that isn't a weight read, so some of
+                the step's time is spent on compute that the bandwidth model doesn't see. Not a lot, but
+                consistently. Second, on the GPU none of them get near the line. The best is LFM2 at
+                74% of 384 GB/s and the worst is Mamba at 33%, and the ordering has
+                nothing to do with bytes; it's the number and shape of kernel launches per step. That's the
+                first post's "small models can't use a big GPU" result, now shown to hold for MoE and hybrids
+                too. If your model is under a couple of billion parameters, the GPU chapter of the first post
+                applies to it whatever its architecture, and quantizing below Q8_0 will not make it faster.
+            </p>
+            <p>
+                One caveat on the prompt-processing column. Those are single runs on a shared laptop and
+                prompt processing is the measurement most sensitive to background load, so treat the spread
+                between architectures there as indicative. The decode numbers were stable to within a couple
+                of percent across repeats; the prompt numbers were not.
+            </p>
+            <p>
+                Now the architectures one at a time, with what the bytes model says to try first for each.
+                I've kept these short on purpose. The point isn't to explain every architecture; it's to tell
+                you which of the first post's levers still exist for it and which don't.
+            </p>
+
+            <h3>Dense decoders: Llama, Qwen, Mistral, Gemma, Phi</h3>
+            <p>
+                The default case and the one the first post covered. Bytes per token equals the file minus
+                the input embedding row lookup, which for a model with a separate output head means the whole
+                file minus the embedding table, and for a model with a tied head means the whole file. The
+                levers are all there: thread count equals P-cores, the quant chosen by the accuracy table,
+                the head quantized separately if it's a large share of the bytes, the KV cache quantized at
+                depth, self-speculation on repetitive workloads. The one thing that changes between dense
+                models is how big a share the head is, and that follows the vocabulary and the hidden size,
+                not the parameter count.
+            </p>
+
+            <div class="table-container">
+                <table class="content-table">
+                    <thead>
+                        <tr>
+                            <th>Model</th>
+                            <th>Vocabulary</th>
+                            <th>Hidden size</th>
+                            <th>Head</th>
+                            <th>Head MB</th>
+                            <th>Share of bytes read per token</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Gemma-3-1B</td><td>262,144</td><td>1152</td><td>tied</td><td>321</td><td>30%</td></tr>
+                        <tr><td>Mamba-130M</td><td>50,280</td><td>768</td><td>tied</td><td>41</td><td>29%</td></tr>
+                        <tr><td>Qwen3-0.6B</td><td>151,936</td><td>1024</td><td>tied</td><td>165</td><td>26%</td></tr>
+                        <tr><td>LFM2-700M</td><td>65,536</td><td>1536</td><td>tied</td><td>107</td><td>14%</td></tr>
+                        <tr><td>Granite-3.1 1B-A400M</td><td>49,155</td><td>1024</td><td>tied</td><td>53</td><td>12%</td></tr>
+                        <tr><td>Qwen3-8B</td><td>151,936</td><td>4096</td><td>separate</td><td>511</td><td>8%</td></tr>
+                        <tr><td>Falcon-H1-0.5B</td><td>32,784</td><td>1024</td><td>separate</td><td>36</td><td>7%</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <p>
+                Gemma-3-1B has a 262K-entry vocabulary and its head is 30% of every token's bytes,
+                more than Qwen3-0.6B's 26%. Qwen3-8B, with the same 152K vocabulary as its small
+                sibling but a much bigger body, is at 8%. Falcon-H1-0.5B has a 33K vocabulary and
+                the head is 7%. Mamba-130M has a modest 50K vocabulary and still comes in at
+                29%, because its body is tiny. The exact rule is vocabulary times hidden size
+                against the size of the body, and the tensor list gives you all three. So the first post's
+                result, that quantizing only the head to Q6_K
+                buys 6% fewer bytes at a KL divergence you can't distinguish from noise, transfers by
+                vocabulary size. On a Gemma it's worth more. On an 8B it's worth a couple of percent and you
+                should spend your attention elsewhere. The rule: read the head's share off the tensor list
+                before deciding whether the head is a lever.
+            </p>
+
+            <h3>Mixture of experts: Mixtral, Qwen3-30B-A3B, gpt-oss, DeepSeek, Granite MoE</h3>
+            <p>
+                The architecture where "file size" lies to you most. Every token goes through the shared
+                parts of every layer and then through a handful of the experts, chosen by a router. Granite
+                3.1 1B-A400M has 32 experts per layer and uses 8, so a token reads 458 MB out
+                of a 1421 MB file, and it decodes at 74 tok/s on my CPU, faster than
+                the 633 MB dense Qwen3 at 57, while taking more than twice the RAM.
+                That's the deal MoE offers: speed follows the active bytes, memory follows the total. Here's
+                what that looks like for the MoE models people actually run, at a Q4_K_M-class 4.85 bits per
+                weight (the gpt-oss files ship in MXFP4 and are a little smaller than this).
+            </p>
+
+            <figure class="content-figure">
+                <img src="./resources/blog-2/moe-active.svg" alt="Horizontal log-scale bars for seven mixture-of-experts models. Solid segment shows gigabytes read per token, hatched extension shows total gigabytes that must fit in memory. Granite 0.2 of 1 GB, Qwen3-30B-A3B 2.0 of 18, gpt-oss-20b 2.2 of 13, Mixtral 7.8 of 28, Llama 4 Scout 10.3 of 66, gpt-oss-120b 3.1 of 71, DeepSeek-V3 22.4 of 407." loading="lazy" decoding="async">
+                <figcaption>Computed from published parameter counts. The solid part is what the bandwidth line charges you for; the whole bar is what has to fit in RAM or VRAM.</figcaption>
+            </figure>
+
+            <p>
+                What to try first on a MoE, in order. One: check that the whole file fits in RAM with
+                headroom, because if experts have to page from disk the bandwidth line becomes the disk's
+                line and everything is ten times slower. Two: on a machine with a GPU that's too small for
+                the whole file, put the experts on the CPU and everything else on the GPU. llama.cpp has this
+                as a single flag, <code>--n-cpu-moe N</code> in the server and CLI, or
+                <code>-ot "ffn_.*_exps=CPU"</code> in llama-bench, and it works for the same reason the FFN
+                offload in the first post worked: attention, norms and the KV cache stay on the fast device,
+                and only the big, sparsely used matrices go to the slow one. Three: quantize the experts
+                harder than the shared layers. This is widely reported to cost less accuracy than quantizing
+                a dense model the same amount, and it's plausible, since each expert sees a fraction of the
+                tokens; I haven't measured it and you should, with the ten-minute test further down, before
+                you ship it. Four: be careful with speculative decoding on MoE. Verifying eight drafted tokens
+                in one batch can route to eight different sets of experts, so the "free" verification step
+                reads more bytes than a single-token step would. Again, measure.
+            </p>
+
+            <h3>Local and global attention: Gemma 3, Mistral's sliding window, Llama 4</h3>
+            <p>
+                Gemma-3-1B alternates five layers of attention that only look back 512 tokens with one that
+                looks at everything. At empty context it behaves like a dense model, 37 GB/s on
+                the CPU, right on the line. The difference shows up as the context fills, and it's the whole
+                of the next section. What to try first: nothing special at short context; at long context,
+                nothing at all, because the cache growth you'd normally fight is mostly already capped. The
+                lever you lose is <code>-ctk q8_0</code> mattering much, because the cache is small to begin
+                with.
+            </p>
+
+            <h3>State-space and hybrid: Mamba, Falcon-H1, LFM2, Granite 4, Jamba, Nemotron-H</h3>
+            <p>
+                These replace some or all attention layers with a recurrent state that has a fixed size per
+                layer. Mamba-130M has no attention at all. Falcon-H1 runs a Mamba2 block and an attention
+                block side by side in every layer. LFM2 uses short convolutions in ten of sixteen layers and
+                attention in six. Their weight bytes behave like everyone else's, as the table shows, with the
+                small tax on the scan noted above. What changes is the state: it doesn't grow with context, so
+                the "KV cache" for the recurrent layers is a constant, and only the attention layers, if any,
+                pay per token. What to try first: threads and quant as for dense, then check the long-context
+                behaviour in the next section, because that's where these earn their keep. What you lose is
+                prompt-lookup speculation in the form the first post used; llama.cpp's KV rollback for a
+                rejected draft works on attention caches, and recurrent state has to be checkpointed and
+                restored instead, which the server does support for some of these but which you should verify
+                works and helps before relying on it. Also, on the GPU, Mamba-130M was the most launch-bound
+                model in the zoo at 33% of the line: the scan is many small kernels.
+            </p>
+
+            <h3>Encoder-decoder: T5, Whisper, NLLB, BART</h3>
+            <p>
+                A different shape entirely. The encoder reads the input once, as a batch, which is a
+                prompt-processing-shaped job: compute-bound, happy with large batches, indifferent to weight
+                bytes. Then the decoder generates tokens one at a time, reading its own weights and a
+                cross-attention cache that was computed once from the encoder output and never grows. So the
+                per-token bytes are the decoder's weights plus the decoder's self-attention cache, and the
+                encoder's cost is a fixed price per request. <code>llama-bench</code> can't run these at all;
+                it asserts because it never calls <code>llama_encode</code>. <code>llama-completion</code>
+                can. flan-t5-small at Q8_0 is a 113 MB file of which the decoder step reads about
+                80 MB, and it decoded at 345 to 369 tok/s on the CPU across
+                three runs, which is 29 GB/s, on the line. On the GPU it did 300 to
+                397, the same, because a model this small is launch-bound there. The perf print
+                doesn't time the encoder separately; total minus decode puts the encoder plus overhead under
+                20 ms for a 28-token input. What to try first: the decoder is where the tokens are, so the
+                dense levers apply to it, and the encoder wants batch, so if you're running many requests,
+                batch the encoder side. For Whisper specifically, the audio encoder dominates and the GPU
+                helps it far more than it helps a text decoder of the same size.
+            </p>
+
+            <h3>Encoder-only: embeddings, rerankers, classifiers</h3>
+            <p>
+                No decode at all. One forward pass over the whole input and you're done, which means the
+                entire job is prompt-processing-shaped and the bandwidth line is nearly irrelevant. Here's
+                nomic-embed-text-v1.5 at Q8_0, 145 MB, embedding 128 and 512 token inputs.
+            </p>
+
+            <div class="table-container">
+                <table class="content-table">
+                    <thead>
+                        <tr>
+                            <th>Device</th>
+                            <th>Tokens per input</th>
+                            <th>Tokens per second</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>CPU, -t 4</td><td>128</td><td>1258&nbsp;&plusmn;&nbsp;4</td></tr>
+                        <tr><td>CPU, -t 4</td><td>512</td><td>1167&nbsp;&plusmn;&nbsp;16</td></tr>
+                        <tr><td>CPU, -t 8</td><td>128</td><td>2142&nbsp;&plusmn;&nbsp;39</td></tr>
+                        <tr><td>CPU, -t 8</td><td>512</td><td>1606&nbsp;&plusmn;&nbsp;323</td></tr>
+                        <tr><td>CPU, -t 16</td><td>128</td><td>1817&nbsp;&plusmn;&nbsp;14</td></tr>
+                        <tr><td>CPU, -t 16</td><td>512</td><td>1766&nbsp;&plusmn;&nbsp;11</td></tr>
+                        <tr><td>RTX 5060</td><td>128</td><td>48191&nbsp;&plusmn;&nbsp;11245</td></tr>
+                        <tr><td>RTX 5060</td><td>512</td><td>72811&nbsp;&plusmn;&nbsp;4841</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <p>
+                Three things to read off that. The CPU peaked at eight threads for the short input
+                (2142 tok/s against 1817 at sixteen and 1258 at four),
+                the same P-core result as the first post, so "encoders can use all the cores" is not
+                something I can claim from this machine; measure it on yours. The GPU is 23
+                times faster on the short input and 45 times on the long one, not the six
+                or seven times you see on decode, because this is exactly the work a GPU is for. And the quantization choice barely matters for speed on either device, because the
+                weights are read once per batch of tokens, not once per token; pick the quant by accuracy,
+                which for embeddings means checking retrieval quality on your own data, not KL divergence.
+                What to try first: batch size, then the GPU if you have one, then threads. Skip the quant
+                chapter almost entirely.
+            </p>
+            <p>
+                So the bytes-per-token model survives contact with six architectures, provided you count the
+                bytes the way the model actually reads them: active experts, not all experts; decoder
+                weights, not the whole encoder-decoder file; and for encoders, don't count per token at all.
+                All of that was at empty or short context. The next question is what happens to the bytes
+                when the conversation is eight thousand tokens long, because that's where the architectures
+                stop looking alike.
+            </p>
+
+            <h2>Context is bytes too</h2>
+            <p>
+                The first post measured the 0.6B slowing down as its context filled and found that a
+                quantized KV cache overtook f16 past 8K tokens on the GPU. Here's the mechanism in bytes. For
+                every layer that has attention, the model stores a key and a value vector for every token
+                it has seen, and reads all of them back on every step. The size per token is two vectors,
+                times the number of key-value heads, times the head dimension, times bytes per element,
+                times the number of attention layers. That last factor is the one architecture controls.
+            </p>
+
+            <figure class="content-figure">
+                <img src="./resources/blog-2/kv-per-token.svg" alt="Horizontal bars of KV cache kilobytes per token of context for ten models: Llama-2-7B at 512, Llama-3-8B at 128, Qwen3-8B at 144, Qwen3-0.6B at 112, Granite MoE at 48, Gemma-3-1B global layers at 4, DeepSeek-V3 with MLA at 69, LFM2 at 12, Falcon-H1 at 18, Mamba at zero." loading="lazy" decoding="async">
+                <figcaption>KV cache bytes per token of context at f16. Grey bars are computed from published configs, coloured bars from the GGUF files. Multiply by your context length and add it to the weights to get bytes per token at depth.</figcaption>
+            </figure>
+
+            <p>
+                The spread is enormous. A Llama-2-7B with full multi-head attention stores 512 KB per token,
+                4 GB at 8K context, more than half its own weights at Q4. Grouped-query attention, which
+                every current dense model uses, cuts that four to eight times: Qwen3-8B stores 144 KB
+                per token. The small Qwen3 stores 112 KB, which sounds small until you multiply by
+                8,192 and get 940 MB, more than the 633 MB of weights. DeepSeek's latent
+                attention compresses the whole thing to a 576-wide vector per layer. Gemma-3's local layers
+                stop growing at 512 tokens, so only its four global layers grow. The hybrids grow only in
+                their attention layers. Mamba doesn't grow at all.
+            </p>
+            <p>
+                Now the measurement. Every zoo model, decoding 32 tokens after 0, 2K and 8K tokens of
+                context, on both devices, default flags.
+            </p>
+
+            <figure class="content-figure">
+                <img src="./resources/blog-2/zoo-depth.svg" alt="Line chart of decode speed as a percentage of empty-context speed at 0, 2K and 8K tokens on the CPU. Qwen3-0.6B falls to 21 percent, Granite MoE to 40, Falcon-H1 to 69, LFM2 to 80, Gemma-3-1B to 92, Mamba stays flat." loading="lazy" decoding="async">
+                <figcaption>CPU, eight threads, measured. The order matches the KV chart exactly: the more cache per token, the steeper the fall.</figcaption>
+            </figure>
+
+            <figure class="content-figure">
+                <img src="./resources/blog-2/zoo-depth-cuda.svg" alt="The same chart on the RTX 5060. Qwen3-0.6B falls to 51 percent at 8K, Granite to 64, and the other four are flat within the noise of a two-repetition run." loading="lazy" decoding="async">
+                <figcaption>The GPU, same runs. Same ordering, smaller drops, because 384 GB/s makes a gigabyte of cache a smaller fraction of the step.</figcaption>
+            </figure>
+
+            <div class="table-container">
+                <table class="content-table">
+                    <thead>
+                        <tr>
+                            <th>Model</th>
+                            <th>CPU at 0</th>
+                            <th>CPU at 2K</th>
+                            <th>CPU at 8K</th>
+                            <th>GPU at 0</th>
+                            <th>GPU at 2K</th>
+                            <th>GPU at 8K</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Qwen3-0.6B</td><td>57</td><td>36 (63%)</td><td>12 (21%)</td><td>365</td><td>296 (81%)</td><td>187 (51%)</td></tr>
+                        <tr><td>Gemma-3-1B</td><td>34</td><td>32 (94%)</td><td>31 (92%)</td><td>211</td><td>198 (94%)</td><td>196 (93%)</td></tr>
+                        <tr><td>Granite-3.1 1B-A400M</td><td>65</td><td>55 (84%)</td><td>26 (40%)</td><td>457</td><td>397 (87%)</td><td>292 (64%)</td></tr>
+                        <tr><td>Falcon-H1-0.5B</td><td>53</td><td>44 (83%)</td><td>37 (69%)</td><td>256</td><td>287 (112%)</td><td>261 (102%)</td></tr>
+                        <tr><td>LFM2-700M</td><td>47</td><td>46 (98%)</td><td>37 (80%)</td><td>353</td><td>355 (101%)</td><td>324 (92%)</td></tr>
+                        <tr><td>Mamba-130M</td><td>194</td><td>212 (109%)</td><td>218 (112%)</td><td>712</td><td>881 (124%)</td><td>873 (123%)</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <p>
+                On the CPU at 8K tokens the dense Qwen3 keeps 21% of its speed. Bytes alone
+                don't predict that: 940 MB of cache on top of 633 MB of weights is 2.5x the
+                traffic, which would leave 40%, so about half the loss is bytes and the other half is the
+                attention arithmetic itself, a dot product against every one of 8,192 positions per head
+                per layer, which on eight cores is no longer free. The Granite MoE keeps
+                40% against a bytes-only prediction of 54%, the same split. That's also
+                why the fused attention kernel matters more at depth than at zero, which the first post
+                found and which I come back to below. The hybrids keep 69% and
+                80%. Gemma-3, with only four growing layers, keeps 92%. Mamba
+                is flat, and I'd add that its 2K and 8K points came out slightly above its zero point, which
+                is repeat-to-repeat noise on a two-repetition run and not a sign that recurrent models get
+                faster with context. The GPU shows the same ordering with smaller drops, Qwen3 to
+                51%, Granite to 64%, Gemma to 93%.
+            </p>
+            <p>
+                These runs used default flags, which on the CPU means flash attention on. The first post
+                found that on this CPU the plain attention path is faster at depth than the fused one, and
+                since half of the loss above is attention compute rather than bytes, the dense CPU number
+                here is the pessimistic case; with <code>-fa off</code> it would fall less.
+                I left the defaults on for the zoo so the comparison across architectures was fair, not so
+                each one was at its best.
+            </p>
+            <p>
+                What to do with this depends on which kind of model you have. On a dense GQA model, the
+                levers are the ones from the first post: a q8_0 KV cache halves the cache bytes and, past a
+                few thousand tokens, that shows up directly in speed, and on a CPU try flash attention off
+                at depth. On a MoE the same applies, and the cache is a bigger share of the total than the
+                small active-weight footprint suggests. On a sliding-window model there's little to do, and
+                that's the point of the design. On a hybrid or SSM, the growth is small or nil, but the
+                constant state per sequence isn't free either, and if you run many parallel sequences on a
+                server it multiplies by the slot count the same way a cache does. Whatever the model, the
+                arithmetic is the same: weights bytes plus context bytes, divided into the bandwidth. If
+                that sum doesn't fit in the fast device's memory, the first post's Windows chapter applies
+                and the driver will spill silently; the 8B in that post went from 34.0 tok/s at 4K
+                context to 8.7 at 8K for exactly that reason, and a q8_0 cache brought it back to
+                29.8.
+            </p>
+            <p>
+                Everything so far has been about reading fewer bytes to go faster: smaller quant, quantized
+                cache, active experts, fewer attention layers. Each one changes what the model computes. The
+                obvious next question is what it costs, and whether you can find out on your own model in less
+                than a day.
+            </p>
+
+            <h2>Accuracy: measure it in ten minutes</h2>
+            <p>
+                The first post scored twenty-one quantization variants of one model with KL divergence
+                against BF16 over 200 chunks of wikitext-2, and that run took most of a day and 15 GB of
+                stored logits. Nobody is going to do that for every model they consider, and they shouldn't
+                have to. This section is about what that run taught me that transfers, and how to get the
+                part of it you need in about ten minutes.
+            </p>
+            <p>
+                First, the method, because the choice of metric matters more than people think. Perplexity
+                on its own is a bad way to compare quantizations: a quant can lower the perplexity on a test
+                set by accident while making the model's distribution less like the original's. KL
+                divergence measures the second thing directly. For every token position, it compares the
+                quantized model's full probability distribution over the vocabulary with the reference
+                model's, and averages. Zero means identical. It comes with two companions that are easier to
+                explain to a non-specialist: the fraction of positions where the quant's most likely token
+                matches the reference's, and the RMS change in the probability the quant assigns to the
+                token that actually came next. llama.cpp's <code>llama-perplexity</code> produces all three
+                from one run if you first save the reference model's logits.
+            </p>
+            <p>
+                What the full run said, briefly, since the numbers are in the first post: Q8_0 is free
+                (KLD 0.0027), Q6_K nearly so (0.0104), Q4_K_M is where you start to notice
+                (0.0741, top-1 agreement 86%), Q3_K_M is a different model (0.2497) and
+                Q2_K on a 0.6B agrees with the reference on the next token barely more than half the time
+                (0.840, 58%). On which tensors are sensitive: quantizing only the head to
+                Q6_K costs nothing (0.0038); to Q4_K it costs about a third of what quantizing the
+                whole body would (0.0221); quantizing the attention projections to Q4_K
+                (0.0411) is about as bad as quantizing the much larger feed-forward weights to Q4_K
+                (0.0521), so per byte saved the attention is the expensive place to cut; and putting
+                a Q8_0 head on a Q4_K_M body (0.0731) recovers a real fraction of the damage for
+                a small cost in bytes.
+            </p>
+
+            <figure class="content-figure">
+                <img src="./resources/blog-2/kld-vs-bytes.svg" alt="Scatter plot of mean KL divergence on a log scale against weight bytes per token for twenty-one variants of Qwen3-0.6B, from Q2_K at the top left to Q8_0 at the bottom right, colour-coded by whether the standard mix, the head, or attention and feed-forward layers were changed." loading="lazy" decoding="async">
+                <figcaption>From the first post: every variant of one model. The shape of this curve is what transfers; the exact numbers don't.</figcaption>
+            </figure>
+
+            <h3>What transfers, and what doesn't</h3>
+            <p>
+                The shape transfers. Every published KLD table I've read has the same knee between 5 and 4
+                bits per weight and the same cliff below 3, and mine did too; that's reported plus one
+                measurement, not a law. The absolute numbers don't. A 0.6B model has
+                less redundancy than an 8B and the same quant costs it more; the widely reported rule is that
+                bigger models tolerate lower bits, and the first post's KLD table is consistent with it but
+                doesn't prove it, since it's one model. The per-tensor findings are the ones I'd carry over
+                with the most confidence, because they follow from structure rather than size: the head is a
+                lookup that every token pays for, attention projections are small and sensitive, feed-forward
+                weights are big and forgiving. For a MoE, the reported pattern is that expert weights tolerate
+                lower bits than the shared layers do; it's plausible for the same structural reason and I
+                haven't measured it. For an embedding model, KL divergence over next-token distributions is
+                the wrong tool altogether, since the model doesn't predict tokens; measure retrieval quality
+                on your own queries instead.
+            </p>
+            <p>
+                Which means the honest answer to "is this quant safe for my model" is always "run the
+                test", and the test needs to be cheap enough that you actually will.
+            </p>
+
+            <h3>The short recipe</h3>
+            <p>
+                The expensive part of the full run is the base file: 200 chunks, the second 256 tokens of
+                each scored (the first half is context), times a 152K vocabulary of 16-bit logits, is
+                15.5 GB. The cheap version uses 20 chunks. On my GPU the
+                base took five seconds to produce and each variant scored against it in under four. On a CPU
+                multiply by ten or so. The base file is 1.5 GB.
+            </p>
+
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-language">KL divergence in ten minutes</span>
+                    <button class="copy-button">Copy</button>
+                </div>
+                <pre><code><span class="comment"># reference logits, once per model, from the best file you have (BF16 or F16)</span>
+llama-perplexity -m model-BF16.gguf -f wiki.test.raw -c 512 --chunks 20 --kl-divergence-base base-20.kld
+
+<span class="comment"># each candidate, a few seconds each; --chunks is taken from the base file from here on</span>
+llama-perplexity -m model-Q4_K_M.gguf -f wiki.test.raw -c 512 --kl-divergence-base base-20.kld --kl-divergence
+<span class="comment">#   read: "Mean KLD", "Same top p", "RMS Δp"</span></code></pre>
+            </div>
+
+            <p>
+                How much do you give up with 20 chunks instead of 200? I did both. Q4_K_M scored
+                0.0683 &plusmn; 0.0014 on the short base against 0.0741 on the full
+                one, 8% lower. Q8_0 scored 0.0026 &plusmn; 0.0000 against
+                0.0027, 6% lower. The full run's log also prints its running mean after every
+                chunk, so I could see how the estimate settles for the other variants without rerunning
+                anything.
+            </p>
+
+            <div class="table-container">
+                <table class="content-table">
+                    <thead>
+                        <tr>
+                            <th>Variant</th>
+                            <th>After 5 chunks</th>
+                            <th>After 20</th>
+                            <th>After 40</th>
+                            <th>After 200</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Q8_0</td><td>0.0024 &plusmn; 0.0001</td><td>0.0026 &plusmn; 0.0001</td><td>0.0025 &plusmn; 0.0000</td><td>0.0027 &plusmn; 0.0000</td></tr>
+                        <tr><td>Q8_0 body, Q6_K head</td><td>0.0036 &plusmn; 0.0001</td><td>0.0038 &plusmn; 0.0001</td><td>0.0036 &plusmn; 0.0001</td><td>0.0038 &plusmn; 0.0000</td></tr>
+                        <tr><td>Q6_K</td><td>0.0098 &plusmn; 0.0004</td><td>0.0097 &plusmn; 0.0002</td><td>0.0097 &plusmn; 0.0001</td><td>0.0104 &plusmn; 0.0001</td></tr>
+                        <tr><td>Q4_K_M</td><td>0.0691 &plusmn; 0.0035</td><td>0.0683 &plusmn; 0.0014</td><td>0.0697 &plusmn; 0.0011</td><td>0.0741 &plusmn; 0.0006</td></tr>
+                        <tr><td>Q3_K_M</td><td>0.2222 &plusmn; 0.0086</td><td>0.2401 &plusmn; 0.0045</td><td>0.2385 &plusmn; 0.0034</td><td>0.2497 &plusmn; 0.0015</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <p>
+                The mean drifts up a little as more chunks come in, by 5 to 10%, because the later parts of
+                the test set are harder text. The ranking never changes, and the gaps between variants are
+                ten times larger than the drift. If your question is "which of these three files should I
+                ship", 20 chunks answers it. If your question is "is this 0.0027 or 0.0029", it doesn't, and
+                you probably don't have that question.
+            </p>
+            <p>
+                Two things to watch. The reference should be the least-quantized file you can get, and if
+                the only file is Q8_0 then you're measuring distance from Q8_0, not from the model, which is
+                fine as long as you say so. And the text should be something like what you'll run: wikitext
+                is a convention, not a law, and a quant that's fine on encyclopedia prose can be worse on
+                code or on a language the model is weaker in. If you have your own prompts, a few hundred
+                lines of them make a better test file than wikitext does.
+            </p>
+            <p>
+                At this point you know the ceiling for a machine, the bytes for a model, what context adds,
+                and what a quant costs. Before you touch a single flag, there's one more question, and I'd
+                put it first if the logic of the post allowed it: is the machine in front of you actually the
+                machine you think it is?
+            </p>
+
+            <h2>Pre-checks: is this the machine you think it is?</h2>
+            <p>
+                I want to tell this one as it happened, because it's the most useful thing in the post and I
+                nearly missed it. I started the architecture runs for this piece on the same laptop as
+                before, same binaries, same commands. The CPU numbers came out as expected. The GPU numbers
+                came out at less than half of what the first post reported. Qwen3-0.6B, which had decoded at
+                303 tok/s the day before, did 137. The 8B did 10.8
+                instead of 37.5. I checked for other processes on the GPU, checked VRAM, tried
+                different thread counts, changed the Windows power scheme. Nothing. Then I sampled the GPU's
+                clocks during a run and found it pinned at a few hundred megahertz with a power limit of
+                24 watts against a default of 55. The laptop was on battery.
+            </p>
+
+            <figure class="content-figure">
+                <img src="./resources/blog-2/battery.svg" alt="Four pairs of bars comparing plugged-in against battery: CPU decode 57 versus 55 tokens per second, CPU prompt processing 314 versus 334, GPU decode of the 0.6B model 370 versus 137, GPU decode of the 8B model 51 versus 11." loading="lazy" decoding="async">
+                <figcaption>Same laptop, same commands, one cable. The CPU pairs are the control: nothing changed there. The GPU lost 2.7x on the small model and 4.8x on the large one.</figcaption>
+            </figure>
+
+            <p>
+                Plugged in, the limit went to 90 W and the numbers came back: 370 and
+                51.4 tok/s. The CPU didn't care either way, 56.5 against
+                55.2 on decode and 314 against 334 on prompt
+                processing, both within the noise of a busy machine, which surprised me; I'd assumed battery
+                would cut CPU turbo too, and on this laptop it didn't measurably. So the bandwidth line held
+                for the CPU on battery and the GPU silently became a different, much slower device. Nothing
+                in llama.cpp's output hints at it. The model loads, every layer reports offloaded, the numbers
+                are just small.
+            </p>
+            <p>
+                That's the second time this laptop turned out not to be the machine I thought it was. The
+                first, in the first post, was the single DIMM. And having found two, I wrote the check I
+                should have run on day one. It's <code>precheck.py</code> in the repository, and this is its
+                output on this laptop, plugged in, on a quiet-ish morning.
+            </p>
+
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-language">python scripts/precheck.py</span>
+                    <button class="copy-button">Copy</button>
+                </div>
+                <pre><code>== OS and power
+Windows 10 (AMD64)
+battery present, on AC: True
+Power Scheme GUID: 6fecc5ae-f350-48a5-b669-b472cb895ccf  (Turbo)
+
+== CPU
+Intel(R) Core(TM) i7-14650HX  physical cores=16 logical=24
+ISA: sse4_2 avx avx2 fma f16c (py-cpuinfo does not list AVX-VNNI; the kernel DLL below tells you)
+ggml-cpu variants in bin/cpu: alderlake, cannonlake, cascadelake, cooperlake, haswell, icelake, ivybridge, piledriver, sandybridge, sapphirerapids, skylakex, sse42, x64, zen4; the loader scores each and keeps the best
+
+== Memory
+1 DIMM(s), 16 GB total, 5600 MT/s, 64-bit each: theoretical 44.8 GB/s
+free now: 3.9 GB
+streaming read, 1 process(es):  15.2 GB/s
+streaming read, 4 process(es):  32.7 GB/s
+streaming read, 8 process(es):  32.7 GB/s
+best is 73% of theoretical; 60 to 80% is normal for this kind of test
+decode ceilings at that bandwidth: 633 MB model 52 tok/s, 2 GB 16 tok/s, 4 GB 8.2 tok/s, 8 GB 4.1 tok/s
+llama-bench decode on Qwen3-0.6B-Q8_0.gguf with -t 8: 53.2 tok/s = 33.7 GB/s effective bandwidth (this is the figure to plan with; the streaming test above is a floor)
+  ceilings at 33.7 GB/s: 2 GB model 17 tok/s, 4 GB 8.4, 8 GB 4.2
+  CPU kernels loaded: ggml-cpu-alderlake.dll (alderlake = AVX2 + AVX-VNNI; haswell = AVX2; sandybridge = AVX only; sse42/x64 = no AVX)
+
+== GPU
+NVIDIA GeForce RTX 5060 Laptop GPU, 8151 MiB, 37 MiB, 3090 MHz
+power limit now 90.00 W, default 55.00 W
+free VRAM: 8114 MiB. Weights + n_ctx x KV bytes/token + ~10% compute must fit; on Windows an overflow spills to system RAM silently.
+other CUDA processes:
+  41160, C:\LeadForge\bin\llama-cuda\llama-server.exe
+  38192, C:\LeadForge\bin\llama-cuda\llama-server.exe
+  8968, C:\Users\inbox\AppData\Local\Programs\cursor\Cursor.exe
+
+== Background load
+CPU busy now: 9%
+
+== Warnings
+ - HYBRID CPU: the 16 "physical cores" include E-cores. llama.cpp defaults -t to all of them; set -t to the P-core count and measure.
+ - SINGLE CHANNEL: one DIMM populated. A second DIMM is the cheapest 2x for decode there is.</code></pre>
+            </div>
+
+            <p>
+                It takes under a minute, most of which is the bandwidth test and one short llama-bench run.
+                Every line of it is a thing that changed a number in one of these two posts. Here's the same
+                list as a checklist, with why each item matters and what to do about it, for machines that
+                aren't mine.
+            </p>
+
+            <div class="table-container">
+                <table class="content-table">
+                    <thead>
+                        <tr>
+                            <th>Check</th>
+                            <th>Why it matters</th>
+                            <th>What to do</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Power source and GPU power limit</td><td>On battery this laptop's GPU ran at 24 of 55 W and decode fell 3 to 5x. Quiet or silent fan profiles do the same on AC.</td><td>Plug in. Read <code>nvidia-smi -q -d POWER</code> and compare the current limit with the default. Record it with every result.</td></tr>
+                        <tr><td>Memory channels and speed</td><td>The single biggest term in the CPU ceiling. One DIMM halves it.</td><td>Count DIMMs, read their speed, compute the theoretical GB/s. If a slot is empty, that's the cheapest upgrade you'll find.</td></tr>
+                        <tr><td>Measured bandwidth</td><td>Achieved is 60 to 80% of theoretical. The gap tells you whether tuning can help.</td><td>Run the streaming test and a small llama-bench; use the higher number as your line.</td></tr>
+                        <tr><td>Core topology</td><td>Hybrid Intel parts default to using E-cores, which cost 5 to 50% on decode depending on load. SMT doesn't add bandwidth.</td><td>Find the P-core count. Set <code>-t</code> to it. Measure 4, 6, 8 too; four cores with SMT matched eight without in the first post.</td></tr>
+                        <tr><td>Instruction set and CPU kernels</td><td>No AVX at all means the sse42 or x64 kernels, where K-quants lose their fast paths and prompt processing is 2 to 3x slower; AVX without AVX2 means the sandybridge kernels, which keep the K-quant ordering. AVX-512 and AMX builds exist but the loader has to pick them.</td><td>Run llama-bench with <code>-v</code> and read which <code>ggml-cpu-*</code> library loaded. If it's not the one you expected, that's your first bug.</td></tr>
+                        <tr><td>VRAM free, not total</td><td>Other processes hold VRAM. Weights plus context cache plus compute must fit, or Windows spills into system RAM without an error and speed falls 4x.</td><td><code>nvidia-smi --query-compute-apps</code>. Do the arithmetic with the KV bytes per token from the chart above and your real context length.</td></tr>
+                        <tr><td>Background load</td><td>Prompt processing swung 172 to 483 tok/s on this machine in one hour with the same command.</td><td>Look at CPU use before a run. Compare settings back to back, never across sessions. Report the load with the number.</td></tr>
+                        <tr><td>Operating system</td><td>Windows: silent VRAM spill, no E-core exclusion, OpenMP threadpool. Linux: E-cores excluded by default, direct I/O available. macOS: unified memory, so the DIMM line is the GPU line too.</td><td>Know which of the first post's chapters apply. The threads chapter is Windows-specific; the bytes model isn't.</td></tr>
+                        <tr><td>Model file identity</td><td>Two files with the same name can have different tensor counts, tied or separate heads, different quant mixes. The first post found 310 versus 311 tensors across "the same" Qwen3-0.6B.</td><td>Read the tensor list. <code>zoo_meta.py</code> prints head share, expert counts and KV bytes per token in one line.</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3>Reconciling two days of GPU numbers</h3>
+            <p>
+                One consequence of writing the check after the first post rather than before it: the first
+                post's GPU numbers are lower than today's. Yesterday, Qwen3-8B at full offload decoded at
+                37.5 tok/s and the 0.6B at 303. Today, plugged in and with the same
+                commands, they do 51.4 and 370, which is 37% more for
+                the 8B and puts it at 345 GB/s, 90% of the card's 384 rather than the
+                66% I reported. I can name two differences and can't rule out a third. Yesterday
+                two other llama-server processes held about a gigabyte of VRAM throughout, which put the 8B
+                at the edge of the card; today they held nothing. Yesterday the CPU was under heavy
+                background load, and I tested today what that does: running a 16-thread CPU benchmark
+                alongside the GPU run cost the 8B 49.9&nbsp;&plusmn;&nbsp;0.2 against 46.9&nbsp;&plusmn;&nbsp;0.4 tok/s and the
+                0.6B 364.9&nbsp;&plusmn;&nbsp;1.2 against 345.1&nbsp;&plusmn;&nbsp;8.4, a few percent, not thirty. The third
+                candidate is the GPU power limit, which moves on this laptop between 55 and
+                115 W depending on things I don't fully control, and which I didn't record yesterday. That's
+                the whole reason the pre-check prints it. The first post's conclusions don't change; the
+                curves and the comparisons were all within-session. But the absolute GPU numbers there
+                should be read as "this card on that day", and if you rerun them plugged in on a quiet
+                machine, expect higher.
+            </p>
+            <p>
+                With the machine actually known, bandwidth measured, cores counted, kernels identified,
+                VRAM arithmetic done, the question becomes practical: given what you found, what do you try
+                first?
+            </p>
+
+            <h2>The order of things to try</h2>
+            <p>
+                The first post ended with a ladder for one laptop. This one is the ladder for a class of
+                machine, ordered by how much each step is likely to pay on that class, so that when you sit
+                down at a new box you don't spend the afternoon on a flag that can't matter there. The
+                bandwidth model tells you most of the order. Anything that reduces bytes per token on the
+                device that holds the weights goes first. Anything that only shuffles compute goes last. And
+                on a device where the model is launch-bound rather than bandwidth-bound, most of the byte
+                levers stop working and the order changes.
+            </p>
+
+            <div class="table-container">
+                <table class="content-table">
+                    <thead>
+                        <tr>
+                            <th>Machine</th>
+                            <th>Bandwidth line</th>
+                            <th>Model size that decodes at 10+ tok/s</th>
+                            <th>Try first</th>
+                            <th>Then</th>
+                            <th>Don't bother</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>2008 to 2010 desktop, DDR3, SSE4.2 only (Core 2, first-gen Core i)</td><td>15 to 25 GB/s</td><td>Up to about 2 GB read per token: 1B to 3B at Q4_0 or Q8_0</td><td>Confirm which kernels loaded. Q4_0 or Q8_0, not K-quants. Threads = physical cores.</td><td>Self-speculation on repetitive tasks. A small MoE if RAM allows.</td><td>K-quants and IQ quants (slow paths without AVX). Anything over 4B. GPU offload to whatever card is in it.</td></tr>
+                        <tr><td>2011 to 2013 desktop, DDR3, AVX but no AVX2 (Sandy, Ivy Bridge)</td><td>15 to 25 GB/s</td><td>The same 1B to 3B, any quant</td><td>Confirm the sandybridge kernels loaded. Quant by the accuracy table; K-quants are fine here.</td><td>As above.</td><td>Expecting prompt processing to match a modern chip; it's 2 to 3x slower per core.</td></tr>
+                        <tr><td>Thin client or mini PC, LPDDR4/5, 4 to 8 GB, 2 to 4 cores</td><td>20 to 40 GB/s</td><td>Up to about 1.5 GB: 0.5B to 1.7B at Q8_0, 3B at Q4</td><td>RAM headroom first (the file plus cache plus the OS must fit). Threads = cores. Q8_0 for anything under 1B.</td><td>KV cache at q8_0 if context is long. n-gram speculation for editing and RAG.</td><td>Big MoE (RAM). Pinning. Anything that needs a compiler on the box.</td></tr>
+                        <tr><td>Modern laptop, one DIMM, hybrid Intel (this one)</td><td>34 to 45 GB/s</td><td>Up to about 3.5 GB: 4B at Q6; an 8B at Q4 lands at 7 tok/s</td><td><code>-t</code> = P-cores. Plug in. Quant by the accuracy table, head separately if the vocabulary is large.</td><td>The second DIMM. q8_0 cache past 4K. Speculation by workload.</td><td>Pinning. <code>-tb</code>. Poll settings. Below Q8_0 on a sub-1B model if it's going to the GPU anyway.</td></tr>
+                        <tr><td>Desktop, DDR5 dual channel</td><td>70 to 100 GB/s</td><td>Up to about 8 GB: 8B at Q8, 14B at Q4</td><td>Threads = physical cores (no E-core trap on AMD; same trap on Intel). Quant by the table.</td><td>A 30B-A3B class MoE, which reads 2 GB per token and fits in 32 GB.</td><td>Chasing the last 10% with kernels; buy the GPU instead.</td></tr>
+                        <tr><td>Apple silicon, unified memory</td><td>100 to 800 GB/s by chip</td><td>Whatever fits in RAM minus what macOS needs: 8B to 70B</td><td>Metal, all layers. The bandwidth line is the DIMM line, so the chip tier decides everything.</td><td>MoE, because RAM is the constraint and bandwidth is generous. q8_0 cache at depth.</td><td>CPU-only runs. The Windows threads chapter.</td></tr>
+                        <tr><td>Discrete GPU, model fits in VRAM</td><td>300 to 1000 GB/s</td><td>Up to VRAM minus context: 8B at Q6 on 8 GB, 32B at Q4 on 24 GB</td><td>Everything on the card, head included. Flash attention on. Check the power limit.</td><td>q8_0 cache past 8K. Drafts of 16 or more, since verification is nearly free when launch-bound.</td><td>Quantizing a sub-2B model below Q8_0 for speed; it's launch-bound and won't move.</td></tr>
+                        <tr><td>Discrete GPU, model doesn't fit</td><td>The CPU's line for whatever spills</td><td>Decided by the split, not the card</td><td>Do the VRAM arithmetic with the real context length. Quantize the cache before moving any weights.</td><td>Move FFN or expert weights to the CPU, not whole layers. <code>--n-cpu-ffn</code>, <code>--n-cpu-moe</code>.</td><td>Trust <code>--fit</code> without reading what it chose. Assume "loaded fine" means "fits".</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3>Old CPUs: the quant order flips</h3>
+            <p>
+                The "2010 desktop" row has a surprise in it that I measured on this machine by forcing the
+                CPU kernel libraries an old chip would load. llama.cpp ships fourteen builds of its CPU
+                kernels and picks the best one for the processor at startup. Put only the SSE4.2 build in the
+                folder and it runs the code a Core 2 or first-generation Core i7 would run. Put only the
+                Sandy Bridge build there and you get AVX without AVX2, which is the 2011 to 2013 desktops.
+                Same files, same threads, same memory, one session.
+            </p>
+
+            <figure class="content-figure">
+                <img src="./resources/blog-2/oldcpu.svg" alt="Grouped bars of decode and prompt-processing speed for six quantizations under three kernel sets. Under SSE4.2 only, Q8_0 decodes at 53 and Q4_0 at 70 while Q6_K, Q5_K_M, Q4_K_M and IQ4_XS fall to 38 to 44, and their prompt processing collapses to about 80 against 231 for Q8_0. Under AVX the K-quants recover to 63 to 81. Under AVX2 everything is fastest and Q4_0 and IQ4_XS lead at 91." loading="lazy" decoding="async">
+                <figcaption>Measured, one session. This simulates the instruction set of an old CPU, not its slower memory or smaller caches; a real 2010 box would be lower across the board, but the ordering is what matters.</figcaption>
+            </figure>
+
+            <p>
+                With only SSE4.2, Q8_0 decodes at 53 tok/s and Q4_0 at 70, but
+                Q4_K_M, the file everyone downloads, does 44, slower than the Q8_0 that's
+                twice its size, and IQ4_XS does 38. Prompt processing is worse: the K-quants
+                and IQ quants fall to about 86 tok/s against 231 for Q8_0 and
+                226 for Q4_0. The K-quant and importance-quant formats have fast dot-product
+                kernels written for AVX and AVX2, and without those instructions they fall back to generic
+                code that costs more per byte than the bytes save. The old, simple Q4_0 format has a fast
+                SSE path, and so does Q8_0. Give the same files AVX and the K-quants come most of the way
+                back and overtake Q4_0: Q4_K_M at 77, IQ4_XS at 81 against
+                Q4_0 at 77. Give them AVX2 and everything is where the first post put it,
+                with Q4_0 and IQ4_XS on top at 91 and 91.
+            </p>
+            <p>
+                So the rule splits on one instruction set, and it's AVX, not AVX2. On a machine with no AVX
+                at all, which is Intel before Sandy Bridge and most thin clients built on Atom, Celeron or
+                Pentium Silver cores before 2023: Q4_0 if you can afford its accuracy, which on a small
+                model you often can't, or Q8_0 if you can afford the bytes, and never a K-quant. Check the
+                accuracy cost of Q4_0 with the ten-minute test, because the first post found it a bad deal
+                against Q4_K_M at the same size; on an SSE-only CPU it's the only 4-bit deal there is. On a
+                machine with AVX but not AVX2, the 2011 to 2013 desktops, pick the quant by accuracy the
+                way you would on a modern chip; you lose prompt-processing speed, not the decode ordering.
+                Either way, run the pre-check first, because the first thing it tells you is which kernels
+                you got.
+            </p>
+
+            <h3>The ladder, restated for any device</h3>
+            <p>
+                Strip the table down and it's five steps in a fixed order. One, find the line: measure
+                bandwidth, count bytes per token for the model you have in mind, divide. If the answer is
+                under what you need, no flag will save you; change the model, the quant, or the machine.
+                Two, make the machine what you think it is: plug it in, check the power limit, check the
+                kernels, check VRAM free, check the load. On this laptop those were worth 2x on the CPU and
+                3 to 5x on the GPU before any tuning. Three, get onto the line: threads equal to physical
+                performance cores, and on a GPU, everything offloaded including the head. That's the
+                43.6 to 56.6 tok/s step from the first post, worth 5 to 50% depending on the day.
+                Four, reduce bytes with the accuracy test open: quant by the table, head separately if it's
+                a big share, cache at q8_0 past a few thousand tokens, experts on the CPU if the GPU is
+                short. Each of those is a measured trade. Five, and only now, look past the line: speculation
+                where the workload repeats its input, and custom code where you can show, with a profile,
+                that the stock path is leaving something behind.
+            </p>
+            <p>
+                Steps one to four get you to the line. The first post's best CPU result without speculation
+                was 60 tok/s against a line of 70. Step five is the only one that goes above it, and it's
+                the one people reach for first because it sounds clever. It works, in specific conditions.
+                What are they, and how do they change with the workload and the device?
+            </p>
+
+            <h2>Past the ceiling: speculation, by workload and by device</h2>
+            <p>
+                Every technique so far reads the weights once and produces one token. Speculative decoding
+                reads them once and, when it's lucky, produces several: something cheap guesses the next few
+                tokens, the model checks all of them in a single batched step, and every guess that matches
+                is kept. The check costs about what one token costs, because the bytes are the same and the
+                extra arithmetic is nearly free on a device that's waiting on memory anyway. When the guesses
+                are wrong you've wasted a step. So the whole question is where the guesses come from and how
+                often they're right, and that's a property of the workload, not the model.
+            </p>
+            <p>
+                The first post measured this on the 0.6B with the cheapest possible guesser, which looks for
+                the last few tokens in the prompt and proposes whatever followed them there. On an editing
+                task, where the output largely repeats the input, the CPU went from 32.0 to
+                80.5 tok/s, past the 70 tok/s ceiling for a single-token step. On open-ended
+                writing it went from 47.1 to 47.5, which is nothing, because
+                there was nothing to look up. On the GPU the same editing task went from 243 to
+                408, and longer drafts helped there when they hurt on the CPU, because verifying
+                sixteen tokens on a launch-bound GPU costs about the same as verifying one.
+            </p>
+
+            <figure class="content-figure">
+                <img src="./resources/blog-2/speculative.svg" alt="Grouped bars of tokens per second for three workloads, free writing, editing and quoting, under several speculative decoding settings on the CPU and the GPU. The editing and quoting bars roughly double with n-gram drafting; the free-writing bars do not move." loading="lazy" decoding="async">
+                <figcaption>From the first post. The workload decides whether speculation helps; the device decides how long a draft to use.</figcaption>
+            </figure>
+
+            <p>
+                Here's how that generalizes, as a table, because the rules are simple once the mechanism is
+                clear. The rows are workloads and the columns are what the guesser can be.
+            </p>
+
+            <div class="table-container">
+                <table class="content-table">
+                    <thead>
+                        <tr>
+                            <th>Workload</th>
+                            <th>Where the guesses come from</th>
+                            <th>Expected acceptance</th>
+                            <th>Worth it on a CPU?</th>
+                            <th>Worth it on a GPU?</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Editing, rewriting, reformatting, translation of structured text</td><td>The prompt itself (n-gram lookup)</td><td>High: 58 to 76% of drafted tokens accepted in the first post</td><td>Yes, 2 to 2.5x, short drafts (8)</td><td>Yes, 1.7 to 2x, long drafts (16+)</td></tr>
+                        <tr><td>RAG answers that quote the retrieved passages, summaries with quotes, code edits</td><td>The prompt</td><td>Medium to high, depends on how much is quoted</td><td>Yes, 1.5 to 2.5x</td><td>Yes</td></tr>
+                        <tr><td>Code completion, repetitive boilerplate</td><td>The prompt, or a cache of previous outputs (ngram-cache)</td><td>Medium</td><td>Usually</td><td>Yes</td></tr>
+                        <tr><td>Open-ended writing, chat, reasoning</td><td>Nothing in the prompt; needs a draft model</td><td>Low without a draft model; with a same-family small model, high on predictable text and low on open prose (the 8B below went up 1.9x on editing and down on free writing)</td><td>Only with a draft model, and only if the target is large enough that the draft is cheap by comparison</td><td>Same, and the draft model needs its own VRAM</td></tr>
+                        <tr><td>Anything on a launch-bound small model on a GPU</td><td>Either</td><td>As above</td><td>n/a</td><td>Drafts are close to free; go long</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <p>
+                The draft-model case is the one people usually mean by speculative decoding, and it's the
+                one with the most conditions. The first post tried it with Qwen3-8B as the target and
+                Qwen3-0.6B as the draft, on a split where the 8B was partly on the CPU: editing went from
+                13.7 to 26.0 tok/s, and free writing went from 14.0
+                to 12.5, slightly down, because the draft's own cost wasn't covered by its
+                acceptance rate on prose the small model couldn't predict. A draft model has to be much
+                cheaper than the target per token, agree with it often, and fit alongside it. The first two
+                are usually true for a same-family pair with a 10x size gap; the third is the one that fails
+                on an 8 GB card.
+            </p>
+            <p>
+                By architecture, three cautions. On a mixture of experts, the verification batch of k tokens
+                can route to up to k different expert sets, so the "one step's worth of bytes" assumption
+                breaks and the check costs more than a single token would; whether the acceptance rate
+                covers that is a measurement, and I haven't made it. On recurrent and hybrid models, a
+                rejected draft can't be undone by trimming a cache the way it can with attention, because
+                the state has already moved on; llama.cpp handles this with checkpoints in the server for
+                some architectures, and it's worth confirming on yours that speculation is actually on and
+                actually helping rather than silently falling back. On encoder-decoder models the decoder is
+                small and often already fast enough that the bookkeeping outweighs the gain; try it, but
+                expect less.
+            </p>
+            <p>
+                By device, one rule. Draft length should follow how much a bigger batch costs. On a CPU near
+                its bandwidth line, verifying sixteen tokens does real extra arithmetic and longer drafts
+                lose when acceptance drops; eight was the sweet spot in the first post. On a GPU that's
+                launch-bound, the batch is nearly free and longer drafts win. Between those, measure: two
+                draft lengths, one workload of yours, five minutes.
+            </p>
+            <p>
+                Speculation is as far as the flags go. What's left is code: a kernel for a tensor type the
+                backend handles badly, a fused operation the graph doesn't have, a sampler with real work in
+                it, a driver loop with control the tools don't expose. The first post wrote one of those and
+                found it bought nothing over llama-server on the same hardware. So when does custom code
+                actually pay, and how do you know before you've written it?
+            </p>
+
+            <h2>When to write code</h2>
+            <p>
+                I went into the first post expecting to write a Cython decode loop and come out with a
+                number. I came out with a cffi binding to llama.dll, a Python loop, and the finding that the
+                loop's overhead was tens of microseconds against a decode step of 27 milliseconds on the CPU
+                and 3.5 on the GPU. There was nothing for compiled code to recover, because the time wasn't in
+                the loop. It was in the memory bus. That's the general shape of the answer: custom code pays
+                when the stock path is doing something other than reading the weights as fast as the
+                hardware allows, and you can only know that by looking at where the time goes.
+            </p>
+            <p>
+                Here is how to tell, in order of how cheap the test is.
+            </p>
+
+            <div class="table-container">
+                <table class="content-table">
+                    <thead>
+                        <tr>
+                            <th>Symptom</th>
+                            <th>What it means</th>
+                            <th>What custom code could do</th>
+                            <th>Worth it?</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Effective bandwidth is at the line (within 15% of measured streaming read)</td><td>Decode is reading weights as fast as the memory system allows</td><td>Nothing, short of reading fewer bytes</td><td>No. Change the quant or the machine.</td></tr>
+                        <tr><td>Effective bandwidth is well under the line on the CPU, and threads and kernels are right</td><td>Some operation is compute-bound or badly parallelized: a scan, an unusual activation, a tensor type without a fast path</td><td>A kernel for that op or type</td><td>Maybe. Profile first; the op has to be a big share of the step.</td></tr>
+                        <tr><td>Small model on a GPU, speed flat across quants</td><td>Launch-bound: the graph is hundreds of small kernels</td><td>Fewer launches: fusion, CUDA graphs (already on), or a bigger batch through speculation</td><td>Fusion is real work inside ggml; speculation is a flag. Try the flag.</td></tr>
+                        <tr><td>Prompt processing far below the GPU's or CPU's compute peak</td><td>Batch too small, or a matmul path that isn't using the fast instructions (VNNI, AMX, tensor cores)</td><td>Check <code>-ub</code> and the loaded kernels before writing anything</td><td>Rarely. This is usually configuration.</td></tr>
+                        <tr><td>Time between tokens is spent outside decode (tokenizer, sampler, HTTP, JSON)</td><td>The host side is the bottleneck, common on very fast GPUs with small models</td><td>A leaner driver loop, batched sampling, a sampler in C</td><td>Sometimes, on a launch-bound GPU with a big vocabulary. Measure the driver against llama-server first.</td></tr>
+                        <tr><td>Many users, many sequences</td><td>Batching across sequences reads the weights once for all of them</td><td>A server that batches: llama-server already does this with slots</td><td>Use the server. Custom code here is reinventing it.</td></tr>
+                        <tr><td>Repeated prefixes across requests (system prompts, RAG context)</td><td>Prompt processing being paid again for the same tokens</td><td>Prefix caching, KV reuse across requests</td><td>Yes, and llama-server has it; a custom driver can do it more precisely for a known workload.</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <p>
+                The first row is the one that applies most of the time, and it's the reason I'd tell anyone
+                to run the pre-check and the bandwidth arithmetic before opening an editor. If the effective
+                bandwidth of a decode step is at the line, no kernel makes it faster, because the kernel is
+                not what's slow. A very good kernel and a mediocre one read the same bytes. On this laptop
+                the dense models sit at the line already, and that's with a prebuilt binary and no tuning
+                beyond the thread count. The stock kernels are good. The stock kernels have had years of
+                people with exactly your hardware improving them.
+            </p>
+            <p>
+                The second row is where custom kernels legitimately live, and the zoo gave one small example
+                of it: the two state-space models sat about 10 to 15% under the line on the CPU, because the
+                selective scan does per-token work that isn't a matrix multiply, and on the GPU Mamba was the
+                most launch-bound model of the six. If you were shipping a Mamba-family model on a CPU and
+                needed that 15%, a fused scan kernel is the kind of thing that could get it, and ggml's CPU
+                backend is a readable place to add one: each op has a compute function per tensor type, the
+                threading is a work-split across rows, and the build picks the instruction set. The honest
+                cost is that you're now maintaining a fork of a fast-moving project, and the honest test is a
+                profile showing the op you'd rewrite is a large share of the step. llama.cpp's own tools
+                give you most of it: <code>llama-bench</code> for the totals, <code>GGML_SCHED_DEBUG=1</code> in the
+                environment to print how the graph was split across backends and which ops landed where,
+                and for per-op timing a build with profiling enabled or a sampling profiler on the process,
+                which on Windows means WPA or VTune and on Linux means perf. Take the profile before the
+                decision, not after.
+            </p>
+            <p>
+                The rows about the host side are where a driver of your own earns its keep, and it's control
+                rather than raw speed. The first post's driver matched llama-server's speed and then beat it
+                on the editing workload by being able to set the n-gram parameters the server's defaults had
+                wrong for that task. That's the pattern: the stock tools cover the general case well, and a
+                thin layer over the library lets you specialize the parts your product actually does, which
+                for a real-time product is usually prompt reuse, draft policy, sampling constraints and
+                batching of the specific requests you get. None of that is a kernel. All of it is a few
+                hundred lines against a stable C API, and it survives llama.cpp updates in a way a fork of
+                the kernels doesn't.
+            </p>
+            <p>
+                Layers are the other thing people ask about, and the answer is shorter. Changing which layers
+                live where (GPU, CPU, the split between attention and feed-forward) is a flag, and the first
+                post measured it. Changing what the layers compute is a different model, and that's fine
+                tuning or distillation, not inference engineering. The one layer-level trick that is
+                inference engineering, quantizing tensors to different precisions by role, is also a flag,
+                <code>--tensor-type</code> in llama-quantize, and the first post's accuracy table is the
+                guide to using it. There's no layer to write.
+            </p>
+            <p>
+                So the summary is unglamorous. Custom code pays when a profile shows the stock path off the
+                line for a reason you can name, or when the product needs control the tools don't expose.
+                It doesn't pay as a first move, and it never pays before the pre-check. Which leaves the
+                practical question this whole post has been circling: what does a first hour on a new machine
+                actually look like, and how do you write it down so the numbers are still worth something
+                next month?
+            </p>
+
+            <h2>A protocol for a new box</h2>
+            <p>
+                This is what I'd do in the first hour on a machine I've never tuned, with the commands, in
+                the order the post has argued for. Most of it is the same for a thin client, a laptop, a
+                desktop and a GPU box; the parts that differ are marked. Assume the prebuilt llama.cpp for the
+                platform is unpacked and one small dense model is on disk. Nothing needs a compiler.
+            </p>
+
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-language">One hour, in order</span>
+                    <button class="copy-button">Copy</button>
+                </div>
+                <pre><code><span class="comment"># 0. five minutes: is the machine what you think it is</span>
+python scripts/precheck.py                              <span class="comment"># AC, power limit, DIMMs, cores, kernels, bandwidth, VRAM, load</span>
+
+<span class="comment"># 1. five minutes: the line, and the bytes of the model you actually want to run</span>
+llama-bench -m small-dense.gguf -p 0 -n 64 -r 3 -t &lt;P-cores&gt; -o jsonl      <span class="comment"># effective GB/s = size x tok/s</span>
+python scripts/zoo_meta.py                              <span class="comment"># bytes read per token, KV per token, head share, expert counts</span>
+<span class="comment">#    ceiling = GB/s / (weights read + context x KV per token). If it's below what you need, stop here and change something big.</span>
+
+<span class="comment"># 2. ten minutes: threads (CPU boxes), power and offload (GPU boxes)</span>
+llama-bench -m model.gguf -p 0 -n 128 -r 3 -t 4,6,8,12,16 -ngl 0             <span class="comment"># decode only; pick the peak, expect it at the P-core count</span>
+llama-bench -m model.gguf -p 0 -n 128 -r 3 -ngl 99                            <span class="comment"># GPU: everything on, head included; compare with -ngl N-1 to see the head's cost</span>
+nvidia-smi -q -d POWER                                                         <span class="comment"># the limit, again, during the run</span>
+
+<span class="comment"># 3. fifteen minutes: quant, with the accuracy test open</span>
+llama-perplexity -m model-BF16.gguf -f test.txt -c 512 --chunks 20 --kl-divergence-base base.kld
+llama-perplexity -m model-Q4_K_M.gguf -f test.txt -c 512 --kl-divergence-base base.kld --kl-divergence
+llama-bench -m model-Q8_0.gguf,model-Q6_K.gguf,model-Q4_K_M.gguf -p 256 -n 128 -r 3 -t &lt;P-cores&gt;
+<span class="comment">#    no AVX at all? add Q4_0 to that list and drop the K-quants. large vocabulary? add a head-only variant (--output-tensor-type).</span>
+
+<span class="comment"># 4. ten minutes: context, at the depth you'll really run</span>
+llama-bench -m model.gguf -p 0 -n 32 -d 0,2048,8192 -r 2 -ctk f16 -ctv f16
+llama-bench -m model.gguf -p 0 -n 32 -d 0,2048,8192 -r 2 -ctk q8_0 -ctv q8_0
+<span class="comment">#    CPU at depth: also try -fa 0. GPU: do the VRAM arithmetic with the deepest row.</span>
+
+<span class="comment"># 5. ten minutes: speculation, on your workload, not mine</span>
+llama-server -m model.gguf ... --spec-type ngram-simple --spec-ngram-simple-size-n 3 --spec-ngram-simple-size-m 8    <span class="comment"># CPU: short drafts</span>
+llama-server -m model.gguf ... --spec-type ngram-simple --spec-ngram-simple-size-n 3 --spec-ngram-simple-size-m 16   <span class="comment"># GPU: long drafts</span>
+<span class="comment">#    time three of your real prompts each way; keep it only if the repetitive ones win and the open ones don't lose</span>
+
+<span class="comment"># 6. five minutes: write it down</span>
+<span class="comment">#    every llama-bench run with -o jsonl, appended to one file, with a tag, the power limit and the load at the time</span></code></pre>
+            </div>
+
+            <p>
+                Step six is the one people skip and the one that made these two posts possible. Every
+                number in both of them is a row in one JSON-lines file with a tag, and the posts are built
+                from that file, so a prose sentence can't disagree with a measurement. You don't need the
+                build system; you need the file. When you rerun something next month on a new driver or a
+                new llama.cpp release, you append rows and compare, and when a number looks wrong you can see
+                what else was true at the time. The two things I'd add to every row after this week are the
+                GPU power limit and the CPU load, because those were the two conditions that explained the
+                two biggest surprises.
+            </p>
+
+            <h2>What this doesn't tell you</h2>
+            <ul>
+                <li>The zoo is six small models. It shows the bytes model holds across architectures at the sub-2B scale on one CPU and one GPU. A 30B MoE or a 70B dense model on a machine with the memory for them will show the same shape, but I haven't measured them and the absolute numbers here don't scale up by arithmetic alone; attention costs, launch overheads and cache behaviour all change with size.</li>
+                <li>The old-CPU result simulates the instruction set, not the memory system. A real 2010 desktop has a third of this laptop's bandwidth and much smaller caches, so expect every bar to be lower; the ordering between quants is what I'd trust to carry over.</li>
+                <li>Prompt-processing numbers across the zoo are single runs on a shared laptop. I've drawn no conclusions from them and neither should you.</li>
+                <li>Accuracy was measured for one model. The per-tensor sensitivities are the part I'd generalize; the absolute KLD of "Q4_K_M" is not a property of Q4_K_M, it's a property of Q4_K_M on that model.</li>
+                <li>Windows, prebuilt binaries, one vendor's GPU. The pre-check's Linux and macOS branches are best effort. The spill behaviour is specific to Windows; the bandwidth arithmetic isn't.</li>
+                <li>Single-user latency throughout. Serving many users batches across sequences and changes which device wins by a lot; that's a different post.</li>
+            </ul>
+
+            <h2>Closing note</h2>
+            <p>
+                The first post's closing line was that the ceiling picks the flags. This one adds the two
+                things I'd put in front of that. Count the bytes the way the model actually reads them, not
+                the way the file size suggests, because that's the difference between a MoE looking slow and
+                looking fast, between an 8K context being fine and being a cliff. And check that the machine
+                is the machine you think it is before believing any number it gives you, because mine was a
+                different, slower computer for a whole afternoon and told me nothing about it. Everything
+                else in inference tuning is either one of those two, or a flag that a measurement will pick
+                for you in ten minutes.
+            </p>
+
+            <div style="margin-top: 3rem; padding: 2rem; background: var(--secondary-bg); border-radius: 15px; border: 1px solid var(--border-color);">
+                <h3 style="margin-top: 0;">Resources &amp; Links</h3>
+                <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1rem; margin-bottom: 2rem;">
+                    <a href="https://github.com/inboxpraveen/ggml-inference-lab" class="demo-button" style="margin: 0;" target="_blank" rel="noopener noreferrer">Scripts and raw results</a>
+                    <a href="./blog-1.html" class="demo-button" style="margin: 0;">Part 1: one laptop, every knob</a>
+                    <a href="https://github.com/ggml-org/llama.cpp/releases/tag/b10941" class="demo-button" style="margin: 0;" target="_blank" rel="noopener noreferrer">llama.cpp b10941</a>
+                </div>
+
+                <h4>Models in the zoo:</h4>
+                <p style="margin-top: 0.5rem;">
+                    <a href="https://huggingface.co/Qwen/Qwen3-0.6B-GGUF" target="_blank" rel="noopener noreferrer">Qwen3-0.6B</a>,
+                    <a href="https://huggingface.co/ggml-org/gemma-3-1b-it-GGUF" target="_blank" rel="noopener noreferrer">Gemma-3-1B</a>,
+                    <a href="https://huggingface.co/bartowski/granite-3.1-1b-a400m-instruct-GGUF" target="_blank" rel="noopener noreferrer">Granite-3.1 1B-A400M</a>,
+                    <a href="https://huggingface.co/tiiuae/Falcon-H1-0.5B-Instruct-GGUF" target="_blank" rel="noopener noreferrer">Falcon-H1-0.5B</a>,
+                    <a href="https://huggingface.co/LiquidAI/LFM2-700M-GGUF" target="_blank" rel="noopener noreferrer">LFM2-700M</a>,
+                    <a href="https://huggingface.co/Felladrin/gguf-mamba-130m-hf" target="_blank" rel="noopener noreferrer">Mamba-130M</a> (requantized from F16; the older Q8_0 conversions fail to load),
+                    <a href="https://huggingface.co/Felladrin/gguf-flan-t5-small" target="_blank" rel="noopener noreferrer">flan-t5-small</a>,
+                    <a href="https://huggingface.co/nomic-ai/nomic-embed-text-v1.5-GGUF" target="_blank" rel="noopener noreferrer">nomic-embed-text-v1.5</a>.
+                </p>
+
+                <h4>Tags:</h4>
+                <div class="tag-row" style="--domain: var(--d-llm);">
+                    <span class="domain-pill">LLM &amp; RAG</span>
+                    <span class="stack-tag">llama.cpp</span>
+                    <span class="stack-tag">Architectures</span>
+                    <span class="stack-tag">Edge hardware</span>
+                    <span class="stack-tag">Quantization</span>
+                    <span class="stack-tag">Inference Engineering</span>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <p class="footer-note">
+                    &copy; <span data-year>2026</span> Praveen Kumar &middot;
+                    Static HTML, one stylesheet, no build step &mdash;
+                    <a href="https://github.com/inboxpraveen/inboxpraveen.github.io" target="_blank" rel="noopener noreferrer">source on GitHub</a>
+                </p>
+                <div class="footer-social">
+                    <a href="https://github.com/inboxpraveen" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                        <svg class="icon" aria-hidden="true"><use href="#i-github"></use></svg>
+                    </a>
+                    <a href="https://www.linkedin.com/in/praveen-kumar-inbox/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                        <svg class="icon" aria-hidden="true"><use href="#i-linkedin"></use></svg>
+                    </a>
+                    <a href="https://x.com/InboxPraveen" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
+                        <svg class="icon" aria-hidden="true"><use href="#i-x"></use></svg>
+                    </a>
+                    <a href="mailto:inboxpraveen.17@gmail.com" aria-label="Email">
+                        <svg class="icon" aria-hidden="true"><use href="#i-mail"></use></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <button class="back-to-top" type="button" data-back-to-top aria-label="Back to top">
+        <svg class="icon" aria-hidden="true"><use href="#i-arrow-up"></use></svg>
+    </button>
+
+    <script src="../site.js" defer></script>
+
+</body>
+</html>

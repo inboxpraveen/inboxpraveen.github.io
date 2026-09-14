@@ -1564,11 +1564,18 @@ python scripts/bench_driver.py --model Qwen3-0.6B-Q8_0.gguf --bin bin/cpu --thre
                 either. Measure the ceiling, then measure your distance from it, and the flags mostly pick
                 themselves.
             </p>
+            <p>
+                There's a second part. <a href="./blog-2.html">Before you tune anything</a> takes what carried
+                over from this laptop to other machines and other kinds of model: six architectures measured
+                against the same bandwidth line, a pre-check script, a ten-minute version of the accuracy
+                test, and the order to try things in on hardware you've never touched.
+            </p>
 
             <div style="margin-top: 3rem; padding: 2rem; background: var(--secondary-bg); border-radius: 15px; border: 1px solid var(--border-color);">
                 <h3 style="margin-top: 0;">Resources &amp; Links</h3>
                 <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1rem; margin-bottom: 2rem;">
                     <a href="https://github.com/inboxpraveen/ggml-inference-lab" class="demo-button" style="margin: 0;" target="_blank" rel="noopener noreferrer">Scripts and raw results</a>
+                    <a href="./blog-2.html" class="demo-button" style="margin: 0;">Part 2: the field guide</a>
                     <a href="https://github.com/ggml-org/llama.cpp/releases/tag/b10941" class="demo-button" style="margin: 0;" target="_blank" rel="noopener noreferrer">llama.cpp b10941</a>
                     <a href="https://huggingface.co/Qwen/Qwen3-0.6B-GGUF" class="demo-button" style="margin: 0;" target="_blank" rel="noopener noreferrer">Qwen3-0.6B-GGUF</a>
                 </div>
