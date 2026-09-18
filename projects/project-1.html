@@ -1,34 +1,34 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Context Search Engine - AI-Powered Semantic Document Search | Praveen Kumar</title>
-    
+    <title>contextsearch - Hybrid Document Search With Evidence for Every Result | Praveen Kumar</title>
+
     <!-- SEO Meta Tags -->
-    <meta name="description" content="AI-powered semantic document search platform using transformer embeddings and FAISS. Goes beyond keywords to understand meaning and context. Open-source learning lab for semantic search.">
-    <meta name="keywords" content="Semantic Search Engine, FAISS, Transformers, Vector Search, Document Search, NLP Project, Open Source AI, Python">
+    <meta name="description" content="contextsearch is a self-hosted search engine for your own documents: BM25 and embeddings fused with reciprocal rank fusion, optional cross-encoder reranking, folder watching with revisions, and the page, passage and reasons behind every result.">
+    <meta name="keywords" content="Hybrid Search, BM25, Semantic Search, Embeddings, Reciprocal Rank Fusion, Cross-Encoder Reranking, SQLite FTS5, FastAPI, Document Search, Open Source, Python">
     <meta name="author" content="Praveen Kumar">
-    
+
     <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="Context Search Engine - AI-Powered Semantic Document Search">
-    <meta property="og:description" content="Open-source semantic document search platform using transformer embeddings and FAISS. A complete learning lab for understanding how modern vector search works beyond keyword matching.">
+    <meta property="og:title" content="contextsearch - Hybrid Document Search With Evidence for Every Result">
+    <meta property="og:description" content="Self-hosted keyword plus semantic search over PDFs, Word and PowerPoint files, with folder watching, reranking and the page, passage and reasons behind every hit.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://inboxpraveen.github.io/projects/project-1.html">
-    <meta property="og:image" content="https://inboxpraveen.github.io/projects/resources/project-1/Dashboard-With-Documents.png">
-    <meta property="og:image:alt" content="Context Search Engine Dashboard">
+    <meta property="og:image" content="https://inboxpraveen.github.io/projects/resources/project-1/search-evidence.jpg">
+    <meta property="og:image:alt" content="contextsearch results with the evidence panel open">
     <meta property="og:site_name" content="Praveen Kumar Portfolio">
-    
+
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Context Search Engine - AI-Powered Semantic Search">
-    <meta name="twitter:description" content="Open-source semantic document search using transformers and FAISS. Complete learning lab for modern vector search.">
-    <meta name="twitter:image" content="https://inboxpraveen.github.io/projects/resources/project-1/Dashboard-With-Documents.png">
-    <meta name="twitter:image:alt" content="Context Search Engine Dashboard">
-    
+    <meta name="twitter:title" content="contextsearch - Hybrid Document Search With Evidence">
+    <meta name="twitter:description" content="Keyword and semantic search over your own files, fused and reranked, with the page, passage and reasons behind every result. Self-hosted, one SQLite file.">
+    <meta name="twitter:image" content="https://inboxpraveen.github.io/projects/resources/project-1/search-evidence.jpg">
+    <meta name="twitter:image:alt" content="contextsearch results with the evidence panel open">
+
     <!-- Canonical URL -->
     <link rel="canonical" href="https://inboxpraveen.github.io/projects/project-1.html">
-    
+
     <link rel="icon" type="image/x-icon" href="../assests/favicon.ico">
     <link rel="stylesheet" href="../index.css">
 </head>
@@ -55,20 +55,20 @@
         </div>
     </nav>
 
-    <!-- Project Page - Context Search Engine -->
+    <!-- Project Page - contextsearch -->
     <main id="main" class="page-container active">
         <div class="page-header">
             <div class="container">
                 <a href="../all-projects.html" class="back-button">← Back to Projects</a>
-                <h1 class="page-title">Context Search Engine</h1>
+                <h1 class="page-title">contextsearch</h1>
                 <div class="page-meta">
                     <div class="meta-item">
                         <svg class="icon" aria-hidden="true"><use href="#i-calendar"></use></svg>
-                        <span>Completed: December 2025</span>
+                        <span>Version 3: September 2026</span>
                     </div>
                     <div class="meta-item">
                         <svg class="icon" aria-hidden="true"><use href="#i-pulse"></use></svg>
-                        <span>Version: 2.0.0</span>
+                        <span>Version: 3.0.0</span>
                     </div>
                     <div class="meta-item">
                         <svg class="icon" aria-hidden="true"><use href="#i-user"></use></svg>
@@ -76,7 +76,7 @@
                     </div>
                     <div class="meta-item">
                         <svg class="icon" aria-hidden="true"><use href="#i-tag"></use></svg>
-                        <span>NLP & Vector Search</span>
+                        <span>Python • FastAPI • SQLite FTS5 • sentence-transformers</span>
                     </div>
                 </div>
             </div>
@@ -89,236 +89,437 @@
         <div class="content-section">
             <h2>Project Overview</h2>
             <p>
-                The <strong>Context Search Engine</strong> is an AI-powered semantic document search platform that demonstrates 
-                the full pipeline from document ingestion to context-aware query results using modern vector search. It is designed 
-                as a <strong>learning and experimentation lab</strong> for students, researchers, and developers who want to 
-                understand how semantic search works beyond simple keyword matching.
-            </p>
-            
-            <figure class="content-figure">
-                <img src="resources/project-1/Project-Overview.webp" alt="Context Search Engine Overview" loading="lazy" decoding="async">
-            </figure>
-            
-            <p>
-                The system processes documents (PDF, DOCX, TXT), chunks them intelligently, converts text to embeddings using 
-                transformer models, and performs similarity search using FAISS. Unlike traditional keyword search, this semantic 
-                approach understands meaning and context, returning conceptually related results even when exact words don't match.
+                <strong>contextsearch</strong> is a self-hosted search engine for your own documents. Point it at a folder of PDFs,
+                Word and PowerPoint files, text, Markdown or HTML, and it indexes them, watches them for changes and answers queries
+                with the page, the exact passage and the reasons a result ranked where it did. It combines keyword search (BM25)
+                with semantic search (embeddings), fuses the two, and can rerank the top candidates with a cross-encoder.
             </p>
 
-            <h2>Technical Architecture</h2>
             <figure class="content-figure">
-                <img src="resources/project-1/Project-Architecture.webp" alt="Context Search Engine Architecture" loading="lazy" decoding="async">
+                <img src="./resources/project-1/search-evidence.webp" alt="contextsearch results with the evidence panel open: keyword rank, cosine per model, fusion score, confidence and location" loading="lazy" decoding="async">
+                <figcaption>A hybrid search with the evidence panel open. Every hit says which retrievers found it, at what rank, and why it got its confidence.</figcaption>
             </figure>
-            <div class="diagram-container">
-                <p style="margin-top: 1rem; color: var(--text-secondary); text-align: center;">
-                    Document Upload → Text Extraction → Chunking → Embeddings → FAISS Index → Semantic Search
-                </p>
+
+            <p>
+                There is no language model rewriting anything. What you see is what retrieval found, and every number on the
+                page can be traced back: the matched terms come from the FTS5 highlighter, the cosine from the embedding model,
+                the fused score from reciprocal rank fusion, and the character span points into the stored page text so the
+                viewer can open the page with the exact passage marked.
+            </p>
+
+            <h2>From Proof of Concept to Version 3</h2>
+            <p>
+                The first two versions of this project were a learning lab: upload a few files, embed them with DistilBERT,
+                search with FAISS, tune chunk size and top-k from the UI. It did its job, which was to make the pipeline from
+                document to embedding to nearest neighbour visible and tweakable.
+            </p>
+            <p>
+                It also had the problems a proof of concept has. DistilBERT with mean pooling was never trained to put similar
+                sentences close together, so the vectors were weak for retrieval. The "relevance" percentage was 100 minus an
+                L2 distance, which is not a meaningful number. The index lived in three files written separately, so a crash
+                between writes corrupted it, and deleting one document re-embedded the whole corpus. Chunks were cut mid-sentence
+                with no offsets, so a result could not be traced to a place in the source.
+            </p>
+            <p>
+                Version 3 is a rewrite around one question: what would it take for a team to run this on an internal server,
+                trust the results and build on top of it? The answer turned out to be a real retrieval model plus keyword search,
+                fusion instead of a single score, evidence on every hit, one transactional store, folder watching, and the
+                operational pieces (auth, logs with request ids, metrics, jobs, a CLI, tests, a Docker image) that a service needs.
+            </p>
+
+            <h2>The Problem</h2>
+            <p>
+                Keyword search finds exact terms and nothing else: "refund" does not find "money back". Semantic search finds
+                paraphrases but stumbles on part numbers, names and error codes, and it always returns something, even when
+                nothing relevant exists. Most tools pick one and hide the score behind a single percentage nobody can check.
+            </p>
+            <p>
+                A search engine people rely on has to do both, say which one found a result, and let the user calibrate the
+                trade-off on their own corpus with numbers rather than impressions. It also has to keep the index in step with
+                the files: a policy that was revised last week must not come back in its old wording.
+            </p>
+
+            <h2>Key Features</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin: 2rem 0;">
+                <div style="background: var(--secondary-bg); padding: 1.5rem; border-radius: 10px; border: 1px solid var(--border-color);">
+                    <h3 style="margin-top: 0; color: var(--accent-color);">Three strategies, one engine</h3>
+                    <p>Keyword (BM25 on SQLite FTS5), semantic (any sentence-transformers model, several side by side) and hybrid, fused with reciprocal rank fusion or a weighted blend.</p>
+                </div>
+                <div style="background: var(--secondary-bg); padding: 1.5rem; border-radius: 10px; border: 1px solid var(--border-color);">
+                    <h3 style="margin-top: 0; color: var(--accent-color);">Evidence on every result</h3>
+                    <p>Retriever ranks, matched and covered query terms, cosine per model, reranker score, a confidence label, the page and character span, stage timings and a request id.</p>
+                </div>
+                <div style="background: var(--secondary-bg); padding: 1.5rem; border-radius: 10px; border: 1px solid var(--border-color);">
+                    <h3 style="margin-top: 0; color: var(--accent-color);">Watched folders with revisions</h3>
+                    <p>New files are indexed within seconds, edited files get a new revision, deleted files leave the index. A periodic rescan covers network shares where events never arrive.</p>
+                </div>
+                <div style="background: var(--secondary-bg); padding: 1.5rem; border-radius: 10px; border: 1px solid var(--border-color);">
+                    <h3 style="margin-top: 0; color: var(--accent-color);">Cross-encoder reranking</h3>
+                    <p>A toggle in the UI and a flag in the API. The reranker reads query and passage together and its probability becomes the confidence, which is what pushes unrelated hits to zero.</p>
+                </div>
+                <div style="background: var(--secondary-bg); padding: 1.5rem; border-radius: 10px; border: 1px solid var(--border-color);">
+                    <h3 style="margin-top: 0; color: var(--accent-color);">Compare and measure</h3>
+                    <p>The Compare page runs one query under up to four configurations side by side, and <code>contextsearch eval</code> scores strategies on your own labelled queries with recall, MRR, nDCG and latency.</p>
+                </div>
+                <div style="background: var(--secondary-bg); padding: 1.5rem; border-radius: 10px; border: 1px solid var(--border-color);">
+                    <h3 style="margin-top: 0; color: var(--accent-color);">Built to be operated</h3>
+                    <p>One process, one SQLite file. REST API with OpenAPI docs, API key auth, JSON errors with request ids, jobs with progress, Prometheus metrics, JSON logs, a CLI with <code>doctor</code>, a Dockerfile and CI on Linux and Windows.</p>
+                </div>
             </div>
 
-            <h3>Key Components</h3>
+            <h2>Screenshots</h2>
+
+            <h3>Comparing strategies on a paraphrase</h3>
+            <figure class="content-figure">
+                <img src="./resources/project-1/compare.webp" alt="Compare page with keyword, hybrid and reranked columns for the query how do I get my money back if the parcel is late" loading="lazy" decoding="async">
+                <figcaption>"How do I get my money back if the parcel is late" shares almost no words with the refund policy. Keyword search rates it 51 percent, hybrid 74 percent, hybrid with reranking 96 percent, and the reranker pushes the unrelated documents to near zero.</figcaption>
+            </figure>
+
+            <h3>Results grouped by document</h3>
+            <figure class="content-figure">
+                <img src="./resources/project-1/search-results.webp" alt="Search results grouped by document with page badges, matched terms, confidence labels and the ranking panel" loading="lazy" decoding="async">
+                <figcaption>The best passage leads each document; other matching passages are listed underneath. The right panel shows the strategy, the models, fusion, filters and how long each stage took.</figcaption>
+            </figure>
+
+            <h3>The page viewer</h3>
+            <figure class="content-figure">
+                <img src="./resources/project-1/viewer.webp" alt="The page viewer showing page 3 of a PDF with the matched passage and query terms marked" loading="lazy" decoding="async">
+                <figcaption>Page 3 of 3 with the passage the result came from marked, query terms highlighted, and the original file one click away.</figcaption>
+            </figure>
+
+            <h3>Sources, documents and activity</h3>
+            <figure class="content-figure">
+                <img src="./resources/project-1/sources.webp" alt="Sources page with the uploads area and a watched folder showing its last scan summary" loading="lazy" decoding="async">
+                <figcaption>Watched folders with their last scan summary. "watching" means file system events are subscribed; a periodic scan runs anyway.</figcaption>
+            </figure>
+            <figure class="content-figure">
+                <img src="./resources/project-1/documents.webp" alt="Documents table with type, pages, passages, revision, indexed time and status" loading="lazy" decoding="async">
+                <figcaption>Every document with its pages, passages and revision count. Clicking a row opens the details, the revision history and the reader.</figcaption>
+            </figure>
+            <figure class="content-figure">
+                <img src="./resources/project-1/activity.webp" alt="Activity page with embedding models, jobs, recent searches and health" loading="lazy" decoding="async">
+                <figcaption>Models with their vector counts, background jobs, recent searches with latency, and health. Another embedding model can be built from here without touching the existing index.</figcaption>
+            </figure>
+
+            <h3>Dark theme</h3>
+            <figure class="content-figure">
+                <img src="./resources/project-1/search-dark.webp" alt="The same search interface in the dark theme" loading="lazy" decoding="async">
+                <figcaption>Light and dark follow the system setting or a toggle. The UI is plain HTML, CSS and JavaScript with no build step and no external assets, so it works on an air-gapped server.</figcaption>
+            </figure>
+
+            <h2>How It Works</h2>
+
+            <h3>Architecture</h3>
+            <figure class="content-figure">
+                <img src="./resources/project-1/architecture.svg" alt="Architecture: FastAPI app over one Engine; the Engine owns a Searcher that reads from a SQLite store and an ingest worker that writes to it; a vector index per model, readers and chunker, and the models sit underneath" loading="lazy" decoding="async">
+                <figcaption>One process. All writes go through the ingest worker; searches read the store and the in-memory vector matrices from a thread pool.</figcaption>
+            </figure>
+
+            <h3>Indexing a folder</h3>
+            <ol>
+                <li>A scan walks the tree with <code>os.scandir</code>, reading stats but no contents, so a rescan of a large tree with nothing new takes seconds.</li>
+                <li>Every file is compared with its stored row: unknown files are new; a changed size or mtime means the content is hashed, and only a changed hash triggers a re-index; a file that failed last time is retried; a missing file is marked removed and loses its chunks and vectors. A folder that cannot be listed never turns into a mass deletion.</li>
+                <li>The reader for the extension produces pages of text (PDFium for PDF, python-docx and python-pptx for Office files, an HTML stripper, OCR through RapidOCR for images and scanned pages).</li>
+                <li>The chunker packs sentence-like units up to about 200 words, prefers to end on a sentence and carries an overlap into the next chunk. Every chunk is a verbatim slice of its page with character offsets.</li>
+                <li>Pages, chunks and the new document revision are written in one transaction; FTS5 triggers keep the keyword index in step. Then each embedding model encodes the chunks in batches and the vectors go to the store and to the live matrix.</li>
+                <li>With <code>watchdog</code> subscribed, an edited file goes through the same path within a couple of seconds and becomes revision 2; a periodic rescan runs every five minutes anyway.</li>
+            </ol>
+
+            <h3>Answering a query</h3>
+            <ol>
+                <li>The query is parsed for keyword search: quoted phrases stay phrases, other words become stemmed terms, common English words are dropped. FTS5 tries all terms with AND first and widens to OR if that returns too few candidates.</li>
+                <li>Each embedding model encodes the query (cached for repeats) and scores every stored vector with a dot product. Exact search, no approximation, deterministic results.</li>
+                <li>The candidate lists are fused with reciprocal rank fusion. It ignores raw scores on purpose: BM25 values and cosines live on different scales, and a chunk on both lists reliably rises to the top.</li>
+                <li>Optionally a cross-encoder rescores the top 30 candidates. Its sigmoid output becomes the confidence.</li>
+                <li>Chunks are grouped by document, snippets are cut around the densest cluster of matches with highlight offsets, and every hit gets a confidence and a label: strong, likely or weak.</li>
+            </ol>
+
+            <h2>Tech Stack</h2>
             <div class="tech-stack">
                 <div class="tech-category">
-                    <h4>NLP & Embeddings</h4>
+                    <h4>Retrieval</h4>
                     <div class="tech-list">
-                        <span class="tech-item">Transformers</span>
-                        <span class="tech-item">PyTorch</span>
-                        <span class="tech-item">HuggingFace</span>
-                        <span class="tech-item">DistilBERT</span>
-                    </div>
-                </div>
-                <div class="tech-category">
-                    <h4>Vector Search</h4>
-                    <div class="tech-list">
-                        <span class="tech-item">FAISS</span>
+                        <span class="tech-item">SQLite FTS5 (BM25)</span>
+                        <span class="tech-item">sentence-transformers</span>
+                        <span class="tech-item">bge-small-en-v1.5</span>
+                        <span class="tech-item">Cross-encoder rerankers</span>
+                        <span class="tech-item">Reciprocal rank fusion</span>
                         <span class="tech-item">NumPy</span>
-                        <span class="tech-item">Similarity Search</span>
-                        <span class="tech-item">Indexing</span>
                     </div>
                 </div>
                 <div class="tech-category">
-                    <h4>Document Processing</h4>
+                    <h4>Documents</h4>
                     <div class="tech-list">
-                        <span class="tech-item">PyPDF2</span>
+                        <span class="tech-item">pypdfium2</span>
                         <span class="tech-item">python-docx</span>
-                        <span class="tech-item">Flask</span>
-                        <span class="tech-item">HTML/CSS/JS</span>
+                        <span class="tech-item">python-pptx</span>
+                        <span class="tech-item">RapidOCR</span>
+                        <span class="tech-item">watchdog</span>
+                    </div>
+                </div>
+                <div class="tech-category">
+                    <h4>Service</h4>
+                    <div class="tech-list">
+                        <span class="tech-item">FastAPI</span>
+                        <span class="tech-item">uvicorn</span>
+                        <span class="tech-item">SQLite (WAL)</span>
+                        <span class="tech-item">Prometheus metrics</span>
+                        <span class="tech-item">Docker</span>
+                        <span class="tech-item">pytest, ruff, GitHub Actions</span>
                     </div>
                 </div>
             </div>
 
-            <h2>Implementation Details</h2>
-            <p>
-                The core logic of the system can be summarized as: <strong>configurable chunking → embedding with a 
-                transformer model → FAISS similarity search over chunk vectors</strong>. Below is a simplified implementation:
-            </p>
-
-            <div class="code-block">
-                <div class="code-header">
-                    <span class="code-language">Python - Core Search Engine</span>
-                    <button class="copy-button">Copy</button>
-                </div>
-                <pre><code><span class="keyword">from</span> pathlib <span class="keyword">import</span> Path
-<span class="keyword">from</span> typing <span class="keyword">import</span> List, Dict, Any
-<span class="keyword">import</span> faiss
-<span class="keyword">import</span> numpy <span class="keyword">as</span> np
-<span class="keyword">from</span> transformers <span class="keyword">import</span> AutoTokenizer, AutoModel
-<span class="keyword">import</span> torch
-
-<span class="keyword">class</span> <span class="function">SemanticSearchEngine</span>:
-    <span class="keyword">def</span> <span class="function">__init__</span>(self, model_name: str = <span class="string">"distilbert-base-uncased"</span>, dimension: int = <span class="number">768</span>):
-        self.model_name = model_name
-        self.dimension = dimension
-        <span class="comment"># Load embedding model</span>
-        self.tokenizer = AutoTokenizer.from_pretrained(model_name)
-        self.model = AutoModel.from_pretrained(model_name)
-        <span class="comment"># Initialize FAISS index</span>
-        self.index = faiss.IndexFlatL2(dimension)
-        self.metadata: Dict[int, Dict[str, Any]] = {}
-        self._next_id = <span class="number">0</span></code></pre>
-            </div>
-
-            <h3>Chunking & Embedding Process</h3>
-            <p>
-                Documents are split into overlapping chunks to preserve context, then converted to embeddings using 
-                mean pooling over transformer outputs:
-            </p>
-
-            <div class="code-block">
-                <div class="code-header">
-                    <span class="code-language">Python - Chunking & Embeddings</span>
-                    <button class="copy-button">Copy</button>
-                </div>
-                <pre><code>    <span class="keyword">def</span> <span class="function">_simple_chunk</span>(self, text: str, chunk_size: int = <span class="number">500</span>, overlap: int = <span class="number">50</span>) -> List[str]:
-        words = text.split()
-        chunks = []
-        start = <span class="number">0</span>
-        <span class="keyword">while</span> start < len(words):
-            end = start + chunk_size
-            chunk_words = words[start:end]
-            chunks.append(<span class="string">" "</span>.join(chunk_words))
-            start += max(chunk_size - overlap, <span class="number">1</span>)
-        <span class="keyword">return</span> chunks
-
-    @torch.no_grad()
-    <span class="keyword">def</span> <span class="function">_embed_texts</span>(self, texts: List[str]) -> np.ndarray:
-        inputs = self.tokenizer(texts, padding=True, truncation=True, return_tensors=<span class="string">"pt"</span>)
-        outputs = self.model(**inputs)
-        <span class="comment"># Mean pooling over token embeddings</span>
-        embeddings = outputs.last_hidden_state.mean(dim=<span class="number">1</span>)
-        embeddings = embeddings / embeddings.norm(dim=<span class="number">1</span>, keepdim=True)
-        <span class="keyword">return</span> embeddings.cpu().numpy().astype(<span class="string">"float32"</span>)</code></pre>
-            </div>
-
-            <h2>Project Results</h2>
+            <h2>Measured, Not Estimated</h2>
             <div class="project-stats">
                 <div class="stat-box">
-                    <div class="stat-value">768</div>
-                    <div class="stat-label">Embedding Dimensions</div>
+                    <div class="stat-value">2 ms</div>
+                    <div class="stat-label">Keyword search</div>
                 </div>
                 <div class="stat-box">
-                    <div class="stat-value">&lt;200ms</div>
-                    <div class="stat-label">Query Latency</div>
+                    <div class="stat-value">34 ms</div>
+                    <div class="stat-label">Hybrid search on CPU</div>
                 </div>
                 <div class="stat-box">
-                    <div class="stat-value">3</div>
-                    <div class="stat-label">File Formats</div>
+                    <div class="stat-value">48 ms</div>
+                    <div class="stat-label">Exact search over 1M vectors</div>
                 </div>
                 <div class="stat-box">
-                    <div class="stat-value">Local</div>
-                    <div class="stat-label">Privacy-First</div>
+                    <div class="stat-value">1 file</div>
+                    <div class="stat-label">The whole index (SQLite)</div>
                 </div>
             </div>
+            <p>
+                Numbers from a laptop CPU (i7-14650HX, no GPU): keyword search answers in single-digit milliseconds, a hybrid
+                query with two embedding models in tens of milliseconds, and reranking 30 candidates with MiniLM-L6 in 150 to
+                400 ms. An exact dot product over a million 384-dimensional vectors takes 48 ms and 1.5 GB of memory. The slow
+                part is the first index: embedding runs at 30 to 40 chunks per second on this CPU, so keyword search is
+                available from the first minute and the dense index fills in behind it. All of this is in the repository's
+                performance page with the benchmark that produced it.
+            </p>
 
-            <h3>System Capabilities</h3>
+            <h3>Evaluation on the bundled examples</h3>
             <div class="table-container">
                 <table class="content-table">
                     <thead>
                         <tr>
-                            <th>Feature</th>
-                            <th>Description</th>
-                            <th>Status</th>
+                            <th>Strategy</th>
+                            <th>recall@10</th>
+                            <th>MRR@10</th>
+                            <th>nDCG@10</th>
+                            <th>Latency</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>Semantic Search</td>
-                            <td>Context-aware query results beyond keywords</td>
-                            <td>✅ Live</td>
-                        </tr>
-                        <tr>
-                            <td>Document Processing</td>
-                            <td>PDF, DOCX, TXT with metadata extraction</td>
-                            <td>✅ Live</td>
-                        </tr>
-                        <tr>
-                            <td>Configurable Pipeline</td>
-                            <td>Adjustable models, chunk size, overlap</td>
-                            <td>✅ Live</td>
-                        </tr>
-                        <tr>
-                            <td>Index Management</td>
-                            <td>FAISS-based vector storage & search</td>
-                            <td>✅ Live</td>
-                        </tr>
+                        <tr><td>lexical</td><td>1.000</td><td>0.933</td><td>0.950</td><td>2.3 ms</td></tr>
+                        <tr><td>dense</td><td>1.000</td><td>0.950</td><td>0.963</td><td>42.3 ms</td></tr>
+                        <tr><td>hybrid</td><td>1.000</td><td>0.950</td><td>0.963</td><td>33.5 ms</td></tr>
+                        <tr><td>hybrid + rerank</td><td>1.000</td><td>1.000</td><td>1.000</td><td>197.1 ms</td></tr>
                     </tbody>
                 </table>
             </div>
+            <p>
+                Five documents and ten queries are easy for every strategy; the point is that the tool exists. A labels file
+                with twenty to fifty real queries from real users, scored with <code>contextsearch eval</code>, is how a team
+                decides between models, fusion methods and reranking on their own corpus instead of by impression.
+            </p>
 
-            <h2>Live Demo</h2>
-            <div class="demo-section">
-                <h3>Try Context Search Engine</h3>
-                <p>Upload your documents and experience semantic search that matches on meaning rather than keywords.</p>
-                <div style="display: flex; justify-content: center; align-items: center; gap: 1rem; flex-wrap: wrap; margin-bottom: 1.5rem;">
-                    <a href="https://github.com/inboxpraveen/context-search-engine" class="demo-button" target="_blank">Clone & Run Locally</a>
-                    <a href="https://github.com/inboxpraveen/context-search-engine#readme" class="demo-button" target="_blank" style="background: var(--secondary-bg); color: var(--accent-color); border: 1px solid var(--accent-color);">View Documentation</a>
+            <h2>Core Logic: How the Code Works</h2>
+
+            <h3>Fusing two ranked lists</h3>
+            <p>
+                Reciprocal rank fusion is a few lines. Each retriever contributes <code>1 / (k + rank)</code> for every chunk
+                it returned, and the contributions are kept per retriever so the evidence panel can show them.
+            </p>
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-language">Python - retrieval/fusion.py</span>
+                    <button class="copy-button">Copy</button>
                 </div>
-                <figure class="content-figure">
-                    <img src="resources/project-1/Dashboard-With-Documents.webp" alt="Context Search Engine Dashboard" loading="lazy" decoding="async">
-                </figure>
+                <pre><code><span class="keyword">def</span> <span class="function">rrf</span>(results: list[RetrieverResult], k: int = <span class="number">60</span>) -> list[FusedCandidate]:
+    fused: dict[int, FusedCandidate] = {}
+    <span class="keyword">for</span> result <span class="keyword">in</span> results:
+        <span class="keyword">for</span> hit <span class="keyword">in</span> result.hits:
+            cand = fused.get(hit.chunk_id)
+            <span class="keyword">if</span> cand <span class="keyword">is</span> <span class="keyword">None</span>:
+                cand = fused[hit.chunk_id] = FusedCandidate(hit.chunk_id, <span class="number">0.0</span>)
+            contribution = <span class="number">1.0</span> / (k + hit.rank)
+            cand.score += contribution
+            cand.contributions[result.name] = contribution
+            cand.ranks[result.name] = hit.rank
+            cand.raw_scores[result.name] = hit.score
+    <span class="keyword">return</span> sorted(fused.values(), key=<span class="keyword">lambda</span> c: (-c.score, c.chunk_id))</code></pre>
             </div>
 
-            <h2>Challenges & Solutions</h2>
+            <h3>Deciding what a scan should do</h3>
             <p>
-                <strong>Document Boundary & Context Loss:</strong> Splitting long text into chunks can cut important context. 
-                Solved by implementing configurable chunk size and overlap, ensuring that information near boundaries is 
-                present in multiple chunks, preserving semantic continuity across splits.
+                The sync planner compares what is on disk with what is stored and sorts files into buckets. Hashing only happens
+                for files whose size or mtime changed, and an unmounted share is never read as "everything was deleted".
             </p>
-            
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-language">Python - ingest/scanner.py (condensed)</span>
+                    <button class="copy-button">Copy</button>
+                </div>
+                <pre><code><span class="keyword">def</span> <span class="function">plan_sync</span>(source, snapshot, scan, chunking_signature) -> SyncPlan:
+    plan = SyncPlan(scan=scan)
+    <span class="keyword">if</span> scan.root_missing:
+        <span class="keyword">return</span> plan  <span class="comment"># never treat an unmounted share as "everything was deleted"</span>
+    seen = set()
+    <span class="keyword">for</span> stat <span class="keyword">in</span> scan.files:
+        seen.add(stat.path)
+        stored = snapshot.get(stat.path)
+        <span class="keyword">if</span> stored <span class="keyword">is</span> <span class="keyword">None</span>:
+            plan.new.append(stat)
+        <span class="keyword">elif</span> stored.status == <span class="string">"failed"</span>:
+            plan.retry.append(stat)
+        <span class="keyword">elif</span> stored.chunking_signature != chunking_signature:
+            plan.changed.append(stat)               <span class="comment"># settings changed: re-cut</span>
+        <span class="keyword">elif</span> stored.size != stat.size <span class="keyword">or</span> abs(stored.mtime - stat.mtime) > <span class="number">1e-6</span>:
+            plan.changed.append(stat)               <span class="comment"># hashed later; same hash means no re-index</span>
+        <span class="keyword">else</span>:
+            plan.unchanged += <span class="number">1</span>
+    <span class="keyword">for</span> path, stored <span class="keyword">in</span> snapshot.items():
+        <span class="keyword">if</span> path <span class="keyword">not in</span> seen <span class="keyword">and not</span> path.startswith(tuple(scan.unreadable_dirs)):
+            plan.removed.append((path, stored))
+    <span class="keyword">return</span> plan</code></pre>
+            </div>
+
+            <h3>Turning evidence into a confidence</h3>
             <p>
-                <strong>Model Compatibility & Dimensions:</strong> Different models output different embedding dimensions; 
-                FAISS index must match. Solved with explicit dimension parameter in configuration, validated when building 
-                the index. UI prompts users to rebuild when changing model or dimension.
+                With a reranker on, its probability is the confidence. Without one, keyword coverage (how many query terms the
+                passage contains, stems included) and the best cosine similarity are blended, with a small bonus when both
+                retrievers agree and a discount when only one found the hit. The pieces are returned with every result.
+            </p>
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-language">Python - retrieval/pipeline.py (condensed)</span>
+                    <button class="copy-button">Copy</button>
+                </div>
+                <pre><code><span class="keyword">if</span> rerank_score <span class="keyword">is not</span> <span class="keyword">None</span>:
+    value = float(rerank_score)                             <span class="comment"># sigmoid of the cross-encoder logit</span>
+<span class="keyword">elif</span> lexical_part <span class="keyword">is not</span> <span class="keyword">None</span> <span class="keyword">and</span> dense_part <span class="keyword">is not</span> <span class="keyword">None</span>:
+    value = <span class="number">0.5</span> * lexical_part + <span class="number">0.5</span> * dense_part + <span class="number">0.1</span> * min(lexical_part, dense_part)
+<span class="keyword">elif</span> dense_part <span class="keyword">is not</span> <span class="keyword">None</span>:
+    value = <span class="number">0.85</span> * dense_part                              <span class="comment"># one retriever only</span>
+<span class="keyword">elif</span> lexical_part <span class="keyword">is not</span> <span class="keyword">None</span>:
+    value = <span class="number">0.85</span> * lexical_part
+label = <span class="string">"strong"</span> <span class="keyword">if</span> value >= <span class="number">0.70</span> <span class="keyword">else</span> <span class="string">"likely"</span> <span class="keyword">if</span> value >= <span class="number">0.40</span> <span class="keyword">else</span> <span class="string">"weak"</span></code></pre>
+            </div>
+
+            <h3>What the API returns</h3>
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-language">JSON - one hit, abbreviated</span>
+                    <button class="copy-button">Copy</button>
+                </div>
+                <pre><code>{
+  <span class="string">"rank"</span>: <span class="number">1</span>, <span class="string">"confidence"</span>: <span class="number">1.0</span>, <span class="string">"confidence_label"</span>: <span class="string">"strong"</span>,
+  <span class="string">"document"</span>: {<span class="string">"filename"</span>: <span class="string">"refund-and-returns-policy.md"</span>, <span class="string">"relpath"</span>: <span class="string">"policies/refund-and-returns-policy.md"</span>, <span class="string">"revision"</span>: <span class="number">1</span>},
+  <span class="string">"page"</span>: <span class="number">1</span>, <span class="string">"char_start"</span>: <span class="number">0</span>, <span class="string">"char_end"</span>: <span class="number">1154</span>,
+  <span class="string">"snippet"</span>: <span class="string">"... If an order arrives more than seven days after the promised delivery date ..."</span>,
+  <span class="string">"highlights"</span>: [[<span class="number">57</span>, <span class="number">61</span>], [<span class="number">62</span>, <span class="number">72</span>], [<span class="number">128</span>, <span class="number">136</span>]],
+  <span class="string">"evidence"</span>: {
+    <span class="string">"found_by"</span>: [<span class="string">"lexical"</span>, <span class="string">"dense:BAAI/bge-small-en-v1.5"</span>], <span class="string">"agreement"</span>: <span class="keyword">true</span>,
+    <span class="string">"lexical"</span>: {<span class="string">"rank"</span>: <span class="number">1</span>, <span class="string">"bm25"</span>: <span class="number">6.509</span>, <span class="string">"covered_terms"</span>: [<span class="string">"refund"</span>, <span class="string">"late"</span>, <span class="string">"delivery"</span>], <span class="string">"query_terms"</span>: <span class="number">3</span>},
+    <span class="string">"dense"</span>: {<span class="string">"BAAI/bge-small-en-v1.5"</span>: {<span class="string">"rank"</span>: <span class="number">1</span>, <span class="string">"cosine"</span>: <span class="number">0.7431</span>}},
+    <span class="string">"fused_score"</span>: <span class="number">0.032787</span>, <span class="string">"fusion"</span>: <span class="string">"rrf"</span>,
+    <span class="string">"confidence_parts"</span>: {<span class="string">"lexical_coverage"</span>: <span class="number">1.0</span>, <span class="string">"dense_similarity"</span>: <span class="number">0.874</span>, <span class="string">"source"</span>: <span class="string">"lexical+dense"</span>}
+  }
+}</code></pre>
+            </div>
+
+            <h2>Challenges &amp; Learnings</h2>
+            <p>
+                <strong>A meaningful confidence without a language model.</strong> A single percentage is what people want to
+                see and the easiest thing to get wrong. The first blend saturated at 100 percent whenever all query terms
+                appeared in a passage, which is common for short queries. The version that survived averages keyword coverage and
+                cosine similarity, adds a little for agreement, discounts single-retriever hits, and hands the number over to the
+                reranker's probability when one is on. It is documented as a heuristic with the thresholds to calibrate per model.
+            </p>
+            <p>
+                <strong>Keeping offsets exact.</strong> The viewer highlights <code>page_text[char_start:char_end]</code>, so a
+                chunk has to be a verbatim slice of the stored page. That ruled out any chunker that rewrites whitespace and forced
+                the text normalisation to happen once, before chunking, on the page itself. Snippets flatten line breaks into
+                spaces of the same length so highlight offsets stay valid.
+            </p>
+            <p>
+                <strong>Folder sync that does not lie.</strong> A network share that drops out for a minute looks like a
+                folder where every file was deleted. The scanner reports an unlistable root or subfolder separately and the
+                planner refuses to mark anything removed underneath it. Reused SQLite row ids were another trap: a deleted
+                chunk's id could be handed to a new chunk while the in-memory vector matrix still knew the old one, so chunk
+                ids are AUTOINCREMENT and never reused.
+            </p>
+            <p>
+                <strong>Honest latency numbers.</strong> The trace total was computed when the response was serialised, so in
+                the Compare view the first variant's time included the variants that ran after it. Freezing the total at the
+                end of the search fixed a number that would otherwise have quietly misled every reader of the page.
+            </p>
+            <p>
+                <strong>Two ways to install torch.</strong> On Linux, <code>pip install</code> pulls the CUDA build of torch
+                by default, several gigabytes for a machine without a GPU. The package makes the dense stack an extra, keyword
+                search works with no torch at all, and the Docker image installs the CPU wheel first.
             </p>
 
+            <h2>Installation &amp; Setup</h2>
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-language">Shell</span>
+                    <button class="copy-button">Copy</button>
+                </div>
+                <pre><code><span class="comment"># clone and install (keyword + semantic search)</span>
+git clone https://github.com/inboxpraveen/context-search-engine.git
+cd context-search-engine
+python -m venv .venv &amp;&amp; . .venv/bin/activate      <span class="comment"># Windows: .venv\Scripts\activate</span>
+pip install -e <span class="string">".[dense]"</span>
+
+<span class="comment"># check Python, SQLite FTS5, torch and the model cache, then serve</span>
+contextsearch doctor
+contextsearch serve                                <span class="comment"># UI and API at http://127.0.0.1:8080</span>
+
+<span class="comment"># or try it from the terminal on the bundled examples</span>
+contextsearch index examples/sample-docs
+contextsearch search <span class="string">"how do I get my money back"</span> --strategy hybrid
+contextsearch eval examples/labels.json --strategies lexical,dense,hybrid,hybrid+rerank</code></pre>
+            </div>
             <p>
-                <strong>Balancing Speed vs Quality:</strong> Larger models and higher top_k values improve quality but cost time. 
-                Solved with configurable model, top_k, and num_search_results, allowing users to empirically find optimal 
-                trade-offs for their specific use case and corpus size.
+                A Dockerfile and a compose file are in the repository for a production setup with an API key and a folder
+                allow-list. The documentation covers architecture, the search strategies and their maths, every API endpoint,
+                every setting, deployment on Linux and Windows, performance and sizing, extending with new readers or models,
+                and troubleshooting.
             </p>
 
-            <h2>Future Enhancements</h2>
+            <h2>Future Improvements</h2>
             <ul>
-                <li><strong>Version 2.1:</strong> Multi-user support with authentication, document folders, search history, and export results</li>
-                <li><strong>Version 2.2:</strong> Batch upload, advanced filters (date, type, tags), text highlighting, and query suggestions</li>
-                <li><strong>Version 3.0:</strong> Full RESTful API, Docker support, cloud deployment templates (AWS/GCP/Azure), analytics dashboard</li>
-                <li><strong>Long-term:</strong> GPU-accelerated FAISS, incremental indexing, hybrid search (keyword + semantic), and OCR integration</li>
-                <li>Multilingual support for both UI and search capabilities</li>
+                <li><strong>Image search with CLIP-style embeddings.</strong> The store already keeps one vector per chunk and model, and OCR already makes text in images searchable; an image embedder in the same interface is the next step.</li>
+                <li><strong>Audio through AudioFP.</strong> Transcripts become documents here, with timestamps as the locator instead of character offsets.</li>
+                <li><strong>Scale past a few million chunks.</strong> An approximate index (FAISS or hnswlib) behind the same vector index interface, and PostgreSQL with pgvector as an alternative store.</li>
+                <li><strong>Query understanding without a language model.</strong> Spelling correction from the corpus vocabulary, automatic phrase detection for identifiers, per-field boosts.</li>
+                <li><strong>Calibrated confidence</strong> learned from the evaluation labels, so the label reflects measured precision on a given corpus.</li>
             </ul>
+
+            <h2>Closing Note</h2>
+            <p>
+                The interesting part of this rewrite was not any single algorithm. BM25, embeddings, reciprocal rank fusion and
+                cross-encoders are all well known. It was making them explain themselves: every result carries enough evidence
+                that a sceptical reader can check it, and every comparison between configurations ends in a table rather than
+                an argument. That is what turns a search demo into something a team will rely on.
+            </p>
 
             <div style="margin-top: 3rem; padding: 2rem; background: var(--secondary-bg); border-radius: 15px; border: 1px solid var(--border-color);">
                 <h3 style="margin-top: 0;">Project Links</h3>
                 <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1rem;">
-                    <a href="https://github.com/inboxpraveen/context-search-engine" class="demo-button" style="margin: 0;" target="_blank">GitHub Repository</a>
-                    <a href="https://github.com/inboxpraveen/context-search-engine#readme" class="demo-button" style="margin: 0; background: var(--secondary-bg); color: var(--accent-color); border: 1px solid var(--accent-color);" target="_blank">Documentation</a>
+                    <a href="https://github.com/inboxpraveen/context-search-engine" class="demo-button" style="margin: 0;" target="_blank" rel="noopener noreferrer">GitHub Repository</a>
+                    <a href="https://github.com/inboxpraveen/context-search-engine/tree/main/docs" class="demo-button" style="margin: 0; background: var(--secondary-bg); color: var(--accent-color); border: 1px solid var(--accent-color);" target="_blank" rel="noopener noreferrer">Documentation</a>
                     <a href="mailto:inboxpraveen.17@gmail.com" class="demo-button" style="margin: 0; background: var(--secondary-bg); color: var(--accent-color); border: 1px solid var(--accent-color);">Contact Author</a>
                 </div>
                 <div class="tag-row" style="--domain: var(--d-llm);">
                     <span class="domain-pill">LLM &amp; RAG</span>
                     <span class="stack-tag">Python</span>
-                    <span class="stack-tag">PyTorch</span>
-                    <span class="stack-tag">FAISS</span>
-                    <span class="stack-tag">Flask</span>
-                    <span class="stack-tag">DistilBERT</span>
+                    <span class="stack-tag">FastAPI</span>
+                    <span class="stack-tag">SQLite FTS5</span>
+                    <span class="stack-tag">sentence-transformers</span>
+                    <span class="stack-tag">Docker</span>
                 </div>
             </div>
         </div>
@@ -358,5 +559,3 @@
     <script src="../site.js" defer></script>
 </body>
 </html>
-
-

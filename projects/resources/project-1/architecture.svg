@@ -1,0 +1,100 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 640" width="1200" height="640" role="img" aria-labelledby="t d">
+  <title id="t">contextsearch architecture</title>
+  <desc id="d">Browser and API clients talk to a FastAPI app, which calls one Engine. The Engine owns a Searcher (keyword, semantic, fusion, rerank) that reads from a SQLite store, and an ingest worker with a folder watcher that writes to it. The store holds documents, pages, chunks, the FTS5 index and vectors per model. A vector index per model sits in memory under the searcher, readers and the chunker feed the worker, and the embedding and reranking models serve both paths.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#a3acbd"/>
+    </marker>
+    <style>
+      .box { fill: rgba(255,255,255,0.04); stroke: rgba(255,255,255,0.18); stroke-width: 1.5; rx: 12; }
+      .box.accent { stroke: #4fd8ff; fill: rgba(79,216,255,0.07); }
+      .box.store { stroke: #f1c76a; fill: rgba(241,199,106,0.06); }
+      .title { font: 600 18px/1.2 -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; fill: #f4f6fb; }
+      .sub { font: 400 13.5px/1.35 -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; fill: #a3acbd; }
+      .tag { font: 500 12.5px -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; fill: #4fd8ff; }
+      .edge { stroke: #a3acbd; stroke-width: 1.5; fill: none; marker-end: url(#arrow); }
+      .edge.dashed { stroke-dasharray: 5 5; }
+      .lbl { font: 400 12px -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; fill: #a3acbd; }
+    </style>
+  </defs>
+
+  <!-- clients -->
+  <rect class="box" x="40" y="40" width="250" height="70"/>
+  <text class="title" x="165" y="70" text-anchor="middle">Browser UI</text>
+  <text class="sub" x="165" y="92" text-anchor="middle">search, compare, sources, viewer</text>
+
+  <rect class="box" x="910" y="40" width="250" height="70"/>
+  <text class="title" x="1035" y="70" text-anchor="middle">curl, scripts, your app</text>
+  <text class="sub" x="1035" y="92" text-anchor="middle">REST under /api/v1, CLI, library</text>
+
+  <!-- api -->
+  <rect class="box accent" x="380" y="40" width="440" height="70"/>
+  <text class="title" x="600" y="70" text-anchor="middle">FastAPI app</text>
+  <text class="sub" x="600" y="92" text-anchor="middle">routes, API key, JSON errors with request ids, OpenAPI at /docs</text>
+
+  <path class="edge" d="M290 75 H380"/>
+  <path class="edge" d="M910 75 H820"/>
+
+  <!-- engine -->
+  <rect class="box accent" x="380" y="150" width="440" height="60"/>
+  <text class="title" x="600" y="175" text-anchor="middle">Engine</text>
+  <text class="sub" x="600" y="196" text-anchor="middle">one per data folder: search, sources, uploads, jobs, health</text>
+  <path class="edge" d="M600 110 V150"/>
+
+  <!-- searcher -->
+  <rect class="box" x="40" y="270" width="330" height="150"/>
+  <text class="title" x="205" y="298" text-anchor="middle">Searcher</text>
+  <text class="sub" x="205" y="322" text-anchor="middle">keyword (BM25 on FTS5)</text>
+  <text class="sub" x="205" y="342" text-anchor="middle">semantic (cosine over vectors)</text>
+  <text class="sub" x="205" y="362" text-anchor="middle">reciprocal rank fusion</text>
+  <text class="sub" x="205" y="382" text-anchor="middle">optional cross-encoder rerank</text>
+  <text class="tag" x="205" y="406" text-anchor="middle">evidence and timings on every hit</text>
+
+  <!-- store -->
+  <rect class="box store" x="435" y="270" width="330" height="150"/>
+  <text class="title" x="600" y="298" text-anchor="middle">SQLite store</text>
+  <text class="sub" x="600" y="322" text-anchor="middle">sources, documents, revisions</text>
+  <text class="sub" x="600" y="342" text-anchor="middle">pages and chunks with offsets</text>
+  <text class="sub" x="600" y="362" text-anchor="middle">FTS5 index, vectors per model</text>
+  <text class="sub" x="600" y="382" text-anchor="middle">events and query log</text>
+  <text class="tag" x="600" y="406" text-anchor="middle">one file, WAL mode</text>
+
+  <!-- ingest -->
+  <rect class="box" x="830" y="270" width="330" height="150"/>
+  <text class="title" x="995" y="298" text-anchor="middle">Ingest worker</text>
+  <text class="sub" x="995" y="322" text-anchor="middle">scan folders, diff against the index</text>
+  <text class="sub" x="995" y="342" text-anchor="middle">watchdog events, debounced</text>
+  <text class="sub" x="995" y="362" text-anchor="middle">read, chunk, store, embed</text>
+  <text class="sub" x="995" y="382" text-anchor="middle">jobs with progress and cancel</text>
+  <text class="tag" x="995" y="406" text-anchor="middle">edits become revisions, deletes leave</text>
+
+  <path class="edge" d="M470 210 L280 270"/>
+  <path class="edge" d="M730 210 L920 270"/>
+  <path class="edge" d="M370 345 H435"/>
+  <text class="lbl" x="402" y="338" text-anchor="middle">reads</text>
+  <path class="edge" d="M830 345 H765"/>
+  <text class="lbl" x="797" y="338" text-anchor="middle">writes</text>
+
+  <!-- bottom row -->
+  <rect class="box" x="40" y="490" width="330" height="100"/>
+  <text class="title" x="205" y="518" text-anchor="middle">Vector index per model</text>
+  <text class="sub" x="205" y="542" text-anchor="middle">float32 matrix in memory, exact search</text>
+  <text class="sub" x="205" y="562" text-anchor="middle">loaded from the store at start</text>
+
+  <rect class="box" x="435" y="490" width="330" height="100"/>
+  <text class="title" x="600" y="518" text-anchor="middle">Models</text>
+  <text class="sub" x="600" y="542" text-anchor="middle">sentence-transformers embedders, several at once</text>
+  <text class="sub" x="600" y="562" text-anchor="middle">cross-encoder rerankers</text>
+
+  <rect class="box" x="830" y="490" width="330" height="100"/>
+  <text class="title" x="995" y="518" text-anchor="middle">Readers and chunker</text>
+  <text class="sub" x="995" y="542" text-anchor="middle">PDF, DOCX, PPTX, text, HTML, images (OCR)</text>
+  <text class="sub" x="995" y="562" text-anchor="middle">chunks are verbatim slices with char offsets</text>
+
+  <path class="edge" d="M205 420 V490"/>
+  <path class="edge" d="M995 420 V490"/>
+  <path class="edge dashed" d="M520 490 L330 420"/>
+  <path class="edge dashed" d="M680 490 L870 420"/>
+  <text class="lbl" x="800" y="470" text-anchor="middle">embed chunks</text>
+  <text class="lbl" x="380" y="470" text-anchor="middle">embed query, rerank</text>
+</svg>
