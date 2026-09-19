@@ -1,34 +1,34 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Speech Annotation Tool - Transcription Review & Correction Platform | Praveen Kumar</title>
-    
+    <title>Speech Annotation Tool - Build and Review Speech Datasets | Praveen Kumar</title>
+
     <!-- SEO Meta Tags -->
-    <meta name="description" content="Production-ready web application for reviewing and correcting ASR transcriptions. Features background job processing, progress tracking, session persistence, row locking, and export options. Built with Flask, Whisper, and FFmpeg.">
-    <meta name="keywords" content="Speech Annotation, ASR, Whisper, Flask, Background Jobs, Transcription Review, Audio Processing, FFmpeg, Data Annotation">
+    <meta name="description" content="Self-hosted tool that turns a folder of audio into a reviewed speech dataset. Local models (Whisper, Parakeet, IndicConformer) or hosted APIs (Deepgram, ElevenLabs, Sarvam, OpenAI and more), team review with presence, resumable jobs, import and export. Flask, SQLite, ffmpeg, Docker.">
+    <meta name="keywords" content="Speech Annotation, ASR, Speech Dataset, Whisper, Parakeet, IndicConformer, Deepgram, Sarvam, Flask, SQLite, FFmpeg, Docker, Data Annotation">
     <meta name="author" content="Praveen Kumar">
-    
+
     <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="Speech Annotation Tool - Transcription Review & Correction Platform">
-    <meta property="og:description" content="Production-ready annotation platform for reviewing ASR transcriptions. Features advanced background processing, progress tracking, session persistence, and intelligent row locking. Built with Flask, Whisper, and FFmpeg.">
+    <meta property="og:title" content="Speech Annotation Tool - Build and Review Speech Datasets">
+    <meta property="og:description" content="Point it at a folder of audio, pick a local model or a hosted API, and review the transcripts as a team. Resumable jobs, change detection, import and export, runs anywhere with Conda or Docker.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://inboxpraveen.github.io/projects/project-4.html">
     <meta property="og:image" content="https://inboxpraveen.github.io/projects/resources/project-4/Header.png">
-    <meta property="og:image:alt" content="Speech Annotation Tool">
+    <meta property="og:image:alt" content="Speech Annotation Tool review workspace">
     <meta property="og:site_name" content="Praveen Kumar Portfolio">
-    
+
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Speech Annotation Tool - Transcription Review & Correction Platform">
-    <meta name="twitter:description" content="Production-ready annotation platform with background jobs, progress tracking, session persistence, and row locking for data teams.">
+    <meta name="twitter:title" content="Speech Annotation Tool - Build and Review Speech Datasets">
+    <meta name="twitter:description" content="Folder in, reviewed speech dataset out. Local models or hosted APIs, team review, resumable jobs, Conda or Docker.">
     <meta name="twitter:image" content="https://inboxpraveen.github.io/projects/resources/project-4/Header.png">
-    <meta name="twitter:image:alt" content="Speech Annotation Tool">
-    
+    <meta name="twitter:image:alt" content="Speech Annotation Tool review workspace">
+
     <!-- Canonical URL -->
     <link rel="canonical" href="https://inboxpraveen.github.io/projects/project-4.html">
-    
+
     <link rel="icon" type="image/x-icon" href="../assests/favicon.ico">
     <link rel="stylesheet" href="../index.css">
 </head>
@@ -64,11 +64,11 @@
                 <div class="page-meta">
                     <div class="meta-item">
                         <svg class="icon" aria-hidden="true"><use href="#i-calendar"></use></svg>
-                        <span>Completed: December 2025</span>
+                        <span>Version 3: September 2026</span>
                     </div>
                     <div class="meta-item">
                         <svg class="icon" aria-hidden="true"><use href="#i-pulse"></use></svg>
-                        <span>Version: 2.0.0</span>
+                        <span>Version: 3.0.0</span>
                     </div>
                     <div class="meta-item">
                         <svg class="icon" aria-hidden="true"><use href="#i-user"></use></svg>
@@ -76,7 +76,7 @@
                     </div>
                     <div class="meta-item">
                         <svg class="icon" aria-hidden="true"><use href="#i-tag"></use></svg>
-                        <span>Speech AI • Flask • Whisper • FFmpeg • Background Jobs</span>
+                        <span>Python • Flask • SQLite • FFmpeg • Whisper • Parakeet • Docker</span>
                     </div>
                 </div>
             </div>
@@ -89,473 +89,419 @@
         <div class="content-section">
             <h2>Project Overview</h2>
             <p>
-                The <strong>Speech Annotation Tool</strong> is a production-ready web application designed for data annotation teams to 
-                review and correct ASR (Automatic Speech Recognition) transcriptions efficiently and safely. Built for teams working 
-                with speech-to-text accuracy improvement, the platform combines <strong>intelligent background job processing</strong>, 
-                <strong>real-time progress tracking</strong>, <strong>browser-based session persistence</strong>, and <strong>smart row locking</strong> 
-                to deliver a reliable, responsive workflow that keeps annotators productive without blocking the UI.
-            </p>
-            
-            <figure class="content-figure">
-                <img src="resources/project-4/Header.webp" alt="Speech Annotation Tool Header" loading="lazy" decoding="async">
-            </figure>
-            
-            <p>
-                The tool elegantly solves the transcription review bottleneck by supporting two distinct workflows: 
-                <strong>Review &amp; Correct</strong> for teams with pre-chunked audio and existing Excel transcripts, and 
-                <strong>Auto-Transcribe</strong> for starting from scratch with raw audio files. Everything runs on a lightweight 
-                Flask stack with no external job queue required-threading-based background jobs, CSV-based persistence, and 
-                localStorage-based session tracking keep the entire system simple to deploy and maintain while remaining powerful 
-                enough for production use.
+                The <strong>Speech Annotation Tool</strong> turns a folder of audio into a reviewed speech dataset. You point it at
+                a folder, pick a speech recognition engine, and it scans the folder, cuts long recordings into short clips,
+                transcribes them in the background and puts the result in front of your team to correct. When the review is
+                done you export CSV, Excel, JSON Lines or a Hugging Face style audio folder and train on it.
             </p>
 
-            <h2>The Challenge</h2>
+            <figure class="content-figure">
+                <img src="./resources/project-4/Header.webp" alt="The review workspace: audio player, machine transcript, editable corrected text and review buttons for each record" loading="lazy" decoding="async">
+            </figure>
+
             <p>
-                Data annotation teams working with audio transcriptions face several critical problems:
+                It runs on your own machine. The engine can be a local model such as Whisper, NVIDIA Parakeet or AI4Bharat
+                IndicConformer, downloaded from inside the app, or a hosted API such as Deepgram, ElevenLabs, Sarvam, OpenAI,
+                Gemini or OpenRouter with a key you paste in. Nothing ships pre-installed and nothing is hard-coded; the
+                only things in the environment file are the port, the data folder and the first admin login. Everything
+                else is set in the browser.
             </p>
+
+            <h2>Why I Built This</h2>
+            <p>
+                The first two versions were a correction table for Whisper output: load an Excel sheet and a folder of
+                chunks, fix the text, download a CSV. It did that job, but every real dataset project ran into the same
+                walls. The audio was never one flat folder. The model I wanted was not Whisper, or it was Whisper but
+                the API version because the laptop was too slow. The job died halfway through a weekend run and I had
+                no idea which files were done. Two people edited the same sheet and one of them lost their work.
+            </p>
+            <p>
+                Version 3 is a rewrite around those problems. Folders are tracked, not loaded. Engines are plug-ins, and
+                the list covers the open models people ask for in 2026 as well as the hosted ones. Every record is its own
+                checkpoint so a job can be paused, stopped, resumed or killed and picked up where it was. And there are
+                accounts, presence and edit claims so a small team can work in it at the same time without stepping on
+                each other.
+            </p>
+
+            <h2>What changed in 3.0</h2>
             <ul>
-                <li><strong>Blocking UI during Long Operations:</strong> Processing hundreds of audio files shouldn't freeze the interface</li>
-                <li><strong>Progress Visibility:</strong> Teams need real-time feedback on job status and completion percentage</li>
-                <li><strong>Accidental Overwrites:</strong> When corrections are finalized, they must be protected from accidental edits</li>
-                <li><strong>Session Loss:</strong> Corrections made to dozens of rows should survive browser refresh</li>
-                <li><strong>Data Export Flexibility:</strong> Results must be downloadable in multiple formats on demand</li>
-                <li><strong>Audio Format Chaos:</strong> Raw audio arrives in dozens of formats (MP3, WAV, WMA, OPUS, FLAC, M4A, etc.)</li>
-                <li><strong>Quality Assurance:</strong> Human reviewers must have confidence in what they're correcting</li>
-                <li><strong>No Infrastructure Overhead:</strong> Deployment shouldn't require Celery, Redis, or message brokers</li>
+                <li>Projects track a folder recursively. A scan finds only audio files, and later scans (manual or on a timer) notice new, changed and removed files without losing any review work.</li>
+                <li>Long recordings are split at silences close to a target length, so each record is a clean short clip. Fixed windows and no chunking are also there.</li>
+                <li>Five local engine families: faster-whisper, onnx-asr (Parakeet TDT v2 and v3, Canary), Hugging Face transformers, IndicConformer and Qwen3-ASR. Models download on demand with progress; one model sits in memory and is unloaded when idle.</li>
+                <li>Ten hosted providers: OpenAI, Groq, Deepgram, ElevenLabs, Sarvam, AssemblyAI, Google Gemini, Mistral, OpenRouter and any OpenAI compatible server. Length limits such as Sarvam's 30 seconds are handled by cutting at silences before the call.</li>
+                <li>Jobs with pause, resume and stop, per-record checkpoints, crash recovery on restart, logs and in-app notifications.</li>
+                <li>Accounts, online presence down to the record someone has open, edit claims, version checks on save and a per-record edit history.</li>
+                <li>Import from CSV, TSV, XLSX, JSON and JSONL, including the old version's own CSV. Export to CSV, XLSX, JSONL or an audio folder with <code>metadata.csv</code>.</li>
+                <li>SQLite instead of CSV files, waitress instead of the Flask dev server, Bootstrap served locally so it works offline, a Conda environment that includes ffmpeg, and a Docker image with a GPU override.</li>
             </ul>
 
-            <h2>Technical Architecture</h2>
-            <figure class="content-figure">
-                <img src="resources/project-4/Architecture.webp" alt="System Architecture" loading="lazy" decoding="async">
-            </figure>
-            <div class="diagram-container">
-                <p style="margin-top: 1rem; color: var(--text-secondary); text-align: center;">
-                    Audio Input → Format Detection → FFmpeg Conversion → Segmentation → Whisper Transcription → CSV Storage → Web UI → Export
-                </p>
-            </div>
+            <h2>Key Features</h2>
+            <ul>
+                <li><strong>Folder in, dataset out.</strong> Subfolders included, non-audio files ignored, 100,000 files is fine because the scan streams and every list in the app is paged.</li>
+                <li><strong>Change detection.</strong> Size and modification time are compared on every scan. Changed files can be re-cut, missing files keep their records and come back when the file returns.</li>
+                <li><strong>Engine choice per project.</strong> Switch between a local model and an API without touching existing text. Every engine has a "test with sample clip" button.</li>
+                <li><strong>Review desk.</strong> Player with speed control, machine text, editable corrected text, notes, approve and reject, keyboard shortcuts (Ctrl+Enter to save and move on, Alt+A to approve), history per record and bulk actions.</li>
+                <li><strong>Jobs you can trust.</strong> The record is the unit of work. Workers claim one atomically, write it back on its own, and a job that was running when the process died is queued again on the next start.</li>
+                <li><strong>Team aware.</strong> Avatars show who is online, rows show who is editing what, and a save that would overwrite someone else's change is refused instead of applied.</li>
+                <li><strong>Runs on a laptop CPU.</strong> int8 Whisper and Parakeet on the CPU by default; a GPU is used only when its libraries actually load, with a fallback to the CPU mid-job if a call fails.</li>
+            </ul>
 
-            <h3>Core System Components</h3>
+            <h2>Screenshots</h2>
+
+            <h3>Projects overview</h3>
+            <figure class="content-figure">
+                <img src="./resources/project-4/Dashboard.webp" alt="Dashboard with two project cards showing counts and progress, and a sidebar listing who is online" loading="lazy" decoding="async">
+            </figure>
+
+            <h3>Creating a project</h3>
+            <figure class="content-figure">
+                <img src="./resources/project-4/New-Project.webp" alt="New project dialog with folder picker, engine and model selection, language, chunking and rescan options" loading="lazy" decoding="async">
+            </figure>
+
+            <h3>Local models</h3>
+            <figure class="content-figure">
+                <img src="./resources/project-4/Models.webp" alt="Models page listing Whisper sizes with download and test buttons, machine capabilities and downloaded files" loading="lazy" decoding="async">
+            </figure>
+
+            <h3>Hosted providers</h3>
+            <figure class="content-figure">
+                <img src="./resources/project-4/Providers.webp" alt="Providers page with API key, base URL, default model and options for OpenAI, Groq, Deepgram and ElevenLabs" loading="lazy" decoding="async">
+            </figure>
+
+            <h3>Jobs and users</h3>
+            <figure class="content-figure">
+                <img src="./resources/project-4/Jobs.webp" alt="Jobs page with progress bars, status badges and controls for each job" loading="lazy" decoding="async">
+            </figure>
+            <figure class="content-figure">
+                <img src="./resources/project-4/Users.webp" alt="Users page showing accounts, online state and what each person is working on" loading="lazy" decoding="async">
+            </figure>
+
+            <h2>How It Works</h2>
+
+            <h3>Scanning</h3>
+            <ol>
+                <li>The folder is walked with <code>os.scandir</code> on an explicit stack, yielding one file at a time. Hidden folders and things like <code>$RECYCLE.BIN</code> are skipped; files are matched by extension.</li>
+                <li>Each path is compared with the <code>files</code> table. New files are inserted in batches of 500, changed sizes or times flag the row, paths that did not show up are marked missing.</li>
+                <li>New files are prepared: ffprobe reads the duration, and either one record points at the original file or ffmpeg cuts 16 kHz mono WAV segments into the data folder and one record is created per segment.</li>
+            </ol>
+
+            <h3>Chunking at silences</h3>
+            <p>
+                ffmpeg's <code>silencedetect</code> filter lists every quiet stretch. The planner then walks through the file
+                and, for each piece, looks for a silence inside a window around the target length, scoring closeness to
+                the target and the length of the silence. If there is no silence in the window it cuts hard at the target.
+                Files shorter than 1.5 times the target are not cut at all.
+            </p>
+
+            <h3>Transcribing</h3>
+            <ol>
+                <li>A transcribe job counts the pending records and starts one worker for a local engine or several for a hosted one.</li>
+                <li>Each worker claims the next pending record with a single <code>UPDATE ... RETURNING</code>, so two workers can never get the same one.</li>
+                <li>The audio is converted to 16 kHz mono WAV if it is not already, cut into pieces if the engine has a length limit, and sent to the engine. The text and detected language are written back and the job counter moves.</li>
+                <li>Pause and stop are flags checked between records. A configuration error that would fail every record, such as a missing API key, stops the job after the first attempt and leaves the record pending.</li>
+            </ol>
+
+            <h3>Working together</h3>
+            <p>
+                Every page polls one status endpoint every two seconds. The call carries which page, project and record
+                the user is on, and returns active jobs, unread notifications, who is online and the counters of the open
+                project. Focusing a row claims it; other browsers see the claim on the next poll and mark the row read-only.
+                Saves carry the record version they started from and are refused with a 409 when it moved.
+            </p>
+
+            <h2>Tech Stack</h2>
             <div class="tech-stack">
                 <div class="tech-category">
-                    <h4>Backend Framework</h4>
+                    <h4>Server</h4>
                     <div class="tech-list">
-                        <span class="tech-item">Flask 3.0+</span>
-                        <span class="tech-item">Python 3.10+</span>
-                        <span class="tech-item">pandas</span>
-                        <span class="tech-item">Jinja2 Templates</span>
+                        <span class="tech-item">Python 3.12</span>
+                        <span class="tech-item">Flask</span>
+                        <span class="tech-item">waitress</span>
+                        <span class="tech-item">SQLite (WAL)</span>
                     </div>
                 </div>
                 <div class="tech-category">
-                    <h4>Speech Processing</h4>
+                    <h4>Audio and local engines</h4>
                     <div class="tech-list">
-                        <span class="tech-item">OpenAI Whisper</span>
                         <span class="tech-item">FFmpeg</span>
-                        <span class="tech-item">Audio Streaming</span>
-                        <span class="tech-item">Format Detection</span>
+                        <span class="tech-item">faster-whisper</span>
+                        <span class="tech-item">onnx-asr</span>
+                        <span class="tech-item">transformers</span>
+                        <span class="tech-item">huggingface_hub</span>
                     </div>
                 </div>
                 <div class="tech-category">
-                    <h4>Background Jobs</h4>
+                    <h4>Hosted providers</h4>
                     <div class="tech-list">
-                        <span class="tech-item">Python Threading</span>
-                        <span class="tech-item">Job Manager</span>
-                        <span class="tech-item">JSON Persistence</span>
-                        <span class="tech-item">Type-Based Locking</span>
+                        <span class="tech-item">OpenAI</span>
+                        <span class="tech-item">Deepgram</span>
+                        <span class="tech-item">ElevenLabs</span>
+                        <span class="tech-item">Sarvam</span>
+                        <span class="tech-item">Gemini</span>
+                        <span class="tech-item">OpenRouter</span>
                     </div>
                 </div>
                 <div class="tech-category">
-                    <h4>Frontend</h4>
+                    <h4>Frontend and delivery</h4>
                     <div class="tech-list">
-                        <span class="tech-item">Vanilla JavaScript</span>
-                        <span class="tech-item">Bootstrap 5</span>
-                        <span class="tech-item">localStorage API</span>
-                        <span class="tech-item">Fetch API</span>
+                        <span class="tech-item">Plain HTML/JS</span>
+                        <span class="tech-item">Bootstrap (local)</span>
+                        <span class="tech-item">Conda</span>
+                        <span class="tech-item">Docker</span>
+                        <span class="tech-item">pytest</span>
                     </div>
                 </div>
             </div>
 
-            <h2>Key Features & Capabilities</h2>
-            
-            <h3>Two Purpose-Built Workflows</h3>
+            <h2>My Contribution</h2>
+            <p>I designed and built all three versions on my own.</p>
+            <ul>
+                <li>Designed the data model (projects, files, records, jobs) and the SQLite layer with one write lock and per-thread connections</li>
+                <li>Wrote the streaming folder scanner with change detection and the silence based chunk planner on top of ffmpeg</li>
+                <li>Built the engine registry and the fifteen engine integrations, including the auto-split for length-limited providers and the GPU probe with CPU fallback</li>
+                <li>Built the job runner: atomic claims, pause and resume, crash recovery, scheduled rescans, idle model unload and cache trimming</li>
+                <li>Built the review interface, presence, edit claims, version checks and history</li>
+                <li>Wrote the import and export paths, the Conda and Docker packaging, the test suite and the documentation</li>
+            </ul>
+
+            <h2>Challenges and Learnings</h2>
+
             <p>
-                The platform supports distinct workflows optimized for different data scenarios:
-            </p>
-            <ul>
-                <li><strong>Review &amp; Correct (Primary):</strong> Load pre-chunked audio with Excel transcripts, review in-table, save with autosave, lock when finalized</li>
-                <li><strong>Auto-Transcribe (Secondary):</strong> Point to any folder of audio files, automatic FFmpeg chunking (30-second segments), Whisper transcription, background progress tracking</li>
-            </ul>
-
-            <h3>Advanced Background Job System</h3>
-            <ul>
-                <li><strong>Threaded Execution:</strong> Jobs run in daemon threads without blocking the Flask web server</li>
-                <li><strong>Type-Based Locking:</strong> Only one job per type (TRANSCRIBE, MANUAL_IMPORT) can run simultaneously, preventing conflicts</li>
-                <li><strong>Progress Reporting:</strong> Real-time progress updates with percentage completion and item counters</li>
-                <li><strong>JSON Persistence:</strong> Job status survives application restarts; no external storage required</li>
-                <li><strong>Error Handling:</strong> Graceful failure tracking with detailed error messages for debugging</li>
-            </ul>
-
-            <h3>Intelligent Progress Tracking</h3>
-            <ul>
-                <li><strong>Auto-Updating Banner:</strong> Smart progress bar that appears during active jobs and auto-dismisses on completion</li>
-                <li><strong>2-Second Polling Cadence:</strong> Frontend polls job status every 2 seconds for responsive UX</li>
-                <li><strong>Item-Level Granularity:</strong> Shows "X of Y items processed" for intuitive progress understanding</li>
-                <li><strong>Status Lifecycle:</strong> pending → running → completed/failed with clear visual indicators</li>
-            </ul>
-
-            <h3>Session Persistence &amp; Correction Tracking</h3>
-            <ul>
-                <li><strong>localStorage Tracking:</strong> Browser-based storage tracks every correction made, survives refresh and restart</li>
-                <li><strong>Correction Metadata:</strong> Stores original text, corrected text, timestamp, and completion status</li>
-                <li><strong>Statistics Dashboard:</strong> Real-time counters showing total records, corrected records, and locked records</li>
-                <li><strong>Privacy-First:</strong> All tracking happens locally in the browser; no server-side session overhead</li>
-            </ul>
-
-            <h3>Smart Row Locking</h3>
-            <ul>
-                <li><strong>Prevent Accidental Edits:</strong> Lock rows when finalized to make them read-only with yellow highlighting</li>
-                <li><strong>Lock Timestamps:</strong> Track when each row was locked for audit purposes</li>
-                <li><strong>Toggle Unlock:</strong> Reviewers can unlock if changes needed; all edits are tracked</li>
-                <li><strong>Bulk Operations Ready:</strong> Architecture supports future batch lock/unlock operations</li>
-            </ul>
-
-            <h3>Audio Processing Intelligence</h3>
-            <ul>
-                <li><strong>Format Auto-Detection:</strong> Supports MP3, WAV, WMA, MPEG, OPUS, FLAC, M4A, and more via FFmpeg</li>
-                <li><strong>Smart Conversion:</strong> Automatically converts any audio to 16kHz mono WAV for Whisper consistency</li>
-                <li><strong>Fixed Segmentation:</strong> Chunks audio into configurable segments (default 30 seconds) for manageable processing</li>
-                <li><strong>Streaming Architecture:</strong> FFmpeg streaming avoids loading entire files into memory, enabling massive file support</li>
-                <li><strong>Browser Playback:</strong> Each segment can be played directly in the browser for manual verification</li>
-            </ul>
-
-            <h3>Flexible Data Import &amp; Export</h3>
-            <ul>
-                <li><strong>Excel Ingestion:</strong> Bulk import pre-chunked data via Excel with required columns validation</li>
-                <li><strong>Column Enforcement:</strong> Checks for required columns (filename, transcription) before import</li>
-                <li><strong>Multi-Format Export:</strong> Download as CSV or XLSX (Excel) anytime, includes all corrections and metadata</li>
-                <li><strong>Instant Downloads:</strong> Export operations complete in milliseconds regardless of dataset size</li>
-            </ul>
-
-            <h2>Implementation Highlights</h2>
-
-            <div class="code-block">
-                <div class="code-header">
-                    <span class="code-language">Python - Job Manager Architecture</span>
-                    <button class="copy-button">Copy</button>
-                </div>
-                <pre><code><span class="keyword">class</span> <span class="function">JobManager</span>:
-    <span class="string">"""
-    Singleton managing all background jobs with threading
-    Type-based locking prevents concurrent job conflicts
-    """</span>
-    
-    <span class="keyword">def</span> <span class="function">run_job_async</span>(self, job_id, job_type, task_func, total_items):
-        <span class="comment"># Check if another job of this type is running</span>
-        can_start, active_id = self.can_start_job(job_type)
-        <span class="keyword">if</span> <span class="keyword">not</span> can_start:
-            <span class="keyword">return</span> {<span class="string">'error'</span>: <span class="string">'Job already running'</span>, 
-                    <span class="string">'active_job_id'</span>: active_id}
-        
-        <span class="comment"># Create job info</span>
-        job_info = self.create_job(job_id, job_type, total_items)
-        
-        <span class="comment"># Spawn daemon thread</span>
-        <span class="keyword">def</span> <span class="function">wrapper</span>():
-            <span class="keyword">try</span>:
-                self.start_job(job_id)
-                result = task_func(job_id, self)
-                self.complete_job(job_id, result)
-            <span class="keyword">except</span> <span class="function">Exception</span> <span class="keyword">as</span> e:
-                self.fail_job(job_id, str(e))
-        
-        thread = Thread(target=wrapper, daemon=<span class="keyword">True</span>)
-        thread.start()
-        <span class="keyword">return</span> job_info
-    
-    <span class="keyword">def</span> <span class="function">update_progress</span>(self, job_id, processed, total):
-        <span class="string">"""Called by task to report progress"""</span>
-        self._jobs[job_id][<span class="string">'processed_items'</span>] = processed
-        self._jobs[job_id][<span class="string">'progress'</span>] = int((processed / total) * 100)
-        self._persist_jobs()  <span class="comment"># Save to JSON</span></code></pre>
-            </div>
-
-            <div class="code-block">
-                <div class="code-header">
-                    <span class="code-language">Python - Audio Processing Pipeline</span>
-                    <button class="copy-button">Copy</button>
-                </div>
-                <pre><code><span class="keyword">def</span> <span class="function">auto_transcribe_workflow</span>(job_id, job_manager):
-    <span class="string">"""
-    Complete auto-transcribe pipeline:
-    Folder → Audio Files → FFmpeg Convert → Segment → Whisper → CSV
-    """</span>
-    
-    audio_files = list(iter_audio_files(folder_path))
-    job_manager.update_progress(job_id, 0, len(audio_files))
-    
-    <span class="keyword">for</span> idx, audio_file <span class="keyword">in</span> enumerate(audio_files):
-        <span class="comment"># Step 1: Convert to standardized WAV</span>
-        wav_path = convert_to_wav(audio_file, job_id)
-        
-        <span class="comment"># Step 2: Segment into 30-second chunks</span>
-        segments = segment_audio(wav_path, job_id, segment_seconds=<span class="number">30</span>)
-        
-        <span class="comment"># Step 3: Transcribe each segment</span>
-        model = load_model(model_name)  <span class="comment"># LRU cached</span>
-        <span class="keyword">for</span> segment in segments:
-            transcript = transcribe_file(model, segment)
-            
-            <span class="comment"># Step 4: Store in CSV</span>
-            append_record({
-                <span class="string">'filename'</span>: segment,
-                <span class="string">'transcription'</span>: transcript,
-                <span class="string">'job_id'</span>: job_id
-            })
-        
-        <span class="comment"># Step 5: Report progress</span>
-        job_manager.update_progress(job_id, idx + 1, len(audio_files))</code></pre>
-            </div>
-
-            <div class="code-block">
-                <div class="code-header">
-                    <span class="code-language">JavaScript - Correction Tracker</span>
-                    <button class="copy-button">Copy</button>
-                </div>
-                <pre><code><span class="keyword">class</span> <span class="function">CorrectionTracker</span> {
-    <span class="string">/**
-     * Manages localStorage-based correction history
-     * Tracks which records were edited and what changes made
-     */</span>
-    
-    constructor() {
-        this.storageKey = <span class="string">'asr_corrections_tracker'</span>;
-        this.tracker = this.loadFromStorage();
-    }
-    
-    <span class="function">markCorrected</span>(recordId, originalText, correctedText) {
-        this.tracker[recordId] = {
-            corrected: <span class="keyword">true</span>,
-            originalText,
-            correctedText,
-            timestamp: <span class="keyword">new</span> Date().toISOString()
-        };
-        this.saveToStorage();
-    }
-    
-    <span class="function">getStats</span>() {
-        <span class="keyword">const</span> total = Object.keys(this.tracker).length;
-        <span class="keyword">const</span> corrected = Object.values(this.tracker)
-            .filter(r =&gt; r.corrected).length;
-        <span class="keyword">return</span> { total, corrected };
-    }
-}</code></pre>
-            </div>
-
-            <h2>Performance Metrics</h2>
-            <div class="project-stats">
-                <div class="stat-box">
-                    <div class="stat-value">1000s</div>
-                    <div class="stat-label">Files via Background Jobs</div>
-                </div>
-                <div class="stat-box">
-                    <div class="stat-value">30s</div>
-                    <div class="stat-label">Default Segment Size</div>
-                </div>
-                <div class="stat-box">
-                    <div class="stat-value">2s</div>
-                    <div class="stat-label">UI Polling Cadence</div>
-                </div>
-                <div class="stat-box">
-                    <div class="stat-value">0ms</div>
-                    <div class="stat-label">UI Blocking</div>
-                </div>
-            </div>
-
-            <h3>Workflow Capabilities</h3>
-            <div class="table-container">
-                <table class="content-table">
-                    <thead>
-                        <tr>
-                            <th>Workflow</th>
-                            <th>Use Case</th>
-                            <th>Input</th>
-                            <th>Processing</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Review &amp; Correct</td>
-                            <td>Teams with pre-chunked audio</td>
-                            <td>Audio folder + Excel file</td>
-                            <td>Direct table load, inline edit, save</td>
-                        </tr>
-                        <tr>
-                            <td>Auto-Transcribe ⭐</td>
-                            <td>Starting from raw audio</td>
-                            <td>Audio folder (any format)</td>
-                            <td>Convert → Segment → Transcribe → Show results</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <h2>Live Demo</h2>
-            <div class="demo-section">
-                <h3>See the System in Action</h3>
-                <p>Watch how the tool handles background transcription jobs, live progress updates, and responsive UI interactions without blocking the interface.</p>
-                <figure class="content-figure">
-                    <img src="resources/project-4/Application-Dashboard.webp" alt="Application Dashboard" loading="lazy" decoding="async">
-                </figure>
-                <div style="display: flex; justify-content: center; align-items: center; gap: 1rem; flex-wrap: wrap; margin-top: 1.5rem;">
-                    <a href="https://github.com/inboxpraveen/Speech-Annotation-Tool" class="demo-button" target="_blank">GitHub Repository</a>
-                    <a href="https://github.com/inboxpraveen/Speech-Annotation-Tool/blob/master/PROJECT_DOCUMENTATION.md" class="demo-button" target="_blank" style="background: var(--secondary-bg); color: var(--accent-color); border: 1px solid var(--accent-color);">Documentation</a>
-                </div>
-            </div>
-
-            <h2>Deployment Options</h2>
-            <p>
-                The system is deployment-ready with simple configurations for multiple platforms. No Celery, Redis, or message brokers required-just Python, Flask, and FFmpeg.
+                <strong>A GPU that reports itself but cannot work.</strong><br>
+                CTranslate2 saw the laptop's NVIDIA card and happily reported a CUDA device, but the CPU build of PyTorch
+                does not ship cuBLAS. The first record failed with a missing DLL and the second call hung inside native
+                code, taking the job with it. The fix is a probe that imports torch and then tries to load cuBLAS by name
+                before the GPU is ever offered to an engine, plus a fallback that marks the engine CPU-only for the session
+                if a GPU call still fails. "Works on any machine" mostly means "does not trust what the machine says".
             </p>
 
-            <h3>Quick Deploy</h3>
+            <p>
+                <strong>Timestamps that SQLite can compare.</strong><br>
+                Scheduled rescans and stale claim clean-up are plain SQL comparisons against <code>datetime('now')</code>.
+                Python's ISO format with a <code>T</code> and a timezone suffix sorts after SQLite's space-separated form
+                on the same date, so the comparisons were silently wrong. Every timestamp in the app is now written in
+                SQLite's own shape, in UTC, and the browser converts for display.
+            </p>
+
+            <p>
+                <strong>Where a hosted provider's limit belongs.</strong><br>
+                Sarvam's synchronous endpoint takes 30 seconds of audio, OpenAI 25 MB, Gemini 20 MB inline. Putting these
+                rules in the chunk settings would tie the dataset shape to the provider. Instead each engine declares a
+                maximum duration and the shared transcribe path cuts the clip at silences, transcribes the pieces and joins
+                the text. The project's chunking stays about the dataset, the split stays about the API.
+            </p>
+
+            <p>
+                <strong>The table that did not refresh.</strong><br>
+                The browser test that created a project and waited for its rows timed out, because the page loaded before
+                the scan had created any records and nothing told it to look again. A human would have pressed F5 and never
+                reported it. The status poll now carries the record count and the number of active jobs, and the table
+                reloads when either changes and nothing is being edited.
+            </p>
+
+            <p>
+                <strong>Two servers on one port.</strong><br>
+                On Windows a second copy of the app can bind a port that is already in use, and for twenty minutes I was
+                testing an old build. The lesson went into the troubleshooting guide and into a habit of checking
+                <code>Get-CimInstance Win32_Process</code> before believing a log line.
+            </p>
+
+            <h2>Core Logic: How the Code Works</h2>
+            <p>
+                Four pieces carry most of the design. They are shown as they are in the repository, with a few lines cut for
+                length.
+            </p>
+
+            <h3>Claiming a record</h3>
+            <p>
+                One statement takes the next pending record and marks it as processing. Because SQLite runs the subquery and
+                the update in the same transaction, parallel workers, whether threads in one job or a job and a user
+                pressing "re-transcribe", cannot both get it. The test suite runs six threads against this and checks that
+                every record is claimed exactly once.
+            </p>
             <div class="code-block">
                 <div class="code-header">
-                    <span class="code-language">Bash - Local Development</span>
+                    <span class="code-language">Python - sat/jobs.py</span>
                     <button class="copy-button">Copy</button>
                 </div>
-                <pre><code><span class="comment"># Clone and setup</span>
-git clone https://github.com/inboxpraveen/Speech-Annotation-Tool.git
+                <pre><code><span class="keyword">def</span> <span class="function">_claim_next</span>(project_id, record_ids=<span class="keyword">None</span>):
+    <span class="string">"""Atomically take one pending record so parallel workers never share one."""</span>
+    where = <span class="string">"project_id=? AND status='pending'"</span>
+    params = [project_id]
+    <span class="keyword">if</span> record_ids:
+        where += <span class="string">" AND id IN (%s)"</span> % <span class="string">","</span>.join(<span class="string">"?"</span> <span class="keyword">for</span> _ <span class="keyword">in</span> record_ids)
+        params += list(record_ids)
+    <span class="keyword">with</span> db.transaction() <span class="keyword">as</span> conn:
+        row = conn.execute(
+            <span class="string">"UPDATE records SET status='processing', updated_at=? "</span>
+            <span class="string">"WHERE id=(SELECT id FROM records WHERE %s ORDER BY file_id, segment_index LIMIT 1) "</span>
+            <span class="string">"RETURNING *"</span> % where,
+            [db.now()] + params,
+        ).fetchone()
+    <span class="keyword">return</span> dict(row) <span class="keyword">if</span> row <span class="keyword">else</span> <span class="keyword">None</span></code></pre>
+            </div>
+
+            <h3>Planning cuts at silences</h3>
+            <p>
+                Given the duration, the silences ffmpeg found and a target length, this walks the file and picks a cut
+                inside each window. The score prefers cuts close to the target and inside longer silences. The last piece
+                is whatever remains, which is why short files are never chunked at all.
+            </p>
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-language">Python - sat/audio.py</span>
+                    <button class="copy-button">Copy</button>
+                </div>
+                <pre><code><span class="keyword">def</span> <span class="function">plan_segments</span>(duration, silences, target, min_len=<span class="keyword">None</span>, max_len=<span class="keyword">None</span>):
+    target = float(target)
+    max_len = float(max_len <span class="keyword">or</span> target * <span class="number">1.5</span>)
+    min_len = float(min_len <span class="keyword">or</span> max(<span class="number">1.0</span>, target * <span class="number">0.3</span>))
+    mids = [((s + e) / <span class="number">2.0</span>, e - s) <span class="keyword">for</span> s, e <span class="keyword">in</span> silences]
+    pieces, cursor = [], <span class="number">0.0</span>
+    <span class="keyword">while</span> duration - cursor &gt; max_len:
+        low, high = cursor + min_len, cursor + max_len
+        best = <span class="keyword">None</span>
+        <span class="keyword">for</span> mid, length <span class="keyword">in</span> mids:
+            <span class="keyword">if</span> low &lt;= mid &lt;= high:
+                score = abs(mid - (cursor + target)) - <span class="number">0.5</span> * length
+                <span class="keyword">if</span> best <span class="keyword">is</span> <span class="keyword">None</span> <span class="keyword">or</span> score &lt; best[<span class="number">0</span>]:
+                    best = (score, mid)
+        cut = best[<span class="number">1</span>] <span class="keyword">if</span> best <span class="keyword">else</span> cursor + target
+        pieces.append((cursor, cut))
+        cursor = cut
+    pieces.append((cursor, duration))
+    <span class="keyword">return</span> [(round(s, <span class="number">3</span>), round(e, <span class="number">3</span>)) <span class="keyword">for</span> s, e <span class="keyword">in</span> pieces <span class="keyword">if</span> e - s &gt; <span class="number">0.05</span>]</code></pre>
+            </div>
+
+            <h3>One transcribe path for every engine</h3>
+            <p>
+                Engines are entries in a catalog with a kind, a default model, option fields and an optional maximum
+                duration. The shared entry point splits when it has to and hands each piece to the local or the API module.
+                Adding a provider is one function plus one catalog entry; the pages that render option fields and model
+                pickers pick it up on their own.
+            </p>
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-language">Python - sat/engines/__init__.py</span>
+                    <button class="copy-button">Copy</button>
+                </div>
+                <pre><code><span class="keyword">def</span> <span class="function">transcribe</span>(engine_id, model, wav_path, language=<span class="keyword">None</span>, options=<span class="keyword">None</span>):
+    e = get(engine_id)
+    pieces = [Path(wav_path)]
+    <span class="keyword">if</span> e.get(<span class="string">"max_seconds"</span>):
+        pieces = audio.split_wav_for_engine(wav_path, e[<span class="string">"max_seconds"</span>])
+    texts, lang = [], <span class="keyword">None</span>
+    <span class="keyword">try</span>:
+        <span class="keyword">for</span> piece <span class="keyword">in</span> pieces:
+            <span class="keyword">if</span> e[<span class="string">"kind"</span>] == <span class="string">"local"</span>:
+                res = local_engines.transcribe(engine_id, model, piece, language, options)
+            <span class="keyword">else</span>:
+                res = api_engines.transcribe(engine_id, model, piece, language, options)
+            <span class="keyword">if</span> res.get(<span class="string">"text"</span>):
+                texts.append(res[<span class="string">"text"</span>])
+            lang = lang <span class="keyword">or</span> res.get(<span class="string">"language"</span>)
+    <span class="keyword">finally</span>:
+        <span class="keyword">for</span> piece <span class="keyword">in</span> pieces:
+            <span class="keyword">if</span> piece != Path(wav_path):
+                piece.unlink(missing_ok=<span class="keyword">True</span>)
+    <span class="keyword">return</span> {<span class="string">"text"</span>: <span class="string">" "</span>.join(texts).strip(), <span class="string">"language"</span>: lang}</code></pre>
+            </div>
+
+            <h3>Recovering after a crash</h3>
+            <p>
+                There is no separate checkpoint file. Records that were mid-flight go back to pending, claims are cleared,
+                and jobs that were running are queued again (or parked as paused if the admin prefers to decide). The next
+                claim picks up exactly where the last successful write stopped.
+            </p>
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-language">Python - sat/jobs.py</span>
+                    <button class="copy-button">Copy</button>
+                </div>
+                <pre><code><span class="keyword">def</span> <span class="function">recover</span>(self):
+    <span class="string">"""Put interrupted work back in the queue after a crash or restart."""</span>
+    auto = db.get_setting(<span class="string">"auto_resume_jobs"</span>)
+    stamp = db.now()
+    <span class="keyword">with</span> db.transaction() <span class="keyword">as</span> conn:
+        conn.execute(<span class="string">"UPDATE records SET status='pending', updated_at=? WHERE status='processing'"</span>, (stamp,))
+        conn.execute(<span class="string">"UPDATE records SET claimed_by=NULL, claimed_at=NULL WHERE claimed_by IS NOT NULL"</span>)
+        new_status = <span class="string">"queued"</span> <span class="keyword">if</span> auto <span class="keyword">else</span> <span class="string">"paused"</span>
+        conn.execute(
+            <span class="string">"UPDATE jobs SET status=?, message='interrupted by a restart, ' || ?, updated_at=? WHERE status='running'"</span>,
+            (new_status, <span class="string">"resuming"</span> <span class="keyword">if</span> auto <span class="keyword">else</span> <span class="string">"waiting for resume"</span>, stamp),
+        )</code></pre>
+            </div>
+
+            <h2>Installation and Setup</h2>
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-language">Bash - Conda</span>
+                    <button class="copy-button">Copy</button>
+                </div>
+                <pre><code>git clone https://github.com/inboxpraveen/Speech-Annotation-Tool.git
 cd Speech-Annotation-Tool
-
-<span class="comment"># Create virtual environment</span>
-python -m venv venv
-source venv/bin/activate  <span class="comment"># Windows: venv\Scripts\activate</span>
-
-<span class="comment"># Install dependencies</span>
-pip install -r requirements.txt
-
-<span class="comment"># Run application</span>
-python app.py
-<span class="comment"># Open http://localhost:5000</span></code></pre>
+conda env create -f environment.yml   <span class="comment"># Python 3.12, ffmpeg and every engine library</span>
+conda activate speech-annotation-tool
+python app.py                         <span class="comment"># http://localhost:8000, admin / admin</span></code></pre>
             </div>
-
-            <h3>Also Supports</h3>
-            <ul>
-                <li><strong>Gunicorn:</strong> Production WSGI server with multi-worker support</li>
-                <li><strong>Docker:</strong> Containerized deployment with pre-installed FFmpeg and dependencies</li>
-                <li><strong>Systemd:</strong> Service files for long-running instances on Linux servers</li>
-                <li><strong>Cloud:</strong> Compatible with any cloud provider (AWS, Heroku, Railway, Render)</li>
-            </ul>
-
-            <h2>Technical Challenges & Solutions</h2>
-            
             <p>
-                <strong>Challenge 1: Non-Blocking Background Jobs Without External Infrastructure</strong><br>
-                Transcribing hundreds of files would block the web interface and exhaust memory. 
-                <em>Solution:</em> Implemented Python threading with daemon threads and a singleton JobManager class. 
-                Jobs run independently while the Flask server remains responsive. Type-based locking prevents concurrent conflicts. 
-                Progress persisted to JSON, so status survives restarts.
+                The environment installs CPU builds and runs anywhere. With an NVIDIA card,
+                <code>pip install torch --index-url https://download.pytorch.org/whl/cu128</code> inside the environment is
+                enough for Whisper and transformers to use it.
             </p>
-            
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-language">Bash - Docker</span>
+                    <button class="copy-button">Copy</button>
+                </div>
+                <pre><code>cp .env.example .env          <span class="comment"># set AUDIO_DIR to the folder with your audio</span>
+docker compose up -d --build  <span class="comment"># your folder appears in the app as /audio</span></code></pre>
+            </div>
             <p>
-                <strong>Challenge 2: Audio Format Chaos</strong><br>
-                Audio files arrive in dozens of formats (MP3, M4A, OPUS, FLAC, etc.) with varying sample rates and channels. 
-                <em>Solution:</em> Integrated FFmpeg for universal format conversion with intelligent preprocessing. 
-                All audio automatically converted to standardized 16kHz mono WAV before Whisper processing. 
-                FFmpeg streaming prevents memory overflow on large files.
+                Sign in, create a project, browse to the folder, pick an engine and press create. The scan and the first
+                transcription start on their own, and the review desk fills in as records finish.
             </p>
 
+            <h2>Where it goes next</h2>
             <p>
-                <strong>Challenge 3: Session State Without Server Overhead</strong><br>
-                Tracking which of hundreds of records were corrected would require server sessions. 
-                <em>Solution:</em> Leveraged browser localStorage to track corrections client-side. 
-                CorrectionTracker class stores correction metadata with timestamps. Survives browser refresh, 
-                restart, and network issues without server-side complexity.
+                Speaker turns are the obvious gap: several providers already return diarization, and records could carry a
+                speaker label and be exported per speaker. A word error rate view comparing machine text with corrected
+                text per model would make the engine choice measurable instead of a guess. And I would like a way to
+                push a finished dataset straight to the Hugging Face Hub from the export dialog.
             </p>
 
+            <h2>Closing Note</h2>
             <p>
-                <strong>Challenge 4: UI Responsiveness During Long Operations</strong><br>
-                Users need real-time feedback on job progress without page reloads blocking interaction. 
-                <em>Solution:</em> Smart polling strategy with 2-second refresh cadence. Frontend polls job status 
-                via API while UI remains interactive. Progress banner auto-appears and dismisses intelligently. 
-                Silent table refreshes don't interrupt user workflow.
+                The tool is open source under the MIT licence. It was verified end to end on Windows with Conda and on
+                Linux in Docker, with Whisper, Parakeet and a transformers model on real speech, and the browser workflow
+                was driven by Playwright before the screenshots above were taken. The hosted providers are wired against
+                their current documentation but were not exercised with live keys, which is exactly what the "test with
+                sample clip" button on each provider card is for.
             </p>
-
-            <p>
-                <strong>Challenge 5: Data Safety and Accident Prevention</strong><br>
-                Corrected transcripts must be protected from accidental overwrites by team members. 
-                <em>Solution:</em> Implemented row-level locking with timestamp tracking. Once locked, rows become 
-                read-only and visually highlighted. Lock state persisted in CSV with optional unlock capability. 
-                Audit trail tracking enables debugging of accidental changes.
-            </p>
-
-            <h2>Architecture Decisions</h2>
-
-            <h3>Why Threading Instead of Celery?</h3>
-            <p>
-                This project deliberately avoids external job queues like Celery. Threading provides:
-            </p>
-            <ul>
-                <li><strong>Zero Infrastructure:</strong> No Redis/RabbitMQ broker required for deployment</li>
-                <li><strong>Simpler Debugging:</strong> Exceptions and logs all in one Python process</li>
-                <li><strong>Fast Iteration:</strong> Deploy with single Python command, no daemon management</li>
-                <li><strong>Sufficient Scale:</strong> Handles thousands of files for team-based annotation</li>
-                <li><strong>Type-Based Locking:</strong> One job per type prevents conflicts without complex state</li>
-            </ul>
-            <p>
-                For distributed processing across multiple servers, Celery migration path documented in PROJECT_DOCUMENTATION.md.
-            </p>
-
-            <h3>Why CSV Instead of Database?</h3>
-            <ul>
-                <li><strong>Human-Readable:</strong> Data visible in Excel, easily debuggable</li>
-                <li><strong>No Setup:</strong> No database server required, just files</li>
-                <li><strong>Thread-Safe:</strong> RLock-based file access prevents corruption under concurrency</li>
-                <li><strong>Export-Ready:</strong> Already in the format users need for downloads</li>
-                <li><strong>Migration Path:</strong> Easy to migrate to SQLite or PostgreSQL when scale demands</li>
-            </ul>
-
-            <h2>Key Learnings</h2>
-            <ul>
-                <li>Threading-based jobs are sufficient for team-scale annotation workflows; complexity of Celery only justified at massive scale</li>
-                <li>localStorage-based session tracking eliminates server-side session overhead entirely while improving privacy</li>
-                <li>Smart UI polling (2-second cadence) balances responsiveness with server load-too frequent causes overhead, too slow feels sluggish</li>
-                <li>Row-level locking prevents most annotation errors; much cheaper than fixing mistakes after the fact</li>
-                <li>FFmpeg streaming for audio processing enables handling of massive files without memory bloat</li>
-                <li>Type-based job locking is simpler and more effective than complex queue systems for single-server deployments</li>
-                <li>CSV + pandas is surprisingly powerful for data persistence; premature database migration adds unnecessary complexity</li>
-            </ul>
-
-            <h2>Future Enhancements</h2>
-            <ul>
-                <li><strong>Version 2.1:</strong> Multi-user authentication, per-user correction tracking, team dashboards</li>
-                <li><strong>Version 2.2:</strong> Speaker diarization support, custom Whisper model fine-tuning interface</li>
-                <li><strong>Version 2.3:</strong> WebSocket-based real-time progress (currently polling)</li>
-                <li><strong>Version 3.0:</strong> PostgreSQL backend for enterprise deployments, distributed Celery workers</li>
-                <li><strong>Future:</strong> Batch export with filtering, quality metrics dashboard, annotation team benchmarking</li>
-            </ul>
 
             <div style="margin-top: 3rem; padding: 2rem; background: var(--secondary-bg); border-radius: 15px; border: 1px solid var(--border-color);">
                 <h3 style="margin-top: 0;">Project Links</h3>
                 <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1rem; margin-bottom: 2rem;">
-                    <a href="https://github.com/inboxpraveen/Speech-Annotation-Tool" class="demo-button" style="margin: 0;" target="_blank">GitHub Repository</a>
-                    <a href="https://github.com/inboxpraveen/Speech-Annotation-Tool/blob/master/PROJECT_DOCUMENTATION.md" class="demo-button" style="margin: 0; background: var(--secondary-bg); color: var(--accent-color); border: 1px solid var(--accent-color);" target="_blank">Full Documentation</a>
-                    <a href="https://github.com/inboxpraveen/Speech-Annotation-Tool/blob/master/QUICK_START.md" class="demo-button" style="margin: 0; background: var(--secondary-bg); color: var(--accent-color); border: 1px solid var(--accent-color);" target="_blank">Quick Start Guide</a>
+                    <a href="https://github.com/inboxpraveen/Speech-Annotation-Tool" class="demo-button" style="margin: 0;" target="_blank" rel="noopener noreferrer">GitHub Repository</a>
+                    <a href="https://github.com/inboxpraveen/Speech-Annotation-Tool/blob/master/docs/usage.md" class="demo-button" style="margin: 0; background: var(--secondary-bg); color: var(--accent-color); border: 1px solid var(--accent-color);" target="_blank" rel="noopener noreferrer">Usage Guide</a>
+                    <a href="https://github.com/inboxpraveen/Speech-Annotation-Tool/blob/master/docs/providers.md" class="demo-button" style="margin: 0; background: var(--secondary-bg); color: var(--accent-color); border: 1px solid var(--accent-color);" target="_blank" rel="noopener noreferrer">Engines and Providers</a>
                 </div>
-                
+
                 <h4>Technical Resources:</h4>
                 <ul>
-                    <li><a href="https://github.com/inboxpraveen/Speech-Annotation-Tool/blob/master/README.md" style="color: var(--accent-color);" target="_blank">Complete Project Guide</a></li>
-                    <li><a href="https://github.com/inboxpraveen/Speech-Annotation-Tool/blob/master/PROJECT_DOCUMENTATION.md" style="color: var(--accent-color);" target="_blank">Technical Architecture Details</a></li>
-                    <li><a href="https://github.com/inboxpraveen/Speech-Annotation-Tool/tree/master/asr_tool" style="color: var(--accent-color);" target="_blank">Source Code (asr_tool/)</a></li>
+                    <li><a href="https://github.com/inboxpraveen/Speech-Annotation-Tool/blob/master/docs/setup.md" style="color: var(--accent-color);" target="_blank" rel="noopener noreferrer">Setup: Conda, Docker, GPU</a></li>
+                    <li><a href="https://github.com/inboxpraveen/Speech-Annotation-Tool/blob/master/docs/development.md" style="color: var(--accent-color);" target="_blank" rel="noopener noreferrer">Development and API reference</a></li>
+                    <li><a href="https://github.com/inboxpraveen/Speech-Annotation-Tool/tree/master/sat" style="color: var(--accent-color);" target="_blank" rel="noopener noreferrer">Source code (sat/)</a></li>
                 </ul>
 
                 <div class="tag-row" style="--domain: var(--d-speech);">
                     <span class="domain-pill">Speech &amp; Audio</span>
                     <span class="stack-tag">Flask</span>
-                    <span class="stack-tag">Whisper</span>
+                    <span class="stack-tag">SQLite</span>
                     <span class="stack-tag">FFmpeg</span>
-                    <span class="stack-tag">Python</span>
-                    <span class="stack-tag">Vanilla JS</span>
+                    <span class="stack-tag">Whisper</span>
+                    <span class="stack-tag">Parakeet</span>
+                    <span class="stack-tag">Docker</span>
                 </div>
             </div>
         </div>
@@ -595,7 +541,3 @@ python app.py
     <script src="../site.js" defer></script>
 </body>
 </html>
-
-
-
-
