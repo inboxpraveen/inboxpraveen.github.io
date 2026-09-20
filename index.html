@@ -250,6 +250,40 @@
                 </div>
 
                 <div class="featured-list" data-reveal-group>
+                    <article class="featured-card" data-glow style="--domain: var(--d-speech);">
+                        <div class="featured-media">
+                            <img src="blogs/resources/blog-5/Header.webp" alt="Two minutes of a held-out meeting: the labelled speakers above, the container's diarization below, one colour per person" loading="lazy" decoding="async" width="1600" height="900">
+                        </div>
+                        <div class="featured-body">
+                            <div class="tag-row">
+                                <span class="domain-pill">Speech &amp; Audio</span>
+                                <span class="stack-tag">Speaker diarization</span>
+                                <span class="stack-tag">Kaldi</span>
+                                <span class="stack-tag">PLDA</span>
+                                <span class="stack-tag">Docker</span>
+                            </div>
+                            <h3 class="featured-title"><a href="blogs/blog-5.html">Who spoke when, on your own data: training, tuning and shipping a Kaldi speaker diarizer that runs on a CPU</a></h3>
+                            <p class="featured-desc">
+                                From a folder of labelled recordings to a container that writes an RTTM in seconds
+                                on a CPU: the x-vector pipeline stage by stage, the back-end trained in under a
+                                minute, the threshold cliff a trained PLDA creates and the Bayesian HMM that fixes
+                                it, every knob tuned on dev and measured on held-out meetings, and the honest
+                                comparison with pyannote and NVIDIA's Sortformer.
+                            </p>
+                            <div class="featured-foot">
+                                <span class="card-meta">
+                                    <svg class="icon" aria-hidden="true"><use href="#i-calendar"></use></svg>
+                                    20 September 2026
+                                    <span class="sep" aria-hidden="true"></span>
+                                    <span data-read-time>Long read</span>
+                                    <span class="sep" aria-hidden="true"></span>
+                                    Every number measured on held-out meetings
+                                </span>
+                                <a href="blogs/blog-5.html" class="project-link">Read the post</a>
+                            </div>
+                        </div>
+                    </article>
+
                     <article class="featured-card" data-glow style="--domain: var(--d-llm);">
                         <div class="featured-media">
                             <img src="blogs/resources/blog-4/Header.webp" alt="Tokens per Hindi word for four stock tokenizers and the extended SmolLM2 tokenizer built in the post" loading="lazy" decoding="async" width="1600" height="900">
@@ -310,76 +344,6 @@
                                     Every number dated and sourced
                                 </span>
                                 <a href="blogs/blog-3.html" class="project-link">Read the post</a>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="featured-card" data-glow style="--domain: var(--d-llm);">
-                        <div class="featured-media">
-                            <span class="featured-rank">Part 2</span>
-                            <img src="blogs/resources/blog-2/Header.webp" alt="Effective bandwidth of six model architectures on one CPU, plotted against the memory bandwidth line" loading="lazy" decoding="async" width="1600" height="900">
-                        </div>
-                        <div class="featured-body">
-                            <div class="tag-row">
-                                <span class="domain-pill">LLM &amp; RAG</span>
-                                <span class="stack-tag">llama.cpp</span>
-                                <span class="stack-tag">Architectures</span>
-                                <span class="stack-tag">Edge hardware</span>
-                                <span class="stack-tag">Python</span>
-                            </div>
-                            <h3 class="featured-title"><a href="blogs/blog-2.html">Before you tune anything: a field guide to inference speed and accuracy on the hardware you actually have</a></h3>
-                            <p class="featured-desc">
-                                The one number that transfers between machines, and what six architectures
-                                (dense, MoE, sliding-window, hybrid, SSM) do to it, measured on CPU and GPU.
-                                A pre-check script that caught my laptop running at a third of its speed, a
-                                ten-minute accuracy test, which quant to pick on a CPU without AVX2, and the
-                                order to try things in on any box.
-                            </p>
-                            <div class="featured-foot">
-                                <span class="card-meta">
-                                    <svg class="icon" aria-hidden="true"><use href="#i-calendar"></use></svg>
-                                    12 September 2026
-                                    <span class="sep" aria-hidden="true"></span>
-                                    <span data-read-time>Long read</span>
-                                    <span class="sep" aria-hidden="true"></span>
-                                    Scripts and raw results included
-                                </span>
-                                <a href="blogs/blog-2.html" class="project-link">Read the post</a>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="featured-card" data-glow style="--domain: var(--d-llm);">
-                        <div class="featured-media">
-                            <span class="featured-rank">Part 1</span>
-                            <img src="blogs/resources/blog-1/Header.webp" alt="Decode speed of Qwen3-0.6B on one laptop, from the stock llama.cpp defaults to the tuned configuration" loading="lazy" decoding="async" width="1600" height="900">
-                        </div>
-                        <div class="featured-body">
-                            <div class="tag-row">
-                                <span class="domain-pill">LLM &amp; RAG</span>
-                                <span class="stack-tag">llama.cpp</span>
-                                <span class="stack-tag">Quantization</span>
-                                <span class="stack-tag">CUDA</span>
-                                <span class="stack-tag">Python</span>
-                            </div>
-                            <h3 class="featured-title"><a href="blogs/blog-1.html">Getting the most tokens per second out of one laptop with llama.cpp</a></h3>
-                            <p class="featured-desc">
-                                One Q8_0 model, one laptop, every knob llama.cpp exposes. Thread pinning on
-                                hybrid cores, the CPU backend DLLs, per-tensor quantization of the tied LM head,
-                                GPU offload splits, KV cache types and self-speculative decoding. Every step
-                                measured for speed and for accuracy against the BF16 reference, with the scripts
-                                to rerun it on your own machine.
-                            </p>
-                            <div class="featured-foot">
-                                <span class="card-meta">
-                                    <svg class="icon" aria-hidden="true"><use href="#i-calendar"></use></svg>
-                                    7 September 2026
-                                    <span class="sep" aria-hidden="true"></span>
-                                    <span data-read-time>Long read</span>
-                                    <span class="sep" aria-hidden="true"></span>
-                                    Scripts and raw results included
-                                </span>
-                                <a href="blogs/blog-1.html" class="project-link">Read the post</a>
                             </div>
                         </div>
                     </article>

@@ -7,7 +7,7 @@
 
     <!-- SEO Meta Tags -->
     <meta name="description" content="Long-form technical write-ups by Praveen Kumar: measured, reproducible notes on LLM inference engineering, quantization, speech AI and document intelligence.">
-    <meta name="keywords" content="AI Blog, LLM Inference, llama.cpp, Quantization, GGUF, CUDA, Speculative Decoding, Speech AI, Document AI, Machine Learning Engineering">
+    <meta name="keywords" content="AI Blog, LLM Inference, llama.cpp, Quantization, GGUF, CUDA, Speculative Decoding, Speaker Diarization, Kaldi, Speech AI, Document AI, Machine Learning Engineering">
     <meta name="author" content="Praveen Kumar">
 
     <!-- Open Graph Meta Tags -->
@@ -77,14 +77,40 @@
                     <label class="filter-search" for="projectSearch">
                         <svg class="icon" aria-hidden="true"><use href="#i-search"></use></svg>
                         <span class="visually-hidden-label" hidden>Search posts</span>
-                        <input type="search" id="projectSearch" placeholder="Search llama.cpp, quantization, CUDA&hellip;" autocomplete="off" aria-label="Search posts">
+                        <input type="search" id="projectSearch" placeholder="Search diarization, llama.cpp, quantization&hellip;" autocomplete="off" aria-label="Search posts">
                         <kbd>/</kbd>
                     </label>
 
-                    <span class="filter-count" data-filter-count aria-live="polite">4 posts</span>
+                    <span class="filter-count" data-filter-count aria-live="polite">5 posts</span>
                 </div>
 
                 <div class="projects-grid posts-grid" data-reveal-group>
+
+                <article class="project-card" data-domain="Speech &amp; Audio" data-search="speaker diarization kaldi x-vector plda agglomerative clustering vbx bayesian hmm speech activity detection sad vad der rttm ami meeting corpus voxceleb pyannote nvidia sortformer nemo docker container cpu inference deployment call centre who spoke when threshold dev test calibration md-eval" style="--domain: var(--d-speech);">
+                    <span class="card-rule" aria-hidden="true"></span>
+                    <a class="card-media" href="blogs/blog-5.html" tabindex="-1" aria-label="Who spoke when, on your own data: training, tuning and shipping a Kaldi speaker diarizer that runs on a CPU &mdash; Speech &amp; Audio">
+                        <img src="blogs/resources/blog-5/Header.webp" alt="" loading="lazy" decoding="async">
+                        <span class="domain-pill" aria-hidden="true">Speech &amp; Audio</span>
+                    </a>
+                    <div class="card-body">
+                        <div class="tag-row">
+                            <span class="stack-tag">Speaker diarization</span>
+                            <span class="stack-tag">Kaldi</span>
+                            <span class="stack-tag">PLDA</span>
+                            <span class="stack-tag">Docker</span>
+                        </div>
+                        <h3 class="project-title"><a href="blogs/blog-5.html">Who spoke when, on your own data: training, tuning and shipping a Kaldi speaker diarizer that runs on a CPU</a></h3>
+                        <p class="project-description">From a folder of labelled recordings to a container that writes an RTTM in seconds on a CPU. The x-vector pipeline explained stage by stage, the back-end trained on your own turns in under a minute, the threshold cliff a trained PLDA creates and the Bayesian HMM that fixes it, the speech detector that matters more than any other knob, every setting chosen on dev and measured on held-out meetings, the data-size and speaker-count ablations, speed and memory against audio length, and the honest comparison with pyannote and NVIDIA's Sortformer on the same audio.</p>
+                        <div class="card-foot">
+                            <span class="card-meta">
+                                20 September 2026
+                                <span class="sep" aria-hidden="true"></span>
+                                <span data-read-time>Long read</span>
+                            </span>
+                            <a href="blogs/blog-5.html" class="project-link">Read the post</a>
+                        </div>
+                    </div>
+                </article>
 
                 <article class="project-card" data-domain="LLM &amp; RAG" data-search="language adaptation continued pretraining vocabulary extension tokenizer bpe devanagari matra hindi smollm2 135m embedding initialisation replay forgetting learning rate bits per character grpo reinforcement learning rlvr verifiable rewards sft supervised fine-tuning chatml post-training deepseek r1 instructgpt rlhf llama 3 small language models pytorch transformers consumer gpu 8 gb rtx 5060 fineweb-2 indicsentiment sarvam gemma qwen" style="--domain: var(--d-llm);">
                     <span class="card-rule" aria-hidden="true"></span>
