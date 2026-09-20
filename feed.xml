@@ -5,7 +5,7 @@
   <link href="https://inboxpraveen.github.io/feed.xml" rel="self"/>
   <link href="https://inboxpraveen.github.io/all-blogs.html"/>
   <id>https://inboxpraveen.github.io/</id>
-  <updated>2026-09-20T03:52:15Z</updated>
+  <updated>2026-09-20T04:13:51Z</updated>
   <author><name>Praveen Kumar</name><uri>https://inboxpraveen.github.io/</uri></author>
   <entry>
     <title>Who spoke when, on your own data: training, tuning and shipping a Kaldi speaker diarizer that runs on a CPU</title>
@@ -21,7 +21,7 @@
     <link href="https://inboxpraveen.github.io/blogs/blog-4.html"/>
     <id>https://inboxpraveen.github.io/blogs/blog-4.html</id>
     <published>2026-09-15T00:00:00Z</published>
-    <updated>2026-09-15T00:00:00Z</updated>
+    <updated>2026-09-20T00:00:00Z</updated>
     <summary>An English-only 135M model taught Hindi on one 8 GB laptop GPU: tokenizer extension, continued pretraining, supervised fine-tuning and GRPO with verifiable rewards, every stage measured.</summary>
     <content type="html">&lt;p&gt;&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://inboxpraveen.github.io/blogs/blog-4.html&quot;&gt;Read the post&lt;/a&gt;&lt;/p&gt;</content>
   </entry>
@@ -30,7 +30,7 @@
     <link href="https://inboxpraveen.github.io/blogs/blog-3.html"/>
     <id>https://inboxpraveen.github.io/blogs/blog-3.html</id>
     <published>2026-09-14T00:00:00Z</published>
-    <updated>2026-09-14T00:00:00Z</updated>
+    <updated>2026-09-20T00:00:00Z</updated>
     <summary>The bandwidth line predicts 600,000 tokens a second for four Cerebras wafers and they get 2,000. Where the rest goes, worked out from public sources with the arithmetic shown.</summary>
     <content type="html">&lt;p&gt;&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://inboxpraveen.github.io/blogs/blog-3.html&quot;&gt;Read the post&lt;/a&gt;&lt;/p&gt;</content>
   </entry>
@@ -39,7 +39,7 @@
     <link href="https://inboxpraveen.github.io/blogs/blog-2.html"/>
     <id>https://inboxpraveen.github.io/blogs/blog-2.html</id>
     <published>2026-09-12T00:00:00Z</published>
-    <updated>2026-09-14T00:00:00Z</updated>
+    <updated>2026-09-20T00:00:00Z</updated>
     <summary>The one number that transfers between machines, what six model architectures do to it on CPU and GPU, a pre-check script, a ten-minute accuracy test and which quant to pick.</summary>
     <content type="html">&lt;p&gt;&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://inboxpraveen.github.io/blogs/blog-2.html&quot;&gt;Read the post&lt;/a&gt;&lt;/p&gt;</content>
   </entry>
@@ -48,7 +48,7 @@
     <link href="https://inboxpraveen.github.io/blogs/blog-1.html"/>
     <id>https://inboxpraveen.github.io/blogs/blog-1.html</id>
     <published>2026-09-07T00:00:00Z</published>
-    <updated>2026-09-14T00:00:00Z</updated>
+    <updated>2026-09-20T00:00:00Z</updated>
     <summary>Every knob llama.cpp exposes, measured on one laptop with one Q8_0 model: thread pinning, CPU backends, quantization, GPU offload, KV cache types and speculative decoding, for speed and accuracy.</summary>
     <content type="html">&lt;p&gt;&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://inboxpraveen.github.io/blogs/blog-1.html&quot;&gt;Read the post&lt;/a&gt;&lt;/p&gt;</content>
   </entry>
