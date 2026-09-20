@@ -3,50 +3,148 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Teaching a language model a language it never knew: continued pretraining, supervised fine-tuning and reinforcement learning on one laptop | Praveen Kumar</title>
+    <title>Teaching a small language model Hindi on one laptop | Praveen Kumar</title>
 
     <!-- SEO Meta Tags -->
-    <meta name="description" content="Taking an English-only 135M model (SmolLM2) to Hindi on one 8 GB laptop GPU: extending the tokenizer without touching English, initialising the new embeddings, continued pretraining with replay, a short supervised warm-up, then GRPO with rewards a script can check. Every number measured, every step in the repo, with the pipeline the large labs use set beside it.">
+    <meta name="description" content="An English-only 135M model taught Hindi on one 8 GB laptop GPU: tokenizer extension, continued pretraining, supervised fine-tuning and GRPO with verifiable rewards, every stage measured.">
     <meta name="keywords" content="Language Adaptation, Continued Pretraining, Vocabulary Extension, Tokenizer, Hindi, SmolLM2, GRPO, Reinforcement Learning, RLVR, SFT, Post-training, Small Language Models, PyTorch, Transformers, Consumer GPU">
     <meta name="author" content="Praveen Kumar">
+    <meta name="robots" content="index, follow, max-image-preview:large">
 
     <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="Teaching a language model a language it never knew: continued pretraining, supervised fine-tuning and reinforcement learning on one laptop">
-    <meta property="og:description" content="An English-only 135M model taught Hindi end to end on one 8 GB laptop GPU: tokenizer extension, continued pretraining, supervised fine-tuning and GRPO with verifiable rewards. From one word repeated to a model that ties a 1.7B on a Hindi task, every number measured.">
+    <meta property="og:title" content="Teaching a language model a language it never knew, on one laptop">
+    <meta property="og:description" content="Tokenizer extension, continued pretraining, supervised fine-tuning and GRPO on a 135M model, all on one 8 GB laptop GPU, every stage measured.">
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://inboxpraveen.github.io/blogs/blog-4.html">
     <meta property="og:image" content="https://inboxpraveen.github.io/blogs/resources/blog-4/Header.png">
     <meta property="og:image:alt" content="Tokens per Hindi word before and after extending the tokenizer, and Hindi bits per character falling through continued pretraining">
     <meta property="og:site_name" content="Praveen Kumar Portfolio">
+    <meta property="og:locale" content="en_US">
     <meta property="article:published_time" content="2026-09-15">
     <meta property="article:author" content="Praveen Kumar">
 
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Teaching a language model a language it never knew: continued pretraining, supervised fine-tuning and reinforcement learning on one laptop">
-    <meta name="twitter:description" content="The whole training pipeline, pretraining through RL, run on one 8 GB laptop to teach a 135M model Hindi. From noise to a model that ties a 1.7B on a Hindi task. Every number measured.">
+    <meta name="twitter:site" content="@InboxPraveen">
+    <meta name="twitter:creator" content="@InboxPraveen">
+    <meta name="twitter:title" content="Teaching a language model a language it never knew, on one laptop">
+    <meta name="twitter:description" content="Tokenizer extension, continued pretraining, supervised fine-tuning and GRPO on a 135M model, all on one 8 GB laptop GPU, every stage measured.">
     <meta name="twitter:image" content="https://inboxpraveen.github.io/blogs/resources/blog-4/Header.png">
     <meta name="twitter:image:alt" content="Tokens per Hindi word before and after extending the tokenizer, and Hindi bits per character falling through continued pretraining">
 
     <!-- Canonical URL -->
     <link rel="canonical" href="https://inboxpraveen.github.io/blogs/blog-4.html">
+    <link rel="alternate" type="application/atom+xml" title="Praveen Kumar: notes from the workbench" href="https://inboxpraveen.github.io/feed.xml">
 
     <link rel="icon" type="image/x-icon" href="../assests/favicon.ico">
     <link rel="stylesheet" href="../index.css">
 
     <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
     {
-      "@context": "https://schema.org",
+      "@type": "Person",
+      "@id": "https://inboxpraveen.github.io/#person",
+      "name": "Praveen Kumar",
+      "url": "https://inboxpraveen.github.io/",
+      "jobTitle": "Principal AI Engineer",
+      "description": "Principal AI Engineer in Bengaluru building speech intelligence, LLM and document AI systems for enterprise teams, and writing measured, reproducible notes about inference and training on real hardware.",
+      "email": "mailto:inboxpraveen.17@gmail.com",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "TrellisSoft"
+      },
+      "alumniOf": {
+        "@type": "CollegeOrUniversity",
+        "name": "MVJ College of Engineering"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Bengaluru",
+        "addressCountry": "IN"
+      },
+      "knowsAbout": [
+        "Speech recognition",
+        "Speaker diarization",
+        "Large language models",
+        "Retrieval augmented generation",
+        "LLM fine-tuning",
+        "LLM inference on CPUs and GPUs",
+        "Optical character recognition",
+        "Document AI",
+        "MLOps",
+        "Multi-tenant AI platforms"
+      ],
+      "sameAs": [
+        "https://github.com/inboxpraveen",
+        "https://www.linkedin.com/in/praveen-kumar-inbox/",
+        "https://x.com/InboxPraveen"
+      ]
+    },
+    {
       "@type": "BlogPosting",
-      "headline": "Teaching a language model a language it never knew: continued pretraining, supervised fine-tuning and reinforcement learning on one laptop",
-      "description": "Adapting SmolLM2-135M to Hindi on one consumer GPU: vocabulary extension, embedding initialisation, continued pretraining with English replay, supervised fine-tuning and GRPO with verifiable rewards, with the large-lab pipeline set beside it.",
+      "headline": "Teaching a language model a language it never knew, on one laptop",
+      "description": "An English-only 135M model taught Hindi on one 8 GB laptop GPU: tokenizer extension, continued pretraining, supervised fine-tuning and GRPO with verifiable rewards, every stage measured.",
       "datePublished": "2026-09-15",
       "dateModified": "2026-09-15",
-      "author": { "@type": "Person", "name": "Praveen Kumar", "url": "https://inboxpraveen.github.io/" },
+      "author": {
+        "@id": "https://inboxpraveen.github.io/#person"
+      },
       "image": "https://inboxpraveen.github.io/blogs/resources/blog-4/Header.png",
       "url": "https://inboxpraveen.github.io/blogs/blog-4.html",
-      "keywords": ["language adaptation", "continued pretraining", "vocabulary extension", "tokenizer", "Hindi", "SmolLM2", "GRPO", "reinforcement learning", "post-training", "small language models"]
+      "keywords": [
+        "language adaptation",
+        "continued pretraining",
+        "vocabulary extension",
+        "tokenizer",
+        "Hindi",
+        "SmolLM2",
+        "GRPO",
+        "reinforcement learning",
+        "post-training",
+        "small language models"
+      ],
+      "@id": "https://inboxpraveen.github.io/blogs/blog-4.html#post",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://inboxpraveen.github.io/blogs/blog-4.html"
+      },
+      "publisher": {
+        "@id": "https://inboxpraveen.github.io/#person"
+      },
+      "inLanguage": "en",
+      "isPartOf": {
+        "@type": "Blog",
+        "@id": "https://inboxpraveen.github.io/all-blogs.html#blog",
+        "name": "Notes from the workbench"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://inboxpraveen.github.io/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Blogs",
+          "item": "https://inboxpraveen.github.io/all-blogs.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Teaching a language model a language it never knew, on one laptop",
+          "item": "https://inboxpraveen.github.io/blogs/blog-4.html"
+        }
+      ]
     }
+  ]
+}
     </script>
 </head>
 <body>
@@ -85,7 +183,7 @@
                     </div>
                     <div class="meta-item">
                         <span><svg class="icon" aria-hidden="true"><use href="#i-pulse"></use></svg></span>
-                        <span data-read-time>57 min read</span>
+                        <span data-read-time>58 min read</span>
                     </div>
                     <div class="meta-item">
                         <span><svg class="icon" aria-hidden="true"><use href="#i-code"></use></svg></span>
@@ -1327,17 +1425,17 @@
                 training curve was lying.
             </p>
 
-            <div style="margin-top: 3rem; padding: 2rem; background: var(--secondary-bg); border-radius: 15px; border: 1px solid var(--border-color);">
-                <h3 style="margin-top: 0;">Resources &amp; Links</h3>
-                <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1rem; margin-bottom: 2rem;">
-                    <a href="https://github.com/inboxpraveen/ggml-inference-lab" class="demo-button" style="margin: 0;" target="_blank" rel="noopener noreferrer">Scripts, results and the sources file</a>
-                    <a href="./blog-3.html" class="demo-button" style="margin: 0;">Where the bandwidth line ends</a>
-                    <a href="./blog-2.html" class="demo-button" style="margin: 0;">Before you tune anything</a>
-                    <a href="./blog-1.html" class="demo-button" style="margin: 0;">llama.cpp on one laptop</a>
+            <div class="resources">
+                <h3>Resources &amp; Links</h3>
+                <div class="resources-links">
+                    <a href="https://github.com/inboxpraveen/ggml-inference-lab" class="demo-button" target="_blank" rel="noopener noreferrer">Scripts, results and the sources file</a>
+                    <a href="./blog-3.html" class="demo-button">Where the bandwidth line ends</a>
+                    <a href="./blog-2.html" class="demo-button">Before you tune anything</a>
+                    <a href="./blog-1.html" class="demo-button">llama.cpp on one laptop</a>
                 </div>
 
                 <h4>The model, the data and the libraries:</h4>
-                <p style="margin-top: 0.5rem;">
+                <p>
                     <a href="https://huggingface.co/HuggingFaceTB/SmolLM2-135M" target="_blank" rel="noopener noreferrer">SmolLM2-135M</a> and the
                     <a href="https://arxiv.org/abs/2502.02737" target="_blank" rel="noopener noreferrer">SmolLM2 paper</a> (Allal et al., 2025);
                     <a href="https://huggingface.co/datasets/HuggingFaceFW/fineweb-2" target="_blank" rel="noopener noreferrer">FineWeb-2</a> (hin_Deva) and its
@@ -1353,7 +1451,7 @@
                 </p>
 
                 <h4>Language adaptation and continued pretraining:</h4>
-                <p style="margin-top: 0.5rem;">
+                <p>
                     <a href="https://arxiv.org/abs/2304.08177" target="_blank" rel="noopener noreferrer">Chinese-LLaMA and Alpaca</a> (Cui et al., 2023);
                     <a href="https://arxiv.org/abs/2404.17790" target="_blank" rel="noopener noreferrer">Continual pre-training for cross-lingual adaptation: Japanese (Swallow)</a> (Fujii et al., 2024);
                     <a href="https://arxiv.org/abs/2403.08763" target="_blank" rel="noopener noreferrer">Simple and scalable strategies to continually pre-train LLMs</a> (Ibrahim et al., 2024);
@@ -1367,7 +1465,7 @@
                 </p>
 
                 <h4>Post-training at the labs:</h4>
-                <p style="margin-top: 0.5rem;">
+                <p>
                     <a href="https://arxiv.org/abs/2203.02155" target="_blank" rel="noopener noreferrer">InstructGPT</a> (Ouyang et al., 2022);
                     <a href="https://arxiv.org/abs/2212.08073" target="_blank" rel="noopener noreferrer">Constitutional AI</a> (Bai et al., 2022);
                     <a href="https://arxiv.org/abs/2407.21783" target="_blank" rel="noopener noreferrer">The Llama 3 herd of models</a> (Meta, 2024);
@@ -1398,8 +1496,7 @@
             <div class="footer-grid">
                 <p class="footer-note">
                     &copy; <span data-year>2026</span> Praveen Kumar &middot;
-                    Static HTML, one stylesheet, no build step &mdash;
-                    <a href="https://github.com/inboxpraveen/inboxpraveen.github.io" target="_blank" rel="noopener noreferrer">source on GitHub</a>
+                    Static HTML, one stylesheet, no build step. <a href="https://github.com/inboxpraveen/inboxpraveen.github.io" target="_blank" rel="noopener noreferrer">Source on GitHub</a>
                 </p>
                 <div class="footer-social">
                     <a href="https://github.com/inboxpraveen" target="_blank" rel="noopener noreferrer" aria-label="GitHub">

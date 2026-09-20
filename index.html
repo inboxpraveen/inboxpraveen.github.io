@@ -8,6 +8,7 @@
     <meta name="description" content="Praveen Kumar - Principal AI Engineer working on speech AI, document intelligence, LLMs and RAG. Six years of taking AI systems from prototype to production, with 14 open write-ups on how they were built.">
     <meta name="keywords" content="AI Engineer, Machine Learning, LLM, RAG, Speech AI, OCR, Document AI, Python, PyTorch, FastAPI, AI Portfolio">
     <meta name="author" content="Praveen Kumar">
+    <meta name="robots" content="index, follow, max-image-preview:large">
 
     <meta property="og:title" content="Praveen Kumar - Principal AI Engineer &amp; Solution Architect">
     <meta property="og:description" content="Six years of taking AI systems from prototype to production: speech AI, document intelligence, LLMs and RAG. Fifteen projects, each written up in detail.">
@@ -16,32 +17,92 @@
     <meta property="og:image" content="https://inboxpraveen.github.io/assests/Original.png">
     <meta property="og:image:alt" content="Praveen Kumar - Principal AI Engineer Portfolio">
     <meta property="og:site_name" content="Praveen Kumar Portfolio">
+    <meta property="og:locale" content="en_US">
 
     <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@InboxPraveen">
+    <meta name="twitter:creator" content="@InboxPraveen">
     <meta name="twitter:title" content="Praveen Kumar - Principal AI Engineer &amp; Solution Architect">
     <meta name="twitter:description" content="Six years of taking AI systems from prototype to production: speech AI, document intelligence, LLMs and RAG.">
     <meta name="twitter:image" content="https://inboxpraveen.github.io/assests/Original.png">
     <meta name="twitter:image:alt" content="Praveen Kumar - Principal AI Engineer Portfolio">
 
     <link rel="canonical" href="https://inboxpraveen.github.io/">
+    <link rel="alternate" type="application/atom+xml" title="Praveen Kumar: notes from the workbench" href="https://inboxpraveen.github.io/feed.xml">
     <link rel="icon" type="image/x-icon" href="assests/favicon.ico">
     <link rel="stylesheet" href="index.css">
 
     <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
     {
-      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "@id": "https://inboxpraveen.github.io/#website",
+      "url": "https://inboxpraveen.github.io/",
+      "name": "Praveen Kumar",
+      "description": "Projects and long-form notes on speech AI, LLM inference and training, and document AI, every number measured on real hardware.",
+      "author": {
+        "@id": "https://inboxpraveen.github.io/#person"
+      },
+      "publisher": {
+        "@id": "https://inboxpraveen.github.io/#person"
+      },
+      "inLanguage": "en"
+    },
+    {
       "@type": "Person",
+      "@id": "https://inboxpraveen.github.io/#person",
       "name": "Praveen Kumar",
       "url": "https://inboxpraveen.github.io/",
-      "jobTitle": "Principal AI Engineer & Solution Architect",
+      "jobTitle": "Principal AI Engineer",
+      "description": "Principal AI Engineer in Bengaluru building speech intelligence, LLM and document AI systems for enterprise teams, and writing measured, reproducible notes about inference and training on real hardware.",
       "email": "mailto:inboxpraveen.17@gmail.com",
-      "knowsAbout": ["Large Language Models", "Retrieval Augmented Generation", "Speech Recognition", "Optical Character Recognition", "Machine Learning Engineering", "MLOps"],
+      "worksFor": {
+        "@type": "Organization",
+        "name": "TrellisSoft"
+      },
+      "alumniOf": {
+        "@type": "CollegeOrUniversity",
+        "name": "MVJ College of Engineering"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Bengaluru",
+        "addressCountry": "IN"
+      },
+      "knowsAbout": [
+        "Speech recognition",
+        "Speaker diarization",
+        "Large language models",
+        "Retrieval augmented generation",
+        "LLM fine-tuning",
+        "LLM inference on CPUs and GPUs",
+        "Optical character recognition",
+        "Document AI",
+        "MLOps",
+        "Multi-tenant AI platforms"
+      ],
       "sameAs": [
         "https://github.com/inboxpraveen",
         "https://www.linkedin.com/in/praveen-kumar-inbox/",
         "https://x.com/InboxPraveen"
       ]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://inboxpraveen.github.io/#webpage",
+      "url": "https://inboxpraveen.github.io/",
+      "name": "Praveen Kumar, Principal AI Engineer",
+      "isPartOf": {
+        "@id": "https://inboxpraveen.github.io/#website"
+      },
+      "about": {
+        "@id": "https://inboxpraveen.github.io/#person"
+      }
     }
+  ]
+}
     </script>
 </head>
 <body>
@@ -142,8 +203,7 @@
                             <h3 class="featured-title"><a href="projects/project-14.html">CleanFrame</a></h3>
                             <p class="featured-desc">
                                 A data-cleaning engine you can actually put in a pipeline. An LLM writes the plan
-                                once; the plan compiles to a YAML recipe that replays over next month's file in pure
-                                pandas &mdash; no API calls, same answer every time. When the schema drifts it stops
+                                once; the plan compiles to a YAML recipe that replays over next month's file in pure pandas: no API calls, same answer every time. When the schema drifts it stops
                                 and tells you, instead of quietly corrupting the column.
                             </p>
                             <div class="featured-foot">
@@ -175,11 +235,10 @@
                                 <span class="stack-tag">Whisper</span>
                                 <span class="stack-tag">Docker</span>
                             </div>
-                            <h3 class="featured-title"><a href="projects/project-8.html">MoM AI &mdash; Minutes of Meeting</a></h3>
+                            <h3 class="featured-title"><a href="projects/project-8.html">MoM AI: Minutes of Meeting</a></h3>
                             <p class="featured-desc">
                                 Drop in a recording, get back minutes. FFmpeg normalizes the audio, a Celery worker
-                                routes it to one of six speech-to-text backends &mdash; including Whisper on your own
-                                machine &mdash; and an LLM returns the summary, the decisions and the action items.
+                                routes it to one of six speech-to-text backends, including Whisper on your own machine, and an LLM returns the summary, the decisions and the action items.
                                 Both layers swap at runtime, from a dropdown.
                             </p>
                             <div class="featured-foot">
@@ -210,8 +269,7 @@
                             <h3 class="featured-title"><a href="projects/project-13.html">Py Internals</a></h3>
                             <p class="featured-desc">
                                 An interactive course that teaches Python by drawing its memory. Code on the left,
-                                stack and heap on the right, one idea per animation step. No backend, no build
-                                step, no account &mdash; hand-authored snapshots rendered by a few hundred lines of
+                                stack and heap on the right, one idea per animation step. No backend, no build step, no account: hand-authored snapshots rendered by a few hundred lines of
                                 vanilla JS.
                             </p>
                             <div class="featured-foot">
@@ -367,7 +425,7 @@
                     <p class="section-lede">
                         The hard part is everything around them: the queue that retries, the tenant boundary that
                         holds, the GPU bill that doesn't spiral, the transcript a human can actually correct. That's
-                        the work I've spent six years getting good at &mdash; speech intelligence, document
+                        the work I've spent six years getting good at: speech intelligence, document
                         processing and LLM automation, mostly for enterprise teams who need it to hold up on a
                         Monday morning.
                     </p>
@@ -441,8 +499,7 @@
             <div class="footer-grid">
                 <p class="footer-note">
                     &copy; <span data-year>2026</span> Praveen Kumar &middot;
-                    Static HTML, one stylesheet, no build step &mdash;
-                    <a href="https://github.com/inboxpraveen/inboxpraveen.github.io" target="_blank" rel="noopener noreferrer">source on GitHub</a>
+                    Static HTML, one stylesheet, no build step. <a href="https://github.com/inboxpraveen/inboxpraveen.github.io" target="_blank" rel="noopener noreferrer">Source on GitHub</a>
                 </p>
                 <div class="footer-social">
                     <a href="https://github.com/inboxpraveen" target="_blank" rel="noopener noreferrer" aria-label="GitHub">

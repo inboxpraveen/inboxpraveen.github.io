@@ -3,50 +3,145 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Getting the most tokens per second out of one laptop with llama.cpp | Praveen Kumar</title>
+    <title>llama.cpp on one laptop: every knob, measured | Praveen Kumar</title>
 
     <!-- SEO Meta Tags -->
-    <meta name="description" content="One Q8_0 model, one laptop, every knob llama.cpp exposes. Thread pinning on hybrid cores, CPU backend DLLs, per-tensor quantization of the tied LM head, GPU offload splits, KV cache types and self-speculative decoding, each measured for speed and for accuracy against BF16.">
+    <meta name="description" content="Every knob llama.cpp exposes, measured on one laptop with one Q8_0 model: thread pinning, CPU backends, quantization, GPU offload, KV cache types and speculative decoding, for speed and accuracy.">
     <meta name="keywords" content="llama.cpp, GGUF, Q8_0, Quantization, KL Divergence, Perplexity, Memory Bandwidth, Speculative Decoding, CUDA, RTX 5060, Intel Hybrid CPU, Qwen3, Inference Engineering, cffi">
     <meta name="author" content="Praveen Kumar">
+    <meta name="robots" content="index, follow, max-image-preview:large">
 
     <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="Getting the most tokens per second out of one laptop with llama.cpp">
-    <meta property="og:description" content="Every knob llama.cpp exposes, measured on real hardware for speed and for accuracy. What moved the needle, what did not, and how to choose for your own machine.">
+    <meta property="og:title" content="llama.cpp on one laptop: every knob, measured">
+    <meta property="og:description" content="One Q8_0 model, one laptop, every knob llama.cpp exposes. Each step measured for speed and for accuracy against the BF16 reference, with the scripts to rerun it.">
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://inboxpraveen.github.io/blogs/blog-1.html">
     <meta property="og:image" content="https://inboxpraveen.github.io/blogs/resources/blog-1/Header.png">
     <meta property="og:image:alt" content="Decode speed of Qwen3-0.6B on one laptop, from the stock llama.cpp defaults to the tuned configuration">
     <meta property="og:site_name" content="Praveen Kumar Portfolio">
+    <meta property="og:locale" content="en_US">
     <meta property="article:published_time" content="2026-09-07">
     <meta property="article:author" content="Praveen Kumar">
 
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Getting the most tokens per second out of one laptop with llama.cpp">
-    <meta name="twitter:description" content="Thread pinning, CPU DLLs, per-tensor quantization of the LM head, GPU splits, KV cache types, speculative decoding. Measured, with accuracy numbers.">
+    <meta name="twitter:site" content="@InboxPraveen">
+    <meta name="twitter:creator" content="@InboxPraveen">
+    <meta name="twitter:title" content="llama.cpp on one laptop: every knob, measured">
+    <meta name="twitter:description" content="One Q8_0 model, one laptop, every knob llama.cpp exposes. Each step measured for speed and for accuracy against the BF16 reference, with the scripts to rerun it.">
     <meta name="twitter:image" content="https://inboxpraveen.github.io/blogs/resources/blog-1/Header.png">
     <meta name="twitter:image:alt" content="Decode speed of Qwen3-0.6B on one laptop, from the stock llama.cpp defaults to the tuned configuration">
 
     <!-- Canonical URL -->
     <link rel="canonical" href="https://inboxpraveen.github.io/blogs/blog-1.html">
+    <link rel="alternate" type="application/atom+xml" title="Praveen Kumar: notes from the workbench" href="https://inboxpraveen.github.io/feed.xml">
 
     <link rel="icon" type="image/x-icon" href="../assests/favicon.ico">
     <link rel="stylesheet" href="../index.css">
 
     <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
     {
-      "@context": "https://schema.org",
+      "@type": "Person",
+      "@id": "https://inboxpraveen.github.io/#person",
+      "name": "Praveen Kumar",
+      "url": "https://inboxpraveen.github.io/",
+      "jobTitle": "Principal AI Engineer",
+      "description": "Principal AI Engineer in Bengaluru building speech intelligence, LLM and document AI systems for enterprise teams, and writing measured, reproducible notes about inference and training on real hardware.",
+      "email": "mailto:inboxpraveen.17@gmail.com",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "TrellisSoft"
+      },
+      "alumniOf": {
+        "@type": "CollegeOrUniversity",
+        "name": "MVJ College of Engineering"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Bengaluru",
+        "addressCountry": "IN"
+      },
+      "knowsAbout": [
+        "Speech recognition",
+        "Speaker diarization",
+        "Large language models",
+        "Retrieval augmented generation",
+        "LLM fine-tuning",
+        "LLM inference on CPUs and GPUs",
+        "Optical character recognition",
+        "Document AI",
+        "MLOps",
+        "Multi-tenant AI platforms"
+      ],
+      "sameAs": [
+        "https://github.com/inboxpraveen",
+        "https://www.linkedin.com/in/praveen-kumar-inbox/",
+        "https://x.com/InboxPraveen"
+      ]
+    },
+    {
       "@type": "BlogPosting",
       "headline": "Getting the most tokens per second out of one laptop with llama.cpp",
-      "description": "One Q8_0 model, one laptop, every knob llama.cpp exposes, each measured for speed and for accuracy against the BF16 reference.",
+      "description": "Every knob llama.cpp exposes, measured on one laptop with one Q8_0 model: thread pinning, CPU backends, quantization, GPU offload, KV cache types and speculative decoding, for speed and accuracy.",
       "datePublished": "2026-09-07",
       "dateModified": "2026-09-07",
-      "author": { "@type": "Person", "name": "Praveen Kumar", "url": "https://inboxpraveen.github.io/" },
+      "author": {
+        "@id": "https://inboxpraveen.github.io/#person"
+      },
       "image": "https://inboxpraveen.github.io/blogs/resources/blog-1/Header.png",
       "url": "https://inboxpraveen.github.io/blogs/blog-1.html",
-      "keywords": ["llama.cpp", "GGUF", "quantization", "KL divergence", "speculative decoding", "CUDA", "inference engineering"]
+      "keywords": [
+        "llama.cpp",
+        "GGUF",
+        "quantization",
+        "KL divergence",
+        "speculative decoding",
+        "CUDA",
+        "inference engineering"
+      ],
+      "@id": "https://inboxpraveen.github.io/blogs/blog-1.html#post",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://inboxpraveen.github.io/blogs/blog-1.html"
+      },
+      "publisher": {
+        "@id": "https://inboxpraveen.github.io/#person"
+      },
+      "inLanguage": "en",
+      "isPartOf": {
+        "@type": "Blog",
+        "@id": "https://inboxpraveen.github.io/all-blogs.html#blog",
+        "name": "Notes from the workbench"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://inboxpraveen.github.io/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Blogs",
+          "item": "https://inboxpraveen.github.io/all-blogs.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Getting the most tokens per second out of one laptop with llama.cpp",
+          "item": "https://inboxpraveen.github.io/blogs/blog-1.html"
+        }
+      ]
     }
+  ]
+}
     </script>
 </head>
 <body>
@@ -1571,13 +1666,13 @@ python scripts/bench_driver.py --model Qwen3-0.6B-Q8_0.gguf --bin bin/cpu --thre
                 test, and the order to try things in on hardware you've never touched.
             </p>
 
-            <div style="margin-top: 3rem; padding: 2rem; background: var(--secondary-bg); border-radius: 15px; border: 1px solid var(--border-color);">
-                <h3 style="margin-top: 0;">Resources &amp; Links</h3>
-                <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1rem; margin-bottom: 2rem;">
-                    <a href="https://github.com/inboxpraveen/ggml-inference-lab" class="demo-button" style="margin: 0;" target="_blank" rel="noopener noreferrer">Scripts and raw results</a>
-                    <a href="./blog-2.html" class="demo-button" style="margin: 0;">Part 2: the field guide</a>
-                    <a href="https://github.com/ggml-org/llama.cpp/releases/tag/b10941" class="demo-button" style="margin: 0;" target="_blank" rel="noopener noreferrer">llama.cpp b10941</a>
-                    <a href="https://huggingface.co/Qwen/Qwen3-0.6B-GGUF" class="demo-button" style="margin: 0;" target="_blank" rel="noopener noreferrer">Qwen3-0.6B-GGUF</a>
+            <div class="resources">
+                <h3>Resources &amp; Links</h3>
+                <div class="resources-links">
+                    <a href="https://github.com/inboxpraveen/ggml-inference-lab" class="demo-button" target="_blank" rel="noopener noreferrer">Scripts and raw results</a>
+                    <a href="./blog-2.html" class="demo-button">Part 2: the field guide</a>
+                    <a href="https://github.com/ggml-org/llama.cpp/releases/tag/b10941" class="demo-button" target="_blank" rel="noopener noreferrer">llama.cpp b10941</a>
+                    <a href="https://huggingface.co/Qwen/Qwen3-0.6B-GGUF" class="demo-button" target="_blank" rel="noopener noreferrer">Qwen3-0.6B-GGUF</a>
                 </div>
 
                 <h4>Tags:</h4>
@@ -1599,8 +1694,7 @@ python scripts/bench_driver.py --model Qwen3-0.6B-Q8_0.gguf --bin bin/cpu --thre
             <div class="footer-grid">
                 <p class="footer-note">
                     &copy; <span data-year>2026</span> Praveen Kumar &middot;
-                    Static HTML, one stylesheet, no build step &mdash;
-                    <a href="https://github.com/inboxpraveen/inboxpraveen.github.io" target="_blank" rel="noopener noreferrer">source on GitHub</a>
+                    Static HTML, one stylesheet, no build step. <a href="https://github.com/inboxpraveen/inboxpraveen.github.io" target="_blank" rel="noopener noreferrer">Source on GitHub</a>
                 </p>
                 <div class="footer-social">
                     <a href="https://github.com/inboxpraveen" target="_blank" rel="noopener noreferrer" aria-label="GitHub">

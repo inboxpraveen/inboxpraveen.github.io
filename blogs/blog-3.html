@@ -3,50 +3,148 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Where the bandwidth line ends: how Cerebras gets to 2,000 tokens a second, worked out from the outside | Praveen Kumar</title>
+    <title>How Cerebras gets to 2,000 tokens a second | Praveen Kumar</title>
 
     <!-- SEO Meta Tags -->
-    <meta name="description" content="A from-the-outside engineering read of Cerebras: every published speed dated and sourced, the wafer rebuilt from the core up, why the bandwidth line predicts 600,000 tokens a second and they get 2,000, the microseconds a layer really costs, what the SRAM design gives up, and what carries back to a laptop.">
+    <meta name="description" content="The bandwidth line predicts 600,000 tokens a second for four Cerebras wafers and they get 2,000. Where the rest goes, worked out from public sources with the arithmetic shown.">
     <meta name="keywords" content="Cerebras, Wafer-Scale Engine, WSE-3, CS-3, CS-4, SRAM, Inference, Tokens per Second, Speculative Decoding, Groq, NVIDIA Blackwell, Memory Bandwidth, Latency, KV Cache, Mixture of Experts, Inference Engineering, Hardware">
     <meta name="author" content="Praveen Kumar">
+    <meta name="robots" content="index, follow, max-image-preview:large">
 
     <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="Where the bandwidth line ends: how Cerebras gets to 2,000 tokens a second, worked out from the outside">
-    <meta property="og:description" content="The bandwidth line predicts 600,000 tokens a second for four wafers and Cerebras gets 2,000. Where the rest goes, worked out from public numbers.">
+    <meta property="og:title" content="Where the bandwidth line ends: how Cerebras gets to 2,000 tokens a second">
+    <meta property="og:description" content="The bandwidth line predicts 600,000 tokens a second for four Cerebras wafers and they get 2,000. Where the rest goes, worked out from public sources.">
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://inboxpraveen.github.io/blogs/blog-3.html">
     <meta property="og:image" content="https://inboxpraveen.github.io/blogs/resources/blog-3/Header.png">
     <meta property="og:image:alt" content="Bandwidth divided by bytes per token for a laptop, eight H100s, eight B200s and four Cerebras wafers on a log scale, with reported speeds marked">
     <meta property="og:site_name" content="Praveen Kumar Portfolio">
+    <meta property="og:locale" content="en_US">
     <meta property="article:published_time" content="2026-09-14">
     <meta property="article:author" content="Praveen Kumar">
 
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Where the bandwidth line ends: how Cerebras gets to 2,000 tokens a second, worked out from the outside">
-    <meta name="twitter:description" content="Every Cerebras speed claim dated and sourced, the wafer rebuilt from the core up, and the arithmetic that says why a layer costs microseconds rather than bytes.">
+    <meta name="twitter:site" content="@InboxPraveen">
+    <meta name="twitter:creator" content="@InboxPraveen">
+    <meta name="twitter:title" content="Where the bandwidth line ends: how Cerebras gets to 2,000 tokens a second">
+    <meta name="twitter:description" content="The bandwidth line predicts 600,000 tokens a second for four Cerebras wafers and they get 2,000. Where the rest goes, worked out from public sources.">
     <meta name="twitter:image" content="https://inboxpraveen.github.io/blogs/resources/blog-3/Header.png">
     <meta name="twitter:image:alt" content="Bandwidth divided by bytes per token for a laptop, eight H100s, eight B200s and four Cerebras wafers on a log scale, with reported speeds marked">
 
     <!-- Canonical URL -->
     <link rel="canonical" href="https://inboxpraveen.github.io/blogs/blog-3.html">
+    <link rel="alternate" type="application/atom+xml" title="Praveen Kumar: notes from the workbench" href="https://inboxpraveen.github.io/feed.xml">
 
     <link rel="icon" type="image/x-icon" href="../assests/favicon.ico">
     <link rel="stylesheet" href="../index.css">
 
     <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
     {
-      "@context": "https://schema.org",
+      "@type": "Person",
+      "@id": "https://inboxpraveen.github.io/#person",
+      "name": "Praveen Kumar",
+      "url": "https://inboxpraveen.github.io/",
+      "jobTitle": "Principal AI Engineer",
+      "description": "Principal AI Engineer in Bengaluru building speech intelligence, LLM and document AI systems for enterprise teams, and writing measured, reproducible notes about inference and training on real hardware.",
+      "email": "mailto:inboxpraveen.17@gmail.com",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "TrellisSoft"
+      },
+      "alumniOf": {
+        "@type": "CollegeOrUniversity",
+        "name": "MVJ College of Engineering"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Bengaluru",
+        "addressCountry": "IN"
+      },
+      "knowsAbout": [
+        "Speech recognition",
+        "Speaker diarization",
+        "Large language models",
+        "Retrieval augmented generation",
+        "LLM fine-tuning",
+        "LLM inference on CPUs and GPUs",
+        "Optical character recognition",
+        "Document AI",
+        "MLOps",
+        "Multi-tenant AI platforms"
+      ],
+      "sameAs": [
+        "https://github.com/inboxpraveen",
+        "https://www.linkedin.com/in/praveen-kumar-inbox/",
+        "https://x.com/InboxPraveen"
+      ]
+    },
+    {
       "@type": "BlogPosting",
       "headline": "Where the bandwidth line ends: how Cerebras gets to 2,000 tokens a second, worked out from the outside",
-      "description": "An engineering read of Cerebras from public sources: dated speed claims, the wafer from the core up, the per-layer latency arithmetic, what the SRAM design gives up, and what carries back to ordinary hardware.",
+      "description": "The bandwidth line predicts 600,000 tokens a second for four Cerebras wafers and they get 2,000. Where the rest goes, worked out from public sources with the arithmetic shown.",
       "datePublished": "2026-09-14",
       "dateModified": "2026-09-14",
-      "author": { "@type": "Person", "name": "Praveen Kumar", "url": "https://inboxpraveen.github.io/" },
+      "author": {
+        "@id": "https://inboxpraveen.github.io/#person"
+      },
       "image": "https://inboxpraveen.github.io/blogs/resources/blog-3/Header.png",
       "url": "https://inboxpraveen.github.io/blogs/blog-3.html",
-      "keywords": ["Cerebras", "wafer-scale", "SRAM", "inference", "speculative decoding", "memory bandwidth", "latency", "Groq", "NVIDIA Blackwell", "inference engineering"]
+      "keywords": [
+        "Cerebras",
+        "wafer-scale",
+        "SRAM",
+        "inference",
+        "speculative decoding",
+        "memory bandwidth",
+        "latency",
+        "Groq",
+        "NVIDIA Blackwell",
+        "inference engineering"
+      ],
+      "@id": "https://inboxpraveen.github.io/blogs/blog-3.html#post",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://inboxpraveen.github.io/blogs/blog-3.html"
+      },
+      "publisher": {
+        "@id": "https://inboxpraveen.github.io/#person"
+      },
+      "inLanguage": "en",
+      "isPartOf": {
+        "@type": "Blog",
+        "@id": "https://inboxpraveen.github.io/all-blogs.html#blog",
+        "name": "Notes from the workbench"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://inboxpraveen.github.io/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Blogs",
+          "item": "https://inboxpraveen.github.io/all-blogs.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Where the bandwidth line ends: how Cerebras gets to 2,000 tokens a second, worked out from the outside",
+          "item": "https://inboxpraveen.github.io/blogs/blog-3.html"
+        }
+      ]
     }
+  ]
+}
     </script>
 </head>
 <body>
@@ -85,7 +183,7 @@
                     </div>
                     <div class="meta-item">
                         <span><svg class="icon" aria-hidden="true"><use href="#i-pulse"></use></svg></span>
-                        <span data-read-time>47 min read</span>
+                        <span data-read-time>48 min read</span>
                     </div>
                     <div class="meta-item">
                         <span><svg class="icon" aria-hidden="true"><use href="#i-code"></use></svg></span>
@@ -1048,16 +1146,16 @@
                 question, and as far as I can check them from the outside, they do.
             </p>
 
-            <div style="margin-top: 3rem; padding: 2rem; background: var(--secondary-bg); border-radius: 15px; border: 1px solid var(--border-color);">
-                <h3 style="margin-top: 0;">Resources &amp; Links</h3>
-                <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1rem; margin-bottom: 2rem;">
-                    <a href="https://github.com/inboxpraveen/ggml-inference-lab" class="demo-button" style="margin: 0;" target="_blank" rel="noopener noreferrer">Source list, arithmetic and charts</a>
-                    <a href="./blog-1.html" class="demo-button" style="margin: 0;">llama.cpp on one laptop</a>
-                    <a href="./blog-2.html" class="demo-button" style="margin: 0;">Before you tune anything</a>
+            <div class="resources">
+                <h3>Resources &amp; Links</h3>
+                <div class="resources-links">
+                    <a href="https://github.com/inboxpraveen/ggml-inference-lab" class="demo-button" target="_blank" rel="noopener noreferrer">Source list, arithmetic and charts</a>
+                    <a href="./blog-1.html" class="demo-button">llama.cpp on one laptop</a>
+                    <a href="./blog-2.html" class="demo-button">Before you tune anything</a>
                 </div>
 
                 <h4>Independent measurements and papers:</h4>
-                <p style="margin-top: 0.5rem;">
+                <p>
                     <a href="https://arxiv.org/abs/2502.04563" target="_blank" rel="noopener noreferrer">WaferLLM: Large Language Model Inference at Wafer Scale</a> (He et al., Edinburgh and Microsoft Research, 2025);
                     <a href="https://arxiv.org/abs/2604.10852" target="_blank" rel="noopener noreferrer">The xPU-athalon: Quantifying the Competition of AI Acceleration</a> (USC, 2026);
                     <a href="https://arxiv.org/abs/2409.00287" target="_blank" rel="noopener noreferrer">Benchmarking LLMs on the Cerebras Wafer Scale Engine</a> (USC, 2024);
@@ -1066,7 +1164,7 @@
                 </p>
 
                 <h4>Vendor sources:</h4>
-                <p style="margin-top: 0.5rem;">
+                <p>
                     <a href="https://www.cerebras.ai/blog/introducing-cerebras-inference-ai-at-instant-speed" target="_blank" rel="noopener noreferrer">Introducing Cerebras Inference</a> (Aug 2024);
                     <a href="https://www.cerebras.ai/blog/cerebras-inference-3x-faster" target="_blank" rel="noopener noreferrer">Cerebras Inference now 3x faster</a> (Oct 2024);
                     <a href="https://www.cerebras.ai/blog/llama-405b-inference" target="_blank" rel="noopener noreferrer">Llama 3.1 405B at 969 tokens/s</a> (Nov 2024);
@@ -1081,7 +1179,7 @@
                 </p>
 
                 <h4>Community and analysis:</h4>
-                <p style="margin-top: 0.5rem;">
+                <p>
                     <a href="https://newsletter.semianalysis.com/p/cerebras-faster-tokens-please" target="_blank" rel="noopener noreferrer">SemiAnalysis: Cerebras, Faster Tokens Please</a>;
                     <a href="https://www.theregister.com/2024/08/27/cerebras_ai_inference/" target="_blank" rel="noopener noreferrer">The Register on the launch</a> (Aug 2024);
                     <a href="https://www.servethehome.com/cerebras-intros-faster-wse-3-turbo-processor-and-first-rack-scale-cs-4-system/" target="_blank" rel="noopener noreferrer">ServeTheHome on the WSE-3 Turbo and CS-4</a> (Aug 2026);
@@ -1107,8 +1205,7 @@
             <div class="footer-grid">
                 <p class="footer-note">
                     &copy; <span data-year>2026</span> Praveen Kumar &middot;
-                    Static HTML, one stylesheet, no build step &mdash;
-                    <a href="https://github.com/inboxpraveen/inboxpraveen.github.io" target="_blank" rel="noopener noreferrer">source on GitHub</a>
+                    Static HTML, one stylesheet, no build step. <a href="https://github.com/inboxpraveen/inboxpraveen.github.io" target="_blank" rel="noopener noreferrer">Source on GitHub</a>
                 </p>
                 <div class="footer-social">
                     <a href="https://github.com/inboxpraveen" target="_blank" rel="noopener noreferrer" aria-label="GitHub">

@@ -3,50 +3,151 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Who spoke when, on your own data: training, tuning and shipping a Kaldi speaker diarizer that runs on a CPU | Praveen Kumar</title>
+    <title>Training a Kaldi speaker diarizer on your own data | Praveen Kumar</title>
 
     <!-- SEO Meta Tags -->
-    <meta name="description" content="Speaker diarization from a folder of labelled recordings: the Kaldi x-vector pipeline stage by stage, the back-end trained on your data in under a minute, every threshold chosen on a dev set and measured on held-out meetings, an honest comparison with pyannote and NVIDIA Sortformer, and a container that turns an audio file into an RTTM on a CPU in seconds.">
+    <meta name="description" content="Train Kaldi's x-vector diarizer on your own recordings and ship it as a CPU container: back-end training, VBx, speech detection, how much data you need, speed, and the Sortformer comparison.">
     <meta name="keywords" content="Speaker Diarization, Kaldi, x-vector, PLDA, Agglomerative Clustering, VBx, Speech Activity Detection, DER, AMI Corpus, pyannote, Sortformer, Docker, CPU Inference, RTTM">
     <meta name="author" content="Praveen Kumar">
+    <meta name="robots" content="index, follow, max-image-preview:large">
 
     <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="Who spoke when, on your own data: training, tuning and shipping a Kaldi speaker diarizer that runs on a CPU">
-    <meta property="og:description" content="A folder of labelled recordings, a pretrained x-vector network, a back-end trained in under a minute, thresholds chosen on dev and measured on held-out meetings, the neural systems compared on the same audio, and a CPU container that writes RTTM. Every number measured.">
+    <meta property="og:title" content="Who spoke when, on your own data: a Kaldi speaker diarizer that runs on a CPU">
+    <meta property="og:description" content="From a folder of labelled recordings to a container that writes an RTTM in seconds on a CPU, every setting chosen on dev and measured on held-out meetings.">
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://inboxpraveen.github.io/blogs/blog-5.html">
     <meta property="og:image" content="https://inboxpraveen.github.io/blogs/resources/blog-5/Header.png">
     <meta property="og:image:alt" content="Diarization error rate of the stock and the trained Kaldi back-end on held-out meetings, and the seconds the container needs per hour of audio on a CPU">
     <meta property="og:site_name" content="Praveen Kumar Portfolio">
+    <meta property="og:locale" content="en_US">
     <meta property="article:published_time" content="2026-09-20">
     <meta property="article:author" content="Praveen Kumar">
 
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Who spoke when, on your own data: training, tuning and shipping a Kaldi speaker diarizer that runs on a CPU">
-    <meta name="twitter:description" content="The Kaldi x-vector diarizer trained on a folder of your own recordings, tuned on dev, measured on held-out meetings against pyannote and Sortformer, and shipped as a CPU container. Every number measured.">
+    <meta name="twitter:site" content="@InboxPraveen">
+    <meta name="twitter:creator" content="@InboxPraveen">
+    <meta name="twitter:title" content="Who spoke when, on your own data: a Kaldi speaker diarizer that runs on a CPU">
+    <meta name="twitter:description" content="From a folder of labelled recordings to a container that writes an RTTM in seconds on a CPU, every setting chosen on dev and measured on held-out meetings.">
     <meta name="twitter:image" content="https://inboxpraveen.github.io/blogs/resources/blog-5/Header.png">
     <meta name="twitter:image:alt" content="Diarization error rate of the stock and the trained Kaldi back-end on held-out meetings, and the seconds the container needs per hour of audio on a CPU">
 
     <!-- Canonical URL -->
     <link rel="canonical" href="https://inboxpraveen.github.io/blogs/blog-5.html">
+    <link rel="alternate" type="application/atom+xml" title="Praveen Kumar: notes from the workbench" href="https://inboxpraveen.github.io/feed.xml">
 
     <link rel="icon" type="image/x-icon" href="../assests/favicon.ico">
     <link rel="stylesheet" href="../index.css">
 
     <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
     {
-      "@context": "https://schema.org",
+      "@type": "Person",
+      "@id": "https://inboxpraveen.github.io/#person",
+      "name": "Praveen Kumar",
+      "url": "https://inboxpraveen.github.io/",
+      "jobTitle": "Principal AI Engineer",
+      "description": "Principal AI Engineer in Bengaluru building speech intelligence, LLM and document AI systems for enterprise teams, and writing measured, reproducible notes about inference and training on real hardware.",
+      "email": "mailto:inboxpraveen.17@gmail.com",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "TrellisSoft"
+      },
+      "alumniOf": {
+        "@type": "CollegeOrUniversity",
+        "name": "MVJ College of Engineering"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Bengaluru",
+        "addressCountry": "IN"
+      },
+      "knowsAbout": [
+        "Speech recognition",
+        "Speaker diarization",
+        "Large language models",
+        "Retrieval augmented generation",
+        "LLM fine-tuning",
+        "LLM inference on CPUs and GPUs",
+        "Optical character recognition",
+        "Document AI",
+        "MLOps",
+        "Multi-tenant AI platforms"
+      ],
+      "sameAs": [
+        "https://github.com/inboxpraveen",
+        "https://www.linkedin.com/in/praveen-kumar-inbox/",
+        "https://x.com/InboxPraveen"
+      ]
+    },
+    {
       "@type": "BlogPosting",
       "headline": "Who spoke when, on your own data: training, tuning and shipping a Kaldi speaker diarizer that runs on a CPU",
-      "description": "Training and deploying the classic Kaldi x-vector speaker diarization pipeline on your own labelled recordings: data preparation, pretrained models, PLDA training, threshold and speech-detector tuning, validation under both DER conventions, speed and memory, and a CPU container, compared with pyannote and NVIDIA Sortformer.",
+      "description": "Train Kaldi's x-vector diarizer on your own recordings and ship it as a CPU container: back-end training, VBx, speech detection, how much data you need, speed, and the Sortformer comparison.",
       "datePublished": "2026-09-20",
       "dateModified": "2026-09-20",
-      "author": { "@type": "Person", "name": "Praveen Kumar", "url": "https://inboxpraveen.github.io/" },
+      "author": {
+        "@id": "https://inboxpraveen.github.io/#person"
+      },
       "image": "https://inboxpraveen.github.io/blogs/resources/blog-5/Header.png",
       "url": "https://inboxpraveen.github.io/blogs/blog-5.html",
-      "keywords": ["speaker diarization", "Kaldi", "x-vector", "PLDA", "agglomerative clustering", "VBx", "speech activity detection", "DER", "AMI", "pyannote", "Sortformer", "Docker", "CPU inference"]
+      "keywords": [
+        "speaker diarization",
+        "Kaldi",
+        "x-vector",
+        "PLDA",
+        "agglomerative clustering",
+        "VBx",
+        "speech activity detection",
+        "DER",
+        "AMI",
+        "pyannote",
+        "Sortformer",
+        "Docker",
+        "CPU inference"
+      ],
+      "@id": "https://inboxpraveen.github.io/blogs/blog-5.html#post",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://inboxpraveen.github.io/blogs/blog-5.html"
+      },
+      "publisher": {
+        "@id": "https://inboxpraveen.github.io/#person"
+      },
+      "inLanguage": "en",
+      "isPartOf": {
+        "@type": "Blog",
+        "@id": "https://inboxpraveen.github.io/all-blogs.html#blog",
+        "name": "Notes from the workbench"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://inboxpraveen.github.io/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Blogs",
+          "item": "https://inboxpraveen.github.io/all-blogs.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Who spoke when, on your own data: training, tuning and shipping a Kaldi speaker diarizer that runs on a CPU",
+          "item": "https://inboxpraveen.github.io/blogs/blog-5.html"
+        }
+      ]
     }
+  ]
+}
     </script>
 </head>
 <body>
@@ -85,7 +186,7 @@
                     </div>
                     <div class="meta-item">
                         <span><svg class="icon" aria-hidden="true"><use href="#i-pulse"></use></svg></span>
-                        <span data-read-time>64 min read</span>
+                        <span data-read-time>65 min read</span>
                     </div>
                     <div class="meta-item">
                         <span><svg class="icon" aria-hidden="true"><use href="#i-code"></use></svg></span>
@@ -1361,17 +1462,17 @@ bash scripts/diar/lab.sh setup                                           <span c
                 system I'd ship, and this post is the evidence.
             </p>
 
-            <div style="margin-top: 3rem; padding: 2rem; background: var(--secondary-bg); border-radius: 15px; border: 1px solid var(--border-color);">
-                <h3 style="margin-top: 0;">Resources &amp; Links</h3>
-                <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1rem; margin-bottom: 2rem;">
-                    <a href="https://github.com/inboxpraveen/ggml-inference-lab" class="demo-button" style="margin: 0;" target="_blank" rel="noopener noreferrer">Scripts, results, the container and the sources file</a>
-                    <a href="./blog-4.html" class="demo-button" style="margin: 0;">Teaching a language model a language it never knew</a>
-                    <a href="./blog-2.html" class="demo-button" style="margin: 0;">Before you tune anything</a>
-                    <a href="./blog-1.html" class="demo-button" style="margin: 0;">llama.cpp on one laptop</a>
+            <div class="resources">
+                <h3>Resources &amp; Links</h3>
+                <div class="resources-links">
+                    <a href="https://github.com/inboxpraveen/ggml-inference-lab" class="demo-button" target="_blank" rel="noopener noreferrer">Scripts, results, the container and the sources file</a>
+                    <a href="./blog-4.html" class="demo-button">Teaching a language model a language it never knew</a>
+                    <a href="./blog-2.html" class="demo-button">Before you tune anything</a>
+                    <a href="./blog-1.html" class="demo-button">llama.cpp on one laptop</a>
                 </div>
 
                 <h4>The toolkit, the models and the data:</h4>
-                <p style="margin-top: 0.5rem;">
+                <p>
                     <a href="https://github.com/kaldi-asr/kaldi" target="_blank" rel="noopener noreferrer">Kaldi</a> and the
                     <a href="https://hub.docker.com/r/kaldiasr/kaldi" target="_blank" rel="noopener noreferrer">kaldiasr/kaldi images</a> (rebuilt July 2025);
                     <a href="https://kaldi-asr.org/models/m7" target="_blank" rel="noopener noreferrer">the VoxCeleb x-vector model (m7)</a>,
@@ -1387,7 +1488,7 @@ bash scripts/diar/lab.sh setup                                           <span c
                 </p>
 
                 <h4>The clustering family:</h4>
-                <p style="margin-top: 0.5rem;">
+                <p>
                     <a href="https://www.danielpovey.com/files/2018_icassp_xvectors.pdf" target="_blank" rel="noopener noreferrer">X-vectors: robust DNN embeddings for speaker recognition</a> (Snyder et al., 2018);
                     <a href="https://www.isca-archive.org/interspeech_2018/sell18_interspeech.html" target="_blank" rel="noopener noreferrer">Diarization is hard</a> (Sell et al., 2018);
                     <a href="https://arxiv.org/abs/2012.14952" target="_blank" rel="noopener noreferrer">Bayesian HMM clustering of x-vector sequences (VBx)</a> (Landini et al., 2022) and the
@@ -1397,7 +1498,7 @@ bash scripts/diar/lab.sh setup                                           <span c
                 </p>
 
                 <h4>The neural systems:</h4>
-                <p style="margin-top: 0.5rem;">
+                <p>
                     <a href="https://www.isca-archive.org/interspeech_2023/bredin23_interspeech.html" target="_blank" rel="noopener noreferrer">pyannote.audio 2.1: principle, benchmark and recipe</a> (Bredin, 2023),
                     <a href="https://arxiv.org/abs/2310.13025" target="_blank" rel="noopener noreferrer">the powerset segmentation loss</a> (Plaquet and Bredin, 2023),
                     the <a href="https://huggingface.co/pyannote/speaker-diarization-3.1" target="_blank" rel="noopener noreferrer">speaker-diarization-3.1</a> and
@@ -1438,8 +1539,7 @@ bash scripts/diar/lab.sh setup                                           <span c
             <div class="footer-grid">
                 <p class="footer-note">
                     &copy; <span data-year>2026</span> Praveen Kumar &middot;
-                    Static HTML, one stylesheet, no build step &mdash;
-                    <a href="https://github.com/inboxpraveen/inboxpraveen.github.io" target="_blank" rel="noopener noreferrer">source on GitHub</a>
+                    Static HTML, one stylesheet, no build step. <a href="https://github.com/inboxpraveen/inboxpraveen.github.io" target="_blank" rel="noopener noreferrer">Source on GitHub</a>
                 </p>
                 <div class="footer-social">
                     <a href="https://github.com/inboxpraveen" target="_blank" rel="noopener noreferrer" aria-label="GitHub">

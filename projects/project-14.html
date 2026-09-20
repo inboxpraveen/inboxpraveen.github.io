@@ -9,6 +9,7 @@
     <meta name="description" content="CleanFrame is an open-source Python library that turns messy spreadsheets into clean, typed data. An LLM writes the cleaning plan once; a YAML recipe replays it forever in pure pandas, with cell-level diffs and schema-drift alerts.">
     <meta name="keywords" content="CleanFrame, cleanframe-engine, Data Cleaning, pandas, Data Quality, Reproducible Pipelines, Schema Drift, ETL, Python Library, LLM Planning, Open Source, PyPI">
     <meta name="author" content="Praveen Kumar">
+    <meta name="robots" content="index, follow, max-image-preview:large">
 
     <!-- Open Graph Meta Tags -->
     <meta property="og:title" content="CleanFrame - The Reproducible Data-Cleaning Engine for Python">
@@ -18,9 +19,12 @@
     <meta property="og:image" content="https://inboxpraveen.github.io/projects/resources/project-14/Header.png">
     <meta property="og:image:alt" content="CleanFrame - messy data in, recipe in the middle, clean data out">
     <meta property="og:site_name" content="Praveen Kumar Portfolio">
+    <meta property="og:locale" content="en_US">
 
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@InboxPraveen">
+    <meta name="twitter:creator" content="@InboxPraveen">
     <meta name="twitter:title" content="CleanFrame - The Reproducible Data-Cleaning Engine for Python">
     <meta name="twitter:description" content="The LLM never touches your data - it only writes the plan. The plan compiles to deterministic pandas, saved as a recipe you can review in a pull request.">
     <meta name="twitter:image" content="https://inboxpraveen.github.io/projects/resources/project-14/Header.png">
@@ -28,9 +32,101 @@
 
     <!-- Canonical URL -->
     <link rel="canonical" href="https://inboxpraveen.github.io/projects/project-14.html">
+    <link rel="alternate" type="application/atom+xml" title="Praveen Kumar: notes from the workbench" href="https://inboxpraveen.github.io/feed.xml">
 
     <link rel="icon" type="image/x-icon" href="../assests/favicon.ico">
     <link rel="stylesheet" href="../index.css">
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://inboxpraveen.github.io/#person",
+      "name": "Praveen Kumar",
+      "url": "https://inboxpraveen.github.io/",
+      "jobTitle": "Principal AI Engineer",
+      "description": "Principal AI Engineer in Bengaluru building speech intelligence, LLM and document AI systems for enterprise teams, and writing measured, reproducible notes about inference and training on real hardware.",
+      "email": "mailto:inboxpraveen.17@gmail.com",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "TrellisSoft"
+      },
+      "alumniOf": {
+        "@type": "CollegeOrUniversity",
+        "name": "MVJ College of Engineering"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Bengaluru",
+        "addressCountry": "IN"
+      },
+      "knowsAbout": [
+        "Speech recognition",
+        "Speaker diarization",
+        "Large language models",
+        "Retrieval augmented generation",
+        "LLM fine-tuning",
+        "LLM inference on CPUs and GPUs",
+        "Optical character recognition",
+        "Document AI",
+        "MLOps",
+        "Multi-tenant AI platforms"
+      ],
+      "sameAs": [
+        "https://github.com/inboxpraveen",
+        "https://www.linkedin.com/in/praveen-kumar-inbox/",
+        "https://x.com/InboxPraveen"
+      ]
+    },
+    {
+      "@type": "SoftwareSourceCode",
+      "@id": "https://inboxpraveen.github.io/projects/project-14.html#code",
+      "name": "CleanFrame",
+      "description": "CleanFrame is an open-source Python library that turns messy spreadsheets into clean, typed data. An LLM writes the cleaning plan once; a YAML recipe replays it forever in pure pandas, with cell-level diffs and schema-drift alerts.",
+      "url": "https://inboxpraveen.github.io/projects/project-14.html",
+      "author": {
+        "@id": "https://inboxpraveen.github.io/#person"
+      },
+      "inLanguage": "en",
+      "dateModified": "2026-09-14",
+      "keywords": [
+        "LLM &amp; RAG",
+        "Python",
+        "pandas",
+        "PyYAML",
+        "Data Quality",
+        "Open Source"
+      ],
+      "codeRepository": "https://github.com/inboxpraveen/Cleanframe",
+      "image": "https://inboxpraveen.github.io/projects/resources/project-14/Header.png"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://inboxpraveen.github.io/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Projects",
+          "item": "https://inboxpraveen.github.io/all-projects.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "CleanFrame",
+          "item": "https://inboxpraveen.github.io/projects/project-14.html"
+        }
+      ]
+    }
+  ]
+}
+    </script>
 </head>
 <body>
 
@@ -90,7 +186,7 @@
             <h2>Project Overview</h2>
             <p>
                 <strong>CleanFrame</strong> is an open-source Python library that turns the spreadsheet nobody
-                wants to open into clean, typed, validated data &mdash; and then makes sure you never have to do
+                wants to open into clean, typed, validated data, and then makes sure you never have to do
                 it by hand again. It profiles the file, detects the issues, proposes a plan, executes that plan
                 in pure pandas, and saves the whole thing as a <strong>recipe</strong>: a versionable YAML file
                 that replays on next month's file with zero AI calls.
@@ -116,8 +212,7 @@
             </p>
             <p>
                 You clean it by hand. Next month it arrives broken in a new way, and you clean it again. I have
-                watched that loop eat a data team's week, every month, for years &mdash; and I have been the
-                person inside the loop.
+                watched that loop eat a data team's week, every month, for years, and I have been the person inside the loop.
             </p>
             <p>
                 The obvious 2026 answer is "point an LLM agent at the dataframe." I tried it, and it fails for a
@@ -149,8 +244,7 @@
                 <li><strong>SaaS importers</strong> (Flatfile, OneSchema) do the whole job and start around $6k a year</li>
             </ul>
             <p>
-                Nothing in that list gives you a fix that is <em>reproducible</em>. That's the gap, and it isn't
-                about the algorithm &mdash; it's about the artifact. A cleaned CSV is a dead end. A cleaning
+                Nothing in that list gives you a fix that is <em>reproducible</em>. That's the gap, and it isn't about the algorithm, it's about the artifact. A cleaned CSV is a dead end. A cleaning
                 <em>recipe</em> lives in git, gets reviewed in a pull request, and replays in CI.
             </p>
 
@@ -180,8 +274,7 @@ profile.py --&gt; detectors/ --&gt; planner.py --&gt; Recipe (YAML)
             </div>
 
             <p>
-                The profiler assigns each column a semantic type and a set of statistics. Detectors &mdash; ten
-                families of them, all plugins &mdash; turn those statistics into typed issues with confidence
+                The profiler assigns each column a semantic type and a set of statistics. Detectors (ten families of them, all plugins) turn those statistics into typed issues with confidence
                 scores. The planner gates on confidence, resolves renames, and fixes the operation order. Only
                 then, and only if you asked for it, does a model see anything at all: column names, dtypes and
                 regex sketches of the value patterns, never the raw cells.
@@ -208,7 +301,7 @@ profile.py --&gt; detectors/ --&gt; planner.py --&gt; Recipe (YAML)
                         </tr>
                         <tr>
                             <td><code>detectors/</code></td>
-                            <td>Issue discovery and op proposals &mdash; dates, currency, categories, contacts, dedup, nulls, outliers, text, units, schema mapping</td>
+                            <td>Issue discovery and op proposals: dates, currency, categories, contacts, dedup, nulls, outliers, text, units, schema mapping</td>
                         </tr>
                         <tr>
                             <td><code>planner.py</code></td>
@@ -216,7 +309,7 @@ profile.py --&gt; detectors/ --&gt; planner.py --&gt; Recipe (YAML)
                         </tr>
                         <tr>
                             <td><code>llm.py</code></td>
-                            <td>Optional plan writer &mdash; metadata only, never raw cells</td>
+                            <td>Optional plan writer: metadata only, never raw cells</td>
                         </tr>
                         <tr>
                             <td><code>executor.py</code></td>
@@ -224,7 +317,7 @@ profile.py --&gt; detectors/ --&gt; planner.py --&gt; Recipe (YAML)
                         </tr>
                         <tr>
                             <td><code>drift.py</code></td>
-                            <td>Fingerprint comparison on replay &mdash; the thing that stops the pipeline</td>
+                            <td>Fingerprint comparison on replay, the thing that stops the pipeline</td>
                         </tr>
                         <tr>
                             <td><code>codegen.py</code></td>
@@ -334,8 +427,7 @@ dropped rows: 1 (email:valid_email)</code></pre>
             </div>
 
             <p>
-                That last line matters as much as the rest. The row with the invalid email wasn't deleted &mdash;
-                it went to <code>result.quarantine</code> with the reason attached. Validation failures are held
+                That last line matters as much as the rest. The row with the invalid email wasn't deleted: it went to <code>result.quarantine</code> with the reason attached. Validation failures are held
                 back with an explanation, never silently discarded.
             </p>
 
@@ -364,8 +456,7 @@ dropped rows: 1 (email:valid_email)</code></pre>
             <h2>Where the LLM Fits</h2>
             <p>
                 CleanFrame is LLM-optional and provider-agnostic. Planning has three exposure levels, and the
-                default is the one where nothing leaves your machine. Replay &mdash; the mode you actually run
-                in production &mdash; needs no model at all:
+                default is the one where nothing leaves your machine. Replay, the mode you actually run in production, needs no model at all:
             </p>
 
             <div class="table-container">
@@ -396,7 +487,7 @@ dropped rows: 1 (email:valid_email)</code></pre>
                         <tr>
                             <td><strong>Replay</strong></td>
                             <td>A saved recipe</td>
-                            <td>Never &mdash; replay needs no model at all</td>
+                            <td>Never: replay needs no model at all</td>
                         </tr>
                     </tbody>
                 </table>
@@ -404,14 +495,13 @@ dropped rows: 1 (email:valid_email)</code></pre>
 
             <p>
                 Keys come from environment variables and are never stored, logged or transmitted. Any provider
-                that speaks OpenAI Chat Completions works out of the box &mdash; Anthropic natively, plus OpenAI,
+                that speaks OpenAI Chat Completions works out of the box: Anthropic natively, plus OpenAI,
                 OpenRouter, Groq, Together, Fireworks, DeepSeek, Mistral, Gemini, xAI and Cohere, or a local
                 Ollama or LM Studio endpoint. There's a hard cost ceiling too: <code>max_tokens_budget</code>
                 aborts planning before it gets expensive, rather than after.
             </p>
             <p>
-                Air-gapped operation is a first-class mode, not a degraded one. That was a deliberate constraint
-                &mdash; the teams with the messiest data are often the ones who can't send it anywhere.
+                Air-gapped operation is a first-class mode, not a degraded one. That was a deliberate constraint: the teams with the messiest data are often the ones who can't send it anywhere.
             </p>
 
             <h2>What It Cleans</h2>
@@ -463,7 +553,7 @@ dropped rows: 1 (email:valid_email)</code></pre>
                         </tr>
                         <tr>
                             <td>Outliers</td>
-                            <td>Flagged with evidence &mdash; detected, never auto-"fixed"</td>
+                            <td>Flagged with evidence: detected, never auto-"fixed"</td>
                         </tr>
                     </tbody>
                 </table>
@@ -472,7 +562,7 @@ dropped rows: 1 (email:valid_email)</code></pre>
             <h2>Making It Production-Safe</h2>
             <p>
                 The first release worked. Making it something I'd put in someone else's pipeline took a full
-                audit of the CLI, the API, the packaging and the docs &mdash; and that audit is where the
+                audit of the CLI, the API, the packaging and the docs, and that audit is where the
                 interesting bugs were. Almost all of them shared a shape: <strong>the library was wrong
                 quietly</strong>.
             </p>
@@ -507,8 +597,7 @@ dropped rows: 1 (email:valid_email)</code></pre>
             </ul>
             <p>
                 The rules that came out of it are invariants the test suite now enforces. Unknown op parameters
-                are rejected at load time instead of silently doing nothing. Wrongly-typed parameters are refused
-                rather than coerced &mdash; <code>remove_symbols: 5</code> used to delete every digit 5. Writing
+                are rejected at load time instead of silently doing nothing. Wrongly-typed parameters are refused rather than coerced: <code>remove_symbols: 5</code> used to delete every digit 5. Writing
                 output over the input file needs an explicit <code>--overwrite</code>, and every write goes
                 through a temporary file that's moved into place. And the CLI has distinct exit codes, so a drift
                 stop (<code>3</code>) is scriptably different from a validation failure (<code>4</code>) and from
@@ -518,8 +607,7 @@ dropped rows: 1 (email:valid_email)</code></pre>
                 Alongside that came the scaling work: out-of-core streaming replay for larger-than-RAM CSVs,
                 multi-sheet Excel workbooks cleaned into one reviewable recipe, read-time encoding and delimiter
                 sniffing pinned into the recipe so a replay reads the file exactly the way the original run did,
-                detector sampling capped at 50k values, and a diff that snapshots only the columns an op touched
-                &mdash; so peak memory stays near the size of the input instead of double it.
+                detector sampling capped at 50k values, and a diff that snapshots only the columns an op touched, so peak memory stays near the size of the input instead of double it.
             </p>
 
             <h2>Tech Stack</h2>
@@ -593,7 +681,7 @@ dropped rows: 1 (email:valid_email)</code></pre>
                         </tr>
                         <tr>
                             <td>Deterministic and reproducible</td>
-                            <td>Yes &mdash; recipes</td>
+                            <td>Yes, through recipes</td>
                             <td>No</td>
                             <td>Yes</td>
                             <td>Partly</td>
@@ -660,7 +748,7 @@ dropped rows: 1 (email:valid_email)</code></pre>
             <h2>My Contribution</h2>
             <p>I designed, built, documented and released the whole thing:</p>
             <ul>
-                <li>Framed the product around the artifact rather than the output &mdash; the recipe is the deliverable, the clean CSV is a side effect</li>
+                <li>Framed the product around the artifact rather than the output: the recipe is the deliverable, the clean CSV is a side effect</li>
                 <li>Designed the recipe format, the schema format, the source fingerprint, and the drift comparison that reads it</li>
                 <li>Built the profiler, the plugin detector system, the confidence-gating planner and the four-phase deterministic executor</li>
                 <li>Wrote the cell-level lineage and diff, the quarantine model, and the codegen that exports a recipe as a dependency-free pandas script</li>
@@ -676,8 +764,7 @@ dropped rows: 1 (email:valid_email)</code></pre>
                 <strong>Determinism is a discipline, not a feature.</strong> It costs you something on almost
                 every line. Sort before iterating anywhere order is observable. No clock, no <code>random</code>,
                 no network in the core path. The detector registry runs in <code>(priority, name)</code> order and
-                columns in frame order. Even the LLM's sample shuffle is seeded by column name, and it only
-                affects the prompt &mdash; never the executor. Miss one of those and "same input, same output"
+                columns in frame order. Even the LLM's sample shuffle is seeded by column name, and it only affects the prompt, never the executor. Miss one of those and "same input, same output"
                 becomes a claim you can't keep.
             </p>
             <p>
@@ -691,9 +778,7 @@ dropped rows: 1 (email:valid_email)</code></pre>
             </p>
             <p>
                 <strong>The LLM boundary has to be architectural.</strong> "We only send metadata" is a promise
-                that decays the moment a convenient prompt needs one more field. Making exposure a typed mode
-                &mdash; and making <code>none</code> mean no network call at all, rather than "the same payload
-                as metadata" &mdash; is the difference between a policy and a property.
+                that decays the moment a convenient prompt needs one more field. Making exposure a typed mode, and making <code>none</code> mean no network call at all rather than "the same payload as metadata", is the difference between a policy and a property.
             </p>
             <p>
                 <strong>Import direction is a real constraint.</strong> Dependencies have to point strictly
@@ -708,8 +793,7 @@ dropped rows: 1 (email:valid_email)</code></pre>
                 <code>cleanframe</code>. The sdist ships an explicit allow-list, so an untracked file in a working
                 tree can never end up in a release. And CodeQL found a real bug the day the repo went public: the
                 <code>Severity</code> enum defined only <code>__lt__</code>, so the <code>str</code> mixin
-                answered everything else and <code>Severity.ERROR &gt; Severity.INFO</code> came back
-                <code>False</code> &mdash; because <code>"error"</code> sorts before <code>"info"</code>
+                answered everything else and <code>Severity.ERROR &gt; Severity.INFO</code> came back <code>False</code>, because <code>"error"</code> sorts before <code>"info"</code>
                 alphabetically.
             </p>
 
@@ -721,7 +805,7 @@ dropped rows: 1 (email:valid_email)</code></pre>
                 so a CleanFrame recipe drops into the validation stack a team already runs.
             </p>
             <p>
-                Then a Polars backend, and a recipe registry for teams &mdash; recipes shared the way schemas are
+                Then a Polars backend, and a recipe registry for teams: recipes shared the way schemas are
                 shared today.
             </p>
             <p>
@@ -733,19 +817,19 @@ dropped rows: 1 (email:valid_email)</code></pre>
             <h2>Closing Note</h2>
             <p>
                 The bet behind CleanFrame is that the durable output of an AI tool shouldn't be the answer. It
-                should be the artifact that produces the answer &mdash; something you can read, review, version,
+                should be the artifact that produces the answer: something you can read, review, version,
                 and run again without the model.
             </p>
             <p>
                 AI suggests. Pandas executes. Rules validate. You approve. Profile it once, recipe it forever.
             </p>
 
-            <div style="margin-top: 3rem; padding: 2rem; background: var(--secondary-bg); border-radius: 15px; border: 1px solid var(--border-color);">
-                <h3 style="margin-top: 0;">Resources &amp; Links</h3>
-                <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1rem; margin-bottom: 2rem;">
-                    <a href="https://pypi.org/project/cleanframe-engine/" class="demo-button" style="margin: 0;" target="_blank" rel="noopener noreferrer">Install from PyPI</a>
-                    <a href="https://github.com/inboxpraveen/Cleanframe" class="demo-button" style="margin: 0;" target="_blank" rel="noopener noreferrer">GitHub Repository</a>
-                    <a href="https://github.com/inboxpraveen/Cleanframe/wiki" class="demo-button" style="margin: 0;" target="_blank" rel="noopener noreferrer">Documentation Wiki</a>
+            <div class="resources">
+                <h3>Resources &amp; Links</h3>
+                <div class="resources-links">
+                    <a href="https://pypi.org/project/cleanframe-engine/" class="demo-button" target="_blank" rel="noopener noreferrer">Install from PyPI</a>
+                    <a href="https://github.com/inboxpraveen/Cleanframe" class="demo-button" target="_blank" rel="noopener noreferrer">GitHub Repository</a>
+                    <a href="https://github.com/inboxpraveen/Cleanframe/wiki" class="demo-button" target="_blank" rel="noopener noreferrer">Documentation Wiki</a>
                 </div>
 
                 <h4>Tags:</h4>
@@ -766,8 +850,7 @@ dropped rows: 1 (email:valid_email)</code></pre>
             <div class="footer-grid">
                 <p class="footer-note">
                     &copy; <span data-year>2026</span> Praveen Kumar &middot;
-                    Static HTML, one stylesheet, no build step &mdash;
-                    <a href="https://github.com/inboxpraveen/inboxpraveen.github.io" target="_blank" rel="noopener noreferrer">source on GitHub</a>
+                    Static HTML, one stylesheet, no build step. <a href="https://github.com/inboxpraveen/inboxpraveen.github.io" target="_blank" rel="noopener noreferrer">Source on GitHub</a>
                 </p>
                 <div class="footer-social">
                     <a href="https://github.com/inboxpraveen" target="_blank" rel="noopener noreferrer" aria-label="GitHub">

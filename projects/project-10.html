@@ -9,6 +9,7 @@
     <meta name="description" content="A web-based FIFA FC 25 player recommendation system built with Flask and scikit-learn. Uses cosine similarity on 34 player attributes to find similar players, supports gender toggle, multi-player radar chart comparisons, and runs entirely in-browser against a Flask backend.">
     <meta name="keywords" content="FIFA Player Recommendation, Cosine Similarity, scikit-learn, Flask, Chart.js, Content-Based Filtering, Machine Learning, FC 25, Recommendation System, Python">
     <meta name="author" content="Praveen Kumar">
+    <meta name="robots" content="index, follow, max-image-preview:large">
     
     <!-- Open Graph Meta Tags -->
     <meta property="og:title" content="FIFA Player Recommendation System - AI-Powered Player Similarity">
@@ -18,9 +19,12 @@
     <meta property="og:image" content="https://inboxpraveen.github.io/projects/resources/project-10/Home-Page-DarkTheme.png">
     <meta property="og:image:alt" content="FIFA Player Recommendation System Dashboard">
     <meta property="og:site_name" content="Praveen Kumar Portfolio">
+    <meta property="og:locale" content="en_US">
     
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@InboxPraveen">
+    <meta name="twitter:creator" content="@InboxPraveen">
     <meta name="twitter:title" content="FIFA Player Recommendation System - AI-Powered Player Similarity">
     <meta name="twitter:description" content="Content-based filtering for FC 25 FIFA players - cosine similarity on 34 attributes, radar chart comparisons, male/female model toggle.">
     <meta name="twitter:image" content="https://inboxpraveen.github.io/projects/resources/project-10/Home-Page-DarkTheme.png">
@@ -28,9 +32,101 @@
     
     <!-- Canonical URL -->
     <link rel="canonical" href="https://inboxpraveen.github.io/projects/project-10.html">
+    <link rel="alternate" type="application/atom+xml" title="Praveen Kumar: notes from the workbench" href="https://inboxpraveen.github.io/feed.xml">
     
     <link rel="icon" type="image/x-icon" href="../assests/favicon.ico">
     <link rel="stylesheet" href="../index.css">
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://inboxpraveen.github.io/#person",
+      "name": "Praveen Kumar",
+      "url": "https://inboxpraveen.github.io/",
+      "jobTitle": "Principal AI Engineer",
+      "description": "Principal AI Engineer in Bengaluru building speech intelligence, LLM and document AI systems for enterprise teams, and writing measured, reproducible notes about inference and training on real hardware.",
+      "email": "mailto:inboxpraveen.17@gmail.com",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "TrellisSoft"
+      },
+      "alumniOf": {
+        "@type": "CollegeOrUniversity",
+        "name": "MVJ College of Engineering"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Bengaluru",
+        "addressCountry": "IN"
+      },
+      "knowsAbout": [
+        "Speech recognition",
+        "Speaker diarization",
+        "Large language models",
+        "Retrieval augmented generation",
+        "LLM fine-tuning",
+        "LLM inference on CPUs and GPUs",
+        "Optical character recognition",
+        "Document AI",
+        "MLOps",
+        "Multi-tenant AI platforms"
+      ],
+      "sameAs": [
+        "https://github.com/inboxpraveen",
+        "https://www.linkedin.com/in/praveen-kumar-inbox/",
+        "https://x.com/InboxPraveen"
+      ]
+    },
+    {
+      "@type": "SoftwareSourceCode",
+      "@id": "https://inboxpraveen.github.io/projects/project-10.html#code",
+      "name": "FIFA Player Recommendation System",
+      "description": "A web-based FIFA FC 25 player recommendation system built with Flask and scikit-learn. Uses cosine similarity on 34 player attributes to find similar players, supports gender toggle, multi-player radar chart comparisons, and runs entirely in-browser against a Flask backend.",
+      "url": "https://inboxpraveen.github.io/projects/project-10.html",
+      "author": {
+        "@id": "https://inboxpraveen.github.io/#person"
+      },
+      "inLanguage": "en",
+      "dateModified": "2026-09-14",
+      "keywords": [
+        "Classic ML",
+        "Python",
+        "Flask",
+        "scikit-learn",
+        "Chart.js",
+        "pandas"
+      ],
+      "codeRepository": "https://github.com/inboxpraveen/FIFA-Player-Recomendation",
+      "image": "https://inboxpraveen.github.io/projects/resources/project-10/Home-Page-DarkTheme.png"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://inboxpraveen.github.io/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Projects",
+          "item": "https://inboxpraveen.github.io/all-projects.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "FIFA Player Recommendation System",
+          "item": "https://inboxpraveen.github.io/projects/project-10.html"
+        }
+      ]
+    }
+  ]
+}
+    </script>
 </head>
 <body>
 
@@ -383,10 +479,10 @@ candidates.sort(key=<span class="keyword">lambda</span> x: x[<span class="number
                 and surprisingly interpretable baseline.
             </p>
 
-            <div style="margin-top: 3rem; padding: 2rem; background: var(--secondary-bg); border-radius: 15px; border: 1px solid var(--border-color);">
-                <h3 style="margin-top: 0;">Resources & Links</h3>
-                <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1rem; margin-bottom: 2rem;">
-                    <a href="https://github.com/inboxpraveen/FIFA-Player-Recomendation" class="demo-button" style="margin: 0;" target="_blank">GitHub Repository</a>
+            <div class="resources">
+                <h3>Resources &amp; Links</h3>
+                <div class="resources-links">
+                    <a href="https://github.com/inboxpraveen/FIFA-Player-Recomendation" class="demo-button" target="_blank" rel="noopener noreferrer">GitHub Repository</a>
                 </div>
                 
                 <h4>Tags:</h4>
@@ -407,8 +503,7 @@ candidates.sort(key=<span class="keyword">lambda</span> x: x[<span class="number
             <div class="footer-grid">
                 <p class="footer-note">
                     &copy; <span data-year>2026</span> Praveen Kumar &middot;
-                    Static HTML, one stylesheet, no build step &mdash;
-                    <a href="https://github.com/inboxpraveen/inboxpraveen.github.io" target="_blank" rel="noopener noreferrer">source on GitHub</a>
+                    Static HTML, one stylesheet, no build step. <a href="https://github.com/inboxpraveen/inboxpraveen.github.io" target="_blank" rel="noopener noreferrer">Source on GitHub</a>
                 </p>
                 <div class="footer-social">
                     <a href="https://github.com/inboxpraveen" target="_blank" rel="noopener noreferrer" aria-label="GitHub">

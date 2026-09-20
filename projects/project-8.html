@@ -3,34 +3,131 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MoM AI - AI-Powered Minutes of Meeting | Praveen Kumar</title>
+    <title>MoM AI: minutes of meeting from a recording | Praveen Kumar</title>
     
     <!-- SEO Meta Tags -->
     <meta name="description" content="MoM AI turns meeting recordings into structured Minutes of Meeting. Six speech-to-text providers including Whisper running locally with no API key, plus any OpenAI-compatible LLM.">
     <meta name="keywords" content="Minutes of Meeting, AI Transcription, Speech-to-Text, LLM Summarization, Local Whisper, Self-Hosted, Offline, Flask, Celery, Redis, Docker, Deepgram, AssemblyAI, OpenAI, Open Source">
     <meta name="author" content="Praveen Kumar">
+    <meta name="robots" content="index, follow, max-image-preview:large">
     
     <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="MoM AI - AI-Powered Minutes of Meeting">
+    <meta property="og:title" content="MoM AI: minutes of meeting from a recording">
     <meta property="og:description" content="Upload a recording, get structured minutes. Six transcription providers including local Whisper, any OpenAI-compatible LLM, and nothing leaves your machine.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://inboxpraveen.github.io/projects/project-8.html">
     <meta property="og:image" content="https://inboxpraveen.github.io/projects/resources/project-8/Homepage.png">
     <meta property="og:image:alt" content="MoM AI Platform">
     <meta property="og:site_name" content="Praveen Kumar Portfolio">
+    <meta property="og:locale" content="en_US">
     
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="MoM AI - AI-Powered Minutes of Meeting">
+    <meta name="twitter:site" content="@InboxPraveen">
+    <meta name="twitter:creator" content="@InboxPraveen">
+    <meta name="twitter:title" content="MoM AI: minutes of meeting from a recording">
     <meta name="twitter:description" content="Upload a recording, get structured minutes. Six speech-to-text providers including Whisper running locally - open source, self-hosted, Docker-ready.">
     <meta name="twitter:image" content="https://inboxpraveen.github.io/projects/resources/project-8/Homepage.png">
     <meta name="twitter:image:alt" content="MoM AI Platform">
     
     <!-- Canonical URL -->
     <link rel="canonical" href="https://inboxpraveen.github.io/projects/project-8.html">
+    <link rel="alternate" type="application/atom+xml" title="Praveen Kumar: notes from the workbench" href="https://inboxpraveen.github.io/feed.xml">
     
     <link rel="icon" type="image/x-icon" href="../assests/favicon.ico">
     <link rel="stylesheet" href="../index.css">
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://inboxpraveen.github.io/#person",
+      "name": "Praveen Kumar",
+      "url": "https://inboxpraveen.github.io/",
+      "jobTitle": "Principal AI Engineer",
+      "description": "Principal AI Engineer in Bengaluru building speech intelligence, LLM and document AI systems for enterprise teams, and writing measured, reproducible notes about inference and training on real hardware.",
+      "email": "mailto:inboxpraveen.17@gmail.com",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "TrellisSoft"
+      },
+      "alumniOf": {
+        "@type": "CollegeOrUniversity",
+        "name": "MVJ College of Engineering"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Bengaluru",
+        "addressCountry": "IN"
+      },
+      "knowsAbout": [
+        "Speech recognition",
+        "Speaker diarization",
+        "Large language models",
+        "Retrieval augmented generation",
+        "LLM fine-tuning",
+        "LLM inference on CPUs and GPUs",
+        "Optical character recognition",
+        "Document AI",
+        "MLOps",
+        "Multi-tenant AI platforms"
+      ],
+      "sameAs": [
+        "https://github.com/inboxpraveen",
+        "https://www.linkedin.com/in/praveen-kumar-inbox/",
+        "https://x.com/InboxPraveen"
+      ]
+    },
+    {
+      "@type": "SoftwareSourceCode",
+      "@id": "https://inboxpraveen.github.io/projects/project-8.html#code",
+      "name": "MoM AI",
+      "description": "MoM AI turns meeting recordings into structured Minutes of Meeting. Six speech-to-text providers including Whisper running locally with no API key, plus any OpenAI-compatible LLM.",
+      "url": "https://inboxpraveen.github.io/projects/project-8.html",
+      "author": {
+        "@id": "https://inboxpraveen.github.io/#person"
+      },
+      "inLanguage": "en",
+      "dateModified": "2026-09-14",
+      "keywords": [
+        "LLM &amp; RAG",
+        "Flask",
+        "Celery",
+        "Redis",
+        "Whisper",
+        "OpenAI SDK",
+        "Docker"
+      ],
+      "codeRepository": "https://github.com/inboxpraveen/LLM-Minutes-of-Meeting",
+      "image": "https://inboxpraveen.github.io/projects/resources/project-8/Homepage.png"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://inboxpraveen.github.io/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Projects",
+          "item": "https://inboxpraveen.github.io/all-projects.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "MoM AI",
+          "item": "https://inboxpraveen.github.io/projects/project-8.html"
+        }
+      ]
+    }
+  ]
+}
+    </script>
 </head>
 <body>
 
@@ -356,7 +453,7 @@
                 A three-hour meeting produces a transcript far larger than most context windows. Rather than truncate it,
                 the summarizer splits the transcript on paragraph boundaries, takes notes on each part, and then writes the
                 final minutes from those notes. Short meetings skip all of that and go through in a single call. The prompt
-                itself is no longer hardcoded &mdash; it is a setting, editable from the admin screen.
+                itself is no longer hardcoded: it is a setting, editable from the admin screen.
             </p>
             <div class="code-block">
                 <div class="code-header">
@@ -543,10 +640,10 @@ WITH_LOCAL_WHISPER=true docker compose up --build</code></pre>
                 If you find it helpful or have suggestions, feel free to open an issue or contribute on GitHub.
             </p>
 
-            <div style="margin-top: 3rem; padding: 2rem; background: var(--secondary-bg); border-radius: 15px; border: 1px solid var(--border-color);">
-                <h3 style="margin-top: 0;">Resources & Links</h3>
-                <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1rem; margin-bottom: 2rem;">
-                    <a href="https://github.com/inboxpraveen/LLM-Minutes-of-Meeting" class="demo-button" style="margin: 0;" target="_blank">GitHub Repository</a>
+            <div class="resources">
+                <h3>Resources &amp; Links</h3>
+                <div class="resources-links">
+                    <a href="https://github.com/inboxpraveen/LLM-Minutes-of-Meeting" class="demo-button" target="_blank" rel="noopener noreferrer">GitHub Repository</a>
                 </div>
                 
                 <h4>Tags:</h4>
@@ -568,8 +665,7 @@ WITH_LOCAL_WHISPER=true docker compose up --build</code></pre>
             <div class="footer-grid">
                 <p class="footer-note">
                     &copy; <span data-year>2026</span> Praveen Kumar &middot;
-                    Static HTML, one stylesheet, no build step &mdash;
-                    <a href="https://github.com/inboxpraveen/inboxpraveen.github.io" target="_blank" rel="noopener noreferrer">source on GitHub</a>
+                    Static HTML, one stylesheet, no build step. <a href="https://github.com/inboxpraveen/inboxpraveen.github.io" target="_blank" rel="noopener noreferrer">Source on GitHub</a>
                 </p>
                 <div class="footer-social">
                     <a href="https://github.com/inboxpraveen" target="_blank" rel="noopener noreferrer" aria-label="GitHub">

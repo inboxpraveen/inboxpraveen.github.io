@@ -9,6 +9,7 @@
     <meta name="description" content="Self-hosted tool that turns a folder of audio into a reviewed speech dataset. Local models (Whisper, Parakeet, IndicConformer) or hosted APIs (Deepgram, ElevenLabs, Sarvam, OpenAI and more), team review with presence, resumable jobs, import and export. Flask, SQLite, ffmpeg, Docker.">
     <meta name="keywords" content="Speech Annotation, ASR, Speech Dataset, Whisper, Parakeet, IndicConformer, Deepgram, Sarvam, Flask, SQLite, FFmpeg, Docker, Data Annotation">
     <meta name="author" content="Praveen Kumar">
+    <meta name="robots" content="index, follow, max-image-preview:large">
 
     <!-- Open Graph Meta Tags -->
     <meta property="og:title" content="Speech Annotation Tool - Build and Review Speech Datasets">
@@ -18,9 +19,12 @@
     <meta property="og:image" content="https://inboxpraveen.github.io/projects/resources/project-4/Header.png">
     <meta property="og:image:alt" content="Speech Annotation Tool review workspace">
     <meta property="og:site_name" content="Praveen Kumar Portfolio">
+    <meta property="og:locale" content="en_US">
 
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@InboxPraveen">
+    <meta name="twitter:creator" content="@InboxPraveen">
     <meta name="twitter:title" content="Speech Annotation Tool - Build and Review Speech Datasets">
     <meta name="twitter:description" content="Folder in, reviewed speech dataset out. Local models or hosted APIs, team review, resumable jobs, Conda or Docker.">
     <meta name="twitter:image" content="https://inboxpraveen.github.io/projects/resources/project-4/Header.png">
@@ -28,9 +32,102 @@
 
     <!-- Canonical URL -->
     <link rel="canonical" href="https://inboxpraveen.github.io/projects/project-4.html">
+    <link rel="alternate" type="application/atom+xml" title="Praveen Kumar: notes from the workbench" href="https://inboxpraveen.github.io/feed.xml">
 
     <link rel="icon" type="image/x-icon" href="../assests/favicon.ico">
     <link rel="stylesheet" href="../index.css">
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://inboxpraveen.github.io/#person",
+      "name": "Praveen Kumar",
+      "url": "https://inboxpraveen.github.io/",
+      "jobTitle": "Principal AI Engineer",
+      "description": "Principal AI Engineer in Bengaluru building speech intelligence, LLM and document AI systems for enterprise teams, and writing measured, reproducible notes about inference and training on real hardware.",
+      "email": "mailto:inboxpraveen.17@gmail.com",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "TrellisSoft"
+      },
+      "alumniOf": {
+        "@type": "CollegeOrUniversity",
+        "name": "MVJ College of Engineering"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Bengaluru",
+        "addressCountry": "IN"
+      },
+      "knowsAbout": [
+        "Speech recognition",
+        "Speaker diarization",
+        "Large language models",
+        "Retrieval augmented generation",
+        "LLM fine-tuning",
+        "LLM inference on CPUs and GPUs",
+        "Optical character recognition",
+        "Document AI",
+        "MLOps",
+        "Multi-tenant AI platforms"
+      ],
+      "sameAs": [
+        "https://github.com/inboxpraveen",
+        "https://www.linkedin.com/in/praveen-kumar-inbox/",
+        "https://x.com/InboxPraveen"
+      ]
+    },
+    {
+      "@type": "SoftwareSourceCode",
+      "@id": "https://inboxpraveen.github.io/projects/project-4.html#code",
+      "name": "Speech Annotation Tool",
+      "description": "Self-hosted tool that turns a folder of audio into a reviewed speech dataset. Local models (Whisper, Parakeet, IndicConformer) or hosted APIs (Deepgram, ElevenLabs, Sarvam, OpenAI and more), team review with presence, resumable jobs, import and export. Flask, SQLite, ffmpeg, Docker.",
+      "url": "https://inboxpraveen.github.io/projects/project-4.html",
+      "author": {
+        "@id": "https://inboxpraveen.github.io/#person"
+      },
+      "inLanguage": "en",
+      "dateModified": "2026-09-19",
+      "keywords": [
+        "Speech &amp; Audio",
+        "Flask",
+        "SQLite",
+        "FFmpeg",
+        "Whisper",
+        "Parakeet",
+        "Docker"
+      ],
+      "codeRepository": "https://github.com/inboxpraveen/Speech-Annotation-Tool",
+      "image": "https://inboxpraveen.github.io/projects/resources/project-4/Header.png"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://inboxpraveen.github.io/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Projects",
+          "item": "https://inboxpraveen.github.io/all-projects.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Speech Annotation Tool",
+          "item": "https://inboxpraveen.github.io/projects/project-4.html"
+        }
+      ]
+    }
+  ]
+}
+    </script>
 </head>
 <body>
 
@@ -479,10 +576,10 @@ docker compose up -d --build  <span class="comment"># your folder appears in the
                 sample clip" button on each provider card is for.
             </p>
 
-            <div style="margin-top: 3rem; padding: 2rem; background: var(--secondary-bg); border-radius: 15px; border: 1px solid var(--border-color);">
+            <div class="resources">
                 <h3 style="margin-top: 0;">Project Links</h3>
-                <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1rem; margin-bottom: 2rem;">
-                    <a href="https://github.com/inboxpraveen/Speech-Annotation-Tool" class="demo-button" style="margin: 0;" target="_blank" rel="noopener noreferrer">GitHub Repository</a>
+                <div class="resources-links">
+                    <a href="https://github.com/inboxpraveen/Speech-Annotation-Tool" class="demo-button" target="_blank" rel="noopener noreferrer">GitHub Repository</a>
                     <a href="https://github.com/inboxpraveen/Speech-Annotation-Tool/blob/master/docs/usage.md" class="demo-button" style="margin: 0; background: var(--secondary-bg); color: var(--accent-color); border: 1px solid var(--accent-color);" target="_blank" rel="noopener noreferrer">Usage Guide</a>
                     <a href="https://github.com/inboxpraveen/Speech-Annotation-Tool/blob/master/docs/providers.md" class="demo-button" style="margin: 0; background: var(--secondary-bg); color: var(--accent-color); border: 1px solid var(--accent-color);" target="_blank" rel="noopener noreferrer">Engines and Providers</a>
                 </div>
@@ -513,8 +610,7 @@ docker compose up -d --build  <span class="comment"># your folder appears in the
             <div class="footer-grid">
                 <p class="footer-note">
                     &copy; <span data-year>2026</span> Praveen Kumar &middot;
-                    Static HTML, one stylesheet, no build step &mdash;
-                    <a href="https://github.com/inboxpraveen/inboxpraveen.github.io" target="_blank" rel="noopener noreferrer">source on GitHub</a>
+                    Static HTML, one stylesheet, no build step. <a href="https://github.com/inboxpraveen/inboxpraveen.github.io" target="_blank" rel="noopener noreferrer">Source on GitHub</a>
                 </p>
                 <div class="footer-social">
                     <a href="https://github.com/inboxpraveen" target="_blank" rel="noopener noreferrer" aria-label="GitHub">

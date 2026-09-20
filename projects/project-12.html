@@ -9,6 +9,7 @@
     <meta name="description" content="A production-grade deep learning system for automated skin lesion classification using the HAM10000 dataset. Features custom CNN and ResNet architectures, real-time camera inference, and a REST API for detecting seven types of skin lesions.">
     <meta name="keywords" content="Skin Cancer Detection, Deep Learning, HAM10000, CNN, ResNet, TensorFlow, Keras, Medical AI, Computer Vision, Image Classification, Dermatology AI, Python">
     <meta name="author" content="Praveen Kumar">
+    <meta name="robots" content="index, follow, max-image-preview:large">
     
     <!-- Open Graph Meta Tags -->
     <meta property="og:title" content="Skin Cancer Detection - Deep Learning for Dermatology">
@@ -18,9 +19,12 @@
     <meta property="og:image" content="https://inboxpraveen.github.io/projects/resources/project-12/Header.png">
     <meta property="og:image:alt" content="Skin Cancer Detection System Architecture">
     <meta property="og:site_name" content="Praveen Kumar Portfolio">
+    <meta property="og:locale" content="en_US">
     
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@InboxPraveen">
+    <meta name="twitter:creator" content="@InboxPraveen">
     <meta name="twitter:title" content="Skin Cancer Detection - Deep Learning for Dermatology">
     <meta name="twitter:description" content="Production-grade deep learning system for classifying 7 types of skin lesions using custom CNN and ResNet on HAM10000 dataset.">
     <meta name="twitter:image" content="https://inboxpraveen.github.io/projects/resources/project-12/Header.png">
@@ -28,9 +32,101 @@
     
     <!-- Canonical URL -->
     <link rel="canonical" href="https://inboxpraveen.github.io/projects/project-12.html">
+    <link rel="alternate" type="application/atom+xml" title="Praveen Kumar: notes from the workbench" href="https://inboxpraveen.github.io/feed.xml">
     
     <link rel="icon" type="image/x-icon" href="../assests/favicon.ico">
     <link rel="stylesheet" href="../index.css">
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://inboxpraveen.github.io/#person",
+      "name": "Praveen Kumar",
+      "url": "https://inboxpraveen.github.io/",
+      "jobTitle": "Principal AI Engineer",
+      "description": "Principal AI Engineer in Bengaluru building speech intelligence, LLM and document AI systems for enterprise teams, and writing measured, reproducible notes about inference and training on real hardware.",
+      "email": "mailto:inboxpraveen.17@gmail.com",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "TrellisSoft"
+      },
+      "alumniOf": {
+        "@type": "CollegeOrUniversity",
+        "name": "MVJ College of Engineering"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Bengaluru",
+        "addressCountry": "IN"
+      },
+      "knowsAbout": [
+        "Speech recognition",
+        "Speaker diarization",
+        "Large language models",
+        "Retrieval augmented generation",
+        "LLM fine-tuning",
+        "LLM inference on CPUs and GPUs",
+        "Optical character recognition",
+        "Document AI",
+        "MLOps",
+        "Multi-tenant AI platforms"
+      ],
+      "sameAs": [
+        "https://github.com/inboxpraveen",
+        "https://www.linkedin.com/in/praveen-kumar-inbox/",
+        "https://x.com/InboxPraveen"
+      ]
+    },
+    {
+      "@type": "SoftwareSourceCode",
+      "@id": "https://inboxpraveen.github.io/projects/project-12.html#code",
+      "name": "Skin Cancer Detection",
+      "description": "A production-grade deep learning system for automated skin lesion classification using the HAM10000 dataset. Features custom CNN and ResNet architectures, real-time camera inference, and a REST API for detecting seven types of skin lesions.",
+      "url": "https://inboxpraveen.github.io/projects/project-12.html",
+      "author": {
+        "@id": "https://inboxpraveen.github.io/#person"
+      },
+      "inLanguage": "en",
+      "dateModified": "2026-09-14",
+      "keywords": [
+        "Computer Vision",
+        "TensorFlow",
+        "Keras",
+        "Flask",
+        "OpenCV",
+        "Python"
+      ],
+      "codeRepository": "https://github.com/inboxpraveen/Skin-Cancer-Detection",
+      "image": "https://inboxpraveen.github.io/projects/resources/project-12/Header.png"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://inboxpraveen.github.io/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Projects",
+          "item": "https://inboxpraveen.github.io/all-projects.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Skin Cancer Detection",
+          "item": "https://inboxpraveen.github.io/projects/project-12.html"
+        }
+      ]
+    }
+  ]
+}
+    </script>
 </head>
 <body>
 
@@ -618,10 +714,10 @@ results = predictor.predict_batch(
                 data to a running API. Feel free to use it, extend it, or build on top of it.
             </p>
 
-            <div style="margin-top: 3rem; padding: 2rem; background: var(--secondary-bg); border-radius: 15px; border: 1px solid var(--border-color);">
-                <h3 style="margin-top: 0;">Resources & Links</h3>
-                <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1rem; margin-bottom: 2rem;">
-                    <a href="https://github.com/inboxpraveen/Skin-Cancer-Detection" class="demo-button" style="margin: 0;" target="_blank">GitHub Repository</a>
+            <div class="resources">
+                <h3>Resources &amp; Links</h3>
+                <div class="resources-links">
+                    <a href="https://github.com/inboxpraveen/Skin-Cancer-Detection" class="demo-button" target="_blank" rel="noopener noreferrer">GitHub Repository</a>
                 </div>
                 
                 <h4>Tags:</h4>
@@ -642,8 +738,7 @@ results = predictor.predict_batch(
             <div class="footer-grid">
                 <p class="footer-note">
                     &copy; <span data-year>2026</span> Praveen Kumar &middot;
-                    Static HTML, one stylesheet, no build step &mdash;
-                    <a href="https://github.com/inboxpraveen/inboxpraveen.github.io" target="_blank" rel="noopener noreferrer">source on GitHub</a>
+                    Static HTML, one stylesheet, no build step. <a href="https://github.com/inboxpraveen/inboxpraveen.github.io" target="_blank" rel="noopener noreferrer">Source on GitHub</a>
                 </p>
                 <div class="footer-social">
                     <a href="https://github.com/inboxpraveen" target="_blank" rel="noopener noreferrer" aria-label="GitHub">

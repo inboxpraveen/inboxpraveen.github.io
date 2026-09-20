@@ -3,50 +3,146 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Before you tune anything: a field guide to inference speed and accuracy on the hardware you actually have | Praveen Kumar</title>
+    <title>A field guide to inference speed and accuracy | Praveen Kumar</title>
 
     <!-- SEO Meta Tags -->
-    <meta name="description" content="How to carry one laptop's llama.cpp results to any machine and any model. Bytes per token as the one number that transfers, what dense, MoE, hybrid, SSM, encoder-decoder and encoder-only architectures do to it, six architectures measured on CPU and GPU, a pre-check script, a ten-minute accuracy test, and the order to try things in.">
+    <meta name="description" content="The one number that transfers between machines, what six model architectures do to it on CPU and GPU, a pre-check script, a ten-minute accuracy test and which quant to pick.">
     <meta name="keywords" content="llama.cpp, GGUF, Quantization, KL Divergence, Memory Bandwidth, Mixture of Experts, Mamba, State Space Models, Sliding Window Attention, Encoder-Decoder, Embeddings, Speculative Decoding, Edge Inference, Thin Client, Pre-checks, Inference Engineering">
     <meta name="author" content="Praveen Kumar">
+    <meta name="robots" content="index, follow, max-image-preview:large">
 
     <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="Before you tune anything: a field guide to inference speed and accuracy on the hardware you actually have">
-    <meta property="og:description" content="The one number that transfers between machines, what each model architecture does to it, six architectures measured, a pre-check script, and the order to try things in.">
+    <meta property="og:title" content="Before you tune anything: a field guide to inference speed and accuracy">
+    <meta property="og:description" content="The one number that transfers between machines, six architectures measured against it on CPU and GPU, a pre-check script and a ten-minute accuracy test.">
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://inboxpraveen.github.io/blogs/blog-2.html">
     <meta property="og:image" content="https://inboxpraveen.github.io/blogs/resources/blog-2/Header.png">
     <meta property="og:image:alt" content="Decode speed against bytes read per token for six model architectures on one laptop, with the bandwidth ceiling drawn in">
     <meta property="og:site_name" content="Praveen Kumar Portfolio">
+    <meta property="og:locale" content="en_US">
     <meta property="article:published_time" content="2026-09-12">
     <meta property="article:author" content="Praveen Kumar">
 
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Before you tune anything: a field guide to inference speed and accuracy on the hardware you actually have">
-    <meta name="twitter:description" content="Bytes per token, six architectures measured on CPU and GPU, a pre-check script, a ten-minute accuracy test, and what to try first on your own hardware.">
+    <meta name="twitter:site" content="@InboxPraveen">
+    <meta name="twitter:creator" content="@InboxPraveen">
+    <meta name="twitter:title" content="Before you tune anything: a field guide to inference speed and accuracy">
+    <meta name="twitter:description" content="The one number that transfers between machines, six architectures measured against it on CPU and GPU, a pre-check script and a ten-minute accuracy test.">
     <meta name="twitter:image" content="https://inboxpraveen.github.io/blogs/resources/blog-2/Header.png">
     <meta name="twitter:image:alt" content="Decode speed against bytes read per token for six model architectures on one laptop, with the bandwidth ceiling drawn in">
 
     <!-- Canonical URL -->
     <link rel="canonical" href="https://inboxpraveen.github.io/blogs/blog-2.html">
+    <link rel="alternate" type="application/atom+xml" title="Praveen Kumar: notes from the workbench" href="https://inboxpraveen.github.io/feed.xml">
 
     <link rel="icon" type="image/x-icon" href="../assests/favicon.ico">
     <link rel="stylesheet" href="../index.css">
 
     <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
     {
-      "@context": "https://schema.org",
+      "@type": "Person",
+      "@id": "https://inboxpraveen.github.io/#person",
+      "name": "Praveen Kumar",
+      "url": "https://inboxpraveen.github.io/",
+      "jobTitle": "Principal AI Engineer",
+      "description": "Principal AI Engineer in Bengaluru building speech intelligence, LLM and document AI systems for enterprise teams, and writing measured, reproducible notes about inference and training on real hardware.",
+      "email": "mailto:inboxpraveen.17@gmail.com",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "TrellisSoft"
+      },
+      "alumniOf": {
+        "@type": "CollegeOrUniversity",
+        "name": "MVJ College of Engineering"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Bengaluru",
+        "addressCountry": "IN"
+      },
+      "knowsAbout": [
+        "Speech recognition",
+        "Speaker diarization",
+        "Large language models",
+        "Retrieval augmented generation",
+        "LLM fine-tuning",
+        "LLM inference on CPUs and GPUs",
+        "Optical character recognition",
+        "Document AI",
+        "MLOps",
+        "Multi-tenant AI platforms"
+      ],
+      "sameAs": [
+        "https://github.com/inboxpraveen",
+        "https://www.linkedin.com/in/praveen-kumar-inbox/",
+        "https://x.com/InboxPraveen"
+      ]
+    },
+    {
       "@type": "BlogPosting",
       "headline": "Before you tune anything: a field guide to inference speed and accuracy on the hardware you actually have",
-      "description": "How to carry one laptop's llama.cpp results to any machine and any model: bytes per token, architectures, pre-checks, a ten-minute accuracy test, and the order to try things in.",
+      "description": "The one number that transfers between machines, what six model architectures do to it on CPU and GPU, a pre-check script, a ten-minute accuracy test and which quant to pick.",
       "datePublished": "2026-09-12",
       "dateModified": "2026-09-12",
-      "author": { "@type": "Person", "name": "Praveen Kumar", "url": "https://inboxpraveen.github.io/" },
+      "author": {
+        "@id": "https://inboxpraveen.github.io/#person"
+      },
       "image": "https://inboxpraveen.github.io/blogs/resources/blog-2/Header.png",
       "url": "https://inboxpraveen.github.io/blogs/blog-2.html",
-      "keywords": ["llama.cpp", "GGUF", "quantization", "mixture of experts", "state space models", "memory bandwidth", "edge inference", "inference engineering"]
+      "keywords": [
+        "llama.cpp",
+        "GGUF",
+        "quantization",
+        "mixture of experts",
+        "state space models",
+        "memory bandwidth",
+        "edge inference",
+        "inference engineering"
+      ],
+      "@id": "https://inboxpraveen.github.io/blogs/blog-2.html#post",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://inboxpraveen.github.io/blogs/blog-2.html"
+      },
+      "publisher": {
+        "@id": "https://inboxpraveen.github.io/#person"
+      },
+      "inLanguage": "en",
+      "isPartOf": {
+        "@type": "Blog",
+        "@id": "https://inboxpraveen.github.io/all-blogs.html#blog",
+        "name": "Notes from the workbench"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://inboxpraveen.github.io/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Blogs",
+          "item": "https://inboxpraveen.github.io/all-blogs.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Before you tune anything: a field guide to inference speed and accuracy on the hardware you actually have",
+          "item": "https://inboxpraveen.github.io/blogs/blog-2.html"
+        }
+      ]
     }
+  ]
+}
     </script>
 </head>
 <body>
@@ -85,7 +181,7 @@
                     </div>
                     <div class="meta-item">
                         <span><svg class="icon" aria-hidden="true"><use href="#i-pulse"></use></svg></span>
-                        <span data-read-time>50 min read</span>
+                        <span data-read-time>51 min read</span>
                     </div>
                     <div class="meta-item">
                         <span><svg class="icon" aria-hidden="true"><use href="#i-code"></use></svg></span>
@@ -1233,16 +1329,16 @@ llama-server -m model.gguf ... --spec-type ngram-simple --spec-ngram-simple-size
                 for you in ten minutes.
             </p>
 
-            <div style="margin-top: 3rem; padding: 2rem; background: var(--secondary-bg); border-radius: 15px; border: 1px solid var(--border-color);">
-                <h3 style="margin-top: 0;">Resources &amp; Links</h3>
-                <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1rem; margin-bottom: 2rem;">
-                    <a href="https://github.com/inboxpraveen/ggml-inference-lab" class="demo-button" style="margin: 0;" target="_blank" rel="noopener noreferrer">Scripts and raw results</a>
-                    <a href="./blog-1.html" class="demo-button" style="margin: 0;">Part 1: one laptop, every knob</a>
-                    <a href="https://github.com/ggml-org/llama.cpp/releases/tag/b10941" class="demo-button" style="margin: 0;" target="_blank" rel="noopener noreferrer">llama.cpp b10941</a>
+            <div class="resources">
+                <h3>Resources &amp; Links</h3>
+                <div class="resources-links">
+                    <a href="https://github.com/inboxpraveen/ggml-inference-lab" class="demo-button" target="_blank" rel="noopener noreferrer">Scripts and raw results</a>
+                    <a href="./blog-1.html" class="demo-button">Part 1: one laptop, every knob</a>
+                    <a href="https://github.com/ggml-org/llama.cpp/releases/tag/b10941" class="demo-button" target="_blank" rel="noopener noreferrer">llama.cpp b10941</a>
                 </div>
 
                 <h4>Models in the zoo:</h4>
-                <p style="margin-top: 0.5rem;">
+                <p>
                     <a href="https://huggingface.co/Qwen/Qwen3-0.6B-GGUF" target="_blank" rel="noopener noreferrer">Qwen3-0.6B</a>,
                     <a href="https://huggingface.co/ggml-org/gemma-3-1b-it-GGUF" target="_blank" rel="noopener noreferrer">Gemma-3-1B</a>,
                     <a href="https://huggingface.co/bartowski/granite-3.1-1b-a400m-instruct-GGUF" target="_blank" rel="noopener noreferrer">Granite-3.1 1B-A400M</a>,
@@ -1272,8 +1368,7 @@ llama-server -m model.gguf ... --spec-type ngram-simple --spec-ngram-simple-size
             <div class="footer-grid">
                 <p class="footer-note">
                     &copy; <span data-year>2026</span> Praveen Kumar &middot;
-                    Static HTML, one stylesheet, no build step &mdash;
-                    <a href="https://github.com/inboxpraveen/inboxpraveen.github.io" target="_blank" rel="noopener noreferrer">source on GitHub</a>
+                    Static HTML, one stylesheet, no build step. <a href="https://github.com/inboxpraveen/inboxpraveen.github.io" target="_blank" rel="noopener noreferrer">Source on GitHub</a>
                 </p>
                 <div class="footer-social">
                     <a href="https://github.com/inboxpraveen" target="_blank" rel="noopener noreferrer" aria-label="GitHub">

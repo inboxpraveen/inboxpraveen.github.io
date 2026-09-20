@@ -9,28 +9,123 @@
     <meta name="description" content="An open-source interactive course that teaches Python by making its memory model visible. Hand-authored snapshots, step-through animation, quizzes, and a vanilla HTML/CSS/JS engine on GitHub Pages.">
     <meta name="keywords" content="Py Internals, Python Memory Model, Python Education, Names vs Objects, References, Garbage Collection, Interactive Course, Vanilla JavaScript, GitHub Pages, Open Source">
     <meta name="author" content="Praveen Kumar">
+    <meta name="robots" content="index, follow, max-image-preview:large">
     
     <!-- Open Graph Meta Tags -->
     <meta property="og:title" content="Py Internals - Interactive Python Memory Course">
-    <meta property="og:description" content="Most tutorials teach you what to type. Py Internals teaches you what Python does with it — names, objects, frames, and garbage collection as an animated memory diagram.">
+    <meta property="og:description" content="Most tutorials teach you what to type. Py Internals teaches you what Python does with it: names, objects, frames, and garbage collection, as an animated memory diagram.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://inboxpraveen.github.io/projects/project-13.html">
     <meta property="og:image" content="https://inboxpraveen.github.io/projects/resources/project-13/Homepage.png">
     <meta property="og:image:alt" content="Py Internals course homepage">
     <meta property="og:site_name" content="Praveen Kumar Portfolio">
+    <meta property="og:locale" content="en_US">
     
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@InboxPraveen">
+    <meta name="twitter:creator" content="@InboxPraveen">
     <meta name="twitter:title" content="Py Internals - Interactive Python Memory Course">
-    <meta name="twitter:description" content="Open-source course that visualizes Python's object model: names, objects, frames, references, and GC — step through at your own pace.">
+    <meta name="twitter:description" content="Open-source course that visualizes Python's object model: names, objects, frames, references, and GC. Step through at your own pace.">
     <meta name="twitter:image" content="https://inboxpraveen.github.io/projects/resources/project-13/Homepage.png">
     <meta name="twitter:image:alt" content="Py Internals course homepage">
     
     <!-- Canonical URL -->
     <link rel="canonical" href="https://inboxpraveen.github.io/projects/project-13.html">
+    <link rel="alternate" type="application/atom+xml" title="Praveen Kumar: notes from the workbench" href="https://inboxpraveen.github.io/feed.xml">
     
     <link rel="icon" type="image/x-icon" href="../assests/favicon.ico">
     <link rel="stylesheet" href="../index.css">
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://inboxpraveen.github.io/#person",
+      "name": "Praveen Kumar",
+      "url": "https://inboxpraveen.github.io/",
+      "jobTitle": "Principal AI Engineer",
+      "description": "Principal AI Engineer in Bengaluru building speech intelligence, LLM and document AI systems for enterprise teams, and writing measured, reproducible notes about inference and training on real hardware.",
+      "email": "mailto:inboxpraveen.17@gmail.com",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "TrellisSoft"
+      },
+      "alumniOf": {
+        "@type": "CollegeOrUniversity",
+        "name": "MVJ College of Engineering"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Bengaluru",
+        "addressCountry": "IN"
+      },
+      "knowsAbout": [
+        "Speech recognition",
+        "Speaker diarization",
+        "Large language models",
+        "Retrieval augmented generation",
+        "LLM fine-tuning",
+        "LLM inference on CPUs and GPUs",
+        "Optical character recognition",
+        "Document AI",
+        "MLOps",
+        "Multi-tenant AI platforms"
+      ],
+      "sameAs": [
+        "https://github.com/inboxpraveen",
+        "https://www.linkedin.com/in/praveen-kumar-inbox/",
+        "https://x.com/InboxPraveen"
+      ]
+    },
+    {
+      "@type": "SoftwareSourceCode",
+      "@id": "https://inboxpraveen.github.io/projects/project-13.html#code",
+      "name": "Py Internals",
+      "description": "An open-source interactive course that teaches Python by making its memory model visible. Hand-authored snapshots, step-through animation, quizzes, and a vanilla HTML/CSS/JS engine on GitHub Pages.",
+      "url": "https://inboxpraveen.github.io/projects/project-13.html",
+      "author": {
+        "@id": "https://inboxpraveen.github.io/#person"
+      },
+      "inLanguage": "en",
+      "dateModified": "2026-09-14",
+      "keywords": [
+        "Learning Resource",
+        "Vanilla JS",
+        "HTML",
+        "CSS",
+        "GitHub Pages"
+      ],
+      "codeRepository": "https://github.com/inboxpraveen/Py-Internals",
+      "image": "https://inboxpraveen.github.io/projects/resources/project-13/Homepage.png"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://inboxpraveen.github.io/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Projects",
+          "item": "https://inboxpraveen.github.io/all-projects.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Py Internals",
+          "item": "https://inboxpraveen.github.io/projects/project-13.html"
+        }
+      ]
+    }
+  ]
+}
+    </script>
 </head>
 <body>
 
@@ -90,8 +185,7 @@
             <h2>Project Overview</h2>
             <p>
                 <strong>Py Internals</strong> is an open-source, interactive course that teaches Python by making 
-                its memory model visible. Most tutorials teach you what to type. This one teaches you what Python 
-                does with it — names, objects, frames, references, and garbage collection — as an animated memory 
+                its memory model visible. Most tutorials teach you what to type. This one teaches you what Python does with it: names, objects, frames, references, and garbage collection, as an animated memory 
                 diagram you can step through at your own pace.
             </p>
 
@@ -110,10 +204,10 @@
                 A huge number of people can use Python and still cannot explain it. They write <code>x = 42</code> 
                 and think a box named <code>x</code> now contains 42. They write <code>b = a</code> on a list and 
                 are shocked when <code>b.append(1)</code> changes <code>a</code>. They pass a dict into a function, 
-                mutate a nested list, then rebind the parameter — and cannot predict what the caller still sees.
+                mutate a nested list, then rebind the parameter, and cannot predict what the caller still sees.
             </p>
             <p>
-                That gap — between syntax fluency and a working mental model — is where the real bugs live. It is 
+                That gap, between syntax fluency and a working mental model, is where the real bugs live. It is 
                 also where most courses stop. They show the happy path, print a result, and move on. The learner 
                 never sees that a name is a binding, that assignment rebinds while <code>append</code> mutates, 
                 that two names can point at one object, or that a function call is a temporary namespace on a stack.
@@ -152,8 +246,7 @@
             </p>
             <p>
                 It is not a syntax bootcamp, a LeetCode trainer, or a CPython source-code tour. The model stays 
-                at the Python level on purpose: names, objects, references, frames. Implementation details — C 
-                structs, interned small ints, the GIL — appear only when they change the mental model.
+                at the Python level on purpose: names, objects, references, frames. Implementation details (C structs, interned small ints, the GIL) appear only when they change the mental model.
             </p>
 
             <h2>Key Features</h2>
@@ -164,7 +257,7 @@
                 </div>
                 <div style="background: var(--secondary-bg); padding: 1.5rem; border-radius: 10px; border: 1px solid var(--border-color);">
                     <h3 style="margin-top: 0; color: var(--accent-color);">Step-Through Labs</h3>
-                    <p>Each demo is a scripted execution. Play, pause, next, previous, reset, and speed — keyboard controls make it feel like a debugger, not a slideshow.</p>
+                    <p>Each demo is a scripted execution. Play, pause, next, previous, reset, and speed: keyboard controls make it feel like a debugger, not a slideshow.</p>
                 </div>
                 <div style="background: var(--secondary-bg); padding: 1.5rem; border-radius: 10px; border: 1px solid var(--border-color);">
                     <h3 style="margin-top: 0; color: var(--accent-color);">Learning Loop</h3>
@@ -180,7 +273,7 @@
                 </div>
                 <div style="background: var(--secondary-bg); padding: 1.5rem; border-radius: 10px; border: 1px solid var(--border-color);">
                     <h3 style="margin-top: 0; color: var(--accent-color);">Extensible Engine</h3>
-                    <p>Content and renderer are separate. A new lesson is a new story in the same snapshot language — not a new visualizer.</p>
+                    <p>Content and renderer are separate. A new lesson is a new story in the same snapshot language, not a new visualizer.</p>
                 </div>
             </div>
 
@@ -211,8 +304,7 @@
             </p>
             <p>
                 Each snapshot is a plain JavaScript object: which frames exist, which names are bound, which heap 
-                objects are alive, what their refcounts are, and what just changed. A renderer turns that snapshot 
-                into DOM — stack on one side, heap on the other, highlight rings, GC pulse. An animator owns time. 
+                objects are alive, what their refcounts are, and what just changed. A renderer turns that snapshot into DOM: stack on one side, heap on the other, highlight rings, GC pulse. An animator owns time. 
                 A highlighter syncs the current line in the code panel.
             </p>
 
@@ -227,7 +319,7 @@
                     <tbody>
                         <tr>
                             <td><code>session.js</code></td>
-                            <td>The lesson itself — code, steps, titles, explanations, and memory snapshots</td>
+                            <td>The lesson itself: code, steps, titles, explanations, and memory snapshots</td>
                         </tr>
                         <tr>
                             <td><code>PJ.MemoryViz</code></td>
@@ -304,12 +396,12 @@
 
             <h2>What the Diagram Shows</h2>
             <ul>
-                <li><strong>Namespaces / stack frames</strong> — which names exist, and what they point at</li>
-                <li><strong>Heap objects</strong> — type, value, simulated <code>id()</code>, mutability, reference count</li>
-                <li><strong>Reference links</strong> — names pointing at objects, containers pointing at nested objects</li>
-                <li><strong>State changes</strong> — new, rebound, mutated, about to be garbage-collected</li>
-                <li><strong>Call stacks</strong> — a new frame appears when a function runs and disappears when it returns</li>
-                <li><strong>Type / class links</strong> — instance → class, subclass → base, bound methods, MRO-style lookup</li>
+                <li><strong>Namespaces / stack frames:</strong> which names exist, and what they point at</li>
+                <li><strong>Heap objects:</strong> type, value, simulated <code>id()</code>, mutability, reference count</li>
+                <li><strong>Reference links:</strong> names pointing at objects, containers pointing at nested objects</li>
+                <li><strong>State changes:</strong> new, rebound, mutated, about to be garbage-collected</li>
+                <li><strong>Call stacks:</strong> a new frame appears when a function runs and disappears when it returns</li>
+                <li><strong>Type / class links:</strong> instance → class, subclass → base, bound methods, MRO-style lookup</li>
             </ul>
             <p>
                 The visualizer handles single frames or a full call stack, inline versus referenced values, and 
@@ -416,7 +508,7 @@
                 <strong>Versus books.</strong> <em>Fluent Python</em> is the book that made the object model click 
                 for a lot of us. Books cannot step. They cannot pulse a dying object when the refcount hits zero. 
                 They cannot let you rewind <code>b = a</code> until the alias is obvious. This is the visual 
-                companion to that kind of thinking — not a replacement for it.
+                companion to that kind of thinking, not a replacement for it.
             </p>
             <p>
                 <strong>Versus video.</strong> Video is time you cannot query. Here the learner owns the clock. 
@@ -436,8 +528,7 @@
                 CPython looks like these DIVs.
             </p>
             <p>
-                <strong>No backend.</strong> Progress is local. That means no cross-device sync and no learning 
-                analytics — and also no accounts, no cookies, no outage, no GDPR surface.
+                <strong>No backend.</strong> Progress is local. That means no cross-device sync and no learning analytics, and also no accounts, no cookies, no outage, no GDPR surface.
             </p>
             <p>
                 <strong>Python-level model, not C-level.</strong> I will not explain <code>PyObject</code> headers 
@@ -448,7 +539,7 @@
             </p>
             <p>
                 <strong>Beautiful enough to take seriously.</strong> Learning tools default to homework gray. This 
-                one is typeset like an essay with a lab in the middle — cream paper, editorial serif titles, deep 
+                one is typeset like an essay with a lab in the middle: cream paper, editorial serif titles, deep 
                 teal and amber. That is a product decision, not decoration.
             </p>
 
@@ -488,7 +579,7 @@
                 <li>Turned a fuzzy learning problem into a specific product: visualize the object model as a course, not a tracer</li>
                 <li>Designed the domain-specific snapshot format and the engine that renders it</li>
                 <li>Built the visualizer, animator, syntax highlighter, quizzes, glossary, and progress system in vanilla JS</li>
-                <li>Created the design system — tokens for color, type, spacing, radius, shadow, and motion</li>
+                <li>Created the design system: tokens for color, type, spacing, radius, shadow, and motion</li>
                 <li>Wrote the pedagogy as UX: empty states first, one idea per step, predict-then-reveal, glossary in reach</li>
                 <li>Authored the live sessions, demos, explanations, and quiz items</li>
                 <li>Documented the snapshot schema, component reference, and “don’t leak session CSS into the shared system”</li>
@@ -516,18 +607,17 @@
             </p>
             <p>
                 <strong>Making “no build tools” feel like a product.</strong> Design tokens, motion, keyboard, 
-                progress, quizzes, responsive stage — all without a component library. The cost is discipline. 
+                progress, quizzes, responsive stage, all without a component library. The cost is discipline. 
                 The payoff is that a contributor can open one HTML file and understand the page.
             </p>
 
             <h2>What's Next</h2>
             <p>
-                Decorators first — first-class functions, wrappers, <code>functools</code> — then the GIL, threads, 
+                Decorators first (first-class functions, wrappers, <code>functools</code>), then the GIL, threads, 
                 processes, and asyncio. Same visual contract, harder runtime questions.
             </p>
             <p>
-                After that, the interesting product question is not “more topics.” It is whether the snapshot 
-                language can grow — true nested arrows, richer generator frames — without breaking the rule that 
+                After that, the interesting product question is not “more topics.” It is whether the snapshot language can grow (true nested arrows, richer generator frames) without breaking the rule that 
                 one step teaches one thing.
             </p>
 
@@ -546,11 +636,11 @@
                 (Luciano Ramalho).
             </p>
 
-            <div style="margin-top: 3rem; padding: 2rem; background: var(--secondary-bg); border-radius: 15px; border: 1px solid var(--border-color);">
-                <h3 style="margin-top: 0;">Resources &amp; Links</h3>
-                <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1rem; margin-bottom: 2rem;">
-                    <a href="https://inboxpraveen.github.io/Py-Internals" class="demo-button" style="margin: 0;" target="_blank" rel="noopener noreferrer">Live Course</a>
-                    <a href="https://github.com/inboxpraveen/Py-Internals" class="demo-button" style="margin: 0;" target="_blank" rel="noopener noreferrer">GitHub Repository</a>
+            <div class="resources">
+                <h3>Resources &amp; Links</h3>
+                <div class="resources-links">
+                    <a href="https://inboxpraveen.github.io/Py-Internals" class="demo-button" target="_blank" rel="noopener noreferrer">Live Course</a>
+                    <a href="https://github.com/inboxpraveen/Py-Internals" class="demo-button" target="_blank" rel="noopener noreferrer">GitHub Repository</a>
                 </div>
                 
                 <h4>Tags:</h4>
@@ -570,8 +660,7 @@
             <div class="footer-grid">
                 <p class="footer-note">
                     &copy; <span data-year>2026</span> Praveen Kumar &middot;
-                    Static HTML, one stylesheet, no build step &mdash;
-                    <a href="https://github.com/inboxpraveen/inboxpraveen.github.io" target="_blank" rel="noopener noreferrer">source on GitHub</a>
+                    Static HTML, one stylesheet, no build step. <a href="https://github.com/inboxpraveen/inboxpraveen.github.io" target="_blank" rel="noopener noreferrer">Source on GitHub</a>
                 </p>
                 <div class="footer-social">
                     <a href="https://github.com/inboxpraveen" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
