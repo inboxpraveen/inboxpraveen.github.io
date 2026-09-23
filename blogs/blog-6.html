@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Introducing Kavach PII 270M | Praveen Kumar</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Kavach PII 270M: 88.4 value-F1 against GLiNER's 56.4 and Presidio's 22.2 on the same held-out set, in 29 languages, trained in four hours on one 8 GB laptop GPU. The data, the audit that mattered more than the training, and the experiments that failed.">
+    <meta name="keywords" content="PII detection, PII redaction, named entity recognition, GLiNER, Presidio, spaCy, Gemma 3, LoRA, QLoRA, GGUF, llama.cpp, quantisation, HIPAA, PCI, multilingual NER, synthetic data, ASR transcripts, OCR">
+    <meta name="author" content="Praveen Kumar">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Introducing Kavach PII 270M: beating GLiNER and Presidio at finding personal data">
+    <meta property="og:description" content="88.4 value-F1 against 56.4 and 22.2 on the same gold, in 29 languages, trained in four hours on a laptop GPU. Including the parts that did not work.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://inboxpraveen.github.io/blogs/blog-6.html">
+    <meta property="og:image" content="https://inboxpraveen.github.io/blogs/resources/blog-6/Header.png">
+    <meta property="og:image:width" content="1600">
+    <meta property="og:image:height" content="900">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:alt" content="Value-level F1 on a held-out PII test set: Kavach 88.4, GLiNER-PII 56.4, Presidio 22.2, regex rules 20.5">
+    <meta property="og:site_name" content="Praveen Kumar Portfolio">
+    <meta property="og:locale" content="en_US">
+    <meta property="article:published_time" content="2026-09-23">
+    <meta property="article:author" content="Praveen Kumar">
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@InboxPraveen">
+    <meta name="twitter:creator" content="@InboxPraveen">
+    <meta name="twitter:title" content="Introducing Kavach PII 270M: beating GLiNER and Presidio at finding personal data">
+    <meta name="twitter:description" content="88.4 value-F1 against 56.4 and 22.2 on the same gold, in 29 languages, trained in four hours on a laptop GPU. Including the parts that did not work.">
+    <meta name="twitter:image" content="https://inboxpraveen.github.io/blogs/resources/blog-6/Header.png">
+    <meta name="twitter:image:alt" content="Value-level F1 on a held-out PII test set: Kavach 88.4, GLiNER-PII 56.4, Presidio 22.2, regex rules 20.5">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://inboxpraveen.github.io/blogs/blog-6.html">
+    <link rel="alternate" type="application/atom+xml" title="Praveen Kumar: notes from the workbench" href="https://inboxpraveen.github.io/feed.xml">
+
+    <link rel="icon" type="image/x-icon" href="../assests/favicon.ico">
+    <link rel="stylesheet" href="../index.css">
+
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://inboxpraveen.github.io/#person",
+      "name": "Praveen Kumar",
+      "url": "https://inboxpraveen.github.io/",
+      "jobTitle": "Principal AI Engineer",
+      "email": "mailto:inboxpraveen.17@gmail.com",
+      "worksFor": { "@type": "Organization", "name": "TrellisSoft" },
+      "address": { "@type": "PostalAddress", "addressLocality": "Bengaluru", "addressCountry": "IN" }
+    },
+    {
+      "@type": "BlogPosting",
+      "@id": "https://inboxpraveen.github.io/blogs/blog-6.html#post",
+      "headline": "Introducing Kavach PII 270M: a 270M model that finds personal data better than GLiNER, Presidio and spaCy, in 29 languages, trained on one laptop GPU",
+      "description": "Kavach PII 270M: 88.4 value-F1 against GLiNER's 56.4 and Presidio's 22.2 on the same held-out set, in 29 languages, trained in four hours on one 8 GB laptop GPU.",
+      "author": { "@id": "https://inboxpraveen.github.io/#person" },
+      "datePublished": "2026-09-23",
+        "dateModified": "2026-09-23",
+      "image": "https://inboxpraveen.github.io/blogs/resources/blog-6/Header.png",
+      "mainEntityOfPage": {
+          "@type": "WebPage",
+          "@id": "https://inboxpraveen.github.io/blogs/blog-6.html"
+        },
+        "url": "https://inboxpraveen.github.io/blogs/blog-6.html",
+        "publisher": {
+          "@id": "https://inboxpraveen.github.io/#person"
+        },
+        "inLanguage": "en",
+        "isPartOf": {
+          "@type": "Blog",
+          "@id": "https://inboxpraveen.github.io/all-blogs.html#blog",
+          "name": "Notes from the workbench"
+        },
+      "about": ["PII detection", "Named entity recognition", "Model quantisation", "Privacy engineering"]
+    }
+  ]
+}
+    </script>
+</head>
+<body>
+
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <div class="progress-track" aria-hidden="true"><div class="progress-bar" data-progress></div></div>
+
+    <!-- Navigation -->
+    <nav class="site-nav">
+        <div class="nav-container">
+            <a href="../index.html" class="logo" aria-label="Praveen Kumar, home">PK</a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../all-projects.html">Projects</a></li>
+                <li><a href="../all-blogs.html" aria-current="page">Blogs</a></li>
+                <li><a href="../about.html">About</a></li>
+                <li><a href="https://github.com/inboxpraveen" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+            </ul>
+            <button class="mobile-menu" id="mobileMenu" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="navLinks">
+                <span class="bars"></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Blog post 6 -->
+    <main id="main" class="page-container active">
+        <div class="page-header">
+            <div class="container">
+                <a href="../all-blogs.html" class="back-button">&larr; Back to Blog</a>
+                <h1 class="page-title">Introducing Kavach PII 270M: a 270M model that finds personal data better than GLiNER, Presidio and spaCy, in 29 languages, trained on one laptop GPU</h1>
+                <div class="page-meta">
+                    <div class="meta-item">
+                        <span><svg class="icon" aria-hidden="true"><use href="#i-calendar"></use></svg></span>
+                        <span>Published: 23 September 2026</span>
+                    </div>
+                    <div class="meta-item">
+                        <span><svg class="icon" aria-hidden="true"><use href="#i-pulse"></use></svg></span>
+                        <span data-read-time>45 min read</span>
+                    </div>
+                    <div class="meta-item">
+                        <span><svg class="icon" aria-hidden="true"><use href="#i-code"></use></svg></span>
+                        <span>Model, GGUF builds and every result published</span>
+                    </div>
+                    <div class="meta-item">
+                        <span><svg class="icon" aria-hidden="true"><use href="#i-tag"></use></svg></span>
+                        <span>PII &amp; Privacy &bull; NER &bull; Gemma 3 &bull; LoRA &bull; GGUF &bull; Synthetic data</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <nav class="toc" data-toc aria-label="On this page">
+            <p class="toc-label">On this page</p>
+        </nav>
+
+        <div class="content-section">
+            <h2>The problem nobody has actually solved</h2>
+            <p>
+                Every company that handles customer conversations eventually needs to answer the same question:
+                where is the personal data in this text, so we can mask it before it goes into a warehouse, a
+                training set, or a support agent's screen. It sounds like a solved problem. There is a well-known
+                Microsoft library for it. There are regex patterns for card numbers. There are NER models going
+                back a decade.
+            </p>
+            <p>
+                Then you point any of them at a real call-centre transcript, where the customer spells their
+                account number out loud with an "um" in the middle of it, the agent reads it back wrong and
+                corrects themselves, and half the conversation is in Tamil written in Latin letters. Recall
+                falls off a cliff. Worse, the tools start flagging things that are not personal data at all, and
+                a redaction pipeline that mangles clean text is arguably more damaging than one that misses.
+            </p>
+            <p>
+                I wanted to know how much of that gap is real difficulty and how much is just nobody having
+                built for the messy case. So I built a model for it. This post is the whole build: the data, the
+                design decision that mattered most, an audit that turned out to be worth more than any training
+                run, the results, and a section on the things that did not work, because three of my hypotheses
+                were wrong and one of them was wrong in an interesting way.
+            </p>
+
+            <figure class="content-figure">
+                <img src="./resources/blog-6/01-headline-comparison.svg" alt="Horizontal bar chart of value-level F1 on a held-out test set of 3,372 documents: Kavach PII 270M 88.4, the previous version 85.4, GLiNER-PII 56.4, Presidio 22.2, regex plus checksum rules 20.5." loading="lazy" decoding="async">
+                <figcaption>The headline. Five systems, one held-out test set of 3,372 documents, one scoring script. A prediction counts only if both the label and the exact string match.</figcaption>
+            </figure>
+
+            <p>
+                The model is <strong>Kavach PII 270M</strong>, a fine-tune of Gemma-3-270M. It handles 52 kinds of
+                personal data across 29 languages, it was trained in four hours on a single RTX 5060 Laptop GPU with
+                8 GB of memory, and it runs in 169 MB as a quantised GGUF on a CPU. Both the model and the quantised
+                builds are on Hugging Face.
+            </p>
+
+            <div class="table-container">
+                <table class="content-table">
+                    <thead>
+                        <tr>
+                            <th>On 3,372 held-out documents</th>
+                            <th>Kavach PII 270M</th>
+                            <th>GLiNER-PII multi-v1</th>
+                            <th>Presidio</th>
+                            <th>Regex + checksum</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Value F1</td><td><strong>88.4</strong></td><td>56.4</td><td>22.2</td><td>20.5</td></tr>
+                        <tr><td>Precision</td><td>88.9</td><td>56.9</td><td>21.0</td><td>51.1</td></tr>
+                        <tr><td>Recall</td><td>87.9</td><td>55.9</td><td>23.4</td><td>12.8</td></tr>
+                        <tr><td>Exact span F1</td><td>89.1</td><td>55.4</td><td>22.3</td><td>20.0</td></tr>
+                        <tr><td>Redaction recall</td><td>93.0</td><td>66.2</td><td>43.2</td><td>15.6</td></tr>
+                        <tr><td>False positives on PII-free documents</td><td><strong>0.4%</strong></td><td>80.2%</td><td>85.3%</td><td>28.8%</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <p>
+                Look at the last row before the first one. Presidio flags something in 85 out of every 100 documents
+                that contain no personal data at all. GLiNER in 80. That is the number that decides whether you can
+                actually put a redactor in front of a corpus, and it is the number that almost nobody reports.
+            </p>
+
+            <h2>Why the existing tools struggle</h2>
+            <p>
+                It is worth being precise about the failure, because "the baselines are bad" is a claim that
+                deserves scrutiny, especially when I picked the test set.
+            </p>
+            <p>
+                <strong>Regex and checksums</strong> are precise and nearly blind. 51.1 precision, 12.8 recall.
+                They find an IBAN or an email, and they cannot find a name, an address, or a date of birth, which
+                between them are most of the personal data in a conversation. On our test set they never predicted
+                a single PERSON, ORGANIZATION or ADDRESS, because there is no pattern to write.
+            </p>
+            <p>
+                <strong>Presidio</strong> is the default answer in most enterprises and its recognisers are
+                English-first. On multilingual text it collapses. It is also tuned for recall over precision by
+                default, which produces the 85% false-positive rate.
+            </p>
+            <p>
+                <strong>GLiNER-PII</strong> is genuinely good, and it is the honest competitor here. Zero-shot,
+                takes arbitrary label names, and gets 56.4. Its weakness is script coverage: 58.8 on English but
+                29.6 on Chinese, 32.5 on Tamil, 25.4 on Telugu, 37.3 on Japanese. It also carries an 80%
+                false-positive rate on clean documents.
+            </p>
+            <p>
+                <strong>spaCy</strong> deserves a mention because it is what most people reach for first. Its NER
+                gives you PERSON, ORG, GPE, DATE and a handful more. It has no concept of a medical record number,
+                an insurance policy ID, a UPI address or a CVV, so it cannot be scored on this task without
+                mapping away most of the label set. It is a general entity recogniser, not a privacy tool.
+            </p>
+
+            <h2>The decision that mattered most: values, not offsets</h2>
+            <p>
+                A span-detection model normally predicts character positions. Start 47, end 59, label PERSON.
+                That is what a token classifier does naturally, and it is what everyone expects from an NER API.
+            </p>
+            <p>
+                I went the other way. The model emits a JSON array of values, and nothing else:
+            </p>
+            <pre><code>[{"label": "PERSON", "text": "Derek Okafor"},
+ {"label": "ORGANIZATION", "text": "Meridian Bank"},
+ {"label": "PHONE", "text": "+1-617-555-0142"}]</code></pre>
+            <p>
+                Character offsets are then recovered by looking the values back up in the source text. Longest
+                value first, every non-overlapping occurrence becomes a span, twenty lines of Python.
+            </p>
+            <p>
+                This sounds like a downgrade. It is the single best decision in the project, for three reasons.
+            </p>
+            <p>
+                <strong>It removes the failure mode generative models are worst at.</strong> Asking a language
+                model to count characters produces confidently wrong integers. Copying a string is the thing they
+                are best at. Before committing, I measured the cost: I took every gold annotation in the corpus,
+                threw away the offsets, and tried to recover them from the values alone. Across 207,879 spans,
+                <strong>99.92% recovered exactly</strong>. The residual is almost entirely one case: a SIGNATURE
+                whose text is identical to a PERSON name elsewhere in the same document, which value-only
+                annotation genuinely cannot separate.
+            </p>
+            <p>
+                <strong>It makes hallucination detectable.</strong> A value the model invents will not be found in
+                the source text. That gives you a free, automatic integrity check on every prediction, and a
+                number you can report: on the test set, 194 of 13,646 predicted values (1.4%) did not occur in the
+                input. Try getting that signal out of a model that emits indices.
+            </p>
+            <p>
+                <strong>It finds every occurrence for free.</strong> A customer's phone number mentioned four
+                times gets masked four times, because the locator matches all of them, even though the model
+                listed the value once.
+            </p>
+
+            <h2>Building 65,000 documents that look like real work</h2>
+            <p>
+                No real personal data was used anywhere in this project. Everything is synthetic, generated
+                against a blueprint and passed through quality gates.
+            </p>
+
+            <div class="table-container">
+                <table class="content-table">
+                    <thead>
+                        <tr><th>Split</th><th>Documents</th><th>Labelled values</th><th>PII-free documents</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>train</td><td>58,596</td><td>211,589</td><td>11,164</td></tr>
+                        <tr><td>dev</td><td>3,339</td><td>13,019</td><td>743</td></tr>
+                        <tr><td>test</td><td>3,372</td><td>13,646</td><td>736</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <p>
+                The corpus spans 29 language groups, 23 domains and 12 input conditions. The conditions are the
+                point. Clean text is 43% of it. The rest is ASR transcripts with no punctuation and spoken digits,
+                real OCR output from rendering documents in a headless browser and running Tesseract over them,
+                structured forms, two-speaker dialogue with read-backs and corrections, partially masked values,
+                code and logs, and adversarial formatting with zero-width characters, homoglyphs and full-width
+                digits.
+            </p>
+            <p>
+                Roughly 19% of documents contain no personal data at all. These are not blank filler. They are
+                realistic text from the same domains containing lookalikes: order numbers, version strings,
+                timestamps, amounts, loopback IP addresses, place names, job titles. A negative that simply says
+                "this record contains no PII" teaches the model to detect the announcement, so the generation
+                prompt forbids it and a gate rejects any that slip through.
+            </p>
+            <p>
+                <strong>The gates did real work.</strong> During the final generation round they rejected 106
+                documents for English leaking into supposedly monolingual Urdu or Korean text, 64 for containing
+                personal data in a document that was meant to be a hard negative, and 59 for malformed annotation
+                markup. Those rejections cost extra generation calls. They also kept English contamination out of
+                the Urdu training distribution, which is exactly the kind of quiet corruption that would have been
+                invisible in the final numbers.
+            </p>
+
+            <h3>Splitting without leaking</h3>
+            <p>
+                Documents are grouped by synthetic identity, so every document mentioning a given generated person
+                lands on one side of the split. On top of that, any document derived from another one, an ASR
+                rewrite or an OCR round trip, moves with its source.
+            </p>
+            <p>
+                That second rule caught a real leak. Some documents embed several source samples inside a long
+                Wikipedia passage. When I moved one of those into the test set because one embedded sample
+                belonged there, it dragged along other samples that were still in training. My split script has an
+                assertion for exactly this, and it aborted the write twice before I fixed the logic. Both times
+                the leak would have been invisible in the final numbers and would have inflated them.
+            </p>
+
+            <h2>The audit was worth more than the training run</h2>
+            <p>
+                After the first model finished I had 86.1 F1 on dev and a list of weak labels. The obvious next
+                step was more data for the weak spots. Instead I spent a day auditing the labels, and it changed
+                the plan completely.
+            </p>
+            <p>
+                The check is simple. For every value that is tagged somewhere in the corpus, find every other
+                place that exact string appears, and ask how often it is tagged there too. If the same string is a
+                positive in one document and a negative in the next, no amount of data will fix that label. The
+                model is punished either way.
+            </p>
+
+            <div class="table-container">
+                <table class="content-table">
+                    <thead>
+                        <tr><th>What I found</th><th>Measurement</th><th>What it meant</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>GEO_LOCATION contradicted its own guideline</td>
+                            <td>Bare city names tagged 15.6% of the time (Mumbai 16%, Chennai 3%, Delhi 0%)</td>
+                            <td>Unlearnable noise, not a model weakness</td>
+                        </tr>
+                        <tr>
+                            <td>DATE_TIME mislabelled dates of birth</td>
+                            <td>14 of 18 model "errors" had an explicit birth cue nearby</td>
+                            <td>The model was right, the gold was wrong</td>
+                        </tr>
+                        <tr>
+                            <td>PERSON false positives were mostly gold misses</td>
+                            <td>66% contained a name from the generator's own identity pool</td>
+                            <td>Precision was understated</td>
+                        </tr>
+                        <tr>
+                            <td>A third of errors were boundary mismatches</td>
+                            <td>310 of 917 found the entity with different edges</td>
+                            <td>Different problem from a miss</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <p>
+                The DATE_TIME finding is my favourite because of how it surfaced. The model kept labelling things
+                DOB that the gold called DATE_TIME. I wrote a check for a birth cue near the value, in twenty
+                languages, and the first version said only 5 of 18 had one. Then I noticed my regex used
+                <code>\b</code> word boundaries, which do not work against Devanagari or Vietnamese. Fixing that
+                took it to 14 of 18. The model had been right the whole time and my verification was broken in the
+                same direction as my assumption.
+            </p>
+            <p>
+                So the plan changed from "train harder" to "repair the labels, re-measure, and only then retrain".
+                The repairs were deterministic, scripted and reversible: 1,264 bare place names dropped from
+                GEO_LOCATION, 525 DATE_TIME spans relabelled to DOB where a birth cue was present, and 100
+                GEO_LOCATION values that were actually street addresses moved to ADDRESS rather than deleted,
+                because throwing them away would have cost real recall.
+            </p>
+
+            <h2>Training</h2>
+            <p>
+                LoRA at rank 64 on all attention and MLP projections, 15.2M trainable parameters against a frozen
+                bf16 base. Three epochs, 11,202 steps, four hours on one 8 GB laptop GPU.
+            </p>
+
+            <figure class="content-figure">
+                <img src="./resources/blog-6/06-training-curve.svg" alt="Dev loss against optimizer step for two training runs. The v1 curve descends from 0.106 to 0.0478 over 9,630 steps. The v2 curve, on repaired labels and more data, sits below it throughout and reaches 0.0397 at 11,202 steps." loading="lazy" decoding="async">
+                <figcaption>Dev loss for both runs. The second run sits below the first at every matched step and was still improving when it stopped, which suggests a fourth epoch would have bought a little more.</figcaption>
+            </figure>
+
+            <p>
+                Two implementation details were worth more than any hyperparameter.
+            </p>
+            <p>
+                <strong>The loss only looks at completion positions.</strong> Gemma-3 has a 262,144-token
+                vocabulary. Materialising logits for every position in a batch is what eats the memory. Since the
+                loss is only defined on the assistant's JSON, the model runs the language-model head on just those
+                positions. Measured on the same batch: identical loss to four decimal places, 2.3 GB peak instead
+                of 8.7 GB. That one change is what let a 262K-vocab model train on an 8 GB card at a useful batch size.
+            </p>
+            <p>
+                <strong>Windows will not tell you it has run out of VRAM.</strong> Halfway through the first run,
+                throughput collapsed from 2,000 tokens per second to 90. No error, no out-of-memory, GPU
+                utilisation still reading 100%. The Windows display driver had started paging GPU memory into
+                system RAM. The tell is in a performance counter rather than in nvidia-smi:
+                <code>\GPU Process Memory(*)\Shared Usage</code> showed gigabytes against the Python process.
+                Capping PyTorch's share with <code>torch.cuda.set_per_process_memory_fraction(0.80)</code> fixed
+                it, and the run held about 1 second per step for four hours. If you train on Windows, watch that
+                counter.
+            </p>
+
+            <h2>Results</h2>
+            <h3>Across input conditions</h3>
+
+            <figure class="content-figure">
+                <img src="./resources/blog-6/02-conditions-radar.svg" alt="Radar chart with eight axes for input conditions. Kavach's polygon is close to the outer ring on all eight, GLiNER's is roughly half the radius, Presidio's is near the centre." loading="lazy" decoding="async">
+                <figcaption>Value-F1 by input condition, radial scale 0 to 100. The weakest condition for Kavach, adversarial formatting at 82.5, is above the strongest condition for GLiNER, OCR at 70.1.</figcaption>
+            </figure>
+
+            <div class="table-container">
+                <table class="content-table">
+                    <thead>
+                        <tr><th>Condition</th><th>Test documents</th><th>Kavach</th><th>GLiNER</th><th>Presidio</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Dialogue transcripts</td><td>266</td><td><strong>93.1</strong></td><td>57.8</td><td>20.9</td></tr>
+                        <tr><td>Masked or partial values</td><td>162</td><td><strong>90.6</strong></td><td>54.3</td><td>16.4</td></tr>
+                        <tr><td>Structured forms</td><td>239</td><td><strong>90.4</strong></td><td>66.9</td><td>28.3</td></tr>
+                        <tr><td>OCR output</td><td>74</td><td><strong>90.4</strong></td><td>70.1</td><td>30.9</td></tr>
+                        <tr><td>Clean text</td><td>1,382</td><td><strong>90.3</strong></td><td>59.2</td><td>25.7</td></tr>
+                        <tr><td>Code and logs</td><td>118</td><td><strong>87.5</strong></td><td>50.7</td><td>24.0</td></tr>
+                        <tr><td>ASR transcripts</td><td>695</td><td><strong>83.3</strong></td><td>49.0</td><td>17.0</td></tr>
+                        <tr><td>Adversarial formatting</td><td>247</td><td><strong>82.5</strong></td><td>52.8</td><td>16.1</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3>Every language, with error bars</h3>
+            <p>
+                This is the part I care about most, and the part that took the most work to be able to state
+                honestly. In the first version, several languages had 13 to 18 test documents. Russian scored 60.0
+                and I nearly wrote "Russian is weak" in the notes. Then I bootstrapped a confidence interval over
+                those documents and got <strong>37 to 79</strong>. The number meant nothing.
+            </p>
+            <p>
+                So before the second training run I generated 10,255 more documents specifically to bring every
+                language to at least 80 held-out test documents, which is roughly a five-point interval. Only then
+                are per-language claims worth making.
+            </p>
+
+            <figure class="content-figure">
+                <img src="./resources/blog-6/03-languages.svg" alt="Dumbbell chart of 29 languages. For each, an orange dot marks GLiNER's value-F1 and a blue dot marks Kavach's, connected by a line. The blue dot is to the right in every case, with gaps from 17 to 56 points." loading="lazy" decoding="async">
+                <figcaption>All 29 language groups on the held-out test set. The gap to GLiNER runs from 17 points on Italian to 56 on Chinese, and Kavach is ahead in every one.</figcaption>
+            </figure>
+
+            <div class="table-container">
+                <table class="content-table">
+                    <thead>
+                        <tr><th>Language</th><th>Test docs</th><th>Kavach F1</th><th>95% interval</th><th>GLiNER</th><th>Gain</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Dutch</td><td>81</td><td><strong>94.3</strong></td><td>91.6 to 97.0</td><td>74.7</td><td>+19.6</td></tr>
+                        <tr><td>Russian</td><td>81</td><td><strong>93.9</strong></td><td>91.2 to 96.1</td><td>59.2</td><td>+34.7</td></tr>
+                        <tr><td>Simplified Chinese</td><td>81</td><td><strong>93.6</strong></td><td>90.8 to 95.9</td><td>52.7</td><td>+40.9</td></tr>
+                        <tr><td>German</td><td>82</td><td><strong>92.9</strong></td><td>90.1 to 95.1</td><td>66.0</td><td>+26.9</td></tr>
+                        <tr><td>Turkish</td><td>83</td><td><strong>92.6</strong></td><td>89.7 to 95.2</td><td>68.2</td><td>+24.4</td></tr>
+                        <tr><td>Romanized Indian</td><td>85</td><td><strong>92.2</strong></td><td>89.3 to 95.3</td><td>72.2</td><td>+20.0</td></tr>
+                        <tr><td>Japanese</td><td>85</td><td><strong>91.8</strong></td><td>88.5 to 94.7</td><td>37.3</td><td>+54.5</td></tr>
+                        <tr><td>Korean</td><td>80</td><td><strong>91.4</strong></td><td>87.8 to 94.5</td><td>47.0</td><td>+44.4</td></tr>
+                        <tr><td>English</td><td>994</td><td><strong>89.3</strong></td><td>88.2 to 90.4</td><td>58.8</td><td>+30.5</td></tr>
+                        <tr><td>Punjabi</td><td>83</td><td><strong>88.4</strong></td><td>84.9 to 91.6</td><td>32.9</td><td>+55.5</td></tr>
+                        <tr><td>Hindi</td><td>105</td><td><strong>84.8</strong></td><td>80.8 to 88.5</td><td>39.0</td><td>+45.8</td></tr>
+                        <tr><td>Tamil</td><td>97</td><td><strong>83.1</strong></td><td>78.6 to 87.2</td><td>32.5</td><td>+50.6</td></tr>
+                        <tr><td>Telugu</td><td>82</td><td><strong>80.6</strong></td><td>73.6 to 86.8</td><td>25.4</td><td>+55.2</td></tr>
+                        <tr><td>Kannada</td><td>80</td><td><strong>74.6</strong></td><td>69.7 to 79.0</td><td>35.2</td><td>+39.4</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p>
+                Fourteen of the twenty-nine are shown; the full table is in the model card. Kannada at 74.6 is the
+                weakest and is the obvious target for the next round.
+            </p>
+            <p>
+                One finding that surprised me: <strong>training volume barely predicts per-language quality</strong>.
+                The correlation between the number of training documents in a language and its dev F1 was
+                <strong>r = 0.20</strong>. Japanese with 228 training documents scored 91.8. Hindi with 2,082
+                scored 82.2. What matters more is how well the base model already knows the script, and what mix
+                of noisy conditions that language's documents happen to contain. This saved me from the obvious
+                and wrong plan of throwing thousands of documents at the low scorers.
+            </p>
+
+            <h3>By label</h3>
+            <figure class="content-figure">
+                <img src="./resources/blog-6/04-labels.svg" alt="Dumbbell chart of sixteen PII labels with at least 100 test instances, comparing Kavach and GLiNER value-F1. Kavach leads on all of them, with the largest gaps on CASE_ID and EMPLOYEE_ID." loading="lazy" decoding="async">
+                <figcaption>The sixteen labels with at least 100 test instances. The widest gaps are on the identifier types that a general-purpose NER model has no concept of.</figcaption>
+            </figure>
+
+            <h2>What did not work</h2>
+            <p>
+                Three experiments failed, and the failures are more informative than most of the successes.
+            </p>
+
+            <h3>The regex union made things worse</h3>
+            <p>
+                The obvious production design is a hybrid: run the model, run checksum and regex recognisers, take
+                the union, get the model's understanding plus the rules' precision on structured identifiers. I
+                built it and measured it. Recall went up by 0.4 points. Precision fell by 4.0, and the
+                false-positive rate on clean documents went from 0.4% to <strong>9.0%</strong>. Overall F1 dropped
+                from 88.4 to 86.6. The rules mostly fire on things the model already found, and where they fire
+                alone they are usually wrong. The hybrid is not in the shipped configuration and the model card
+                says not to build it.
+            </p>
+
+            <h3>The case-augmentation fix only half worked</h3>
+            <p>
+                The robustness suite applies eighteen corruptions to held-out documents. Random per-character
+                capitalisation was by far the worst, costing 16.8 F1 and pushing the false-positive rate on clean
+                documents from 0 to 10.8%.
+            </p>
+            <p>
+                The cause looked obvious and satisfying. I checked the augmentation mix and found that
+                <code>uppercase</code> was the only one of eighteen operations missing from it entirely, and
+                <code>case_chaos</code> was weighted at 0.04. At the augmentation probability used for the first
+                run, the model had seen uppercase text in 0% of training documents and case-chaos in about 1%.
+            </p>
+            <p>
+                So I rebalanced the mix by measured weakness, raised the probability, and retrained. Uppercase
+                robustness improved by 3.5 points. Case-chaos improved by <strong>1.2</strong>. Keyboard-typo
+                robustness got 2.6 points <em>worse</em>. The gains in the second model came from the data and the
+                label repairs, not from my augmentation theory. The advice in the model card is therefore the
+                unglamorous one: normalise case before you call the model.
+            </p>
+
+            <figure class="content-figure">
+                <img src="./resources/blog-6/05-robustness.svg" alt="Diverging bar chart of eighteen text corruptions and their effect on value-F1. Twelve cost under 1.5 points. Random capitalisation costs 15.6 and keyboard typos 8.5." loading="lazy" decoding="async">
+                <figcaption>The robustness suite after retraining. Zero-width characters, homoglyphs, full-width digits, HTML wrapping and JSON escaping are all close to free. Case and typos are not.</figcaption>
+            </figure>
+
+            <h3>A measurement error that nearly became a headline</h3>
+            <p>
+                After repairing the labels I re-scored the first model and it appeared to drop from 86.1 to 83.3.
+                I was about to write that the repair had hurt. The predictions file had been generated before the
+                split changed, so 145 documents had no prediction at all and were being counted as complete
+                misses. On a like-for-like comparison the repair was neutral on carried-over documents and clearly
+                positive on the labels it touched. The lesson is mundane and cost me an hour:
+                <strong>check that your prediction file has as many rows as your gold file before believing a delta.</strong>
+            </p>
+
+            <h2>Quantisation, and an architecture that breaks the usual advice</h2>
+            <p>
+                I built the full ladder of GGUF quantisations and measured each one for accuracy, speed and memory
+                on the same 400 documents. The results are not what the usual guidance predicts.
+            </p>
+
+            <figure class="content-figure">
+                <img src="./resources/blog-6/01-quantisation-tradeoff.svg" alt="Scatter plot of value-F1 against GGUF file size for nine quantisations. Most cluster between 234 and 286 MB at 88 to 89 F1. Q2_K sits at 234 MB and 84.9. Two embedding-quantised variants sit at 169 and 196 MB." loading="lazy" decoding="async">
+                <figcaption>Accuracy against file size. The standard ladder barely compresses; the two points on the left are the embedding-quantised builds, which are the only ones that get genuinely small.</figcaption>
+            </figure>
+
+            <div class="table-container">
+                <table class="content-table">
+                    <thead>
+                        <tr><th>Build</th><th>Size</th><th>Value F1</th><th>Change</th><th>FP on clean docs</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>F16</td><td>526 MB</td><td>89.2</td><td>reference</td><td>0.0%</td></tr>
+                        <tr><td>Q8_0</td><td>286 MB</td><td><strong>89.3</strong></td><td>+0.1</td><td>0.0%</td></tr>
+                        <tr><td>Q4_K_M</td><td>249 MB</td><td><strong>89.2</strong></td><td>+0.0</td><td>0.0%</td></tr>
+                        <tr><td>Q3_K_M</td><td>239 MB</td><td>88.4</td><td>-0.8</td><td>0.0%</td></tr>
+                        <tr><td>Q2_K</td><td>234 MB</td><td>84.9</td><td>-4.3</td><td>2.3%</td></tr>
+                        <tr><td>Q5_K_M with q5_0 embedding</td><td>196 MB</td><td>88.0</td><td>-1.2</td><td>0.0%</td></tr>
+                        <tr><td>Q4_K_M with q4_0 embedding</td><td><strong>169 MB</strong></td><td>87.2</td><td>-2.0</td><td>0.0%</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <p>
+                Q2_K saves 15 MB over Q4_K_M, costs 4.3 F1, and triples the false-positive rate. It is strictly a
+                bad trade, and the reason is structural.
+            </p>
+            <p>
+                <strong>The token embedding is 63% of this model's parameters.</strong> 262,144 tokens by 640
+                dimensions is 168M of the 268M total. llama.cpp keeps embeddings at high precision by default, so
+                a nominal Q2_K build only reaches 6.88 bits per weight instead of the usual 2.6. You are paying
+                accuracy for compression that mostly does not happen.
+            </p>
+            <p>
+                <strong>The hidden size is 640, which is not divisible by 256.</strong> That is the K-quant block
+                size, so during quantisation llama.cpp silently falls back to <code>q5_0</code> or
+                <code>q8_0</code> for most tensors. It prints a warning per tensor, which is easy to scroll past.
+            </p>
+            <p>
+                Quantising the embedding as well is what gets the model to 169 MB. There is a trap there too:
+                <code>--token-embedding-type q4_K</code> converts the tensor, then fails a GGML assertion when
+                writing the file, and <code>llama-quantize</code> still exits with status 0. You end up with a
+                file of plausible size that llama.cpp refuses to load with <code>invalid magic characters</code>.
+                I only caught it because I tried to load every artefact before benchmarking it. Use the block-32
+                legacy types, <code>q4_0</code> or <code>q5_0</code>, for the embedding.
+            </p>
+
+            <h2>Using it</h2>
+            <p>
+                The model is on Hugging Face in two repositories: the transformers model with the LoRA adapter
+                alongside it, and a GGUF repository with the quantised builds.
+            </p>
+            <pre><code>from transformers import AutoTokenizer, AutoModelForCausalLM
+
+MODEL = "inboxpraveen/Kavach-PII-270M"
+tok = AutoTokenizer.from_pretrained(MODEL)
+model = AutoModelForCausalLM.from_pretrained(MODEL, dtype="bfloat16").to("cuda").eval()
+
+msgs = [{"role": "user", "content": f"{INSTRUCTION}\n\nText:\n&lt;&lt;&lt;\n{text}\n&gt;&gt;&gt;"}]
+prompt = tok.apply_chat_template(msgs, tokenize=False, add_generation_prompt=True)
+out = model.generate(**tok(prompt, return_tensors="pt").to("cuda"),
+                     max_new_tokens=768, do_sample=False)</code></pre>
+            <p>
+                It serves under vLLM and SGLang with a single command each, and under llama.cpp, Ollama or LM
+                Studio from the GGUF builds. The exact instruction string matters: the model was trained on one
+                specific prompt and paraphrasing it costs accuracy. Use greedy decoding. If an output fails to
+                parse, retry that one document with a repetition penalty of 1.1, which recovered 45 out of 45
+                failures in testing; applying the penalty to every request instead lowers accuracy by 1.4 points.
+            </p>
+
+            <p>
+                Both repositories also ship <code>kavach_extract.py</code>, a single function that does
+                everything around the model call: it splits long input into overlapping windows, locates every
+                returned value in the original string, merges the windows and gives you character offsets. It
+                needs nothing outside the standard library. Two things in it turned out to matter more than I
+                expected.
+            </p>
+            <p>
+                The first is window size, where my intuition was backwards. I assumed more context would help,
+                because deciding DOB against DATE_TIME depends on a birth cue that might sit a sentence away.
+                The measurement says the opposite, and not by a little. Across window sizes from 30 words to 480,
+                precision barely moves, sitting between 0.84 and 0.86. Recall falls off a cliff: 0.84 at a
+                60-word window, 0.50 at 480. The reason is in the training distribution. The median training
+                document is 39 words long, so the model learned to emit roughly as many entities as a document
+                that size contains, and handing it ten times the text does not make it produce ten times the
+                list. It stops early. Small windows are also several times faster, which is the opposite of what
+                chunking usually costs you, because output length dominates the runtime here, not prefill.
+            </p>
+            <p>
+                The second is how you match a returned value back to the source. The obvious implementation is
+                <code>re.escape</code> plus <code>finditer</code>, and it is wrong in a way that only shows up
+                in the output. On the test set it places 127 spans, just under 1%, inside longer words:
+                <code>Raj</code> lands in the middle of <code>Rajesh</code>, <code>2024</code> inside
+                <code>20245</code>, and redaction then emits <code>[PERSON]esh</code>. A word-boundary check
+                fixes it, but a plain <code>\b</code> is not that check, for exactly the reason that broke my
+                DATE_TIME audit earlier in this post: it does not work against Devanagari, where the combining
+                vowel sign that continues a word is not an alphanumeric character. The rule that does work
+                treats combining marks as part of the word, and switches the boundary test off entirely for
+                Chinese, Japanese, Thai, Khmer, Burmese and Korean, where words are not separated by spaces or,
+                in Korean's case, particles attach straight onto the noun. With that in place, 98.1% of
+                predicted values locate as a whole word, 0.6% only inside a longer run and are flagged rather
+                than hidden, and the remaining 1.4% are the hallucinations the value-only design was built to
+                expose.
+            </p>
+            <p>
+                Transcripts need no special handling. Bracketed timestamps, SRT ranges and WebVTT cues survive
+                redaction untouched, because 630 training documents contain bracketed timestamps and not one of
+                them is tagged, so the model simply learned to ignore them.
+            </p>
+            <pre><code>from kavach_extract import extract_pii, redact, transformers_generate
+
+result = extract_pii(transcript, transformers_generate(model, tok))
+print(redact(transcript, result["spans"]))
+
+# [00:00:03] Speaker 1: Hello, this is [PERSON] from [ORGANIZATION].
+# [00:00:09] Speaker 2: Hi [PERSON]. My parcel is [CASE_ID] and my mobile is [PHONE].</code></pre>
+
+            <h2>Where it is genuinely weak</h2>
+            <p>
+                <strong>Identifier typing has a hard ceiling.</strong> Given <code>KX-77255</code> with no cue
+                word nearby, no model can tell you whether that is an employee number or a case reference. I
+                measured this: of the confusions between identifier types, only 15% had a disambiguating cue
+                within 40 characters. For redaction this mostly does not matter, since the value still gets
+                masked, and redaction recall holds at 93.0 even where type accuracy dips. For a system that routes
+                on type, it matters a lot.
+            </p>
+            <p>
+                <strong>DATE_TIME is contextual by nature</strong> and sits at 58.9. A date is only personal data
+                when it is attached to a person, and that judgement is genuinely ambiguous in a lot of text.
+            </p>
+            <p>
+                <strong>The gold came from the same pipeline as the training data.</strong> This is the honest
+                caveat on every number in this post. It is my test set, held out and never used for tuning
+                decisions, but it is mine. Independent evaluation on third-party corpora is the obvious next step
+                and I have not done it yet.
+            </p>
+            <p>
+                <strong>Six labels are too thin to score.</strong> ETHNICITY, AGE, GENDER_SEX, DISABILITY,
+                POLITICAL_BELIEF and BIOMETRIC_DESCRIPTOR have under ten test instances each. Their per-label
+                numbers are noise and the model card says so.
+            </p>
+
+            <h2>What this is useful for</h2>
+            <p>
+                The obvious use is redaction before text goes somewhere it should not: into an analytics
+                warehouse, a vendor's API, a fine-tuning corpus, a screen-share. Redaction recall of 93% with a
+                0.4% false-positive rate on clean documents is a usable operating point for that.
+            </p>
+            <p>
+                Less obvious, and the thing I did not expect: it works as a general structured-extraction model
+                for the identifier-shaped parts of a document. Case numbers, policy numbers, medical record
+                numbers, invoice references. These are exactly what spaCy has no labels for and what regex gets
+                wrong whenever the format varies. If you are pulling identifiers out of forms or emails today with
+                a pile of patterns, this is worth measuring against.
+            </p>
+            <p>
+                It is also small enough to run where the data is. 169 MB on a CPU means the text never leaves the
+                machine, which for healthcare and financial deployments is frequently the whole requirement.
+            </p>
+
+            <h2>What is next</h2>
+            <p>
+                Kannada, Telugu, Bengali and Arabic are the weakest languages and the next round targets them.
+                The sensitive-attribute labels need enough test support to be measurable. Case robustness needs a
+                better answer than "normalise first", and I suspect the answer is character-level augmentation
+                during pretraining rather than at fine-tune time. Evaluation against third-party PII corpora is
+                the credibility gap I most want to close.
+            </p>
+            <p>
+                The training recipes, the generation blueprint and the evaluation harness will go out with the
+                next release. If you try the model on your own data I would like to hear what breaks.
+            </p>
+
+            <div class="resources">
+                <h3>Resources &amp; Links</h3>
+                <div class="resources-links">
+                    <a href="https://huggingface.co/inboxpraveen/Kavach-PII-270M" class="demo-button" target="_blank" rel="noopener noreferrer">Kavach PII 270M on Hugging Face</a>
+                    <a href="https://huggingface.co/inboxpraveen/Kavach-PII-270M-GGUF" class="demo-button" target="_blank" rel="noopener noreferrer">GGUF and quantised builds</a>
+                    <a href="./blog-5.html" class="demo-button">Who spoke when, on your own data</a>
+                    <a href="./blog-4.html" class="demo-button">Teaching a language model a language it never knew</a>
+                </div>
+
+                <h4>The models and tools compared or used:</h4>
+                <p>
+                    <a href="https://huggingface.co/google/gemma-3-270m-it" target="_blank" rel="noopener noreferrer">Gemma-3-270M-IT</a>, the base model;
+                    <a href="https://huggingface.co/urchade/gliner_multi_pii-v1" target="_blank" rel="noopener noreferrer">GLiNER-PII multi-v1</a> and the
+                    <a href="https://arxiv.org/abs/2311.08526" target="_blank" rel="noopener noreferrer">GLiNER paper</a> (Zaratiana et al., 2023);
+                    <a href="https://github.com/microsoft/presidio" target="_blank" rel="noopener noreferrer">Microsoft Presidio</a> with
+                    <a href="https://spacy.io/models/en#en_core_web_lg" target="_blank" rel="noopener noreferrer">spaCy en_core_web_lg</a>;
+                    <a href="https://github.com/ggml-org/llama.cpp" target="_blank" rel="noopener noreferrer">llama.cpp</a> (build b11120) for GGUF conversion and quantisation;
+                    <a href="https://github.com/huggingface/peft" target="_blank" rel="noopener noreferrer">PEFT</a> for LoRA;
+                    <a href="https://github.com/tesseract-ocr/tesseract" target="_blank" rel="noopener noreferrer">Tesseract</a> for the OCR round trips.
+                </p>
+
+                <h4>Standards and references:</h4>
+                <p>
+                    <a href="https://www.hhs.gov/hipaa/for-professionals/privacy/special-topics/de-identification/index.html" target="_blank" rel="noopener noreferrer">HIPAA Safe Harbor, the 18 identifiers</a>;
+                    <a href="https://www.pcisecuritystandards.org/" target="_blank" rel="noopener noreferrer">PCI DSS</a>;
+                    <a href="https://ai.google.dev/gemma/terms" target="_blank" rel="noopener noreferrer">the Gemma Terms of Use</a> and
+                    <a href="https://ai.google.dev/gemma/prohibited_use_policy" target="_blank" rel="noopener noreferrer">Prohibited Use Policy</a>, which govern the model weights;
+                    <a href="https://arxiv.org/abs/2106.09685" target="_blank" rel="noopener noreferrer">LoRA</a> (Hu et al., 2021).
+                </p>
+            </div>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <p class="footer-note">
+                    &copy; <span data-year>2026</span> Praveen Kumar &middot;
+                    Static HTML, one stylesheet, no build step. <a href="https://github.com/inboxpraveen/inboxpraveen.github.io" target="_blank" rel="noopener noreferrer">Source on GitHub</a>
+                </p>
+                <div class="footer-social">
+                    <a href="https://github.com/inboxpraveen" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                        <svg class="icon" aria-hidden="true"><use href="#i-github"></use></svg>
+                    </a>
+                    <a href="https://www.linkedin.com/in/praveen-kumar-inbox/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                        <svg class="icon" aria-hidden="true"><use href="#i-linkedin"></use></svg>
+                    </a>
+                    <a href="https://x.com/InboxPraveen" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
+                        <svg class="icon" aria-hidden="true"><use href="#i-x"></use></svg>
+                    </a>
+                    <a href="mailto:inboxpraveen.17@gmail.com" aria-label="Email">
+                        <svg class="icon" aria-hidden="true"><use href="#i-mail"></use></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <button class="back-to-top" type="button" data-back-to-top aria-label="Back to top">
+        <svg class="icon" aria-hidden="true"><use href="#i-arrow-up"></use></svg>
+    </button>
+
+    <script src="../site.js" defer></script>
+
+</body>
+</html>

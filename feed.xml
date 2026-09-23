@@ -5,8 +5,17 @@
   <link href="https://inboxpraveen.github.io/feed.xml" rel="self"/>
   <link href="https://inboxpraveen.github.io/all-blogs.html"/>
   <id>https://inboxpraveen.github.io/</id>
-  <updated>2026-09-20T04:13:51Z</updated>
+  <updated>2026-09-23T13:50:57Z</updated>
   <author><name>Praveen Kumar</name><uri>https://inboxpraveen.github.io/</uri></author>
+  <entry>
+    <title>Introducing Kavach PII 270M: a 270M model that finds personal data better than GLiNER, Presidio and spaCy, in 29 languages, trained on one laptop GPU</title>
+    <link href="https://inboxpraveen.github.io/blogs/blog-6.html"/>
+    <id>https://inboxpraveen.github.io/blogs/blog-6.html</id>
+    <published>2026-09-23T00:00:00Z</published>
+    <updated>2026-09-23T00:00:00Z</updated>
+    <summary>Kavach PII 270M: 88.4 value-F1 against GLiNER&#x27;s 56.4 and Presidio&#x27;s 22.2 on the same held-out set, in 29 languages, trained in four hours on one 8 GB laptop GPU. The data, the audit that mattered more than the training, and the experiments that failed.</summary>
+    <content type="html">&lt;p&gt;&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://inboxpraveen.github.io/blogs/blog-6.html&quot;&gt;Read the post&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
   <entry>
     <title>Who spoke when, on your own data: training, tuning and shipping a Kaldi speaker diarizer that runs on a CPU</title>
     <link href="https://inboxpraveen.github.io/blogs/blog-5.html"/>

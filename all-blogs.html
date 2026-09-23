@@ -89,6 +89,12 @@
       "blogPost": [
         {
           "@type": "BlogPosting",
+          "@id": "https://inboxpraveen.github.io/blogs/blog-6.html#post",
+          "headline": "Introducing Kavach PII 270M: a 270M model that finds personal data better than GLiNER, Presidio and spaCy, in 29 languages, trained on one laptop GPU",
+          "url": "https://inboxpraveen.github.io/blogs/blog-6.html"
+        },
+        {
+          "@type": "BlogPosting",
           "@id": "https://inboxpraveen.github.io/blogs/blog-5.html#post",
           "headline": "Who spoke when, on your own data: training, tuning and shipping a Kaldi speaker diarizer that runs on a CPU",
           "url": "https://inboxpraveen.github.io/blogs/blog-5.html"
@@ -134,35 +140,41 @@
       "mainEntity": {
         "@type": "ItemList",
         "itemListOrder": "https://schema.org/ItemListOrderDescending",
-        "numberOfItems": 5,
+        "numberOfItems": 6,
         "itemListElement": [
           {
             "@type": "ListItem",
             "position": 1,
+            "name": "Introducing Kavach PII 270M: a 270M model that finds personal data better than GLiNER, Presidio and spaCy, in 29 languages, trained on one laptop GPU",
+            "url": "https://inboxpraveen.github.io/blogs/blog-6.html"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
             "name": "Who spoke when, on your own data: training, tuning and shipping a Kaldi speaker diarizer that runs on a CPU",
             "url": "https://inboxpraveen.github.io/blogs/blog-5.html"
           },
           {
             "@type": "ListItem",
-            "position": 2,
+            "position": 3,
             "name": "Teaching a language model a language it never knew: continued pretraining, supervised fine-tuning and reinforcement learning on one laptop",
             "url": "https://inboxpraveen.github.io/blogs/blog-4.html"
           },
           {
             "@type": "ListItem",
-            "position": 3,
+            "position": 4,
             "name": "Where the bandwidth line ends: how Cerebras gets to 2,000 tokens a second, worked out from the outside",
             "url": "https://inboxpraveen.github.io/blogs/blog-3.html"
           },
           {
             "@type": "ListItem",
-            "position": 4,
+            "position": 5,
             "name": "Before you tune anything: a field guide to inference speed and accuracy on the hardware you actually have",
             "url": "https://inboxpraveen.github.io/blogs/blog-2.html"
           },
           {
             "@type": "ListItem",
-            "position": 5,
+            "position": 6,
             "name": "Getting the most tokens per second out of one laptop with llama.cpp",
             "url": "https://inboxpraveen.github.io/blogs/blog-1.html"
           }
@@ -224,10 +236,36 @@
                         <kbd>/</kbd>
                     </label>
 
-                    <span class="filter-count" data-filter-count aria-live="polite">5 posts</span>
+                    <span class="filter-count" data-filter-count aria-live="polite">6 posts</span>
                 </div>
 
                 <div class="projects-grid posts-grid" data-reveal-group>
+
+                <article class="project-card" data-domain="LLM &amp; RAG" data-search="pii detection personal data phi phi pci redaction anonymisation deidentification gdpr hipaa dpdp compliance gemma 3 270m lora peft fine-tuning generative extraction named entity recognition ner gliner presidio spacy multilingual 29 languages hindi tamil bengali arabic russian urdu turkish korean vietnamese indonesian gguf llama.cpp quantization vllm sglang ollama asr transcripts ocr prompt injection synthetic data laptop gpu rtx 5060 8gb aadhaar pan ssn iban swift npi dea mbi" style="--domain: var(--d-llm);">
+                    <span class="card-rule" aria-hidden="true"></span>
+                    <a class="card-media" href="blogs/blog-6.html" tabindex="-1" aria-label="Introducing Kavach PII 270M: a 270M model that finds personal data better than GLiNER, Presidio and spaCy, in 29 languages, trained on one laptop GPU, LLM &amp; RAG">
+                        <img src="blogs/resources/blog-6/Header.webp" alt="" loading="lazy" decoding="async">
+                        <span class="domain-pill" aria-hidden="true">LLM &amp; RAG</span>
+                    </a>
+                    <div class="card-body">
+                        <div class="tag-row">
+                            <span class="stack-tag">PII detection</span>
+                            <span class="stack-tag">Gemma 3 270M</span>
+                            <span class="stack-tag">LoRA</span>
+                            <span class="stack-tag">llama.cpp</span>
+                        </div>
+                        <h3 class="project-title"><a href="blogs/blog-6.html">Introducing Kavach PII 270M: a 270M model that finds personal data better than GLiNER, Presidio and spaCy, in 29 languages, trained on one laptop GPU</a></h3>
+                        <p class="project-description">A quarter-billion-parameter model that scores 88.4 value-F1 where GLiNER gets 56.4 and Presidio 22.2, on the same 3,372-document held-out set with identical gold. Why dropping character offsets from the training targets was the decision that made it work, the gold-set audit that moved the number more than any training run did, how 52 labels and 29 languages were built and balanced, what happens on ASR transcripts, OCR noise and prompt injection, the full GGUF ladder from Q8 down to Q2 with the reason a 270M model quantizes badly, and the three experiments that did not pan out.</p>
+                        <div class="card-foot">
+                            <span class="card-meta">
+                                23 September 2026
+                                <span class="sep" aria-hidden="true"></span>
+                                <span data-read-time>Long read</span>
+                            </span>
+                            <a href="blogs/blog-6.html" class="project-link">Read the post</a>
+                        </div>
+                    </div>
+                </article>
 
                 <article class="project-card" data-domain="Speech &amp; Audio" data-search="speaker diarization kaldi x-vector plda agglomerative clustering vbx bayesian hmm speech activity detection sad vad der rttm ami meeting corpus voxceleb pyannote nvidia sortformer nemo docker container cpu inference deployment call centre who spoke when threshold dev test calibration md-eval" style="--domain: var(--d-speech);">
                     <span class="card-rule" aria-hidden="true"></span>

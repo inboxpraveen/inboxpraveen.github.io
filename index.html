@@ -308,6 +308,41 @@
                 </div>
 
                 <div class="featured-list" data-reveal-group>
+                    <article class="featured-card" data-glow style="--domain: var(--d-llm);">
+                        <div class="featured-media">
+                            <img src="blogs/resources/blog-6/Header.webp" alt="Value-level F1 on the same held-out PII test set: Kavach PII 270M 88.4, GLiNER-PII 56.4, Presidio 22.2, regex and checksum rules 20.5" loading="lazy" decoding="async" width="1600" height="900">
+                        </div>
+                        <div class="featured-body">
+                            <div class="tag-row">
+                                <span class="domain-pill">LLM &amp; RAG</span>
+                                <span class="stack-tag">PII detection</span>
+                                <span class="stack-tag">Gemma 3 270M</span>
+                                <span class="stack-tag">LoRA</span>
+                                <span class="stack-tag">llama.cpp</span>
+                            </div>
+                            <h3 class="featured-title"><a href="blogs/blog-6.html">Introducing Kavach PII 270M: a 270M model that finds personal data better than GLiNER, Presidio and spaCy, in 29 languages, trained on one laptop GPU</a></h3>
+                            <p class="featured-desc">
+                                A quarter-billion-parameter model that scores 88.4 value-F1 where GLiNER gets
+                                56.4 and Presidio 22.2, on the same held-out set with identical gold. Why taking
+                                character offsets out of the training targets was the decision that made it work,
+                                the gold-set audit that moved the number further than any training run, how 52
+                                labels across 29 languages were built and balanced, what happens on ASR
+                                transcripts, OCR noise and prompt injection, and the three things that failed.
+                            </p>
+                            <div class="featured-foot">
+                                <span class="card-meta">
+                                    <svg class="icon" aria-hidden="true"><use href="#i-calendar"></use></svg>
+                                    23 September 2026
+                                    <span class="sep" aria-hidden="true"></span>
+                                    <span data-read-time>Long read</span>
+                                    <span class="sep" aria-hidden="true"></span>
+                                    Every number from the same held-out set
+                                </span>
+                                <a href="blogs/blog-6.html" class="project-link">Read the post</a>
+                            </div>
+                        </div>
+                    </article>
+
                     <article class="featured-card" data-glow style="--domain: var(--d-speech);">
                         <div class="featured-media">
                             <img src="blogs/resources/blog-5/Header.webp" alt="Two minutes of a held-out meeting: the labelled speakers above, the container's diarization below, one colour per person" loading="lazy" decoding="async" width="1600" height="900">
@@ -372,39 +407,6 @@
                         </div>
                     </article>
 
-                    <article class="featured-card" data-glow style="--domain: var(--d-llm);">
-                        <div class="featured-media">
-                            <img src="blogs/resources/blog-3/Header.webp" alt="Bandwidth divided by bytes per token for a laptop, eight H100s, eight B200s and four Cerebras wafers, with reported speeds marked" loading="lazy" decoding="async" width="1600" height="900">
-                        </div>
-                        <div class="featured-body">
-                            <div class="tag-row">
-                                <span class="domain-pill">LLM &amp; RAG</span>
-                                <span class="stack-tag">Cerebras</span>
-                                <span class="stack-tag">Hardware</span>
-                                <span class="stack-tag">Inference engineering</span>
-                                <span class="stack-tag">Python</span>
-                            </div>
-                            <h3 class="featured-title"><a href="blogs/blog-3.html">Where the bandwidth line ends: how Cerebras gets to 2,000 tokens a second, worked out from the outside</a></h3>
-                            <p class="featured-desc">
-                                The bandwidth line predicts 600,000 tokens a second for four Cerebras wafers
-                                and they get 2,000. Where the rest goes, worked out from public sources: the
-                                wafer rebuilt from the core up, the microseconds a layer really costs on a
-                                mesh, what the SRAM design gives up, how Groq and NVIDIA solve the same
-                                equation, and what carries back to ordinary hardware.
-                            </p>
-                            <div class="featured-foot">
-                                <span class="card-meta">
-                                    <svg class="icon" aria-hidden="true"><use href="#i-calendar"></use></svg>
-                                    14 September 2026
-                                    <span class="sep" aria-hidden="true"></span>
-                                    <span data-read-time>Long read</span>
-                                    <span class="sep" aria-hidden="true"></span>
-                                    Every number dated and sourced
-                                </span>
-                                <a href="blogs/blog-3.html" class="project-link">Read the post</a>
-                            </div>
-                        </div>
-                    </article>
                 </div>
 
                 <p class="text-center" style="margin-top: 2rem;" data-reveal>
