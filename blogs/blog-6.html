@@ -639,15 +639,33 @@ out = model.generate(**tok(prompt, return_tensors="pt").to("cuda"),
                 expected.
             </p>
             <p>
-                The first is window size, where my intuition was backwards. I assumed more context would help,
-                because deciding DOB against DATE_TIME depends on a birth cue that might sit a sentence away.
-                The measurement says the opposite, and not by a little. Across window sizes from 30 words to 480,
-                precision barely moves, sitting between 0.84 and 0.86. Recall falls off a cliff: 0.84 at a
-                60-word window, 0.50 at 480. The reason is in the training distribution. The median training
-                document is 39 words long, so the model learned to emit roughly as many entities as a document
-                that size contains, and handing it ten times the text does not make it produce ten times the
-                list. It stops early. Small windows are also several times faster, which is the opposite of what
-                chunking usually costs you, because output length dominates the runtime here, not prefill.
+                The first is window size, and I got it wrong twice before the numbers settled. My first guess
+                was that more context helps, since telling a date of birth from an appointment date depends on a
+                cue that may sit a sentence away. My second guess, after an early measurement, was that tiny
+                windows win. Both were wrong, and the second was wrong because of a bug in my own chunker: when
+                a window edge snapped back to a line break, the next window started past the words in between,
+                so a few words of every document were never sent to the model at all. At a 50-word window that
+                silently dropped words from 19% of texts, and at 30 words from 46%. Nothing I was checking could
+                see it, because the spans that did come back were all correct.
+            </p>
+            <p>
+                With that fixed, the picture is a compromise between two opposite failures. Cut a coherent
+                document too small and precision goes: on 92 real test documents of 180 to 385 words, a 50-word
+                window scores 0.727 precision where the same documents sent whole score 0.861, because the model
+                has lost the surrounding sentence it needs to pick the right label. Hand it too much at once and
+                recall goes: on 660-word inputs, recall falls from 0.86 at a 100-word window to 0.51 at 400. The
+                median training document is 39 words, so the model emits about as many entities as a short
+                document holds and then stops; it does not produce a four-times-longer list for four times the
+                text. A 120-word window with 25 of overlap is the one setting near the top of both
+                curves. On coherent documents anything from 120 words up to sending the whole thing lands in a
+                one-point band, so the choice hardly matters; on concatenated text the spread is much wider and
+                120 is clearly the safer end of it.
+            </p>
+            <p>
+                I had also convinced myself that small windows were faster, on the grounds that output length
+                dominates runtime. That was an artifact of the same buggy run. Measured properly, more calls
+                cost more: 245 calls at a 30-word window took 171 seconds against 113 seconds for 68 calls at
+                100 words.
             </p>
             <p>
                 The second is how you match a returned value back to the source. The obvious implementation is

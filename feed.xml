@@ -5,7 +5,7 @@
   <link href="https://inboxpraveen.github.io/feed.xml" rel="self"/>
   <link href="https://inboxpraveen.github.io/all-blogs.html"/>
   <id>https://inboxpraveen.github.io/</id>
-  <updated>2026-09-23T13:50:57Z</updated>
+  <updated>2026-09-23T15:39:26Z</updated>
   <author><name>Praveen Kumar</name><uri>https://inboxpraveen.github.io/</uri></author>
   <entry>
     <title>Introducing Kavach PII 270M: a 270M model that finds personal data better than GLiNER, Presidio and spaCy, in 29 languages, trained on one laptop GPU</title>
