@@ -310,7 +310,7 @@
                 <div class="featured-list" data-reveal-group>
                     <article class="featured-card" data-glow style="--domain: var(--d-llm);">
                         <div class="featured-media">
-                            <img src="blogs/resources/blog-6/Header.webp" alt="Value-level F1 on the same held-out PII test set: Kavach PII 270M 88.4, GLiNER-PII 56.4, Presidio 22.2, regex and checksum rules 20.5" loading="lazy" decoding="async" width="1600" height="900">
+                            <img src="blogs/resources/blog-6/Header.webp" alt="Value-level F1 on the same 4,577-document held-out PII test set: Kavach PII 270M v3 92.0, Kavach v2 79.0, GLiNER-PII 59.3, regex and checksum rules 30.3, Presidio 29.5" loading="lazy" decoding="async" width="1600" height="900">
                         </div>
                         <div class="featured-body">
                             <div class="tag-row">
@@ -322,17 +322,18 @@
                             </div>
                             <h3 class="featured-title"><a href="blogs/blog-6.html">Introducing Kavach PII 270M: a 270M model that finds personal data better than GLiNER, Presidio and spaCy, in 29 languages, trained on one laptop GPU</a></h3>
                             <p class="featured-desc">
-                                A quarter-billion-parameter model that scores 88.4 value-F1 where GLiNER gets
-                                56.4 and Presidio 22.2, on the same held-out set with identical gold. Why taking
-                                character offsets out of the training targets was the decision that made it work,
-                                the gold-set audit that moved the number further than any training run, how 52
-                                labels across 29 languages were built and balanced, what happens on ASR
-                                transcripts, OCR noise and prompt injection, and the three things that failed.
+                                Updated for version 3: a quarter-billion-parameter model that scores 92.0 value-F1
+                                where GLiNER gets 59.3 and Presidio 29.5, on the same held-out set with identical
+                                gold, and 90.4 on documents no language model touched. Why taking character offsets
+                                out of the training targets was the decision that made it work, the re-annotation
+                                that found the old test set missing one value in ten, how 43 labels across 29
+                                languages were built and checked, the one number that got worse, and the three
+                                things that failed.
                             </p>
                             <div class="featured-foot">
                                 <span class="card-meta">
                                     <svg class="icon" aria-hidden="true"><use href="#i-calendar"></use></svg>
-                                    23 September 2026
+                                    23 September 2026, updated 29 September
                                     <span class="sep" aria-hidden="true"></span>
                                     <span data-read-time>Long read</span>
                                     <span class="sep" aria-hidden="true"></span>
