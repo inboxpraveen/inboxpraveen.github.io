@@ -1,0 +1,136 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 1480" width="560" height="1480" role="img" aria-labelledby="t d">
+  <title id="t">Docuvera360 architecture</title>
+  <desc id="d">Six layers. Clients: the React web app, share links and a dashboards-only viewer portal on its own host. API: FastAPI with 451 routes that signs in, checks roles, enqueues work and returns; a separate viewer API serves allowlisted routes. State: PostgreSQL 16 holds records, job queues and row-level security; Redis 7 carries live progress streams, run leases and cache. Background: a scheduler with 14 leased passes, a worker for ingest, sync, refresh and speech, and a task runner for chat, Canvas, Pulse and KB chat, all claiming jobs from PostgreSQL with FOR UPDATE SKIP LOCKED and publishing progress to Redis. Models, all on-prem: the reasoning model on vLLM on one 48 GB GPU, a vision-language page reader on llama.cpp, embeddings and reranking and speech on ONNX Runtime, a document extractor and ClamAV. Data and sources: MinIO files, Chroma vectors, Vault secrets, and the client's seven databases, Salesforce and SharePoint, queried read-only.</desc>
+  <defs>
+    <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#8f99ab"/>
+    </marker>
+    <style>
+      .lane { fill: rgba(255,255,255,0.018); stroke: rgba(255,255,255,0.06); stroke-width: 1; }
+      .lane-l { font: 700 13px/1 -apple-system, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; letter-spacing: 0.12em; }
+      .lane-s { font: 500 13px/1 -apple-system, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; letter-spacing: 0.04em; fill: #6e7688; }
+      .box { fill: rgba(255,255,255,0.035); stroke-width: 1.5; }
+      .t { font: 600 19px/1.2 -apple-system, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; fill: #f4f6fb; }
+      .s { font: 400 14.5px/1.3 -apple-system, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; fill: #a3acbd; }
+      .tag { font: 600 13.5px -apple-system, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; }
+      .m { font: 500 13px ui-monospace, &quot;Cascadia Mono&quot;, Consolas, Menlo, monospace; fill: #f5b656; }
+      .lbl { font: 400 13px -apple-system, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; fill: #8f99ab; }
+      .e { stroke: #8f99ab; stroke-width: 1.6; fill: none; marker-end: url(#ah); }
+      .e2 { marker-start: url(#ah); }
+      .d { stroke-dasharray: 5 5; }
+      .note { font: 400 13px -apple-system, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; fill: #6e7688; }
+      .c-client { stroke: #4fd8ff; }
+      .f-client { fill: #4fd8ff; }
+      .c-state { stroke: #f5b656; }
+      .f-state { fill: #f5b656; }
+      .c-bg { stroke: #c9d1de; }
+      .f-bg { fill: #c9d1de; }
+      .c-model { stroke: #a99bff; }
+      .f-model { fill: #a99bff; }
+      .c-data { stroke: #5fd6a4; }
+      .f-data { fill: #5fd6a4; }
+    </style>
+  </defs>
+
+  <rect width="560" height="1480" fill="#0a0d13"/>
+  <rect class="lane" x="6" y="10" width="548" height="150" rx="16"/>
+  <text class="lane-l f-client" x="16" y="34" text-anchor="start">CLIENTS</text>
+  <rect class="box c-client" x="16" y="50" width="168" height="96" rx="12"/>
+  <text class="t" x="100" y="84.2" text-anchor="middle">Web app</text>
+  <text class="s" x="100" y="112.8" text-anchor="middle">chat, Canvas,</text>
+  <text class="s" x="100" y="133.4" text-anchor="middle">Pulse, Manage</text>
+  <rect class="box c-client" x="196" y="50" width="168" height="96" rx="12"/>
+  <text class="t" x="280" y="84.2" text-anchor="middle">Share links</text>
+  <text class="s" x="280" y="112.8" text-anchor="middle">frozen, expiring</text>
+  <text class="s" x="280" y="133.4" text-anchor="middle">snapshots</text>
+  <rect class="box c-client" x="376" y="50" width="168" height="96" rx="12"/>
+  <text class="t" x="460" y="84.2" text-anchor="middle">Viewer portal</text>
+  <text class="s" x="460" y="112.8" text-anchor="middle">dashboards only,</text>
+  <text class="s" x="460" y="133.4" text-anchor="middle">own host</text>
+  <rect class="lane" x="6" y="198" width="548" height="150" rx="16"/>
+  <text class="lane-l f-client" x="16" y="222" text-anchor="start">API</text>
+  <rect class="box c-client" x="16" y="238" width="348" height="96" rx="12"/>
+  <text class="t" x="190" y="272.2" text-anchor="middle">API: FastAPI</text>
+  <text class="s" x="190" y="300.8" text-anchor="middle">451 routes; sign-in, role checks,</text>
+  <text class="s" x="190" y="321.4" text-anchor="middle">then enqueue and return</text>
+  <rect class="box c-client" x="376" y="238" width="168" height="96" rx="12"/>
+  <text class="t" x="460" y="272.2" text-anchor="middle">Viewer API</text>
+  <text class="s" x="460" y="300.8" text-anchor="middle">allowlisted</text>
+  <text class="s" x="460" y="321.4" text-anchor="middle">routes only</text>
+  <rect class="lane" x="6" y="386" width="548" height="150" rx="16"/>
+  <text class="lane-l f-state" x="16" y="410" text-anchor="start">STATE</text>
+  <rect class="box c-state" x="16" y="426" width="168" height="96" rx="12"/>
+  <text class="t" x="100" y="460.2" text-anchor="middle">Redis 7</text>
+  <text class="s" x="100" y="488.8" text-anchor="middle">progress streams,</text>
+  <text class="s" x="100" y="509.4" text-anchor="middle">leases, cache</text>
+  <rect class="box c-state" x="196" y="426" width="348" height="96" rx="12"/>
+  <text class="t" x="370" y="460.2" text-anchor="middle">PostgreSQL 16</text>
+  <text class="s" x="370" y="488.8" text-anchor="middle">records and job queues,</text>
+  <text class="s" x="370" y="509.4" text-anchor="middle">row-level security</text>
+  <rect class="lane" x="6" y="574" width="548" height="150" rx="16"/>
+  <text class="lane-l f-bg" x="16" y="598" text-anchor="start">BACKGROUND</text>
+  <text class="lane-s" x="126" y="598" text-anchor="start">calls models and data</text>
+  <rect class="box c-bg" x="16" y="614" width="168" height="96" rx="12"/>
+  <text class="t" x="100" y="648.2" text-anchor="middle">Scheduler</text>
+  <text class="s" x="100" y="676.8" text-anchor="middle">14 leased</text>
+  <text class="s" x="100" y="697.4" text-anchor="middle">passes</text>
+  <rect class="box c-bg" x="196" y="614" width="168" height="96" rx="12"/>
+  <text class="t" x="280" y="648.2" text-anchor="middle">Worker</text>
+  <text class="s" x="280" y="676.8" text-anchor="middle">ingest, sync,</text>
+  <text class="s" x="280" y="697.4" text-anchor="middle">refresh, speech</text>
+  <rect class="box c-bg" x="376" y="614" width="168" height="96" rx="12"/>
+  <text class="t" x="460" y="648.2" text-anchor="middle">Task runner</text>
+  <text class="s" x="460" y="676.8" text-anchor="middle">chat, Canvas,</text>
+  <text class="s" x="460" y="697.4" text-anchor="middle">Pulse, KB chat</text>
+  <rect class="lane" x="6" y="762" width="548" height="400" rx="16"/>
+  <text class="lane-l f-model" x="16" y="786" text-anchor="start">MODELS</text>
+  <text class="lane-s" x="116" y="786" text-anchor="start">all on-prem</text>
+  <rect class="box c-model" x="16" y="802" width="528" height="128" rx="12"/>
+  <text class="t" x="280" y="840.8" text-anchor="middle">Reasoning model</text>
+  <text class="s" x="280" y="869.3" text-anchor="middle">vLLM on one 48 GB GPU</text>
+  <text class="s" x="280" y="889.9" text-anchor="middle">mixture of experts, 4-bit, FP8 KV cache</text>
+  <text class="tag f-model" x="280" y="912.9" text-anchor="middle">590 tok/s across 10 streams</text>
+  <rect class="box c-model" x="16" y="944" width="258" height="84" rx="12"/>
+  <text class="t" x="145" y="982.5" text-anchor="middle">Page reader</text>
+  <text class="s" x="145" y="1011.1" text-anchor="middle">vision-language, llama.cpp</text>
+  <rect class="box c-model" x="286" y="944" width="258" height="84" rx="12"/>
+  <text class="t" x="415" y="982.5" text-anchor="middle">Embeddings, rerank</text>
+  <text class="s" x="415" y="1011.1" text-anchor="middle">ONNX Runtime, int8</text>
+  <rect class="box c-model" x="16" y="1040" width="258" height="84" rx="12"/>
+  <text class="t" x="145" y="1078.5" text-anchor="middle">Speech in and out</text>
+  <text class="s" x="145" y="1107.1" text-anchor="middle">ONNX Runtime</text>
+  <rect class="box c-model" x="286" y="1040" width="258" height="84" rx="12"/>
+  <text class="t" x="415" y="1078.5" text-anchor="middle">Extractor, ClamAV</text>
+  <text class="s" x="415" y="1107.1" text-anchor="middle">parsing, virus scan</text>
+  <text class="note" x="280" y="1146" text-anchor="middle">reader, retrieval, speech: GPU or CPU</text>
+  <rect class="lane" x="6" y="1200" width="548" height="268" rx="16"/>
+  <text class="lane-l f-data" x="16" y="1224" text-anchor="start">DATA AND SOURCES</text>
+  <rect class="box c-data" x="16" y="1240" width="168" height="84" rx="12"/>
+  <text class="t" x="100" y="1278.5" text-anchor="middle">MinIO</text>
+  <text class="s" x="100" y="1307.1" text-anchor="middle">files</text>
+  <rect class="box c-data" x="196" y="1240" width="168" height="84" rx="12"/>
+  <text class="t" x="280" y="1278.5" text-anchor="middle">Chroma</text>
+  <text class="s" x="280" y="1307.1" text-anchor="middle">vectors</text>
+  <rect class="box c-data" x="376" y="1240" width="168" height="84" rx="12"/>
+  <text class="t" x="460" y="1278.5" text-anchor="middle">Vault</text>
+  <text class="s" x="460" y="1307.1" text-anchor="middle">secrets</text>
+  <rect class="box c-data" x="16" y="1338" width="528" height="116" rx="12"/>
+  <text class="t" x="280" y="1381.1" text-anchor="middle">Client sources</text>
+  <text class="s" x="280" y="1409.6" text-anchor="middle">7 databases, Salesforce, SharePoint</text>
+  <text class="m" x="280" y="1432.6" text-anchor="middle">read-only SQL</text>
+  <path class="e e2" d="M100 146 V238"/>
+  <path class="e" d="M280 146 V238"/>
+  <path class="e" d="M460 146 V238"/>
+  <path class="e" d="M370 334 V426"/>
+  <text class="lbl" x="380" y="371" text-anchor="start">enqueue</text>
+  <path class="e d" d="M100 426 V334"/>
+  <text class="lbl" x="110" y="371" text-anchor="start">progress</text>
+  <path class="e" d="M460 334 V426"/>
+  <path class="e" d="M330 522 V614"/>
+  <text class="lbl" x="340" y="559" text-anchor="start">claim:</text>
+  <text class="m" x="386" y="559" text-anchor="start">SKIP LOCKED</text>
+  <path class="e d" d="M100 614 V522"/>
+  <text class="lbl" x="110" y="559" text-anchor="start">progress</text>
+  <path class="e" d="M460 710 V802"/>
+  <text class="lbl" x="470" y="747" text-anchor="start">model calls</text>
+</svg>

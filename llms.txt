@@ -27,7 +27,7 @@ Every page is static HTML with Open Graph tags, JSON-LD (Person, BlogPosting, So
 
 - [Easy-vLLM](https://inboxpraveen.github.io/projects/project-15.html): 
 - [CleanFrame](https://inboxpraveen.github.io/projects/project-14.html): 
-- [Docuvera: Loss360](https://inboxpraveen.github.io/projects/project-2.html): 
+- [Docuvera360](https://inboxpraveen.github.io/projects/project-2.html): 
 - [MoM AI: Minutes of Meeting](https://inboxpraveen.github.io/projects/project-8.html): 
 - [Speech Annotation Tool](https://inboxpraveen.github.io/projects/project-4.html): 
 - [AudioFP](https://inboxpraveen.github.io/projects/project-7.html): 
