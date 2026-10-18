@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 1522" width="560" height="1522" role="img" aria-labelledby="t d">
+  <title id="t">The order of decisions</title>
+  <desc id="d">Eight decisions in order. 1 write the contract: what goes in, what comes out, what a mistake costs. 2 name the task shape: bucket, find, compare, transform, write or act. 3 list the constraints: latency, volume, where it runs, languages, licence. 4 pick the architecture family: encoder, decoder, both, or no model. 5 build the eval set from real inputs. 6 shortlist and test checkpoints: a ceiling, a default, a specialist and a small one. 7 choose the cheapest training that closes the gap. 8 size the memory, latency and bill, and ship with a fallback. A dashed arrow loops from step 6 back to step 2, because testing often shows the task is really two tasks. The model itself is chosen at step 6.</desc>
+
+  <defs>
+    <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#8f99ab"/>
+    </marker>
+    <style>
+      .bg { fill: #0f1218; }
+      .box { fill: rgba(255,255,255,0.035); stroke-width: 1.5; }
+      .k { font: 700 12.5px -apple-system, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; letter-spacing: 0.12em; }
+      .t { font: 650 19px -apple-system, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; fill: #f4f6fb; }
+      .s { font: 400 14.5px -apple-system, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; fill: #a3acbd; }
+      .o { font: 600 13.5px -apple-system, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; fill: #f5b656; }
+      .lbl { font: 700 11.5px -apple-system, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; letter-spacing: 0.1em; fill: #6e7688; }
+      .note { font: 400 13px -apple-system, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; fill: #6e7688; }
+      .e { stroke: #8f99ab; stroke-width: 1.6; fill: none; marker-end: url(#ah); }
+      .d { stroke-dasharray: 6 5; }
+      .m { font: 500 13px ui-monospace, &quot;Cascadia Mono&quot;, Consolas, Menlo, monospace; fill: #a3acbd; }
+    </style>
+  </defs>
+  <rect class="bg" x="0" y="0" width="560" height="1522" rx="0"/>
+  <text class="lbl" x="20" y="32" style="font-size:17px">THE ORDER OF DECISIONS</text>
+  <rect class="box" x="20" y="54" width="470" height="150" rx="10" stroke="#4fd8ff"/>
+  <text class="k" x="38" y="84" fill="#4fd8ff" style="font-size:17px">STEP 1</text>
+  <text class="t" x="140" y="85" style="font-size:25px">Write the contract</text>
+  <text class="s" x="38" y="122" style="font-size:21px">Inputs, outputs, and what each mistake costs</text>
+  <text class="o" x="38" y="186" style="font-size:20px">Output: one page</text>
+  <path class="e" d="M80 206 L80 235"/>
+  <rect class="box" x="20" y="238" width="470" height="150" rx="10" stroke="#4fd8ff"/>
+  <text class="k" x="38" y="268" fill="#4fd8ff" style="font-size:17px">STEP 2</text>
+  <text class="t" x="140" y="269" style="font-size:25px">Name the task shape</text>
+  <text class="s" x="38" y="306" style="font-size:21px">Bucket, find, compare, transform, write or</text>
+  <text class="s" x="38" y="333" style="font-size:21px">act</text>
+  <text class="o" x="38" y="370" style="font-size:20px">Output: a chain of small tasks</text>
+  <path class="e" d="M80 390 L80 419"/>
+  <rect class="box" x="20" y="422" width="470" height="150" rx="10" stroke="#4fd8ff"/>
+  <text class="k" x="38" y="452" fill="#4fd8ff" style="font-size:17px">STEP 3</text>
+  <text class="t" x="140" y="453" style="font-size:25px">List the constraints</text>
+  <text class="s" x="38" y="490" style="font-size:21px">Latency, volume, where it runs, languages,</text>
+  <text class="s" x="38" y="517" style="font-size:21px">licence</text>
+  <text class="o" x="38" y="554" style="font-size:20px">Output: what is ruled out</text>
+  <path class="e" d="M80 574 L80 603"/>
+  <rect class="box" x="20" y="606" width="470" height="150" rx="10" stroke="#a99bff"/>
+  <text class="k" x="38" y="636" fill="#a99bff" style="font-size:17px">STEP 4</text>
+  <text class="t" x="140" y="637" style="font-size:25px">Pick the family</text>
+  <text class="s" x="38" y="674" style="font-size:21px">Encoder, decoder, both, or no model at all</text>
+  <text class="o" x="38" y="738" style="font-size:20px">Output: one family per link</text>
+  <path class="e" d="M80 758 L80 787"/>
+  <rect class="box" x="20" y="790" width="470" height="150" rx="10" stroke="#f5b656"/>
+  <text class="k" x="38" y="820" fill="#f5b656" style="font-size:17px">STEP 5</text>
+  <text class="t" x="140" y="821" style="font-size:25px">Build the eval set</text>
+  <text class="s" x="38" y="858" style="font-size:21px">Real inputs, sliced by language, channel,</text>
+  <text class="s" x="38" y="885" style="font-size:21px">length</text>
+  <text class="o" x="38" y="922" style="font-size:20px">Output: 200 to 1,000 examples</text>
+  <path class="e" d="M80 942 L80 971"/>
+  <rect class="box" x="20" y="974" width="470" height="150" rx="10" stroke="#f5b656"/>
+  <text class="k" x="38" y="1004" fill="#f5b656" style="font-size:17px">STEP 6</text>
+  <text class="t" x="140" y="1005" style="font-size:25px">Shortlist and test</text>
+  <text class="s" x="38" y="1042" style="font-size:21px">A ceiling, a default, a specialist, a small</text>
+  <text class="s" x="38" y="1069" style="font-size:21px">one</text>
+  <text class="o" x="38" y="1106" style="font-size:20px">Output: a measured winner</text>
+  <path class="e" d="M80 1126 L80 1155"/>
+  <rect class="box" x="20" y="1158" width="470" height="150" rx="10" stroke="#5fd6a4"/>
+  <text class="k" x="38" y="1188" fill="#5fd6a4" style="font-size:17px">STEP 7</text>
+  <text class="t" x="140" y="1189" style="font-size:25px">Choose the training</text>
+  <text class="s" x="38" y="1226" style="font-size:21px">The cheapest rung that closes the gap you</text>
+  <text class="s" x="38" y="1253" style="font-size:21px">found</text>
+  <text class="o" x="38" y="1290" style="font-size:20px">Output: often none at all</text>
+  <path class="e" d="M80 1310 L80 1339"/>
+  <rect class="box" x="20" y="1342" width="470" height="150" rx="10" stroke="#5fd6a4"/>
+  <text class="k" x="38" y="1372" fill="#5fd6a4" style="font-size:17px">STEP 8</text>
+  <text class="t" x="140" y="1373" style="font-size:25px">Size it and ship</text>
+  <text class="s" x="38" y="1410" style="font-size:21px">Memory, latency, the bill and a fallback</text>
+  <text class="o" x="38" y="1474" style="font-size:20px">Output: a cost per request</text>
+  <path class="e d" d="M492 1049.0 L530 1049.0 L530 313.0 L494 313.0"/>
+</svg>

@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 1446" width="560" height="1446" role="img" aria-labelledby="t d">
+  <title id="t">The training ladder</title>
+  <desc id="d">A ladder of eight rungs, cheapest at the bottom. 0 no model: rules, lookups, SQL or a saved plan, for the part of a problem with a pattern. 1 prompt an existing model. 2 retrieval and tools, which close a knowledge gap. 3 fine-tune an encoder for a fixed label set at volume, from hundreds to a few thousand labels. 4 fine-tune a decoder with supervised fine-tuning and LoRA, for format, style and behaviour, or to distil a large model into a small one. 5 preference tuning or reinforcement learning with a checkable reward. 6 continued pretraining on raw text for a language or domain the model never read. 7 pretraining from scratch, when no model exists for the data. Climb only as far as the gap requires.</desc>
+
+  <defs>
+    <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#8f99ab"/>
+    </marker>
+    <style>
+      .bg { fill: #0f1218; }
+      .box { fill: rgba(255,255,255,0.035); stroke-width: 1.5; }
+      .k { font: 700 12.5px -apple-system, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; letter-spacing: 0.12em; }
+      .t { font: 650 19px -apple-system, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; fill: #f4f6fb; }
+      .s { font: 400 14.5px -apple-system, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; fill: #a3acbd; }
+      .o { font: 600 13.5px -apple-system, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; fill: #f5b656; }
+      .lbl { font: 700 11.5px -apple-system, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; letter-spacing: 0.1em; fill: #6e7688; }
+      .note { font: 400 13px -apple-system, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; fill: #6e7688; }
+      .e { stroke: #8f99ab; stroke-width: 1.6; fill: none; marker-end: url(#ah); }
+      .d { stroke-dasharray: 6 5; }
+      .m { font: 500 13px ui-monospace, &quot;Cascadia Mono&quot;, Consolas, Menlo, monospace; fill: #a3acbd; }
+    </style>
+  </defs>
+  <rect class="bg" x="0" y="0" width="560" height="1446" rx="0"/>
+  <text class="lbl" x="20" y="34" style="font-size:16px">THE TRAINING LADDER, CHEAPEST AT THE BOTTOM</text>
+  <rect x="20" y="63" width="520" height="150" rx="10" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.06)"/>
+  <rect x="20" y="63" width="6" height="150" rx="2" fill="#ff8fa8"/>
+  <circle cx="60" cy="96" r="18" fill="none" stroke="#ff8fa8" stroke-width="1.8"/>
+  <text class="t" x="60" y="103" fill="#ff8fa8" text-anchor="middle" style="font-size:20px">7</text>
+  <text class="t" x="92" y="104" style="font-size:25px">Pretrain from scratch</text>
+  <text class="s" x="40" y="142" style="font-size:20px">Your own model, your own data</text>
+  <text class="s" x="40" y="170" fill="#f4f6fb" style="font-size:20px">Closes: No model exists for the data at all</text>
+  <text class="o" x="40" y="198" style="font-size:20px">Needs: Billions of tokens and a cluster</text>
+  <rect x="20" y="223" width="520" height="150" rx="10" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.06)"/>
+  <rect x="20" y="223" width="6" height="150" rx="2" fill="#f5b656"/>
+  <circle cx="60" cy="256" r="18" fill="none" stroke="#f5b656" stroke-width="1.8"/>
+  <text class="t" x="60" y="263" fill="#f5b656" text-anchor="middle" style="font-size:20px">6</text>
+  <text class="t" x="92" y="264" style="font-size:25px">Continued pretraining</text>
+  <text class="s" x="40" y="302" style="font-size:20px">Raw text, often a tokenizer fix first</text>
+  <text class="s" x="40" y="330" fill="#f4f6fb" style="font-size:20px">Closes: A language or domain it never read</text>
+  <text class="o" x="40" y="358" style="font-size:20px">Needs: Tens of millions to billions of tokens</text>
+  <rect x="20" y="383" width="520" height="150" rx="10" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.06)"/>
+  <rect x="20" y="383" width="6" height="150" rx="2" fill="#a99bff"/>
+  <circle cx="60" cy="416" r="18" fill="none" stroke="#a99bff" stroke-width="1.8"/>
+  <text class="t" x="60" y="423" fill="#a99bff" text-anchor="middle" style="font-size:20px">5</text>
+  <text class="t" x="92" y="424" style="font-size:25px">Preference or RL</text>
+  <text class="s" x="40" y="462" style="font-size:20px">DPO; GRPO with a checkable reward</text>
+  <text class="s" x="40" y="490" fill="#f4f6fb" style="font-size:20px">Closes: Choosing the better of plausible answers</text>
+  <text class="o" x="40" y="518" style="font-size:20px">Needs: Preference pairs or a reward function</text>
+  <rect x="20" y="543" width="520" height="150" rx="10" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.06)"/>
+  <rect x="20" y="543" width="6" height="150" rx="2" fill="#4fd8ff"/>
+  <circle cx="60" cy="576" r="18" fill="none" stroke="#4fd8ff" stroke-width="1.8"/>
+  <text class="t" x="60" y="583" fill="#4fd8ff" text-anchor="middle" style="font-size:20px">4</text>
+  <text class="t" x="92" y="584" style="font-size:25px">Fine-tune a decoder</text>
+  <text class="s" x="40" y="622" style="font-size:20px">SFT with LoRA; distil big into small</text>
+  <text class="s" x="40" y="650" fill="#f4f6fb" style="font-size:20px">Closes: Format, style, behaviour; or the bill</text>
+  <text class="o" x="40" y="678" style="font-size:20px">Needs: Hundreds to tens of thousands of pairs</text>
+  <rect x="20" y="703" width="520" height="150" rx="10" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.06)"/>
+  <rect x="20" y="703" width="6" height="150" rx="2" fill="#4fd8ff"/>
+  <circle cx="60" cy="736" r="18" fill="none" stroke="#4fd8ff" stroke-width="1.8"/>
+  <text class="t" x="60" y="743" fill="#4fd8ff" text-anchor="middle" style="font-size:20px">3</text>
+  <text class="t" x="92" y="744" style="font-size:25px">Fine-tune an encoder</text>
+  <text class="s" x="40" y="782" style="font-size:20px">A head on ModernBERT, mmBERT, XLM-R</text>
+  <text class="s" x="40" y="810" fill="#f4f6fb" style="font-size:20px">Closes: A fixed label set, at volume, on a CPU</text>
+  <text class="o" x="40" y="838" style="font-size:20px">Needs: Hundreds to a few thousand labels</text>
+  <rect x="20" y="863" width="520" height="178" rx="10" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.06)"/>
+  <rect x="20" y="863" width="6" height="178" rx="2" fill="#5fd6a4"/>
+  <circle cx="60" cy="896" r="18" fill="none" stroke="#5fd6a4" stroke-width="1.8"/>
+  <text class="t" x="60" y="903" fill="#5fd6a4" text-anchor="middle" style="font-size:20px">2</text>
+  <text class="t" x="92" y="904" style="font-size:25px">Retrieval and tools</text>
+  <text class="s" x="40" y="942" style="font-size:20px">Hand it the facts at request time</text>
+  <text class="s" x="40" y="970" fill="#f4f6fb" style="font-size:20px">Closes: Knowledge: private, changing or recent</text>
+  <text class="s" x="40" y="998" fill="#f4f6fb" style="font-size:20px">facts</text>
+  <text class="o" x="40" y="1026" style="font-size:20px">Needs: Clean documents and an index</text>
+  <rect x="20" y="1051" width="520" height="178" rx="10" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.06)"/>
+  <rect x="20" y="1051" width="6" height="178" rx="2" fill="#5fd6a4"/>
+  <circle cx="60" cy="1084" r="18" fill="none" stroke="#5fd6a4" stroke-width="1.8"/>
+  <text class="t" x="60" y="1091" fill="#5fd6a4" text-anchor="middle" style="font-size:20px">1</text>
+  <text class="t" x="92" y="1092" style="font-size:25px">Prompt it</text>
+  <text class="s" x="40" y="1130" style="font-size:20px">Instructions, examples, a schema</text>
+  <text class="s" x="40" y="1158" fill="#f4f6fb" style="font-size:20px">Closes: Nothing was missing; it just was not</text>
+  <text class="s" x="40" y="1186" fill="#f4f6fb" style="font-size:20px">asked well</text>
+  <text class="o" x="40" y="1214" style="font-size:20px">Needs: An eval set and an afternoon</text>
+  <rect x="20" y="1239" width="520" height="178" rx="10" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.06)"/>
+  <rect x="20" y="1239" width="6" height="178" rx="2" fill="#5fd6a4"/>
+  <circle cx="60" cy="1272" r="18" fill="none" stroke="#5fd6a4" stroke-width="1.8"/>
+  <text class="t" x="60" y="1279" fill="#5fd6a4" text-anchor="middle" style="font-size:20px">0</text>
+  <text class="t" x="92" y="1280" style="font-size:25px">No model</text>
+  <text class="s" x="40" y="1318" style="font-size:20px">Rules, lookups, SQL, a saved plan</text>
+  <text class="s" x="40" y="1346" fill="#f4f6fb" style="font-size:20px">Closes: The part of the problem that has a</text>
+  <text class="s" x="40" y="1374" fill="#f4f6fb" style="font-size:20px">pattern</text>
+  <text class="o" x="40" y="1402" style="font-size:20px">Needs: An engineer and a test set</text>
+</svg>

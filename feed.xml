@@ -5,8 +5,17 @@
   <link href="https://inboxpraveen.github.io/feed.xml" rel="self"/>
   <link href="https://inboxpraveen.github.io/all-blogs.html"/>
   <id>https://inboxpraveen.github.io/</id>
-  <updated>2026-10-14T18:09:01Z</updated>
+  <updated>2026-10-17T21:06:10Z</updated>
   <author><name>Praveen Kumar</name><uri>https://inboxpraveen.github.io/</uri></author>
+  <entry>
+    <title>Which model should we use? A production framework for choosing architectures, models, evals and training, from the use case to the bill</title>
+    <link href="https://inboxpraveen.github.io/blogs/blog-8.html"/>
+    <id>https://inboxpraveen.github.io/blogs/blog-8.html</id>
+    <published>2026-10-18T00:00:00Z</published>
+    <updated>2026-10-18T00:00:00Z</updated>
+    <summary>A practical decision framework for production AI: name the task, choose encoder, decoder or encoder-decoder, find and vet Hugging Face models, build the eval that decides, pick how much training, handle low-resource languages and domains, and size latency, memory and cost. Six use cases worked end to end.</summary>
+    <content type="html">&lt;p&gt;&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://inboxpraveen.github.io/blogs/blog-8.html&quot;&gt;Read the post&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
   <entry>
     <title>Introducing Kavach PII 270M: a 270M model that finds personal data better than GLiNER, Presidio and spaCy, in 29 languages, trained on one laptop GPU</title>
     <link href="https://inboxpraveen.github.io/blogs/blog-6.html"/>

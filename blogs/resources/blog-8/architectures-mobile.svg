@@ -1,0 +1,185 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 2093" width="560" height="2093" role="img" aria-labelledby="t d">
+  <title id="t">Encoder, decoder, encoder-decoder</title>
+  <desc id="d">Three transformer families side by side. Encoder-only: reads the whole input at once in both directions, every token attends to every token, writes nothing itself; a small head turns its vectors into labels, spans or scores; one pass with no loop; used for classification, NER, embeddings and reranking, for example ModernBERT, mmBERT, XLM-R, DeBERTa-v3 and BGE-M3. Decoder-only: reads left to right, each token attends only to earlier tokens, writes one token at a time; the prompt is one pass and every output token is another, so output length is the latency; used for open answers, chat, reasoning and tools, for example Qwen3, Gemma 3 and Llama 3. Encoder-decoder: reads the input once in both directions, then writes token by token while attending to the whole input; used for translation, speech to text, summaries and page to text, for example Whisper, NLLB, IndicTrans2, T5 and T5Gemma.</desc>
+
+  <defs>
+    <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#8f99ab"/>
+    </marker>
+    <style>
+      .bg { fill: #0f1218; }
+      .box { fill: rgba(255,255,255,0.035); stroke-width: 1.5; }
+      .k { font: 700 12.5px -apple-system, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; letter-spacing: 0.12em; }
+      .t { font: 650 19px -apple-system, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; fill: #f4f6fb; }
+      .s { font: 400 14.5px -apple-system, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; fill: #a3acbd; }
+      .o { font: 600 13.5px -apple-system, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; fill: #f5b656; }
+      .lbl { font: 700 11.5px -apple-system, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; letter-spacing: 0.1em; fill: #6e7688; }
+      .note { font: 400 13px -apple-system, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif; fill: #6e7688; }
+      .e { stroke: #8f99ab; stroke-width: 1.6; fill: none; marker-end: url(#ah); }
+      .d { stroke-dasharray: 6 5; }
+      .m { font: 500 13px ui-monospace, &quot;Cascadia Mono&quot;, Consolas, Menlo, monospace; fill: #a3acbd; }
+    </style>
+  </defs>
+  <rect class="bg" x="0" y="0" width="560" height="2093" rx="0"/>
+  <text class="lbl" x="20" y="34" style="font-size:17px">THREE SHAPES OF TRANSFORMER</text>
+  <rect class="box" x="20" y="56" width="520" height="647" rx="10" stroke="#4fd8ff"/>
+  <text class="t" x="36" y="94" fill="#4fd8ff" style="font-size:26px">Encoder-only</text>
+  <rect x="36" y="108" width="18" height="18" rx="2" fill="#4fd8ff" fill-opacity="0.85"/>
+  <rect x="56" y="108" width="18" height="18" rx="2" fill="#4fd8ff" fill-opacity="0.85"/>
+  <rect x="76" y="108" width="18" height="18" rx="2" fill="#4fd8ff" fill-opacity="0.85"/>
+  <rect x="96" y="108" width="18" height="18" rx="2" fill="#4fd8ff" fill-opacity="0.85"/>
+  <rect x="116" y="108" width="18" height="18" rx="2" fill="#4fd8ff" fill-opacity="0.85"/>
+  <rect x="136" y="108" width="18" height="18" rx="2" fill="#4fd8ff" fill-opacity="0.85"/>
+  <rect x="36" y="128" width="18" height="18" rx="2" fill="#4fd8ff" fill-opacity="0.85"/>
+  <rect x="56" y="128" width="18" height="18" rx="2" fill="#4fd8ff" fill-opacity="0.85"/>
+  <rect x="76" y="128" width="18" height="18" rx="2" fill="#4fd8ff" fill-opacity="0.85"/>
+  <rect x="96" y="128" width="18" height="18" rx="2" fill="#4fd8ff" fill-opacity="0.85"/>
+  <rect x="116" y="128" width="18" height="18" rx="2" fill="#4fd8ff" fill-opacity="0.85"/>
+  <rect x="136" y="128" width="18" height="18" rx="2" fill="#4fd8ff" fill-opacity="0.85"/>
+  <rect x="36" y="148" width="18" height="18" rx="2" fill="#4fd8ff" fill-opacity="0.85"/>
+  <rect x="56" y="148" width="18" height="18" rx="2" fill="#4fd8ff" fill-opacity="0.85"/>
+  <rect x="76" y="148" width="18" height="18" rx="2" fill="#4fd8ff" fill-opacity="0.85"/>
+  <rect x="96" y="148" width="18" height="18" rx="2" fill="#4fd8ff" fill-opacity="0.85"/>
+  <rect x="116" y="148" width="18" height="18" rx="2" fill="#4fd8ff" fill-opacity="0.85"/>
+  <rect x="136" y="148" width="18" height="18" rx="2" fill="#4fd8ff" fill-opacity="0.85"/>
+  <rect x="36" y="168" width="18" height="18" rx="2" fill="#4fd8ff" fill-opacity="0.85"/>
+  <rect x="56" y="168" width="18" height="18" rx="2" fill="#4fd8ff" fill-opacity="0.85"/>
+  <rect x="76" y="168" width="18" height="18" rx="2" fill="#4fd8ff" fill-opacity="0.85"/>
+  <rect x="96" y="168" width="18" height="18" rx="2" fill="#4fd8ff" fill-opacity="0.85"/>
+  <rect x="116" y="168" width="18" height="18" rx="2" fill="#4fd8ff" fill-opacity="0.85"/>
+  <rect x="136" y="168" width="18" height="18" rx="2" fill="#4fd8ff" fill-opacity="0.85"/>
+  <rect x="36" y="188" width="18" height="18" rx="2" fill="#4fd8ff" fill-opacity="0.85"/>
+  <rect x="56" y="188" width="18" height="18" rx="2" fill="#4fd8ff" fill-opacity="0.85"/>
+  <rect x="76" y="188" width="18" height="18" rx="2" fill="#4fd8ff" fill-opacity="0.85"/>
+  <rect x="96" y="188" width="18" height="18" rx="2" fill="#4fd8ff" fill-opacity="0.85"/>
+  <rect x="116" y="188" width="18" height="18" rx="2" fill="#4fd8ff" fill-opacity="0.85"/>
+  <rect x="136" y="188" width="18" height="18" rx="2" fill="#4fd8ff" fill-opacity="0.85"/>
+  <rect x="36" y="208" width="18" height="18" rx="2" fill="#4fd8ff" fill-opacity="0.85"/>
+  <rect x="56" y="208" width="18" height="18" rx="2" fill="#4fd8ff" fill-opacity="0.85"/>
+  <rect x="76" y="208" width="18" height="18" rx="2" fill="#4fd8ff" fill-opacity="0.85"/>
+  <rect x="96" y="208" width="18" height="18" rx="2" fill="#4fd8ff" fill-opacity="0.85"/>
+  <rect x="116" y="208" width="18" height="18" rx="2" fill="#4fd8ff" fill-opacity="0.85"/>
+  <rect x="136" y="208" width="18" height="18" rx="2" fill="#4fd8ff" fill-opacity="0.85"/>
+  <text class="note" x="36" y="255" style="font-size:17px">every token sees every token</text>
+  <text class="lbl" x="36" y="289" style="font-size:15px">READS</text>
+  <text class="s" x="36" y="317" style="font-size:21px">The whole input at once, in both directions</text>
+  <text class="lbl" x="36" y="359" style="font-size:15px">WRITES</text>
+  <text class="s" x="36" y="387" style="font-size:21px">Nothing. A vector per token; a small head</text>
+  <text class="s" x="36" y="415" style="font-size:21px">turns it into labels or scores</text>
+  <text class="lbl" x="36" y="457" style="font-size:15px">COST</text>
+  <text class="s" x="36" y="485" style="font-size:21px">One pass, no loop. The same cost for every</text>
+  <text class="s" x="36" y="513" style="font-size:21px">input of that length</text>
+  <text class="lbl" x="36" y="555" style="font-size:15px">USE FOR</text>
+  <text class="s" x="36" y="583" style="font-size:21px">Classification, NER, embeddings, reranking</text>
+  <text class="lbl" x="36" y="625" style="font-size:15px">EXAMPLES</text>
+  <text class="s" x="36" y="653" style="font-size:21px">ModernBERT, mmBERT, XLM-R, DeBERTa-v3, BGE-M3</text>
+  <rect class="box" x="20" y="727" width="520" height="647" rx="10" stroke="#a99bff"/>
+  <text class="t" x="36" y="765" fill="#a99bff" style="font-size:26px">Decoder-only</text>
+  <rect x="36" y="779" width="18" height="18" rx="2" fill="#a99bff" fill-opacity="0.85"/>
+  <rect x="56" y="779" width="18" height="18" rx="2" fill="rgba(255,255,255,0.05)"/>
+  <rect x="76" y="779" width="18" height="18" rx="2" fill="rgba(255,255,255,0.05)"/>
+  <rect x="96" y="779" width="18" height="18" rx="2" fill="rgba(255,255,255,0.05)"/>
+  <rect x="116" y="779" width="18" height="18" rx="2" fill="rgba(255,255,255,0.05)"/>
+  <rect x="136" y="779" width="18" height="18" rx="2" fill="rgba(255,255,255,0.05)"/>
+  <rect x="36" y="799" width="18" height="18" rx="2" fill="#a99bff" fill-opacity="0.85"/>
+  <rect x="56" y="799" width="18" height="18" rx="2" fill="#a99bff" fill-opacity="0.85"/>
+  <rect x="76" y="799" width="18" height="18" rx="2" fill="rgba(255,255,255,0.05)"/>
+  <rect x="96" y="799" width="18" height="18" rx="2" fill="rgba(255,255,255,0.05)"/>
+  <rect x="116" y="799" width="18" height="18" rx="2" fill="rgba(255,255,255,0.05)"/>
+  <rect x="136" y="799" width="18" height="18" rx="2" fill="rgba(255,255,255,0.05)"/>
+  <rect x="36" y="819" width="18" height="18" rx="2" fill="#a99bff" fill-opacity="0.85"/>
+  <rect x="56" y="819" width="18" height="18" rx="2" fill="#a99bff" fill-opacity="0.85"/>
+  <rect x="76" y="819" width="18" height="18" rx="2" fill="#a99bff" fill-opacity="0.85"/>
+  <rect x="96" y="819" width="18" height="18" rx="2" fill="rgba(255,255,255,0.05)"/>
+  <rect x="116" y="819" width="18" height="18" rx="2" fill="rgba(255,255,255,0.05)"/>
+  <rect x="136" y="819" width="18" height="18" rx="2" fill="rgba(255,255,255,0.05)"/>
+  <rect x="36" y="839" width="18" height="18" rx="2" fill="#a99bff" fill-opacity="0.85"/>
+  <rect x="56" y="839" width="18" height="18" rx="2" fill="#a99bff" fill-opacity="0.85"/>
+  <rect x="76" y="839" width="18" height="18" rx="2" fill="#a99bff" fill-opacity="0.85"/>
+  <rect x="96" y="839" width="18" height="18" rx="2" fill="#a99bff" fill-opacity="0.85"/>
+  <rect x="116" y="839" width="18" height="18" rx="2" fill="rgba(255,255,255,0.05)"/>
+  <rect x="136" y="839" width="18" height="18" rx="2" fill="rgba(255,255,255,0.05)"/>
+  <rect x="36" y="859" width="18" height="18" rx="2" fill="#a99bff" fill-opacity="0.85"/>
+  <rect x="56" y="859" width="18" height="18" rx="2" fill="#a99bff" fill-opacity="0.85"/>
+  <rect x="76" y="859" width="18" height="18" rx="2" fill="#a99bff" fill-opacity="0.85"/>
+  <rect x="96" y="859" width="18" height="18" rx="2" fill="#a99bff" fill-opacity="0.85"/>
+  <rect x="116" y="859" width="18" height="18" rx="2" fill="#a99bff" fill-opacity="0.85"/>
+  <rect x="136" y="859" width="18" height="18" rx="2" fill="rgba(255,255,255,0.05)"/>
+  <rect x="36" y="879" width="18" height="18" rx="2" fill="#a99bff" fill-opacity="0.85"/>
+  <rect x="56" y="879" width="18" height="18" rx="2" fill="#a99bff" fill-opacity="0.85"/>
+  <rect x="76" y="879" width="18" height="18" rx="2" fill="#a99bff" fill-opacity="0.85"/>
+  <rect x="96" y="879" width="18" height="18" rx="2" fill="#a99bff" fill-opacity="0.85"/>
+  <rect x="116" y="879" width="18" height="18" rx="2" fill="#a99bff" fill-opacity="0.85"/>
+  <rect x="136" y="879" width="18" height="18" rx="2" fill="#a99bff" fill-opacity="0.85"/>
+  <text class="note" x="36" y="926" style="font-size:17px">each token sees only the past</text>
+  <text class="lbl" x="36" y="960" style="font-size:15px">READS</text>
+  <text class="s" x="36" y="988" style="font-size:21px">Left to right</text>
+  <text class="lbl" x="36" y="1030" style="font-size:15px">WRITES</text>
+  <text class="s" x="36" y="1058" style="font-size:21px">One token at a time, each one a pass over the</text>
+  <text class="s" x="36" y="1086" style="font-size:21px">weights</text>
+  <text class="lbl" x="36" y="1128" style="font-size:15px">COST</text>
+  <text class="s" x="36" y="1156" style="font-size:21px">The prompt in one pass, then one pass per</text>
+  <text class="s" x="36" y="1184" style="font-size:21px">output token. Output length is the latency</text>
+  <text class="lbl" x="36" y="1226" style="font-size:15px">USE FOR</text>
+  <text class="s" x="36" y="1254" style="font-size:21px">Open answers, chat, reasoning, tool use</text>
+  <text class="lbl" x="36" y="1296" style="font-size:15px">EXAMPLES</text>
+  <text class="s" x="36" y="1324" style="font-size:21px">Qwen3, Gemma 3, Llama 3, every chat API</text>
+  <rect class="box" x="20" y="1398" width="520" height="675" rx="10" stroke="#f5b656"/>
+  <text class="t" x="36" y="1436" fill="#f5b656" style="font-size:26px">Encoder-decoder</text>
+  <rect x="36" y="1450" width="18" height="18" rx="2" fill="#f5b656" fill-opacity="0.85"/>
+  <rect x="56" y="1450" width="18" height="18" rx="2" fill="#f5b656" fill-opacity="0.85"/>
+  <rect x="76" y="1450" width="18" height="18" rx="2" fill="#f5b656" fill-opacity="0.85"/>
+  <rect x="96" y="1450" width="18" height="18" rx="2" fill="#f5b656" fill-opacity="0.85"/>
+  <rect x="116" y="1450" width="18" height="18" rx="2" fill="#f5b656" fill-opacity="0.85"/>
+  <rect x="136" y="1450" width="18" height="18" rx="2" fill="#f5b656" fill-opacity="0.85"/>
+  <rect x="156" y="1450" width="18" height="18" rx="2" fill="#f5b656" fill-opacity="0.45"/>
+  <rect x="176" y="1450" width="18" height="18" rx="2" fill="rgba(255,255,255,0.05)"/>
+  <rect x="196" y="1450" width="18" height="18" rx="2" fill="rgba(255,255,255,0.05)"/>
+  <rect x="216" y="1450" width="18" height="18" rx="2" fill="rgba(255,255,255,0.05)"/>
+  <rect x="36" y="1470" width="18" height="18" rx="2" fill="#f5b656" fill-opacity="0.85"/>
+  <rect x="56" y="1470" width="18" height="18" rx="2" fill="#f5b656" fill-opacity="0.85"/>
+  <rect x="76" y="1470" width="18" height="18" rx="2" fill="#f5b656" fill-opacity="0.85"/>
+  <rect x="96" y="1470" width="18" height="18" rx="2" fill="#f5b656" fill-opacity="0.85"/>
+  <rect x="116" y="1470" width="18" height="18" rx="2" fill="#f5b656" fill-opacity="0.85"/>
+  <rect x="136" y="1470" width="18" height="18" rx="2" fill="#f5b656" fill-opacity="0.85"/>
+  <rect x="156" y="1470" width="18" height="18" rx="2" fill="#f5b656" fill-opacity="0.45"/>
+  <rect x="176" y="1470" width="18" height="18" rx="2" fill="#f5b656" fill-opacity="0.45"/>
+  <rect x="196" y="1470" width="18" height="18" rx="2" fill="rgba(255,255,255,0.05)"/>
+  <rect x="216" y="1470" width="18" height="18" rx="2" fill="rgba(255,255,255,0.05)"/>
+  <rect x="36" y="1490" width="18" height="18" rx="2" fill="#f5b656" fill-opacity="0.85"/>
+  <rect x="56" y="1490" width="18" height="18" rx="2" fill="#f5b656" fill-opacity="0.85"/>
+  <rect x="76" y="1490" width="18" height="18" rx="2" fill="#f5b656" fill-opacity="0.85"/>
+  <rect x="96" y="1490" width="18" height="18" rx="2" fill="#f5b656" fill-opacity="0.85"/>
+  <rect x="116" y="1490" width="18" height="18" rx="2" fill="#f5b656" fill-opacity="0.85"/>
+  <rect x="136" y="1490" width="18" height="18" rx="2" fill="#f5b656" fill-opacity="0.85"/>
+  <rect x="156" y="1490" width="18" height="18" rx="2" fill="#f5b656" fill-opacity="0.45"/>
+  <rect x="176" y="1490" width="18" height="18" rx="2" fill="#f5b656" fill-opacity="0.45"/>
+  <rect x="196" y="1490" width="18" height="18" rx="2" fill="#f5b656" fill-opacity="0.45"/>
+  <rect x="216" y="1490" width="18" height="18" rx="2" fill="rgba(255,255,255,0.05)"/>
+  <rect x="36" y="1510" width="18" height="18" rx="2" fill="#f5b656" fill-opacity="0.85"/>
+  <rect x="56" y="1510" width="18" height="18" rx="2" fill="#f5b656" fill-opacity="0.85"/>
+  <rect x="76" y="1510" width="18" height="18" rx="2" fill="#f5b656" fill-opacity="0.85"/>
+  <rect x="96" y="1510" width="18" height="18" rx="2" fill="#f5b656" fill-opacity="0.85"/>
+  <rect x="116" y="1510" width="18" height="18" rx="2" fill="#f5b656" fill-opacity="0.85"/>
+  <rect x="136" y="1510" width="18" height="18" rx="2" fill="#f5b656" fill-opacity="0.85"/>
+  <rect x="156" y="1510" width="18" height="18" rx="2" fill="#f5b656" fill-opacity="0.45"/>
+  <rect x="176" y="1510" width="18" height="18" rx="2" fill="#f5b656" fill-opacity="0.45"/>
+  <rect x="196" y="1510" width="18" height="18" rx="2" fill="#f5b656" fill-opacity="0.45"/>
+  <rect x="216" y="1510" width="18" height="18" rx="2" fill="#f5b656" fill-opacity="0.45"/>
+  <text class="note" x="36" y="1550" style="font-size:17px">input</text>
+  <text class="note" x="156" y="1550" style="font-size:17px">output so far</text>
+  <text class="note" x="36" y="1597" style="font-size:17px">output sees all the input and its own past</text>
+  <text class="lbl" x="36" y="1631" style="font-size:15px">READS</text>
+  <text class="s" x="36" y="1659" style="font-size:21px">The input once, in both directions</text>
+  <text class="lbl" x="36" y="1701" style="font-size:15px">WRITES</text>
+  <text class="s" x="36" y="1729" style="font-size:21px">Token by token, looking back at the whole</text>
+  <text class="s" x="36" y="1757" style="font-size:21px">input</text>
+  <text class="lbl" x="36" y="1799" style="font-size:15px">COST</text>
+  <text class="s" x="36" y="1827" style="font-size:21px">One read, then a decode loop over a short</text>
+  <text class="s" x="36" y="1855" style="font-size:21px">output</text>
+  <text class="lbl" x="36" y="1897" style="font-size:15px">USE FOR</text>
+  <text class="s" x="36" y="1925" style="font-size:21px">Translation, speech to text, summaries, page</text>
+  <text class="s" x="36" y="1953" style="font-size:21px">to text</text>
+  <text class="lbl" x="36" y="1995" style="font-size:15px">EXAMPLES</text>
+  <text class="s" x="36" y="2023" style="font-size:21px">Whisper, NLLB, IndicTrans2, T5, T5Gemma</text>
+</svg>
