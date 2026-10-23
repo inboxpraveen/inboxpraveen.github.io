@@ -6,8 +6,8 @@
     <title>Py Internals - Interactive Python Memory Course | Praveen Kumar</title>
     
     <!-- SEO Meta Tags -->
-    <meta name="description" content="An open-source interactive course that teaches Python by making its memory model visible. Hand-authored snapshots, step-through animation, quizzes, and a vanilla HTML/CSS/JS engine on GitHub Pages.">
-    <meta name="keywords" content="Py Internals, Python Memory Model, Python Education, Names vs Objects, References, Garbage Collection, Interactive Course, Vanilla JavaScript, GitHub Pages, Open Source">
+    <meta name="description" content="An interactive course that teaches Python by making its memory model visible. Hand-authored snapshots, step-through animation, quizzes, and a vanilla HTML/CSS/JS engine on GitHub Pages.">
+    <meta name="keywords" content="Py Internals, Python Memory Model, Python Education, Names vs Objects, References, Garbage Collection, Interactive Course, Vanilla JavaScript, GitHub Pages, Python Learning">
     <meta name="author" content="Praveen Kumar">
     <meta name="robots" content="index, follow, max-image-preview:large">
     
@@ -16,7 +16,7 @@
     <meta property="og:description" content="Most tutorials teach you what to type. Py Internals teaches you what Python does with it: names, objects, frames, and garbage collection, as an animated memory diagram.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://inboxpraveen.github.io/projects/project-13.html">
-    <meta property="og:image" content="https://inboxpraveen.github.io/projects/resources/project-13/Homepage.png">
+    <meta property="og:image" content="https://inboxpraveen.github.io/projects/resources/project-13/Homepage.webp">
     <meta property="og:image:alt" content="Py Internals course homepage">
     <meta property="og:site_name" content="Praveen Kumar Portfolio">
     <meta property="og:locale" content="en_US">
@@ -83,13 +83,13 @@
       "@type": "SoftwareSourceCode",
       "@id": "https://inboxpraveen.github.io/projects/project-13.html#code",
       "name": "Py Internals",
-      "description": "An open-source interactive course that teaches Python by making its memory model visible. Hand-authored snapshots, step-through animation, quizzes, and a vanilla HTML/CSS/JS engine on GitHub Pages.",
+      "description": "An interactive course that teaches Python by making its memory model visible. Hand-authored snapshots, step-through animation, quizzes, and a vanilla HTML/CSS/JS engine on GitHub Pages.",
       "url": "https://inboxpraveen.github.io/projects/project-13.html",
       "author": {
         "@id": "https://inboxpraveen.github.io/#person"
       },
       "inLanguage": "en",
-      "dateModified": "2026-09-14",
+      "dateModified": "2026-10-23",
       "keywords": [
         "Learning Resource",
         "Vanilla JS",
@@ -163,7 +163,7 @@
                     </div>
                     <div class="meta-item">
                         <span><svg class="icon" aria-hidden="true"><use href="#i-pulse"></use></svg></span>
-                        <span>5 sessions shipped, 2 planned</span>
+                        <span>9 sessions available</span>
                     </div>
                     <div class="meta-item">
                         <span><svg class="icon" aria-hidden="true"><use href="#i-user"></use></svg></span>
@@ -184,7 +184,7 @@
         <div class="content-section">
             <h2>Project Overview</h2>
             <p>
-                <strong>Py Internals</strong> is an open-source, interactive course that teaches Python by making 
+                <strong>Py Internals</strong> is an interactive course that teaches Python by making 
                 its memory model visible. Most tutorials teach you what to type. This one teaches you what Python does with it: names, objects, frames, references, and garbage collection, as an animated memory 
                 diagram you can step through at your own pace.
             </p>
@@ -264,15 +264,15 @@
                     <p>See the animation, read the model in prose, then predict the next diagram in a quiz. A perfect score marks the session complete.</p>
                 </div>
                 <div style="background: var(--secondary-bg); padding: 1.5rem; border-radius: 10px; border: 1px solid var(--border-color);">
-                    <h3 style="margin-top: 0; color: var(--accent-color);">Zero Friction</h3>
+                    <h3 style="margin-top: 0; color: var(--accent-color);">Open in a browser</h3>
                     <p>No React, no npm, no login. Static files on GitHub Pages. Progress lives in localStorage. Clone it, serve it, learn.</p>
                 </div>
                 <div style="background: var(--secondary-bg); padding: 1.5rem; border-radius: 10px; border: 1px solid var(--border-color);">
-                    <h3 style="margin-top: 0; color: var(--accent-color);">Course Surface</h3>
-                    <p>Narrative articles, “watch for” hints, type chips, a searchable glossary of ~35 terms, and a homepage that remembers where you left off.</p>
+                    <h3 style="margin-top: 0; color: var(--accent-color);">Course pages</h3>
+                    <p>Narrative articles, “watch for” hints, type chips, a searchable glossary, and a homepage that remembers where you left off.</p>
                 </div>
                 <div style="background: var(--secondary-bg); padding: 1.5rem; border-radius: 10px; border: 1px solid var(--border-color);">
-                    <h3 style="margin-top: 0; color: var(--accent-color);">Extensible Engine</h3>
+                    <h3 style="margin-top: 0; color: var(--accent-color);">Adding lessons</h3>
                     <p>Content and renderer are separate. A new lesson is a new story in the same snapshot language, not a new visualizer.</p>
                 </div>
             </div>
@@ -345,7 +345,7 @@
                 That split is the architecture. A new lesson does not require a new visualizer. It requires a new 
                 story told in the same snapshot language. The implementation guide is explicit about how to write 
                 that story: first step is empty memory, last step is the settled state, one concept per step, 
-                5–8 steps per demo, highlight only what this step is about.
+                5-8 steps per demo, highlight only what this step is about.
             </p>
 
             <h3>A snapshot is the lesson format</h3>
@@ -383,7 +383,7 @@
 }</code></pre>
             </div>
 
-            <h3>The course is one argument, told five times</h3>
+            <h3>How the lessons fit together</h3>
             <p>
                 A name points at an object. Everything else is a consequence of that.
             </p>
@@ -543,29 +543,9 @@
                 teal and amber. That is a product decision, not decoration.
             </p>
 
-            <h2>What Shipped</h2>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 1.5rem; margin: 2rem 0;">
-                <div style="background: var(--secondary-bg); padding: 1.5rem; border-radius: 10px; border: 1px solid var(--border-color); text-align: center;">
-                    <h3 style="margin-top: 0; color: var(--accent-color); font-size: 2rem;">5</h3>
-                    <p style="margin-bottom: 0;">Live sessions</p>
-                </div>
-                <div style="background: var(--secondary-bg); padding: 1.5rem; border-radius: 10px; border: 1px solid var(--border-color); text-align: center;">
-                    <h3 style="margin-top: 0; color: var(--accent-color); font-size: 2rem;">~23</h3>
-                    <p style="margin-bottom: 0;">Interactive demos</p>
-                </div>
-                <div style="background: var(--secondary-bg); padding: 1.5rem; border-radius: 10px; border: 1px solid var(--border-color); text-align: center;">
-                    <h3 style="margin-top: 0; color: var(--accent-color); font-size: 2rem;">~100</h3>
-                    <p style="margin-bottom: 0;">Authored steps</p>
-                </div>
-                <div style="background: var(--secondary-bg); padding: 1.5rem; border-radius: 10px; border: 1px solid var(--border-color); text-align: center;">
-                    <h3 style="margin-top: 0; color: var(--accent-color); font-size: 2rem;">18</h3>
-                    <p style="margin-bottom: 0;">Quiz items</p>
-                </div>
-                <div style="background: var(--secondary-bg); padding: 1.5rem; border-radius: 10px; border: 1px solid var(--border-color); text-align: center;">
-                    <h3 style="margin-top: 0; color: var(--accent-color); font-size: 2rem;">~35</h3>
-                    <p style="margin-bottom: 0;">Glossary terms</p>
-                </div>
-            </div>
+            <h2>What is available</h2>
+            <p>Nine sessions cover variables and mutability, functions and scope, lists and dictionaries, classes, iterators and generators, decorators, the GIL and concurrency, exceptions and context managers, and modules and imports. Each session pairs an explanation with diagrams, interactive examples and questions to check your understanding.</p>
+            <p><a href="https://inboxpraveen.github.io/Py-Internals/">Open the course</a> for the current lessons and glossary.</p>
             <p>
                 Shared CSS and JS across every session. Session-specific logic lives only in that session’s 
                 <code>session.js</code>. The homepage, glossary, and labs share one design language. The license 
@@ -628,7 +608,7 @@
                 name in? Is this a copy or an alias? Where does this attribute actually live?
             </p>
             <p>
-                That is the win. Not “they completed five modules.” They stopped being surprised by the language 
+                That is the win. Not “they finished the lessons.” They stopped being surprised by the language 
                 they already use.
             </p>
             <p>
