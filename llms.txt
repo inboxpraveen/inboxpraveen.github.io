@@ -1,48 +1,59 @@
 # Praveen Kumar
 
-> Principal AI Engineer in Bengaluru, India. Six years building speech intelligence, LLM and document AI systems for enterprise teams. This site holds fifteen open-source projects with full write-ups and a blog of long-form, reproducible notes where every number is measured on real hardware or traced to a dated source.
+> Principal AI Engineer at TrellisSoft in Bengaluru, India. I build speech, document and LLM systems and share tools, experiments and technical write-ups here.
 
-Contact: inboxpraveen.17@gmail.com. GitHub: https://github.com/inboxpraveen. LinkedIn: https://www.linkedin.com/in/praveen-kumar-inbox/. X: https://x.com/InboxPraveen.
-Every page is static HTML with Open Graph tags, JSON-LD (Person, BlogPosting, SoftwareSourceCode) and a canonical URL. The scripts and raw results behind each post are in the linked repositories.
+This is an index of my public work. Project documentation and linked experiment results give the scope, setup and limitations. Reuse terms differ between repositories; check each project's license. Docuvera360 is a case study of professional work with closed-source code.
 
-## Pages
+## Start here
 
-- [Home](https://inboxpraveen.github.io/): selected projects, the latest posts, a short bio and contact
-- [About](https://inboxpraveen.github.io/about.html): background, experience, how I work, the toolkit
-- [All projects](https://inboxpraveen.github.io/all-projects.html): fifteen projects across LLM and RAG, document AI, speech and audio, computer vision, classic ML, learning resources and tools
-- [All blog posts](https://inboxpraveen.github.io/all-blogs.html): the blog index, searchable
-- [Atom feed](https://inboxpraveen.github.io/feed.xml)
-- [Sitemap](https://inboxpraveen.github.io/sitemap.xml)
+- [Home](https://inboxpraveen.github.io/): selected work, recent writing and contact details.
+- [About](https://inboxpraveen.github.io/about.html): background, experience and how I work.
+- [Project directory](https://inboxpraveen.github.io/all-projects.html): tools, learning resources and professional case studies.
+- [GitHub profile](https://github.com/inboxpraveen): repositories and work in progress.
+- [Writing](https://inboxpraveen.github.io/all-blogs.html): notes on model choice, training, inference and evaluation.
+- [Atom feed](https://inboxpraveen.github.io/feed.xml): new articles.
+- [Sitemap](https://inboxpraveen.github.io/sitemap.xml): pages on this site.
 
-## Blog posts
+## Current tools
 
-- [Which model should we use? A production framework for choosing architectures, models, evals and training, from the use case to the bill](https://inboxpraveen.github.io/blogs/blog-8.html) (2026-10-18): A practical decision framework for production AI: name the task, choose encoder, decoder or encoder-decoder, find and vet Hugging Face models, build the eval that decides, pick how much training, handle low-resource languages and domains, and size latency, memory and cost. Six use cases worked end to end.
-- [Introducing Kavach PII 270M: a 270M model that finds personal data better than GLiNER, Presidio and spaCy, in 29 languages, trained on one laptop GPU](https://inboxpraveen.github.io/blogs/blog-6.html) (2026-09-23): Kavach PII 270M v3: 92.0 value-F1 against GLiNER's 59.3 and Presidio's 29.5 on the same 4,577-document held-out set, in 29 languages, trained on one 8 GB laptop GPU. The data, the audits, the v3 re-annotation, and the experiments that failed.
-- [Who spoke when, on your own data: training, tuning and shipping a Kaldi speaker diarizer that runs on a CPU](https://inboxpraveen.github.io/blogs/blog-5.html) (2026-09-20): Train Kaldi's x-vector diarizer on your own recordings and ship it as a CPU container: back-end training, VBx, speech detection, how much data you need, speed, and the Sortformer comparison.
-- [Teaching a language model a language it never knew: continued pretraining, supervised fine-tuning and reinforcement learning on one laptop](https://inboxpraveen.github.io/blogs/blog-4.html) (2026-09-15): An English-only 135M model taught Hindi on one 8 GB laptop GPU: tokenizer extension, continued pretraining, supervised fine-tuning and GRPO with verifiable rewards, every stage measured.
-- [Where the bandwidth line ends: how Cerebras gets to 2,000 tokens a second, worked out from the outside](https://inboxpraveen.github.io/blogs/blog-3.html) (2026-09-14): The bandwidth line predicts 600,000 tokens a second for four Cerebras wafers and they get 2,000. Where the rest goes, worked out from public sources with the arithmetic shown.
-- [Before you tune anything: a field guide to inference speed and accuracy on the hardware you actually have](https://inboxpraveen.github.io/blogs/blog-2.html) (2026-09-12): The one number that transfers between machines, what six model architectures do to it on CPU and GPU, a pre-check script, a ten-minute accuracy test and which quant to pick.
-- [Getting the most tokens per second out of one laptop with llama.cpp](https://inboxpraveen.github.io/blogs/blog-1.html) (2026-09-07): Every knob llama.cpp exposes, measured on one laptop with one Q8_0 model: thread pinning, CPU backends, quantization, GPU offload, KV cache types and speculative decoding, for speed and accuracy.
+- [ThinkLess](https://inboxpraveen.github.io/ThinkLess/): Python library for agent decisions. Rules and small models handle routine cases, with an LLM for the rest. Pre-1.0. [Source](https://github.com/inboxpraveen/ThinkLess).
+- [CleanFrame](https://inboxpraveen.github.io/Cleanframe/): clean CSVs and spreadsheets through saved recipes. Replay uses no model calls, records changes and stops when the incoming schema has changed. [Write-up](https://inboxpraveen.github.io/projects/project-14.html).
+- [MoM AI](https://inboxpraveen.github.io/projects/project-8.html): turn recordings into transcripts, decisions and action items using local models or chosen providers, with background jobs and retries.
+- [Easy-vLLM](https://inboxpraveen.github.io/Easy-vLLM/): estimate GPU memory needs and generate vLLM commands and Docker files in the browser. Memory figures are estimates, not measured deployment results. [Write-up](https://inboxpraveen.github.io/projects/project-15.html).
+- [Speech Annotation Tool](https://inboxpraveen.github.io/projects/project-4.html): transcribe recordings, review the text and export speech datasets with local or provider models.
+- [AudioFP](https://inboxpraveen.github.io/projects/project-7.html): identify short audio clips and locate repeated sounds within longer recordings using spectral fingerprints.
+- [contextsearch](https://inboxpraveen.github.io/projects/project-1.html): local keyword, embedding and hybrid document search with source passages and optional reranking.
+- [HabitFlow](https://inboxpraveen.github.io/projects/project-6.html): a local habit tracker with check-ins, charts and spreadsheet exports.
+- [Coding-agent rules](https://github.com/inboxpraveen/Minimize-Cursor-Cost): rules and prompt templates to reduce unnecessary context and edits, with a benchmark for comparing cost and accepted changes.
 
-## Projects
+## Experiments and writing
 
-- [Easy-vLLM](https://inboxpraveen.github.io/projects/project-15.html): 
-- [CleanFrame](https://inboxpraveen.github.io/projects/project-14.html): 
-- [Docuvera360](https://inboxpraveen.github.io/projects/project-2.html): 
-- [MoM AI: Minutes of Meeting](https://inboxpraveen.github.io/projects/project-8.html): 
-- [Speech Annotation Tool](https://inboxpraveen.github.io/projects/project-4.html): 
-- [AudioFP](https://inboxpraveen.github.io/projects/project-7.html): 
-- [contextsearch](https://inboxpraveen.github.io/projects/project-1.html): 
-- [Movie Recommendation System](https://inboxpraveen.github.io/projects/project-3.html): 
-- [Skin Cancer Detection](https://inboxpraveen.github.io/projects/project-12.html): 
-- [Py Internals](https://inboxpraveen.github.io/projects/project-13.html): 
-- [FIFA Player Recommendation System](https://inboxpraveen.github.io/projects/project-10.html): 
-- [Autoencoders & Decoders](https://inboxpraveen.github.io/projects/project-11.html): 
-- [ML Algorithms from Scratch](https://inboxpraveen.github.io/projects/project-5.html): 
-- [HabitFlow](https://inboxpraveen.github.io/projects/project-6.html): 
-- [Portfolio Website](https://inboxpraveen.github.io/projects/project-9.html): 
+- [ggml-inference-lab](https://github.com/inboxpraveen/ggml-inference-lab): scripts, raw results and notes on inference, quantization, language adaptation and speaker diarization.
+- [Choosing a model, an evaluation and a serving setup](https://inboxpraveen.github.io/blogs/blog-8.html): a process for working from a use case to quality, latency, memory and cost requirements.
+- [Kavach PII 270M](https://inboxpraveen.github.io/blogs/blog-6.html): training and evaluating a small multilingual model for finding personal data, including data audits and failed experiments.
+- [Training and shipping a Kaldi speaker diarizer](https://inboxpraveen.github.io/blogs/blog-5.html): x-vectors, back-end training, VBx and CPU deployment.
+- [Teaching a small language model Hindi](https://inboxpraveen.github.io/blogs/blog-4.html): tokenizer extension, continued pretraining, supervised fine-tuning and GRPO on a laptop GPU.
+- [Cerebras inference, worked out from public sources](https://inboxpraveen.github.io/blogs/blog-3.html): a bandwidth and latency analysis. This is source-based analysis, not a measurement from hardware I own.
+- [Inference speed and accuracy across architectures](https://inboxpraveen.github.io/blogs/blog-2.html): CPU and GPU comparisons, a pre-check script and quantization choices.
+- [Measuring llama.cpp on one laptop](https://inboxpraveen.github.io/blogs/blog-1.html): thread settings, CPU backends, GPU offload, KV cache types and speculative decoding.
 
-## Optional
+## Learning resources and other projects
 
-- [Resume (PDF)](https://inboxpraveen.github.io/assests/Resume.pdf)
-- [Source of this site](https://github.com/inboxpraveen/inboxpraveen.github.io)
+- [Py Internals](https://inboxpraveen.github.io/Py-Internals/): nine interactive Python sessions on names, objects, functions, classes, iteration, decorators, concurrency, exceptions and imports. Published under the Py Internals Community License. [Write-up](https://inboxpraveen.github.io/projects/project-13.html).
+- [ML Algorithms from Scratch](https://github.com/inboxpraveen/ML-Algorithms-from-scratch): NumPy implementations with explanations and runnable examples. See the repository for the current algorithm list.
+- [Movie Recommendation System](https://inboxpraveen.github.io/projects/project-3.html): content-based recommendations using TF-IDF, SVD and cosine similarity, with a Django app.
+- [Football Player Recommendations](https://inboxpraveen.github.io/projects/project-10.html): compare player attributes and find similar players with a Flask app.
+- [Autoencoders and Decoders](https://inboxpraveen.github.io/projects/project-11.html): Keras examples for reconstruction, denoising and image retrieval.
+- [Skin Lesion Classification](https://inboxpraveen.github.io/projects/project-12.html): an educational HAM10000 classification project with training, evaluation and a demo. Not a clinical diagnostic tool.
+- [Portfolio website](https://inboxpraveen.github.io/projects/project-9.html): the HTML, CSS and JavaScript site behind these write-ups.
+
+## Professional work
+
+- [Docuvera360](https://inboxpraveen.github.io/projects/project-2.html): a case study of enterprise document and analytics work. Its code is closed source.
+
+## Contact
+
+- [Email](mailto:inboxpraveen.17@gmail.com)
+- [LinkedIn](https://www.linkedin.com/in/praveen-kumar-inbox/)
+- [X](https://x.com/InboxPraveen)
+- [GitHub Sponsors](https://github.com/sponsors/inboxpraveen): support maintenance and public experiments.
