@@ -89,7 +89,7 @@ Everything lives in `index.css`, driven by CSS custom properties:
 
 ## site.js
 
-One file, thirteen self-contained modules, each a no-op when its markup is absent - so the same script is safe on every page: icon sprite, navigation, scroll reveal, code-copy buttons, copyright year, pointer-tracked card glow, project filtering and search, reading progress, back-to-top, count-up stats, the rotating hero line, the screenshot lightbox, and the auto-built table of contents.
+One file, fourteen self-contained modules, nearly all a no-op when their markup is absent - so the same script is safe on every page: icon sprite, navigation, scroll reveal, code-copy buttons, copyright year, pointer-tracked card glow, project filtering and search, reading progress, back-to-top, count-up stats, the rotating hero line, the screenshot lightbox, the auto-built table of contents, and GoatCounter analytics (cookie-free page views, plus click events for outbound links, the resume and the email link; it makes no requests when a page is opened from disk).
 
 ## Adding a new project
 

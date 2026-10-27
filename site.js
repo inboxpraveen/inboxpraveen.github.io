@@ -1,7 +1,8 @@
 /* =========================================================================
    site.js — shared behaviour for every page on inboxpraveen.github.io
-   No dependencies. Every module no-ops when its markup isn't on the page,
-   so this single file is safe to include everywhere.
+   No dependencies of its own; the only thing it pulls in from elsewhere is
+   GoatCounter's count.js (module 14). Every other module no-ops when its
+   markup isn't on the page, so this single file is safe to include everywhere.
    ========================================================================= */
 
 (function () {
@@ -516,10 +517,69 @@
     }
 
     /* ---------------------------------------------------------------------
+       14. Analytics (GoatCounter)
+       Cookie-free page views, plus click events for outbound links, the
+       resume download and the email link. Links are tagged before count.js
+       loads, so it binds them on startup. count.js itself ignores localhost,
+       private IPs and any browser that has opened #toggle-goatcounter; this
+       module only stays out of file:// so a copy opened off disk makes no
+       requests.
+       --------------------------------------------------------------------- */
+
+    var GOATCOUNTER_ENDPOINT = 'https://inboxpraveen.goatcounter.com/count';
+    var GOATCOUNTER_SCRIPT = 'https://gc.zgo.at/count.js';
+    var OWN_DIRS = ['blogs', 'projects', 'assests'];
+
+    // Event name for a link worth counting, or '' for everything else.
+    function clickEventFor(a) {
+        if (a.protocol === 'mailto:') return 'contact/email';
+        if (a.protocol !== 'http:' && a.protocol !== 'https:') return '';
+        var path = a.pathname.replace(/\/+$/, '');
+        var out = 'out/' + a.hostname.replace(/^www\./, '') + path;
+        if (a.hostname !== location.hostname) return out;
+        if (/\.pdf$/i.test(path)) return 'download' + path.slice(path.lastIndexOf('/'));
+        // Sibling project sites on this host (/Easy-vLLM/) start with a folder
+        // that is not one of this site's own; the site's own pages start with
+        // a file name or one of OWN_DIRS. In-page anchors are skipped because
+        // GitHub Pages also serves /about for /about.html.
+        var top = path.split('/')[1] || '';
+        if (top && top.indexOf('.') === -1 && OWN_DIRS.indexOf(top) === -1 &&
+            a.pathname !== location.pathname) return out;
+        return '';
+    }
+
+    // Shown next to the event in the dashboard. Icon-only links have no text,
+    // so fall back to the host rather than let count.js log their markup.
+    function linkLabel(a) {
+        var text = (a.getAttribute('aria-label') || a.textContent || '').replace(/\s+/g, ' ').trim();
+        return (text || a.hostname || 'link').slice(0, 80);
+    }
+
+    function initAnalytics() {
+        if (location.protocol !== 'http:' && location.protocol !== 'https:') return;
+        try {
+            $$('a[href]').forEach(function (a) {
+                if (a.hasAttribute('data-goatcounter-click')) return;
+                var name = clickEventFor(a);
+                if (!name) return;
+                a.setAttribute('data-goatcounter-click', name);
+                a.setAttribute('data-goatcounter-title', linkLabel(a));
+            });
+
+            var s = document.createElement('script');
+            s.async = true;
+            s.src = GOATCOUNTER_SCRIPT;
+            s.dataset.goatcounter = GOATCOUNTER_ENDPOINT;
+            document.head.appendChild(s);
+        } catch (e) { /* analytics must never break the page */ }
+    }
+
+    /* ---------------------------------------------------------------------
        Boot
        --------------------------------------------------------------------- */
 
     function boot() {
+        initAnalytics();
         injectSprite();
         initNav();
         initReveal();
