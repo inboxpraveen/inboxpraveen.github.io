@@ -1,7 +1,10 @@
-"""Regenerate sitemap.xml, feed.xml and llms.txt from the pages themselves. Run after adding a post or a
+"""Regenerate sitemap.xml and feed.xml from the pages themselves. Run after adding a post or a
 project; nothing else on the site needs a build step.
 
   python tools/site_meta.py
+
+llms.txt is written by hand and is not touched here. Cards that link to another site (a project with its
+own page, or a GitHub repository) are left out of the sitemap, since each of those owns its own.
 """
 import glob, html, json, os, re, subprocess
 from datetime import datetime, timezone
@@ -59,7 +62,7 @@ for href, title, desc in posts:
                       'updated': lastmod(href), 'image': meta(s, 'og:image', prop=True)})
 
 # ---------------------------------------------------------------- sitemap
-pages = ['index.html', 'about.html', 'all-projects.html', 'all-blogs.html'] + [p['href'] for p in post_info] + [h for h, _, _ in projects]
+pages = ['index.html', 'about.html', 'all-projects.html', 'all-blogs.html'] + [p['href'] for p in post_info] + [h for h, _, _ in projects if not h.startswith('http')]
 prio = lambda p: '1.0' if p == 'index.html' else '0.9' if p.startswith('blogs/') else '0.8' if p in ('about.html', 'all-projects.html', 'all-blogs.html') else '0.7'
 sm = ['<?xml version="1.0" encoding="UTF-8"?>', '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
 for p in pages:
@@ -84,25 +87,3 @@ for p in sorted(post_info, key=lambda x: x['date'], reverse=True):
            '  </entry>']
 fe.append('</feed>')
 write('feed.xml', '\n'.join(fe) + '\n')
-
-# ---------------------------------------------------------------- llms.txt
-lt = ['# Praveen Kumar', '',
-      '> Principal AI Engineer in Bengaluru, India. Six years building speech intelligence, LLM and document AI systems for enterprise teams. '
-      'This site holds fifteen open-source projects with full write-ups and a blog of long-form, reproducible notes where every number is measured on real hardware or traced to a dated source.',
-      '',
-      'Contact: inboxpraveen.17@gmail.com. GitHub: https://github.com/inboxpraveen. LinkedIn: https://www.linkedin.com/in/praveen-kumar-inbox/. X: https://x.com/InboxPraveen.',
-      'Every page is static HTML with Open Graph tags, JSON-LD (Person, BlogPosting, SoftwareSourceCode) and a canonical URL. The scripts and raw results behind each post are in the linked repositories.',
-      '', '## Pages', '',
-      f'- [Home]({BASE}): selected projects, the latest posts, a short bio and contact',
-      f'- [About]({BASE}about.html): background, experience, how I work, the toolkit',
-      f'- [All projects]({BASE}all-projects.html): fifteen projects across LLM and RAG, document AI, speech and audio, computer vision, classic ML, learning resources and tools',
-      f'- [All blog posts]({BASE}all-blogs.html): the blog index, searchable',
-      f'- [Atom feed]({BASE}feed.xml)', f'- [Sitemap]({BASE}sitemap.xml)',
-      '', '## Blog posts', '']
-for p in sorted(post_info, key=lambda x: x['date'], reverse=True):
-    lt.append(f'- [{p["title"]}]({BASE}{p["href"]}) ({p["date"]}): {p["summary"]}')
-lt += ['', '## Projects', '']
-for href, title, desc in projects:
-    lt.append(f'- [{title}]({BASE}{href}): {desc}')
-lt += ['', '## Optional', '', f'- [Resume (PDF)]({BASE}assests/Resume.pdf)', f'- [Source of this site]({"https://github.com/inboxpraveen/inboxpraveen.github.io"})', '']
-write('llms.txt', '\n'.join(lt))
