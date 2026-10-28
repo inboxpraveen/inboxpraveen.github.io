@@ -16,8 +16,8 @@
     <meta property="og:description" content="Point it at a folder of audio, pick a local model or a hosted API, and review the transcripts as a team. Resumable jobs, change detection, import and export, runs anywhere with Conda or Docker.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://inboxpraveen.github.io/projects/project-4.html">
-    <meta property="og:image" content="https://inboxpraveen.github.io/projects/resources/project-4/Header.png">
-    <meta property="og:image:alt" content="Speech Annotation Tool review workspace">
+    <meta property="og:image" content="https://inboxpraveen.github.io/projects/resources/project-4/social-preview.png">
+    <meta property="og:image:alt" content="Speech Annotation Tool: folder of audio in, reviewed speech dataset out">
     <meta property="og:site_name" content="Praveen Kumar Portfolio">
     <meta property="og:locale" content="en_US">
 
@@ -27,8 +27,8 @@
     <meta name="twitter:creator" content="@InboxPraveen">
     <meta name="twitter:title" content="Speech Annotation Tool - Build and Review Speech Datasets">
     <meta name="twitter:description" content="Folder in, reviewed speech dataset out. Local models or hosted APIs, team review, resumable jobs, Conda or Docker.">
-    <meta name="twitter:image" content="https://inboxpraveen.github.io/projects/resources/project-4/Header.png">
-    <meta name="twitter:image:alt" content="Speech Annotation Tool review workspace">
+    <meta name="twitter:image" content="https://inboxpraveen.github.io/projects/resources/project-4/social-preview.png">
+    <meta name="twitter:image:alt" content="Speech Annotation Tool: folder of audio in, reviewed speech dataset out">
 
     <!-- Canonical URL -->
     <link rel="canonical" href="https://inboxpraveen.github.io/projects/project-4.html">
@@ -89,7 +89,7 @@
         "@id": "https://inboxpraveen.github.io/#person"
       },
       "inLanguage": "en",
-      "dateModified": "2026-09-19",
+      "dateModified": "2026-10-29",
       "keywords": [
         "Speech &amp; Audio",
         "Flask",
@@ -100,7 +100,7 @@
         "Docker"
       ],
       "codeRepository": "https://github.com/inboxpraveen/Speech-Annotation-Tool",
-      "image": "https://inboxpraveen.github.io/projects/resources/project-4/Header.png"
+      "image": "https://inboxpraveen.github.io/projects/resources/project-4/social-preview.png"
     },
     {
       "@type": "BreadcrumbList",
@@ -161,7 +161,7 @@
                 <div class="page-meta">
                     <div class="meta-item">
                         <svg class="icon" aria-hidden="true"><use href="#i-calendar"></use></svg>
-                        <span>Version 3: September 2026</span>
+                        <span>Version 3: updated October 2026</span>
                     </div>
                     <div class="meta-item">
                         <svg class="icon" aria-hidden="true"><use href="#i-pulse"></use></svg>
@@ -193,7 +193,7 @@
             </p>
 
             <figure class="content-figure">
-                <img src="./resources/project-4/Header.webp" alt="The review workspace: audio player, machine transcript, editable corrected text and review buttons for each record" loading="lazy" decoding="async">
+                <img src="./resources/project-4/Header.webp" alt="Speech Annotation Tool: folder of audio in, reviewed speech dataset out, shown with a review card holding the audio clip, the machine transcript and the corrected text" width="1600" height="520" loading="lazy" decoding="async">
             </figure>
 
             <p>
@@ -232,6 +232,14 @@
                 <li>SQLite instead of CSV files, waitress instead of the Flask dev server, Bootstrap served locally so it works offline, a Conda environment that includes ffmpeg, and a Docker image with a GPU override.</li>
             </ul>
 
+            <h2>Updates since 3.0</h2>
+            <ul>
+                <li>The review page no longer redraws rows on every status refresh. Audio used to stop and the text box lost focus every two seconds; rows someone is typing in, focused on or listening to are now left alone.</li>
+                <li>The layout works on phones and tablets: records stack into one block each on narrow screens and wide tables scroll inside their card.</li>
+                <li>Big projects are faster. On a 500,000 record project a status refresh went from about 500 ms to 50 ms, and the project and dashboard pages no longer import torch or run ffmpeg on every load.</li>
+                <li>Production basics: a warning in the log while the admin account still has the default password, a <code>COOKIE_SECURE</code> setting for HTTPS, a security policy, and a guide for running it for a team behind a reverse proxy.</li>
+            </ul>
+
             <h2>Key Features</h2>
             <ul>
                 <li><strong>Folder in, dataset out.</strong> Subfolders included, non-audio files ignored, 100,000 files is fine because the scan streams and every list in the app is paged.</li>
@@ -244,6 +252,11 @@
             </ul>
 
             <h2>Screenshots</h2>
+
+            <h3>The review screen</h3>
+            <figure class="content-figure">
+                <img src="./resources/project-4/Review.webp" alt="The review workspace: audio player, machine transcript, editable corrected text and review buttons for each record" loading="lazy" decoding="async">
+            </figure>
 
             <h3>Projects overview</h3>
             <figure class="content-figure">
@@ -274,6 +287,18 @@
             </figure>
 
             <h2>How It Works</h2>
+
+            <figure class="content-figure">
+                <img src="./resources/project-4/Architecture.webp" alt="Speech Annotation Tool architecture: a pipeline of scan, chunk, transcribe, review and export; one Python process with a Flask app, a job runner and engines that are local or hosted; and storage in SQLite and the data folder" width="1600" height="960" loading="lazy" decoding="async">
+            </figure>
+            <p>
+                The top band is what happens to a recording: scan, chunk, transcribe, review, export. The middle band is the
+                one Python process that does the work: a Flask app for pages and the JSON API, a job runner that runs the
+                first three stages in the background, and one entry point to the engines, which are local models or hosted
+                APIs. The bottom band is everything on disk: your audio folder, which is only read, the SQLite database and
+                the data folder with clips, models, exports and logs. There is no queue server and no separate database
+                to run.
+            </p>
 
             <h3>Scanning</h3>
             <ol>
@@ -559,6 +584,16 @@ docker compose up -d --build  <span class="comment"># your folder appears in the
                 transcription start on their own, and the review desk fills in as records finish.
             </p>
 
+            <h2>Running it for a team</h2>
+            <p>
+                The defaults suit a laptop. For a shared server the setup guide has a short checklist: change the admin
+                password, listen on the local machine and let a reverse proxy (Caddy or nginx) terminate HTTPS, set
+                <code>COOKIE_SECURE=true</code>, back up <code>data/app.db</code> with SQLite's backup call while the app is
+                running, and run it as a service. Two things are worth knowing before you hand out accounts: every signed-in
+                user can browse the folders the server account can read, and provider keys are stored as plain text in the
+                database, so the data folder should be readable only by the account that runs the app.
+            </p>
+
             <h2>Where it goes next</h2>
             <p>
                 Speaker turns are the obvious gap: several providers already return diarization, and records could carry a
@@ -582,11 +617,13 @@ docker compose up -d --build  <span class="comment"># your folder appears in the
                     <a href="https://github.com/inboxpraveen/Speech-Annotation-Tool" class="demo-button" target="_blank" rel="noopener noreferrer">GitHub Repository</a>
                     <a href="https://github.com/inboxpraveen/Speech-Annotation-Tool/blob/master/docs/usage.md" class="demo-button" style="margin: 0; background: var(--secondary-bg); color: var(--accent-color); border: 1px solid var(--accent-color);" target="_blank" rel="noopener noreferrer">Usage Guide</a>
                     <a href="https://github.com/inboxpraveen/Speech-Annotation-Tool/blob/master/docs/providers.md" class="demo-button" style="margin: 0; background: var(--secondary-bg); color: var(--accent-color); border: 1px solid var(--accent-color);" target="_blank" rel="noopener noreferrer">Engines and Providers</a>
+                    <a href="https://github.com/sponsors/inboxpraveen" class="demo-button" style="margin: 0; background: var(--secondary-bg); color: var(--accent-color); border: 1px solid var(--accent-color);" target="_blank" rel="noopener noreferrer">Sponsor</a>
                 </div>
 
                 <h4>Technical Resources:</h4>
                 <ul>
-                    <li><a href="https://github.com/inboxpraveen/Speech-Annotation-Tool/blob/master/docs/setup.md" style="color: var(--accent-color);" target="_blank" rel="noopener noreferrer">Setup: Conda, Docker, GPU</a></li>
+                    <li><a href="https://github.com/inboxpraveen/Speech-Annotation-Tool/blob/master/docs/setup.md" style="color: var(--accent-color);" target="_blank" rel="noopener noreferrer">Setup: Conda, Docker, GPU, running it for a team</a></li>
+                    <li><a href="https://github.com/inboxpraveen/Speech-Annotation-Tool/blob/master/SECURITY.md" style="color: var(--accent-color);" target="_blank" rel="noopener noreferrer">Security policy</a></li>
                     <li><a href="https://github.com/inboxpraveen/Speech-Annotation-Tool/blob/master/docs/development.md" style="color: var(--accent-color);" target="_blank" rel="noopener noreferrer">Development and API reference</a></li>
                     <li><a href="https://github.com/inboxpraveen/Speech-Annotation-Tool/tree/master/sat" style="color: var(--accent-color);" target="_blank" rel="noopener noreferrer">Source code (sat/)</a></li>
                 </ul>
