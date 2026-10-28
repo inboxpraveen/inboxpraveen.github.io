@@ -281,8 +281,8 @@
 
             <h3>The shape of the pipeline</h3>
             <figure class="content-figure">
-                <img src="./resources/project-7/Architecture.webp" alt="Architecture sketch of the indexing and search flows" loading="lazy" decoding="async">
-                <figcaption>Drawn for the first version, so the file names are old, but the shape has not changed: index on the left, search on the right, one fingerprint store in the middle.</figcaption>
+                <img src="./resources/project-7/Architecture.webp" alt="Diagram of the indexing and search flows around the fingerprint store" loading="lazy" decoding="async">
+                <figcaption>Indexing and searching share one pipeline. The fingerprint store sits between them.</figcaption>
             </figure>
 
             <h2>How It Works</h2>
@@ -571,7 +571,7 @@ docker run -p 5000:5000 -v audiofp-data:/data -e AUDIOFP_API_KEY=s3cret audiofp<
 
             <h2>Closing Note</h2>
             <p>
-                AudioFP is open source under the MIT licence. It started as a way to learn one algorithm properly and
+                AudioFP is open source under the Apache 2.0 licence. It started as a way to learn one algorithm properly and
                 turned into something I would run in production. If you are curious about audio fingerprinting, the
                 architecture and tuning docs in the repository go through the whole pipeline with the real constants,
                 and the test suite is a decent place to see how each scoring rule was arrived at.
