@@ -39,7 +39,7 @@ This is an index of my public work. Project documentation and linked experiment 
 
 ## Learning resources and other projects
 
-- [Py Internals](https://inboxpraveen.github.io/Py-Internals/): nine interactive Python sessions on names, objects, functions, classes, iteration, decorators, concurrency, exceptions and imports. Published under the Py Internals Community License. [Write-up](https://inboxpraveen.github.io/projects/project-13.html).
+- [Py Internals](https://inboxpraveen.github.io/Py-Internals/): nine interactive Python sessions on names, objects, functions, classes, iteration, decorators, concurrency, exceptions and imports. Code under Apache-2.0, course content under CC BY-SA 4.0. [Write-up](https://inboxpraveen.github.io/projects/project-13.html).
 - [ML Algorithms from Scratch](https://github.com/inboxpraveen/ML-Algorithms-from-scratch): 28 machine learning algorithms in plain NumPy, from linear regression to XGBoost, UMAP and learning-to-rank, each with a runnable demo and a guide that explains the maths. Licensed under GPL-3.0. [Write-up](https://inboxpraveen.github.io/projects/project-5.html).
 - [Movie Recommendation System](https://inboxpraveen.github.io/projects/project-3.html): content-based recommender with a training pipeline and a Django app: TF-IDF, SVD and top-50 cosine neighbours, a 16 MB model for 26,000 films.
 - [Football Player Recommendations](https://inboxpraveen.github.io/projects/project-10.html): compare player attributes and find similar players with a Flask app.
