@@ -3,21 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Movie Recommendation System - AI-Powered Content Filtering | Praveen Kumar</title>
+    <title>Movie Recommendation System - Content-Based Recommender with Django | Praveen Kumar</title>
     
     <!-- SEO Meta Tags -->
-    <meta name="description" content="Production-ready movie recommendation system using TF-IDF, SVD, and content-based filtering. Scales from 10K to 1M+ movies with Django deployment. Open-source and fully documented.">
-    <meta name="keywords" content="Recommendation System, Machine Learning, Content-Based Filtering, TF-IDF, SVD, Django, Python, Scalable ML">
+    <meta name="description" content="A content-based movie recommender with a training pipeline and a Django app. TF-IDF, SVD and top-50 cosine neighbours keep a 26,000 film model to 16 MB with millisecond lookups. Open source, MIT licensed.">
+    <meta name="keywords" content="Recommendation System, Recommender System, Machine Learning, Content-Based Filtering, TF-IDF, SVD, Django, Python, scikit-learn, TMDB, Open Source">
     <meta name="author" content="Praveen Kumar">
     <meta name="robots" content="index, follow, max-image-preview:large">
     
     <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="Movie Recommendation System - AI-Powered Content Filtering">
-    <meta property="og:description" content="Production-ready recommendation system handling 930K+ movies using advanced ML. TF-IDF, SVD, Django deployment, and comprehensive documentation.">
+    <meta property="og:title" content="Movie Recommendation System - Content-Based Recommender with Django">
+    <meta property="og:description" content="Train a model on the TMDB catalogue in about a minute and serve it from 16 MB of memory-mapped files. TF-IDF, SVD, top-K cosine neighbours and a Django app. Open source.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://inboxpraveen.github.io/projects/project-3.html">
-    <meta property="og:image" content="https://inboxpraveen.github.io/projects/resources/project-3/Logo.png">
-    <meta property="og:image:alt" content="Movie Recommendation System Logo">
+    <meta property="og:image" content="https://inboxpraveen.github.io/projects/resources/project-3/social-preview.png">
+    <meta property="og:image:alt" content="Movie Recommendation System: TF-IDF, SVD and cosine neighbours with a Django app">
     <meta property="og:site_name" content="Praveen Kumar Portfolio">
     <meta property="og:locale" content="en_US">
     
@@ -25,10 +25,10 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@InboxPraveen">
     <meta name="twitter:creator" content="@InboxPraveen">
-    <meta name="twitter:title" content="Movie Recommendation System - Production ML">
-    <meta name="twitter:description" content="Scalable recommendation system: 930K+ movies, TF-IDF + SVD, Django deployment. Open-source with full documentation.">
-    <meta name="twitter:image" content="https://inboxpraveen.github.io/projects/resources/project-3/Logo.png">
-    <meta name="twitter:image:alt" content="Movie Recommendation System">
+    <meta name="twitter:title" content="Movie Recommendation System - Content-Based ML">
+    <meta name="twitter:description" content="Content-based recommender: TF-IDF, SVD and top-K neighbours, a 16 MB model, about 1 ms lookups and a Django app. Open source.">
+    <meta name="twitter:image" content="https://inboxpraveen.github.io/projects/resources/project-3/social-preview.png">
+    <meta name="twitter:image:alt" content="Movie Recommendation System: TF-IDF, SVD and cosine neighbours with a Django app">
     
     <!-- Canonical URL -->
     <link rel="canonical" href="https://inboxpraveen.github.io/projects/project-3.html">
@@ -83,23 +83,27 @@
       "@type": "SoftwareSourceCode",
       "@id": "https://inboxpraveen.github.io/projects/project-3.html#code",
       "name": "Movie Recommendation System",
-      "description": "Production-ready movie recommendation system using TF-IDF, SVD, and content-based filtering. Scales from 10K to 1M+ movies with Django deployment. Open-source and fully documented.",
+      "description": "A content-based movie recommender with a training pipeline and a Django app. TF-IDF, SVD and top-50 cosine neighbours keep a 26,000 film model to 16 MB with millisecond lookups. Open source, MIT licensed.",
       "url": "https://inboxpraveen.github.io/projects/project-3.html",
       "author": {
         "@id": "https://inboxpraveen.github.io/#person"
       },
       "inLanguage": "en",
-      "dateModified": "2026-09-14",
+      "dateModified": "2026-10-28",
       "keywords": [
         "Classic ML",
         "Python",
         "Django",
         "scikit-learn",
         "pandas",
-        "NLTK"
+        "NLTK",
+        "TF-IDF",
+        "Recommender systems"
       ],
-      "codeRepository": "https://github.com/inboxpraveen/movie-recommendation-system",
-      "image": "https://inboxpraveen.github.io/projects/resources/project-3/Logo.png"
+      "programmingLanguage": "Python",
+      "license": "https://opensource.org/licenses/MIT",
+      "codeRepository": "https://github.com/inboxpraveen/Movie-Recommendation-System",
+      "image": "https://inboxpraveen.github.io/projects/resources/project-3/social-preview.png"
     },
     {
       "@type": "BreadcrumbList",
@@ -185,22 +189,22 @@
         <div class="content-section">
             <h2>Project Overview</h2>
             <p>
-                The <strong>Movie Recommendation System</strong> is a production-ready Django application that delivers 
-                intelligent movie recommendations using advanced machine learning algorithms. Built to scale from thousands 
-                to millions of movies, it combines <strong>TF-IDF vectorization</strong>, <strong>SVD dimensionality 
-                reduction</strong>, and <strong>content-based filtering</strong> to provide highly relevant suggestions 
-                in under 50 milliseconds.
+                The <strong>Movie Recommendation System</strong> is a content-based recommender made of two parts that work
+                together: a <strong>training pipeline</strong> that turns a TMDB-shaped CSV into a small model, and a
+                <strong>Django app</strong> that serves it. It combines <strong>TF-IDF vectorization</strong>,
+                <strong>SVD dimensionality reduction</strong> and <strong>top-K cosine neighbours</strong>, so a search is
+                a single memory-mapped row lookup that takes about a millisecond.
             </p>
             
             <figure class="content-figure">
-                <img src="resources/project-3/Header.webp" alt="Movie Recommendation System Header" loading="lazy" decoding="async">
+                <img src="resources/project-3/Header.webp" alt="Movie Recommendation System: a search for Spirited Away returns Kiki's Delivery Service, My Neighbor Totoro and other films ranked by cosine similarity" width="1600" height="500" loading="lazy" decoding="async">
             </figure>
             
             <p>
-                Unlike basic keyword matching systems, this recommender understands the <em>semantic meaning</em> of 
-                movie features-genres, keywords, production companies, plot summaries, and more. The system evolved from 
-                handling 10,000 movies in the MovieLens dataset to successfully processing <strong>930,000+ movies</strong> 
-                from the full TMDB dataset while keeping query latency and recommendation quality intact.
+                Instead of matching keywords, it compares what films are made of: genres, keywords, studios, countries,
+                plot overview and tagline. The trainer reads the full TMDB dataset (1.49 million rows), keeps the films
+                that clear a vote threshold, and writes a model of about <strong>26,000 films in under a minute</strong>.
+                A 6,248-film demo model ships in the repository, so a fresh clone works with no setup.
             </p>
 
             <h2>The Challenge</h2>
@@ -208,21 +212,21 @@
                 Building a recommendation system that works at scale presents several key challenges:
             </p>
             <ul>
-                <li><strong>Computational Scale:</strong> Computing similarity across millions of movie pairs requires efficient algorithms</li>
+                <li><strong>Computational Scale:</strong> Comparing every film with every other grows quadratically: 50,000 films means 2.5 billion pairs</li>
                 <li><strong>Quality vs. Coverage:</strong> Balancing comprehensive coverage with recommendation relevance</li>
                 <li><strong>Cold Start Problem:</strong> Providing recommendations without user interaction history</li>
-                <li><strong>Performance:</strong> Delivering sub-second response times despite massive datasets</li>
-                <li><strong>Memory Efficiency:</strong> Managing large similarity matrices without excessive RAM usage</li>
+                <li><strong>Performance:</strong> Answering a search in milliseconds without computing similarity at request time</li>
+                <li><strong>Memory Efficiency:</strong> A dense float32 similarity matrix for 50,000 films is about 10 GB</li>
                 <li><strong>Feature Engineering:</strong> Capturing meaningful movie attributes for accurate matching</li>
             </ul>
 
             <h2>Technical Architecture</h2>
             <figure class="content-figure">
-                <img src="resources/project-3/Architecture.webp" alt="System Architecture" loading="lazy" decoding="async">
+                <img src="resources/project-3/Architecture.webp" alt="Architecture: an offline training pipeline of load, filter, features, TF-IDF with SVD and top-50 cosine neighbours writes a model directory that the Django app memory-maps and serves" width="1800" height="1100" loading="lazy" decoding="async">
             </figure>
             <div class="diagram-container">
                 <p style="margin-top: 1rem; color: var(--text-secondary); text-align: center;">
-                    Feature Engineering → TF-IDF Vectorization → SVD Reduction → Cosine Similarity → Recommendations
+                    Feature Engineering → TF-IDF → SVD (500 dimensions) → Top-50 Cosine Neighbours → Memory-Mapped Lookup
                 </p>
             </div>
 
@@ -241,7 +245,7 @@
                     <h4>Backend & Storage</h4>
                     <div class="tech-list">
                         <span class="tech-item">Django 6.0</span>
-                        <span class="tech-item">Python 3.10+</span>
+                        <span class="tech-item">Python 3.11+</span>
                         <span class="tech-item">Parquet</span>
                         <span class="tech-item">NumPy/SciPy</span>
                     </div>
@@ -251,7 +255,7 @@
                     <div class="tech-list">
                         <span class="tech-item">pandas</span>
                         <span class="tech-item">NLTK</span>
-                        <span class="tech-item">Sparse Matrices</span>
+                        <span class="tech-item">Top-K Neighbours</span>
                         <span class="tech-item">Chunked Processing</span>
                     </div>
                 </div>
@@ -270,76 +274,72 @@
             <h3>Scalability & Performance</h3>
             <ul>
                 <li><strong>Three-Tier Quality Filtering:</strong> Low (5+ votes), Medium (50+ votes), High (500+ votes)</li>
-                <li><strong>SVD Dimensionality Reduction:</strong> Compresses 20K features to 500 dimensions while preserving 85% variance</li>
-                <li><strong>Sparse Matrix Storage:</strong> Reduces 40GB dense matrix to ~150MB sparse format</li>
-                <li><strong>Chunked Computation:</strong> Processes large datasets without memory overflow</li>
-                <li><strong>Efficient Data Formats:</strong> Parquet for 3-5x compression and 10x faster loading</li>
+                <li><strong>SVD Dimensionality Reduction:</strong> Compresses up to 20K TF-IDF terms to 500 dimensions</li>
+                <li><strong>Top-K Neighbour Storage:</strong> Keeps the 50 nearest films per title instead of an N x N matrix. At 26,326 films that is 16 MB of files, where a dense float32 matrix would be about 2.8 GB</li>
+                <li><strong>Chunked Computation:</strong> Similarity is computed 1,024 rows at a time, so the comparison step stays bounded</li>
+                <li><strong>Safe Data Formats:</strong> Parquet, NumPy and JSON, memory-mapped. Nothing is unpickled when serving</li>
             </ul>
 
             <h3>User Experience</h3>
             <ul>
-                <li><strong>Fuzzy Title Matching:</strong> Handles typos and partial titles intelligently</li>
+                <li><strong>Forgiving Title Matching:</strong> Exact, prefix, substring, then fuzzy matching, with "did you mean" suggestions</li>
                 <li><strong>Real-Time Search:</strong> Autocomplete suggestions as you type</li>
-                <li><strong>Advanced Filtering:</strong> Filter by year range, minimum rating, and genres</li>
+                <li><strong>Library Filters:</strong> <code>training/infer.py</code> filters by year range, rating and genre, and can re-rank for diversity</li>
                 <li><strong>Rich Metadata:</strong> Ratings, genres, production companies, release dates</li>
                 <li><strong>External Integration:</strong> Direct links to Google Search and IMDb</li>
-                <li><strong>Poster Images:</strong> Visual movie posters from TMDB</li>
+                <li><strong>Poster Images:</strong> Loaded from TMDB at render time with a fallback. None are stored in the repository</li>
             </ul>
+
+            <h2>Screenshots</h2>
+
+            <h3>Search</h3>
+            <figure class="content-figure">
+                <img src="resources/project-3/Homepage.webp" alt="Search page with an autocomplete box and a count of the films in the loaded model" width="1600" height="900" loading="lazy" decoding="async">
+            </figure>
+
+            <h3>Results</h3>
+            <figure class="content-figure">
+                <img src="resources/project-3/Results.webp" alt="Results for Spirited Away: cards for Kiki's Delivery Service, My Neighbor Totoro and The Secret World of Arrietty with match percentages, ratings and genres" width="1280" height="1000" loading="lazy" decoding="async">
+                <figcaption>Posters load from TMDB when available. These screenshots are taken with them off.</figcaption>
+            </figure>
 
             <h2>Implementation Highlights</h2>
 
             <div class="code-block">
                 <div class="code-header">
-                    <span class="code-language">Python - Core Recommendation Logic</span>
+                    <span class="code-language">Python - Serving a Recommendation (simplified)</span>
                     <button class="copy-button">Copy</button>
                 </div>
                 <pre><code><span class="keyword">class</span> <span class="function">MovieRecommender</span>:
-    <span class="string">"""Production-ready recommendation engine"""</span>
-    
-    <span class="keyword">def</span> <span class="function">__init__</span>(self, model_dir):
-        <span class="comment"># Load pre-trained model artifacts</span>
-        self.metadata = pd.read_parquet(model_dir / <span class="string">'movie_metadata.parquet'</span>)
-        self.similarity_matrix = load_npz(model_dir / <span class="string">'similarity_matrix.npz'</span>).toarray()
-        
-        <span class="keyword">with</span> open(model_dir / <span class="string">'title_to_idx.json'</span>) <span class="keyword">as</span> f:
-            self.title_to_idx = json.load(f)
-    
-    <span class="keyword">def</span> <span class="function">get_recommendations</span>(self, movie_title, n=<span class="number">15</span>, min_rating=<span class="keyword">None</span>):
-        <span class="comment"># Fuzzy match title</span>
-        matched_title = self.find_movie(movie_title)
-        <span class="keyword">if not</span> matched_title:
-            <span class="keyword">return</span> {<span class="string">'error'</span>: <span class="string">'Movie not found'</span>}
-        
-        <span class="comment"># Get similarity scores</span>
-        movie_idx = self.title_to_idx[matched_title]
-        sim_scores = list(enumerate(self.similarity_matrix[movie_idx]))
-        sim_scores = sorted(sim_scores, key=<span class="keyword">lambda</span> x: x[<span class="number">1</span>], reverse=<span class="keyword">True</span>)[<span class="number">1</span>:]
-        
-        <span class="comment"># Apply filters and format results</span>
-        recommendations = []
-        <span class="keyword">for</span> idx, score <span class="keyword">in</span> sim_scores:
-            <span class="keyword">if</span> len(recommendations) >= n:
-                <span class="keyword">break</span>
-                
-            movie = self.metadata.iloc[idx]
-            
-            <span class="keyword">if</span> min_rating <span class="keyword">and</span> movie[<span class="string">'vote_average'</span>] < min_rating:
-                <span class="keyword">continue</span>
-            
-            recommendations.append({
-                <span class="string">'title'</span>: movie[<span class="string">'title'</span>],
-                <span class="string">'rating'</span>: <span class="string">f"{movie['vote_average']:.1f}/10"</span>,
-                <span class="string">'genres'</span>: <span class="string">', '</span>.join(movie[<span class="string">'genres'</span>]),
-                <span class="string">'similarity_score'</span>: <span class="string">f"{score:.3f}"</span>,
-                <span class="string">'imdb_link'</span>: <span class="string">f"https://www.imdb.com/title/{movie['imdb_id']}"</span>
-            })
-        
-        <span class="keyword">return</span> {<span class="string">'recommendations'</span>: recommendations}</code></pre>
+    <span class="string">"""Serves recommendations from precomputed neighbours"""</span>
+
+    <span class="keyword">def</span> <span class="function">_load_similarity</span>(self):
+        <span class="comment"># Memory-mapped: a request reads one row, not the whole file</span>
+        self._neighbor_idx = np.load(self.model_dir / <span class="string">'neighbors_idx.npy'</span>, mmap_mode=<span class="string">'r'</span>)
+        self._neighbor_scores = np.load(self.model_dir / <span class="string">'neighbors_scores.npy'</span>, mmap_mode=<span class="string">'r'</span>)
+
+    <span class="keyword">def</span> <span class="function">_candidate_neighbours</span>(self, movie_idx, limit):
+        indices = np.asarray(self._neighbor_idx[movie_idx])
+        scores = np.asarray(self._neighbor_scores[movie_idx])
+        keep = indices != movie_idx  <span class="comment"># never recommend the movie itself</span>
+        <span class="keyword">return</span> indices[keep][:limit], scores[keep][:limit]
+
+    <span class="keyword">def</span> <span class="function">get_recommendations</span>(self, movie_title, n=<span class="number">15</span>):
+        <span class="comment"># Exact, then prefix, then substring, then fuzzy</span>
+        matched = self.find_movie(movie_title)
+        <span class="keyword">if not</span> matched:
+            <span class="keyword">return</span> {<span class="string">'error'</span>: <span class="string">'Movie not found'</span>, <span class="string">'suggestions'</span>: self.suggest(movie_title)}
+
+        movie_idx = int(self.title_to_idx[matched])
+        indices, scores = self._candidate_neighbours(movie_idx, n)
+
+        recs = [self._movie_payload(i, s) <span class="keyword">for</span> i, s <span class="keyword">in</span> zip(indices, scores)]
+        <span class="keyword">return</span> {<span class="string">'query_movie'</span>: matched, <span class="string">'recommendations'</span>: recs}</code></pre>
             </div>
 
             <h3>Training Pipeline</h3>
             <p>
-                The system includes a complete training pipeline for creating custom models from any movie dataset:
+                The repository includes the pipeline that builds the model, so you can train on your own TMDB-shaped catalogue:
             </p>
 
             <div class="code-block">
@@ -349,45 +349,42 @@
                 </div>
                 <pre><code><span class="keyword">from</span> training.train <span class="keyword">import</span> MovieRecommenderTrainer
 
-<span class="comment"># Initialize trainer with configuration</span>
 trainer = MovieRecommenderTrainer(
     output_dir=<span class="string">'./models'</span>,
-    use_dimensionality_reduction=<span class="keyword">True</span>,
-    n_components=<span class="number">500</span>  <span class="comment"># SVD components</span>
+    n_components=<span class="number">500</span>,  <span class="comment"># SVD dimensions</span>
+    top_k=<span class="number">50</span>            <span class="comment"># neighbours stored per film</span>
 )
 
-<span class="comment"># Train on TMDB dataset</span>
-df, sim_matrix = trainer.train(
-    <span class="string">'path/to/TMDB_movie_dataset.csv'</span>,
+df, neighbors = trainer.train(
+    <span class="string">'path/to/TMDB_movie_dataset_v11.csv'</span>,
     quality_threshold=<span class="string">'medium'</span>,  <span class="comment"># 50+ votes</span>
-    max_movies=<span class="number">100000</span>          <span class="comment"># Top 100K by quality</span>
+    max_movies=<span class="number">50000</span>
 )
 
-<span class="comment"># Models saved automatically:
+<span class="comment"># Written to ./models:
 # - movie_metadata.parquet
-# - similarity_matrix.npz
-# - title_to_idx.json
-# - tfidf_vectorizer.pkl
-# - svd_model.pkl</span></code></pre>
+# - neighbors_idx.npy, neighbors_scores.npy
+# - title_to_idx.json, config.json
+# - tfidf_vectorizer.pkl, svd_model.pkl (retraining only)</span></code></pre>
             </div>
 
             <h2>Performance Metrics</h2>
             <div class="project-stats">
                 <div class="stat-box">
-                    <div class="stat-value">930K+</div>
-                    <div class="stat-label">Movies Supported</div>
+                    <div class="stat-value">1.1ms</div>
+                    <div class="stat-label">Median Recommendation (26K films)</div>
                 </div>
                 <div class="stat-box">
-                    <div class="stat-value">&lt;50ms</div>
-                    <div class="stat-label">Recommendation Time</div>
+                    <div class="stat-value">16MB</div>
+                    <div class="stat-label">Model Files (26K films)</div>
                 </div>
                 <div class="stat-box">
-                    <div class="stat-value">180MB</div>
-                    <div class="stat-label">Model Size (100K)</div>
+                    <div class="stat-value">~1min</div>
+                    <div class="stat-label">Training Time (26K films)</div>
                 </div>
                 <div class="stat-box">
-                    <div class="stat-value">85%</div>
-                    <div class="stat-label">Variance Retained (SVD)</div>
+                    <div class="stat-value">58</div>
+                    <div class="stat-label">Automated Tests</div>
                 </div>
             </div>
 
@@ -399,53 +396,50 @@ df, sim_matrix = trainer.train(
                             <th>Configuration</th>
                             <th>Movies</th>
                             <th>Training Time</th>
-                            <th>Memory</th>
-                            <th>Model Size</th>
+                            <th>Peak Memory</th>
+                            <th>Model Files</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td>Demo (Included)</td>
-                            <td>2K</td>
-                            <td>N/A</td>
-                            <td>50MB</td>
-                            <td>8MB</td>
+                            <td>Small (demo model)</td>
+                            <td>6,248</td>
+                            <td>31 s</td>
+                            <td>2.5GB</td>
+                            <td>3.8MB</td>
                         </tr>
                         <tr>
-                            <td>Small</td>
-                            <td>10K</td>
-                            <td>2 min</td>
-                            <td>500MB</td>
-                            <td>40MB</td>
-                        </tr>
-                        <tr>
-                            <td>Medium ⭐</td>
-                            <td>100K</td>
-                            <td>15 min</td>
-                            <td>2GB</td>
-                            <td>180MB</td>
+                            <td>Default</td>
+                            <td>26,326</td>
+                            <td>About 1 min</td>
+                            <td>2.5GB</td>
+                            <td>16MB</td>
                         </tr>
                         <tr>
                             <td>Large</td>
-                            <td>930K+</td>
-                            <td>60 min</td>
-                            <td>6GB</td>
-                            <td>800MB</td>
+                            <td>100,000</td>
+                            <td>4.3 min</td>
+                            <td>3.9GB</td>
+                            <td>61.5MB</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
+            <p>
+                Measured on the TMDB v11 dataset (1.49 million rows). Peak memory is mostly the 658MB CSV being read, not
+                the model. A recommendation takes about 1.1ms in every row, because it reads one precomputed row.
+            </p>
 
             <h2>Live Demo</h2>
             <div class="demo-section">
                 <h3>See the System in Action</h3>
-                <p>Watch how the recommendation engine handles user queries with fuzzy matching, filtering, and rich metadata display.</p>
+                <p>Type a partial title, pick a suggestion, and get fifteen similar films with match percentages, ratings and genres.</p>
                 <figure class="content-figure">
-                    <img src="resources/project-3/Application-Demo.gif" alt="Application Demo" loading="lazy" decoding="async">
+                    <img src="resources/project-3/Application-Demo.gif" alt="Recording of the app: typing spirited, choosing Spirited Away and scrolling the recommendations" width="1100" height="545" loading="lazy" decoding="async">
                 </figure>
                 <div style="display: flex; justify-content: center; align-items: center; gap: 1rem; flex-wrap: wrap; margin-top: 1.5rem;">
-                    <a href="https://github.com/inboxpraveen/movie-recommendation-system" class="demo-button" target="_blank" rel="noopener noreferrer">GitHub Repository</a>
-                    <a href="https://github.com/inboxpraveen/movie-recommendation-system#readme" class="demo-button" target="_blank" rel="noopener noreferrer" style="background: var(--secondary-bg); color: var(--accent-color); border: 1px solid var(--accent-color);">Documentation</a>
+                    <a href="https://github.com/inboxpraveen/Movie-Recommendation-System" class="demo-button" target="_blank" rel="noopener noreferrer">GitHub Repository</a>
+                    <a href="https://github.com/inboxpraveen/Movie-Recommendation-System#readme" class="demo-button" target="_blank" rel="noopener noreferrer" style="background: var(--secondary-bg); color: var(--accent-color); border: 1px solid var(--accent-color);">Documentation</a>
                 </div>
             </div>
 
@@ -461,46 +455,45 @@ df, sim_matrix = trainer.train(
                     <button class="copy-button">Copy</button>
                 </div>
                 <pre><code><span class="comment"># 1. Push to GitHub</span>
-git push origin main
+git push origin master
 
 <span class="comment"># 2. Connect to Render (auto-detects render.yaml)</span>
-<span class="comment"># 3. Configure environment variables</span>
-SECRET_KEY=<your-secret-key>
-DEBUG=False
-MODEL_DIR=./models
-
-<span class="comment"># 4. Deploy (Render handles build & deployment)</span></code></pre>
+<span class="comment"># 3. Set ALLOWED_HOSTS for a custom domain (SECRET_KEY is generated)</span>
+<span class="comment"># 4. Deploy. The committed demo model is found automatically,
+#    and /api/health/ is the health check.</span></code></pre>
             </div>
 
             <h3>Also Supports</h3>
             <ul>
-                <li><strong>Heroku:</strong> Procfile included, one-click deployment</li>
-                <li><strong>Docker:</strong> Containerized deployment for any platform</li>
-                <li><strong>AWS:</strong> Elastic Beanstalk and EC2 compatible</li>
-                <li><strong>Local:</strong> Runs perfectly on laptop for development</li>
+                <li><strong>Heroku:</strong> Procfile included</li>
+                <li><strong>Docker:</strong> Train a model, then <code>docker build</code>; runs on any container host</li>
+                <li><strong>Local:</strong> <code>pip install</code>, <code>migrate</code>, <code>runserver</code>, and the demo model just works</li>
             </ul>
 
             <h2>Challenges & Solutions</h2>
             
             <p>
-                <strong>Challenge 1: Memory Explosion with Large Datasets</strong><br>
-                Computing similarity for 100K movies creates a 100K × 100K matrix (40GB if dense). 
-                <em>Solution:</em> Implemented sparse matrix storage (scipy.sparse) reducing size to ~150MB, 
-                plus chunked computation to prevent memory overflow during training.
+                <strong>Challenge 1: Memory Explosion with Large Models</strong><br>
+                The first design stored the full similarity matrix and densified it when the app loaded the model: about
+                10GB for a 50,000 film catalogue.
+                <em>Solution:</em> The trainer now keeps only the top 50 neighbours per film, computed in 1,024-row chunks,
+                and the app memory-maps the arrays. A 26,326 film model is 16MB and a search reads one row.
             </p>
             
             <p>
-                <strong>Challenge 2: Slow Feature Extraction</strong><br>
-                Initial implementation took 30+ minutes to process 100K movies due to inefficient JSON parsing. 
-                <em>Solution:</em> Optimized with vectorized operations, Parquet format (10x faster loading), 
-                and parallel processing where possible. Training time reduced to 15 minutes.
+                <strong>Challenge 2: Bugs That Only Appeared With Real Data</strong><br>
+                Genres never displayed because parquet list columns load as NumPy arrays, which failed an
+                <code>isinstance(value, list)</code> check, and release years were read off the wrong end of an ISO date.
+                Both failed silently.
+                <em>Solution:</em> A regression test for each, plus <code>manage.py check --deploy</code> in CI, because a
+                settings error stops Django before any test can run.
             </p>
 
             <p>
                 <strong>Challenge 3: Poor Recommendation Quality at Scale</strong><br>
-                When scaling to 1M+ movies, recommendations included obscure films with 2-3 votes. 
-                <em>Solution:</em> Implemented three-tier quality filtering (low/medium/high) and a quality 
-                score combining rating and vote count. Dramatically improved relevance.
+                On the full TMDB catalogue, recommendations included obscure films with 2-3 votes.
+                <em>Solution:</em> Three-tier quality filtering (low, medium, high by vote count) and a quality
+                score combining rating and vote count, so the model only contains films people actually rated.
             </p>
 
             <p>
@@ -510,47 +503,44 @@ MODEL_DIR=./models
                 high-quality recommendations from the first query without any user interaction data.
             </p>
 
-            <h2>Evolution & Impact</h2>
+            <h2>Production Readiness</h2>
+            <p>
+                A review pass in September 2026 fixed the gaps between a working demo and something you can deploy:
+            </p>
             <div class="table-container">
                 <table class="content-table">
                     <thead>
                         <tr>
-                            <th>Metric</th>
-                            <th>Version 1.0</th>
-                            <th>Version 2.0</th>
-                            <th>Improvement</th>
+                            <th>Area</th>
+                            <th>Before</th>
+                            <th>After</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td>Dataset Size</td>
-                            <td>10K movies</td>
-                            <td>930K+ movies</td>
-                            <td>93x larger</td>
+                            <td>Startup</td>
+                            <td>Crashed on a missing log directory</td>
+                            <td>Starts on a fresh clone</td>
                         </tr>
                         <tr>
-                            <td>Model Size</td>
-                            <td>320MB</td>
-                            <td>180MB</td>
-                            <td>44% smaller</td>
+                            <td>Model memory at 50K films</td>
+                            <td>About 10GB (dense matrix)</td>
+                            <td>About 20MB of neighbours, memory-mapped</td>
                         </tr>
                         <tr>
-                            <td>Memory Usage</td>
-                            <td>800MB</td>
-                            <td>350MB</td>
-                            <td>56% less</td>
+                            <td>Fresh clone</td>
+                            <td>No model, so no recommendations</td>
+                            <td>6,248 film demo model included</td>
                         </tr>
                         <tr>
-                            <td>Recommendation Time</td>
-                            <td>~100ms</td>
-                            <td>&lt;50ms</td>
-                            <td>2x faster</td>
+                            <td>Health check</td>
+                            <td>503 while loading, which could kill a deploy</td>
+                            <td>200 "starting" while loading, 503 only on failure</td>
                         </tr>
                         <tr>
-                            <td>Features Used</td>
-                            <td>4</td>
-                            <td>10+</td>
-                            <td>2.5x richer</td>
+                            <td>Tests</td>
+                            <td>None</td>
+                            <td>58, plus lint and deploy checks in CI</td>
                         </tr>
                     </tbody>
                 </table>
@@ -567,25 +557,26 @@ MODEL_DIR=./models
 
             <h2>Key Learnings</h2>
             <ul>
-                <li>Feature engineering matters more than algorithm choice-adding production company features improved recommendations more than days of parameter tuning</li>
-                <li>Quality filtering is essential at scale-1M movies is meaningless if half have <5 votes</li>
-                <li>Sparse matrices and efficient data formats are non-negotiable for production ML systems</li>
+                <li>Feature engineering matters more than algorithm choice: adding studio features improved recommendations more than days of parameter tuning</li>
+                <li>Quality filtering is essential at scale: a catalogue of 1M films is meaningless if most have fewer than 5 votes</li>
+                <li>Store only what you serve. Top-K neighbours beat a full similarity matrix by orders of magnitude, and memory-mapped arrays keep serving cheap</li>
                 <li>User experience (fuzzy matching, posters, external links) transforms a "cool demo" into a useful tool</li>
-                <li>Comprehensive documentation is as important as the code-future you will thank present you</li>
+                <li>Documentation is part of the product. Numbers in a README should be measured, because stale ones are the first thing a reader checks</li>
             </ul>
 
             <div class="resources">
                 <h3 style="margin-top: 0;">Project Links</h3>
                 <div class="resources-links">
-                    <a href="https://github.com/inboxpraveen/movie-recommendation-system" class="demo-button" target="_blank" rel="noopener noreferrer">GitHub Repository</a>
-                    <a href="https://github.com/inboxpraveen/movie-recommendation-system#readme" class="demo-button" style="margin: 0; background: var(--secondary-bg); color: var(--accent-color); border: 1px solid var(--accent-color);" target="_blank" rel="noopener noreferrer">Full Documentation</a>
+                    <a href="https://github.com/inboxpraveen/Movie-Recommendation-System" class="demo-button" target="_blank" rel="noopener noreferrer">GitHub Repository</a>
+                    <a href="https://github.com/inboxpraveen/Movie-Recommendation-System#readme" class="demo-button" style="margin: 0; background: var(--secondary-bg); color: var(--accent-color); border: 1px solid var(--accent-color);" target="_blank" rel="noopener noreferrer">Full Documentation</a>
                 </div>
                 
                 <h4>Technical Resources:</h4>
                 <ul>
-                    <li><a href="https://github.com/inboxpraveen/movie-recommendation-system/blob/master/PROJECT_GUIDE.md" style="color: var(--accent-color);" target="_blank" rel="noopener noreferrer">Complete Project Guide</a></li>
-                    <li><a href="https://github.com/inboxpraveen/movie-recommendation-system/blob/master/training/guide.md" style="color: var(--accent-color);" target="_blank" rel="noopener noreferrer">Model Training Guide</a></li>
+                    <li><a href="https://github.com/inboxpraveen/Movie-Recommendation-System/blob/master/PROJECT_GUIDE.md" style="color: var(--accent-color);" target="_blank" rel="noopener noreferrer">Complete Project Guide</a></li>
+                    <li><a href="https://github.com/inboxpraveen/Movie-Recommendation-System/blob/master/training/guide.md" style="color: var(--accent-color);" target="_blank" rel="noopener noreferrer">Model Training Guide</a></li>
                     <li><a href="https://www.kaggle.com/datasets/asaniczka/tmdb-movies-dataset-2023-930k-movies" style="color: var(--accent-color);" target="_blank" rel="noopener noreferrer">TMDB Dataset (Kaggle)</a></li>
+                    <li><a href="https://github.com/sponsors/inboxpraveen" style="color: var(--accent-color);" target="_blank" rel="noopener noreferrer">Sponsor the project</a></li>
                 </ul>
 
                 <div class="tag-row" style="--domain: var(--d-ml);">
