@@ -16,8 +16,10 @@
     <meta property="og:description" content="Most tutorials teach you what to type. Py Internals teaches you what Python does with it: names, objects, frames, and garbage collection, as an animated memory diagram.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://inboxpraveen.github.io/projects/project-13.html">
-    <meta property="og:image" content="https://inboxpraveen.github.io/projects/resources/project-13/Homepage.webp">
-    <meta property="og:image:alt" content="Py Internals course homepage">
+    <meta property="og:image" content="https://inboxpraveen.github.io/projects/resources/project-13/social-preview.png">
+    <meta property="og:image:alt" content="Py Internals: learn Python from the inside out, a list with two names shown as a memory diagram">
+    <meta property="og:image:width" content="1280">
+    <meta property="og:image:height" content="640">
     <meta property="og:site_name" content="Praveen Kumar Portfolio">
     <meta property="og:locale" content="en_US">
     
@@ -27,8 +29,8 @@
     <meta name="twitter:creator" content="@InboxPraveen">
     <meta name="twitter:title" content="Py Internals - Interactive Python Memory Course">
     <meta name="twitter:description" content="Open-source course that visualizes Python's object model: names, objects, frames, references, and GC. Step through at your own pace.">
-    <meta name="twitter:image" content="https://inboxpraveen.github.io/projects/resources/project-13/Homepage.png">
-    <meta name="twitter:image:alt" content="Py Internals course homepage">
+    <meta name="twitter:image" content="https://inboxpraveen.github.io/projects/resources/project-13/social-preview.png">
+    <meta name="twitter:image:alt" content="Py Internals: learn Python from the inside out, a list with two names shown as a memory diagram">
     
     <!-- Canonical URL -->
     <link rel="canonical" href="https://inboxpraveen.github.io/projects/project-13.html">
@@ -89,7 +91,7 @@
         "@id": "https://inboxpraveen.github.io/#person"
       },
       "inLanguage": "en",
-      "dateModified": "2026-10-23",
+      "dateModified": "2026-10-28",
       "keywords": [
         "Learning Resource",
         "Vanilla JS",
@@ -98,7 +100,7 @@
         "GitHub Pages"
       ],
       "codeRepository": "https://github.com/inboxpraveen/Py-Internals",
-      "image": "https://inboxpraveen.github.io/projects/resources/project-13/Homepage.png"
+      "image": "https://inboxpraveen.github.io/projects/resources/project-13/social-preview.png"
     },
     {
       "@type": "BreadcrumbList",
@@ -190,7 +192,7 @@
             </p>
 
             <figure class="content-figure">
-                <img src="./resources/project-13/Homepage.webp" alt="Py Internals - Course homepage" loading="lazy" decoding="async">
+                <img src="./resources/project-13/Header.webp" alt="Py Internals: learn Python from the inside out, a list with two names shown as a memory diagram" width="1600" height="520" loading="lazy" decoding="async">
             </figure>
 
             <p>
@@ -232,6 +234,10 @@
                 <li>that a class stores behavior and an instance stores data</li>
                 <li>that a <code>for</code> loop is <code>iter</code> + <code>next</code> + <code>StopIteration</code></li>
                 <li>that a generator is a paused frame, not a finished list</li>
+                <li>that a decorator is just <code>f = deco(f)</code>, a name being rebound</li>
+                <li>that threads take turns holding the GIL, so some Python cannot run in parallel</li>
+                <li>that an exception unwinds frames one at a time, and <code>finally</code> still runs on the way out</li>
+                <li>that an import runs a module's body once and keeps the result in <code>sys.modules</code></li>
             </ul>
             <p>
                 I built Py Internals to close that gap visually, for free, with no login and no install.
@@ -239,7 +245,7 @@
 
             <h2>Who It Is For</h2>
             <p>
-                Developers who already write Python and keep hitting “why did that happen?” People coming from 
+                Developers who already write Python and keep hitting "why did that happen?" People coming from 
                 languages where variables really are boxes. Teachers and bootcamps who need a shared picture of 
                 names versus objects. Anyone who has used Python Tutor and wanted a slower, more editorial, more 
                 course-like version of that idea.
@@ -261,7 +267,7 @@
                 </div>
                 <div style="background: var(--secondary-bg); padding: 1.5rem; border-radius: 10px; border: 1px solid var(--border-color);">
                     <h3 style="margin-top: 0; color: var(--accent-color);">Learning Loop</h3>
-                    <p>See the animation, read the model in prose, then predict the next diagram in a quiz. A perfect score marks the session complete.</p>
+                    <p>See the animation, read the model in prose, then predict the next diagram in a quiz. Finishing the quiz marks the session complete.</p>
                 </div>
                 <div style="background: var(--secondary-bg); padding: 1.5rem; border-radius: 10px; border: 1px solid var(--border-color);">
                     <h3 style="margin-top: 0; color: var(--accent-color);">Open in a browser</h3>
@@ -269,7 +275,7 @@
                 </div>
                 <div style="background: var(--secondary-bg); padding: 1.5rem; border-radius: 10px; border: 1px solid var(--border-color);">
                     <h3 style="margin-top: 0; color: var(--accent-color);">Course pages</h3>
-                    <p>Narrative articles, “watch for” hints, type chips, a searchable glossary, and a homepage that remembers where you left off.</p>
+                    <p>Narrative articles, "watch for" hints, type chips, a searchable glossary, and a homepage that remembers where you left off.</p>
                 </div>
                 <div style="background: var(--secondary-bg); padding: 1.5rem; border-radius: 10px; border: 1px solid var(--border-color);">
                     <h3 style="margin-top: 0; color: var(--accent-color);">Adding lessons</h3>
@@ -278,6 +284,15 @@
             </div>
 
             <h2>Screenshots</h2>
+
+            <h3>The homepage</h3>
+            <p>
+                The course grid remembers where you stopped, so the main button becomes "Continue Learning" when
+                you come back.
+            </p>
+            <figure class="content-figure">
+                <img src="./resources/project-13/Homepage.webp" alt="Py Internals - Course homepage" loading="lazy" decoding="async">
+            </figure>
 
             <h3>A session page</h3>
             <p>
@@ -335,11 +350,15 @@
                         </tr>
                         <tr>
                             <td><code>PJ.Core</code></td>
-                            <td>App chrome: sidebar, quizzes, progress, “continue learning”, keyboard</td>
+                            <td>App chrome: sidebar, quizzes, progress, "continue learning", keyboard</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
+
+            <figure class="content-figure">
+                <img src="./resources/project-13/Architecture.webp" alt="Py Internals architecture: session.js and index.html are written by hand, the shared engine (Core, Animator, MemoryViz, Syntax) runs them in the browser, and a Python script generates the metadata that GitHub Pages serves" width="1600" height="1090" loading="lazy" decoding="async">
+            </figure>
 
             <p>
                 That split is the architecture. A new lesson does not require a new visualizer. It requires a new 
@@ -389,8 +408,9 @@
             </p>
             <p>
                 Functions add temporary names (frames). Lists and dicts store more references. Classes split data 
-                (instance) from behavior (class). Iterators are cursors over those objects. Generators are frames 
-                that pause instead of returning. I do not need a visitor to walk every session. If they understand 
+                (instance) from behavior (class). Iterators are cursors over those objects. Generators are frames
+                that pause instead of returning. Decorators rebind a name to a wrapper. The GIL decides which
+                thread's frame runs. Exceptions tear frames down. Imports run a module's body once and keep the result. I do not need a visitor to walk every session. If they understand 
                 that sentence, they understand the product.
             </p>
 
@@ -438,6 +458,15 @@
                     </div>
                 </div>
                 <div class="tech-category">
+                    <h4>Tooling</h4>
+                    <div class="tech-list">
+                        <span class="tech-item">Python + Pillow build script</span>
+                        <span class="tech-item">JSON-LD, sitemap, feed, llms.txt</span>
+                        <span class="tech-item">Generated share cards</span>
+                        <span class="tech-item">Node demo checker</span>
+                    </div>
+                </div>
+                <div class="tech-category">
                     <h4>Hosting &amp; License</h4>
                     <div class="tech-list">
                         <span class="tech-item">GitHub Pages</span>
@@ -450,7 +479,7 @@
 
             <h2>How This Is Different</h2>
             <p>
-                The quizzes do not ask “what does this print?” They ask “which memory picture is true?”
+                The quizzes do not ask "what does this print?" They ask "which memory picture is true?"
             </p>
 
             <div class="table-container">
@@ -499,7 +528,7 @@
             </div>
 
             <p>
-                <strong>Versus Python Tutor.</strong> Philip Guo’s visualizer is the original and still the best 
+                <strong>Versus Python Tutor.</strong> Philip Guo's visualizer is the original and still the best 
                 general tracer. Py Internals is not trying to replace it. Python Tutor visualizes arbitrary user 
                 code. This course visualizes authored lessons: every step has a title, a claim, a highlight, and 
                 a reason. A live tracer shows everything. A teacher shows the one thing that matters on this step.
@@ -547,7 +576,7 @@
             <p>Nine sessions cover variables and mutability, functions and scope, lists and dictionaries, classes, iterators and generators, decorators, the GIL and concurrency, exceptions and context managers, and modules and imports. Each session pairs an explanation with diagrams, interactive examples and questions to check your understanding.</p>
             <p><a href="https://inboxpraveen.github.io/Py-Internals/">Open the course</a> for the current lessons and glossary.</p>
             <p>
-                Shared CSS and JS across every session. Session-specific logic lives only in that session’s 
+                Shared CSS and JS across every session. Session-specific logic lives only in that session's 
                 <code>session.js</code>. The homepage, glossary, and labs share one design language. The license 
                 matches the intent: free to use, share, adapt, and embed for education; attribution required; 
                 share-alike for derivatives; no selling or paywalling the material without permission.
@@ -562,8 +591,10 @@
                 <li>Created the design system: tokens for color, type, spacing, radius, shadow, and motion</li>
                 <li>Wrote the pedagogy as UX: empty states first, one idea per step, predict-then-reveal, glossary in reach</li>
                 <li>Authored the live sessions, demos, explanations, and quiz items</li>
-                <li>Documented the snapshot schema, component reference, and “don’t leak session CSS into the shared system”</li>
+                <li>Documented the snapshot schema, component reference, and "don't leak session CSS into the shared system"</li>
                 <li>Wrote the PI Community License so the course stays free to teach from and hard to lock up</li>
+                <li>Wrote the build script that generates the structured data, share cards, sitemap, feed and llms.txt, and a checker that validates every demo</li>
+                <li>Made the logo, banner and architecture diagram as plain SVG, and wrote the architecture and contributing docs</li>
             </ul>
 
             <h2>Challenges &amp; Learnings</h2>
@@ -581,23 +612,24 @@
                 That kept the core small.
             </p>
             <p>
-                <strong>Teaching without lying.</strong> Closures are not literally dicts. Shallow copy is not “a 
-                broken copy.” <code>self</code> is not magic. The copy in the UI has to be vivid and still 
+                <strong>Teaching without lying.</strong> Closures are not literally dicts. Shallow copy is not "a 
+                broken copy." <code>self</code> is not magic. The copy in the UI has to be vivid and still 
                 defensible. The implementation guide is as much an ethics document as a style guide.
             </p>
             <p>
-                <strong>Making “no build tools” feel like a product.</strong> Design tokens, motion, keyboard, 
+                <strong>Making "no build tools" feel like a product.</strong> Design tokens, motion, keyboard, 
                 progress, quizzes, responsive stage, all without a component library. The cost is discipline. 
                 The payoff is that a contributor can open one HTML file and understand the page.
             </p>
 
             <h2>What's Next</h2>
             <p>
-                Decorators first (first-class functions, wrappers, <code>functools</code>), then the GIL, threads, 
-                processes, and asyncio. Same visual contract, harder runtime questions.
+                Nine sessions are live, from names and objects through concurrency, exceptions and imports. They
+                ship one at a time, in an order where each builds on the last, and topic ideas are welcome in
+                <a href="https://github.com/inboxpraveen/Py-Internals/discussions" target="_blank" rel="noopener noreferrer">GitHub Discussions</a>.
             </p>
             <p>
-                After that, the interesting product question is not “more topics.” It is whether the snapshot language can grow (true nested arrows, richer generator frames) without breaking the rule that 
+                After that, the interesting product question is not "more topics." It is whether the snapshot language can grow (true nested arrows, richer generator frames) without breaking the rule that 
                 one step teaches one thing.
             </p>
 
@@ -608,7 +640,7 @@
                 name in? Is this a copy or an alias? Where does this attribute actually live?
             </p>
             <p>
-                That is the win. Not “they finished the lessons.” They stopped being surprised by the language 
+                That is the win. Not "they finished the lessons." They stopped being surprised by the language 
                 they already use.
             </p>
             <p>
@@ -621,6 +653,7 @@
                 <div class="resources-links">
                     <a href="https://inboxpraveen.github.io/Py-Internals" class="demo-button" target="_blank" rel="noopener noreferrer">Live Course</a>
                     <a href="https://github.com/inboxpraveen/Py-Internals" class="demo-button" target="_blank" rel="noopener noreferrer">GitHub Repository</a>
+                    <a href="https://github.com/inboxpraveen/Py-Internals/blob/main/docs/ARCHITECTURE.md" class="demo-button" target="_blank" rel="noopener noreferrer">Architecture doc</a>
                 </div>
                 
                 <h4>Tags:</h4>
