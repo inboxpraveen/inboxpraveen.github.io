@@ -4,36 +4,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HabitFlow - Local-First Habit Tracker | Praveen Kumar</title>
-    
+
     <!-- SEO Meta Tags -->
-    <meta name="description" content="A simple, local-first habit tracker built with Flask and SQLite. Runs on your machine, keeps your data private. Features a monthly tracking grid, dashboard with Chart.js, Excel export, and a one-click Windows exe.">
-    <meta name="keywords" content="Habit Tracker, Flask, SQLite, Local-First, Privacy, Chart.js, Excel Export, PyInstaller, Self-Hosted, Open Source">
+    <meta name="description" content="A free, open-source habit tracker that runs on your own computer. Streaks, weekday patterns and plain-language insights from your own data, Excel export, a per-user Windows installer and a local JSON API. Flask and SQLite, nothing leaves your machine.">
+    <meta name="keywords" content="Habit Tracker, Streaks, Flask, SQLite, Local-First, Privacy, Self-Hosted, Open Source, Chart.js, Excel Export, Windows Installer, PyInstaller, Inno Setup">
     <meta name="author" content="Praveen Kumar">
     <meta name="robots" content="index, follow, max-image-preview:large">
-    
+
     <!-- Open Graph Meta Tags -->
     <meta property="og:title" content="HabitFlow - Local-First Habit Tracker">
-    <meta property="og:description" content="Self-hosted habit tracker that runs locally, stores data in SQLite, and never sends anything to an external server. Monthly grid, dashboard charts, Excel export, and a one-click Windows exe.">
+    <meta property="og:description" content="Open-source habit tracker that tells you what your ticks add up to: streaks, weak days and the habit dragging the month down. One SQLite file on your computer, no account, no cloud.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://inboxpraveen.github.io/projects/project-6.html">
-    <meta property="og:image" content="https://inboxpraveen.github.io/projects/resources/project-6/Dashboard.png">
-    <meta property="og:image:alt" content="HabitFlow Dashboard">
+    <meta property="og:image" content="https://inboxpraveen.github.io/projects/resources/project-6/social-preview.png">
+    <meta property="og:image:alt" content="HabitFlow, a local-first habit tracker">
+    <meta property="og:image:width" content="1280">
+    <meta property="og:image:height" content="640">
     <meta property="og:site_name" content="Praveen Kumar Portfolio">
     <meta property="og:locale" content="en_US">
-    
+
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@InboxPraveen">
     <meta name="twitter:creator" content="@InboxPraveen">
     <meta name="twitter:title" content="HabitFlow - Local-First Habit Tracker">
-    <meta name="twitter:description" content="Self-hosted habit tracker with Flask & SQLite. Monthly grid, Chart.js dashboard, Excel export, and a standalone Windows exe.">
-    <meta name="twitter:image" content="https://inboxpraveen.github.io/projects/resources/project-6/Dashboard.png">
-    <meta name="twitter:image:alt" content="HabitFlow Dashboard">
-    
+    <meta name="twitter:description" content="Open-source habit tracker with streaks, plain-language insights, Excel export and a Windows installer. Flask and SQLite, and your data never leaves your machine.">
+    <meta name="twitter:image" content="https://inboxpraveen.github.io/projects/resources/project-6/social-preview.png">
+    <meta name="twitter:image:alt" content="HabitFlow, a local-first habit tracker">
+
     <!-- Canonical URL -->
     <link rel="canonical" href="https://inboxpraveen.github.io/projects/project-6.html">
     <link rel="alternate" type="application/atom+xml" title="Praveen Kumar: notes from the workbench" href="https://inboxpraveen.github.io/feed.xml">
-    
+
     <link rel="icon" type="image/x-icon" href="../assests/favicon.ico">
     <link rel="stylesheet" href="../index.css">
     <script type="application/ld+json">
@@ -83,13 +85,13 @@
       "@type": "SoftwareSourceCode",
       "@id": "https://inboxpraveen.github.io/projects/project-6.html#code",
       "name": "HabitFlow",
-      "description": "A simple, local-first habit tracker built with Flask and SQLite. Runs on your machine, keeps your data private. Features a monthly tracking grid, dashboard with Chart.js, Excel export, and a one-click Windows exe.",
+      "description": "A free, open-source habit tracker that runs on your own computer. Streaks, weekday patterns and plain-language insights from your own data, Excel export, a per-user Windows installer and a local JSON API. Flask and SQLite, nothing leaves your machine.",
       "url": "https://inboxpraveen.github.io/projects/project-6.html",
       "author": {
         "@id": "https://inboxpraveen.github.io/#person"
       },
       "inLanguage": "en",
-      "dateModified": "2026-09-14",
+      "dateModified": "2026-10-28",
       "keywords": [
         "Apps &amp; Tools",
         "Flask",
@@ -99,7 +101,7 @@
         "XlsxWriter"
       ],
       "codeRepository": "https://github.com/inboxpraveen/Daily-Tracker",
-      "image": "https://inboxpraveen.github.io/projects/resources/project-6/Dashboard.png"
+      "image": "https://inboxpraveen.github.io/projects/resources/project-6/social-preview.png"
     },
     {
       "@type": "BreadcrumbList",
@@ -160,11 +162,11 @@
                 <div class="page-meta">
                     <div class="meta-item">
                         <svg class="icon" aria-hidden="true"><use href="#i-calendar"></use></svg>
-                        <span>Completed: 2025</span>
+                        <span>Started: April 2026</span>
                     </div>
                     <div class="meta-item">
                         <svg class="icon" aria-hidden="true"><use href="#i-pulse"></use></svg>
-                        <span>Version: 1.0.0</span>
+                        <span>Version: 1.1.0</span>
                     </div>
                     <div class="meta-item">
                         <svg class="icon" aria-hidden="true"><use href="#i-user"></use></svg>
@@ -172,7 +174,7 @@
                     </div>
                     <div class="meta-item">
                         <svg class="icon" aria-hidden="true"><use href="#i-tag"></use></svg>
-                        <span>Flask • SQLite • Chart.js • PyInstaller</span>
+                        <span>Flask • SQLite • Chart.js • PyInstaller • Inno Setup</span>
                     </div>
                 </div>
             </div>
@@ -185,123 +187,160 @@
         <div class="content-section">
             <h2>Project Overview</h2>
             <p>
-                <strong>HabitFlow</strong> is a self-hosted habit tracker built with Python and Flask. It runs locally on 
-                your machine, stores all your data in a SQLite database, and never sends anything to an external server.
+                <strong>HabitFlow</strong> is a free, open-source habit tracker built with Python and Flask. It runs on your own
+                computer, keeps everything in one SQLite file, and never talks to anything except your own browser. You tick off
+                what you did today, and it tells you what that adds up to: streaks, the day of the week you keep slipping on, and
+                the one habit dragging your month down.
             </p>
 
             <figure class="content-figure">
-                <img src="./resources/project-6/Dashboard.webp" alt="HabitFlow Dashboard" loading="lazy" decoding="async">
+                <img src="./resources/project-6/Header.webp" alt="HabitFlow: you tick off the day, see the pattern in a monthly grid, and read plain-language insights about streaks and weak days" width="1600" height="640" loading="lazy" decoding="async">
             </figure>
-            
+
             <p>
-                You get two main views: a <strong>daily tracker</strong> where you check off habits across a monthly grid, 
-                and a <strong>dashboard</strong> where you can review your progress over time with charts and stats. It also 
-                lets you export your habit data to a formatted Excel file, which can be useful for deeper review or 
-                record-keeping.
+                There are two main views: a <strong>Today</strong> page with a streak chip for every habit and a monthly check-off
+                grid underneath, and a <strong>dashboard</strong> that leads with plain sentences about your own data before it
+                shows any chart. You can also export any month to a formatted Excel workbook, and back everything up to a single
+                JSON file.
             </p>
             <p>
-                The app is available as a one-click Windows executable from the 
-                <a href="https://github.com/inboxpraveen/Daily-Tracker/releases" style="color: var(--accent-color);" target="_blank" rel="noopener noreferrer">GitHub Releases</a> 
-                page - no Python install required.
+                On Windows it installs like any other app. Download the setup file or the portable zip from the
+                <a href="https://github.com/inboxpraveen/Daily-Tracker/releases/latest" style="color: var(--accent-color);" target="_blank" rel="noopener noreferrer">GitHub Releases</a>
+                page, no Python needed. On macOS and Linux you run it from source.
             </p>
 
             <h2>Why I Built This</h2>
             <p>
-                Most habit tracking apps are either locked behind subscriptions, require an account, or store your data on 
-                someone else's server. I wanted something simpler: a tool that just works, stays on your machine, and does 
+                Most habit tracking apps are either locked behind subscriptions, require an account, or store your data on
+                someone else's server. I wanted something simpler: a tool that just works, stays on your machine, and does
                 not ask for anything in return.
             </p>
             <p>
-                I built this as a side project to solve a practical problem I had with existing tools, to go deeper into 
+                It started as a side project to solve a practical problem I had with existing tools, to go deeper into
                 Flask and SQLite, and to share a working, well-structured example with the open-source community.
             </p>
             <p>
-                The project also gave me a chance to explore packaging a Python web app as a standalone Windows executable 
-                using PyInstaller, which turned out to be one of the more interesting technical challenges of the build.
+                The project also became a good exercise in shipping desktop software from a Python web app: packaging it with
+                PyInstaller, wrapping it in a per-user installer, and building the release on GitHub Actions so anyone can
+                reproduce the build.
             </p>
 
             <h2>The Problem</h2>
             <p>
-                Most habit trackers require an account, an internet connection, or a paid plan to unlock basic features. 
+                Most habit trackers require an account, an internet connection, or a paid plan to unlock basic features.
                 Even the free ones store your data on external servers, which is not ideal if you care about privacy.
             </p>
             <p>
-                HabitFlow removes all of that. You download it, run it, and it works. Your data lives in a file on your 
-                own machine. There is no login, no sync, no cloud dependency.
+                A second problem is that many of them score you unfairly. Add a new habit today and last month's completion rate
+                drops, because the habit is counted against days before it existed. That quietly discourages the very thing the
+                app is meant to encourage.
             </p>
             <p>
-                It is also useful as a reference codebase for developers who want to see how to build a full Flask app 
-                with a database, a multi-page UI, chart integration, and file export - all in a single, readable Python file.
+                HabitFlow removes all of that. You install it, run it, and it works. Your data lives in a file on your
+                own machine, there is no login, no sync, no cloud dependency, and a habit is only judged on the days you were
+                actually tracking it.
+            </p>
+            <p>
+                It is also useful as a reference codebase for developers who want to see how to build a Flask app
+                with a database, a multi-page UI, chart integration, file export and a Windows installer, all in a single,
+                readable Python file.
             </p>
 
             <h2>Key Features</h2>
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin: 2rem 0;">
                 <div style="background: var(--secondary-bg); padding: 1.5rem; border-radius: 10px; border: 1px solid var(--border-color);">
-                    <h3 style="margin-top: 0; color: var(--accent-color);">Monthly Grid</h3>
-                    <p>Habit tracking grid with checkboxes, per-day totals, and mini progress bars</p>
+                    <h3 style="margin-top: 0; color: var(--accent-color);">Today and the Grid</h3>
+                    <p>A chip per habit with its streak, a progress ring, and a monthly grid where you can fill in a forgotten day</p>
                 </div>
                 <div style="background: var(--secondary-bg); padding: 1.5rem; border-radius: 10px; border: 1px solid var(--border-color);">
-                    <h3 style="margin-top: 0; color: var(--accent-color);">Dashboard & Charts</h3>
-                    <p>Monthly stats, KPI cards, and yearly trend charts via Chart.js</p>
+                    <h3 style="margin-top: 0; color: var(--accent-color);">Insights, Not Just Charts</h3>
+                    <p>Plain sentences about streaks, your weakest weekday and the habit dragging the month down, plus Chart.js trends</p>
                 </div>
                 <div style="background: var(--secondary-bg); padding: 1.5rem; border-radius: 10px; border: 1px solid var(--border-color);">
                     <h3 style="margin-top: 0; color: var(--accent-color);">Excel Export</h3>
-                    <p>Three formatted sheets: Overview, Habit Tracker, and Habit Analysis</p>
+                    <p>Three formatted sheets for any month: Overview, Habit Tracker, and Habit Analysis</p>
                 </div>
                 <div style="background: var(--secondary-bg); padding: 1.5rem; border-radius: 10px; border: 1px solid var(--border-color);">
-                    <h3 style="margin-top: 0; color: var(--accent-color);">One-Click EXE</h3>
-                    <p>Packaged as a single Windows <code>.exe</code> via PyInstaller - no setup needed</p>
+                    <h3 style="margin-top: 0; color: var(--accent-color);">Windows Installer</h3>
+                    <p>A per-user setup file and a portable zip, built in the open on GitHub Actions</p>
                 </div>
             </div>
 
             <ul>
-                <li><strong>Add, edit, and delete habits</strong> with custom emoji and color labels</li>
-                <li><strong>Light and dark theme</strong> with preference saved in the browser</li>
-                <li><strong>Soft-delete for habits</strong> so historical completion data is preserved</li>
-                <li><strong>Idle watchdog</strong> that closes the background process when the app has not been used for two minutes</li>
+                <li><strong>Honest percentages</strong>: a habit only counts between the day you created it and the day you removed it, so adding or removing one never rewrites history</li>
+                <li><strong>Add, edit, and remove habits</strong> with a custom emoji, colour and a "Tracking since" date</li>
+                <li><strong>Soft delete</strong> so the completion data of a removed habit is preserved</li>
+                <li><strong>Backup and restore</strong> from a single JSON file, to move between machines</li>
+                <li><strong>A local JSON API</strong>, so you can tick a habit from a script, a cron job or a git hook</li>
+                <li><strong>Light and dark theme</strong> with the preference saved in the browser</li>
+                <li><strong>Closes with the tab</strong>: the packaged app exits two minutes after the browser tab is closed</li>
+                <li><strong>Private by construction</strong>: it listens on 127.0.0.1 only, rejects other hostnames, and loads its fonts and charts from its own files</li>
             </ul>
 
             <h2>Screenshots</h2>
 
-            <h3>Tracker Page (Dark Mode)</h3>
+            <h3>Today and the Monthly Grid (Dark Mode)</h3>
             <figure class="content-figure">
-                <img src="./resources/project-6/Daily-Tracker-Page.webp" alt="HabitFlow Tracker Page - Dark Mode" loading="lazy" decoding="async">
+                <img src="./resources/project-6/Daily-Tracker-Page.webp" alt="HabitFlow Today page and monthly grid in dark mode, with a streak chip on every habit and a progress ring" loading="lazy" decoding="async">
+            </figure>
+
+            <h3>Today and the Monthly Grid (Light Mode)</h3>
+            <figure class="content-figure">
+                <img src="./resources/project-6/Daily-Tracker-Page-Light.webp" alt="HabitFlow Today page and monthly grid in light mode" loading="lazy" decoding="async">
+            </figure>
+
+            <h3>Insights on the Dashboard</h3>
+            <figure class="content-figure">
+                <img src="./resources/project-6/Dashboard.webp" alt="HabitFlow dashboard with a What this means card of plain-language insights above the yearly completion chart" loading="lazy" decoding="async">
+                <figcaption>Every sentence is derived from your own ticks by fixed rules. There is no model and no randomness.</figcaption>
+            </figure>
+
+            <h3>Streaks and Weekly Rhythm</h3>
+            <figure class="content-figure">
+                <img src="./resources/project-6/Dashboard-Streaks.webp" alt="HabitFlow per-habit analysis, current and best streaks, and a weekday rhythm chart over the last 90 days" loading="lazy" decoding="async">
+            </figure>
+
+            <h3>Backup, Restore and Export</h3>
+            <figure class="content-figure">
+                <img src="./resources/project-6/Data-Menu.webp" alt="HabitFlow data menu with export to Excel, download a backup, restore from a backup and where is my data" loading="lazy" decoding="async">
             </figure>
 
             <h3>Adding a New Habit</h3>
             <figure class="content-figure">
-                <img src="./resources/project-6/Adding-New-Habit.webp" alt="Adding a New Habit" loading="lazy" decoding="async">
-            </figure>
-
-            <h3>Tracker Page (Light Mode)</h3>
-            <figure class="content-figure">
-                <img src="./resources/project-6/Daily-Tracker-Page-Light.webp" alt="HabitFlow Tracker Page - Light Mode" loading="lazy" decoding="async">
+                <img src="./resources/project-6/Adding-New-Habit.webp" alt="Adding a new habit with a name, emoji, colour and tracking since date" loading="lazy" decoding="async">
             </figure>
 
             <h3>Excel Export</h3>
+            <figure class="content-figure">
+                <img src="./resources/project-6/Excel-Export-2.webp" alt="Excel Export, the Habit Tracker sheet with a coloured grid, per-day totals and per-habit rates" loading="lazy" decoding="async">
+                <figcaption>Habit Tracker sheet</figcaption>
+            </figure>
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin: 2rem 0;">
                 <figure class="content-figure">
-                    <img src="./resources/project-6/Excel-Export-1.webp" alt="Excel Export - Overview Sheet" loading="lazy" decoding="async">
-                    <figcaption>Overview Sheet</figcaption>
+                    <img src="./resources/project-6/Excel-Export-1.webp" alt="Excel Export, the Overview sheet with summary figures, a daily breakdown and charts" loading="lazy" decoding="async">
+                    <figcaption>Overview sheet</figcaption>
                 </figure>
                 <figure class="content-figure">
-                    <img src="./resources/project-6/Excel-Export-2.webp" alt="Excel Export - Habit Tracker Sheet" loading="lazy" decoding="async">
-                    <figcaption>Habit Tracker Sheet</figcaption>
-                </figure>
-                <figure class="content-figure">
-                    <img src="./resources/project-6/Excel-Export-3.webp" alt="Excel Export - Habit Analysis Sheet" loading="lazy" decoding="async">
-                    <figcaption>Habit Analysis Sheet</figcaption>
+                    <img src="./resources/project-6/Excel-Export-3.webp" alt="Excel Export, the Habit Analysis sheet with a per-habit table, a bar chart and a pie chart" loading="lazy" decoding="async">
+                    <figcaption>Habit Analysis sheet</figcaption>
                 </figure>
             </div>
 
+            <h3>How the Pieces Fit</h3>
+            <figure class="content-figure">
+                <img src="./resources/project-6/Architecture.webp" alt="HabitFlow architecture: a browser tab talks JSON to a local Flask app, which reads and writes one SQLite file; a GitHub Actions pipeline tests, builds and packages the installer" loading="lazy" decoding="async">
+                <figcaption>One local process serves the pages and the API and keeps all state in one SQLite file. The release pipeline is a separate path that ends in a GitHub Release.</figcaption>
+            </figure>
+
             <h2>How It Works</h2>
             <ol>
-                <li><strong>Start the app</strong> - Run <code>app.py</code> directly or launch <code>HabitFlow.exe</code>. Flask starts on the first available port from a predefined list and opens your browser automatically.</li>
-                <li><strong>Track habits</strong> - The browser loads the tracker page. Client-side JavaScript calls the Flask API to fetch your habits and completions for the current month and renders the grid.</li>
-                <li><strong>Check off habits</strong> - Clicking a checkbox sends a toggle request to <code>/api/completions/toggle</code>. Flask writes the change to the SQLite database and responds immediately.</li>
-                <li><strong>View your dashboard</strong> - The dashboard page calls <code>/api/stats/...</code> and <code>/api/stats/year/&lt;year&gt;</code> to fetch monthly and yearly summaries, which are rendered as Chart.js charts and stat cards.</li>
-                <li><strong>Export to Excel</strong> - Clicking the export button navigates to <code>/api/export/&lt;year&gt;/&lt;month&gt;</code>. Flask uses XlsxWriter to build a multi-sheet <code>.xlsx</code> file on the fly and streams it back as a download.</li>
-                <li><strong>Data storage</strong> - All data is stored in a local SQLite file at <code>%APPDATA%\HabitFlow\habits.db</code> on Windows, or <code>~/.local/share/HabitFlow/habits.db</code> on other systems.</li>
+                <li><strong>Start the app</strong> - Launch HabitFlow from the Start Menu or run <code>python app.py</code>. It creates or migrates the database, tries ports 8050, 11050, 12050 and 13050 in turn, and opens your browser. If HabitFlow is already running on one of them, it opens that window instead of starting a second copy.</li>
+                <li><strong>Track habits</strong> - The page calls <code>/api/habits</code> and <code>/api/completions/&lt;year&gt;/&lt;month&gt;</code> and renders the chips and the grid with plain JavaScript.</li>
+                <li><strong>Check off a day</strong> - Clicking a cell posts to <code>/api/completions/toggle</code>. The server refuses future days and days the habit was not being tracked, then inserts or deletes the row.</li>
+                <li><strong>Read the dashboard</strong> - The dashboard calls <code>/api/insights/&lt;year&gt;/&lt;month&gt;</code> for streaks, the weekday rhythm and the highlight sentences, and <code>/api/stats/year/&lt;year&gt;</code> for the yearly chart, which Chart.js draws from a bundled copy.</li>
+                <li><strong>Export or back up</strong> - <code>/api/export/&lt;year&gt;/&lt;month&gt;</code> builds a multi-sheet <code>.xlsx</code> in memory with XlsxWriter. <code>/api/backup</code> and <code>/api/restore</code> move everything in and out as one JSON file.</li>
+                <li><strong>Data storage</strong> - Everything is in one SQLite file at <code>%APPDATA%\HabitFlow\habits.db</code> on Windows, or <code>~/.local/share/HabitFlow/habits.db</code> on other systems.</li>
+                <li><strong>Closing</strong> - Each page sends a heartbeat every 10 seconds. The packaged app exits when nothing has reached it for 120 seconds, so closing the tab closes the app.</li>
             </ol>
 
             <h2>Tech Stack</h2>
@@ -311,7 +350,7 @@
                     <div class="tech-list">
                         <span class="tech-item">Python 3.12</span>
                         <span class="tech-item">Flask (>=3.1.3)</span>
-                        <span class="tech-item">SQLite</span>
+                        <span class="tech-item">SQLite (WAL)</span>
                         <span class="tech-item">Jinja2</span>
                     </div>
                 </div>
@@ -319,8 +358,8 @@
                     <h4>Frontend</h4>
                     <div class="tech-list">
                         <span class="tech-item">Vanilla HTML/CSS/JS</span>
-                        <span class="tech-item">Chart.js 4.4.1</span>
-                        <span class="tech-item">Google Fonts</span>
+                        <span class="tech-item">Chart.js 4.4.1 (bundled)</span>
+                        <span class="tech-item">DM Sans and DM Mono (bundled)</span>
                     </div>
                 </div>
                 <div class="tech-category">
@@ -328,12 +367,15 @@
                     <div class="tech-list">
                         <span class="tech-item">XlsxWriter (>=3.2.0)</span>
                         <span class="tech-item">sqlite3 (stdlib)</span>
+                        <span class="tech-item">JSON backup</span>
                     </div>
                 </div>
                 <div class="tech-category">
-                    <h4>Packaging & CI</h4>
+                    <h4>Packaging, Tests & CI</h4>
                     <div class="tech-list">
-                        <span class="tech-item">PyInstaller</span>
+                        <span class="tech-item">PyInstaller (one-folder)</span>
+                        <span class="tech-item">Inno Setup 6</span>
+                        <span class="tech-item">pytest</span>
                         <span class="tech-item">GitHub Actions</span>
                     </div>
                 </div>
@@ -343,51 +385,70 @@
             <p>I designed and built this project end to end.</p>
             <ul>
                 <li>Defined the scope and user experience from scratch</li>
-                <li>Designed the SQLite schema and all Flask API routes</li>
-                <li>Built the full tracker and dashboard UIs using Jinja2 templates and vanilla JavaScript</li>
+                <li>Designed the SQLite schema, including the tracking window that keeps percentages honest, and all the Flask API routes</li>
+                <li>Built the Today page, the monthly grid and the dashboard with Jinja2 templates and vanilla JavaScript</li>
+                <li>Wrote the streak, weekday rhythm and highlight logic behind the insights</li>
                 <li>Integrated Chart.js for monthly and yearly visualizations</li>
-                <li>Wrote the Excel export logic with three formatted worksheets using XlsxWriter</li>
-                <li>Packaged the entire app as a single Windows <code>.exe</code> using PyInstaller, including bundling templates and static files</li>
-                <li>Set up the GitHub Actions workflow to build and publish the exe automatically on new version tags</li>
-                <li>Wrote the README with setup instructions and screenshots</li>
+                <li>Wrote the Excel export with three formatted worksheets using XlsxWriter</li>
+                <li>Packaged the app with PyInstaller, wrote the Inno Setup installer, and set up the GitHub Actions workflow that tests, builds, smoke-tests and publishes both files on a version tag</li>
+                <li>Wrote the test suite, the architecture and API docs, and the security policy</li>
             </ul>
 
             <h2>Challenges & Learnings</h2>
 
             <p>
-                <strong>Bundling Flask templates inside a PyInstaller executable</strong><br>
-                PyInstaller compiles everything into a single binary, but Flask needs to find its <code>templates/</code> and 
-                <code>static/</code> folders at runtime. The fix was a small <code>_resource()</code> helper that checks 
-                <code>sys._MEIPASS</code> when the app is frozen and falls back to the script directory otherwise. Getting 
-                this right required understanding how PyInstaller handles file paths inside the bundle, which is not 
-                obvious the first time.
+                <strong>Percentages that do not punish you</strong><br>
+                The first version counted every habit against every day of the month. Adding a habit today dragged last month
+                down, and deleting one rewrote history. The fix was to give each habit a tracking window, from
+                <code>created_at</code> to <code>deactivated_at</code>, and make removal a soft delete. One small set of helpers
+                decides which days count, and the tracker, the dashboard and the Excel export all call it, so the three can
+                never disagree. The toggle endpoint uses the same rule to refuse a tick outside the window.
             </p>
 
             <p>
-                <strong>Choosing a port without conflicts</strong><br>
-                Since the app runs as a local server, a hardcoded port could conflict with other tools on the user's machine. 
-                I solved this by defining a small list of candidate ports and picking the first one that is not in use at 
-                startup via <code>socket.connect_ex</code>. This made the app much more reliable across different environments.
+                <strong>Bundling Flask templates inside a PyInstaller build</strong><br>
+                Flask needs to find its <code>templates/</code> and <code>static/</code> folders at runtime, but a frozen app
+                keeps them in a temporary extraction folder. A small <code>_resource()</code> helper checks
+                <code>sys._MEIPASS</code> when the app is frozen and falls back to the script directory otherwise. I also
+                moved to a one-folder build, which starts faster because nothing is unpacked on each launch, and turned UPX off,
+                because packed executables are a common antivirus false positive and an unsigned installer already starts with
+                a SmartScreen warning.
+            </p>
+
+            <p>
+                <strong>Choosing a port, and not starting twice</strong><br>
+                Since the app runs as a local server, a hardcoded port could conflict with other tools. It tries a short list of
+                ports and takes the first free one. The more useful part is the second launch: if a port is taken, the app asks
+                <code>/api/health</code> whether the thing answering is HabitFlow. If so, it opens that window and exits instead
+                of starting another copy with a competing database connection.
+            </p>
+
+            <p>
+                <strong>Making "nothing leaves your machine" true</strong><br>
+                Binding to <code>127.0.0.1</code> is not enough, because a hostile web page can point its own domain at
+                localhost (DNS rebinding). A <code>before_request</code> guard rejects any request whose Host header is not
+                localhost. While preparing the project for open source I also found that both pages loaded their fonts from
+                Google Fonts, so the claim was false. The fonts are now bundled, and a test fails if any page ever loads an
+                external resource.
             </p>
 
             <p>
                 <strong>Building the Excel export</strong><br>
-                XlsxWriter is powerful but verbose. Writing the <code>export_excel</code> function - which generates three 
-                formatted worksheets with embedded charts - took significant iteration. The challenge was balancing 
-                formatting detail with code clarity, and handling edge cases like missing data for certain months.
+                XlsxWriter is powerful but verbose. Writing the <code>export_excel</code> function, which generates three
+                formatted worksheets with embedded charts, took significant iteration. The challenge was balancing
+                formatting detail with code clarity, and handling edge cases like months with no data.
             </p>
 
             <p>
-                <strong>Handling the idle watchdog for the packaged exe</strong><br>
-                When the app runs as an exe, there is no terminal to close it from. I added a background daemon thread 
-                that monitors the time since the last browser request and exits the process automatically after two minutes 
-                of inactivity. Coordinating this with Flask's request lifecycle and making it reliable without interfering 
-                with normal use required some careful thinking.
+                <strong>Closing the app when the tab closes</strong><br>
+                A packaged app has no terminal to close it from. Each page sends a heartbeat every 10 seconds, and a daemon
+                thread exits the process when no request of any kind has arrived for two minutes. It only runs in the packaged
+                build, so running from source never kills your terminal session.
             </p>
 
             <h2>Core Logic: How the Code Works</h2>
             <p>
-                The full source is a single Python file. Below are the key implementation patterns that make the app work.
+                The full server is a single Python file. Below are the key implementation patterns that make the app work.
             </p>
 
             <h3>Resource Path Resolution (PyInstaller-Safe)</h3>
@@ -396,110 +457,152 @@
                     <span class="code-language">Python - _resource() helper for PyInstaller bundles</span>
                     <button class="copy-button">Copy</button>
                 </div>
-                <pre><code><span class="keyword">import</span> sys, os
+                <pre><code><span class="keyword">def</span> <span class="function">_resource</span>(rel):
+    <span class="string">"""Resolve a bundled-file path for both dev and PyInstaller builds."""</span>
+    base = <span class="function">getattr</span>(sys, <span class="string">'_MEIPASS'</span>, os.path.dirname(os.path.abspath(__file__)))
+    <span class="keyword">return</span> os.path.join(base, rel)
 
-<span class="keyword">def</span> <span class="function">_resource</span>(relative_path):
-    <span class="string">"""Resolve file paths inside a PyInstaller bundle or dev environment."""</span>
-    <span class="keyword">if</span> <span class="function">hasattr</span>(sys, <span class="string">'_MEIPASS'</span>):
-        <span class="keyword">return</span> os.path.join(sys._MEIPASS, relative_path)
-    <span class="keyword">return</span> os.path.join(os.path.abspath(<span class="string">'.'</span>), relative_path)
-
-app = Flask(
-    __name__,
-    template_folder=_resource(<span class="string">'templates'</span>),
-    static_folder=_resource(<span class="string">'static'</span>),
-)</code></pre>
+app = Flask(__name__,
+            template_folder=_resource(<span class="string">'templates'</span>),
+            static_folder=_resource(<span class="string">'static'</span>))</code></pre>
             </div>
 
-            <h3>Port Selection Without Conflicts</h3>
+            <h3>Port Selection That Reuses a Running Copy</h3>
             <div class="code-block">
                 <div class="code-header">
-                    <span class="code-language">Python - First-available port finder</span>
+                    <span class="code-language">Python - Probe the ports, reuse HabitFlow if it is already there</span>
                     <button class="copy-button">Copy</button>
                 </div>
-                <pre><code><span class="keyword">import</span> socket
+                <pre><code>PORTS = [<span class="number">8050</span>, <span class="number">11050</span>, <span class="number">12050</span>, <span class="number">13050</span>]
 
-CANDIDATE_PORTS = [<span class="number">5050</span>, <span class="number">5051</span>, <span class="number">5052</span>, <span class="number">5053</span>, <span class="number">5054</span>]
+<span class="keyword">def</span> <span class="function">_probe</span>(port):
+    <span class="string">"""Is HabitFlow already serving on this port? -> 'ours' | 'busy' | 'free'."""</span>
+    <span class="keyword">with</span> socket.socket(socket.AF_INET, socket.SOCK_STREAM) <span class="keyword">as</span> s:
+        s.settimeout(<span class="number">0.4</span>)
+        <span class="keyword">if</span> s.connect_ex((<span class="string">'127.0.0.1'</span>, port)) != <span class="number">0</span>:
+            <span class="keyword">return</span> <span class="string">'free'</span>
+    <span class="keyword">try</span>:
+        <span class="keyword">with</span> urlopen(<span class="string">f'http://127.0.0.1:{port}/api/health'</span>, timeout=<span class="number">1.5</span>) <span class="keyword">as</span> resp:
+            <span class="keyword">if</span> json.loads(resp.read().decode(<span class="string">'utf-8'</span>)).get(<span class="string">'app'</span>) == APP_NAME:
+                <span class="keyword">return</span> <span class="string">'ours'</span>
+    <span class="keyword">except</span> Exception:
+        <span class="keyword">pass</span>
+    <span class="keyword">return</span> <span class="string">'busy'</span>
 
-<span class="keyword">def</span> <span class="function">find_available_port</span>():
-    <span class="keyword">for</span> port <span class="keyword">in</span> CANDIDATE_PORTS:
-        sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        result = sock.connect_ex((<span class="string">'127.0.0.1'</span>, port))
-        sock.close()
-        <span class="keyword">if</span> result != <span class="number">0</span>:
-            <span class="keyword">return</span> port
-    <span class="keyword">raise</span> RuntimeError(<span class="string">"No available port found"</span>)</code></pre>
+<span class="keyword">def</span> <span class="function">_choose_port</span>():
+    <span class="keyword">for</span> p <span class="keyword">in</span> PORTS:
+        state = _probe(p)
+        <span class="keyword">if</span> state == <span class="string">'ours'</span>:
+            <span class="keyword">return</span> p, <span class="keyword">True</span>      <span class="comment"># open the window that is already running</span>
+        <span class="keyword">if</span> state == <span class="string">'free'</span>:
+            <span class="keyword">return</span> p, <span class="keyword">False</span>
+    <span class="keyword">return</span> PORTS[<span class="number">0</span>], <span class="keyword">False</span></code></pre>
+            </div>
+
+            <h3>The Tracking Window and Streaks</h3>
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-language">Python - Which days count, and a streak that survives an unfinished today</span>
+                    <button class="copy-button">Copy</button>
+                </div>
+                <pre><code><span class="keyword">def</span> <span class="function">_counts_on</span>(habit, day):
+    lo = habit.get(<span class="string">'created_at'</span>) <span class="keyword">or</span> day
+    <span class="keyword">if</span> day &lt; lo:
+        <span class="keyword">return</span> <span class="keyword">False</span>
+    <span class="keyword">if</span> habit.get(<span class="string">'deactivated_at'</span>) <span class="keyword">and</span> day &gt; habit[<span class="string">'deactivated_at'</span>]:
+        <span class="keyword">return</span> <span class="keyword">False</span>
+    <span class="keyword">return</span> <span class="keyword">True</span>
+
+<span class="keyword">def</span> <span class="function">_streaks</span>(habit, done_dates, today):
+    done_today = today.isoformat() <span class="keyword">in</span> done_dates
+    <span class="comment"># the day is not over yet, so an unticked today does not break the streak</span>
+    anchor = today <span class="keyword">if</span> done_today <span class="keyword">else</span> today - timedelta(days=<span class="number">1</span>)
+    current = <span class="number">0</span>
+    d = anchor
+    <span class="keyword">while</span> d.isoformat() <span class="keyword">in</span> done_dates:
+        current += <span class="number">1</span>
+        d -= timedelta(days=<span class="number">1</span>)
+    <span class="comment"># ... the best run is computed from the sorted dates</span>
+    <span class="keyword">return</span> {<span class="string">'current'</span>: current, <span class="string">'best'</span>: max(best, current),
+            <span class="string">'at_risk'</span>: current &gt; <span class="number">0</span> <span class="keyword">and</span> <span class="keyword">not</span> done_today, <span class="string">'done_today'</span>: done_today}</code></pre>
             </div>
 
             <h3>Habit Completion Toggle API</h3>
             <div class="code-block">
                 <div class="code-header">
-                    <span class="code-language">Python - Toggle endpoint for checking off habits</span>
+                    <span class="code-language">Python - Toggle endpoint with the validation it needs</span>
                     <button class="copy-button">Copy</button>
                 </div>
                 <pre><code><span class="keyword">@app</span>.route(<span class="string">'/api/completions/toggle'</span>, methods=[<span class="string">'POST'</span>])
 <span class="keyword">def</span> <span class="function">toggle_completion</span>():
-    data = request.get_json()
-    habit_id = data[<span class="string">'habit_id'</span>]
-    date = data[<span class="string">'date'</span>]
+    data = _payload()
+    <span class="comment"># ... habit_id parsing and the 404 for an unknown habit are omitted</span>
+    comp_date = str(data.get(<span class="string">'date'</span>, <span class="string">''</span>))
+    <span class="keyword">if</span> <span class="keyword">not</span> _valid_date(comp_date):
+        <span class="keyword">return</span> jsonify({<span class="string">'error'</span>: <span class="string">'date must look like YYYY-MM-DD'</span>}), <span class="number">400</span>
+    <span class="keyword">if</span> comp_date &gt; date.today().isoformat():
+        <span class="keyword">return</span> jsonify({<span class="string">'error'</span>: <span class="string">"You can't check off a day that hasn't happened yet"</span>}), <span class="number">400</span>
+    <span class="keyword">if</span> <span class="keyword">not</span> _counts_on(habit, comp_date):
+        <span class="keyword">return</span> jsonify({<span class="string">'error'</span>: <span class="string">f"{habit['name']} wasn't being tracked on that day"</span>}), <span class="number">400</span>
 
-    db = get_db()
-    existing = db.execute(
-        <span class="string">'SELECT id FROM completions WHERE habit_id = ? AND date = ?'</span>,
-        (habit_id, date)
-    ).fetchone()
-
+    existing = conn.execute(
+        <span class="string">'SELECT id FROM completions WHERE habit_id=? AND completion_date=?'</span>,
+        (habit_id, comp_date)).fetchone()
     <span class="keyword">if</span> existing:
-        db.execute(<span class="string">'DELETE FROM completions WHERE id = ?'</span>, (existing[<span class="string">'id'</span>],))
+        conn.execute(<span class="string">'DELETE FROM completions WHERE habit_id=? AND completion_date=?'</span>,
+                     (habit_id, comp_date))
+        completed = <span class="keyword">False</span>
     <span class="keyword">else</span>:
-        db.execute(
-            <span class="string">'INSERT INTO completions (habit_id, date) VALUES (?, ?)'</span>,
-            (habit_id, date)
-        )
-    db.commit()
-    <span class="keyword">return</span> jsonify({<span class="string">'status'</span>: <span class="string">'ok'</span>})</code></pre>
+        conn.execute(<span class="string">'INSERT INTO completions (habit_id, completion_date) VALUES (?,?)'</span>,
+                     (habit_id, comp_date))
+        completed = <span class="keyword">True</span>
+    conn.commit()
+    <span class="keyword">return</span> jsonify({<span class="string">'completed'</span>: completed, <span class="string">'habit_id'</span>: habit_id, <span class="string">'date'</span>: comp_date})</code></pre>
             </div>
 
-            <h3>Idle Watchdog for the Packaged EXE</h3>
+            <h3>Idle Watchdog for the Packaged App</h3>
             <div class="code-block">
                 <div class="code-header">
-                    <span class="code-language">Python - Auto-exit after inactivity</span>
+                    <span class="code-language">Python - Exit when the browser tab has been closed</span>
                     <button class="copy-button">Copy</button>
                 </div>
-                <pre><code><span class="keyword">import</span> threading, time
-
-last_activity = time.time()
-IDLE_TIMEOUT = <span class="number">120</span>  <span class="comment"># seconds</span>
+                <pre><code>_last_seen = time.time()
+_IDLE_TIMEOUT = <span class="number">120</span>  <span class="comment"># seconds; the browser sends a heartbeat every 10s</span>
 
 <span class="keyword">@app</span>.before_request
-<span class="keyword">def</span> <span class="function">track_activity</span>():
-    <span class="keyword">global</span> last_activity
-    last_activity = time.time()
+<span class="keyword">def</span> <span class="function">_refresh_last_seen</span>():
+    <span class="keyword">global</span> _last_seen
+    _last_seen = time.time()
 
-<span class="keyword">def</span> <span class="function">watchdog</span>():
+<span class="keyword">def</span> <span class="function">_idle_watchdog</span>():
     <span class="keyword">while</span> <span class="keyword">True</span>:
-        time.sleep(<span class="number">30</span>)
-        <span class="keyword">if</span> time.time() - last_activity > IDLE_TIMEOUT:
+        time.sleep(<span class="number">10</span>)
+        <span class="keyword">if</span> time.time() - _last_seen &gt; _IDLE_TIMEOUT:
             os._exit(<span class="number">0</span>)
 
-thread = threading.Thread(target=watchdog, daemon=<span class="keyword">True</span>)
-thread.start()</code></pre>
+<span class="comment"># in main(), packaged build only</span>
+threading.Thread(target=_idle_watchdog, daemon=<span class="keyword">True</span>).start()</code></pre>
             </div>
 
             <h2>Installation & Setup</h2>
 
-            <h3>Option 1: Download the EXE (Windows)</h3>
+            <h3>Option 1: Install on Windows</h3>
             <div class="code-block">
                 <div class="code-header">
                     <span class="code-language">Download</span>
                     <button class="copy-button">Copy</button>
                 </div>
-                <pre><code><span class="comment"># 1. Go to the GitHub Releases page</span>
-https://github.com/inboxpraveen/Daily-Tracker/releases
+                <pre><code><span class="comment"># 1. Go to the latest GitHub release</span>
+https://github.com/inboxpraveen/Daily-Tracker/releases/latest
 
-<span class="comment"># 2. Download HabitFlow.exe</span>
-<span class="comment"># 3. Double-click to run - your browser opens automatically</span></code></pre>
+<span class="comment"># 2. Download HabitFlow-Setup-x.y.z.exe and double-click it (no admin rights needed)</span>
+<span class="comment">#    or download the portable .zip, unpack it anywhere and run HabitFlow.exe</span>
+<span class="comment"># 3. Your browser opens automatically</span></code></pre>
             </div>
+            <p>
+                The installer is not code-signed, so Windows may show "Windows protected your PC". Click More info, then Run
+                anyway. The release is built on GitHub Actions from the tagged source, and you can build it yourself.
+            </p>
 
             <h3>Option 2: Run from Source</h3>
             <div class="code-block">
@@ -512,8 +615,8 @@ git clone https://github.com/inboxpraveen/Daily-Tracker.git
 cd Daily-Tracker
 
 <span class="comment"># Create a virtual environment</span>
-python -m venv venv
-source venv/bin/activate  <span class="comment"># Windows: venv\Scripts\activate</span>
+python -m venv .venv
+source .venv/bin/activate  <span class="comment"># Windows: .venv\Scripts\activate</span>
 
 <span class="comment"># Install dependencies</span>
 pip install -r requirements.txt
@@ -522,24 +625,42 @@ pip install -r requirements.txt
 python app.py</code></pre>
             </div>
 
+            <h3>Option 3: Script It</h3>
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-language">Bash - The local JSON API</span>
+                    <button class="copy-button">Copy</button>
+                </div>
+                <pre><code><span class="comment"># tick a habit for a day (this toggles, so calling it twice unticks)</span>
+curl -X POST http://127.0.0.1:8050/api/completions/toggle \
+  -H "Content-Type: application/json" -d '{"habit_id": 1, "date": "2026-10-28"}'
+
+<span class="comment"># this month's numbers and the same insights the dashboard shows</span>
+curl http://127.0.0.1:8050/api/stats/2026/10
+curl http://127.0.0.1:8050/api/insights/2026/10
+
+<span class="comment"># a full backup</span>
+curl -OJ http://127.0.0.1:8050/api/backup</code></pre>
+            </div>
+
             <h2>Future Improvements</h2>
             <ul>
                 <li>Add a weekly summary view alongside the monthly grid</li>
-                <li>Support habit streaks with visual indicators on the tracker</li>
                 <li>Allow users to reorder habits via drag and drop</li>
-                <li>Add a simple import format so data can be moved between machines</li>
-                <li>Support for recurring habit schedules beyond simple daily tracking</li>
+                <li>Support recurring habit schedules beyond simple daily tracking</li>
                 <li>Optional CSV export alongside the existing Excel export</li>
+                <li>A code-signed Windows installer, and installers for macOS and Linux</li>
             </ul>
 
             <h2>Closing Note</h2>
             <p>
-                HabitFlow is fully open source under the Apache 2.0 license. It was built as a personal side project to 
+                HabitFlow is fully open source under the Apache 2.0 license. It was built as a personal side project to
                 solve a real problem and to share a working, understandable example with other developers.
             </p>
             <p>
-                If it helps you track your habits, gives you a reference for building a Flask app, or serves as a 
-                starting point for your own tool - that is exactly what it was meant to do.
+                If it helps you track your habits, gives you a reference for building a Flask app, or serves as a
+                starting point for your own tool, that is exactly what it was meant to do. If it saves you a subscription, you
+                can also sponsor the work on GitHub.
             </p>
             <p>
                 Bug reports, suggestions, and pull requests are welcome.
@@ -549,9 +670,11 @@ python app.py</code></pre>
                 <h3>Resources &amp; Links</h3>
                 <div class="resources-links">
                     <a href="https://github.com/inboxpraveen/Daily-Tracker" class="demo-button" target="_blank" rel="noopener noreferrer">GitHub Repository</a>
-                    <a href="https://github.com/inboxpraveen/Daily-Tracker/releases" class="demo-button" style="margin: 0; background: var(--secondary-bg); color: var(--accent-color); border: 1px solid var(--accent-color);" target="_blank" rel="noopener noreferrer">Download EXE</a>
+                    <a href="https://github.com/inboxpraveen/Daily-Tracker/releases/latest" class="demo-button" target="_blank" rel="noopener noreferrer">Download the Installer</a>
+                    <a href="https://github.com/inboxpraveen/Daily-Tracker/blob/main/docs/ARCHITECTURE.md" class="demo-button" target="_blank" rel="noopener noreferrer">Architecture doc</a>
+                    <a href="https://github.com/sponsors/inboxpraveen" class="demo-button" target="_blank" rel="noopener noreferrer">Sponsor</a>
                 </div>
-                
+
                 <h4>Tags:</h4>
                 <div class="tag-row" style="--domain: var(--d-apps);">
                     <span class="domain-pill">Apps &amp; Tools</span>
@@ -560,6 +683,7 @@ python app.py</code></pre>
                     <span class="stack-tag">Chart.js</span>
                     <span class="stack-tag">PyInstaller</span>
                     <span class="stack-tag">XlsxWriter</span>
+                    <span class="stack-tag">Inno Setup</span>
                 </div>
             </div>
         </div>

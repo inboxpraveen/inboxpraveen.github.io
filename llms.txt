@@ -23,7 +23,7 @@ This is an index of my public work. Project documentation and linked experiment 
 - [Speech Annotation Tool](https://inboxpraveen.github.io/projects/project-4.html): transcribe recordings, review the text and export speech datasets with local or provider models.
 - [AudioFP](https://inboxpraveen.github.io/projects/project-7.html): identify short audio clips and locate repeated sounds within longer recordings using spectral fingerprints.
 - [contextsearch](https://inboxpraveen.github.io/projects/project-1.html): local keyword, embedding and hybrid document search with source passages and optional reranking.
-- [HabitFlow](https://inboxpraveen.github.io/projects/project-6.html): a local habit tracker with check-ins, charts and spreadsheet exports.
+- [HabitFlow](https://inboxpraveen.github.io/projects/project-6.html): a local-first habit tracker with streaks, plain-language insights, spreadsheet export and a Windows installer. Data stays in one SQLite file.
 - [Coding-agent rules](https://github.com/inboxpraveen/Minimize-Cursor-Cost): rules and prompt templates to reduce unnecessary context and edits, with a benchmark for comparing cost and accepted changes.
 
 ## Experiments and writing
