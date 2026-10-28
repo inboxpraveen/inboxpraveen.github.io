@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-label="AudioFP logo">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#8b5cf6"/>
+      <stop offset="1" stop-color="#5b21b6"/>
+    </linearGradient>
+  </defs>
+  <rect width="256" height="256" rx="56" fill="url(#bg)"/>
+  <g fill="#ffffff" fill-opacity="0.92">
+    <rect x="34"  y="108" width="12" height="40"  rx="6"/>
+    <rect x="56"  y="93"  width="12" height="70"  rx="6"/>
+    <rect x="78"  y="73"  width="12" height="110" rx="6"/>
+    <rect x="100" y="88"  width="12" height="80"  rx="6"/>
+    <rect x="122" y="58"  width="12" height="140" rx="6"/>
+    <rect x="144" y="78"  width="12" height="100" rx="6"/>
+    <rect x="166" y="96"  width="12" height="64"  rx="6"/>
+    <rect x="188" y="82"  width="12" height="92"  rx="6"/>
+    <rect x="210" y="104" width="12" height="48"  rx="6"/>
+  </g>
+  <polyline points="62,93 84,73 128,58 150,78 194,82" fill="none" stroke="#fde68a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-opacity="0.9"/>
+  <g fill="#fde68a">
+    <circle cx="62"  cy="93" r="7"/>
+    <circle cx="84"  cy="73" r="7"/>
+    <circle cx="128" cy="58" r="7"/>
+    <circle cx="150" cy="78" r="7"/>
+    <circle cx="194" cy="82" r="7"/>
+  </g>
+</svg>
