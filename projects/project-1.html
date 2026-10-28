@@ -329,6 +329,9 @@
             </ol>
 
             <h3>Answering a query</h3>
+            <figure class="content-figure">
+                <img src="./resources/project-1/search-pipeline.webp" alt="A search request: keyword and semantic retrieval run in parallel, the lists are fused, an optional cross-encoder reranks the top candidates, and the results are assembled into hits with their evidence" width="1800" height="440" loading="lazy" decoding="async">
+            </figure>
             <ol>
                 <li>The query is parsed for keyword search: quoted phrases stay phrases, other words become stemmed terms, common English words are dropped. FTS5 tries all terms with AND first and widens to OR if that returns too few candidates.</li>
                 <li>Each embedding model encodes the query (cached for repeats) and scores every stored vector with a dot product. Exact search, no approximation, deterministic results.</li>
