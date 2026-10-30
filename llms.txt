@@ -43,7 +43,7 @@ This is an index of my public work. Project documentation and linked experiment 
 - [ML Algorithms from Scratch](https://github.com/inboxpraveen/ML-Algorithms-from-scratch): 28 machine learning algorithms in plain NumPy, from linear regression to XGBoost, UMAP and learning-to-rank, each with a runnable demo and a guide that explains the maths. Licensed under GPL-3.0. [Write-up](https://inboxpraveen.github.io/projects/project-5.html).
 - [Movie Recommendation System](https://inboxpraveen.github.io/projects/project-3.html): content-based recommender with a training pipeline and a Django app: TF-IDF, SVD and top-50 cosine neighbours, a 16 MB model for 26,000 films.
 - [FIFA Player Recommendation System](https://inboxpraveen.github.io/projects/project-10.html): find EA SPORTS FC 25 players who play alike with cosine similarity over 35 standardized attributes. Radar chart comparisons, a Flask JSON API and a Docker image. MIT licensed.
-- [Autoencoders and Decoders](https://inboxpraveen.github.io/projects/project-11.html): Keras examples for reconstruction, denoising and image retrieval.
+- [Autoencoders and Decoders](https://inboxpraveen.github.io/projects/project-11.html): linear, convolutional and denoising autoencoders in TensorFlow and Keras 3 for image compression, denoising, similarity search and morphing. One CLI for LFW or your own images, with tests and measured results. MIT licensed.
 - [Skin Lesion Classification](https://inboxpraveen.github.io/projects/project-12.html): an educational HAM10000 classification project with training, evaluation and a demo. Not a clinical diagnostic tool.
 - [Portfolio website](https://inboxpraveen.github.io/projects/project-9.html): the HTML, CSS and JavaScript site behind these write-ups.
 
