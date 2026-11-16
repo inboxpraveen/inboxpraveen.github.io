@@ -30,7 +30,7 @@ This is an index of my public work. Project documentation and linked experiment 
 
 - [ggml-inference-lab](https://github.com/inboxpraveen/ggml-inference-lab): scripts, raw results and notes on inference, quantization, language adaptation and speaker diarization.
 - [Choosing a model, an evaluation and a serving setup](https://inboxpraveen.github.io/blogs/blog-8.html): a process for working from a use case to quality, latency, memory and cost requirements.
-- [Kavach PII 270M](https://inboxpraveen.github.io/blogs/blog-6.html): training and evaluating a small multilingual model for finding personal data, including data audits and failed experiments.
+- [Kavach PII 270M](https://inboxpraveen.github.io/blogs/blog-6.html): training and evaluating a small multilingual model for finding personal data, including data audits and failed experiments. Version 3 scores 92.0 value-F1 against 59.3 for GLiNER-PII on a re-audited 4,577-document test set. v3 now runs in a private product; the open weights on [Hugging Face](https://huggingface.co/inboxpraveen/Kavach-PII-270M) are v2.
 - [Training and shipping a Kaldi speaker diarizer](https://inboxpraveen.github.io/blogs/blog-5.html): x-vectors, back-end training, VBx and CPU deployment.
 - [Teaching a small language model Hindi](https://inboxpraveen.github.io/blogs/blog-4.html): tokenizer extension, continued pretraining, supervised fine-tuning and GRPO on a laptop GPU.
 - [Cerebras inference, worked out from public sources](https://inboxpraveen.github.io/blogs/blog-3.html): a bandwidth and latency analysis. This is source-based analysis, not a measurement from hardware I own.

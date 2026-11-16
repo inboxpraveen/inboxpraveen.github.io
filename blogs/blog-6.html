@@ -142,6 +142,11 @@
 
         <div class="content-section">
             <p class="lead">
+                <strong>Update, 16 November 2026: v3 is private.</strong> Version 3 now runs inside a product, so its
+                weights are no longer published. The open weights on Hugging Face are v2. The v3 results below stand as
+                measured.
+            </p>
+            <p class="lead">
                 <strong>Updated 29 September 2026: this post now describes version 3.</strong> I first published
                 it for v2, which scored 88.4 on its own test set. Re-checking every label afterwards showed that
                 test set was missing roughly one value in ten, so v3 is two things at once: a better model, and a
@@ -857,7 +862,8 @@
             <h2>Using it</h2>
             <p>
                 The model is on Hugging Face in two repositories: the transformers model with the LoRA adapter
-                alongside it, and a GGUF repository with the quantised builds.
+                alongside it, and a GGUF repository with the quantised builds. Both now hold v2, the open-weights
+                release, which uses its own 52-label prompt; the model card shows it.
             </p>
             <pre><code>from transformers import AutoTokenizer, AutoModelForCausalLM
 
@@ -1015,9 +1021,8 @@ print(redact(transcript, result["spans"]))
             <div class="resources">
                 <h3>Resources &amp; Links</h3>
                 <div class="resources-links">
-                    <a href="https://huggingface.co/inboxpraveen/Kavach-PII-270M" class="demo-button" target="_blank" rel="noopener noreferrer">Kavach PII 270M on Hugging Face</a>
-                    <a href="https://huggingface.co/inboxpraveen/Kavach-PII-270M-GGUF" class="demo-button" target="_blank" rel="noopener noreferrer">GGUF and quantised builds</a>
-                    <a href="https://huggingface.co/inboxpraveen/Kavach-PII-270M#migrating-from-v2" class="demo-button" target="_blank" rel="noopener noreferrer">Migrating from v2</a>
+                    <a href="https://huggingface.co/inboxpraveen/Kavach-PII-270M" class="demo-button" target="_blank" rel="noopener noreferrer">Kavach PII 270M v2 (open weights)</a>
+                    <a href="https://huggingface.co/inboxpraveen/Kavach-PII-270M-GGUF" class="demo-button" target="_blank" rel="noopener noreferrer">v2 GGUF builds</a>
                     <a href="./blog-5.html" class="demo-button">Who spoke when, on your own data</a>
                     <a href="./blog-4.html" class="demo-button">Teaching a language model a language it never knew</a>
                 </div>
