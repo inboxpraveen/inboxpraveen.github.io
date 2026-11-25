@@ -16,7 +16,7 @@ This is an index of my public work. Project documentation and linked experiment 
 
 ## Current tools
 
-- [ThinkLess](https://inboxpraveen.github.io/ThinkLess/): Python library that keeps an AI agent's routine decisions off the LLM. One line under the client the agent already uses learns them from the agent's own LLM and answers them locally once proven; typed decisions run rules and small models first. Every decision is traced. [PyPI](https://pypi.org/project/thinkless/), pre-1.0 (current release 0.7.0). [Source](https://github.com/inboxpraveen/ThinkLess).
+- [ThinkLess](https://inboxpraveen.github.io/ThinkLess/): Python library that keeps an AI agent's routine decisions off the LLM. One line under the client the agent already uses learns them from the agent's own LLM and answers them locally once proven; typed decisions run rules and small models first. Every decision is traced. [PyPI](https://pypi.org/project/thinkless/), pre-1.0. [Source](https://github.com/inboxpraveen/ThinkLess).
 - [CleanFrame](https://inboxpraveen.github.io/Cleanframe/): clean CSVs and spreadsheets through saved recipes. Replay uses no model calls, records changes and stops when the incoming schema has changed. [Write-up](https://inboxpraveen.github.io/projects/project-14.html).
 - [MoM AI](https://inboxpraveen.github.io/projects/project-8.html): turn recordings into transcripts, decisions and action items using local models or chosen providers, with background jobs and retries.
 - [Easy-vLLM](https://inboxpraveen.github.io/Easy-vLLM/): estimate GPU memory needs and generate vLLM commands and Docker files in the browser. Memory figures are estimates, not measured deployment results. [Write-up](https://inboxpraveen.github.io/projects/project-15.html).
